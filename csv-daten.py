@@ -51,7 +51,7 @@ def file_einlesen(auswahl_datei):
 
 # single data
 def ind_trip_data(df):
-    y=1
+    y=0
     while y < (len(df)):
         a = y
         for i in range(5):
