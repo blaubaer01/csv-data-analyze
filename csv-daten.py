@@ -99,6 +99,15 @@ def einzeldaten_anschauen(df):
         ind_trip_data(df)
     else:
         first_row(df)
+def beschreibende_stat(df):
+    print('Beschreibende Statistik \n', df.describe())
+
+def statistic(df):
+    menu_statistic = input('Welche Art der Statistik: \n1:Beschreibende Statistik \n2:Grafische Darstellung \n?')
+    if menu_statistic =='1':
+        beschreibende_stat(df)
+        
+        
 
 
 
@@ -120,9 +129,11 @@ def main():
         print('#'*70)
         show_or_statistic = input('Was möchtest du dir anschauen: \n1:Einzeldaten \n2:Statistik \n?')
         if show_or_statistic =='1':
+            clear()
             einzeldaten_anschauen(df)
-        #elif show_or_statistic =='2':
-        #    statistic(df)
+        elif show_or_statistic =='2':
+            clear()
+            statistic(df)
         
         #single_data = input('Möchstest du dir die Einzeldaten anschauen? j/n \n?')
         #if single_data.lower() != 'n':
