@@ -3,6 +3,8 @@ import pandas as pd
 import os
 #import datetime
 #import tkinter as tk
+# import only system from os 
+from os import system, name 
 
 
 #Alternativquelle definieren
@@ -49,6 +51,18 @@ def file_einlesen(auswahl_datei):
     
     return(df)
 
+
+# define our clear function 
+def clear(): 
+  
+    # for windows 
+    if os.name == 'nt': 
+        _ = os.system('cls') 
+  
+    # for mac and linux(here, os.name is 'posix') 
+    else: 
+        _ = os.system('clear') 
+
 # all single data
 def ind_trip_data(df):
     y=0
@@ -91,6 +105,7 @@ def einzeldaten_anschauen(df):
 # Programm-Ablauf
 def main():
     while True:
+        clear()
         #choosesource(source)
         print('#'*70)
         print('Folgende CSV-Dateien zur zur Auswahl, welche möchten sie auswerten?')
@@ -99,15 +114,22 @@ def main():
         #print(csv_dateien)
         auswahl_datei = input('Welche Daten einlesen ? :')
         df=file_einlesen(auswahl_datei)
-         
+        
+        clear()
     
         print('#'*70)
-        single_data = input('Möchstest du dir die Einzeldaten anschauen? j/n \n?')
-        if single_data.lower() != 'n':
+        show_or_statistic = input('Was möchtest du dir anschauen: \n1:Einzeldaten \n2:Statistik \n?')
+        if show_or_statistic =='1':
             einzeldaten_anschauen(df)
+        #elif show_or_statistic =='2':
+        #    statistic(df)
         
-        restart = input('\nWould you like to restart? Enter y/n.\n?')
-        if restart.lower() != 'y':
+        #single_data = input('Möchstest du dir die Einzeldaten anschauen? j/n \n?')
+        #if single_data.lower() != 'n':
+         #   einzeldaten_anschauen(df)
+        
+        restart = input('\nMöchtest du weiter analysieren? j/n.\n?')
+        if restart.lower() != 'j':
             break
           
 
