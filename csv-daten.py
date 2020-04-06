@@ -102,7 +102,7 @@ def einzeldaten_anschauen(df):
         
 # Einfache beschreibende Statitik        
 def beschreibende_stat(df):
-    print('Beschreibende Statistik \n', df.describe())
+    print('Beschreibende Statistik \n', df.describe(include="all"))
 
 def statistic(df):
     menu_statistic = input('Welche Art der Statistik: \n1:Beschreibende Statistik \n2:Grafische Darstellung \n?')
@@ -115,23 +115,41 @@ def fehlende_daten(df):
 def datentyp(df):
     print('Überischt der Datenformate: \n', df.dtypes)
 
+def voranalyse(df):
+    while True:
+        clear()
+        menu_voranalyse = input('Wie möchtest du die Daten anschauen: \n1:Einzeldaten \n2:Datenformat \n3:fehlende Daten \n?')
+        if menu_voranalyse =='1':
+            clear()
+            einzeldaten_anschauen(df)
+        elif menu_voranalyse =='2':
+            clear()
+            datentyp(df)
+        elif menu_voranalyse =='3':
+            clear()
+            fehlende_daten(df)
+        restart = input('\nWeitere Voranalyse: j/n.\n?')
+        if restart.lower() != 'j':
+            break
+        
+        
+        
 def mit_daten_arbeiten(df):
     while True:
         clear()
-        show_or_statistic = input('Was möchtest du dir anschauen: \n1:Einzeldaten \n2:Datenfromat \n3:fehlenede Daten? \n4:Statistik \n?')
-        if show_or_statistic =='1':
+        m_d_a = input('Menue: \n1:Voranalyse \n2:Filter setzen \n3:Statistik \n?')
+        if m_d_a =='1':
             clear()
-            einzeldaten_anschauen(df)
-        elif show_or_statistic =='2':
+            voranalyse(df)
+        elif m_d_a =='2':
             clear()
-            datentyp(df)
-        elif show_or_statistic =='3':
-            clear()
-            fehlende_daten(df)
-        elif show_or_statistic =='4':
+        elif m_d_a =='3':
             clear()
             statistic(df)
-        restart = input('\nMöchtest du weiter analysieren? j/n.\n?')
+            
+            
+        
+        restart = input('\nMöchtest du weiter analysieren: j/n.\n?')
         if restart.lower() != 'j':
             break
         
@@ -151,13 +169,12 @@ def main():
         df=file_einlesen(auswahl_datei)
         
         clear()
-    
+                    
         print('#'*70)
-        
         mit_daten_arbeiten(df)
                    
         
-        restart = input('\nMöchtest du eine weitere CSV-Datei analysieren? j/n.\n?')
+        restart = input('\nMöchtest du eine weitere CSV-Datei analysieren: j/n.\n?')
         if restart.lower() != 'j':
             break
           
