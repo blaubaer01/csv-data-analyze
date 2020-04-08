@@ -4,7 +4,7 @@ import os
 #import datetime
 #import tkinter as tk
 # import only system from os 
-from os import system, name 
+
 
 
 #Alternativquelle definieren
@@ -13,10 +13,13 @@ source='daten.csv'
 #Quelle waehlen und als "source" speichern
 def csv_daten_im_verzeichnis():
     csv_dateien = []
+    
     for dat in os.listdir(os.getcwd()):
         if dat.endswith(".csv") or dat.endswith(".CSV"):
             csv_dateien.append(dat)
-    print(csv_dateien)
+            print(dat)
+            
+    
     return(csv_dateien)
             
         
@@ -131,8 +134,41 @@ def voranalyse(df):
         restart = input('\nWeitere Voranalyse: j/n.\n?')
         if restart.lower() != 'j':
             break
+
+# Daten filtern (Baustelle)
+def filter_setzen(df):
+    clear()
+    while True:
+        clear()
+        anz_col = len(df.columns)
         
+        list_columns = []
+
+        i=1
+        for i in range(anz_col):
+            
+            list_columns.append(df.columns[i])
+            print(i, df.columns[i])
+            i+=1      
+                     
+        inhalte_spalte= input('Zu welcher Spalte möchtest du die möglichen Filterkriterien erfahren \nbitte Nummer auswählen \n?')
+        print(df.iloc[:,int(inhalte_spalte)].value_counts())
         
+        filter_ja = input('Hierzu einen Filter setzen: j/n \n?')
+        if filter_ja =='j':
+            name_filter=input('Name/Wert des Filters(Auf Groß und Kleinschreibung achten: \n?')
+            df = df[df.iloc[:,int(inhalte_spalte)]==name_filter]
+            
+        restart = input('\nWeitere Filter setzen: j/n.\n?')
+        if restart.lower() != 'j':
+            speichern_ja = input('Tabelle mit Filtern spechern: j/n \n?')
+            if speichern_ja =='j':
+                csvfilename = input('Filename \n?')
+                fn = csvfilename + '.csv'
+                df.to_csv(fn, sep=';', decimal=',', header =True)
+                
+            break
+       
         
 def mit_daten_arbeiten(df):
     while True:
@@ -143,6 +179,7 @@ def mit_daten_arbeiten(df):
             voranalyse(df)
         elif m_d_a =='2':
             clear()
+            filter_setzen(df)
         elif m_d_a =='3':
             clear()
             statistic(df)
@@ -165,7 +202,7 @@ def main():
         csv_daten_im_verzeichnis()    
     
         #print(csv_dateien)
-        auswahl_datei = input('Welche Daten einlesen ? :')
+        auswahl_datei = input('Welchen CSV-File einlesen (auf Schreibweise achten)\n?')
         df=file_einlesen(auswahl_datei)
         
         clear()
