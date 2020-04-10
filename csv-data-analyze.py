@@ -7,12 +7,12 @@ import os
 
 
 
-#Alternativquelle definieren
+#alternatively, define the source
 csv_dateien=['daten.csv']
 
-#Quelle waehlen und als "source" speichern
+#read all CSV datas in the root folder
 def csv_daten_im_verzeichnis():
-    #csv_dateien = []
+    
     
     for dat in os.listdir(os.getcwd()):
         if dat.endswith(".csv") or dat.endswith(".CSV"):
@@ -24,11 +24,11 @@ def csv_daten_im_verzeichnis():
             
         
 
-
+#set custom CSV elements
 def file_einlesen(auswahl_datei):
     
-    #Format festlegen
-    format_ist = input('Welches Trennzeichen nutzt die Datei: \n1: Komma / 2: Semikolon \n?').lower()
+    #define structure
+    format_ist = input('Which separator is used by the file: \n1: Comma / 2: Semicolon \n?').lower()
     if format_ist == '1':
         trennzeichen = ','
         dezimalzeichen = '.'
@@ -39,10 +39,10 @@ def file_einlesen(auswahl_datei):
         trennzeichen =','
         dezimalzeichen ='.'
     
-    #print(trennzeichen, " ", dezimalzeichen)
-    #Kopfzeile
-    kopfzeile = input('Gibt es eine Kopfzeile \n"j"/"n" \n?').lower()
-    if kopfzeile == 'j':
+    
+    #custom header
+    kopfzeile = input('Is there a header: \n"y"/"n" \n?').lower()
+    if kopfzeile == 'y':
         kopfz = 0
     elif kopfzeile =='n':
         kopfz = None
@@ -50,9 +50,9 @@ def file_einlesen(auswahl_datei):
         kopfz = 0
         
     
-    #Dateieinlesen
+    #read the file
     df=pd.read_csv(auswahl_datei,sep=trennzeichen ,decimal=dezimalzeichen, header=kopfz)
-    #print(csv_daten)
+    
     
     return(df)
 
@@ -78,26 +78,25 @@ def ind_trip_data(df):
             a +=1
         y += 5
                    
-        end_data = input('Weitere Datensätze? \nDrücke "ENTER" für "Ja" oder "n" für "Nein" \n?')
+        end_data = input('More records? \nPress "ENTER" for "Yes" or "n" for "No" \n?')
         if (len(df)) <y+5:
             rest = abs((len(df))-y)
-            #print(rest, y)
             for i in range(rest):
                 print(df.iloc[a,:])
                 a +=1
-            print('Das Ende der Tabelle ist erreicht !')
+            print('The end of the table has been reached!')
             break
         if end_data.lower() == 'n':
             break
         
-#Kopfzeile und erste Daten anschauen
+#Look at header and first data
 def first_row(df):
     print(df.iloc[0,:])
     
 
-#Einzeldaten anschauen
+#View individual data
 def einzeldaten_anschauen(df):
-    eind = input('Was möchten Sie sehen \n1: erste Reihe\n2: alles je 5 Reihen\n?' )
+    eind = input('What do you want to see \n1: first row\n2: all cycle of 5 rows\nchoose a number?' )
     if eind=='1':
         first_row(df)
     elif eind =='2':
@@ -105,29 +104,32 @@ def einzeldaten_anschauen(df):
     else:
         first_row(df)
         
-# Einfache beschreibende Statitik        
+# Simple descriptive statistics        
 def beschreibende_stat(df):
     clear()
-    print('Beschreibende Statistik \n', df.describe(include="all"))
+    print('Simple descriptive statistics: \n', df.describe(include="all"))
 
+# statistics menu
 def statistic(df):
     clear()
-    menu_statistic = input('Welche Art der Statistik: \n1:Beschreibende Statistik \n2:Grafische Darstellung \n?')
+    menu_statistic = input('What kind of statistics: \n1:simple descriptive statistics \n2:graphical view \n?')
     if menu_statistic =='1':
         beschreibende_stat(df)
-        
+#are there missing datas        
 def fehlende_daten(df):
     clear()
-    print('Überprüfung auf fehlende Daten ergab folgendes Ergebnis: \n',    df.isnull().sum())
+    print('Checking for missing data gave the following result: \n',    df.isnull().sum())
 
+#wich datatype
 def datentyp(df):
     clear()
-    print('Überischt der Datenformate: \n', df.dtypes)
+    print('Overview of data formats: \n', df.dtypes)
 
+#pre-analysis
 def voranalyse(df):
     while True:
         clear()
-        menu_voranalyse = input('Wie möchtest du die Daten anschauen: \n1:Einzeldaten \n2:Datenformat \n3:fehlende Daten \n?')
+        menu_voranalyse = input('How do you want to look at the data: \n1:Single-view \n2:Datatype \n3:Missing-Datas \n?')
         if menu_voranalyse =='1':
             clear()
             einzeldaten_anschauen(df)
@@ -137,11 +139,11 @@ def voranalyse(df):
         elif menu_voranalyse =='3':
             clear()
             fehlende_daten(df)
-        restart = input('\nWeitere Voranalyse: "j"\n?')
-        if restart.lower() != 'j':
+        restart = input('\nFurther pre-analysis: "y"\n?')
+        if restart.lower() != 'y':
             break
 
-# Daten filtern (Baustelle)
+# Set filters
 def filter_setzen(df):
     clear()
     while True:
@@ -157,31 +159,31 @@ def filter_setzen(df):
             print(i, df.columns[i])
             i+=1      
                      
-        inhalte_spalte= input('Zu welcher Spalte möchtest du die möglichen Filterkriterien erfahren \nbitte Nummer auswählen \n?')
+        inhalte_spalte= input('For which column you want to know the possible filter criteria \nchoose number! \n?')
         print(df.iloc[:,int(inhalte_spalte)].value_counts())
         
-        filter_ja = input('Hierzu einen Filter setzen: j/n \n?')
-        if filter_ja =='j':
-            name_filter=input('Name/Wert des Filters(Auf Groß und Kleinschreibung achten: \n?')
+        filter_ja = input('Set a filter: y/n \n?')
+        if filter_ja.lower() =='y':
+            name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
             df = df[df.iloc[:,int(inhalte_spalte)]==name_filter]
             
-        restart = input('\nWeitere Filter setzen: j/n.\n?')
-        if restart.lower() != 'j':
-            speichern_ja = input('Tabelle mit gesetzten Filtern speichern: j/n \n?')
-            if speichern_ja =='j':
+        restart = input('\nSet more filters: y/n.\n?')
+        if restart.lower() != 'y':
+            speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+            if speichern_ja.lower() =='y':
                 csvfilename = input('Filename \n?')
                 fn = csvfilename + '.csv'
                 df.to_csv(fn, sep=';', decimal=',', header =True)
                 
-            #break
-            tabelle_m_f_uebernehmen = input('Sollen die Filter zur weiteren Analyse zur Verfügung stehen: j/n \n?')
-            if tabelle_m_f_uebernehmen =='j':
+            
+            tabelle_m_f_uebernehmen = input('The filters should be available for further analysis: y/n \n?')
+            if tabelle_m_f_uebernehmen.lower() =='y':
                 return(df)
-        
+# work with the datas (Main menu)
 def mit_daten_arbeiten(df):
     while True:
         clear()
-        m_d_a = input('Welche Art der Analyse möchten sie durchführen\n1:Voranalyse \n2:Filter setzen \n3:Statistik \n?')
+        m_d_a = input('What type of analysis do you want to perform\n1:pre-analysis \n2:set some filters \n3:due statistics analyze \n?')
         if m_d_a =='1':
             clear()
             voranalyse(df)
@@ -194,34 +196,35 @@ def mit_daten_arbeiten(df):
             
             
         
-        restart = input('\nMöchtest du weiter analysieren: j/n.\n?')
-        if restart.lower() != 'j':
+        restart = input('\nDo you want to analyze further?: y/n.\n?')
+        if restart.lower() != 'y':
             break
         
 
 
-# Programm-Ablauf
+# main prog
 def main():
     while True:
         print("\033[1;37;40m \n")
         clear()
         #choosesource(source)
         print('#'*80)
-        print('CSV Daten Analyse-Tool V0.1 (by Ricky Helfgen) \nDies ist ein Open Source Projekt und unterliegt den Richtlinien der GPL V3')
-        print('Dieses Tool dient der Datenanalyse von CSV-Dateien')
+        print('CSV Data Analyze-Tool V0.1 (by Ricky Helfgen) \nThis is an open source project and is subject to the guidelines of GPL V3')
+        print('This tool is used for data analysis of CSV files with python3 and pandas')
+        print('https://github.com/blaubaer01/csv-data-analyze')
         print('Have Fun!')
         print('#'*80)
         
               
-        print('Folgende CSV-Dateien zur zur Auswahl, welche möchten sie auswerten?')
+        print('The following CSV-Files are in the root-folder, which you would like to evaluate?')
         csv_daten_im_verzeichnis()    
     
         #print(csv_dateien)
-        auswahl_datei = input('Welchen CSV-File einlesen (auf Schreibweise achten)\n?')
+        auswahl_datei = input('Which CSV file to import (pay attention to spelling)\n?')
         if auswahl_datei in csv_dateien:
             df=file_einlesen(auswahl_datei)
         else:
-            print('Datei nicht gefunden! Bitte überprüfen Sie ihre Eingabe! \nachten sie auf Groß und-Keinschreibung!')
+            print('File not found! Please check your Input! \npay attention to upper and lower case!')
             #break
             main()
         
@@ -231,8 +234,8 @@ def main():
         mit_daten_arbeiten(df)
                    
         
-        restart = input('\nMöchtest du eine weitere CSV-Datei analysieren: j/n.\n?')
-        if restart.lower() != 'j':
+        restart = input('\nDo you want to analyze another CSV file: y/n.\n?')
+        if restart.lower() != 'y':
             break
           
 
