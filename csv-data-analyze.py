@@ -28,7 +28,7 @@ def csv_daten_im_verzeichnis():
 def file_einlesen(auswahl_datei):
     
     #define structure
-    format_ist = input('Which separator is used by the file: \n1: Comma / 2: Semicolon \n?').lower()
+    format_ist = input('Which separator is used by the file: \n1: Comma / 2: Semicolon \nchoose number?').lower()
     if format_ist == '1':
         trennzeichen = ','
         dezimalzeichen = '.'
@@ -36,9 +36,8 @@ def file_einlesen(auswahl_datei):
         trennzeichen = ';'
         dezimalzeichen =','
     else:
-        trennzeichen =','
-        dezimalzeichen ='.'
-    
+        print('Wrong input, please try again')
+        #file_einlesen(auswahl_datei)
     
     #custom header
     kopfzeile = input('Is there a header: \n"y"/"n" \n?').lower()
@@ -91,6 +90,8 @@ def ind_trip_data(df):
         
 #Look at header and first data
 def first_row(df):
+    clear()
+    print('first row view')
     print(df.iloc[0,:])
     
 
@@ -102,12 +103,42 @@ def einzeldaten_anschauen(df):
     elif eind =='2':
         ind_trip_data(df)
     else:
-        first_row(df)
+        print('wrong input, please try again!')
+        #einzeldaten_anschauen(df)
         
 # Simple descriptive statistics        
 def beschreibende_stat(df):
-    clear()
-    print('Simple descriptive statistics: \n', df.describe(include="all"))
+    while True:
+        clear()
+        was_beschreibend_analysieren=input('What data do you want to analyze? \n1: all\n2: only the numerical\n3: one special column \n?')
+        if was_beschreibend_analysieren =='1':
+            print('Simple descriptive statistics: \n')
+            print(df.describe(include="all"))
+        elif was_beschreibend_analysieren =='2':
+            print('Simple descriptive statistics: \n')
+            print(df.describe())
+        elif was_beschreibend_analysieren =='3':
+            anz_col = len(df.columns)
+        
+            list_columns = []
+
+            i=1
+            for i in range(anz_col):
+                list_columns.append(df.columns[i])
+                print(i, df.columns[i])
+                i+=1
+            nummer_spalte= input('Which column do you want to see: \n?')
+            print('Simple descriptive statiatics: \n')
+            print(df[list_columns[int(nummer_spalte)]].describe(include='all'))
+        else:
+            print('wrong input, please try again!')
+            
+        
+        
+        restart = input('\nFurther describtive analysis: "y"\n?')
+        if restart.lower() != 'y':
+            break
+
 
 # statistics menu
 def statistic(df):
@@ -115,16 +146,25 @@ def statistic(df):
     menu_statistic = input('What kind of statistics: \n1:simple descriptive statistics \n2:graphical view \n?')
     if menu_statistic =='1':
         beschreibende_stat(df)
+    elif menu_statistic =='2':
+        print('currently not available!')
+    else:
+        print('wrong input, please try again!')
+        statistic(df)
+        
+        
+        
 #are there missing datas        
 def fehlende_daten(df):
     clear()
-    print('Checking for missing data gave the following result: \n',    df.isnull().sum())
+    print('Checking for missing data gave the following result:\n')
+    print(df.isnull().sum())
 
 #wich datatype
 def datentyp(df):
     clear()
-    print('Overview of data formats: \n', df.dtypes)
-
+    print('Overview of data formats:\n')
+    print(df.dtypes)
 #pre-analysis
 def voranalyse(df):
     while True:
@@ -139,6 +179,10 @@ def voranalyse(df):
         elif menu_voranalyse =='3':
             clear()
             fehlende_daten(df)
+        else:
+            print('wrong input, please try again!')
+            #voranalyse(df)
+        
         restart = input('\nFurther pre-analysis: "y"\n?')
         if restart.lower() != 'y':
             break
@@ -178,12 +222,18 @@ def filter_setzen(df):
             
             tabelle_m_f_uebernehmen = input('The filters should be available for further analysis: y/n \n?')
             if tabelle_m_f_uebernehmen.lower() =='y':
+            
                 return(df)
+                break
+            else:
+                break
+
+
 # work with the datas (Main menu)
 def mit_daten_arbeiten(df):
     while True:
         clear()
-        m_d_a = input('What type of analysis do you want to perform\n1:pre-analysis \n2:set some filters \n3:due statistics analyze \n?')
+        m_d_a = input('What type of analysis do you want to perform\n1:pre-analysis \n2:set some filters \n3:statistics analyze \n?')
         if m_d_a =='1':
             clear()
             voranalyse(df)
@@ -193,6 +243,10 @@ def mit_daten_arbeiten(df):
         elif m_d_a =='3':
             clear()
             statistic(df)
+        else:
+            print('wrong input, please try again!')
+            #mit_daten_arbeiten(df)
+            
             
             
         
