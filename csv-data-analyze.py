@@ -4,6 +4,7 @@ import os
 #import datetime
 #import tkinter as tk
 # import only system from os 
+import matplotlib.pyplot as plt
 
 
 
@@ -127,9 +128,14 @@ def beschreibende_stat(df):
                 list_columns.append(df.columns[i])
                 print(i, df.columns[i])
                 i+=1
-            nummer_spalte= input('Which column do you want to see: \n?')
-            print('Simple descriptive statiatics: \n')
-            print(df[list_columns[int(nummer_spalte)]].describe(include='all'))
+            nummer_spalte= input('Which column do you want to see: \n(choose number)?')
+            try:
+                print('Simple descriptive statiatics: \n')
+                print(df[list_columns[int(nummer_spalte)]].describe(include='all'))
+            except IndexError as error:
+                print('wrong input, please try again!')
+            except Exception as exception:
+                print('wrong input, please try again!')
         else:
             print('wrong input, please try again!')
             
@@ -139,6 +145,76 @@ def beschreibende_stat(df):
         if restart.lower() != 'y':
             break
 
+def groupby_balkendiagramm(df):
+    
+    anz_col = len(df.columns)
+        
+    list_columns = []
+
+    i=1
+    for i in range(anz_col):
+        list_columns.append(df.columns[i])
+        print(i, df.columns[i])
+        i+=1
+    nummer_spalte= input('Which column do you want to see: \n(choose number)?')
+    groupby_spalte = input('Group by column: \n(choose number)?')
+    df.groupby(list_columns[int(nummer_spalte)])[list_columns[int(groupby_spalte)]].nunique().plot(kind='bar')
+    label_chart = (list_columns[int(nummer_spalte)] + ' grouped by count ' + list_columns[int(groupby_spalte)])
+    plt.title(label_chart, fontdict=None, loc='center', pad=None)
+    plt.show()
+    
+    #df.groupby('state')['name'].nunique().plot(kind='bar')
+    #plt.show()
+
+def balkendiagramm(df):
+    anz_col = len(df.columns)
+        
+    list_columns = []
+
+    i=1
+    for i in range(anz_col):
+        list_columns.append(df.columns[i])
+        print(i, df.columns[i])
+        i+=1
+    nummer_spalte= input('Which column do you want to see: \n(choose number)?')
+    #groupby_spalte = input('Group by column: \n(choose number)?')
+    ax = df[list_columns[int(nummer_spalte)]].value_counts().plot(kind='bar',
+                                    figsize=(14,8),
+                                    title="Number for each Owner Name", color='blue')
+    ax.set_xlabel("Owner Names")
+    ax.set_ylabel("Frequency")
+    plt.show()
+
+
+def auswahl_balkendiagramm(df):
+    clear()
+    ausw_bd = input('Type of bar-chart: \n1: count column entries \n2: column grouped by 2 column entries \n(choose number)?')
+    if ausw_bd =='1':
+        balkendiagramm(df)
+    elif ausw_bd =='2':
+        groupby_balkendiagramm(df)
+    else:
+        print('wrong input!')
+        
+    
+    
+    
+def menu_graphical_analyze(df):
+    clear()
+    print('Choose graphical view:')
+    gr_view_list= ['Barchart', 'Piechart', 'Linechart', 'Dotplot']
+    for i in range(len(gr_view_list)):
+        print(i, gr_view_list[i])
+        i+=1
+    ausw_gr_view = input('Which graphical form of analysis \n(choose a number)?')
+    
+    if ausw_gr_view =='0':
+        auswahl_balkendiagramm(df)
+    
+    
+        
+
+
 
 # statistics menu
 def statistic(df):
@@ -147,7 +223,7 @@ def statistic(df):
     if menu_statistic =='1':
         beschreibende_stat(df)
     elif menu_statistic =='2':
-        print('currently not available!')
+        menu_graphical_analyze(df)
     else:
         print('wrong input, please try again!')
         statistic(df)
