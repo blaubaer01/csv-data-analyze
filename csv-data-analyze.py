@@ -253,21 +253,12 @@ def liniendiagramm(df):
     value_column= input('Which value column do you want to see: \n(choose number)?')
     groupby_spalte = input('Group by column: \n(choose number)?')
     
-    y = df[list_columns[int(value_column)]]
-    x = df[list_columns[int(groupby_spalte)]]
-    
-    ax = y.plot(kind='line',
-                                    figsize=(14,8),
-                                    title='abc')
+    y = list_columns[int(value_column)]
+    x = list_columns[int(groupby_spalte)]
     
     
-    #ax.plot(y, x)
-
-    ax.set(xlabel=list_columns[int(groupby_spalte)], ylabel=list_columns[int(value_column)],
-           title='Line Chart')
-    ax.grid()
-
-    #fig.savefig("test.png")
+    df.plot(x, y, grid=True)
+    
     plt.show()
 
 
