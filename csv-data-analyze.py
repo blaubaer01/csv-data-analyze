@@ -155,9 +155,9 @@ def beschreibende_stat(df):
         
 ##################################################################################
 #graphical analyze
+##################################################################################
 
 ####bar charts#####
-
 # groupby barchart
 def groupby_balkendiagramm(df):
     
@@ -210,10 +210,10 @@ def auswahl_balkendiagramm(df):
         groupby_balkendiagramm(df)
     else:
         print('wrong input!')
-        
+
+
+##############################################################################        
 ####pie charts####
-
-
 def kuchendiagramm(df):
     clear()
     anz_col = len(df.columns)
@@ -237,38 +237,189 @@ def kuchendiagramm(df):
     
     plt.show()
 
-
+###################################################################################
+###line-chart
 def liniendiagramm(df):
     clear()
-    #fig, ax = plt.subplots()
-    anz_col = len(df.columns)
+    kategorie=df.select_dtypes(include=['object'])
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
         
-    list_columns = []
+    list_columns_werte = []
 
     i=1
-    for i in range(anz_col):
-        list_columns.append(df.columns[i])
-        print(i, df.columns[i])
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
         i+=1
+    
     value_column= input('Which value column do you want to see: \n(choose number)?')
+    
+    clear()
+    #
+    anz_col_kategorie = len(kategorie.columns)
+        
+    list_columns_kategorie = []
+
+    i=1
+    for i in range(anz_col_kategorie):
+        list_columns_kategorie.append(kategorie.columns[i])
+        print(i, kategorie.columns[i])
+        i+=1
+    
     groupby_spalte = input('Group by column: \n(choose number)?')
     
-    y = list_columns[int(value_column)]
-    x = list_columns[int(groupby_spalte)]
+    y = list_columns_werte[int(value_column)]
+    x = list_columns_kategorie[int(groupby_spalte)]
     
     
     df.plot(x, y, grid=True)
     
     plt.show()
 
+###boxplots
+################################################################################
+def boxplot(df):
+    clear()
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
 
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+    
+    value_column= input('Which value column do you want to see: \n(choose number)?')
+    
+    y = list_columns_werte[int(value_column)]
+    
+    df.boxplot(column=y, widths=0.5)
+    plt.show()
+
+
+
+def boxplot_groupby(df):
+    clear()
+    kategorie=df.select_dtypes(include=['object'])
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+    
+    value_column= input('Which value column do you want to see: \n(choose number)?')
+    
+    clear()
+    #
+    anz_col_kategorie = len(kategorie.columns)
+        
+    list_columns_kategorie = []
+
+    i=1
+    for i in range(anz_col_kategorie):
+        list_columns_kategorie.append(kategorie.columns[i])
+        print(i, kategorie.columns[i])
+        i+=1
+    
+    groupby_spalte = input('Group by column: \n(choose number)?')
+    
+    y = list_columns_werte[int(value_column)]
+    x = list_columns_kategorie[int(groupby_spalte)]
+    
+    df.boxplot(by=x, column=y)
+    
+    plt.show()
+
+def menu_boxplot(df):
+    clear()
+    menu_bp = input('Which Boxplox: \n1: Single Boxplot \n2: Boxplot by group \n(choose a number)?')
+    if menu_bp =='1':
+        boxplot(df)
+    elif menu_bp =='2':
+        boxplot_groupby(df)
+    else:
+        print('wrong input, try again!')
+
+###histogram
+#####################################################################################
+def histogram(df):
+    clear()        
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+    
+    value_column= input('Which value column do you want to see: \n(choose number)?')
+    
+    y = list_columns_werte[int(value_column)]
+    
+    #df.hist(column=y)
+    df.hist(column=y) # Histogram will now be normalized
+    plt.show()
+
+###
+
+
+def scatter(df):
+    clear()        
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+    
+    value_column_y= input('y-value: \n(choose number)?')
+    value_column_x= input('x-value: \n(choose number)?')
+    
+    y = list_columns_werte[int(value_column_y)]
+    
+    x = list_columns_werte[int(value_column_x)]
+    
+    
+    
+    #df.hist(column=y)
+    df.plot.scatter(y,x) # Histogram will now be normalized
+    label_chart = ('Scatter-Plot')
+    plt.title(label_chart, fontdict=None, loc='center', pad=None)
+    plt.show()
 
 
     
 def menu_graphical_analyze(df):
     clear()
     print('Choose graphical view:')
-    gr_view_list= ['Barchart', 'Piechart', 'Linechart', 'Dotplot', 'Histogram', 'Boxplots', 'Quantile-Quantile Plot']
+    gr_view_list= ['Barchart', 'Piechart', 'Linechart', 'Scatter-Plot', 'Histogram', 
+                   'Boxplots', 'Quantile-Quantile Plot', 'Time-Series-Plot', 
+                   'X-bar-Chart']
     for i in range(len(gr_view_list)):
         print(i, gr_view_list[i])
         i+=1
@@ -281,18 +432,26 @@ def menu_graphical_analyze(df):
     elif ausw_gr_view =='2':
         liniendiagramm(df)
     elif ausw_gr_view =='3':
-        print('currently not available!')
+        scatter(df)
     elif ausw_gr_view =='4':
-        print('currently not available!')
+        histogram(df)
     elif ausw_gr_view =='5':
-        print('currently not available!')
+        menu_boxplot(df)
     elif ausw_gr_view =='6':
         print('currently not available!')    
+    elif ausw_gr_view =='7':
+        print('currently not available!')
+    elif ausw_gr_view =='8':
+        print('currently not available!')
+    
     else:
         print('wrong input')
         
-    
-    
+###############################################################################
+###Tests
+        
+        
+###test of normality   
 def normality_test(df):
     clear()
     
@@ -317,18 +476,29 @@ def normality_test(df):
         print('Sample looks Gaussian (fail to reject H0)')
     else:
         print('Sample does not look Gaussian (reject H0)')    
-    
+
+###correlation test    
+def correl(df):
+    clear()
+    correlation_df = df.corr()
+    print(correlation_df)
+
+
     
     
 def menu_tests(df):
     clear()
-    what_kind_of_test = input('Which Test do you would like to do: \n1: Test of normality  \n2: t-test \n2(choose a number)?')
+    what_kind_of_test = input('Which Test do you would like to do: \n1: Test of normality  \n2: correlation \n3: t-test \n2(choose a number)?')
     if what_kind_of_test =='1':
         clear()
         normality_test(df)
     elif what_kind_of_test =='2':
         clear()
+        correl(df)
+    elif what_kind_of_test =='3':
+        clear()
         print('currently not available')
+    
     else:
         print('wrong input, try again!')
 
