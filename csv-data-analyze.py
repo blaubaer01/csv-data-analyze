@@ -5,6 +5,9 @@ import os
 #import tkinter as tk
 # import only system from os 
 import matplotlib.pyplot as plt
+from numpy.random import seed
+from numpy.random import randn
+from scipy.stats import shapiro
 
 
 
@@ -68,6 +71,9 @@ def clear():
     else: 
         _ = os.system('clear') 
 
+
+#############################################################################
+#simple statistics
 # all single data
 def ind_trip_data(df):
     y=0
@@ -144,7 +150,15 @@ def beschreibende_stat(df):
         restart = input('\nFurther describtive analysis: "y"\n?')
         if restart.lower() != 'y':
             break
+        
+        
+        
+##################################################################################
+#graphical analyze
 
+####bar charts#####
+
+# groupby barchart
 def groupby_balkendiagramm(df):
     
     anz_col = len(df.columns)
@@ -158,7 +172,7 @@ def groupby_balkendiagramm(df):
         i+=1
     nummer_spalte= input('Which column do you want to see: \n(choose number)?')
     groupby_spalte = input('Group by column: \n(choose number)?')
-    df.groupby(list_columns[int(nummer_spalte)])[list_columns[int(groupby_spalte)]].nunique().plot(kind='bar')
+    df.groupby([list_columns[int(nummer_spalte)],list_columns[int(groupby_spalte)]]).size().unstack().plot(kind='bar',stacked=True)
     label_chart = (list_columns[int(nummer_spalte)] + ' grouped by count ' + list_columns[int(groupby_spalte)])
     plt.title(label_chart, fontdict=None, loc='center', pad=None)
     plt.show()
@@ -166,6 +180,8 @@ def groupby_balkendiagramm(df):
     #df.groupby('state')['name'].nunique().plot(kind='bar')
     #plt.show()
 
+
+# barcharts
 def balkendiagramm(df):
     anz_col = len(df.columns)
         
@@ -177,15 +193,14 @@ def balkendiagramm(df):
         print(i, df.columns[i])
         i+=1
     nummer_spalte= input('Which column do you want to see: \n(choose number)?')
-    #groupby_spalte = input('Group by column: \n(choose number)?')
     ax = df[list_columns[int(nummer_spalte)]].value_counts().plot(kind='bar',
                                     figsize=(14,8),
-                                    title="Number for each Owner Name", color='blue')
-    ax.set_xlabel("Owner Names")
+                                    title=list_columns[int(nummer_spalte)], color='blue')
+    ax.set_xlabel(list_columns[int(nummer_spalte)])
     ax.set_ylabel("Frequency")
     plt.show()
 
-
+# menu barcharts
 def auswahl_balkendiagramm(df):
     clear()
     ausw_bd = input('Type of bar-chart: \n1: count column entries \n2: column grouped by 2 column entries \n(choose number)?')
@@ -196,13 +211,73 @@ def auswahl_balkendiagramm(df):
     else:
         print('wrong input!')
         
+####pie charts####
+
+
+def kuchendiagramm(df):
+    clear()
+    anz_col = len(df.columns)
+        
+    list_columns = []
+
+    i=1
+    for i in range(anz_col):
+        list_columns.append(df.columns[i])
+        print(i, df.columns[i])
+        i+=1
+    nummer_spalte= input('Which column do you want to see: \n(choose number)?')
+    
+    # Plot
+    ax = df[list_columns[int(nummer_spalte)]].value_counts().plot(kind='pie',
+                                    figsize=(14,8),
+                                    title=list_columns[int(nummer_spalte)], autopct='%1.1f%%')
+    #ax.set_xlabel(list_columns[int(nummer_spalte)])
+    ax.set_ylabel("Frequency")
     
     
+    plt.show()
+
+
+def liniendiagramm(df):
+    clear()
+    #fig, ax = plt.subplots()
+    anz_col = len(df.columns)
+        
+    list_columns = []
+
+    i=1
+    for i in range(anz_col):
+        list_columns.append(df.columns[i])
+        print(i, df.columns[i])
+        i+=1
+    value_column= input('Which value column do you want to see: \n(choose number)?')
+    groupby_spalte = input('Group by column: \n(choose number)?')
+    
+    y = df[list_columns[int(value_column)]]
+    x = df[list_columns[int(groupby_spalte)]]
+    
+    ax = y.plot(kind='line',
+                                    figsize=(14,8),
+                                    title='abc')
+    
+    
+    #ax.plot(y, x)
+
+    ax.set(xlabel=list_columns[int(groupby_spalte)], ylabel=list_columns[int(value_column)],
+           title='Line Chart')
+    ax.grid()
+
+    #fig.savefig("test.png")
+    plt.show()
+
+
+
+
     
 def menu_graphical_analyze(df):
     clear()
     print('Choose graphical view:')
-    gr_view_list= ['Barchart', 'Piechart', 'Linechart', 'Dotplot']
+    gr_view_list= ['Barchart', 'Piechart', 'Linechart', 'Dotplot', 'Histogram', 'Boxplots', 'Quantile-Quantile Plot']
     for i in range(len(gr_view_list)):
         print(i, gr_view_list[i])
         i+=1
@@ -210,8 +285,63 @@ def menu_graphical_analyze(df):
     
     if ausw_gr_view =='0':
         auswahl_balkendiagramm(df)
+    elif ausw_gr_view =='1':
+        kuchendiagramm(df)
+    elif ausw_gr_view =='2':
+        liniendiagramm(df)
+    elif ausw_gr_view =='3':
+        print('currently not available!')
+    elif ausw_gr_view =='4':
+        print('currently not available!')
+    elif ausw_gr_view =='5':
+        print('currently not available!')
+    elif ausw_gr_view =='6':
+        print('currently not available!')    
+    else:
+        print('wrong input')
+        
     
     
+def normality_test(df):
+    clear()
+    
+    anz_col = len(df.columns)
+        
+    list_columns = []
+
+    i=1
+    for i in range(anz_col):
+        list_columns.append(df.columns[i])
+        print(i, df.columns[i])
+        i+=1
+    nummer_spalte= input('Which column do you want to see: \n(choose number)?')
+    
+    
+    data = df[list_columns[int(nummer_spalte)]]
+    stat, p = shapiro(data)
+    print('Statistics=%.3f, p=%.3f' % (stat, p))
+    # interpret
+    alpha = 0.05
+    if p > alpha:
+        print('Sample looks Gaussian (fail to reject H0)')
+    else:
+        print('Sample does not look Gaussian (reject H0)')    
+    
+    
+    
+def menu_tests(df):
+    clear()
+    what_kind_of_test = input('Which Test do you would like to do: \n1: Test of normality  \n2: t-test \n2(choose a number)?')
+    if what_kind_of_test =='1':
+        clear()
+        normality_test(df)
+    elif what_kind_of_test =='2':
+        clear()
+        print('currently not available')
+    else:
+        print('wrong input, try again!')
+
+
         
 
 
@@ -219,11 +349,13 @@ def menu_graphical_analyze(df):
 # statistics menu
 def statistic(df):
     clear()
-    menu_statistic = input('What kind of statistics: \n1:simple descriptive statistics \n2:graphical view \n?')
+    menu_statistic = input('What kind of statistics: \n1: simple descriptive statistics \n2: graphical view \n3: tests \n?')
     if menu_statistic =='1':
         beschreibende_stat(df)
     elif menu_statistic =='2':
         menu_graphical_analyze(df)
+    elif menu_statistic =='3':
+        menu_tests(df)
     else:
         print('wrong input, please try again!')
         statistic(df)
