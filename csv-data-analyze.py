@@ -5,10 +5,9 @@ import os
 #import tkinter as tk
 # import only system from os 
 import matplotlib.pyplot as plt
-from numpy.random import seed
-from numpy.random import randn
 from scipy.stats import shapiro
-
+import scipy as spy
+import statistics as stats
 
 
 #alternatively, define the source
@@ -379,9 +378,9 @@ def histogram(df):
     df.hist(column=y) # Histogram will now be normalized
     plt.show()
 
-###
 
-
+###scatterplot
+##############################################################################
 def scatter(df):
     clear()        
     werte = df.select_dtypes(exclude=['object'])
@@ -411,14 +410,36 @@ def scatter(df):
     label_chart = ('Scatter-Plot')
     plt.title(label_chart, fontdict=None, loc='center', pad=None)
     plt.show()
+###qq-plot
+###########################################################################
+def qq_plot(df):
+    clear()
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
 
-
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+    
+    value_column= input('Which value column do you want to see: \n(choose number)?')
+    
+    y = df[list_columns_werte[int(value_column)]]
+    
+    spy.stats.probplot(y, dist="norm", plot=plt)
+    plt.show() 
+    
     
 def menu_graphical_analyze(df):
     clear()
     print('Choose graphical view:')
     gr_view_list= ['Barchart', 'Piechart', 'Linechart', 'Scatter-Plot', 'Histogram', 
-                   'Boxplots', 'Quantile-Quantile Plot', 'Time-Series-Plot', 
+                   'Boxplots', 'QQ-Plot', 'Time-Series-Plot', 
                    'X-bar-Chart']
     for i in range(len(gr_view_list)):
         print(i, gr_view_list[i])
@@ -438,7 +459,7 @@ def menu_graphical_analyze(df):
     elif ausw_gr_view =='5':
         menu_boxplot(df)
     elif ausw_gr_view =='6':
-        print('currently not available!')    
+        qq_plot(df)    
     elif ausw_gr_view =='7':
         print('currently not available!')
     elif ausw_gr_view =='8':
@@ -455,20 +476,26 @@ def menu_graphical_analyze(df):
 def normality_test(df):
     clear()
     
-    anz_col = len(df.columns)
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
         
-    list_columns = []
+    list_columns_werte = []
 
     i=1
-    for i in range(anz_col):
-        list_columns.append(df.columns[i])
-        print(i, df.columns[i])
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
         i+=1
-    nummer_spalte= input('Which column do you want to see: \n(choose number)?')
+    
+    value_column= input('Which value column do you want to see: \n(choose number)?')
+    
+    y = df[list_columns_werte[int(value_column)]]
     
     
-    data = df[list_columns[int(nummer_spalte)]]
-    stat, p = shapiro(data)
+    stat, p = shapiro(y)
+    
     print('Statistics=%.3f, p=%.3f' % (stat, p))
     # interpret
     alpha = 0.05
@@ -483,12 +510,70 @@ def correl(df):
     correlation_df = df.corr()
     print(correlation_df)
 
+###f-test
+def f_test(df):
+    clear()
+    
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+    
+    value_column_a= input('a-value: \n(choose number)?')
+    value_column_b= input('b-value: \n(choose number)?')
+    
+    
+    
+    d1 = df[list_columns_werte[int(value_column_a)]]
+    
+    d2 = df[list_columns_werte[int(value_column_b)]]
+    
+    df1 = len(d1) - 1
+    df2 = len(d2) - 1
+    
+    
+    F = stats.variance(d1) / stats.variance(d2)
+    single_tailed_pval = spy.stats.f.cdf(F,df1,df2)
+    print('F-Value:' ,F)
+    print('p-value:' ,single_tailed_pval)
+    
+def ttest_menu(df):
+    clear()
+    menu_ttest = input('Which kind of t-test: \n1: one sided \n2: two sided \n3: independent \n(choose a number)?')    
+    if menu_ttest =='1':
+        ttest_o_s(df)
+    elif menu_ttest =='2':
+        ttest_t_s(df)
+    elif menu_ttest =='3':
+        ttest_i(df)
+    else:
+        print('wrong input, try again!')
+    
+    
+    
+def ttest_o_s(df):
+    clear()
+
+def ttest_t_s(df):
+    clear()
+
+def ttest_i(df):
+    clear()
+
 
     
     
 def menu_tests(df):
     clear()
-    what_kind_of_test = input('Which Test do you would like to do: \n1: Test of normality  \n2: correlation \n3: t-test \n2(choose a number)?')
+    what_kind_of_test = input('Which Test do you would like to do: \n1: Test of normality  \n2: correlation \n3: t-test \n4: f-test \n5: ANOVA \n6: Outlier-Test\n(choose a number)?')
     if what_kind_of_test =='1':
         clear()
         normality_test(df)
@@ -496,6 +581,15 @@ def menu_tests(df):
         clear()
         correl(df)
     elif what_kind_of_test =='3':
+        clear()
+        print('currently not available')
+    elif what_kind_of_test =='4':
+        clear()
+        f_test(df)
+    elif what_kind_of_test =='5':
+        clear()
+        print('currently not available')
+    elif what_kind_of_test =='6':
         clear()
         print('currently not available')
     
