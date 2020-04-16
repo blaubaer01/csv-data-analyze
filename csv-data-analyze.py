@@ -9,7 +9,7 @@ from scipy.stats import shapiro
 import scipy as spy
 import statistics as stats
 #import pyspc.spc as spc
-#import pyspc
+import pyspc
 
 
 #alternatively, define the source
@@ -549,6 +549,28 @@ def qq_plot(df):
     spy.stats.probplot(y, dist="norm", plot=plt)
     plt.show() 
     
+def mr_chart(df):
+    clear()
+    
+    werte = df.select_dtypes(exclude=['object'])
+    #
+    anz_col_werte = len(werte.columns)
+    list_columns_werte = []
+
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+    value_column= input('Which value column do you want to see: \n(choose number)?')
+    clear()
+    #
+    
+    y = df[list_columns_werte[int(value_column)]]
+    
+    a = pyspc.spc(y) + pyspc.mr() + pyspc.rules()
+    print(a)
+    plt.show()
     
 
 def menu_graphical_analyze(df):
@@ -556,7 +578,7 @@ def menu_graphical_analyze(df):
     print('Choose graphical view:')
     gr_view_list= ['Barchart', 'Piechart', 'Linechart', 'Scatter-Plot', 'Histogram', 
                    'Boxplots', 'QQ-Plot', 
-                   'X-bar-Chart']
+                   'MR-Chart']
     for i in range(len(gr_view_list)):
         print(i, gr_view_list[i])
         i+=1
@@ -577,8 +599,8 @@ def menu_graphical_analyze(df):
     elif ausw_gr_view =='6':
         qq_plot(df)    
     elif ausw_gr_view =='7':
-        #xbar_chart(df)
-        print('currently not available')
+        mr_chart(df)
+        #print('currently not available')
     else:
         print('wrong input')
         
