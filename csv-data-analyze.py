@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 from scipy.stats import shapiro
 import scipy as spy
 import statistics as stats
+#import pyspc.spc as spc
+#import pyspc
 
 
 #alternatively, define the source
@@ -29,6 +31,16 @@ def csv_daten_im_verzeichnis():
 
 #set custom CSV elements
 def file_einlesen(auswahl_datei):
+    
+    clear()
+    f = open(auswahl_datei, "r")
+    
+    print('#'*80)
+    print('Preview to the first 2 lines: \n')
+    print('first line:', f.readline())
+    print('second line:', f.readline())
+    print('#'*80)
+    f.close
     
     #define structure
     format_ist = input('Which separator is used by the file: \n1: Comma / 2: Semicolon \nchoose number?').lower()
@@ -54,6 +66,109 @@ def file_einlesen(auswahl_datei):
     
     #read the file
     df=pd.read_csv(auswahl_datei,sep=trennzeichen ,decimal=dezimalzeichen, header=kopfz)
+    
+    clear()
+    
+    print('Overview of data formats:\n')
+    print(df.dtypes)
+    
+    datentyp_aendern = input('Would you like to change data types: y/n \n?')
+    
+    if datentyp_aendern == 'y':
+    
+        while True:
+            welcher_datentyp = input('How to change: \n1: float \n2: integer \n3: string \n4: categorie \n5:datetime \n(choose number)?')
+            
+            if welcher_datentyp =='1':
+                datent=df.select_dtypes(include=['int'])
+                anz_col = len(datent.columns)
+        
+                list_columns = []
+
+                i=1
+                for i in range(anz_col):
+                    list_columns.append(datent.columns[i])
+                    print(i, datent.columns[i])
+                    i+=1
+            
+                nummer_spalte= input('Which column do you want to change data type: \n(choose number)?')
+                
+                df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype(float)
+            elif welcher_datentyp =='2':
+                datent=df.select_dtypes(include=['float', 'object'])
+                anz_col = len(datent.columns)
+        
+                list_columns = []
+
+                i=1
+                for i in range(anz_col):
+                    list_columns.append(datent.columns[i])
+                    print(i, datent.columns[i])
+                    i+=1
+            
+                nummer_spalte= input('Which column do you want to change data type: \n(choose number)?')
+                try:
+                    df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype(int)
+                except Exception as exception:
+                    print('Convert data not possible!')    
+                    
+            elif welcher_datentyp =='3':
+                anz_col = len(df.columns)
+        
+                list_columns = []
+
+                i=1
+                for i in range(anz_col):
+                    list_columns.append(df.columns[i])
+                    print(i, df.columns[i])
+                    i+=1
+            
+                nummer_spalte= input('Which column do you want to change data type: \n(choose number)?')
+                df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype(str)
+            
+            elif welcher_datentyp =='4':
+                anz_col = len(df.columns)
+        
+                list_columns = []
+
+                i=1
+                for i in range(anz_col):
+                    list_columns.append(df.columns[i])
+                    print(i, df.columns[i])
+                    i+=1
+            
+                nummer_spalte= input('Which column do you want to change data type: \n(choose number)?')
+                df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype('category')
+            elif welcher_datentyp =='5':
+                anz_col = len(df.columns)
+        
+                list_columns = []
+
+                i=1
+                for i in range(anz_col):
+                    list_columns.append(df.columns[i])
+                    print(i, df.columns[i])
+                    i+=1
+            
+                nummer_spalte= input('Which column do you want to change data type: \n(choose number)?')
+                try:
+                    df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype('datetime64[ns]')
+                except Exception as exception:
+                    print('Convert data not possible!')
+            else:
+                print('wrong input, please try again')
+            
+            
+            clear()
+            print('Overview of data formats:\n')
+            print(df.dtypes)
+            restart = input('\nChange additional data types: "y"\n?')
+            if restart.lower() != 'y':
+                break
+    
+    
+    
+    
     
     
     return(df)
@@ -240,7 +355,7 @@ def kuchendiagramm(df):
 ###line-chart
 def liniendiagramm(df):
     clear()
-    kategorie=df.select_dtypes(include=['object'])
+    kategorie=df.select_dtypes(include=['object', 'datetime'])
     werte = df.select_dtypes(exclude=['object'])
     
     #
@@ -435,11 +550,12 @@ def qq_plot(df):
     plt.show() 
     
     
+
 def menu_graphical_analyze(df):
     clear()
     print('Choose graphical view:')
     gr_view_list= ['Barchart', 'Piechart', 'Linechart', 'Scatter-Plot', 'Histogram', 
-                   'Boxplots', 'QQ-Plot', 'Time-Series-Plot', 
+                   'Boxplots', 'QQ-Plot', 
                    'X-bar-Chart']
     for i in range(len(gr_view_list)):
         print(i, gr_view_list[i])
@@ -461,10 +577,8 @@ def menu_graphical_analyze(df):
     elif ausw_gr_view =='6':
         qq_plot(df)    
     elif ausw_gr_view =='7':
-        print('currently not available!')
-    elif ausw_gr_view =='8':
-        print('currently not available!')
-    
+        #xbar_chart(df)
+        print('currently not available')
     else:
         print('wrong input')
         
