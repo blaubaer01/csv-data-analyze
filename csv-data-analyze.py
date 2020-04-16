@@ -1,14 +1,10 @@
 import pandas as pd
-#import shutil
 import os
 #import datetime
-#import tkinter as tk
-# import only system from os 
 import matplotlib.pyplot as plt
 from scipy.stats import shapiro
 import scipy as spy
 import statistics as stats
-#import pyspc.spc as spc
 import pyspc
 import webbrowser
 
@@ -16,6 +12,7 @@ import webbrowser
 #alternatively, define the source
 csv_dateien=['daten.csv']
 
+#############################################################################
 #read all CSV datas in the root folder
 def csv_daten_im_verzeichnis():
     
@@ -78,7 +75,7 @@ def file_einlesen(auswahl_datei):
     if datentyp_aendern == 'y':
     
         while True:
-            welcher_datentyp = input('How to change: \n1: float \n2: integer \n3: string \n4: categorie \n5:datetime \n(choose number)?')
+            welcher_datentyp = input('How to change: \n1: float \n2: integer \n3: string \n4: categorie \n5: datetime \n(choose number)?')
             
             if welcher_datentyp =='1':
                 datent=df.select_dtypes(include=['int'])
@@ -166,14 +163,52 @@ def file_einlesen(auswahl_datei):
             restart = input('\nChange additional data types: "y"\n?')
             if restart.lower() != 'y':
                 break
+                #print('next steps')
+    filter_setzen = input('Would you like to set any filter: \ny/n?')
+    if filter_setzen =='y':
+        clear()
+        while True:
+            clear()
+            anz_col = len(df.columns)
+
+            list_columns = []
+
+            i=1
+            for i in range(anz_col):
     
+                list_columns.append(df.columns[i])
+                print(i, df.columns[i])
+                i+=1      
+             
+            inhalte_spalte= input('For which column you want to know the possible filter criteria \nchoose number! \n?')
+            print(df.iloc[:,int(inhalte_spalte)].value_counts())
+
+            filter_ja = input('Set a filter: y/n \n?')
+            if filter_ja.lower() =='y':
+                name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
+                df = df[df.iloc[:,int(inhalte_spalte)]==name_filter]
     
+            restart = input('\nSet more filters: y/n.\n?')
+            if restart.lower() != 'y':
+                speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+                if speichern_ja.lower() =='y':
+                    csvfilename = input('Filename \n?')
+                    fn = csvfilename + '.csv'
+                    df.to_csv(fn, sep=';', decimal=',', header =True)
+                if speichern_ja.lower() =='n':
+                    break
+            else:
+                return(df)
+                    
+        
     
+            
     
     
     
     return(df)
 
+#############################################################################
 
 # define our clear function 
 def clear(): 
@@ -185,6 +220,48 @@ def clear():
     # for mac and linux(here, os.name is 'posix') 
     else: 
         _ = os.system('clear') 
+
+
+def filter_setzen(df):
+    clear()
+    while True:
+        clear()
+        anz_col = len(df.columns)
+        
+        list_columns = []
+
+        i=1
+        for i in range(anz_col):
+            
+            list_columns.append(df.columns[i])
+            print(i, df.columns[i])
+            i+=1      
+                     
+        inhalte_spalte= input('For which column you want to know the possible filter criteria \nchoose number! \n?')
+        print(df.iloc[:,int(inhalte_spalte)].value_counts())
+        
+        filter_ja = input('Set a filter: y/n \n?')
+        if filter_ja.lower() =='y':
+            name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
+            df = df[df.iloc[:,int(inhalte_spalte)]==name_filter]
+            
+        restart = input('\nSet more filters: y/n.\n?')
+        if restart.lower() != 'y':
+            speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+            if speichern_ja.lower() =='y':
+                csvfilename = input('Filename \n?')
+                fn = csvfilename + '.csv'
+                df.to_csv(fn, sep=';', decimal=',', header =True)
+                
+            
+            tabelle_m_f_uebernehmen = input('The filters should be available for further analysis: y/n \n?')
+            if tabelle_m_f_uebernehmen.lower() =='y':
+            
+                return(df)
+                break
+            else:
+                break
+
 
 
 #############################################################################
@@ -572,14 +649,19 @@ def mr_chart(df):
     a = pyspc.spc(y) + pyspc.mr() + pyspc.rules()
     print(a)
     plt.show()
-    
+
+def dotplot(df):
+    clear()
+    print('not designed yet')
+         
+        
 
 def menu_graphical_analyze(df):
     clear()
     print('Choose graphical view:')
     gr_view_list= ['Barchart', 'Piechart', 'Linechart', 'Scatter-Plot', 'Histogram', 
                    'Boxplots', 'QQ-Plot', 
-                   'MR-Chart']
+                   'MR-Chart', 'Dot-Plot']
     for i in range(len(gr_view_list)):
         print(i, gr_view_list[i])
         i+=1
@@ -601,6 +683,8 @@ def menu_graphical_analyze(df):
         qq_plot(df)    
     elif ausw_gr_view =='7':
         mr_chart(df)
+    elif ausw_gr_view =='8':
+        dotplot(df)
         #print('currently not available')
     else:
         print('wrong input')
@@ -734,20 +818,25 @@ def menu_tests(df):
         print('wrong input, try again!')
 
 
-        
+#############################################################################
+###process capability analyse 
+def pca():
+    clear()
 
 
 
 # statistics menu
 def statistic(df):
     clear()
-    menu_statistic = input('What kind of statistics: \n1: simple descriptive statistics \n2: graphical view \n3: tests \n?')
+    menu_statistic = input('What kind of statistics: \n1: simple descriptive statistics \n2: graphical view \n3: tests \n4: process capability analysis \n(choose number)?')
     if menu_statistic =='1':
         beschreibende_stat(df)
     elif menu_statistic =='2':
         menu_graphical_analyze(df)
     elif menu_statistic =='3':
         menu_tests(df)
+    elif menu_statistic =='4':
+        print('still on work')
     else:
         print('wrong input, please try again!')
         statistic(df)
@@ -812,45 +901,6 @@ def voranalyse(df):
             break
 
 # Set filters
-def filter_setzen(df):
-    clear()
-    while True:
-        clear()
-        anz_col = len(df.columns)
-        
-        list_columns = []
-
-        i=1
-        for i in range(anz_col):
-            
-            list_columns.append(df.columns[i])
-            print(i, df.columns[i])
-            i+=1      
-                     
-        inhalte_spalte= input('For which column you want to know the possible filter criteria \nchoose number! \n?')
-        print(df.iloc[:,int(inhalte_spalte)].value_counts())
-        
-        filter_ja = input('Set a filter: y/n \n?')
-        if filter_ja.lower() =='y':
-            name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
-            df = df[df.iloc[:,int(inhalte_spalte)]==name_filter]
-            
-        restart = input('\nSet more filters: y/n.\n?')
-        if restart.lower() != 'y':
-            speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
-            if speichern_ja.lower() =='y':
-                csvfilename = input('Filename \n?')
-                fn = csvfilename + '.csv'
-                df.to_csv(fn, sep=';', decimal=',', header =True)
-                
-            
-            tabelle_m_f_uebernehmen = input('The filters should be available for further analysis: y/n \n?')
-            if tabelle_m_f_uebernehmen.lower() =='y':
-            
-                return(df)
-                break
-            else:
-                break
 
 
 # work with the datas (Main menu)
