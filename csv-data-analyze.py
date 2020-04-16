@@ -10,6 +10,7 @@ import scipy as spy
 import statistics as stats
 #import pyspc.spc as spc
 import pyspc
+import webbrowser
 
 
 #alternatively, define the source
@@ -764,11 +765,33 @@ def datentyp(df):
     clear()
     print('Overview of data formats:\n')
     print(df.dtypes)
+    
+def file_in_html(df):
+    pd.set_option('colheader_justify', 'center')   # FOR TABLE <th>
+
+    html_string = '''
+    <html>
+    <head><title>HTML Pandas Dataframe with CSS</title></head>
+    <link rel="stylesheet" type="text/css" href="df_style.css"/>
+    <body>
+        {table}
+        </body>
+        </html>.
+    '''
+
+    # OUTPUT AN HTML FILE
+    with open('myhtml.html', 'w') as f:
+        f.write(html_string.format(table=df.to_html(classes='mystyle',index = False).replace('<th>','<th style = "background-color: red">')))
+    
+    url = 'myhtml.html'
+    
+    webbrowser.open_new_tab(url)
+    
 #pre-analysis
 def voranalyse(df):
     while True:
         clear()
-        menu_voranalyse = input('How do you want to look at the data: \n1:Single-view \n2:Datatype \n3:Missing-Datas \n?')
+        menu_voranalyse = input('How do you want to look at the data: \n1: Single-view \n2: Datatype \n3: Missing-Datas \n4: show Data in HTML \n?')
         if menu_voranalyse =='1':
             clear()
             einzeldaten_anschauen(df)
@@ -778,6 +801,8 @@ def voranalyse(df):
         elif menu_voranalyse =='3':
             clear()
             fehlende_daten(df)
+        elif menu_voranalyse =='4':
+            file_in_html(df)
         else:
             print('wrong input, please try again!')
             #voranalyse(df)

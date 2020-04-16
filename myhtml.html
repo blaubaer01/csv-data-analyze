@@ -1,0 +1,446 @@
+
+    <html>
+    <head><title>HTML Pandas Dataframe with CSS</title></head>
+    <link rel="stylesheet" type="text/css" href="df_style.css"/>
+    <body>
+        <table border="1" class="dataframe mystyle">
+  <thead>
+    <tr style="text-align: center;">
+      <th style = "background-color: red">Unnamed: 0</th>
+      <th style = "background-color: red">Prod_MA</th>
+      <th style = "background-color: red">Messmaschine</th>
+      <th style = "background-color: red">Part_SNR</th>
+      <th style = "background-color: red">Part_STL</th>
+      <th style = "background-color: red">Part_Name</th>
+      <th style = "background-color: red">Prod_Maschine</th>
+      <th style = "background-color: red">AVO</th>
+      <th style = "background-color: red">Mess_Prog</th>
+      <th style = "background-color: red">Merkmal</th>
+      <th style = "background-color: red">UG</th>
+      <th style = "background-color: red">OG</th>
+      <th style = "background-color: red">Einheit</th>
+      <th style = "background-color: red">Spindel</th>
+      <th style = "background-color: red">Messzeitpunkt</th>
+      <th style = "background-color: red">Istwert</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>505050_1</td>
+      <td>777777</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>1</td>
+      <td>2020-02-19 01:14:55.000504</td>
+      <td>6.067884</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>505050_1</td>
+      <td>777777</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>1</td>
+      <td>2020-02-19 01:14:56.000504</td>
+      <td>6.030000</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>505050_1</td>
+      <td>777777</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>1</td>
+      <td>2020-02-19 01:14:57.000504</td>
+      <td>6.040000</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>505050_1</td>
+      <td>777777</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>1</td>
+      <td>2020-02-19 01:14:58.000504</td>
+      <td>6.000000</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>505050_1</td>
+      <td>777777</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>1</td>
+      <td>2020-02-19 01:14:59.000504</td>
+      <td>5.940000</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>505050_1</td>
+      <td>777777</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>1</td>
+      <td>2020-02-19 01:15:00.000504</td>
+      <td>6.322928</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>505050_1</td>
+      <td>777777</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>1</td>
+      <td>2020-02-19 01:15:20.000504</td>
+      <td>6.000000</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>505050_1</td>
+      <td>777777</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>1</td>
+      <td>2020-02-19 01:15:21.000505</td>
+      <td>6.200000</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>505050_1</td>
+      <td>777777</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>1</td>
+      <td>2020-02-19 01:15:22.000506</td>
+      <td>6.050000</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>505050_1</td>
+      <td>777777</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>1</td>
+      <td>2020-02-19 01:15:25.000507</td>
+      <td>6.003000</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>505050_2</td>
+      <td>777775</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>2</td>
+      <td>2020-02-19 01:15:30.000508</td>
+      <td>6.067884</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>505050_2</td>
+      <td>777775</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>2</td>
+      <td>2020-02-19 01:15:35.000509</td>
+      <td>6.030000</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>505050_2</td>
+      <td>777775</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>2</td>
+      <td>2020-02-19 01:15:40.000510</td>
+      <td>6.040000</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>505050_2</td>
+      <td>777775</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>2</td>
+      <td>2020-02-19 01:15:55.000511</td>
+      <td>6.000000</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>505050_2</td>
+      <td>777775</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>2</td>
+      <td>2020-02-19 01:15:58.000512</td>
+      <td>5.940000</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>505050_2</td>
+      <td>777775</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>2</td>
+      <td>2020-02-19 01:16:20.000513</td>
+      <td>6.322928</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>505050_2</td>
+      <td>777775</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>2</td>
+      <td>2020-02-19 01:16:22.000514</td>
+      <td>6.000000</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>505050_2</td>
+      <td>777775</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>2</td>
+      <td>2020-02-19 01:16:24.000515</td>
+      <td>6.200000</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>505050_2</td>
+      <td>777775</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>2</td>
+      <td>2020-02-19 01:16:30.000516</td>
+      <td>6.050000</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>505050_2</td>
+      <td>777775</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>2</td>
+      <td>2020-02-19 01:16:40.000517</td>
+      <td>6.003000</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>505050_2</td>
+      <td>777775</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>2</td>
+      <td>2020-02-19 01:16:50.000518</td>
+      <td>6.067884</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>505050_2</td>
+      <td>777775</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>2</td>
+      <td>2020-02-19 01:16:51.000519</td>
+      <td>6.030000</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>505050_2</td>
+      <td>777775</td>
+      <td>324049916</td>
+      <td>4711</td>
+      <td>Siemenslufthaken</td>
+      <td>505050</td>
+      <td>10</td>
+      <td>1111</td>
+      <td>101_4v5_A4_A4_DM</td>
+      <td>5.8</td>
+      <td>6.2</td>
+      <td>mm</td>
+      <td>2</td>
+      <td>2020-02-19 01:16:52.000520</td>
+      <td>6.040000</td>
+    </tr>
+  </tbody>
+</table>
+        </body>
+        </html>.
+    
