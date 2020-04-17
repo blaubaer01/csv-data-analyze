@@ -3,10 +3,14 @@ import os
 #import datetime
 import matplotlib.pyplot as plt
 from scipy.stats import shapiro
+from scipy.stats import linregress
 import scipy as spy
 import statistics as stats
 import pyspc
 import webbrowser
+import seaborn as sns
+import numpy as np
+
 
 
 #alternatively, define the source
@@ -603,6 +607,135 @@ def scatter(df):
     label_chart = ('Scatter-Plot')
     plt.title(label_chart, fontdict=None, loc='center', pad=None)
     plt.show()
+
+
+def scatter_w_r(df):
+    clear()
+    sns.set(color_codes=True)        
+    
+    
+    
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+    
+    value_column_y= input('y-value: \n(choose number)?')
+    value_column_x= input('x-value: \n(choose number)?')
+    
+    y = df[list_columns_werte[int(value_column_y)]]
+    
+    x = df[list_columns_werte[int(value_column_x)]]
+    
+
+
+    sns.regplot(x=x, y=y, data=df);
+
+
+    
+    label_chart = ('Linear-Regression-Plot')
+    plt.title(label_chart, fontdict=None, loc='center', pad=None)
+    plt.show()
+
+def scatter_joint_plot(df):
+    clear()
+    sns.set(color_codes=True)        
+    
+    
+    
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+    
+    value_column_y= input('y-value: \n(choose number)?')
+    value_column_x= input('x-value: \n(choose number)?')
+    
+    y = df[list_columns_werte[int(value_column_y)]]
+    
+    x = df[list_columns_werte[int(value_column_x)]]
+    
+
+
+    sns.jointplot(x=x, y=y, data=df, kind="reg");
+
+    plt.show()
+
+def menu_scatter(df):
+    clear()
+    m_scatter = input('Scatter-Plot: \n1: scatter only \n2: regression plot \n3: regression_jointplot \n(choose number)?')
+    if m_scatter =='1':
+        scatter(df)
+    elif m_scatter =='2':
+        scatter_w_r(df)
+    elif m_scatter =='3':
+        scatter_joint_plot(df)
+    else:
+        print('wrong input,please try again!')
+
+#############################################################################
+###swarmplot
+def swarm_plot(df):
+    clear()
+    sns.set(style="whitegrid", palette="muted")
+
+    kategorie=df.select_dtypes(include=['object'])
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+    
+    value_column= input('Which value column do you want to see: \n(choose number)?')
+    
+    clear()
+    #
+    anz_col_kategorie = len(kategorie.columns)
+        
+    list_columns_kategorie = []
+
+    i=1
+    for i in range(anz_col_kategorie):
+        list_columns_kategorie.append(kategorie.columns[i])
+        print(i, kategorie.columns[i])
+        i+=1
+    
+    groupby_spalte = input('Group by column: \n(choose number)?')
+    
+    y = df[list_columns_werte[int(value_column)]]
+    x = df[list_columns_kategorie[int(groupby_spalte)]]
+    
+    
+    
+    
+    # Draw a categorical scatterplot to show each observation
+    sns.swarmplot(x=x, y=y, data=df)
+    #sns.boxplot(x=x, y=y, data=df, whis=np.inf)
+    plt.show()
+    
 ###qq-plot
 ###########################################################################
 def qq_plot(df):
@@ -650,18 +783,73 @@ def mr_chart(df):
     print(a)
     plt.show()
 
-def dotplot(df):
+def dotplot_time(df):
     clear()
-    print('not designed yet')
-         
+    sns.set(style="darkgrid")
+
+
+    
+    kategorie=df.select_dtypes(include=['object'])
+    werte = df.select_dtypes(exclude=['object'])
+    #zeitraum = df.select_dtypes(inculde=['datetime'])
+    zeitraum=df.select_dtypes(include=['object', 'datetime'])
+    #
+    anz_col_werte = len(werte.columns)
         
+    list_columns_werte = []
+
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+    
+    value_column= input('Which value column do you want to see: \n(choose number)?')
+    
+    clear()
+    #
+    anz_col_kategorie = len(kategorie.columns)
+        
+    list_columns_kategorie = []
+
+    i=1
+    for i in range(anz_col_kategorie):
+        list_columns_kategorie.append(kategorie.columns[i])
+        print(i, kategorie.columns[i])
+        i+=1
+    
+    groupby_spalte = input('Group by column: \n(choose number)?')
+    
+    anz_col_zeitraum = len(zeitraum.columns)
+        
+    list_columns_zeitraum = []
+
+    i=1
+    for i in range(anz_col_zeitraum):
+        list_columns_zeitraum.append(zeitraum.columns[i])
+        print(i, zeitraum.columns[i])
+        i+=1
+    
+    value_zeitraum = input('Choose the Datetime-column')
+    
+    y = df[list_columns_werte[int(value_column)]]
+    x = df[list_columns_kategorie[int(groupby_spalte)]]
+    z = df[list_columns_zeitraum[int(value_zeitraum)]]
+    
+    #sns.relplot(x=z, y=y, hue=x, style="time", data=df);     
+    
+    g = sns.relplot(x=z, y=y, hue=x, data=df)
+    g.fig.autofmt_xdate()
+    
+    plt.show()
+    
 
 def menu_graphical_analyze(df):
     clear()
     print('Choose graphical view:')
     gr_view_list= ['Barchart', 'Piechart', 'Linechart', 'Scatter-Plot', 'Histogram', 
                    'Boxplots', 'QQ-Plot', 
-                   'MR-Chart', 'Dot-Plot']
+                   'MR-Chart', 'Time_Dot-Plot', 'Swarm-Plot']
     for i in range(len(gr_view_list)):
         print(i, gr_view_list[i])
         i+=1
@@ -674,7 +862,7 @@ def menu_graphical_analyze(df):
     elif ausw_gr_view =='2':
         liniendiagramm(df)
     elif ausw_gr_view =='3':
-        scatter(df)
+        menu_scatter(df)
     elif ausw_gr_view =='4':
         histogram(df)
     elif ausw_gr_view =='5':
@@ -684,7 +872,10 @@ def menu_graphical_analyze(df):
     elif ausw_gr_view =='7':
         mr_chart(df)
     elif ausw_gr_view =='8':
-        dotplot(df)
+        print('not available')
+        #dotplot_time(df)
+    elif ausw_gr_view =='9':
+        swarm_plot(df)
         #print('currently not available')
     else:
         print('wrong input')
