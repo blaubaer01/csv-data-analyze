@@ -499,6 +499,69 @@ def boxplot(df):
     df.boxplot(column=y, widths=0.5)
     plt.show()
 
+def violin(df):
+    clear()
+    sns.set(style="whitegrid")
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+    
+    value_column= input('Which value column do you want to see: \n(choose number)?')
+    
+    y = list_columns_werte[int(value_column)]
+    
+    sns.violinplot(x=df[y])
+    plt.show()
+
+def violin_groupby(df):
+    clear()
+    sns.set(style="whitegrid")
+    kategorie=df.select_dtypes(include=['object'])
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+    
+    value_column= input('Which value column do you want to see: \n(choose number)?')
+    
+    clear()
+    #
+    anz_col_kategorie = len(kategorie.columns)
+        
+    list_columns_kategorie = []
+
+    i=1
+    for i in range(anz_col_kategorie):
+        list_columns_kategorie.append(kategorie.columns[i])
+        print(i, kategorie.columns[i])
+        i+=1
+    
+    groupby_spalte = input('Group by column: \n(choose number)?')
+    
+    y = list_columns_werte[int(value_column)]
+    x = list_columns_kategorie[int(groupby_spalte)]
+    
+    
+    sns.violinplot(x=x, y=y, data=df)
+    
+    plt.show()
 
 
 def boxplot_groupby(df):
@@ -542,18 +605,25 @@ def boxplot_groupby(df):
 
 def menu_boxplot(df):
     clear()
-    menu_bp = input('Which Boxplox: \n1: Single Boxplot \n2: Boxplot by group \n(choose a number)?')
+    menu_bp = input('Which Boxplox: \n1: Single Boxplot \n2: Boxplot by group \n3: Violin-Plot \n4: Violinplot by group\n(choose a number)?')
     if menu_bp =='1':
         boxplot(df)
     elif menu_bp =='2':
         boxplot_groupby(df)
+    elif menu_bp =='3':
+        violin(df)
+    elif menu_bp =='4':
+        violin_groupby(df)
     else:
         print('wrong input, try again!')
 
 ###histogram
 #####################################################################################
 def histogram(df):
-    clear()        
+    clear()
+    sns.set(color_codes=True)
+
+        
     werte = df.select_dtypes(exclude=['object'])
     
     #
@@ -569,10 +639,9 @@ def histogram(df):
     
     value_column= input('Which value column do you want to see: \n(choose number)?')
     
-    y = list_columns_werte[int(value_column)]
+    y = df[list_columns_werte[int(value_column)]]
     
-    #df.hist(column=y)
-    df.hist(column=y) # Histogram will now be normalized
+    sns.distplot(y);
     plt.show()
 
 
@@ -832,9 +901,9 @@ def dotplot_time(df):
     
     value_zeitraum = input('Choose the Datetime-column')
     
-    y = df[list_columns_werte[int(value_column)]]
-    x = df[list_columns_kategorie[int(groupby_spalte)]]
-    z = df[list_columns_zeitraum[int(value_zeitraum)]]
+    y = list_columns_werte[int(value_column)]
+    x = list_columns_kategorie[int(groupby_spalte)]
+    z = list_columns_zeitraum[int(value_zeitraum)]
     
     #sns.relplot(x=z, y=y, hue=x, style="time", data=df);     
     
@@ -848,7 +917,7 @@ def menu_graphical_analyze(df):
     clear()
     print('Choose graphical view:')
     gr_view_list= ['Barchart', 'Piechart', 'Linechart', 'Scatter-Plot', 'Histogram', 
-                   'Boxplots', 'QQ-Plot', 
+                   'Box/-Violin Plots', 'QQ-Plot', 
                    'MR-Chart', 'Time_Dot-Plot', 'Swarm-Plot']
     for i in range(len(gr_view_list)):
         print(i, gr_view_list[i])
