@@ -852,10 +852,10 @@ def mr_chart(df):
     print(a)
     plt.show()
 
-def dotplot_time(df):
+def groupplot(df):
     clear()
-    sns.set(style="darkgrid")
-
+    #sns.set(style="darkgrid")
+    
 
     
     kategorie=df.select_dtypes(include=['object'])
@@ -905,10 +905,31 @@ def dotplot_time(df):
     x = list_columns_kategorie[int(groupby_spalte)]
     z = list_columns_zeitraum[int(value_zeitraum)]
     
-    #sns.relplot(x=z, y=y, hue=x, style="time", data=df);     
+    #sns.relplot(x=[z], y=[y], hue=x, data=df);     
     
-    g = sns.relplot(x=z, y=y, hue=x, data=df)
-    g.fig.autofmt_xdate()
+    #g = sns.relplot(x=z, y=y, hue=x, data=df)
+    #g.fig.autofmt_xdate()
+    
+    #df.plot(z, y, grid=True)
+    #sns.pairplot(x_vars=[z], y_vars=[y], data=df, hue=x, size=5)
+    
+    #sns.lmplot(x=z, y=y, hue= x,
+    #           data=df,lowess=True)
+    
+    #df[[z,y]].set_index(x, append=True).plot()
+    ax = plt.gca()
+    
+    groups = df.groupby(x)
+    __colors=[(0.0,0.0,1.0), #Blau
+              (0.0,1.0,0.0), #Grün
+              (0.0,0.5,1.0), # Türkis
+              (0.0,0.5,0.0)] #Gelb
+    
+    
+    i=0
+    for name, group in groups:
+        ax.scatter(x=group[z], y=group[y], color=__colors[i], label=name)
+        i+=1
     
     plt.show()
     
@@ -918,7 +939,7 @@ def menu_graphical_analyze(df):
     print('Choose graphical view:')
     gr_view_list= ['Barchart', 'Piechart', 'Linechart', 'Scatter-Plot', 'Histogram', 
                    'Box/-Violin Plots', 'QQ-Plot', 
-                   'MR-Chart', 'Time_Dot-Plot', 'Swarm-Plot']
+                   'MR-Chart', 'Group-Plot', 'Swarm-Plot']
     for i in range(len(gr_view_list)):
         print(i, gr_view_list[i])
         i+=1
@@ -941,8 +962,8 @@ def menu_graphical_analyze(df):
     elif ausw_gr_view =='7':
         mr_chart(df)
     elif ausw_gr_view =='8':
-        print('not available')
-        #dotplot_time(df)
+        #print('not available')
+        groupplot(df)
     elif ausw_gr_view =='9':
         swarm_plot(df)
         #print('currently not available')
