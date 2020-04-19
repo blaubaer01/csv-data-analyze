@@ -657,12 +657,60 @@ def violin_groupby(df):
     sns.violinplot(x=x, y=y, data=df)
     
     plt.show()
+
+###swarmplot
+###############################################################################
+def swarm_plot(df):
+    clear()
+    sns.set(style="whitegrid", palette="muted")
+
+    kategorie=df.select_dtypes(include=['object'])
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+    
+    value_column= input('Which value column do you want to see: \n(choose number) \n?')
+    
+    clear()
+    #
+    anz_col_kategorie = len(kategorie.columns)
+        
+    list_columns_kategorie = []
+
+    i=1
+    for i in range(anz_col_kategorie):
+        list_columns_kategorie.append(kategorie.columns[i])
+        print(i, kategorie.columns[i])
+        i+=1
+    
+    groupby_spalte = input('Group by column: \n(choose number) \n?')
+    
+    y = df[list_columns_werte[int(value_column)]]
+    x = df[list_columns_kategorie[int(groupby_spalte)]]
+    
+    
+    
+    
+    # Draw a categorical scatterplot to show each observation
+    sns.swarmplot(x=x, y=y, data=df)
+    #sns.boxplot(x=x, y=y, data=df, whis=np.inf)
+    plt.show()
+
     
 ###menu categorigal data (boxplot, violinplot)
 ###############################################################################
 def menu_categorie_data(df):
     clear()
-    menu_cd = input('Which Boxplox: \n1: Single Boxplot \n2: Boxplot by group \n3: Violin-Plot \n4: Violinplot by group\n(choose a number) \n?')
+    menu_cd = input('Which Boxplox: \n1: Single Boxplot \n2: Boxplot by group \n3: Violin-Plot \n4: Violinplot by group \n5: Swarm-Plot \n(choose a number) \n?')
     if menu_cd =='1':
         boxplot(df)
     elif menu_cd =='2':
@@ -671,6 +719,8 @@ def menu_categorie_data(df):
         violin(df)
     elif menu_cd =='4':
         violin_groupby(df)
+    elif menu_cd =='5':
+        swarm_plot(df)
     else:
         print('wrong input, try again!')
 
@@ -824,52 +874,6 @@ def menu_scatter(df):
 
 
 
-###swarmplot
-###############################################################################
-def swarm_plot(df):
-    clear()
-    sns.set(style="whitegrid", palette="muted")
-
-    kategorie=df.select_dtypes(include=['object'])
-    werte = df.select_dtypes(exclude=['object'])
-    
-    #
-    anz_col_werte = len(werte.columns)
-        
-    list_columns_werte = []
-
-    i=1
-    for i in range(anz_col_werte):
-        list_columns_werte.append(werte.columns[i])
-        print(i, werte.columns[i])
-        i+=1
-    
-    value_column= input('Which value column do you want to see: \n(choose number) \n?')
-    
-    clear()
-    #
-    anz_col_kategorie = len(kategorie.columns)
-        
-    list_columns_kategorie = []
-
-    i=1
-    for i in range(anz_col_kategorie):
-        list_columns_kategorie.append(kategorie.columns[i])
-        print(i, kategorie.columns[i])
-        i+=1
-    
-    groupby_spalte = input('Group by column: \n(choose number) \n?')
-    
-    y = df[list_columns_werte[int(value_column)]]
-    x = df[list_columns_kategorie[int(groupby_spalte)]]
-    
-    
-    
-    
-    # Draw a categorical scatterplot to show each observation
-    sns.swarmplot(x=x, y=y, data=df)
-    #sns.boxplot(x=x, y=y, data=df, whis=np.inf)
-    plt.show()
     
 ###qq-plot
 ###############################################################################
@@ -999,9 +1003,9 @@ def groupplot(df):
 def menu_graphical_analyze(df):
     clear()
     print('Choose graphical view:')
-    gr_view_list= ['Barchart', 'Piechart', 'Linechart', 'Scatter-Plot', 'Histogram', 
-                   'Box/-Violin Plots', 'QQ-Plot', 
-                   'MR-Chart', 'Group-Plot', 'Swarm-Plot']
+    gr_view_list= ['Barchart', 'Piechart', 'Histogram', 'Q-Q-Plot', 'Linechart', 'Group-Plot', 'Scatter-Plot',  
+                   'Categorial Plots',  
+                   'MR-Chart']
     for i in range(len(gr_view_list)):
         print(i, gr_view_list[i])
         i+=1
@@ -1012,22 +1016,19 @@ def menu_graphical_analyze(df):
     elif ausw_gr_view =='1':
         kuchendiagramm(df)
     elif ausw_gr_view =='2':
-        liniendiagramm(df)
-    elif ausw_gr_view =='3':
-        menu_scatter(df)
-    elif ausw_gr_view =='4':
         histogram(df)
+    elif ausw_gr_view =='3':
+        qq_plot(df)
+    elif ausw_gr_view =='4':
+        liniendiagramm(df)
     elif ausw_gr_view =='5':
-        menu_categorie_data
-    elif ausw_gr_view =='6':
-        qq_plot(df)    
-    elif ausw_gr_view =='7':
-        mr_chart(df)
-    elif ausw_gr_view =='8':
-        #print('not available')
         groupplot(df)
-    elif ausw_gr_view =='9':
-        swarm_plot(df)
+    elif ausw_gr_view =='6':
+        menu_scatter(df)    
+    elif ausw_gr_view =='7':
+        menu_categorie_data(df)
+    elif ausw_gr_view =='8':
+        mr_chart(df)
         #print('currently not available')
     else:
         print('wrong input')
