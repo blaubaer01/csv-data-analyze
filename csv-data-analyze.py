@@ -3,7 +3,7 @@ import os
 #import datetime
 import matplotlib.pyplot as plt
 from scipy.stats import shapiro
-from scipy.stats import linregress
+from scipy.stats import stats
 import scipy as spy
 import statistics as stats
 import pyspc
@@ -47,15 +47,18 @@ def file_einlesen(auswahl_datei):
     f.close
     
     #define structure
-    format_ist = input('Which separator is used by the file: \n1: Comma / 2: Semicolon \n(choose number)\n?').lower()
-    if format_ist == '1':
-        trennzeichen = ','
-        dezimalzeichen = '.'
-    elif format_ist == '2':
-        trennzeichen = ';'
-        dezimalzeichen =','
-    else:
-        print('Wrong input, please try again')
+    while True:
+        format_ist = input('Which separator is used by the file: \n1: Comma / 2: Semicolon \n(choose number)\n?').lower()
+        if format_ist == '1':
+            trennzeichen = ','
+            dezimalzeichen = '.'
+            break
+        elif format_ist == '2':
+            trennzeichen = ';'
+            dezimalzeichen =','
+            break
+        else:
+            print('Wrong input, please try again')
         #file_einlesen(auswahl_datei)
     
     #custom header
@@ -1083,7 +1086,7 @@ def correl(df):
 def f_test(df):
     clear()
     
-    werte = df.select_dtypes(exclude=['object'])
+    werte = df.select_dtypes(include=['float'])
     
     #
     anz_col_werte = len(werte.columns)
@@ -1113,12 +1116,54 @@ def f_test(df):
     single_tailed_pval = spy.stats.f.cdf(F,df1,df2)
     print('F-Value:' ,F)
     print('p-value:' ,single_tailed_pval)
+    p= single_tailed_pval
+    
+    alpha = 0.05
+    if p > alpha:
+        print('Variances should be equal (fail to reject H0)')
+    else:
+        print('Variances should not be equal (reject H0)')    
 
+    
 ###one single t-test
 ###############################################################################
-def ttest_o_s(df):
+def ttest_o_s(df, alpha=0.05, alternative='greater'):
     clear()
-    print('not available yet!')
+    
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+    
+    value_column= input('Which value column do you want to see: \n(choose number) \n?')
+    target_value = input('Input taget mean-value \n(choose point-comma \n?')
+    y = df[list_columns_werte[int(value_column)]]
+    
+    try:
+        t, p = spy.stats.ttest_1samp(y, float(target_value))
+    
+    
+    
+        print ('t-Value:',t)
+        print ('p-Value:',p)
+    
+        alpha = 0.05
+        if p > alpha:
+            print('Means should not be different (fail to reject H0)')
+        else:
+            print('Means should be different (reject H0)')    
+    except Exception as exception:
+                print('wrong input (choose point-comma), please try again!')
+    
+    
 ###two sided t-test
 ###############################################################################
 def ttest_t_s(df):
@@ -1136,7 +1181,7 @@ def ttest_i(df):
 ###############################################################################    
 def ttest_menu(df):
     clear()
-    menu_ttest = input('Which kind of t-test: \n1: one sided \n2: two sided \n3: independent \n(choose a number) \n?')    
+    menu_ttest = input('Which kind of t-test: \n1: one sample t-Test \n2: two sample T-Test \n3: independent T-Test \n(choose a number) \n?')    
     if menu_ttest =='1':
         ttest_o_s(df)
     elif menu_ttest =='2':
@@ -1163,8 +1208,7 @@ def menu_tests(df):
         clear()
         correl(df)
     elif what_kind_of_test =='3':
-        clear()
-        print('currently not available')
+        ttest_menu(df)
     elif what_kind_of_test =='4':
         clear()
         f_test(df)
