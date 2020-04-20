@@ -10,6 +10,9 @@ import pyspc
 import webbrowser
 import seaborn as sns
 import numpy as np
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
+from outliers import smirnov_grubbs as grubbs
 
 
 
@@ -1080,6 +1083,30 @@ def correl(df):
     clear()
     correlation_df = df.corr()
     print(correlation_df)
+###Grubbs outlier test
+###############################################################################
+def outliert(df):
+    
+    
+    
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+    
+    value_column= input('Which value column do you want to see: \n(choose number) \n?')
+    
+    y = df[list_columns_werte[int(value_column)]]
+    print('value could be outlier:',grubbs.max_test_outliers(y, alpha=0.05))
+
 
 ###f-test
 ###############################################################################    
@@ -1108,19 +1135,15 @@ def f_test(df):
     
     d2 = df[list_columns_werte[int(value_column_b)]]
     
-    df1 = len(d1) - 1
-    df2 = len(d2) - 1
+    
     
     f, p = spy.stats.f_oneway(d1, d2)
-    print(f,p)
     
     
     print('f-Test:')
-    F = stats.variance(d1) / stats.variance(d2)
-    single_tailed_pval = spy.stats.f.cdf(F,df1,df2)
-    print('F-Value:' ,F)
-    print('p-value:' ,single_tailed_pval)
-    p= single_tailed_pval
+    
+    print('F-Value:' ,f)
+    print('p-value:' ,p)
     
     
     
@@ -1268,11 +1291,125 @@ def ttest_menu(df):
         ttest_i(df)
     else:
         print('wrong input, try again!')
+
+###One way ANOVA    
+###############################################################################    
+def anova_o_w (df):
+    clear()
+    
+    kategorie=df.select_dtypes(include=['object'])
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+    
+    value_column= input('Which value column do you want to see: \n(choose number) \n?')
+    
+    clear()
+    #
+    anz_col_kategorie = len(kategorie.columns)
+        
+    list_columns_kategorie = []
+
+    i=1
+    for i in range(anz_col_kategorie):
+        list_columns_kategorie.append(kategorie.columns[i])
+        print(i, kategorie.columns[i])
+        i+=1
+    
+    groupby_spalte = input('Group by column: \n(choose number) \n?')
+    
+    y = list_columns_werte[int(value_column)]
+    x = list_columns_kategorie[int(groupby_spalte)]
+    
+    mod = ols(y + '~' + x,
+                data=df).fit()
+                
+    aov_table = sm.stats.anova_lm(mod, typ=2)
+    print('one way ANOVA Result:' )
+    print (aov_table)
     
     
+    #aov_pyvttbl = pyvttbl.Dataframe.anova1way(y, x)
+    #print (aov_pyvttbl)
+    
+###Two way ANOVA    
+###############################################################################    
+def anova_t_w(df):
+    clear()
+    kategorie=df.select_dtypes(include=['object'])
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+    
+    value_column= input('Which value column do you want to see: \n(choose number) \n?')
+    
+    clear()
+    #
+    anz_col_kategorie = len(kategorie.columns)
+        
+    list_columns_kategorie = []
+
+    i=1
+    for i in range(anz_col_kategorie):
+        list_columns_kategorie.append(kategorie.columns[i])
+        print(i, kategorie.columns[i])
+        i+=1
+    
+    faktor1 = input('Factor1: \n(choose number) \n?')
+    faktor2 = input('Factor2: \n(choose number) \n?')
+    y = list_columns_werte[int(value_column)]
+    a = list_columns_kategorie[int(faktor1)]
+    b = list_columns_kategorie[int(faktor2)]
+    
+    mod = ols(y + '~C(' + a + ')*C(' + b +')',
+                data=df).fit()
+
+    # Seeing if the overall model is significant
+    print(f"Overall mod F({mod.df_model: .0f},{mod.df_resid: .0f}) = {mod.fvalue: .3f}, p = {mod.f_pvalue: .4f}")    
+    
+    mod.summary()
+        
+    aov_table = sm.stats.anova_lm(mod, typ=2)
+    print('two way ANOVA Result:' )
+    print (aov_table)
     
 
+###Full nested ANOVA    
+###############################################################################    
+def anova_f_n(df):
+    clear()
+    print('currently not available')
 
+###############################################################################    
+def ANOVA_menu(df):
+    clear()
+    anova_m = input('Which kind of ANOVA: \n1: one way ANOVA \n2: to way ANOVA \n3: nested ANOVA \n(choose number) \n?')
+    if anova_m =='1':
+        anova_o_w(df)
+    elif anova_m =='2':
+        anova_t_w(df)
+    elif anova_m =='3':
+        anova_f_n(df)
+    else:
+        print('wrong input, try again!')
     
 ###Menu tests
 ###############################################################################
@@ -1292,10 +1429,10 @@ def menu_tests(df):
         f_test(df)
     elif what_kind_of_test =='5':
         clear()
-        print('currently not available')
+        ANOVA_menu(df)
     elif what_kind_of_test =='6':
         clear()
-        print('currently not available')
+        outliert(df)
     
     else:
         print('wrong input, try again!')
@@ -1385,7 +1522,7 @@ def table_functions(df):
 
 
 ###############################################################################
-### work with the datas (Main menu)
+### work with the data's (Main menu)
 ###############################################################################
 def mit_daten_arbeiten(df):
     while True:
