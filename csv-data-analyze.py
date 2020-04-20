@@ -1086,7 +1086,7 @@ def correl(df):
 def f_test(df):
     clear()
     
-    werte = df.select_dtypes(include=['float'])
+    werte = df.select_dtypes(exclude=['object'])
     
     #
     anz_col_werte = len(werte.columns)
@@ -1111,12 +1111,19 @@ def f_test(df):
     df1 = len(d1) - 1
     df2 = len(d2) - 1
     
+    f, p = spy.stats.f_oneway(d1, d2)
+    print(f,p)
     
+    
+    print('f-Test:')
     F = stats.variance(d1) / stats.variance(d2)
     single_tailed_pval = spy.stats.f.cdf(F,df1,df2)
     print('F-Value:' ,F)
     print('p-value:' ,single_tailed_pval)
     p= single_tailed_pval
+    
+    
+    
     
     alpha = 0.05
     if p > alpha:
@@ -1151,7 +1158,7 @@ def ttest_o_s(df, alpha=0.05, alternative='greater'):
         t, p = spy.stats.ttest_1samp(y, float(target_value))
     
     
-    
+        print('One sample t-Test:')
         print ('t-Value:',t)
         print ('p-Value:',p)
     
@@ -1168,20 +1175,91 @@ def ttest_o_s(df, alpha=0.05, alternative='greater'):
 ###############################################################################
 def ttest_t_s(df):
     clear()
-    print('not available yet!')
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+    
+    value_column_a= input('First Column: \n(choose number) \n?')
+    value_column_b = input('Second Column: \n(choose number) \n?')
+    a = df[list_columns_werte[int(value_column_a)]]
+    b = df[list_columns_werte[int(value_column_b)]]
+    
+    
+    
+    try:
+        t, p = spy.stats.ttest_rel(a,b)
+    
+    
+        print('Two sample t-Test:')
+        print ('t-Value:',t)
+        print ('p-Value:',p)
+    
+        alpha = 0.05
+        if p > alpha:
+            print('Means should not be different (fail to reject H0)')
+        else:
+            print('Means should be different (reject H0)')    
+    except Exception as exception:
+                print('wrong input (choose point-comma), please try again!')
+                
+                
 ###indipendent t-test
 ###############################################################################    
 def ttest_i(df):
     clear()
-    print('not available yet!')
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
 
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+    
+    value_column_a= input('First Column: \n(choose number) \n?')
+    value_column_b = input('Second Column: \n(choose number) \n?')
+    a = df[list_columns_werte[int(value_column_a)]]
+    b = df[list_columns_werte[int(value_column_b)]]
+    
+    
+    try:
+        t, p = spy.stats.ttest_ind(a,b, equal_var = False)
+    
+    
+        print('Two sample t-Test (for the means of two independent samples of scores):')
+        print ('t-Value:',t)
+        print ('p-Value:',p)
+    
+        alpha = 0.05
+        
+        if p > alpha:
+            print('Means should not be different (fail to reject H0)')
+        else:
+            print('Means should be different (reject H0)')    
+    except Exception as exception:
+                print('wrong input, please try again!')
+
+    
 
 
 ###menu t-test
 ###############################################################################    
 def ttest_menu(df):
     clear()
-    menu_ttest = input('Which kind of t-test: \n1: one sample t-Test \n2: two sample T-Test \n3: independent T-Test \n(choose a number) \n?')    
+    menu_ttest = input('Which kind of t-test: \n1: one sample t-Test \n2: two sample t-Test \n3: two independent samples t-Test \n(choose a number) \n?')    
     if menu_ttest =='1':
         ttest_o_s(df)
     elif menu_ttest =='2':
@@ -1319,6 +1397,18 @@ def mit_daten_arbeiten(df):
         elif m_d_a =='2':
             clear()
             statistic(df)
+        elif m_d_a =='p':
+            clear()
+            preview_table(df)
+        elif m_d_a =='d':
+            clear()
+            beschreibende_stat(df)
+        elif m_d_a =='g':
+            clear()
+            menu_graphical_analyze(df)
+        elif m_d_a =='t':
+            clear()
+            menu_tests(df)    
         else:
             print('wrong input, please try again!')
             #mit_daten_arbeiten(df)
