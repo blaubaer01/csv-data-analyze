@@ -13,6 +13,7 @@ import numpy as np
 import statsmodels.api as sm
 from statsmodels.formula.api import ols
 from outliers import smirnov_grubbs as grubbs
+from SPC_CPA import CPA
 
 
 
@@ -1458,7 +1459,7 @@ def statistic(df):
     elif menu_statistic =='3':
         menu_tests(df)
     elif menu_statistic =='4':
-        print('still on work')
+        CPA(df)
     else:
         print('wrong input, please try again!')
         statistic(df)
