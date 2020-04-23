@@ -11,6 +11,13 @@ import matplotlib.pyplot as plt
 import seaborn as sns ; sns.set()
 import scipy as spy
 
+def isfloat(x):
+    try:
+        float(x)
+    except ValueError:
+        return False
+    else:
+        return True
 
 def CPA(df):
             
@@ -50,10 +57,21 @@ def CPA(df):
     
     ###both side tolerance
     if one_two_sided == '1':
-        tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
-        ut, lt = tol.split(',')
-        ut = float(ut)
-        lt = float(lt)
+        
+        while True:
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
+            if ',' in tol:
+                try:
+                    ut, lt = tol.split(',')
+                    ut = float(ut)
+                    lt = float(lt)
+                    break
+                except Exception as exception:
+                    print('Wrong input, try again!')
+            else:
+                print('wrong input, separator is missing!, please try again!')
+        
+        print(ut,lt)
         
         stat, p = shapiro(y)
         
@@ -93,6 +111,8 @@ def CPA(df):
             spy.stats.probplot(y, dist="norm", plot=plt)
             plt.subplot(223)
             ax = sns.boxplot(x=y)
+            plt.axvline(x=ut,linewidth=2, color='r')
+            plt.axvline(x=lt,linewidth=2, color='r')
             plt.subplot(224)
             plt.text(0.1,0.5,eintrag, 
                      ha='left', va='center',
@@ -139,6 +159,8 @@ def CPA(df):
             spy.stats.probplot(y, dist="norm", plot=plt)
             plt.subplot(223)
             ax = sns.boxplot(x=y)
+            plt.axvline(x=ut,linewidth=2, color='r')
+            plt.axvline(x=lt,linewidth=2, color='r')
             plt.subplot(224)
             plt.text(0.1,0.5,eintrag, 
                      ha='left', va='center',
@@ -148,7 +170,17 @@ def CPA(df):
     
     ###one side tolerance ut
     elif one_two_sided =='2':
-        ut = input('Upper tolerance: \n(choose point-comma) \n?')
+        
+        
+        while True:
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
+    
+            if not isfloat(ut):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                break
+        
+        
         ut = float(ut)
         lt = 'none'
     
@@ -187,6 +219,7 @@ def CPA(df):
             spy.stats.probplot(y, dist="norm", plot=plt)
             plt.subplot(223)
             ax = sns.boxplot(x=y)
+            plt.axvline(x=ut,linewidth=2, color='r')
             plt.subplot(224)
             plt.text(0.1,0.5,eintrag, 
                      ha='left', va='center',
@@ -226,6 +259,7 @@ def CPA(df):
             spy.stats.probplot(y, dist="norm", plot=plt)
             plt.subplot(223)
             ax = sns.boxplot(x=y)
+            plt.axvline(x=ut,linewidth=2, color='r')
             plt.subplot(224)
             plt.text(0.1,0.5,eintrag, 
                      ha='left', va='center',
@@ -240,7 +274,18 @@ def CPA(df):
     
     ###one side tolerance lt
     elif one_two_sided =='3':
-        lt = input('Lower tolerance: \n(choose point-comma) \n?')
+        
+        while True:
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
+    
+            if not isfloat(lt):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                break
+        
+        
+        
+        
         ut = 'none'
         lt = float(lt)
     
@@ -279,6 +324,7 @@ def CPA(df):
             spy.stats.probplot(y, dist="norm", plot=plt)
             plt.subplot(223)
             ax = sns.boxplot(x=y)
+            plt.axvline(x=lt,linewidth=2, color='r')
             plt.subplot(224)
             plt.text(0.1,0.5,eintrag, 
                      ha='left', va='center',
@@ -320,6 +366,7 @@ def CPA(df):
             spy.stats.probplot(y, dist="norm", plot=plt)
             plt.subplot(223)
             ax = sns.boxplot(x=y)
+            plt.axvline(x=lt,linewidth=2, color='r')
             plt.subplot(224)
             plt.text(0.1,0.5,eintrag, 
                      ha='left', va='center',

@@ -36,6 +36,15 @@ def csv_daten_im_verzeichnis():
     return(csv_dateien)
             
         
+###zahl überprüfen
+def isfloat(x):
+    try:
+        float(x)
+    except ValueError:
+        return False
+    else:
+        return True
+
 
 #set read the file and set custom CSV elements
 def file_einlesen(auswahl_datei):
@@ -1175,7 +1184,16 @@ def ttest_o_s(df, alpha=0.05, alternative='greater'):
         i+=1
     
     value_column= input('Which value column do you want to see: \n(choose number) \n?')
-    target_value = input('Input taget mean-value \n(choose point-comma \n?')
+    
+    while True:
+        target_value = input('Input taget mean-value \n(choose point-comma \n?')
+    
+        if not isfloat(target_value):
+            print("target mean value is not a number with point-comma, please try again")
+        else:
+            break
+    
+    
     y = df[list_columns_werte[int(value_column)]]
     
     try:
