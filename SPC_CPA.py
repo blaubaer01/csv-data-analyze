@@ -3,7 +3,7 @@
 """
 Created on Tue Apr 21 07:59:08 2020
 
-@author: blaubaer
+@author: blaubaer (Ricky Helfgen)
 """
 #import pandas as pd
 from scipy.stats import shapiro
@@ -18,6 +18,12 @@ def isfloat(x):
         return False
     else:
         return True
+def truncate(n, decimals=0):
+        multiplier = 10 ** decimals
+        return int(n * multiplier) / multiplier
+    
+
+
 
 def CPA(df):
             
@@ -49,9 +55,6 @@ def CPA(df):
     one_two_sided = input('Tolerance: \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     
-    def truncate(n, decimals=0):
-        multiplier = 10 ** decimals
-        return int(n * multiplier) / multiplier
     
     
     
@@ -89,15 +92,21 @@ def CPA(df):
             cpk = min(cpkut, cpklt)
             mean_p_3s = mean_y + 3*std_y
             mean_m_3s = mean_y - 3*std_y
+            min_y = y.min()
+            max_y = y.max()
             cpk = truncate(cpk, 2)
             cp = truncate(cp, 2)
             mean_y = truncate(mean_y, 3)
             std_y = truncate(std_y, 3)
             mean_p_3s = truncate(mean_p_3s, 3)
             mean_m_3s = truncate(mean_m_3s, 3)
+            min_y = truncate(min_y, 3)
+            max_y =truncate(max_y, 3)
+            
+            
             
             print(mean_y,std_y , cp, cpk)
-            eintrag = 'Mean: ' + str(mean_y) + 's: ' + str(std_y) + '\n+3s: ' + str(mean_p_3s) + '\n-3s: ' + str(mean_m_3s) + '\nCp: ' + str(cp) + '\nCpk: ' + str(cpk)
+            eintrag = 'Mean: ' + str(mean_y) + ' s: ' + str(std_y) + '\n+3s: ' + str(mean_p_3s) + '\n-3s: ' + str(mean_m_3s) + '\nCp: ' + str(cp) + '\nCpk: ' + str(cpk) + '\nUT: ' + str(ut) + ' LT: ' + str(lt) + '\nMIN: ' + str(min_y) + ' MAX: '+ str(max_y)
             
             
             ##graphic
@@ -110,7 +119,7 @@ def CPA(df):
             plt.subplot(222)
             spy.stats.probplot(y, dist="norm", plot=plt)
             plt.subplot(223)
-            ax = sns.boxplot(x=y)
+            sns.boxplot(x=y)
             plt.axvline(x=ut,linewidth=2, color='r')
             plt.axvline(x=lt,linewidth=2, color='r')
             plt.subplot(224)
@@ -132,6 +141,9 @@ def CPA(df):
             upper_q_y = y.quantile(0.99869)
             
             lower_q_y = y.quantile(0.00135)
+            min_y = y.min()
+            max_y = y.max()
+            
             
             
             cp = (ut-lt) / (upper_q_y - lower_q_y)
@@ -143,10 +155,13 @@ def CPA(df):
             median_y = truncate(median_y, 3)
             upper_q_y = truncate(upper_q_y, 3)
             lower_q_y = truncate(lower_q_y, 3)
+            min_y = truncate(min_y, 3)
+            max_y =truncate(max_y, 3)
+            
             
             print(median_y ,upper_q_y, lower_q_y , cp, cpk)
             
-            eintrag = 'Median: ' + str(median_y) + '\nQ0.998: ' + str(upper_q_y) + '\nQ0.001: ' + str(lower_q_y) + '\nCp: ' + str(cp) + '\nCpk: ' + str(cpk)
+            eintrag = 'Median: ' + str(median_y) + '\nQ0.998: ' + str(upper_q_y) + '\nQ0.001: ' + str(lower_q_y) + '\nCp: ' + str(cp) + '\nCpk: ' + str(cpk) + '\nUT: ' + str(ut) + ' LT: ' + str(lt) + '\nMIN: ' + str(min_y) + ' MAX: '+ str(max_y)
             
             ##graphic
             
@@ -158,7 +173,7 @@ def CPA(df):
             plt.subplot(222)
             spy.stats.probplot(y, dist="norm", plot=plt)
             plt.subplot(223)
-            ax = sns.boxplot(x=y)
+            sns.boxplot(x=y)
             plt.axvline(x=ut,linewidth=2, color='r')
             plt.axvline(x=lt,linewidth=2, color='r')
             plt.subplot(224)
@@ -198,15 +213,20 @@ def CPA(df):
             cpk = cpkut
             mean_p_3s = mean_y + 3*std_y
             mean_m_3s = mean_y - 3*std_y
+            min_y = y.min()
+            max_y = y.max()
+            
+            
             
             cpk = truncate(cpk, 2)
             mean_y = truncate(mean_y, 3)
             std_y = truncate(std_y, 3)
             mean_p_3s = truncate(mean_p_3s, 3)
             mean_m_3s = truncate(mean_m_3s, 3)
+            min_y = truncate(min_y, 3)
+            max_y =truncate(max_y, 3)
             
-            
-            eintrag = 'Mean: ' + str(mean_y) + '\n+3s: ' + str(mean_p_3s) + '\n-3s: ' + str(mean_m_3s) + '\nCpk: ' + str(cpk)
+            eintrag = 'Mean: ' + str(mean_y) + ' s:' + str(std_y) + '\n+3s: ' + str(mean_p_3s) + '\n-3s: ' + str(mean_m_3s) + '\nCpk: ' + str(cpk) + '\nUT: ' + str(ut) + '\nMIN: ' + str(min_y) + ' MAX: '+ str(max_y)
             
             
             ##graphic
@@ -218,7 +238,7 @@ def CPA(df):
             plt.subplot(222)
             spy.stats.probplot(y, dist="norm", plot=plt)
             plt.subplot(223)
-            ax = sns.boxplot(x=y)
+            sns.boxplot(x=y)
             plt.axvline(x=ut,linewidth=2, color='r')
             plt.subplot(224)
             plt.text(0.1,0.5,eintrag, 
@@ -237,6 +257,10 @@ def CPA(df):
             median_y = y.quantile(0.5)
             upper_q_y = y.quantile(0.99869)
             lower_q_y = y.quantile(0.00135)
+            min_y = y.min()
+            max_y = y.max()
+            
+            
             
             cpkut = (ut-median_y)/(upper_q_y-median_y)
             cpk = cpkut
@@ -245,9 +269,10 @@ def CPA(df):
             median_y = truncate(median_y, 3)
             upper_q_y = truncate(upper_q_y, 3)
             lower_q_y = truncate(lower_q_y, 3)
-            
+            min_y = truncate(min_y, 3)
+            max_y =truncate(max_y, 3)
     
-            eintrag = 'Median: ' + str(median_y) + '\nQ0.998: ' + str(upper_q_y) + '\nQ0.001: ' + str(lower_q_y) + '\nCpk: ' + str(cpk)
+            eintrag = 'Median: ' + str(median_y) + '\nQ0.998: ' + str(upper_q_y) + '\nQ0.001: ' + str(lower_q_y) + '\nCpk: ' + str(cpk) + '\nUT: ' + str(ut) + '\nMIN: ' + str(min_y) + ' MAX: '+ str(max_y)
             
             ##graphic
             
@@ -258,7 +283,7 @@ def CPA(df):
             plt.subplot(222)
             spy.stats.probplot(y, dist="norm", plot=plt)
             plt.subplot(223)
-            ax = sns.boxplot(x=y)
+            sns.boxplot(x=y)
             plt.axvline(x=ut,linewidth=2, color='r')
             plt.subplot(224)
             plt.text(0.1,0.5,eintrag, 
@@ -292,7 +317,7 @@ def CPA(df):
         stat, p = shapiro(y)
     
         if p >= 0.05:
-            #normal verteilt
+            #normal verteilt lt
             print('one side tolerance /normal distribution')
             
             mean_y = y.mean()
@@ -303,15 +328,20 @@ def CPA(df):
             
             mean_p_3s = mean_y + 3*std_y
             mean_m_3s = mean_y - 3*std_y
+            min_y = y.min()
+            max_y = y.max()
+            
             
             cpk = truncate(cpk, 2)
             mean_y = truncate(mean_y, 3)
             std_y = truncate(std_y, 3)
             mean_p_3s = truncate(mean_p_3s, 3)
             mean_m_3s = truncate(mean_m_3s, 3)
+            min_y = truncate(min_y, 3)
+            max_y =truncate(max_y, 3)
             
             
-            eintrag = 'Mean: ' + str(mean_y) + '\n+3s: ' + str(mean_p_3s) + '\n-3s: ' + str(mean_m_3s) + '\nCpk: ' + str(cpk)
+            eintrag = 'Mean: ' + str(mean_y) + ' s:' + str(std_y) + '\n+3s: ' + str(mean_p_3s) + '\n-3s: ' + str(mean_m_3s) + '\nCpk: ' + str(cpk) + '\nLT: ' + str(lt) + '\nMIN: ' + str(min_y) + ' MAX: '+ str(max_y)
             
             
             ##graphic
@@ -323,7 +353,7 @@ def CPA(df):
             plt.subplot(222)
             spy.stats.probplot(y, dist="norm", plot=plt)
             plt.subplot(223)
-            ax = sns.boxplot(x=y)
+            sns.boxplot(x=y)
             plt.axvline(x=lt,linewidth=2, color='r')
             plt.subplot(224)
             plt.text(0.1,0.5,eintrag, 
@@ -338,12 +368,15 @@ def CPA(df):
             
             
         elif p < 0.05:
-            #nicht normalverteilt
+            #nicht normalverteilt lt
             print('one side tolerance / other distribution')
             
             median_y = y.quantile(0.5)
             upper_q_y = y.quantile(0.99869)
             lower_q_y = y.quantile(0.00135)
+            min_y = y.min()
+            max_y = y.max()
+            
             
             cpklt = (median_y-lt)/(median_y-lower_q_y)
             cpk = cpklt
@@ -352,9 +385,12 @@ def CPA(df):
             median_y = truncate(median_y, 3)
             upper_q_y = truncate(upper_q_y, 3)
             lower_q_y = truncate(lower_q_y, 3)
+            min_y = truncate(min_y, 3)
+            max_y =truncate(max_y, 3)
             
             
-            eintrag = 'Median: ' + str(median_y) + '\nQ0.998: ' + str(upper_q_y) + '\nQ0.001: ' + str(lower_q_y) + '\nCpk: ' + str(cpk)
+            eintrag = 'Median: ' + str(median_y) + '\nQ0.998: ' + str(upper_q_y) + '\nQ0.001: ' + str(lower_q_y) + '\nCpk: ' + str(cpk) + '\nLT: ' + str(lt) + '\nMIN: ' + str(min_y) + ' MAX: '+ str(max_y)
+            
             
             ##graphic
             
@@ -365,7 +401,7 @@ def CPA(df):
             plt.subplot(222)
             spy.stats.probplot(y, dist="norm", plot=plt)
             plt.subplot(223)
-            ax = sns.boxplot(x=y)
+            sns.boxplot(x=y)
             plt.axvline(x=lt,linewidth=2, color='r')
             plt.subplot(224)
             plt.text(0.1,0.5,eintrag, 
