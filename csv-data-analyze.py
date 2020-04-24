@@ -14,6 +14,7 @@ import statsmodels.api as sm
 from statsmodels.formula.api import ols
 from outliers import smirnov_grubbs as grubbs
 from SPC_CPA import CPA
+from L_REG import LREG
 
 
 
@@ -1458,18 +1459,13 @@ def menu_tests(df):
 
 
 
-#############################################################################
-###process capability analyse 
-def pca():
-    clear()
-
 
 
 ### statistics menu
 ###############################################################################
 def statistic(df):
     clear()
-    menu_statistic = input('What kind of statistics: \n1: simple descriptive statistics \n2: graphical view \n3: tests \n4: process capability analysis \n(choose number) \n?')
+    menu_statistic = input('What kind of statistics: \n1: simple descriptive statistics \n2: graphical view \n3: tests \n4: process capability analysis \n5: linear regression analysis \n(choose number) \n?')
     if menu_statistic =='1':
         beschreibende_stat(df)
     elif menu_statistic =='2':
@@ -1478,6 +1474,8 @@ def statistic(df):
         menu_tests(df)
     elif menu_statistic =='4':
         CPA(df)
+    elif menu_statistic =='5':
+        LREG(df)
     else:
         print('wrong input, please try again!')
         statistic(df)

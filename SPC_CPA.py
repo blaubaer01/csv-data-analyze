@@ -29,6 +29,10 @@ def CPA(df):
             
     sns.set(color_codes=True)
     
+    label_chart = ('Capability Analysis')
+    
+    
+    
     werte = df.select_dtypes(exclude=['object'])
         
         #
@@ -127,6 +131,7 @@ def CPA(df):
                      ha='left', va='center',
                      fontsize=12)
             plt.axis('off')
+            #plt.title(label_chart, fontdict=None, loc='center', pad=None)
             plt.show()
             
             
@@ -181,6 +186,7 @@ def CPA(df):
                      ha='left', va='center',
                      fontsize=12)
             plt.axis('off')
+            #plt.title(label_chart, fontdict=None, loc='center', pad=None)
             plt.show()
     
     ###one side tolerance ut
@@ -245,6 +251,7 @@ def CPA(df):
                      ha='left', va='center',
                      fontsize=12)
             plt.axis('off')
+            #plt.title(label_chart, fontdict=None, loc='center', pad=None)
             plt.show()
             
             
@@ -290,6 +297,7 @@ def CPA(df):
                      ha='left', va='center',
                      fontsize=12)
             plt.axis('off')
+            #plt.title(label_chart, fontdict=None, loc='center', pad=None)
             plt.show()
     
     
@@ -360,6 +368,7 @@ def CPA(df):
                      ha='left', va='center',
                      fontsize=12)
             plt.axis('off')
+            #plt.title(label_chart, fontdict=None, loc='center', pad=None)
             plt.show()
             
             
@@ -408,6 +417,7 @@ def CPA(df):
                      ha='left', va='center',
                      fontsize=12)
             plt.axis('off')
+            #plt.title(label_chart, fontdict=None, loc='center', pad=None)
             plt.show()
 
 
