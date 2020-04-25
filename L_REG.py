@@ -75,7 +75,6 @@ def LREG(df):
     
     
     plt.figure(figsize=(6, 4))
-    plt.title(label_chart, fontdict=None, loc='center', pad=None)
     plt.subplot(221) # äquivalent zu: plt.subplot(2, 2, 1)
     sns.regplot(x=xg, y=yg, data=df);
     plt.subplot(222)

@@ -9,13 +9,13 @@ import statistics as stats
 import pyspc
 import webbrowser
 import seaborn as sns
-import numpy as np
+#import numpy as np
 import statsmodels.api as sm
 from statsmodels.formula.api import ols
 from outliers import smirnov_grubbs as grubbs
 from SPC_CPA import CPA
 from L_REG import LREG
-
+from table_functions import appendDFToCSV
 
 
 #alternatively, define the source
@@ -1514,7 +1514,7 @@ def preview_table(df):
 def table_functions(df):
     while True:
         clear()
-        menu_tf = input('Table Functions: \n1: Preview \n2: add column \n3: add table \n4: merge table \n5: filter table \n?')
+        menu_tf = input('Table Functions: \n1: Preview \n2: add column \n3: append csv-file \n4: merge table \n5: filter table \n?')
         if menu_tf =='1':
             clear()
             preview_table(df)
@@ -1523,7 +1523,7 @@ def table_functions(df):
             print('Function not available yet!')
         elif menu_tf =='3':
             clear()
-            print('Function not available yet!')
+            appendDFToCSV(df, sep=",")
         elif menu_tf =='4':
             print('Function not available yet!')
         elif menu_tf =='5':
