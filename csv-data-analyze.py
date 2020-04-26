@@ -15,7 +15,7 @@ from statsmodels.formula.api import ols
 from outliers import smirnov_grubbs as grubbs
 from SPC_CPA import CPA
 from L_REG import LREG
-from table_functions import appendDFToCSV
+from table_functions import appendDFToCSV, mergecolumn, filter_setzen
 
 
 #alternatively, define the source
@@ -278,49 +278,6 @@ def file_in_html(df):
     
     webbrowser.open_new_tab(url)
 
-
-
-################################################################################
-##set filter
-def filter_setzen(df):
-    clear()
-    while True:
-        clear()
-        anz_col = len(df.columns)
-        
-        list_columns = []
-
-        i=1
-        for i in range(anz_col):
-            
-            list_columns.append(df.columns[i])
-            print(i, df.columns[i])
-            i+=1      
-                     
-        inhalte_spalte= input('For which column you want to know the possible filter criteria \nchoose number! \n?')
-        print(df.iloc[:,int(inhalte_spalte)].value_counts())
-        
-        filter_ja = input('Set a filter: y/n \n?')
-        if filter_ja.lower() =='y':
-            name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
-            df = df[df.iloc[:,int(inhalte_spalte)]==name_filter]
-            
-        restart = input('\nSet more filters: y/n \n?')
-        if restart.lower() != 'y':
-            speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
-            if speichern_ja.lower() =='y':
-                csvfilename = input('Filename (.csv will save automaticly) \n?')
-                fn = csvfilename + '.csv'
-                df.to_csv(fn, sep=';', decimal=',', header =True)
-                
-            
-            tabelle_m_f_uebernehmen = input('The filters should be available for further analysis: y/n \n?')
-            if tabelle_m_f_uebernehmen.lower() =='y':
-            
-                return(df)
-                break
-            else:
-                break
 
 
 
@@ -739,7 +696,7 @@ def menu_categorie_data(df):
     elif menu_cd =='5':
         swarm_plot(df)
     else:
-        print('wrong input, try again!')
+        print('Wrong input, try again!')
 
 
 ################################################################################
@@ -887,7 +844,7 @@ def menu_scatter(df):
     elif m_scatter =='3':
         scatter_joint_plot(df)
     else:
-        print('wrong input,please try again!')
+        print('Wrong input,please try again!')
 
 
 
@@ -1048,7 +1005,7 @@ def menu_graphical_analyze(df):
         mr_chart(df)
         #print('currently not available')
     else:
-        print('wrong input')
+        print('Wrong input, please try again')
 
         
 ###############################################################################
@@ -1116,7 +1073,7 @@ def outliert(df):
     value_column= input('Which value column do you want to see: \n(choose number) \n?')
     
     y = df[list_columns_werte[int(value_column)]]
-    print('value could be outlier:',grubbs.max_test_outliers(y, alpha=0.05))
+    print('Value could be outlier:',grubbs.max_test_outliers(y, alpha=0.05))
 
 
 ###f-test
@@ -1190,7 +1147,7 @@ def ttest_o_s(df, alpha=0.05, alternative='greater'):
         target_value = input('Input taget mean-value \n(choose point-comma \n?')
     
         if not isfloat(target_value):
-            print("target mean value is not a number with point-comma, please try again")
+            print("Target mean value is not a number with point-comma, please try again")
         else:
             break
     
@@ -1211,7 +1168,7 @@ def ttest_o_s(df, alpha=0.05, alternative='greater'):
         else:
             print('Means should be different (reject H0)')    
     except Exception as exception:
-                print('wrong input (choose point-comma), please try again!')
+                print('Wrong input (choose point-comma), please try again!')
     
     
 ###two sided t-test
@@ -1252,7 +1209,7 @@ def ttest_t_s(df):
         else:
             print('Means should be different (reject H0)')    
     except Exception as exception:
-                print('wrong input (choose point-comma), please try again!')
+                print('Wrong input (choose point-comma), please try again!')
                 
                 
 ###indipendent t-test
@@ -1293,7 +1250,7 @@ def ttest_i(df):
         else:
             print('Means should be different (reject H0)')    
     except Exception as exception:
-                print('wrong input, please try again!')
+                print('Wrong input, please try again!')
 
     
 
@@ -1310,7 +1267,7 @@ def ttest_menu(df):
     elif menu_ttest =='3':
         ttest_i(df)
     else:
-        print('wrong input, try again!')
+        print('Wrong input, try again!')
 
 ###One way ANOVA    
 ###############################################################################    
@@ -1416,7 +1373,7 @@ def anova_t_w(df):
 ###############################################################################    
 def anova_f_n(df):
     clear()
-    print('currently not available')
+    print('Currently not available')
 
 ###############################################################################    
 def ANOVA_menu(df):
@@ -1429,7 +1386,7 @@ def ANOVA_menu(df):
     elif anova_m =='3':
         anova_f_n(df)
     else:
-        print('wrong input, try again!')
+        print('Wrong input, try again!')
     
 ###Menu tests
 ###############################################################################
@@ -1455,7 +1412,7 @@ def menu_tests(df):
         outliert(df)
     
     else:
-        print('wrong input, try again!')
+        print('Wrong input, try again!')
 
 
 
@@ -1502,7 +1459,7 @@ def preview_table(df):
         elif menu_voranalyse =='4':
             file_in_html(df)
         else:
-            print('wrong input, please try again!')
+            print('Wrong input, please try again!')
             #voranalyse(df)
         
         restart = input('\nFurther pre-analysis: "y"\n?')
@@ -1514,22 +1471,19 @@ def preview_table(df):
 def table_functions(df):
     while True:
         clear()
-        menu_tf = input('Table Functions: \n1: Preview \n2: add column \n3: append csv-file \n4: merge table \n5: filter table \n?')
+        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n?')
         if menu_tf =='1':
             clear()
             preview_table(df)
         elif menu_tf =='2':
             clear()
-            print('Function not available yet!')
-        elif menu_tf =='3':
-            clear()
             appendDFToCSV(df, sep=",")
+        elif menu_tf =='3':
+            mergecolumn(df)
         elif menu_tf =='4':
-            print('Function not available yet!')
-        elif menu_tf =='5':
             filter_setzen(df)
         else:
-            print('wrong input, please try again!')
+            print('Wrong input, please try again!')
             #voranalyse(df)
         
         restart = input('\nFurther pre-analysis: "y"\n?')
@@ -1564,7 +1518,7 @@ def mit_daten_arbeiten(df):
             clear()
             menu_tests(df)    
         else:
-            print('wrong input, please try again!')
+            print('Wrong input, please try again!')
             #mit_daten_arbeiten(df)
             
             
@@ -1584,7 +1538,7 @@ def main():
         clear()
         #choosesource(source)
         print('#'*80)
-        print('CSV Data Analyze-Tool V0.1 (by Ricky Helfgen) \nThis is an open source project and is subject to the guidelines of GPL V3')
+        print('CSV Data Analyze-Tool V0.2 (by Ricky Helfgen) \nThis is an open source project and is subject to the guidelines of GPL V3')
         print('This tool is used for data analysis of CSV files with python3,\n and packages:os, numpy, webbrowser, pandas, scipy, matplotlib, seaborn, pyspc')
         print('https://github.com/blaubaer01/csv-data-analyze')
         print('Have Fun!')

@@ -3,13 +3,13 @@
 """
 Created on Sat Apr 25 08:17:57 2020
 
-@author: blaubaer
+@author: blaubaer (Ricky Helfgen)
 """
 import pandas as pd
 import os
 
 #Thanks to https://stackoverflow.com/questions/17530542/how-to-add-pandas-data-to-an-existing-csv-file
-
+#and https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html
 ### define our clear function 
 #############################################################################
 def clear(): 
@@ -26,13 +26,20 @@ def clear():
 
 def appendDFToCSV(df, sep=","):
     
-    csv_dateien= []
-    for dat in os.listdir(os.getcwd()):
-        if dat.endswith(".csv") or dat.endswith(".CSV"):
-            csv_dateien.append(dat)
-            print(dat)
+    while True:
+        csv_dateien= []
+        for dat in os.listdir(os.getcwd()):
+            if dat.endswith(".csv") or dat.endswith(".CSV"):
+                csv_dateien.append(dat)
+                print(dat)
+        
+        add_table = input('Which table would yo like to add\n(pay attention to spelling)\n?' )
+        if add_table in csv_dateien:
+            break
+        else:
+            print('Wrong input, try again')
+        
     
-    add_table = input('Which table would yo like to add\n(pay attention to spelling)\n?' )
     
     clear()
     f = open(add_table, "r")
@@ -80,12 +87,145 @@ def appendDFToCSV(df, sep=","):
                 df.to_csv(fn, sep=';', decimal=',', header =True)
     
         
-        
-        
-        
-            
+def mergecolumn(df):
     
+    while True:
+        csv_dateien= []
+        for dat in os.listdir(os.getcwd()):
+            if dat.endswith(".csv") or dat.endswith(".CSV"):
+                csv_dateien.append(dat)
+                print(dat)
+        
+        add_table = input('Which csv-file would yo like to merge\n(pay attention to spelling)\n?' )
+        if add_table in csv_dateien:
+            break
+        else:
+            print('wrong input, try again')
+    
+    clear()
+    f = open(add_table, "r")
+    
+    print('#'*80)
+    print('Preview to the first 2 lines: \n')
+    print('first line:', f.readline())
+    print('second line:', f.readline())
+    print('#'*80)
+    f.close
+    
+    #define structure
+    while True:
+        format_ist = input('Which separator is used by the file: \n1: Comma / 2: Semicolon \n(choose number)\n?').lower()
+        if format_ist == '1':
+            trennzeichen = ','
+            break
+        elif format_ist == '2':
+            trennzeichen = ';'
+            break
+        else:
+            print('Wrong input, please try again')
+        #file_einlesen(auswahl_datei)
+    
+    df2=pd.read_csv(add_table,sep=trennzeichen)
+    
+    join_how = input('How would you like to join: \n1: full outer join \n2: full inner join \n3: inner join left \n4: inner join right \n(choose number) \n?')
+    
+    key_field = df.select_dtypes(exclude=['float'])
+    
+    #
+    anz_col_key = len(key_field.columns)
+        
+    list_columns_key = []
+
+    i=1
+    for i in range(anz_col_key):
+        list_columns_key.append(key_field.columns[i])
+        print(i, key_field.columns[i])
+        i+=1
+    
+    key_column= input('Key Field: \n(choose number) \n?')
+    
+    key_name = list_columns_key[int(key_column)]    
+    
+    if join_how == '1':
+        result = pd.merge(df, df2, how='outer', on=key_name)
+        print(result)
+        print('To work with you have to save this dataframe as file')
+        save_yes = input('Would you like to save: \ny/n \n?')
+        if save_yes.lower() =='y':
+                csvfilename = input('Filename (.csv will save automaticly) \n?')
+                fn = csvfilename + '.csv'
+                result.to_csv(fn, sep=';', decimal=',', header =True)
+    elif join_how == '2':
+        result = pd.merge(df, df2, how='inner', on =key_name)
+        print(result)
+        print('To work with you have to save this dataframe as file')
+        save_yes = input('Would you like to save: \ny/n \n?')
+        if save_yes.lower() =='y':
+                csvfilename = input('Filename (.csv will save automaticly) \n?')
+                fn = csvfilename + '.csv'
+                result.to_csv(fn, sep=';', decimal=',', header =True)
+    elif join_how =='3':
+        result = pd.merge(df, df2, how='left', on=key_name)
+        print(result)
+        print('To work with you have to save this dataframe as file')
+        save_yes = input('Would you like to save: \ny/n \n?')
+        if save_yes.lower() =='y':
+                csvfilename = input('Filename (.csv will save automaticly) \n?')
+                fn = csvfilename + '.csv'
+                result.to_csv(fn, sep=';', decimal=',', header =True)
+    elif join_how =='4':
+        result = pd.merge(df, df2, how='right', on=key_name)
+        print(result)
+        print('To work with you have to save this dataframe as file')
+        save_yes = input('Would you like to save: \ny/n \n?')
+        if save_yes.lower() =='y':
+                csvfilename = input('Filename (.csv will save automaticly) \n?')
+                fn = csvfilename + '.csv'
+                result.to_csv(fn, sep=';', decimal=',', header =True)
+    else:
+        print('Wrong input, please try again')
 
 
+################################################################################
+##set filter
+def filter_setzen(df):
+    clear()
+    while True:
+        clear()
+        anz_col = len(df.columns)
+        
+        list_columns = []
+
+        i=1
+        for i in range(anz_col):
+            
+            list_columns.append(df.columns[i])
+            print(i, df.columns[i])
+            i+=1      
+                     
+        inhalte_spalte= input('For which column you want to know the possible filter criteria \nchoose number! \n?')
+        print(df.iloc[:,int(inhalte_spalte)].value_counts())
+        
+        filter_ja = input('Set a filter: y/n \n?')
+        if filter_ja.lower() =='y':
+            name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
+            df = df[df.iloc[:,int(inhalte_spalte)]==name_filter]
+            
+        restart = input('\nSet more filters: y/n \n?')
+        if restart.lower() != 'y':
+            speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+            if speichern_ja.lower() =='y':
+                csvfilename = input('Filename (.csv will save automaticly) \n?')
+                fn = csvfilename + '.csv'
+                df.to_csv(fn, sep=';', decimal=',', header =True)
+                
+            
+            tabelle_m_f_uebernehmen = input('The filters should be available for further analysis: y/n \n?')
+            if tabelle_m_f_uebernehmen.lower() =='y':
+            
+                return(df)
+                break
+            else:
+                break
 
 
