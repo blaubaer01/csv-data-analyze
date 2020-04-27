@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet href="treestyles.css" type="text/css"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--This file has been created with toxhtml.xsl-->
+<head>
+<meta name="Ricky Helfgen" content="">
+<meta name="date" content="2020-04-27T12:48:01+0200" >
+<meta name="copyright" content="Ricky Helfgen>
+<meta name="keywords" content="CSV, csv-data-analyze, csv-data-analyze.py, statistisch, statistsiche Analyse, statistical analyse from CSV-files, work with csv-files, csv-file">
+<meta name="description" content="Ein Python Tool zum Bearbeiten und analysieren von csv-files">
+<meta name="ROBOTS" content="INDEX, FOLLOW">
+<meta http-equiv="expires" content="0">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<title>csv-data-analyze - Python - Tool</title>
+<link rel="stylesheet" href="csv-data-analyze.html_files//treestyles.css" type="text/css" />
+<script type="text/javascript" src="csv-data-analyze.html_files//marktree.js"></script>
+</head>
+<body>
+<div class="basetop"><a onclick="expandAll(document.getElementById('base'))" href="#">Expand</a> -
+<a onclick="collapseAll(document.getElementById('base'))" href="#">Collapse</a></div><div class="basetext" id="base"><ul>
+	<li class="col" id="FMID_269547937FM"><div class="nodecontent" style="color:#000000;font-size:167%;">csv-data-analyze</div>
+		<ul class="subexp">
+	<li class="col" id="FMID_1326874712FM"><div class="nodecontent" style="color:#0033ff;font-size:150%;">Allgemein</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_168568835FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">Autor: Ricky Helfgen</div></li>
+	<li class="basic" id="FMID_1059242826FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">Programm Sprache: <a href="https://www.python.org/" target="_blank">Python</a>
+	<br>Howto:<br>-download 'csv-data-analyze-master.zip'<br>-unzip<br>-go by cmd (Winodws) or shell(Linux) into the folder where the unpacked files are<br>
+	-run: python3 csv-data-analyze.py	
+	</div></li></ul></li>
+	
+	<li class="col" id="FMID_1770675947FM"><div class="nodecontent" style="color:#0033ff;font-size:150%;">Aufbau</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_662341060FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">
+	Datei einlesen<br>
+	<img src="pictures/open_prog.png" width="913" height="615" alt="" />
+	
+	
+	
+	</div></li>
+	<li class="basic" id="FMID_110218904FM">
+	<div class="nodecontent" style="color:#00b439;font-size:133%;">Datei bearbeiten/Vorbereiten<br>
+	<img src="pictures/pre-view.png" width="754" height="221" alt="" />
+	
+	
+	</div></li>
+	
+	<li class="basic" id="FMID_1207386137FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">Tabelle bearbeiten / analysieren</div></li></ul></li>
+	<li class="col" id="FMID_81719473FM"><div class="nodecontent" style="color:#0033ff;font-size:150%;">Funktionen</div>
+		<ul class="subexp">
+	<li class="col" id="FMID_800229018FM">
+	<div class="nodecontent" style="color:#00b439;font-size:133%;">Tabellen Funktionen<br><img src="pictures/table_funktions.png" width="175" height="120" alt="" /></br>
+	</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1468341555FM"><div class="nodecontent" style="color:#990000;font-size:117%;">Tabelle anh&auml;ngen
+	<br><img src="pictures/append_csv-table.png" width="310" height="323" alt="" />	
+	</div></li>
+	<li class="basic" id="FMID_1627623504FM">
+	<div class="nodecontent" style="color:#990000;font-size:117%;">Tabellen zusammenf&uuml;hren<br>
+	<img src="pictures/merge_csv_table.png" width="756" height="342" alt="" />
+	
+	</div></li>
+	<li class="basic" id="FMID_1508606405FM"><div class="nodecontent" style="color:#990000;font-size:117%;">Tabelle filtern
+	<br><img src="pictures/set_filter_yes.png" width="590" height="435" alt="" /><br></br>
+	</div></li></ul></li>
+	<li class="col" id="FMID_1985004379FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">Analyse Funktionen<br>
+	<img src="pictures/funktions.png" width="249" height="88" alt="" /></br>
+	</div>
+		<ul class="subexp">
+	<li class="col" id="FMID_1208604748FM"><div class="nodecontent" style="color:#990000;font-size:117%;">Voranalyse
+	
+	</div>
+		<ul class="subexp">
+	<li class="col" id="FMID_70377701FM"><div class="nodecontent" style="color:#111111;">Voransicht</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_336074690FM"><div class="nodecontent" style="color:#111111;">Anischt des ersten Datensatz
+	<br><img src="pictures/preview.png" width="212" height="104" alt="" />		
+	</div></li>
+	<li class="basic" id="FMID_879647245FM"><div class="nodecontent" style="color:#111111;">Ansicht je 5 Datens&auml;tze bis Schlu&szlig;</div></li>
+	<li class="basic" id="FMID_1452544494FM"><div class="nodecontent" style="color:#111111;">&Uuml;berischt des aktuellen Datentyps
+	<br><img src="pictures/datatype.png" width="244" height="258" alt="" />	
+	</div></li>
+	<li class="basic" id="FMID_657415585FM"><div class="nodecontent" style="color:#111111;">&Uuml;berischt auf fehlende Daten
+	<br><img src="pictures/missing_data.png" width="461" height="259" alt="" />	
+	</div></li>
+	<li class="basic" id="FMID_701928297FM"><div class="nodecontent" style="color:#111111;">Tabellenansicht als HTM-File im Browser
+	<br><img src="pictures/html-view.png" width="867" height="630" alt="" />	
+	</div></li></ul></li>
+	<li class="basic" id="FMID_1669986504FM"><div class="nodecontent" style="color:#111111;">csv-files anh&auml;ngen
+	<br><img src="pictures/append_csv-table.png" width="310" height="323" alt="" />	
+	</div></li>
+	<li class="basic" id="FMID_1039004057FM"><div class="nodecontent" style="color:#111111;">csv-fles zusammenf&uuml;hren
+	<br><img src="pictures/merge_csv_table.png" width="756" height="342" alt="" />	
+	</div></li>
+	<li class="basic" id="FMID_1043457972FM"><div class="nodecontent" style="color:#111111;">Tabelle filtern
+	<br><img src="pictures/set_filter.png" width="379" height="326" alt="" />	
+	</div></li></ul></li>
+	<li class="col" id="FMID_1884400672FM"><div class="nodecontent" style="color:#990000;font-size:117%;">Statistische Anaysen
+	<br
+	</div>
+		<ul class="subexp">
+	<li class="col" id="FMID_1635904288FM"><div class="nodecontent" style="color:#111111;">Beschreibende Statistik
+	<br><img src="pictures/menu_d_statistics.png" width="304" height="120" alt="" />	
+	</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1589835199FM"><div class="nodecontent" style="color:#111111;">Beschreibende Statistik ganze Tabelle
+		
+	</div></li>
+	<li class="basic" id="FMID_717387343FM"><div class="nodecontent" style="color:#111111;">Beschreibende Statistik nur numerische Daten</div></li>
+	
+	<li class="basic" id="FMID_1771227011FM"><div class="nodecontent" style="color:#111111;">Beschreibende Statistik ausgew&auml;hlte Spalte
+	<br><img src="pictures/ds_nummerical.png" width="339" height="543" alt="" />
+	<br><img src="pictures/ds_objects.png" width="348" height="468" alt="" /></br>	
+	</div></li></ul></li>
+	<li class="col" id="FMID_39192897FM"><div class="nodecontent" style="color:#111111;">Grafische Analysen
+	<br><img src="pictures/graphicalanalysis.png" width="294" height="253" alt="" />	
+	</div>
+		<ul class="subexp">
+	<li class="col" id="FMID_1500357248FM"><div class="nodecontent" style="color:#111111;">Bar-Chart</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1493216273FM"><div class="nodecontent" style="color:#111111;">nach Anzahl der Ausgew&auml;hlten Spalte
+	<br><img src="pictures/bar_chart1.png" width="697" height="320" alt="" />	
+	</div></li>
+	<li class="basic" id="FMID_686808325FM"><div class="nodecontent" style="color:#111111;">nach einer ausgew&auml;hlten Kategorie einer anderen Spalte
+	<br><img src="pictures/bar-chart2.png" width="641" height="586" alt="" />	
+	</div></li></ul></li>
+	<li class="basic" id="FMID_538150543FM"><div class="nodecontent" style="color:#111111;">Pie-Chart
+	<br><img src="pictures/pie-chart.png" width="848" height="522" alt="" />	
+	</div></li>
+	<li class="basic" id="FMID_1117441368FM"><div class="nodecontent" style="color:#111111;">Histogram
+	<br><img src="pictures/histogramm.png" width="637" height="581" alt="" />	
+	</div></li>
+	<li class="basic" id="FMID_1691418723FM"><div class="nodecontent" style="color:#111111;">Q-Q-Plot
+	<br><img src="pictures/q-q-plot.png" width="642" height="585" alt="" /></br></div></li>
+	<li class="basic" id="FMID_230293739FM"><div class="nodecontent" style="color:#111111;">Linechart
+	<br><img src="pictures/line-chart_time-series.png" width="641" height="579" alt="" />	
+	</div></li>
+	<li class="basic" id="FMID_1631021995FM"><div class="nodecontent" style="color:#111111;">Group Plot
+	<br><img src="pictures/group-plot.png" width="638" height="582" alt="" />	
+	</div></li>
+	<li class="col" id="FMID_1864620414FM"><div class="nodecontent" style="color:#111111;">ScatterPlot
+	<br><img src="pictures/scatter_menu.png" width="242" height="135" alt="" />	
+	</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1029783037FM"><div class="nodecontent" style="color:#111111;">scatter plot only (keine regressionslinie)<br>
+	<img src="pictures/scatter-plot.png" width="647" height="585" alt="" />	
+	</br></div></li>
+	<li class="basic" id="FMID_1553042483FM"><div class="nodecontent" style="color:#111111;">regression plot ( mit Linie)
+	<br><img src="pictures/scatter-plot_w_r.png" width="639" height="583" alt="" />	
+	</div></li>
+	<li class="basic" id="FMID_647056295FM"><div class="nodecontent" style="color:#111111;">regression joint plot (mit Linie und Histogram pro Verteilung
+	<br><img src="pictures/scatter_joint.png" width="601" height="702" alt="" />	
+	</div></li></ul></li>
+	<li class="col" id="FMID_229243502FM"><div class="nodecontent" style="color:#111111;">Categorial Plots
+	<br><img src="pictures/menu_categorial_plots.png" width="240" height="175" alt="" />	
+	</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_930557098FM"><div class="nodecontent" style="color:#111111;">Single Boxplot
+	<br><img src="pictures/single-box-plot.png" width="634" height="578" alt="" />	
+	</div></li>
+	<li class="basic" id="FMID_1695682011FM"><div class="nodecontent" style="color:#111111;">Boxplot by group
+	<br><img src="pictures/group-box-plot.png" width="637" height="584" alt="" />	
+	</div></li>
+	<li class="basic" id="FMID_1464119721FM"><div class="nodecontent" style="color:#111111;">Single Violin Plot
+	<br><img src="pictures/violin-plot.png" width="642" height="582" alt="" />	
+	</div></li>
+	<li class="basic" id="FMID_145576231FM"><div class="nodecontent" style="color:#111111;">Violinplot by Group
+	<br><img src="pictures/group-violin-plot.png" width="642" height="584" alt="" />	
+	</div></li>
+	<li class="basic" id="FMID_507973703FM"><div class="nodecontent" style="color:#111111;">Swarm-Plot
+	<br><img src="pictures/swarm-plot.png" width="640" height="582" alt="" />	
+	</div></li></ul></li>
+	<li class="basic" id="FMID_1105704974FM"><div class="nodecontent" style="color:#111111;">MR-Chart
+	<br><img src="pictures/MR-chart.png" width="637" height="591" alt="" />	
+	</div></li></ul></li>
+	<li class="col" id="FMID_364096504FM"><div class="nodecontent" style="color:#111111;">Statistische Tests
+	<br><img src="pictures/test-menu.png" width="323" height="167" alt="" />	
+	</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_114089992FM"><div class="nodecontent" style="color:#111111;">Test auf Normalverteilung der Daten /Auswahl Spalte
+	<br><img src="pictures/test_normality.png" width="369" height="342" alt="" />	
+	</div></li>
+	<li class="basic" id="FMID_1156719670FM"><div class="nodecontent" style="color:#111111;">Korrelationstest aller nummerischen Spalten zueinander
+	<br><img src="pictures/correl.png" width="602" height="175" alt="" />	
+	</div></li>
+	<li class="basic" id="FMID_953210689FM"><div class="nodecontent" style="color:#111111;">t-Test
+	<br><img src="pictures/t-test-menu.png" width="331" height="167" alt="" />	
+	<br><img src="pictures/one-s-t-test.png" width="446" height="397" alt="" />	
+	<br><img src="pictures/two-sample-t-test.png" width="339" height="341" alt="" />	
+	</div></li>
+	<li class="basic" id="FMID_739329087FM"><div class="nodecontent" style="color:#111111;">f-Test
+	<br><img src="pictures/f-test.png" width="359" height="370" alt="" />	
+	</div></li>
+	<li class="basic" id="FMID_1980324679FM"><div class="nodecontent" style="color:#111111;">ANOVA
+	<br>
+	</br>	
+	</div></li>
+	<li class="basic" id="FMID_793692952FM"><div class="nodecontent" style="color:#111111;">Ausrei&szlig;er Test</div></li></ul></li>
+	<li class="basic" id="FMID_178262289FM"><div class="nodecontent" style="color:#111111;">Prozess F&auml;higkeitsanalyse
+	<br><img src="pictures/capability_analysis.png" width="784" height="612" alt="" />	
+	</div></li>
+	<li class="basic" id="FMID_1489213047FM"><div class="nodecontent" style="color:#111111;">Lineare Regressionsanalyse
+	<br><img src="pictures/graphical%20reg-study.png" width="80%" height="80%" alt="" />
+	<br><img src="pictures/values_linear-r-study.png" width="770" height="535" alt="" />	
+	</br></div></li></ul></li></ul></li></ul></li>
+	<li class="col" id="FMID_1934180930FM"><div class="nodecontent" style="color:#0033ff;font-size:150%;">ben&ouml;tigte Pakete</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1710139277FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">Python3
+	<br><a href="https://www.python.org/downloads/release/python-380/" target="_blank">https://www.python.org/downloads/release/python-380/</a>
+	</div></li>
+	<li class="basic" id="FMID_1352780411FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">Pandas
+	<br><a href="https://pandas.pydata.org/" target="_blank">https://pandas.pydata.org/</a></div></li>
+	<li class="basic" id="FMID_1633540811FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">Matplotlib
+	<br><a href="https://matplotlib.org/" target="_blank">https://matplotlib.org/</a></div></li>
+	<li class="basic" id="FMID_1727612006FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">os-sys
+	<br><a href="https://pypi.org/project/os-sys/" target="_blank">https://pypi.org/project/os-sys/</a>
+	</div></li>
+	<li class="basic" id="FMID_1134157636FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">scipy
+	<br><a href="https://www.scipy.org/" target="_blank">https://www.scipy.org/</a></div></li>
+	<li class="basic" id="FMID_588327323FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">pyspc
+	<br><a href="https://github.com/carlosqsilva/pyspc" target="_blank">https://github.com/carlosqsilva/pyspc</a>	
+	</div></li>
+	<li class="basic" id="FMID_952320638FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">numpy
+	<br><a href="https://numpy.org/" target="_blank">https://numpy.org/</a></div></li>
+	<li class="basic" id="FMID_1598932118FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">seaborn
+	<br><a href="https://seaborn.pydata.org/" target="_blank">https://seaborn.pydata.org/</a></div></li>
+	<li class="basic" id="FMID_1172497813FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">outlier_utils
+	<br><a href="https://pypi.org/project/outlier_utils/" target="_blank">https://pypi.org/project/outlier_utils/</a></div></li>
+	<li class="basic" id="FMID_187051336FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">statsmodels
+	<br><a href="https://www.statsmodels.org/stable/index.html" target="_blank">https://www.statsmodels.org/stable/index.html</a></div></li></ul></li>
+	<li class="col" id="FMID_247366656FM"><div class="nodecontent" style="color:#0033ff;font-size:150%;">Lizenz</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1605593687FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">GPL V.3
+	<br><a href="https://www.gnu.org/licenses/gpl-3.0.de.html" target="_blank">https://www.gnu.org/licenses/gpl-3.0.de.html</a></div></li></ul></li>
+	<li class="basic" id="FMID_1993184461FM"><div class="nodecontent" style="color:#0033ff;font-size:150%;">bekannte Bugs</div></li></ul></li></ul></div></body></html>
