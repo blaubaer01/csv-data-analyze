@@ -29,7 +29,7 @@ def CPA(df):
             
     sns.set(color_codes=True)
     
-    label_chart = ('Capability Analysis')
+    #label_chart = ('Capability Analysis')
     
     
     
@@ -59,8 +59,14 @@ def CPA(df):
     one_two_sided = input('Tolerance: \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     
+    count_y = y.count()
     
-    
+    if count_y < 50:
+        proa, pr = 'Cmk', 'Cm'
+    elif count_y < 250:
+        proa, pr = 'Ppk', 'Pp'
+    else:
+        proa, pr = 'Cpk', 'Cp'
     
     ###both side tolerance
     if one_two_sided == '1':
@@ -72,7 +78,10 @@ def CPA(df):
                     ut, lt = tol.split(',')
                     ut = float(ut)
                     lt = float(lt)
-                    break
+                    if lt > ut:
+                        print('ut<lt, wrong input!')
+                    else:                    
+                        break
                 except Exception as exception:
                     print('Wrong input, try again!')
             else:
@@ -106,11 +115,14 @@ def CPA(df):
             mean_m_3s = truncate(mean_m_3s, 3)
             min_y = truncate(min_y, 3)
             max_y =truncate(max_y, 3)
+            count_y = truncate(count_y, 0)
+            
+            
             
             
             
             print(mean_y,std_y , cp, cpk)
-            eintrag = 'Mean: ' + str(mean_y) + ' s: ' + str(std_y) + '\n+3s: ' + str(mean_p_3s) + '\n-3s: ' + str(mean_m_3s) + '\nCp: ' + str(cp) + '\nCpk: ' + str(cpk) + '\nUT: ' + str(ut) + ' LT: ' + str(lt) + '\nMIN: ' + str(min_y) + ' MAX: '+ str(max_y)
+            eintrag = 'Mean: ' + str(mean_y) + ' s: ' + str(std_y) + '\n+3s: ' + str(mean_p_3s) + '\n-3s: ' + str(mean_m_3s) + '\n' + pr + ': ' + str(cp) + '\n' + proa + ': ' + str(cpk) + '\nUT: ' + str(ut) + ' LT: ' + str(lt) + '\nMIN: ' + str(min_y) + ' MAX: '+ str(max_y) + '\nn: ' + str(count_y)
             
             
             ##graphic
@@ -162,11 +174,11 @@ def CPA(df):
             lower_q_y = truncate(lower_q_y, 3)
             min_y = truncate(min_y, 3)
             max_y =truncate(max_y, 3)
-            
+            count_y = truncate(count_y, 0)
             
             print(median_y ,upper_q_y, lower_q_y , cp, cpk)
             
-            eintrag = 'Median: ' + str(median_y) + '\nQ0.998: ' + str(upper_q_y) + '\nQ0.001: ' + str(lower_q_y) + '\nCp: ' + str(cp) + '\nCpk: ' + str(cpk) + '\nUT: ' + str(ut) + ' LT: ' + str(lt) + '\nMIN: ' + str(min_y) + ' MAX: '+ str(max_y)
+            eintrag = 'Median: ' + str(median_y) + '\nQ0.998: ' + str(upper_q_y) + '\nQ0.001: ' + str(lower_q_y) + '\n' + pr + ': ' + str(cp) + '\n' + proa + ': ' + str(cpk) + '\nUT: ' + str(ut) + ' LT: ' + str(lt) + '\nMIN: ' + str(min_y) + ' MAX: '+ str(max_y) + '\nn: ' + str(count_y)
             
             ##graphic
             
@@ -231,8 +243,10 @@ def CPA(df):
             mean_m_3s = truncate(mean_m_3s, 3)
             min_y = truncate(min_y, 3)
             max_y =truncate(max_y, 3)
+            count_y = truncate(count_y, 0)
             
-            eintrag = 'Mean: ' + str(mean_y) + ' s:' + str(std_y) + '\n+3s: ' + str(mean_p_3s) + '\n-3s: ' + str(mean_m_3s) + '\nCpk: ' + str(cpk) + '\nUT: ' + str(ut) + '\nMIN: ' + str(min_y) + ' MAX: '+ str(max_y)
+            
+            eintrag = 'Mean: ' + str(mean_y) + ' s:' + str(std_y) + '\n+3s: ' + str(mean_p_3s) + '\n-3s: ' + str(mean_m_3s) + '\n' + proa + ': ' + str(cpk) + '\nUT: ' + str(ut) + '\nMIN: ' + str(min_y) + ' MAX: '+ str(max_y) + '\nn: ' + str(count_y)
             
             
             ##graphic
@@ -278,8 +292,9 @@ def CPA(df):
             lower_q_y = truncate(lower_q_y, 3)
             min_y = truncate(min_y, 3)
             max_y =truncate(max_y, 3)
+            count_y = truncate(count_y, 0)
     
-            eintrag = 'Median: ' + str(median_y) + '\nQ0.998: ' + str(upper_q_y) + '\nQ0.001: ' + str(lower_q_y) + '\nCpk: ' + str(cpk) + '\nUT: ' + str(ut) + '\nMIN: ' + str(min_y) + ' MAX: '+ str(max_y)
+            eintrag = 'Median: ' + str(median_y) + '\nQ0.998: ' + str(upper_q_y) + '\nQ0.001: ' + str(lower_q_y) + '\n' + proa + ': ' + str(cpk) + '\nUT: ' + str(ut) + '\nMIN: ' + str(min_y) + ' MAX: '+ str(max_y) + '\nn: ' + str(count_y)
             
             ##graphic
             
@@ -347,9 +362,9 @@ def CPA(df):
             mean_m_3s = truncate(mean_m_3s, 3)
             min_y = truncate(min_y, 3)
             max_y =truncate(max_y, 3)
+            count_y = truncate(count_y, 0)            
             
-            
-            eintrag = 'Mean: ' + str(mean_y) + ' s:' + str(std_y) + '\n+3s: ' + str(mean_p_3s) + '\n-3s: ' + str(mean_m_3s) + '\nCpk: ' + str(cpk) + '\nLT: ' + str(lt) + '\nMIN: ' + str(min_y) + ' MAX: '+ str(max_y)
+            eintrag = 'Mean: ' + str(mean_y) + ' s:' + str(std_y) + '\n+3s: ' + str(mean_p_3s) + '\n-3s: ' + str(mean_m_3s) + '\n' + proa + ': ' + str(cpk) + '\nLT: ' + str(lt) + '\nMIN: ' + str(min_y) + ' MAX: '+ str(max_y) + '\nn: ' + str(count_y)
             
             
             ##graphic
@@ -396,9 +411,9 @@ def CPA(df):
             lower_q_y = truncate(lower_q_y, 3)
             min_y = truncate(min_y, 3)
             max_y =truncate(max_y, 3)
+            count_y = truncate(count_y, 0)            
             
-            
-            eintrag = 'Median: ' + str(median_y) + '\nQ0.998: ' + str(upper_q_y) + '\nQ0.001: ' + str(lower_q_y) + '\nCpk: ' + str(cpk) + '\nLT: ' + str(lt) + '\nMIN: ' + str(min_y) + ' MAX: '+ str(max_y)
+            eintrag = 'Median: ' + str(median_y) + '\nQ0.998: ' + str(upper_q_y) + '\nQ0.001: ' + str(lower_q_y) + '\n' + proa + ': ' + str(cpk) + '\nLT: ' + str(lt) + '\nMIN: ' + str(min_y) + ' MAX: '+ str(max_y) + '\nn: ' + str(count_y)
             
             
             ##graphic
