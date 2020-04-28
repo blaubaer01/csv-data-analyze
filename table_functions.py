@@ -228,10 +228,9 @@ def filter_setzen(df):
             else:
                 break
 
-
+###sort by column
+###################################################################################
 def sort_column(df):
-    ###sort by column
-    ###################################################################################
     sort_yes = input('Would you like to sort the data frame: y/n\n?')
     if sort_yes =='y':
         while True:
@@ -273,5 +272,20 @@ def sort_column(df):
                 return(df)   
                 
                 break
-                   
-    
+
+###transposed               
+###############################################################################
+def transposed_table(df):
+    clear()
+    trans_yes = input('Would you like to transpose the table: y/n\n?')
+    if trans_yes =='y':
+        df = df.T
+        speichern_ja = input('Save the table with the sorting (the only way to analyze with the filter set): y/n \n?')
+        if speichern_ja.lower() =='y':
+            csvfilename = input('Filename (.csv will save automaticly) \n?')
+            fn = csvfilename + '.csv'
+            df.to_csv(fn, sep=';', decimal=',', header =True)
+        return(df)
+    else:
+        return(df)
+        

@@ -15,7 +15,7 @@ from statsmodels.formula.api import ols
 from outliers import smirnov_grubbs as grubbs
 from SPC_CPA import CPA
 from L_REG import LREG
-from table_functions import appendDFToCSV, mergecolumn, filter_setzen, sort_column
+from table_functions import appendDFToCSV, mergecolumn, filter_setzen, sort_column, transposed_table
 
 
 #alternatively, define the source
@@ -1518,7 +1518,7 @@ def preview_table(df):
 def table_functions(df):
     while True:
         clear()
-        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n?')
+        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n?')
         if menu_tf =='1':
             clear()
             preview_table(df)
@@ -1531,6 +1531,8 @@ def table_functions(df):
             filter_setzen(df)
         elif menu_tf =='5':
             sort_column(df)
+        elif menu_tf =='6':
+            transposed_table(df)
         else:
             print('Wrong input, please try again!')
             #voranalyse(df)
