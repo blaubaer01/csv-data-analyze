@@ -93,6 +93,8 @@ def file_einlesen(auswahl_datei):
     print('Overview of data formats:\n')
     print(df.dtypes)
     
+    ###change data type
+    ##################################################################################
     datentyp_aendern = input('Would you like to change data types: y/n \n?')
     
     if datentyp_aendern == 'y':
@@ -187,6 +189,9 @@ def file_einlesen(auswahl_datei):
             if restart.lower() != 'y':
                 break
                 #print('next steps')
+    
+    ###set filter
+    ######################################################################################
     filter_setzen = input('Would you like to set any filter: y/n \n?')
     if filter_setzen =='y':
         clear()
@@ -223,6 +228,9 @@ def file_einlesen(auswahl_datei):
             else:
                 return(df)
     
+    
+    ###sort by column
+    ###################################################################################
     sort_yes = input('Would you like to sort the data frame: y/n\n?')
     if sort_yes =='y':
         while True:
@@ -251,19 +259,16 @@ def file_einlesen(auswahl_datei):
                     break
                 else:
                     print('wrong input, try again')
-            df = df.sort_values(by=s_col, ascending=a_t_f)
-            #return(df)
             
-            #df = df.sort_value(by=sort_column, ascending=True)
-            restart = input('\nadditional sorting: y/n.\n?')
-            if restart.lower() != 'y':
+            df = df.sort_values(by=s_col, ascending=a_t_f)
+            
+            restart_s = input('additional sorting: y/n \n?')
+            if restart_s.lower() != 'y':
                 return(df)
                 break
-            else: 
-                return(df)
-                #break
-    
-    
+            #else: 
+             #   return(df)
+                   
     
     
     return(df)
