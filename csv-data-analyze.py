@@ -222,8 +222,50 @@ def file_einlesen(auswahl_datei):
                     break
             else:
                 return(df)
-       
- 
+    
+    sort_yes = input('Would you like to sort the data frame: y/n\n?')
+    if sort_yes =='y':
+        while True:
+            clear()
+            anz_col = len(df.columns)
+
+            list_columns = []
+
+            i=1
+            for i in range(anz_col):
+    
+                list_columns.append(df.columns[i])
+                print(i, df.columns[i])
+                i+=1      
+             
+            sort_column= input('Sort to which column: \n?')
+            s_col = list_columns[int(sort_column)]
+            
+            while True:
+                ascent_true_false = input('Ascending: \n1: true \n2: false \n?')
+                if ascent_true_false =='1':
+                    a_t_f = 1
+                    break
+                if ascent_true_false =='2':
+                    a_t_f = 0
+                    break
+                else:
+                    print('wrong input, try again')
+            df = df.sort_values(by=s_col, ascending=a_t_f)
+            #return(df)
+            
+            #df = df.sort_value(by=sort_column, ascending=True)
+            restart = input('\nadditional sorting: y/n.\n?')
+            if restart.lower() != 'y':
+                return(df)
+                break
+            else: 
+                return(df)
+                #break
+    
+    
+    
+    
     return(df)
 
 
