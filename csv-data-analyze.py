@@ -69,7 +69,7 @@ def file_einlesen(auswahl_datei):
             break
         elif format_ist == '2':
             trennzeichen = ';'
-            dezimalzeichen =','
+            dezimalzeichen = ','
             break
         else:
             print('Wrong input, please try again')
