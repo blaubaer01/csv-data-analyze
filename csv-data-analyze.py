@@ -16,7 +16,7 @@ from outliers import smirnov_grubbs as grubbs
 from SPC_CPA import CPA
 from L_REG import LREG
 from table_functions import appendDFToCSV, mergecolumn, filter_setzen, sort_column, transposed_table
-
+from regelkarte import x_chart
 
 #alternatively, define the source
 csv_dateien=['daten.csv']
@@ -507,7 +507,7 @@ def kuchendiagramm(df):
 #################################################################################
 def liniendiagramm(df):
     clear()
-    kategorie=df.select_dtypes(include=['object', 'datetime'])
+    kategorie=df.select_dtypes(include=['object', 'datetime', 'int'])
     werte = df.select_dtypes(exclude=['object'])
     
     #
@@ -1019,6 +1019,24 @@ def groupplot(df):
     
     plt.show()
     
+    
+def menu_spc_charts(df):
+    
+    clear()
+    print('Choose graphical view:')
+    gr_view_list= ['X-Chart']
+    for i in range(len(gr_view_list)):
+        print(i, gr_view_list[i])
+        i+=1
+    ausw_gr_view = input('Which SPC-Chart: \n(choose a number) \n?')
+    
+    if ausw_gr_view =='0':
+        x_chart(df)
+    
+    else:
+        print('Wrong input, please try again')
+
+    
 ###Menu graphical analysis
 #################################################################################
 def menu_graphical_analyze(df):
@@ -1026,7 +1044,7 @@ def menu_graphical_analyze(df):
     print('Choose graphical view:')
     gr_view_list= ['Barchart', 'Piechart', 'Histogram', 'Q-Q-Plot', 'Linechart', 'Group-Plot', 'Scatter-Plot',  
                    'Categorial Plots',  
-                   'MR-Chart']
+                   'SPC-Charts']
     for i in range(len(gr_view_list)):
         print(i, gr_view_list[i])
         i+=1
@@ -1049,7 +1067,7 @@ def menu_graphical_analyze(df):
     elif ausw_gr_view =='7':
         menu_categorie_data(df)
     elif ausw_gr_view =='8':
-        mr_chart(df)
+        menu_spc_charts(df)
         #print('currently not available')
     else:
         print('Wrong input, please try again')
