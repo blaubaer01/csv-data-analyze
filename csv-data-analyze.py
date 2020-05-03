@@ -16,7 +16,7 @@ from outliers import smirnov_grubbs as grubbs
 from SPC_CPA import CPA
 from L_REG import LREG
 from table_functions import appendDFToCSV, mergecolumn, filter_setzen, sort_column, transposed_table
-from regelkarte import x_chart
+from regelkarte import x_chart, x_bar_s
 
 #alternatively, define the source
 csv_dateien=['daten.csv']
@@ -1024,7 +1024,7 @@ def menu_spc_charts(df):
     
     clear()
     print('Choose graphical view:')
-    gr_view_list= ['X-Chart']
+    gr_view_list= ['X-Chart','X-bar-s-Chart']
     for i in range(len(gr_view_list)):
         print(i, gr_view_list[i])
         i+=1
@@ -1032,6 +1032,8 @@ def menu_spc_charts(df):
     
     if ausw_gr_view =='0':
         x_chart(df)
+    if ausw_gr_view =='1':
+        x_bar_s(df)
     
     else:
         print('Wrong input, please try again')

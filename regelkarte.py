@@ -13,6 +13,24 @@ import seaborn as sns ; sns.set()
 from scipy.stats import shapiro
 import os
 
+#Thanks to: Michal Nowikowski <godfryd@gmail.com>
+###got exsamples from https://github.com/mattharrison/python-spc
+
+
+###statistic variables
+#########################################################################################
+# n         2      3      4      5      6      7      8      9      10
+A2 = [0,0, 1.880, 1.023, 0.729, 0.577, 0.483, 0.419, 0.373, 0.337, 0.308]
+D3 = [0,0, 0,     0,     0,     0,     0,     0.076, 0.136, 0.184, 0.223]
+D4 = [0,0, 3.267, 2.575, 2.282, 2.115, 2.004, 1.924, 1.864, 1.816, 1.777]
+# n   0 1      2      3      4      5      6      7      8      9     10     11     12     13     14     15       20     25
+c4 = [0,0,0.7979,0.8862,0.9213,0.9400,0.9515,0.9594,0.9650,0.9693,0.9727,0.9754,0.9776,0.9794,0.9810,0.9823]#,0.9869,0.9896]
+B3 = [0,0,     0,     0,     0,     0, 0.030, 0.118, 0.185, 0.239, 0.284, 0.321, 0.354, 0.382, 0.406, 0.428]#, 0.510, 0.565]
+B4 = [0,0, 3.267, 2.568, 2.266, 2.089, 1.970, 1.882, 1.815, 1.761, 1.716, 1.679, 1.646, 1.618, 1.594, 1.572]#, 1.490, 1.435]
+B5 = [0,0,     0,     0,     0,     0, 0.029, 0.113, 0.179, 0.232, 0.276, 0.313, 0.346, 0.374, 0.399, 0.421]#, 0.504, 0.559]
+B6 = [0,0, 2.606, 2.276, 2.088, 1.964, 1.874, 1.806, 1.751, 1.707, 1.669, 1.637, 1.610, 1.585, 1.563, 1.544]#, 1.470, 1.420]
+A3 = [0,0, 2.659, 1.954, 1.628, 1.427, 1.287, 1.182, 1.099, 1.032, 0.975, 0.927, 0.886, 0.850, 0.817, 0.789]#, 0.680, 0.606]
+#########################################################################################
 
 
 
@@ -45,50 +63,126 @@ def clear():
 
 
 
-def x_bar():
-    auswahl_datei = 'production.csv'
-    sns.set(style="darkgrid")
+def x_bar_s(df):
+    
+    werte = df.select_dtypes(exclude=['object'])
+        
+        #
+    anz_col_werte = len(werte.columns)
+            
+    list_columns_werte = []
+    
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+        
+    value_column= input('Which value column do you want to see: \n(choose number) \n?')
+    
+    print(list_columns_werte[int(value_column)])    
+    y = list_columns_werte[int(value_column)]
+
+    datenanz = df[list_columns_werte[int(value_column)]].count()
     
     
-    trennzeichen =';'
-    dezimalzeichen =','
-    kopfz = 0
+    teilbar_durch = []
     
-    df=pd.read_csv(auswahl_datei, sep=trennzeichen , decimal=dezimalzeichen, header=kopfz)
-    #print(df)
+    i=2
     
-    #df2 = df.groupby('Stichprobe').agg({'Istwert':['mean', 'std'].reset_index()})
-    #print(df2)
+    for i in range(2, 11):
+        teilbar = datenanz %i
+        
+        if teilbar == 0:
+            teilbar_durch.append(i)
+        i +=1
+    
+    
+    print('Possible Samplesizes are:', teilbar_durch)
+    
+    n = input('Which Sample-Size: \n(2-10)\n?')
+    n=int(n)
+    
+    fact = datenanz/n
+    fact = int(fact)
+    
+    df['sample'] = pd.Series(range(1, fact +1)).repeat(n).tolist()
+    
+    
+    
+    
     df2 = pd.DataFrame()
     
     #df2['mean_istwert'] = df.groupby('Stichprobe')['Istwert'].describe()
-    df2 = df.groupby('Stichprobe')['Istwert'].describe()
-    
-    fn = 'describe.csv'
-    df2.to_csv(fn, sep=';', decimal=',', header =True)
-    auswahl_datei = 'describe.csv'
-    df2=pd.read_csv(auswahl_datei, sep=trennzeichen , decimal=dezimalzeichen, header=kopfz)
-    #df2=df.groupby(['Stichprobe'])[['mean']].mean().reset_index()
-    print (df2)
-    
-    #df2['Stichprobe'] = df2['Stichprobe'].astype(str)
-    
+    df2 = df.groupby('sample')[y].describe()
     print(df2)
     
-    print(df2.dtypes)
+    fn = 'describe.csv'
+    df2.to_csv(fn, sep=';', decimal=',')
     
-    x = 'Stichprobe'
+    df3 = pd.read_csv(fn, sep=';' , decimal=',', header=0)
+
+    
+    
+    
+    x = 'sample'
     y = 'mean'
     s = 'std'
     
-    mean_mean = df2['mean'].mean()
-    mean_std = df2['std'].mean()
+    Xbar = df3['mean'].mean()
+    sbar = df3['std'].mean()
     
-    df2.plot(x, y)
-    plt.axhline(y=mean_mean,linewidth=2, color='g')
+    xlcl = Xbar - A3[n]*sbar
+    xucl = Xbar + A3[n]*sbar
     
-    df2.plot(x, s)
+    slcl = B3[n]*sbar
+    sucl = B4[n]*sbar
     
+    print('s-bar :', sbar)
+    print('X-bar :',  Xbar)
+    
+    
+    tXbar = truncate(Xbar, 3)
+    tsbar = truncate(sbar, 3)
+    txlcl = truncate(xlcl,3)
+    txucl = truncate(xucl, 3)
+    tslcl = truncate(slcl,3)
+    tsucl = truncate(sucl, 3)
+    
+    
+    
+    
+    
+    eintrag_x = 'Xbar: ' + str(tXbar) + '\nucl: ' + str(txucl) + '\nlcl: ' + str(txlcl)
+    eintrag_s = 'sbar: ' + str(tsbar) + '\nucl: ' +str(tsucl) + '\nlcl: ' + str(tslcl)
+    
+    
+    plt.figure(figsize=(6, 4))
+    
+    #df3.plot(x, y, ax=axes[0])
+    plt.subplot(221)
+    sns.lineplot(x=x, y=y, estimator=None, lw=1, data=df3)
+    plt.axhline(y=Xbar,linewidth=2, color='g')
+    plt.axhline(y=xlcl,linewidth=2, color='orange')
+    plt.axhline(y=xucl,linewidth=2, color='orange')
+    
+    #df3.plot(x, s, ax = axes[1])
+    plt.subplot(222)
+    sns.lineplot(x=x, y=s, estimator=None, lw=1, data=df3)
+    plt.axhline(y=sbar, linewidth=2, color='g')
+    plt.axhline(y=slcl,linewidth=2, color='orange')
+    plt.axhline(y=sucl,linewidth=2, color='orange')
+    
+    plt.subplot(223)
+    plt.text(0.1,0.5,eintrag_x, 
+                     ha='left', va='center',
+                     fontsize=12)
+    plt.axis('off')
+    plt.subplot(224)
+    plt.text(0.1,0.5,eintrag_s, 
+                     ha='left', va='center',
+                     fontsize=12)
+    plt.axis('off')
     
     plt.show()
 
@@ -130,9 +224,9 @@ def x_chart(df):
     lower_q_y = yt.quantile(0.00135)
     
     ###toleranzen
-    one_two_sided = input('Tolerance: \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
-    
+    notol = '0'
     ###both side tolerance
     if one_two_sided == '1':
         
@@ -184,7 +278,8 @@ def x_chart(df):
             
                 
                 
-    
+    else:
+        notol = '1'
     
     
     
@@ -202,39 +297,51 @@ def x_chart(df):
         lt3s = minus3s
     
     
-    
-    if lt =='none':
-          
+    if notol =='1':
         df.plot(x, y)
         plt.axhline(y=mittelwert,linewidth=2, color='g')
         
         plt.axhline(y=ut3s,linewidth=1, color='orange')
         plt.axhline(y=lt3s,linewidth=1, color='orange')
-        plt.axhline(y=ut,linewidth=2, color='red')
-        
         
         plt.show()
         
-    elif ut=='none':
-        
-        df.plot(x, y)
-        plt.axhline(y=mittelwert,linewidth=2, color='g')
-        
-        plt.axhline(y=ut3s,linewidth=1, color='orange')
-        plt.axhline(y=lt3s,linewidth=1, color='orange')
-        plt.axhline(y=lt,linewidth=2, color='red')
-        plt.show()
-    
     else:
-    
-        df.plot(x, y)
-        plt.axhline(y=mittelwert,linewidth=2, color='g')
-        
-        plt.axhline(y=ut3s,linewidth=1, color='orange')
-        plt.axhline(y=lt3s,linewidth=1, color='orange')
-        plt.axhline(y=ut,linewidth=2, color='red')
-        plt.axhline(y=lt,linewidth=2, color='red')
-        
-        plt.show()
         
     
+        if lt =='none':
+              
+            df.plot(x, y)
+            plt.axhline(y=mittelwert,linewidth=2, color='g')
+            
+            plt.axhline(y=ut3s,linewidth=1, color='orange')
+            plt.axhline(y=lt3s,linewidth=1, color='orange')
+            plt.axhline(y=ut,linewidth=2, color='red')
+            
+            
+            plt.show()
+            
+        elif ut=='none':
+            
+            df.plot(x, y)
+            plt.axhline(y=mittelwert,linewidth=2, color='g')
+            
+            plt.axhline(y=ut3s,linewidth=1, color='orange')
+            plt.axhline(y=lt3s,linewidth=1, color='orange')
+            plt.axhline(y=lt,linewidth=2, color='red')
+            plt.show()
+        
+        
+        else:
+        
+            df.plot(x, y)
+            plt.axhline(y=mittelwert,linewidth=2, color='g')
+            
+            plt.axhline(y=ut3s,linewidth=1, color='orange')
+            plt.axhline(y=lt3s,linewidth=1, color='orange')
+            plt.axhline(y=ut,linewidth=2, color='red')
+            plt.axhline(y=lt,linewidth=2, color='red')
+            
+            plt.show()
+            
+        
