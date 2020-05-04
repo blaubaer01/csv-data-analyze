@@ -61,8 +61,8 @@ def clear():
 
 
 
-
-
+###X-bar-s-Chart
+###############################################################################
 def x_bar_s(df):
     
     werte = df.select_dtypes(exclude=['object'])
@@ -262,8 +262,8 @@ def x_bar_s(df):
         
         plt.show()
     
-
-
+###x-chart
+################################################################################
 def x_chart(df):
     
     df['nummer'] = range(1, len(df) + 1)
@@ -420,4 +420,218 @@ def x_chart(df):
             
             plt.show()
             
+
+def x_bar_r(df):
+    
+    werte = df.select_dtypes(exclude=['object'])
+        
+        #
+    anz_col_werte = len(werte.columns)
+            
+    list_columns_werte = []
+    
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+        
+    value_column= input('Which value column do you want to see: \n(choose number) \n?')
+    
+    print(list_columns_werte[int(value_column)])    
+    y = list_columns_werte[int(value_column)]
+
+    datenanz = df[list_columns_werte[int(value_column)]].count()
+    
+    
+    teilbar_durch = []
+    
+    i=2
+    
+    for i in range(2, 11):
+        teilbar = datenanz %i
+        
+        if teilbar == 0:
+            teilbar_durch.append(i)
+        i +=1
+    
+    
+    print('Possible Samplesizes are:', teilbar_durch)
+    
+    n = input('Which Sample-Size: \n(2-10)\n?')
+    n=int(n)
+    
+    fact = datenanz/n
+    fact = int(fact)
+    
+    df['sample'] = pd.Series(range(1, fact +1)).repeat(n).tolist()
+    
+    
+    
+    
+    df2 = pd.DataFrame()
+    
+    #df2['mean_istwert'] = df.groupby('Stichprobe')['Istwert'].describe()
+    df2 = df.groupby('sample')[y].describe()
+    print(df2)
+    
+    fn = 'describe.csv'
+    df2.to_csv(fn, sep=';', decimal=',')
+    
+    df3 = pd.read_csv(fn, sep=';' , decimal=',', header=0)
+
+    
+    target_yes = input('Would you like target center y/n \n?')
+    
+    if target_yes == 'y':
+        while True:
+            center = input('Input center value: \n?')
+            if not isfloat(center):
+                    print("target mean value is not a number with point-comma, please try again")
+            else:
+                break
+        
+        
+        x = 'sample'
+        y = 'mean'
+        s = 'std'
+        center=float(center)
+        
+        
+        df3['R'] = df3['max']-df3['min']
+        
+        Rbar = df3['R'].mean()
+        r = 'R'
+        
+        Xbar = df3['mean'].mean()
+        
+        xlcl = center - A2[n]*Rbar
+        xucl = center + A2[n]*Rbar
+        
+        rlcl = D3[n]*Rbar
+        rucl = D4[n]*Rbar
+        
+        
+        print('r-bar :', Rbar)
+        print('X-bar :',  Xbar)
+        
+        
+        tXbar = truncate(Xbar, 3)
+        trbar = truncate(Rbar, 3)
+        txlcl = truncate(xlcl,3)
+        txucl = truncate(xucl, 3)
+        trlcl = truncate(rlcl,3)
+        trucl = truncate(rucl, 3)
+        tcenter = truncate(center, 3)
+        
+        
+        
+        
+        eintrag_x = 'Xbar: ' + str(tXbar) + '\nucl: ' + str(txucl) + '\nlcl: ' + str(txlcl) + '\ncenter: ' + str(tcenter)
+        eintrag_s = 'rbar: ' + str(trbar) + '\nucl: ' +str(trucl) + '\nlcl: ' + str(trlcl)
+        
+        
+        plt.figure(figsize=(6, 4))
+        
+        #df3.plot(x, y, ax=axes[0])
+        plt.subplot(221)
+        sns.lineplot(x=x, y=y, estimator=None, lw=1, data=df3)
+        plt.axhline(y=Xbar,linewidth=2, color='g')
+        plt.axhline(y=xlcl,linewidth=2, color='orange')
+        plt.axhline(y=xucl,linewidth=2, color='orange')
+        plt.axhline(y=center,linewidth=2, color='violet')
+        
+        
+        #df3.plot(x, s, ax = axes[1])
+        plt.subplot(222)
+        sns.lineplot(x=x, y=r, estimator=None, lw=1, data=df3)
+        plt.axhline(y=Rbar, linewidth=2, color='g')
+        plt.axhline(y=rlcl,linewidth=2, color='orange')
+        plt.axhline(y=rucl,linewidth=2, color='orange')
+        
+        plt.subplot(223)
+        plt.text(0.1,0.5,eintrag_x, 
+                         ha='left', va='center',
+                         fontsize=12)
+        plt.axis('off')
+        plt.subplot(224)
+        plt.text(0.1,0.5,eintrag_s, 
+                         ha='left', va='center',
+                         fontsize=12)
+        plt.axis('off')
+        
+        plt.show()
+
+    ####Chart without target center    
+    else:
+    
+        x = 'sample'
+        y = 'mean'
+        s = 'std'
+        
+        df3['R'] = df3['max']-df3['min']
+        
+        r ='R'
+        
+        Rbar = df3['R'].mean()
+        
+        
+        Xbar = df3['mean'].mean()
+        
+        xlcl = Xbar - A2[n]*Rbar
+        xucl = Xbar + A2[n]*Rbar
+        
+        rlcl = D3[n]*Rbar
+        rucl = D4[n]*Rbar
+        
+        
+        print('r-bar :', Rbar)
+        print('X-bar :',  Xbar)
+        
+        
+        tXbar = truncate(Xbar, 3)
+        trbar = truncate(Rbar, 3)
+        txlcl = truncate(xlcl,3)
+        txucl = truncate(xucl, 3)
+        trlcl = truncate(rlcl,3)
+        trucl = truncate(rucl, 3)
+        
+        
+        
+        
+        eintrag_x = 'Xbar: ' + str(tXbar) + '\nucl: ' + str(txucl) + '\nlcl: ' + str(txlcl)
+        eintrag_s = 'rbar: ' + str(trbar) + '\nucl: ' +str(trucl) + '\nlcl: ' + str(trlcl)
+        
+        
+        plt.figure(figsize=(6, 4))
+        
+        #df3.plot(x, y, ax=axes[0])
+        plt.subplot(221)
+        sns.lineplot(x=x, y=y, estimator=None, lw=1, data=df3)
+        plt.axhline(y=Xbar,linewidth=2, color='g')
+        plt.axhline(y=xlcl,linewidth=2, color='orange')
+        plt.axhline(y=xucl,linewidth=2, color='orange')
+        
+        
+        
+        #df3.plot(x, s, ax = axes[1])
+        plt.subplot(222)
+        sns.lineplot(x=x, y=r, estimator=None, lw=1, data=df3)
+        plt.axhline(y=Rbar, linewidth=2, color='g')
+        plt.axhline(y=rlcl,linewidth=2, color='orange')
+        plt.axhline(y=rucl,linewidth=2, color='orange')
+        
+        plt.subplot(223)
+        plt.text(0.1,0.5,eintrag_x, 
+                         ha='left', va='center',
+                         fontsize=12)
+        plt.axis('off')
+        plt.subplot(224)
+        plt.text(0.1,0.5,eintrag_s, 
+                         ha='left', va='center',
+                         fontsize=12)
+        plt.axis('off')
+        
+        plt.show()
+
         

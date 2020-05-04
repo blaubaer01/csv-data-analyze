@@ -16,7 +16,7 @@ from outliers import smirnov_grubbs as grubbs
 from SPC_CPA import CPA
 from L_REG import LREG
 from table_functions import appendDFToCSV, mergecolumn, filter_setzen, sort_column, transposed_table
-from regelkarte import x_chart, x_bar_s
+from regelkarte import x_chart, x_bar_s, x_bar_r
 
 #alternatively, define the source
 csv_dateien=['daten.csv']
@@ -1024,16 +1024,19 @@ def menu_spc_charts(df):
     
     clear()
     print('Choose graphical view:')
-    gr_view_list= ['X-Chart','X-bar-s-Chart']
+    gr_view_list= ['X-Chart','X-bar-s-Chart', 'X-bar-R-Chart']
     for i in range(len(gr_view_list)):
         print(i, gr_view_list[i])
         i+=1
-    ausw_gr_view = input('Which SPC-Chart: \n(choose a number) \n?')
+    ausw_gr_view = input('Which Control-Chart: \n(choose a number) \n?')
     
     if ausw_gr_view =='0':
         x_chart(df)
     if ausw_gr_view =='1':
         x_bar_s(df)
+    if ausw_gr_view =='2':
+        x_bar_r(df)
+    
     
     else:
         print('Wrong input, please try again')
@@ -1046,7 +1049,7 @@ def menu_graphical_analyze(df):
     print('Choose graphical view:')
     gr_view_list= ['Barchart', 'Piechart', 'Histogram', 'Q-Q-Plot', 'Linechart', 'Group-Plot', 'Scatter-Plot',  
                    'Categorial Plots',  
-                   'SPC-Charts']
+                   'Control-Charts']
     for i in range(len(gr_view_list)):
         print(i, gr_view_list[i])
         i+=1
