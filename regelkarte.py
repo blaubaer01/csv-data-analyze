@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns ; sns.set()
 from scipy.stats import shapiro
 import os
+import numpy as np
 
 #Thanks to: Michal Nowikowski <godfryd@gmail.com>
 ###got exsamples from https://github.com/mattharrison/python-spc
@@ -163,7 +164,7 @@ def x_bar_s(df):
         
         
         
-        eintrag_x = 'Xbar: ' + str(tXbar) + '\nucl: ' + str(txucl) + '\nlcl: ' + str(txlcl) + '\ncenter: ' + str(tcenter)
+        eintrag_x = 'Xbar/s Chart' + '\nXbar: ' + str(tXbar) + '\nucl: ' + str(txucl) + '\nlcl: ' + str(txlcl) + '\ncenter: ' + str(tcenter)
         eintrag_s = 'sbar: ' + str(tsbar) + '\nucl: ' +str(tsucl) + '\nlcl: ' + str(tslcl)
         
         
@@ -229,7 +230,7 @@ def x_bar_s(df):
         
         
         
-        eintrag_x = 'Xbar: ' + str(tXbar) + '\nucl: ' + str(txucl) + '\nlcl: ' + str(txlcl)
+        eintrag_x = 'Xbar/s Chart' + '\nXbar: ' + str(tXbar) + '\nucl: ' + str(txucl) + '\nlcl: ' + str(txlcl)
         eintrag_s = 'sbar: ' + str(tsbar) + '\nucl: ' +str(tsucl) + '\nlcl: ' + str(tslcl)
         
         
@@ -527,7 +528,7 @@ def x_bar_r(df):
         
         
         
-        eintrag_x = 'Xbar: ' + str(tXbar) + '\nucl: ' + str(txucl) + '\nlcl: ' + str(txlcl) + '\ncenter: ' + str(tcenter)
+        eintrag_x = 'Xbar/R Chart' + '\nXbar: ' + str(tXbar) + '\nucl: ' + str(txucl) + '\nlcl: ' + str(txlcl) + '\ncenter: ' + str(tcenter)
         eintrag_s = 'rbar: ' + str(trbar) + '\nucl: ' +str(trucl) + '\nlcl: ' + str(trlcl)
         
         
@@ -599,7 +600,7 @@ def x_bar_r(df):
         
         
         
-        eintrag_x = 'Xbar: ' + str(tXbar) + '\nucl: ' + str(txucl) + '\nlcl: ' + str(txlcl)
+        eintrag_x = 'Xbar/R Chart' + '\nXbar: ' + str(tXbar) + '\nucl: ' + str(txucl) + '\nlcl: ' + str(txlcl)
         eintrag_s = 'rbar: ' + str(trbar) + '\nucl: ' +str(trucl) + '\nlcl: ' + str(trlcl)
         
         
@@ -634,4 +635,114 @@ def x_bar_r(df):
         
         plt.show()
 
+###XmR-Chart
+###################################################################################
+
+def xmr_chart(df):
+    
+    werte = df.select_dtypes(exclude=['object'])
+        
+        #
+    anz_col_werte = len(werte.columns)
+            
+    list_columns_werte = []
+    
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        print(i, werte.columns[i])
+        i+=1
+        
+    value_column= input('Which value column do you want to see: \n(choose number) \n?')
+    
+    print(list_columns_werte[int(value_column)])    
+    y = list_columns_werte[int(value_column)]
+    df['number'] = range(1, len(df) + 1)
+    
+    
+    data = df[y]
+    Xbar = df[y].mean()
+    
+    x = df['number']
+    
+    sd = 0
+    r = []
+    
+    for i in range(len(data)-1):
+        r.append(abs(data[i]-data[i+1]))
+        sd += abs(data[i] - data[i+1])
+        #print(sd)
+    sd /= len(data) - 1
+    
+    rarray = np.array(r)
+    
+    dfr = pd.DataFrame(rarray)
+    dfr.columns = ['R'] 
+    dfr['number'] = range(1, len(dfr) + 1)
+    
+    xr = dfr['number']
+    r = dfr['R']
+    
+    #print(dfr)
+    
+    
+    
+    rbar = rarray.mean()
+    
+    
+    
+    d2 = 1.128
+    
+    
+    xlcl = Xbar - 3*sd/d2
+    xucl = Xbar + 3*sd/d2
+    
+    center = sd
+    rlcl = 0
+    rucl = center + 3*sd/d2
+    
+    tXbar = truncate(Xbar, 3)
+    trbar = truncate(center, 3)
+    txlcl = truncate(xlcl,3)
+    txucl = truncate(xucl, 3)
+    trlcl = truncate(rlcl,3)
+    trucl = truncate(rucl, 3)
+    
+    
+    
+    eintrag_x = 'X-mR-Chart' + '\nXbar: ' + str(tXbar) + '\nucl: ' + str(txucl) + '\nlcl: ' + str(txlcl)
+    eintrag_s = 'rbar: ' + str(trbar) + '\nucl: ' +str(trucl) + '\nlcl: ' + str(trlcl)
+    
+    
+    plt.figure(figsize=(6, 4))
+    
+    #df3.plot(x, y, ax=axes[0])
+    plt.subplot(221)
+    sns.lineplot(x=x, y=y, estimator=None, lw=1, data=df)
+    plt.axhline(y=Xbar,linewidth=2, color='g')
+    plt.axhline(y=xlcl,linewidth=2, color='orange')
+    plt.axhline(y=xucl,linewidth=2, color='orange')
+    
+    
+    
+    #df3.plot(x, s, ax = axes[1])
+    plt.subplot(222)
+    sns.lineplot(x=xr, y=r, estimator=None, lw=1, data=dfr)
+    plt.axhline(y=rbar, linewidth=2, color='g')
+    plt.axhline(y=rlcl,linewidth=2, color='orange')
+    plt.axhline(y=rucl,linewidth=2, color='orange')
+    
+    plt.subplot(223)
+    plt.text(0.1,0.5,eintrag_x, 
+                     ha='left', va='center',
+                     fontsize=12)
+    plt.axis('off')
+    plt.subplot(224)
+    plt.text(0.1,0.5,eintrag_s, 
+                     ha='left', va='center',
+                     fontsize=12)
+    plt.axis('off')
+    
+    plt.show()
+    
         
