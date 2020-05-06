@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"><!--This file has been created with toxhtml.xsl-->
 <head>
 <meta name="Ricky Helfgen" content="">
-<meta name="date" content="2020-05-05T21:33:20+0200" >
+<meta name="date" content="2020-05-05T21:32:00+0200" >
 <meta name="copyright" content="Ricky Helfgen>
 <meta name="keywords" content="CSV, csv-data-analyze, csv-data-analyze.py, statistisch, statistsiche Analyse, statistical analyse from CSV-files, work with csv-files, csv-file">
 <meta name="description" content="Ein Python Tool zum Bearbeiten und analysieren von csv-files">

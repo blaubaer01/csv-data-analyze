@@ -17,6 +17,7 @@ from SPC_CPA import CPA
 from L_REG import LREG
 from table_functions import appendDFToCSV, mergecolumn, filter_setzen, sort_column, transposed_table
 from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
+from msa import msa_v1
 
 #alternatively, define the source
 csv_dateien=['daten.csv']
@@ -1127,6 +1128,7 @@ def correl(df):
 ###############################################################################
 def outliert(df):
     
+    sns.set(color_codes=True)
     
     
     werte = df.select_dtypes(exclude=['object'])
@@ -1146,7 +1148,21 @@ def outliert(df):
     
     y = df[list_columns_werte[int(value_column)]]
     print('Value could be outlier:',grubbs.max_test_outliers(y, alpha=0.05))
-
+    
+    
+    
+    
+    eintrag = 'Grubbs-Outlier Test' + '\nValue could be outlier:' + str(grubbs.max_test_outliers(y, alpha=0.05))
+    
+    plt.figure(figsize=(6,2))
+    plt.subplot(211)
+    sns.boxplot(x=y)
+    plt.subplot(212)
+    plt.text(0.1,0.5,eintrag, 
+                     ha='left', va='center',
+                     fontsize=12)
+    plt.axis('off')
+    plt.show()    
 
 ###f-test
 ###############################################################################    
@@ -1487,6 +1503,13 @@ def menu_tests(df):
         print('Wrong input, try again!')
 
 
+def MSA(df):
+    clear()
+    menu_MSA = input('Choose MSA Version: \n1: MSA_V1 \n2: MSA_V2 \n(choose number) \n?')
+    if menu_MSA =='1':
+        msa_v1(df)
+    elif menu_MSA =='2':
+        print('not available yet')
 
 
 
@@ -1494,7 +1517,7 @@ def menu_tests(df):
 ###############################################################################
 def statistic(df):
     clear()
-    menu_statistic = input('What kind of statistics: \n1: simple descriptive statistics \n2: graphical view \n3: tests \n4: process capability analysis \n5: linear regression analysis \n(choose number) \n?')
+    menu_statistic = input('What kind of statistics: \n1: simple descriptive statistics \n2: graphical view \n3: tests \n4: process capability analysis \n5: linear regression analysis \n(choose number) \n6: MSA \n?')
     if menu_statistic =='1':
         beschreibende_stat(df)
     elif menu_statistic =='2':
@@ -1505,6 +1528,8 @@ def statistic(df):
         CPA(df)
     elif menu_statistic =='5':
         LREG(df)
+    elif menu_statistic =='6':
+        MSA(df)
     else:
         print('wrong input, please try again!')
         statistic(df)
