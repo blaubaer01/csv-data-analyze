@@ -19,11 +19,18 @@ def isfloat(x):
         return False
     else:
         return True
+    
+def truncate(n, decimals=0):
+    multiplier = 10 ** decimals
+    return int(n * multiplier) / multiplier
 
 ###MSA-V1
 
 def msa_v1(df):
     
+    df['nr'] = range(1, len(df) + 1)
+    
+    nr = df['nr']
     ###get datas
     werte = df.select_dtypes(exclude=['object'])
     
@@ -56,7 +63,7 @@ def msa_v1(df):
     offset = abs(y.mean()-tv)
     mean_y = y.mean()
     std_y = y.std()
-    
+    toff = truncate(offset, 6)
     ####test auf normalv + t-test
     ####berechnung Offset
     ####toleranz eins/zweis, berechnung Cg,Cgk
@@ -93,6 +100,10 @@ def msa_v1(df):
         print ('Cg, Cgk:', Cg, Cgk)
         utdiagram = tv + ((ut-lt)*0.1)
         ltdiagram = tv - ((ut-lt)*0.1)
+        tCg = truncate(Cg,2)
+        tCgk = truncate(Cgk, 2)
+        tutd = truncate(utdiagram, 3)
+        tltd = truncate(ltdiagram, 3)
         
     ###one side tolerance ut
     elif one_two_sided =='2':
@@ -106,9 +117,15 @@ def msa_v1(df):
             else:
                 lt = 'none'
                 break
-                
-                
-
+        tCg ='none'
+        Cgk = Cgk = ((0.1* (ut-(mean_y-(3*std_y)))-offset))/(3*std_y)
+        tCgk = truncate(Cgk, 2)
+        utdiagram = tv + ((ut-(mean_y-(3*std_y)))*0.1)
+        ltdiagram = tv - ((ut-(mean_y-(3*std_y)))*0.1)
+        tutd = truncate(utdiagram, 3)
+        tltd = truncate(ltdiagram, 3)
+        
+    
     ###one side tolerance lt
     elif one_two_sided =='3':
         
@@ -120,12 +137,23 @@ def msa_v1(df):
             else:
                 ut = 'none'
                 break
-            
+        tCg ='none'
+        Cgk = ((0.1* ((mean_y + (3*std_y))-lt)-offset))/(3*std_y)
+        tCgk = truncate(Cgk, 2)
+        utdiagram = tv + (((mean_y + (3*std_y))-lt)*0.1)
+        ltdiagram = tv - (((mean_y + (3*std_y))-lt)*0.1)
+        tutd = truncate(utdiagram, 3)
+        tltd = truncate(ltdiagram, 3)
                 
                 
     else:
         notol = '1'
-    
+        tCg = 'none'
+        tCgk = 'none'
+        utdiagram = tv
+        ltdiagram = tv
+        tutd = 'none'
+        tltd = 'none'
     
     
     
@@ -159,19 +187,29 @@ def msa_v1(df):
     
         print('One sample t-Test:')
         print ('t-Value:',t)
+        
         print ('p-Value:',p)
+        tp = truncate(t, 5)
+        tt = truncate(p, 5)
+    
     
         alpha = 0.05
         if p > alpha:
             print('Means should not be different (fail to reject H0)')
+            mess = 'Means should not be different (fail to reject H0)'
+            
         else:
-            print('Means should be different (reject H0)')    
+            print('Means should be different (reject H0)')
+            mess = 'Means should be different (reject H0)'
     else:
         print('no t-test possible, data looks not Gaussian')
+        mess = 'no t-test possible, data looks not Gaussian'
+        t='none'
+        p='none'
     
     
     
-    
+    eintrag = 'MSA_V1' + '\nOffset: ' + str(toff) + '\nCg: ' + str(tCg) + ' Cgk: ' + str(tCgk) + '\none single t-Test: ' + mess + ' t: ' + str(tt) + ' p: ' + str(tp) + '\ntol(10%): ' + 'UT: ' + str(tutd) + ' LT: ' + str(tltd)
     
     
     
@@ -181,9 +219,14 @@ def msa_v1(df):
     
     plt.figure(figsize=(6,2))
     plt.subplot(211)
-    sns.boxplot(x=y)
+    sns.lineplot(x=nr, y=y, estimator=None, lw=1, data=df)
+    plt.axhline(y=mean_y,linewidth=2, color='g')
+    plt.axhline(y=utdiagram,linewidth=2, color='orange')
+    plt.axhline(y=ltdiagram,linewidth=2, color='orange')
+    plt.axhline(y=tv,linewidth=2, color='violet')
+    
     plt.subplot(212)
-    plt.text(0.1,0.5,'eintrag', 
+    plt.text(0.1,0.5,eintrag, 
                      ha='left', va='center',
                      fontsize=12)
     plt.axis('off')
