@@ -11,6 +11,34 @@ import seaborn as sns
 from scipy.stats import shapiro
 import matplotlib.pyplot as plt
 import scipy as spy
+from statsmodels.formula.api import ols
+import statsmodels.api as sm
+import numpy as np
+
+#Thanks to: Michal Nowikowski <godfryd@gmail.com>
+###got exsamples from https://github.com/mattharrison/python-spc
+
+
+###statistic variables
+#########################################################################################
+# n         2      3      4      5      6      7      8      9      10
+A2 = [0,0, 1.880, 1.023, 0.729, 0.577, 0.483, 0.419, 0.373, 0.337, 0.308]
+D3 = [0,0, 0,     0,     0,     0,     0,     0.076, 0.136, 0.184, 0.223]
+D4 = [0,0, 3.267, 2.575, 2.282, 2.115, 2.004, 1.924, 1.864, 1.816, 1.777]
+# n   0 1      2      3      4      5      6      7      8      9     10     11     12     13     14     15       20     25
+c4 = [0,0,0.7979,0.8862,0.9213,0.9400,0.9515,0.9594,0.9650,0.9693,0.9727,0.9754,0.9776,0.9794,0.9810,0.9823]#,0.9869,0.9896]
+B3 = [0,0,     0,     0,     0,     0, 0.030, 0.118, 0.185, 0.239, 0.284, 0.321, 0.354, 0.382, 0.406, 0.428]#, 0.510, 0.565]
+B4 = [0,0, 3.267, 2.568, 2.266, 2.089, 1.970, 1.882, 1.815, 1.761, 1.716, 1.679, 1.646, 1.618, 1.594, 1.572]#, 1.490, 1.435]
+B5 = [0,0,     0,     0,     0,     0, 0.029, 0.113, 0.179, 0.232, 0.276, 0.313, 0.346, 0.374, 0.399, 0.421]#, 0.504, 0.559]
+B6 = [0,0, 2.606, 2.276, 2.088, 1.964, 1.874, 1.806, 1.751, 1.707, 1.669, 1.637, 1.610, 1.585, 1.563, 1.544]#, 1.470, 1.420]
+A3 = [0,0, 2.659, 1.954, 1.628, 1.427, 1.287, 1.182, 1.099, 1.032, 0.975, 0.927, 0.886, 0.850, 0.817, 0.789]#, 0.680, 0.606]
+#########################################################################################
+
+
+
+
+
+
 
 def isfloat(x):
     try:
@@ -232,4 +260,353 @@ def msa_v1(df):
     plt.axis('off')
     plt.show() 
     
+def msa_v2(df):
     
+    sns.set(style="whitegrid")
+    sns.set(style="dark", color_codes=True)
+
+
+    
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number=[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+        
+    while True:
+        value_column= input('Choose your value column: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break
+    
+    ########################################################################
+    #Main Values
+    y_df = list_columns_werte[int(value_column)]
+    
+    para = df.select_dtypes(exclude=['float'])
+    
+    #
+    anz_col_para = len(para.columns)
+        
+    list_columns_para = []
+    list_number=[]
+    i=1
+    for i in range(anz_col_para):
+        list_columns_para.append(para.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    while True:
+        operator_column= input('Choose your "Operator" column: \n(choose number) \n?')
+        if operator_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break
+    
+    
+    ###Operator-Column
+    operator = list_columns_para[int(operator_column)]
+        
+        
+        
+    while True:
+        part_column = input('Choose your "Part" - Column \n(choose number)\n?')    
+        if part_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break
+    
+    ###Part-Column
+    part = list_columns_para[int(part_column)]
+    
+    while True:
+        measurement_column = input('Choose your "Measurment" Column \n(choose number \n?')
+        if measurement_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break
+    
+    ###Measurements-Column
+    measurement = list_columns_para[int(measurement_column)]
+    
+    ###Sort Database to get the right output
+    df = df.sort_values(by=[part, operator, measurement])
+    
+    
+    ###insert sequence number
+    df['nr'] = range(1, len(df) + 1)
+    
+    
+    ###create Xbar/R-Chart
+    df2 = pd.DataFrame()
+    
+    df2 = df.groupby([part, operator])[y_df].describe()
+        
+    n = df2['count'][1][1]
+    
+    n= int(n)
+    
+    fn = 'describe.csv'
+    
+    df2['nr'] = range(1, len(df2) + 1)
+    
+    df2.to_csv(fn, sep=';', decimal=',')
+    
+    df3 = pd.read_csv(fn, sep=';' , decimal=',', header=0)
+    print(df3)
+    
+    x = 'nr'
+    y = 'mean'
+        
+    df3['R'] = df3['max']-df3['min']
+        
+    Rbar = df3['R'].mean()
+    r = 'R'
+    
+    Xbar = df3['mean'].mean()
+    
+    xlcl = Xbar - A2[n]*Rbar
+    xucl = Xbar + A2[n]*Rbar
+    
+    rlcl = D3[n]*Rbar
+    rucl = D4[n]*Rbar
+    
+    ###################################################################
+    ###Two Way ANOVA  
+    mod = ols(y_df + '~C(' + part + ')*C(' + operator +')',
+                data=df).fit()
+
+    # Seeing if the overall model is significant
+    print(f"Overall mod F({mod.df_model: .0f},{mod.df_resid: .0f}) = {mod.fvalue: .3f}, p = {mod.f_pvalue: .4f}")    
+    
+    mod.summary()
+        
+    aov_table = sm.stats.anova_lm(mod, typ=2)
+    print('two way ANOVA Result:' )
+    print (aov_table)
+    
+    
+    ##########################################################################
+    ###calc GRR-Value
+    ###Thanks to https://www.spcforexcel.com/knowledge/measurement-systems-analysis/anova-gage-rr-part-2
+    
+    xbar = df[y_df].mean()
+    
+    ###S-Square-Operator
+    #########################################################################
+    dfSSo= df.groupby([operator])[y_df].describe()
+    dfSSo['SSq']=(dfSSo['mean']-xbar)**2
+    
+    
+    SSo = dfSSo['SSq'].sum()
+    #k-value
+    cSSo = dfSSo['count'][1]
+    cSSo = int(cSSo)
+    
+    ##SSo-Output
+    SSocalc = SSo*cSSo
+    MSo = SSocalc/(cSSo-1)
+    
+    print('Calculation of GRR-Parameters')
+    print('#'*40)
+    print('S-Sqaure Opeartor')      
+    print('SSo:',SSocalc)
+    print('Mso:', MSo )
+    
+    ###S-Square Parts
+    #########################################################################
+    dfSSp= df.groupby([part])[y_df].describe()
+    dfSSp['SSq']=(dfSSp['mean']-xbar)**2
+    
+    
+    SSp = dfSSp['SSq'].sum()
+    #n-value
+    cSSp = dfSSp['count'][1]
+    cSSp = int(cSSp)
+
+    ##SSp-Output
+    SSpcalc = SSp*cSSp
+    MSp = SSpcalc/(cSSp-1)
+    
+    print('#'*40)
+    print('S-Sqaure Parts')    
+    print('SSp:',SSpcalc)
+    print('MSp:',MSp)
+    
+    
+    ###S-Square Equipement
+    ########################################################################
+    ###df3 = Mean of the Repatability
+    dfSSe=df
+    
+    dfSSe['pando']= (dfSSe[part]).astype(str) + (dfSSe[operator]).astype(str)
+    
+    df3['pando']= (df3[part]).astype(str) +  (df3[operator]).astype(str)
+    #r-value
+    cr = df3['count'][1]
+    
+    result = pd.merge(dfSSe, df3, how='outer', on='pando')
+    
+    result['SSq']=(result['Value']-result['mean'])**2
+    
+    SSe = result['SSq'].sum()
+    MSe = SSe/(cSSp*cSSo*(cr-1))
+    
+    print('#'*40)
+    print('S-Sqaure Equipment')
+    print('SSe:',SSe)
+    print('MSe:' , MSe)
+    
+    ###S-Square Total
+    dfSST = df
+    dfSST['SSq'] = (dfSST['Value']-xbar)**2
+    SST = dfSST['SSq'].sum()
+    
+    print('#'*40)
+    print('S-Sqaure Total')
+    print('SST:',SST)
+    
+    ###S-Square Opeartor*Parts
+    SSop = SST-(SSocalc+SSpcalc+SSe)
+    MSop = SSop/((cSSp-1)*(cSSo-1))
+    
+    print('#'*40)
+    print('S-Sqaure Operator * Parts')
+    print('SSop:',SSop)
+    print('MSop:', MSop)
+    
+    ########################################################################
+    ##calc Sigma**2
+    
+    ###Sigma²Operator*Parts
+    sigmaqOP = (MSop-MSe)/cr
+    if sigmaqOP < 0:
+        sigmaqOP = 0
+    
+    
+    ###Sigma² Part
+    sigmaqP = (MSp-MSop)/(cSSo*cr)    
+    if sigmaqP < 0:
+        sigmaqP =0
+    
+    
+    ###Sigma² Operator
+    sigmaqO = (MSo-MSop)/(cr*cSSp)
+    if sigmaqO < 0:
+        sigmaqO = 0
+        
+    ###Sigma² Equipement
+    sigmaqE = MSe
+    
+    print('#'*40)
+    print('Sigma - Values')
+    print('sigmaqOP: ', sigmaqOP)
+    print('sigmaqP: ', sigmaqP)
+    print('sigmaqO: ' , sigmaqO)
+    print('sigmaqE:' , sigmaqE)
+    
+    ###GRR²
+    GRRq = sigmaqE+sigmaqO
+    print('GRRq: ', GRRq)
+    
+    ###Total-Variance
+    TVq = sigmaqE + sigmaqP + sigmaqOP + sigmaqO
+    print('TVq: ', TVq)
+    
+    ####Percent Values
+    
+    ###%GRR
+    PercentGRR = (GRRq/TVq)*100
+    
+    ###%Part
+    PercentPart = (sigmaqP/TVq)*100
+    
+    ###%Equipment
+    PercentE = (sigmaqE/TVq)*100
+    
+    ###%Operator
+    PercentO = (sigmaqO/TVq)*100
+    
+    ###%Operator*Parts
+    PercentOP = (sigmaqOP/TVq)*100
+    
+    ###df of the Percent Values
+    GRRdf = pd.DataFrame(np.array([['%GRR', PercentGRR], ['%Part', PercentPart], ['%Equi', PercentE], ['%Oper', PercentO], ['%Op*Pa', PercentOP]]),
+
+                   columns=['Name', 'Value'])
+    GRRdf['Value']= GRRdf['Value'].astype(float)
+    
+    dPercentGRR = truncate(PercentGRR, 2)
+    
+    print(GRRdf)
+    
+    if PercentGRR < 10:
+        resultGRR = 'Measuring-System is capable'
+    elif PercentGRR > 10:
+        resultGRR = 'Measuring System is conditionally capable'
+    elif PercentGRR > 30:
+        resultGRR = 'Measuring System in not capable'
+    
+    
+    eintrag = 'MSA V2 (GageR&R)' + '\n%GRR: ' + str(dPercentGRR) + '\n' + resultGRR
+    
+    
+    ######create the diagram
+    
+    plt.figure(figsize=(8, 6))
+        
+    #df3.plot(x, y, ax=axes[0])
+    plt.subplot(231)
+    sns.lineplot(x=x, y=r, estimator=None, lw=1, data=df3)
+    plt.axhline(y=Rbar, linewidth=2, color='g')
+    plt.axhline(y=rlcl,linewidth=2, color='orange')
+    plt.axhline(y=rucl,linewidth=2, color='orange')
+    
+    
+    #df3.plot(x, s, ax = axes[1])
+    plt.subplot(232)
+    
+    sns.boxplot(x=operator, y=y_df,data=df, palette="Set3")
+    
+    plt.subplot(233)
+    
+    sns.barplot(x='Value', y='Name', data=GRRdf, palette="deep")
+    
+    plt.subplot(234)
+    
+    sns.lineplot(x=x, y=y, estimator=None, lw=1, data=df3)
+    plt.axhline(y=Xbar,linewidth=2, color='g')
+    plt.axhline(y=xlcl,linewidth=2, color='orange')
+    plt.axhline(y=xucl,linewidth=2, color='orange')
+    
+    
+    
+    
+    plt.subplot(235)
+    
+    sns.stripplot(x=part, y=y_df,data=df, hue=operator, palette="Set3")
+    
+    
+    
+    plt.subplot(236)
+    plt.text(0.1,0.5,eintrag, 
+                     ha='left', va='center',
+                     fontsize=12)
+    plt.axis('off')
+    
+    
+    
+    
+    plt.show()
+
+        

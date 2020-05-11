@@ -17,7 +17,7 @@ from SPC_CPA import CPA
 from L_REG import LREG
 from table_functions import appendDFToCSV, mergecolumn, filter_setzen, sort_column, transposed_table
 from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
-from msa import msa_v1
+from msa import msa_v1, msa_v2
 
 #alternatively, define the source
 csv_dateien=['daten.csv']
@@ -1410,7 +1410,7 @@ def anova_o_w (df):
 ###############################################################################    
 def anova_t_w(df):
     clear()
-    kategorie=df.select_dtypes(include=['object'])
+    kategorie=df.select_dtypes(exclude=['float'])
     werte = df.select_dtypes(exclude=['object'])
     
     #
@@ -1509,7 +1509,8 @@ def MSA(df):
     if menu_MSA =='1':
         msa_v1(df)
     elif menu_MSA =='2':
-        print('not available yet')
+        msa_v2(df)
+        #print('not available yet')
 
 
 
