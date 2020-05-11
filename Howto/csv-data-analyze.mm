@@ -149,6 +149,17 @@
 <font NAME="SansSerif" SIZE="16"/>
 <node COLOR="#990000" CREATED="1587890138846" ID="ID_1884400672" MODIFIED="1587892403696" TEXT="Statistische Anaysen">
 <font NAME="SansSerif" SIZE="14"/>
+<node COLOR="#111111" CREATED="1589194453324" ID="ID_486637719" MODIFIED="1589194485381">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/statistic_menue.png" />
+  </body>
+</html>
+</richcontent>
+</node>
 <node COLOR="#111111" CREATED="1587890163919" ID="ID_1635904288" MODIFIED="1587892403698" TEXT="Beschreibende Statistik">
 <node COLOR="#111111" CREATED="1587890209265" ID="ID_1589835199" MODIFIED="1587892403700" TEXT="Beschreibende Statistik ganze Tabelle"/>
 <node COLOR="#111111" CREATED="1587890240375" ID="ID_717387343" MODIFIED="1587892403702" TEXT="Beschreibende Statistik nur numerische Daten"/>
@@ -544,8 +555,7 @@
   <body>
     <img src="pictures/Outlier-Test.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
@@ -581,6 +591,45 @@
     <img src="pictures/values_linear-r-study.png" />
   </body>
 </html></richcontent>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1589193521709" ID="ID_1014655034" MODIFIED="1589193525109" TEXT="MSA">
+<node COLOR="#111111" CREATED="1589193530902" ID="ID_91637501" MODIFIED="1589193535277" TEXT="MSA V1">
+<node COLOR="#111111" CREATED="1589193559144" ID="ID_445311540" MODIFIED="1589193603295">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/MSA_V1.png" />
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1589193535909" ID="ID_180574591" MODIFIED="1589193548311" TEXT="MSA V2 (GageR&amp;R)">
+<node COLOR="#111111" CREATED="1589193575557" ID="ID_118190568" MODIFIED="1589194018136">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/MSA-V2-Values.png" />
+  </body>
+</html>
+</richcontent>
+</node>
+<node COLOR="#111111" CREATED="1589194174314" ID="ID_1267533514" MODIFIED="1589194188919">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/MSA_V2.png" />
+  </body>
+</html>
+</richcontent>
+</node>
 </node>
 </node>
 </node>
