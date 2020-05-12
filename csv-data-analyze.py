@@ -428,14 +428,28 @@ def groupby_balkendiagramm(df):
     anz_col = len(df.columns)
         
     list_columns = []
-
+    list_number=[]
     i=1
     for i in range(anz_col):
         list_columns.append(df.columns[i])
+        list_number.append(str(i))
         print(i, df.columns[i])
         i+=1
-    nummer_spalte= input('Which column do you want to see: \n(choose number) \n?')
-    groupby_spalte = input('Group by column: \n(choose number) \n?')
+    
+    while True:
+        nummer_spalte= input('Which column do you want to see: \n(choose number) \n?')
+        if nummer_spalte not in list_number:
+            print('wrong input, try again!')
+        else:
+            break
+    
+    while True:
+        groupby_spalte = input('Group by column: \n(choose number) \n?')
+        if groupby_spalte not in list_number:
+            print('wrong input, try again!')
+        else:
+            break
+        
     df.groupby([list_columns[int(nummer_spalte)],list_columns[int(groupby_spalte)]]).size().unstack().plot(kind='bar',stacked=True)
     label_chart = (list_columns[int(nummer_spalte)] + ' grouped by count ' + list_columns[int(groupby_spalte)])
     plt.title(label_chart, fontdict=None, loc='center', pad=None)
@@ -451,13 +465,22 @@ def balkendiagramm(df):
     anz_col = len(df.columns)
         
     list_columns = []
-
+    list_number=[]
     i=1
     for i in range(anz_col):
         list_columns.append(df.columns[i])
+        list_number.append(str(i))
         print(i, df.columns[i])
         i+=1
-    nummer_spalte= input('Which column do you want to see: \n(choose number) \n?')
+        
+    while True:
+        nummer_spalte= input('Which column do you want to see: \n(choose number) \n?')
+        if nummer_spalte not in list_number:
+            print('wrong input, try again!')
+        else:
+            break    
+    
+    
     ax = df[list_columns[int(nummer_spalte)]].value_counts().plot(kind='bar',
                                     figsize=(14,8),
                                     title=list_columns[int(nummer_spalte)], color='blue')
@@ -485,14 +508,22 @@ def kuchendiagramm(df):
     anz_col = len(df.columns)
         
     list_columns = []
-
+    list_number = []
     i=1
     for i in range(anz_col):
         list_columns.append(df.columns[i])
+        list_number.append(str(i))
         print(i, df.columns[i])
         i+=1
-    nummer_spalte= input('Which column do you want to see: \n(choose number)? \n')
     
+    while True:
+        nummer_spalte= input('Which column do you want to see: \n(choose number) \n?')
+        if nummer_spalte not in list_number:
+            print('wrong input, try again!')
+        else:
+            break    
+    
+        
     # Plot
     ax = df[list_columns[int(nummer_spalte)]].value_counts().plot(kind='pie',
                                     figsize=(14,8),
@@ -515,31 +546,48 @@ def liniendiagramm(df):
     anz_col_werte = len(werte.columns)
         
     list_columns_werte = []
-
+    list_number = []
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
     
-    value_column= input('Which value column do you want to see: \n(choose number)\n?')
+    
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number)\n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
     
     clear()
     #
     anz_col_kategorie = len(kategorie.columns)
         
     list_columns_kategorie = []
-
+    list_number = []
     i=1
+    
     for i in range(anz_col_kategorie):
         list_columns_kategorie.append(kategorie.columns[i])
+        list_number.append(str(i))
         print(i, kategorie.columns[i])
         i+=1
     
-    groupby_spalte = input('Group by column: \n(choose number) \n?')
+    
+    while True:
+        groupby_column = input('Group by column: \n(choose number) \n?')
+        if groupby_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+      
     
     y = list_columns_werte[int(value_column)]
-    x = list_columns_kategorie[int(groupby_spalte)]
+    x = list_columns_kategorie[int(groupby_column)]
     
     
     df.plot(x, y, grid=True)
@@ -556,14 +604,22 @@ def boxplot(df):
     anz_col_werte = len(werte.columns)
         
     list_columns_werte = []
-
+    list_number =[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
     
-    value_column= input('Which value column do you want to see: \n(choose number) \n?')
+    
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
     
     y = list_columns_werte[int(value_column)]
     
@@ -581,31 +637,46 @@ def boxplot_groupby(df):
     anz_col_werte = len(werte.columns)
         
     list_columns_werte = []
-
+    list_number=[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
     
-    value_column= input('Which value column do you want to see: \n(choose number) \?')
+    
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
     
     clear()
     #
     anz_col_kategorie = len(kategorie.columns)
         
     list_columns_kategorie = []
-
+    list_number=[]
     i=1
     for i in range(anz_col_kategorie):
         list_columns_kategorie.append(kategorie.columns[i])
+        list_number.append(str(i))
         print(i, kategorie.columns[i])
         i+=1
     
-    groupby_spalte = input('Group by column: \n(choose number) \n?')
+    while True:
+        groupby_column = input('Group by column: \n(choose number) \n?')
+        if groupby_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
     
     y = list_columns_werte[int(value_column)]
-    x = list_columns_kategorie[int(groupby_spalte)]
+    x = list_columns_kategorie[int(groupby_column)]
     
     df.boxplot(by=x, column=y)
     
@@ -623,14 +694,21 @@ def violin(df):
     anz_col_werte = len(werte.columns)
         
     list_columns_werte = []
-
+    list_number=[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
     
-    value_column= input('Which value column do you want to see: \n(choose number) \n?')
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+        
     
     y = list_columns_werte[int(value_column)]
     
@@ -649,31 +727,47 @@ def violin_groupby(df):
     anz_col_werte = len(werte.columns)
         
     list_columns_werte = []
-
+    list_number=[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
     
-    value_column= input('Which value column do you want to see: \n(choose number) \n?')
     
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+        
     clear()
     #
     anz_col_kategorie = len(kategorie.columns)
         
     list_columns_kategorie = []
-
+    list_number = []
     i=1
     for i in range(anz_col_kategorie):
         list_columns_kategorie.append(kategorie.columns[i])
+        list_number.append(str(i))
         print(i, kategorie.columns[i])
         i+=1
     
-    groupby_spalte = input('Group by column: \n(choose number) \n?')
+    
+    while True:
+        groupby_column = input('Group by column: \n(choose number) \n?')
+        if groupby_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
     
     y = list_columns_werte[int(value_column)]
-    x = list_columns_kategorie[int(groupby_spalte)]
+    x = list_columns_kategorie[int(groupby_column)]
     
     
     sns.violinplot(x=x, y=y, data=df)
@@ -693,33 +787,43 @@ def swarm_plot(df):
     anz_col_werte = len(werte.columns)
         
     list_columns_werte = []
-
+    list_number =[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
     
-    value_column= input('Which value column do you want to see: \n(choose number) \n?')
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
     
     clear()
     #
     anz_col_kategorie = len(kategorie.columns)
         
     list_columns_kategorie = []
-
+    list_number=[]
     i=1
     for i in range(anz_col_kategorie):
         list_columns_kategorie.append(kategorie.columns[i])
+        list_number.append(str(i))
         print(i, kategorie.columns[i])
         i+=1
     
-    groupby_spalte = input('Group by column: \n(choose number) \n?')
+    while True:
+        groupby_column = input('Group by column: \n(choose number) \n?')
+        if groupby_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
     
     y = df[list_columns_werte[int(value_column)]]
-    x = df[list_columns_kategorie[int(groupby_spalte)]]
-    
-    
+    x = df[list_columns_kategorie[int(groupby_column)]]
     
     
     # Draw a categorical scatterplot to show each observation
@@ -762,14 +866,20 @@ def histogram(df):
     anz_col_werte = len(werte.columns)
         
     list_columns_werte = []
-
+    list_number = []
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
     
-    value_column= input('Which value column do you want to see: \n(choose number) \n?')
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
     
     y = df[list_columns_werte[int(value_column)]]
     
@@ -787,15 +897,28 @@ def scatter(df):
     anz_col_werte = len(werte.columns)
         
     list_columns_werte = []
-
+    list_number =[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
     
-    value_column_y= input('y-value: \n(choose number) \n?')
-    value_column_x= input('x-value: \n(choose number) \n?')
+    while True:
+        value_column_y= input('y-value: \n(choose number) \n?')
+        if value_column_y not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    while True:
+        value_column_x= input('x-value: \n(choose number) \n?')
+        if value_column_x not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
     
     y = list_columns_werte[int(value_column_y)]
     
@@ -823,16 +946,28 @@ def scatter_w_r(df):
     anz_col_werte = len(werte.columns)
         
     list_columns_werte = []
-
+    list_number =[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
     
-    value_column_y= input('y-value: \n(choose number) \n?')
-    value_column_x= input('x-value: \n(choose number) \n?')
-    
+    while True:
+        value_column_y= input('y-value: \n(choose number) \n?')
+        if value_column_y not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    while True:
+        value_column_x= input('x-value: \n(choose number) \n?')
+        if value_column_x not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+        
+        
     y = df[list_columns_werte[int(value_column_y)]]
     
     x = df[list_columns_werte[int(value_column_x)]]
@@ -862,15 +997,26 @@ def scatter_joint_plot(df):
     anz_col_werte = len(werte.columns)
         
     list_columns_werte = []
-
+    list_number =[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
     
-    value_column_y= input('y-value: \n(choose number) \n?')
-    value_column_x= input('x-value: \n(choose number) \n?')
+    while True:
+        value_column_y= input('y-value: \n(choose number) \n?')
+        if value_column_y not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    while True:
+        value_column_x= input('x-value: \n(choose number) \n?')
+        if value_column_x not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
     
     y = df[list_columns_werte[int(value_column_y)]]
     
@@ -907,45 +1053,25 @@ def qq_plot(df):
     anz_col_werte = len(werte.columns)
         
     list_columns_werte = []
-
+    list_number = []
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
     
-    value_column= input('Which value column do you want to see: \n(choose number) \n?')
-    
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+        
     y = df[list_columns_werte[int(value_column)]]
     
     spy.stats.probplot(y, dist="norm", plot=plt)
     plt.show() 
-
-
-###MR-Chart (SPC)
-###############################################################################    
-def mr_chart(df):
-    clear()
-    
-    werte = df.select_dtypes(exclude=['object'])
-    #
-    anz_col_werte = len(werte.columns)
-    list_columns_werte = []
-
-    i=1
-    for i in range(anz_col_werte):
-        list_columns_werte.append(werte.columns[i])
-        print(i, werte.columns[i])
-        i+=1
-    value_column= input('Which value column do you want to see: \n(choose number) \n?')
-    clear()
-    #
-    
-    y = df[list_columns_werte[int(value_column)]]
-    
-    a = pyspc.spc(y) + pyspc.mr() + pyspc.rules()
-    print(a)
-    plt.show()
 
 
 ###Group Plot (show a plot by group)
@@ -964,44 +1090,63 @@ def groupplot(df):
     anz_col_werte = len(werte.columns)
         
     list_columns_werte = []
-
+    list_number =[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
     
-    value_column= input('Which value column do you want to see: \n(choose number) \n?')
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
     
     clear()
     #
     anz_col_kategorie = len(kategorie.columns)
         
     list_columns_kategorie = []
-
+    list_number=[]
     i=1
     for i in range(anz_col_kategorie):
         list_columns_kategorie.append(kategorie.columns[i])
+        list_number.append(str(i))
         print(i, kategorie.columns[i])
         i+=1
     
-    groupby_spalte = input('Group by column: \n(choose number) \n?')
+    while True:
+        groupby_column = input('Group by column: \n(choose number) \n?')
+        if groupby_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
     
     anz_col_zeitraum = len(zeitraum.columns)
         
     list_columns_zeitraum = []
-
+    list_number = []
     i=1
     for i in range(anz_col_zeitraum):
         list_columns_zeitraum.append(zeitraum.columns[i])
+        list_number.append(str(i))
         print(i, zeitraum.columns[i])
         i+=1
     
-    value_zeitraum = input('Choose the Datetime-column \n(choose number) \n?')
+    while True:
+        datetime_column = input('Choose the Datetime-column \n(choose number) \n?')
+        if datetime_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
     
     y = list_columns_werte[int(value_column)]
-    x = list_columns_kategorie[int(groupby_spalte)]
-    z = list_columns_zeitraum[int(value_zeitraum)]
+    x = list_columns_kategorie[int(groupby_column)]
+    z = list_columns_zeitraum[int(datetime_column)]
     
     
     ax = plt.gca()
