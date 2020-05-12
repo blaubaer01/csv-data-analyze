@@ -29,15 +29,26 @@ def LREG(df):
     anz_col_werte = len(werte.columns)
         
     list_columns_werte = []
-    
+    list_number =[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
     
-    value_column_y= input('y-value: \n(choose number) \n?')
-    value_column_x= input('x-value: \n(choose number) \n?')
+    while True:
+        value_column_y= input('y-value: \n(choose number) \n?')
+        if value_column_y not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    while True:
+        value_column_x= input('x-value: \n(choose number) \n?')
+        if value_column_x not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
     
     y = df[list_columns_werte[int(value_column_y)]]
     

@@ -135,14 +135,20 @@ def mergecolumn(df):
     anz_col_key = len(key_field.columns)
         
     list_columns_key = []
-
+    list_number =[]
     i=1
     for i in range(anz_col_key):
         list_columns_key.append(key_field.columns[i])
+        list_number.append(str(i))
         print(i, key_field.columns[i])
         i+=1
     
-    key_column= input('Key Field: \n(choose number) \n?')
+    while True:
+        key_column= input('Key Field: \n(choose number) \n?')
+        if key_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break 
     
     key_name = list_columns_key[int(key_column)]    
     
@@ -195,15 +201,23 @@ def filter_setzen(df):
         anz_col = len(df.columns)
         
         list_columns = []
-
+        list_number=[]
         i=1
         for i in range(anz_col):
             
             list_columns.append(df.columns[i])
+            list_number.append(str(i))
             print(i, df.columns[i])
             i+=1      
-                     
-        inhalte_spalte= input('For which column you want to know the possible filter criteria \nchoose number! \n?')
+        
+        while True:
+            inhalte_spalte= input('For which column you want to know the possible filter criteria \nchoose number! \n?')
+            if inhalte_spalte not in list_number:
+                print('wrong input, try again!')
+            else:
+                break 
+
+        
         print(df.iloc[:,int(inhalte_spalte)].value_counts())
         
         filter_ja = input('Set a filter: y/n \n?')
@@ -238,15 +252,25 @@ def sort_column(df):
             anz_col = len(df.columns)
 
             list_columns = []
-
+            list_number=[]
             i=1
             for i in range(anz_col):
     
                 list_columns.append(df.columns[i])
+                list_number.append(str(i))
                 print(i, df.columns[i])
                 i+=1      
              
-            sort_column= input('Sort to which column: \n?')
+            while True:
+                sort_column= input('Sort to which column: \n?')
+                if sort_column not in list_number:
+                    print('wrong input, try again!')
+                else:
+                    break 
+    
+            
+            
+            
             s_col = list_columns[int(sort_column)]
             
             while True:

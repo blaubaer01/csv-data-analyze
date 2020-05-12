@@ -37,16 +37,22 @@ def CPA(df):
         
         #
     anz_col_werte = len(werte.columns)
-            
+        
     list_columns_werte = []
-    
+    list_number=[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
-        
-    value_column= input('Which value column do you want to see: \n(choose number) \n?')
+    
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
         
     y = df[list_columns_werte[int(value_column)]]
     #ly = y.count()

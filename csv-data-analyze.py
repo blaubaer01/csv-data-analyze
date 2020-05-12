@@ -1637,6 +1637,9 @@ def anova_o_w (df):
     print (aov_table)
     
     
+    
+    
+    
     #aov_pyvttbl = pyvttbl.Dataframe.anova1way(y, x)
     #print (aov_pyvttbl)
     
@@ -1651,29 +1654,55 @@ def anova_t_w(df):
     anz_col_werte = len(werte.columns)
         
     list_columns_werte = []
-
+    list_number=[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
     
-    value_column= input('Which value column do you want to see: \n(choose number) \n?')
+    
+    while True:
+        value_column= input('Which value column do you want to compare: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
     
     clear()
     #
     anz_col_kategorie = len(kategorie.columns)
         
     list_columns_kategorie = []
-
+    list_number=[]
     i=1
     for i in range(anz_col_kategorie):
         list_columns_kategorie.append(kategorie.columns[i])
+        list_number.append(str(i))
         print(i, kategorie.columns[i])
         i+=1
     
-    faktor1 = input('Factor1: \n(choose number) \n?')
-    faktor2 = input('Factor2: \n(choose number) \n?')
+    
+    
+    while True:
+        faktor1 = input('Factor1: \n(choose number) \n?')
+        if faktor1 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    while True:
+        faktor2 = input('Factor2: \n(choose number) \n?')
+        if faktor2 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    
     y = list_columns_werte[int(value_column)]
     a = list_columns_kategorie[int(faktor1)]
     b = list_columns_kategorie[int(faktor2)]
@@ -1691,22 +1720,14 @@ def anova_t_w(df):
     print (aov_table)
     
 
-###Full nested ANOVA    
-###############################################################################    
-def anova_f_n(df):
-    clear()
-    print('Currently not available')
-
 ###############################################################################    
 def ANOVA_menu(df):
     clear()
-    anova_m = input('Which kind of ANOVA: \n1: one way ANOVA \n2: to way ANOVA \n3: nested ANOVA \n(choose number) \n?')
+    anova_m = input('Which kind of ANOVA: \n1: one way ANOVA \n2: to way ANOVA \n(choose number) \n?')
     if anova_m =='1':
         anova_o_w(df)
     elif anova_m =='2':
         anova_t_w(df)
-    elif anova_m =='3':
-        anova_f_n(df)
     else:
         print('Wrong input, try again!')
     

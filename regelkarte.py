@@ -70,16 +70,23 @@ def x_bar_s(df):
         
         #
     anz_col_werte = len(werte.columns)
-            
+        
     list_columns_werte = []
-    
+    list_number=[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
+    
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
         
-    value_column= input('Which value column do you want to see: \n(choose number) \n?')
     
     print(list_columns_werte[int(value_column)])    
     y = list_columns_werte[int(value_column)]
@@ -88,7 +95,7 @@ def x_bar_s(df):
     
     
     teilbar_durch = []
-    
+    tb = []
     i=2
     
     for i in range(2, 11):
@@ -96,12 +103,23 @@ def x_bar_s(df):
         
         if teilbar == 0:
             teilbar_durch.append(i)
+            tb.append(str(i))
         i +=1
-    
+        
     
     print('Possible Samplesizes are:', teilbar_durch)
     
-    n = input('Which Sample-Size: \n(2-10)\n?')
+    
+    while True:
+        n = input('Which Sample-Size: \n(2-10)\n?')
+        if n not in tb:
+            print('wrong input, try again!')
+        else:
+            break  
+        
+    
+    
+    
     n=int(n)
     
     fact = datenanz/n
@@ -274,17 +292,23 @@ def x_chart(df):
         
         #
     anz_col_werte = len(werte.columns)
-            
+        
     list_columns_werte = []
-    
+    list_number=[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
-        
-    value_column= input('Which value column do you want to see: \n(choose number) \n?')
     
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+        
     print(list_columns_werte[int(value_column)])    
     y = list_columns_werte[int(value_column)]
     
@@ -428,16 +452,23 @@ def x_bar_r(df):
         
         #
     anz_col_werte = len(werte.columns)
-            
+        
     list_columns_werte = []
-    
+    list_number=[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
-        
-    value_column= input('Which value column do you want to see: \n(choose number) \n?')
+    
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
     
     print(list_columns_werte[int(value_column)])    
     y = list_columns_werte[int(value_column)]
@@ -446,7 +477,7 @@ def x_bar_r(df):
     
     
     teilbar_durch = []
-    
+    tb = []
     i=2
     
     for i in range(2, 11):
@@ -454,12 +485,20 @@ def x_bar_r(df):
         
         if teilbar == 0:
             teilbar_durch.append(i)
+            tb.append(str(i))
         i +=1
-    
+        
     
     print('Possible Samplesizes are:', teilbar_durch)
     
-    n = input('Which Sample-Size: \n(2-10)\n?')
+    
+    while True:
+        n = input('Which Sample-Size: \n(2-10)\n?')
+        if n not in tb:
+            print('wrong input, try again!')
+        else:
+            break  
+    
     n=int(n)
     
     fact = datenanz/n
@@ -568,7 +607,7 @@ def x_bar_r(df):
     
         x = 'sample'
         y = 'mean'
-        s = 'std'
+        #s = 'std'
         
         df3['R'] = df3['max']-df3['min']
         
@@ -644,17 +683,24 @@ def xmr_chart(df):
         
         #
     anz_col_werte = len(werte.columns)
-            
+        
     list_columns_werte = []
-    
+    list_number=[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
-        
-    value_column= input('Which value column do you want to see: \n(choose number) \n?')
     
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+        
+        
     print(list_columns_werte[int(value_column)])    
     y = list_columns_werte[int(value_column)]
     df['number'] = range(1, len(df) + 1)
