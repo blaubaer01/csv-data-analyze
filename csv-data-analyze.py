@@ -1241,15 +1241,22 @@ def normality_test(df):
     anz_col_werte = len(werte.columns)
         
     list_columns_werte = []
-
+    list_number =[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
     
-    value_column= input('Which value column do you want to see: \n(choose number) \n?')
-    
+    while True:
+        value_column= input('Which value column do you want to verify: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+        
+        
     y = df[list_columns_werte[int(value_column)]]
     
     
@@ -1260,8 +1267,24 @@ def normality_test(df):
     alpha = 0.05
     if p > alpha:
         print('Sample looks Gaussian (fail to reject H0)')
+        decision = 'Sample looks Gaussian (fail to reject H0)'
     else:
-        print('Sample does not look Gaussian (reject H0)')    
+        print('Sample does not look Gaussian (reject H0)')
+        decision = 'Sample does not look Gaussian (reject H0)'
+    
+
+    eintrag = 'Shapiro-Wilk - Test:' + '\nStatistics: ' + str(stat) + '\np-Value: ' + str(p) + '\ndecision: ' + decision
+    
+    plt.figure(figsize=(6,2))
+    plt.subplot(211)
+    spy.stats.probplot(y, dist="norm", plot=plt)
+    
+    plt.subplot(212)
+    plt.text(0.1,0.5,eintrag, 
+                     ha='left', va='center',
+                     fontsize=12)
+    plt.axis('off')
+    plt.show() 
 
 ###correlation test
 ###############################################################################
@@ -1269,6 +1292,9 @@ def correl(df):
     clear()
     correlation_df = df.corr()
     print(correlation_df)
+    
+    
+    
 ###Grubbs outlier test
 ###############################################################################
 def outliert(df):
@@ -1282,20 +1308,26 @@ def outliert(df):
     anz_col_werte = len(werte.columns)
         
     list_columns_werte = []
-
+    list_number =[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
     
-    value_column= input('Which value column do you want to see: \n(choose number) \n?')
+    while True:
+        value_column= input('Which value column do you want to verify: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
     
     y = df[list_columns_werte[int(value_column)]]
     print('Value could be outlier:',grubbs.max_test_outliers(y, alpha=0.05))
     
-    
-    
+       
     
     eintrag = 'Grubbs-Outlier Test' + '\nValue could be outlier:' + str(grubbs.max_test_outliers(y, alpha=0.05))
     
@@ -1320,16 +1352,27 @@ def f_test(df):
     anz_col_werte = len(werte.columns)
         
     list_columns_werte = []
-
+    list_number =[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
     
-    value_column_a= input('a-value: \n(choose number) \n?')
-    value_column_b= input('b-value: \n(choose number) \n?')
+    while True:
+        value_column_a= input('a-value: \n(choose number) \n?')
+        if value_column_a not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
     
+    while True:
+        value_column_b= input('b-value: \n(choose number) \n?')
+        if value_column_b not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
     
     
     d1 = df[list_columns_werte[int(value_column_a)]]
@@ -1367,14 +1410,20 @@ def ttest_o_s(df, alpha=0.05, alternative='greater'):
     anz_col_werte = len(werte.columns)
         
     list_columns_werte = []
-
+    list_number =[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
     
-    value_column= input('Which value column do you want to see: \n(choose number) \n?')
+    while True:
+        value_column= input('Which value column do you want to verify: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
     
     while True:
         target_value = input('Input taget mean-value \n(choose point-comma \n?')
@@ -1414,15 +1463,28 @@ def ttest_t_s(df):
     anz_col_werte = len(werte.columns)
         
     list_columns_werte = []
-
+    list_number =[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
     
-    value_column_a= input('First Column: \n(choose number) \n?')
-    value_column_b = input('Second Column: \n(choose number) \n?')
+    while True:
+        value_column_a= input('a-value: \n(choose number) \n?')
+        if value_column_a not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    while True:
+        value_column_b= input('b-value: \n(choose number) \n?')
+        if value_column_b not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+        
     a = df[list_columns_werte[int(value_column_a)]]
     b = df[list_columns_werte[int(value_column_b)]]
     
@@ -1444,6 +1506,8 @@ def ttest_t_s(df):
     except Exception as exception:
                 print('Wrong input (choose point-comma), please try again!')
                 
+    
+    
                 
 ###indipendent t-test
 ###############################################################################    
@@ -1455,15 +1519,28 @@ def ttest_i(df):
     anz_col_werte = len(werte.columns)
         
     list_columns_werte = []
-
+    list_number =[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
     
-    value_column_a= input('First Column: \n(choose number) \n?')
-    value_column_b = input('Second Column: \n(choose number) \n?')
+    while True:
+        value_column_a= input('a-value: \n(choose number) \n?')
+        if value_column_a not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    while True:
+        value_column_b= input('b-value: \n(choose number) \n?')
+        if value_column_b not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
     a = df[list_columns_werte[int(value_column_a)]]
     b = df[list_columns_werte[int(value_column_b)]]
     
@@ -1507,38 +1584,50 @@ def ttest_menu(df):
 def anova_o_w (df):
     clear()
     
-    kategorie=df.select_dtypes(include=['object'])
+    kategorie=df.select_dtypes(include=['object', 'int'])
     werte = df.select_dtypes(exclude=['object'])
     
     #
     anz_col_werte = len(werte.columns)
         
     list_columns_werte = []
-
+    list_number =[]
     i=1
     for i in range(anz_col_werte):
         list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
         print(i, werte.columns[i])
         i+=1
     
-    value_column= input('Which value column do you want to see: \n(choose number) \n?')
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
     
     clear()
     #
     anz_col_kategorie = len(kategorie.columns)
         
     list_columns_kategorie = []
-
+    list_number=[]
     i=1
     for i in range(anz_col_kategorie):
         list_columns_kategorie.append(kategorie.columns[i])
+        list_number.append(str(i))
         print(i, kategorie.columns[i])
         i+=1
     
-    groupby_spalte = input('Group by column: \n(choose number) \n?')
+    while True:
+        groupby_column = input('Group by column: \n(choose number) \n?')
+        if groupby_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
     
     y = list_columns_werte[int(value_column)]
-    x = list_columns_kategorie[int(groupby_spalte)]
+    x = list_columns_kategorie[int(groupby_column)]
     
     mod = ols(y + '~' + x,
                 data=df).fit()
