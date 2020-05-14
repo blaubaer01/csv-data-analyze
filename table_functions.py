@@ -312,4 +312,60 @@ def transposed_table(df):
         return(df)
     else:
         return(df)
+
+###crosstab
+###############################################################################
+def crosstab(df):
+    clear()
+    tab = df.select_dtypes(exclude=['float'])
+    
+    #
+    anz_col_werte = len(tab.columns)
+        
+    list_columns_tab = []
+    list_number=[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_tab.append(tab.columns[i])
+        list_number.append(str(i))
+        print(i, tab.columns[i])
+        i+=1
+    
+    
+    while True:
+        tab1_column= input('Which column do you want to cross: \n(choose number) \n?')
+        if tab1_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    tab1 = list_columns_tab[int(tab1_column)]
+    
+    
+    while True:
+        tab2_column= input('Which column do you want to cross: \n(choose number) \n?')
+        if tab2_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    tab2 = list_columns_tab[int(tab2_column)]
+    
+    
+    print(tab1,tab2)
+    
+    ct = pd.crosstab(index=df[tab1], columns=df[tab2], margins=True).applymap(lambda r: r/len(df))
+    
+    print(ct)
+    
+    speichern_ja = input('Save the crosstable: y/n \n?')
+    if speichern_ja.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        ct.to_csv(fn, sep=';', decimal=',', header =True)
+        return(ct)
+    else:
+        return(ct)
+        
+        
         

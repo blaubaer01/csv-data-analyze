@@ -1,0 +1,12 @@
+Hersteller;Benzin;Diesel;All
+Audi;0,0;0,1;0,1
+BMW;0,0;0,1;0,1
+Fiat;0,05;0,0;0,05
+Kia;0,05;0,0;0,05
+Mazda;0,1;0,0;0,1
+Peugeot;0,05;0,0;0,05
+Renault;0,1;0,0;0,1
+Seat;0,05;0,0;0,05
+Volkswagen;0,15;0,1;0,25
+Volvo;0,0;0,15;0,15
+All;0,55;0,45;1,0

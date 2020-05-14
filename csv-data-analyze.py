@@ -15,7 +15,7 @@ from statsmodels.formula.api import ols
 from outliers import smirnov_grubbs as grubbs
 from SPC_CPA import CPA
 from L_REG import LREG
-from table_functions import appendDFToCSV, mergecolumn, filter_setzen, sort_column, transposed_table
+from table_functions import appendDFToCSV, mergecolumn, filter_setzen, sort_column, transposed_table, crosstab
 from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 from msa import msa_v1, msa_v2
 from charts import pareto_plot
@@ -1943,7 +1943,7 @@ def preview_table(df):
 def table_functions(df):
     while True:
         clear()
-        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n?')
+        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n?')
         if menu_tf =='1':
             clear()
             preview_table(df)
@@ -1958,6 +1958,8 @@ def table_functions(df):
             sort_column(df)
         elif menu_tf =='6':
             transposed_table(df)
+        elif menu_tf =='7':
+            crosstab(df)
         else:
             print('Wrong input, please try again!')
             #voranalyse(df)
