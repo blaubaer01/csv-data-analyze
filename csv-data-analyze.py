@@ -1229,6 +1229,59 @@ def pareto(df):
     pareto_plot(df, x=x, y=y, title='Pareto Chart')
 
 
+def pareto_one_column(df):
+    
+    clear()
+    
+    werte = df.select_dtypes(exclude=['float'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number=[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    y = list_columns_werte[int(value_column)]
+    
+    
+    
+    df2 = df[y].value_counts()
+    df2 = df2.reset_index()
+    x = 'index'
+    
+    df2= df2.sort_values([y], ascending=False)
+    df2[x]=df2[x].astype(str)
+    
+    
+    print(df2)
+    pareto_plot(df2, x=x, y=y, title='Pareto Chart')
+
+
+def menu_pareto(df):
+    clear()
+    menu_par = input('Choose Pareto: \n1: count column \n2: count values \n?')
+    
+    if menu_par == '1':
+        pareto_one_column(df)
+    if menu_par == '2':
+        pareto(df)
+    else:
+        print('wrong input, try again!')
+        
     
 def menu_spc_charts(df):
     
@@ -1286,7 +1339,7 @@ def menu_graphical_analyze(df):
     elif ausw_gr_view =='8':
         menu_spc_charts(df)
     elif ausw_gr_view =='9':
-        pareto(df)
+        menu_pareto(df)
         #print('currently not available')
     else:
         print('Wrong input, please try again')
