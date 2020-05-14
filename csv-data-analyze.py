@@ -18,6 +18,7 @@ from L_REG import LREG
 from table_functions import appendDFToCSV, mergecolumn, filter_setzen, sort_column, transposed_table
 from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 from msa import msa_v1, msa_v2
+from charts import pareto_plot
 
 #alternatively, define the source
 csv_dateien=['daten.csv']
@@ -1165,6 +1166,69 @@ def groupplot(df):
     
     plt.show()
     
+
+def pareto(df):
+    
+    clear()
+    
+    kategorie=df.select_dtypes(exclude=['float'])
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number=[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+        
+    clear()
+    #
+    anz_col_kategorie = len(kategorie.columns)
+        
+    list_columns_kategorie = []
+    list_number = []
+    i=1
+    for i in range(anz_col_kategorie):
+        list_columns_kategorie.append(kategorie.columns[i])
+        list_number.append(str(i))
+        print(i, kategorie.columns[i])
+        i+=1
+    
+    
+    while True:
+        groupby_column = input('Group by column: \n(choose number) \n?')
+        if groupby_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    
+    y = list_columns_werte[int(value_column)]
+    x = list_columns_kategorie[int(groupby_column)]
+    
+    df = df.groupby([x])[y].sum()
+    df = df.reset_index()
+    df= df.sort_values(y, ascending=False)
+    df[x]=df[x].astype(str)
+    
+    print(df)
+    pareto_plot(df, x=x, y=y, title='Pareto Chart')
+
+
     
 def menu_spc_charts(df):
     
@@ -1197,7 +1261,7 @@ def menu_graphical_analyze(df):
     print('Choose graphical view:')
     gr_view_list= ['Barchart', 'Piechart', 'Histogram', 'Q-Q-Plot', 'Linechart', 'Group-Plot', 'Scatter-Plot',  
                    'Categorial Plots',  
-                   'Control-Charts']
+                   'Control-Charts', 'Pareto-Chart']
     for i in range(len(gr_view_list)):
         print(i, gr_view_list[i])
         i+=1
@@ -1221,6 +1285,8 @@ def menu_graphical_analyze(df):
         menu_categorie_data(df)
     elif ausw_gr_view =='8':
         menu_spc_charts(df)
+    elif ausw_gr_view =='9':
+        pareto(df)
         #print('currently not available')
     else:
         print('Wrong input, please try again')
