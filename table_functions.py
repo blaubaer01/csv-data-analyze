@@ -7,6 +7,8 @@ Created on Sat Apr 25 08:17:57 2020
 """
 import pandas as pd
 import os
+import seaborn as sns; sns.set()
+import matplotlib.pyplot as plt
 
 #Thanks to https://stackoverflow.com/questions/17530542/how-to-add-pandas-data-to-an-existing-csv-file
 #and https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html
@@ -358,6 +360,21 @@ def crosstab(df):
     
     print(ct)
     
+    #sns.heatmap(ct, annot=True, cmap='coolwarm')
+    
+    sns.heatmap(ct,
+                cmap='coolwarm',
+                annot=True,
+                fmt=".3f",
+                annot_kws={'size':10},
+                cbar=False,
+                square=True)
+    
+    
+    
+    plt.show()
+    
+    
     speichern_ja = input('Save the crosstable: y/n \n?')
     if speichern_ja.lower() =='y':
         csvfilename = input('Filename (.csv will save automaticly) \n?')
@@ -367,5 +384,5 @@ def crosstab(df):
     else:
         return(ct)
         
-        
+    
         

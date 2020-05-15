@@ -104,7 +104,73 @@
 <node COLOR="#00b439" CREATED="1587886747287" ID="ID_800229018" MODIFIED="1588704629247" TEXT="Tabellen Funktionen">
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="16"/>
-<node COLOR="#990000" CREATED="1587886808638" ID="ID_1468341555" MODIFIED="1587892403634" TEXT="Tabelle anh&#xe4;ngen">
+<node COLOR="#990000" CREATED="1589575513116" ID="ID_1022610441" MODIFIED="1589575565571">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/table_funktion_menu.png" />
+  </body>
+</html>
+</richcontent>
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#990000" CREATED="1589576276143" ID="ID_262886403" MODIFIED="1589576298127" TEXT="Tabelle ansehen">
+<font NAME="SansSerif" SIZE="14"/>
+<node COLOR="#111111" CREATED="1589576306572" ID="ID_741764931" MODIFIED="1589576382182" TEXT="Single View">
+<node COLOR="#111111" CREATED="1589576555342" ID="ID_199285381" MODIFIED="1589576593421">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/preview.png" />
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1589576383380" ID="ID_1940018712" MODIFIED="1589576396346" TEXT="Datentypen anzeigen">
+<node COLOR="#111111" CREATED="1589576620377" ID="ID_1012651539" MODIFIED="1589576902976">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/show_datatype.png" />
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1589576397613" ID="ID_1911188479" MODIFIED="1589576406327" TEXT="Fehlende Daten anzeigen">
+<node COLOR="#111111" CREATED="1589576928042" ID="ID_1616751183" MODIFIED="1589576952122">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/missing_data.png" />
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1589576411618" ID="ID_1123713893" MODIFIED="1589576419762" TEXT="Daten in HTM anzeigen">
+<node COLOR="#111111" CREATED="1589576959715" ID="ID_3655559" MODIFIED="1589576981757">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/show_table_in_browser.png" />
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+</node>
+<node COLOR="#990000" CREATED="1587886808638" ID="ID_1468341555" MODIFIED="1589577953891" TEXT="Tabelle anh&#xe4;ngen">
 <font NAME="SansSerif" SIZE="14"/>
 <node COLOR="#111111" CREATED="1588700516011" ID="ID_1901730026" MODIFIED="1588700540375">
 <richcontent TYPE="NODE"><html>
@@ -143,6 +209,45 @@
 </html></richcontent>
 </node>
 </node>
+<node COLOR="#990000" CREATED="1589575637573" ID="ID_1444688262" MODIFIED="1589575646900" TEXT="Tabelle transponieren">
+<font NAME="SansSerif" SIZE="14"/>
+<node COLOR="#111111" CREATED="1589576072644" ID="ID_1939004712" MODIFIED="1589576097855">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/trans_table_Auto.csv.png" />
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node COLOR="#990000" CREATED="1589575647964" ID="ID_1219146210" MODIFIED="1589575660641" TEXT="Kreuzstabelle erstellen">
+<font NAME="SansSerif" SIZE="14"/>
+<node COLOR="#111111" CREATED="1589575666234" ID="ID_1508495821" MODIFIED="1589575701583">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/crosstable.png" />
+  </body>
+</html>
+</richcontent>
+</node>
+<node COLOR="#111111" CREATED="1589575672384" ID="ID_592900212" MODIFIED="1589575884397">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/crosstable_picture.png" />
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
 </node>
 <node COLOR="#00b439" CREATED="1587886793273" ID="ID_1985004379" MODIFIED="1587892403668" TEXT="Analyse Funktionen">
 <edge STYLE="bezier" WIDTH="thin"/>
@@ -157,8 +262,7 @@
   <body>
     <img src="pictures/statistic_menue.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node COLOR="#111111" CREATED="1587890163919" ID="ID_1635904288" MODIFIED="1587892403698" TEXT="Beschreibende Statistik">
 <node COLOR="#111111" CREATED="1587890209265" ID="ID_1589835199" MODIFIED="1587892403700" TEXT="Beschreibende Statistik ganze Tabelle"/>
@@ -196,15 +300,16 @@
 </node>
 </node>
 <node COLOR="#111111" CREATED="1587886856441" ID="ID_39192897" MODIFIED="1587892403705" TEXT="Grafische Analysen">
-<node COLOR="#111111" CREATED="1588703909184" ID="ID_494449260" MODIFIED="1588704135358">
+<node COLOR="#111111" CREATED="1588703909184" ID="ID_494449260" MODIFIED="1589577871327">
 <richcontent TYPE="NODE"><html>
   <head>
     
   </head>
   <body>
-    <img src="pictures/menu_gr-analysis.png" />
+    <img src="pictures/graphical_menu.png" />
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 <node COLOR="#111111" CREATED="1587890318725" ID="ID_1500357248" MODIFIED="1588705308435" TEXT="Bar-Chart">
 <node COLOR="#111111" CREATED="1587890420163" ID="ID_1493216273" MODIFIED="1587892403708" TEXT="nach Anzahl der Ausgew&#xe4;hlten Spalte">
@@ -470,6 +575,19 @@
 </node>
 </node>
 </node>
+<node COLOR="#111111" CREATED="1589577141707" ID="ID_1053183005" MODIFIED="1589577151168" TEXT="Pareto-Chart">
+<node COLOR="#111111" CREATED="1589577157744" ID="ID_1530235927" MODIFIED="1589577181059">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/pareto-chart.png" />
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
 </node>
 <node COLOR="#111111" CREATED="1587886873461" ID="ID_364096504" MODIFIED="1588705309505" TEXT="Statistische Tests">
 <node COLOR="#111111" CREATED="1588704415219" ID="ID_510225274" MODIFIED="1588704463363">
@@ -492,6 +610,17 @@
     <img src="pictures/test_normality.png" />
   </body>
 </html></richcontent>
+</node>
+<node COLOR="#111111" CREATED="1589577028997" ID="ID_1230027381" MODIFIED="1589577067920">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/normailty-test_picture.png" />
+  </body>
+</html>
+</richcontent>
 </node>
 </node>
 <node COLOR="#111111" CREATED="1587891196494" ID="ID_1156719670" MODIFIED="1587892403748" TEXT="Korrelationstest aller nummerischen spalten zueinander">
@@ -603,8 +732,7 @@
   <body>
     <img src="pictures/MSA_V1.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node COLOR="#111111" CREATED="1589193535909" ID="ID_180574591" MODIFIED="1589193548311" TEXT="MSA V2 (GageR&amp;R)">
@@ -616,8 +744,7 @@
   <body>
     <img src="pictures/MSA-V2-Values.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node COLOR="#111111" CREATED="1589194174314" ID="ID_1267533514" MODIFIED="1589194188919">
 <richcontent TYPE="NODE"><html>
@@ -627,8 +754,7 @@
   <body>
     <img src="pictures/MSA_V2.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
