@@ -26,7 +26,10 @@ def clear():
     else: 
         _ = os.system('clear') 
 
-
+def truncate(n, decimals=0):
+        multiplier = 10 ** decimals
+        return int(n * multiplier) / multiplier
+    
 
 def appendDFToCSV(df, sep=","):
     
@@ -356,25 +359,52 @@ def crosstab(df):
         
     tab2 = list_columns_tab[int(tab2_column)]
     
-    with_sum = input('Crosstab with "Total": y/n \n?')
+    which_table = input('1: sum -table \n2: percent -table \n(Choose number) \n?')
     
-    if with_sum =='y':
-        ctv=pd.crosstab(index=df[tab1], columns=df[tab2], margins=True)
-        print(ctv)    
-        speichern_ja = input('Save the crosstable: y/n \n?')
-        if speichern_ja.lower() =='y':
-            csvfilename = input('Filename (.csv will save automaticly) \n?')
-            fn = csvfilename + '.csv'
-            ctv.to_csv(fn, sep=';', decimal=',', header =True)
+    if which_table =='1':
+        
+        with_sum = input('Crosstab with "Total": y/n \n?')
+        
+        if with_sum =='y':
+            ctv=pd.crosstab(index=df[tab1], columns=df[tab2], margins=True)
+            print(ctv)    
+            speichern_ja = input('Save the crosstable: y/n \n?')
+            if speichern_ja.lower() =='y':
+                csvfilename = input('Filename (.csv will save automaticly) \n?')
+                fn = csvfilename + '.csv'
+                ctv.to_csv(fn, sep=';', decimal=',', header =True)
+        else:
+            ctcalc = pd.crosstab(index=df[tab1], columns=df[tab2])
+            print(ctcalc)
+            speichern_ja = input('Save the crosstable: y/n \n?')
+            if speichern_ja.lower() =='y':
+                csvfilename = input('Filename (.csv will save automaticly) \n?')
+                fn = csvfilename + '.csv'
+                ctcalc.to_csv(fn, sep=';', decimal=',', header =True)
+    
+    elif which_table =='2':
+        
+        with_sum = input('Crosstab with "Total": y/n \n?')
+        
+        if with_sum =='y':
+            ct = pd.crosstab(index=df[tab1], columns=df[tab2], margins=True).applymap(lambda r: r/len(df))
+            print(ct)    
+            speichern_ja = input('Save the crosstable: y/n \n?')
+            if speichern_ja.lower() =='y':
+                csvfilename = input('Filename (.csv will save automaticly) \n?')
+                fn = csvfilename + '.csv'
+                ct.to_csv(fn, sep=';', decimal=',', header =True)
+        else:
+            ct = pd.crosstab(index=df[tab1], columns=df[tab2], margins=False).applymap(lambda r: r/len(df))
+            print(ct)
+            speichern_ja = input('Save the crosstable: y/n \n?')
+            if speichern_ja.lower() =='y':
+                csvfilename = input('Filename (.csv will save automaticly) \n?')
+                fn = csvfilename + '.csv'
+                ct.to_csv(fn, sep=';', decimal=',', header =True)
+
     else:
-        ctcalc = pd.crosstab(index=df[tab1], columns=df[tab2])
-        print(ctcalc)
-        speichern_ja = input('Save the crosstable: y/n \n?')
-        if speichern_ja.lower() =='y':
-            csvfilename = input('Filename (.csv will save automaticly) \n?')
-            fn = csvfilename + '.csv'
-            ctcalc.to_csv(fn, sep=';', decimal=',', header =True)
-    
+        print('wrong input, try again!')
     
     
     
@@ -433,26 +463,47 @@ def contingency_tb(df):
     print(chi2_contingency(ctcalc))
     #sns.heatmap(ct, annot=True, cmap='coolwarm')
     
-    sns.heatmap(ct,
-                cmap='coolwarm',
-                annot=True,
-                fmt=".3f",
-                annot_kws={'size':10},
-                cbar=False,
-                square=True)
+    #The random variables A and B are stochastically independent of each other
+    
+    #The random variables A and B are not stochastically independent of each other
+    
+    chi2, p, degfree, table = chi2_contingency(ctcalc)
     
     
     
+    if p < 0.05:
+        erg = 'H1: The variables A and B are not stochastically \nindependent of each other'
+    else:
+        erg = 'H0: The variables A and B are stochastically \nindependent of each other'
+    
+    
+    
+    chi2 = truncate(chi2, 3)
+    
+    p = truncate(p, 5)
+    
+    eintrag = 'Chi²: ' + str(chi2) + '\np-Value: ' + str(p) + '\n' + erg
+    
+    plt.figure(figsize=(4, 1))
+    
+    plt.subplot(121).set_ylim([0,2]) # äquivalent zu: plt.subplot(2, 2, 1)
+    
+    sns.heatmap(ctv,
+            cmap='coolwarm',
+            annot=True,
+            annot_kws={'size':8},
+            cbar=False,
+            xticklabels=1, 
+            yticklabels=1,
+            square=False)
+    
+    plt.subplot(122)
+    plt.text(0.1,0.5,eintrag, 
+                    ha='left', va='center',
+                    fontsize=12)
+    plt.axis('off')
     plt.show()
     
     
-    speichern_ja = input('Save the crosstable: y/n \n?')
-    if speichern_ja.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        ct.to_csv(fn, sep=';', decimal=',', header =True)
-        return(ct)
-    else:
-        return(ct)
-        
+    
     
