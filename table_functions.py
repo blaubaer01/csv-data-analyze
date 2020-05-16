@@ -9,6 +9,8 @@ import pandas as pd
 import os
 import seaborn as sns; sns.set()
 import matplotlib.pyplot as plt
+import scipy as spy
+from scipy.stats import chi2_contingency
 
 #Thanks to https://stackoverflow.com/questions/17530542/how-to-add-pandas-data-to-an-existing-csv-file
 #and https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html
@@ -351,15 +353,84 @@ def crosstab(df):
         else:
             break  
     
+        
+    tab2 = list_columns_tab[int(tab2_column)]
+    
+    with_sum = input('Crosstab with "Total": y/n \n?')
+    
+    if with_sum =='y':
+        ctv=pd.crosstab(index=df[tab1], columns=df[tab2], margins=True)
+        print(ctv)    
+        speichern_ja = input('Save the crosstable: y/n \n?')
+        if speichern_ja.lower() =='y':
+            csvfilename = input('Filename (.csv will save automaticly) \n?')
+            fn = csvfilename + '.csv'
+            ctv.to_csv(fn, sep=';', decimal=',', header =True)
+    else:
+        ctcalc = pd.crosstab(index=df[tab1], columns=df[tab2])
+        print(ctcalc)
+        speichern_ja = input('Save the crosstable: y/n \n?')
+        if speichern_ja.lower() =='y':
+            csvfilename = input('Filename (.csv will save automaticly) \n?')
+            fn = csvfilename + '.csv'
+            ctcalc.to_csv(fn, sep=';', decimal=',', header =True)
+    
+    
+    
+    
+    
+###############################################################################        
+### contingency table    
+def contingency_tb(df):
+    clear()
+    tab = df.select_dtypes(exclude=['float'])
+    
+    #
+    anz_col_werte = len(tab.columns)
+        
+    list_columns_tab = []
+    list_number=[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_tab.append(tab.columns[i])
+        list_number.append(str(i))
+        print(i, tab.columns[i])
+        i+=1
+    
+    
+    while True:
+        tab1_column= input('Which column do you want to cross: \n(choose number) \n?')
+        if tab1_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    tab1 = list_columns_tab[int(tab1_column)]
+    
+    
+    while True:
+        tab2_column= input('Which column do you want to cross: \n(choose number) \n?')
+        if tab2_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
     tab2 = list_columns_tab[int(tab2_column)]
     
     
     print(tab1,tab2)
     
+    ctcalc = pd.crosstab(index=df[tab1], columns=df[tab2])
+    ctv=pd.crosstab(index=df[tab1], columns=df[tab2], margins=True)
+    
+    
     ct = pd.crosstab(index=df[tab1], columns=df[tab2], margins=True).applymap(lambda r: r/len(df))
     
-    print(ct)
+   
     
+    print(ctv)
+    print(ct)
+    print(chi2_contingency(ctcalc))
     #sns.heatmap(ct, annot=True, cmap='coolwarm')
     
     sns.heatmap(ct,
@@ -385,4 +456,3 @@ def crosstab(df):
         return(ct)
         
     
-        

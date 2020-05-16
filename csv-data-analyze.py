@@ -15,7 +15,7 @@ from statsmodels.formula.api import ols
 from outliers import smirnov_grubbs as grubbs
 from SPC_CPA import CPA
 from L_REG import LREG
-from table_functions import appendDFToCSV, mergecolumn, filter_setzen, sort_column, transposed_table, crosstab
+from table_functions import appendDFToCSV, mergecolumn, filter_setzen, sort_column, transposed_table, crosstab, contingency_tb
 from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 from msa import msa_v1, msa_v2
 from charts import pareto_plot
@@ -1896,7 +1896,7 @@ def MSA(df):
 ###############################################################################
 def statistic(df):
     clear()
-    menu_statistic = input('What kind of statistics: \n1: simple descriptive statistics \n2: graphical view \n3: tests \n4: process capability analysis \n5: linear regression analysis \n6: MSA \n(choose number)  \n?')
+    menu_statistic = input('What kind of statistics: \n1: simple descriptive statistics \n2: graphical view \n3: tests \n4: process capability analysis \n5: linear regression analysis \n6: MSA \n(choose number) \n7: contingency_table  \n?')
     if menu_statistic =='1':
         beschreibende_stat(df)
     elif menu_statistic =='2':
@@ -1909,6 +1909,8 @@ def statistic(df):
         LREG(df)
     elif menu_statistic =='6':
         MSA(df)
+    elif menu_statistic =='7':
+        contingency_tb(df)
     else:
         print('wrong input, please try again!')
         statistic(df)
