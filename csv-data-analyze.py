@@ -1082,10 +1082,10 @@ def groupplot(df):
     sns.set(style="ticks")
 
     
-    kategorie=df.select_dtypes(include=['object'])
+    kategorie=df.select_dtypes(exclude=['float'])
     werte = df.select_dtypes(exclude=['object'])
-    #zeitraum = df.select_dtypes(inculde=['datetime'])
     zeitraum=df.select_dtypes(include=['object', 'datetime'])
+    
     #
     anz_col_werte = len(werte.columns)
         
@@ -1148,28 +1148,16 @@ def groupplot(df):
     x = list_columns_kategorie[int(groupby_column)]
     z = list_columns_zeitraum[int(datetime_column)]
     
-    
-    ax = plt.gca()
-    
-    groups = df.groupby(x)
-    __colors=[(0.0,0.0,1.0), #Blau
-              (0.0,1.0,0.0), #Grün
-              (0.0,0.5,1.0), # Türkis
-              (0.0,0.5,0.0),
-              (0.5,0.5,0.5),
-              (1.0,1.0,0.5),
-              (1.0,1.0,1.0),
-              (1.0,0.0,0.0),] #Gelb
+    df = df.sort_values(by=z, ascending=1)
     
     
-    i=0
-    for name, group in groups:
-        ax.scatter(x=group[z], y=group[y], color=__colors[i], label=name)
-        i+=1
     
     
-    #sns.relplot(x=z, y=y, hue=x, data=df)
-    #plt.xlim(df[list_columns_zeitraum[int(datetime_column)]].iloc[0], df[list_columns_zeitraum[int(datetime_column)]].iloc[-1])
+    anz = df[x].nunique()    
+    
+    sns.relplot(x=z, y=y, hue=x, data=df, palette=sns.color_palette("Set1", anz))
+    
+    plt.xlim(df[list_columns_zeitraum[int(datetime_column)]].iloc[0], df[list_columns_zeitraum[int(datetime_column)]].iloc[-1])
 
     plt.show()
     
