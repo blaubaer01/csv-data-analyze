@@ -1079,8 +1079,7 @@ def qq_plot(df):
 ###############################################################################    
 def groupplot(df):
     clear()
-    #sns.set(style="darkgrid")
-    
+    sns.set(style="ticks")
 
     
     kategorie=df.select_dtypes(include=['object'])
@@ -1168,6 +1167,10 @@ def groupplot(df):
         ax.scatter(x=group[z], y=group[y], color=__colors[i], label=name)
         i+=1
     
+    
+    #sns.relplot(x=z, y=y, hue=x, data=df)
+    #plt.xlim(df[list_columns_zeitraum[int(datetime_column)]].iloc[0], df[list_columns_zeitraum[int(datetime_column)]].iloc[-1])
+
     plt.show()
     
 

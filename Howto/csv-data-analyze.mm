@@ -112,8 +112,7 @@
   <body>
     <img src="pictures/table_funktion_menu.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <font NAME="SansSerif" SIZE="14"/>
 </node>
 <node COLOR="#990000" CREATED="1589576276143" ID="ID_262886403" MODIFIED="1589576298127" TEXT="Tabelle ansehen">
@@ -139,8 +138,7 @@
   <body>
     <img src="pictures/show_datatype.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node COLOR="#111111" CREATED="1589576397613" ID="ID_1911188479" MODIFIED="1589576406327" TEXT="Fehlende Daten anzeigen">
@@ -152,8 +150,7 @@
   <body>
     <img src="pictures/missing_data.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node COLOR="#111111" CREATED="1589576411618" ID="ID_1123713893" MODIFIED="1589576419762" TEXT="Daten in HTM anzeigen">
@@ -165,8 +162,7 @@
   <body>
     <img src="pictures/show_table_in_browser.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
@@ -219,8 +215,7 @@
   <body>
     <img src="pictures/trans_table_Auto.csv.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node COLOR="#990000" CREATED="1589575647964" ID="ID_1219146210" MODIFIED="1589575660641" TEXT="Kreuzstabelle erstellen">
@@ -233,19 +228,7 @@
   <body>
     <img src="pictures/crosstable.png" />
   </body>
-</html>
-</richcontent>
-</node>
-<node COLOR="#111111" CREATED="1589575672384" ID="ID_592900212" MODIFIED="1589575884397">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <img src="pictures/crosstable_picture.png" />
-  </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
@@ -254,15 +237,16 @@
 <font NAME="SansSerif" SIZE="16"/>
 <node COLOR="#990000" CREATED="1587890138846" ID="ID_1884400672" MODIFIED="1587892403696" TEXT="Statistische Anaysen">
 <font NAME="SansSerif" SIZE="14"/>
-<node COLOR="#111111" CREATED="1589194453324" ID="ID_486637719" MODIFIED="1589194485381">
+<node COLOR="#111111" CREATED="1589194453324" ID="ID_486637719" MODIFIED="1589665975291">
 <richcontent TYPE="NODE"><html>
   <head>
     
   </head>
   <body>
-    <img src="pictures/statistic_menue.png" />
+    <img src="pictures/menu_statistics.png" />
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 <node COLOR="#111111" CREATED="1587890163919" ID="ID_1635904288" MODIFIED="1587892403698" TEXT="Beschreibende Statistik">
 <node COLOR="#111111" CREATED="1587890209265" ID="ID_1589835199" MODIFIED="1587892403700" TEXT="Beschreibende Statistik ganze Tabelle"/>
@@ -308,8 +292,7 @@
   <body>
     <img src="pictures/graphical_menu.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node COLOR="#111111" CREATED="1587890318725" ID="ID_1500357248" MODIFIED="1588705308435" TEXT="Bar-Chart">
 <node COLOR="#111111" CREATED="1587890420163" ID="ID_1493216273" MODIFIED="1587892403708" TEXT="nach Anzahl der Ausgew&#xe4;hlten Spalte">
@@ -584,8 +567,7 @@
   <body>
     <img src="pictures/pareto-chart.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
@@ -619,8 +601,7 @@
   <body>
     <img src="pictures/normailty-test_picture.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node COLOR="#111111" CREATED="1587891196494" ID="ID_1156719670" MODIFIED="1587892403748" TEXT="Korrelationstest aller nummerischen spalten zueinander">
@@ -758,6 +739,30 @@
 </node>
 </node>
 </node>
+<node COLOR="#111111" CREATED="1589666031927" ID="ID_927804203" MODIFIED="1589666058783" TEXT="Kontingenztabelle">
+<node COLOR="#111111" CREATED="1589666115829" ID="ID_1353248404" MODIFIED="1589666151215">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/contingency_chiq-test.png" />
+  </body>
+</html>
+</richcontent>
+</node>
+<node COLOR="#111111" CREATED="1589666119587" ID="ID_1555612579" MODIFIED="1589666173050">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/crosstabs_contigency_calc.png" />
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
 </node>
 </node>
 </node>
@@ -781,10 +786,6 @@
 <font NAME="SansSerif" SIZE="16"/>
 </node>
 <node COLOR="#00b439" CREATED="1587891398735" ID="ID_1134157636" LINK="https://www.scipy.org/" MODIFIED="1588669661985" TEXT="scipy">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="SansSerif" SIZE="16"/>
-</node>
-<node COLOR="#00b439" CREATED="1587891405815" ID="ID_588327323" LINK="https://pypi.org/project/pyspc/" MODIFIED="1588669689987" TEXT="pyspc">
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="16"/>
 </node>
