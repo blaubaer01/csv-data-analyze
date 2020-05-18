@@ -1,6 +1,5 @@
 import pandas as pd
 import os
-#import datetime
 import matplotlib.pyplot as plt
 #from scipy.stats import shapiro
 from scipy.stats import stats
@@ -8,7 +7,6 @@ import scipy as spy
 #import statistics as stats
 import webbrowser
 import seaborn as sns
-#import numpy as np
 #import statsmodels.api as sm
 #from statsmodels.formula.api import ols
 #from outliers import smirnov_grubbs as grubbs
@@ -64,7 +62,7 @@ def file_einlesen(auswahl_datei):
     
     #define structure
     while True:
-        format_ist = input('Which separator is used by the file: \n1: Comma / 2: Semicolon \n(choose number)\n?').lower()
+        format_ist = input('Which separator is used by the file: \n1: Comma \n2: Semicolon \n3: Tab \n(choose number)\n?').lower()
         if format_ist == '1':
             trennzeichen = ','
             dezimalzeichen = '.'
@@ -72,6 +70,19 @@ def file_einlesen(auswahl_datei):
         elif format_ist == '2':
             trennzeichen = ';'
             dezimalzeichen = ','
+            break
+        elif format_ist == '3':
+            trennzeichen = '\t'
+            while True:
+                dezimalz = input('Which delimeter is used: \n1: floatcomma \n2: pointcomma \n(choose nr) \n?')
+                if dezimalz =='1':
+                    dezimalzeichen =','
+                    break
+                elif dezimalz =='2':
+                    dezimalzeichen ='.'
+                    break
+                else:
+                    print('wrong input, choose a number!')
             break
         else:
             print('Wrong input, please try again')
