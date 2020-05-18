@@ -6,7 +6,6 @@ from scipy.stats import shapiro
 from scipy.stats import stats
 import scipy as spy
 import statistics as stats
-import pyspc
 import webbrowser
 import seaborn as sns
 #import numpy as np
@@ -19,6 +18,7 @@ from table_functions import appendDFToCSV, mergecolumn, filter_setzen, sort_colu
 from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 from msa import msa_v1, msa_v2
 from charts import pareto_plot
+from tests import mediantest
 
 #alternatively, define the source
 csv_dateien=['daten.csv']
@@ -1849,7 +1849,7 @@ def ANOVA_menu(df):
 ###############################################################################
 def menu_tests(df):
     clear()
-    what_kind_of_test = input('Which Test do you would like to do: \n1: Test of normality  \n2: correlation \n3: t-test \n4: f-test \n5: ANOVA \n6: Outlier-Test\n(choose a number) \n?')
+    what_kind_of_test = input('Which Test do you would like to do: \n1: Test of normality  \n2: correlation \n3: t-test \n4: f-test \n5: ANOVA \n6: Outlier-Test \n7: Median-Test \n(choose a number) \n?')
     if what_kind_of_test =='1':
         clear()
         normality_test(df)
@@ -1867,7 +1867,9 @@ def menu_tests(df):
     elif what_kind_of_test =='6':
         clear()
         outliert(df)
-    
+    elif what_kind_of_test =='7':
+        clear()
+        mediantest(df)
     else:
         print('Wrong input, try again!')
 
