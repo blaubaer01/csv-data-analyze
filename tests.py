@@ -3,7 +3,7 @@
 """
 Created on Mon May 18 07:53:05 2020
 
-@author: blaubaer
+@author: blaubaer (Ricky Helfgen)
 """
 from scipy.stats import shapiro
 from scipy.stats import stats
@@ -53,9 +53,10 @@ def clear():
 ###############################################################################
 ###Statistical Tests
 ###############################################################################        
-        
+
+
+#######################################################################        
 ###test of normality
-###############################################################################
 def normality_test(df):
     #clear()
     
@@ -110,17 +111,16 @@ def normality_test(df):
     plt.axis('off')
     plt.show() 
 
+#######################################################################
 ###correlation test
-###############################################################################
 def correl(df):
     #clear()
     correlation_df = df.corr()
     print(correlation_df)
     
     
-    
+#######################################################################    
 ###Grubbs outlier test
-###############################################################################
 def outliert(df):
     
     sns.set(color_codes=True)
@@ -165,8 +165,8 @@ def outliert(df):
     plt.axis('off')
     plt.show()    
 
+#######################################################################
 ###f-test
-###############################################################################    
 def f_test(df):
     clear()
     
@@ -222,9 +222,8 @@ def f_test(df):
     else:
         print('Variances should not be equal (reject H0)')    
 
-    
+#######################################################################    
 ###one single t-test
-###############################################################################
 def ttest_o_s(df, alpha=0.05, alternative='greater'):
     clear()
     
@@ -276,9 +275,9 @@ def ttest_o_s(df, alpha=0.05, alternative='greater'):
     except Exception as exception:
                 print('Wrong input (choose point-comma), please try again!')
     
-    
+
+#######################################################################    
 ###two sided t-test
-###############################################################################
 def ttest_t_s(df):
     #clear()
     werte = df.select_dtypes(exclude=['object'])
@@ -332,9 +331,8 @@ def ttest_t_s(df):
                 
     
     
-                
+#######################################################################                
 ###indipendent t-test
-###############################################################################    
 def ttest_i(df):
     #clear()
     werte = df.select_dtypes(exclude=['object'])
@@ -391,7 +389,6 @@ def ttest_i(df):
 
 #######################################################################
 ###median test
-
 def mediantest(df):
     
     werte = df.select_dtypes(exclude=['object'])
@@ -453,9 +450,9 @@ def mediantest(df):
     except Exception as exception:
                 print('Wrong input (choose point-comma), please try again!')
                 
-    
+
+#######################################################################    
 ###One way ANOVA    
-###############################################################################    
 def anova_o_w (df):
     clear()
     
@@ -511,15 +508,8 @@ def anova_o_w (df):
     print('one way ANOVA Result:' )
     print (aov_table)
     
-    
-    
-    
-    
-    #aov_pyvttbl = pyvttbl.Dataframe.anova1way(y, x)
-    #print (aov_pyvttbl)
-    
+#######################################################################    
 ###Two way ANOVA    
-###############################################################################    
 def anova_t_w(df):
     clear()
     kategorie=df.select_dtypes(exclude=['float'])
