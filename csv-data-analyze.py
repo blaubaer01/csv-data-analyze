@@ -15,7 +15,7 @@ from L_REG import LREG
 from table_functions import appendDFToCSV, mergecolumn, filter_setzen, sort_column, transposed_table, crosstab, contingency_tb
 from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 from msa import msa_v1, msa_v2
-from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, liniendiagramm, boxplot, boxplot_groupby, violin, violin_groupby, swarm_plot, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot, pareto, pareto_one_column
+from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, liniendiagramm, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f, swarm_plot, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot, pareto, pareto_one_column
 from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_s, ttest_t_s, ttest_i, anova_o_w, anova_t_w
 
 #alternatively, define the source
@@ -451,16 +451,20 @@ def auswahl_balkendiagramm(df):
 ###menu categorigal data (boxplot, violinplot)
 def menu_categorie_data(df):
     clear()
-    menu_cd = input('Which Boxplox: \n1: Single Boxplot \n2: Boxplot by group \n3: Violin-Plot \n4: Violinplot by group \n5: Swarm-Plot \n(choose a number) \n?')
+    menu_cd = input('Which Boxplox: \n1: Single Boxplot \n2: Boxplot by one group \n3: Boxplot by 2 groups \n4: Violin-Plot \n5: Violinplot by group \n6: Boxplot by 2 groups \n7: Swarm-Plot \n(choose a number) \n?')
     if menu_cd =='1':
         boxplot(df)
     elif menu_cd =='2':
         boxplot_groupby(df)
     elif menu_cd =='3':
-        violin(df)
+        boxplot2f(df)
     elif menu_cd =='4':
-        violin_groupby(df)
+        violin(df)
     elif menu_cd =='5':
+        violin_groupby(df)
+    elif menu_cd =='6':
+        violin2f(df)
+    elif menu_cd =='7':
         swarm_plot(df)
     else:
         print('Wrong input, try again!')

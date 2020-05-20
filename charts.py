@@ -297,7 +297,77 @@ def boxplot_groupby(df):
     df.boxplot(by=x, column=y)
     
     plt.show()
+
+
+######################################################################
+### Boxplot by 2 groups
     
+def boxplot2f(df):
+    
+    clear()
+    sns.set(style="whitegrid")
+    
+    category=df.select_dtypes(exclude=['float'])
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number =[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    clear()
+    #
+    anz_col_category = len(category.columns)
+        
+    list_columns_category = []
+    list_number=[]
+    i=1
+    for i in range(anz_col_category):
+        list_columns_category.append(category.columns[i])
+        list_number.append(str(i))
+        print(i, category.columns[i])
+        i+=1
+    
+    while True:
+        groupby1_column = input('Group1 by column: \n(choose number) \n?')
+        if groupby1_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    while True:
+        groupby2_column = input('Group2 by column \n(choose number) \n?')
+        if groupby2_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    y = list_columns_werte[int(value_column)]
+    x = list_columns_category[int(groupby1_column)]
+    z = list_columns_category[int(groupby2_column)]
+    
+    sns.boxplot(x=x, y=y, hue=z, data=df, palette="Set3")
+    plt.show()
+
+
+
+
 #######################################################################    
 ###single violin plot
 def violin(df):
@@ -388,6 +458,72 @@ def violin_groupby(df):
     sns.violinplot(x=x, y=y, data=df)
     
     plt.show()
+
+#######################################################################
+###violin Plot by 2 groups
+def violin2f(df):
+    clear()
+    sns.set(style="whitegrid")
+    
+    category=df.select_dtypes(exclude=['float'])
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number =[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    clear()
+    #
+    anz_col_category = len(category.columns)
+        
+    list_columns_category = []
+    list_number=[]
+    i=1
+    for i in range(anz_col_category):
+        list_columns_category.append(category.columns[i])
+        list_number.append(str(i))
+        print(i, category.columns[i])
+        i+=1
+    
+    while True:
+        groupby1_column = input('Group1 by column: \n(choose number) \n?')
+        if groupby1_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    while True:
+        groupby2_column = input('Group2 by column \n(choose number) \n?')
+        if groupby2_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    y = list_columns_werte[int(value_column)]
+    x = list_columns_category[int(groupby1_column)]
+    z = list_columns_category[int(groupby2_column)]
+    
+    sns.violinplot(x=x, y=y, hue=z, data=df, palette="Set3")
+    plt.show()
+
+    
     
 #######################################################################
 ###swarmplot with group
