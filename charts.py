@@ -523,11 +523,44 @@ def violin2f(df):
     sns.violinplot(x=x, y=y, hue=z, data=df, palette="Set3")
     plt.show()
 
+######################################################################
+###single swarm plot
+def single_swarmplot(df):
+    clear()
+    sns.set(style="whitegrid")
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number=[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+        
+    
+    y = list_columns_werte[int(value_column)]
+    
+    sns.swarmplot(x=df[y])
+    plt.show()
+    
+    
     
     
 #######################################################################
 ###swarmplot with group
-def swarm_plot(df):
+def swarmplot1f(df):
     clear()
     sns.set(style="whitegrid", palette="muted")
 
@@ -582,8 +615,230 @@ def swarm_plot(df):
     #sns.boxplot(x=x, y=y, data=df, whis=np.inf)
     plt.show()
 
+######################################################################
+###swarmplot two factors
+def swarmplot2f(df):
+    clear()
+    sns.set(style="whitegrid")
+    
+    category=df.select_dtypes(exclude=['float'])
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number =[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    clear()
+    #
+    anz_col_category = len(category.columns)
+        
+    list_columns_category = []
+    list_number=[]
+    i=1
+    for i in range(anz_col_category):
+        list_columns_category.append(category.columns[i])
+        list_number.append(str(i))
+        print(i, category.columns[i])
+        i+=1
+    
+    while True:
+        groupby1_column = input('Group1 by column: \n(choose number) \n?')
+        if groupby1_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    while True:
+        groupby2_column = input('Group2 by column \n(choose number) \n?')
+        if groupby2_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    y = list_columns_werte[int(value_column)]
+    x = list_columns_category[int(groupby1_column)]
+    z = list_columns_category[int(groupby2_column)]
+    
+    sns.swarmplot(x=x, y=y, hue=z, data=df)
 
+    
+    plt.show()
+    
 
+######################################################################
+###single stripplot
+def single_stripplot(df):
+    clear()
+    sns.set(style="whitegrid")
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number=[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+        
+    
+    y = list_columns_werte[int(value_column)]
+    
+    sns.stripplot(x=df[y])
+    plt.show()
+    
+#######################################################################
+###stripplot with group
+def stripplot1f(df):
+    clear()
+    sns.set(style="whitegrid", palette="muted")
+
+    kategorie=df.select_dtypes(include=['object'])
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number =[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    clear()
+    #
+    anz_col_kategorie = len(kategorie.columns)
+        
+    list_columns_kategorie = []
+    list_number=[]
+    i=1
+    for i in range(anz_col_kategorie):
+        list_columns_kategorie.append(kategorie.columns[i])
+        list_number.append(str(i))
+        print(i, kategorie.columns[i])
+        i+=1
+    
+    while True:
+        groupby_column = input('Group by column: \n(choose number) \n?')
+        if groupby_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    y = df[list_columns_werte[int(value_column)]]
+    x = df[list_columns_kategorie[int(groupby_column)]]
+    
+    
+    # Draw a categorical scatterplot to show each observation
+    sns.stripplot(x=x, y=y, data=df)
+    #sns.boxplot(x=x, y=y, data=df, whis=np.inf)
+    plt.show()
+        
+######################################################################
+###stripplot two factors
+def stripplot2f(df):
+    clear()
+    sns.set(style="whitegrid")
+    
+    category=df.select_dtypes(exclude=['float'])
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number =[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    clear()
+    #
+    anz_col_category = len(category.columns)
+        
+    list_columns_category = []
+    list_number=[]
+    i=1
+    for i in range(anz_col_category):
+        list_columns_category.append(category.columns[i])
+        list_number.append(str(i))
+        print(i, category.columns[i])
+        i+=1
+    
+    while True:
+        groupby1_column = input('Group1 by column: \n(choose number) \n?')
+        if groupby1_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    while True:
+        groupby2_column = input('Group2 by column \n(choose number) \n?')
+        if groupby2_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    y = list_columns_werte[int(value_column)]
+    x = list_columns_category[int(groupby1_column)]
+    z = list_columns_category[int(groupby2_column)]
+    
+    sns.stripplot(x=x, y=y, hue=z, data=df)
+
+    
+    plt.show()
+
+    
+    
 ################################################################################
 ###visual distribution and values
 ###histogram

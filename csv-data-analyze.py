@@ -15,7 +15,7 @@ from L_REG import LREG
 from table_functions import appendDFToCSV, mergecolumn, filter_setzen, sort_column, transposed_table, crosstab, contingency_tb
 from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 from msa import msa_v1, msa_v2
-from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, liniendiagramm, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f, swarm_plot, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot, pareto, pareto_one_column
+from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, liniendiagramm, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot, pareto, pareto_one_column
 from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_s, ttest_t_s, ttest_i, anova_o_w, anova_t_w
 
 #alternatively, define the source
@@ -451,7 +451,7 @@ def auswahl_balkendiagramm(df):
 ###menu categorigal data (boxplot, violinplot)
 def menu_categorie_data(df):
     clear()
-    menu_cd = input('Which Boxplox: \n1: Single Boxplot \n2: Boxplot by one group \n3: Boxplot by 2 groups \n4: Violin-Plot \n5: Violinplot by group \n6: Boxplot by 2 groups \n7: Swarm-Plot \n(choose a number) \n?')
+    menu_cd = input('Which Categorial Plot: \n1: Single Boxplot \n2: Boxplot by one factor \n3: Boxplot by two factors \n4: Single Violinplot \n5: Violinplot one factor \n6: Violinplot by two factors \n7: Single Swarmplot \n8: Swarmplot by one factor \n9: Swarmplot by two factors \n10: Single Stripplot \n11: Stripplot by one factor \n12: Stripplot by two factors  \n(choose a number) \n?')
     if menu_cd =='1':
         boxplot(df)
     elif menu_cd =='2':
@@ -465,7 +465,19 @@ def menu_categorie_data(df):
     elif menu_cd =='6':
         violin2f(df)
     elif menu_cd =='7':
-        swarm_plot(df)
+        single_swarmplot(df)
+    elif menu_cd =='8':
+        swarmplot1f(df)
+    elif menu_cd =='9':
+        swarmplot2f(df)
+    elif menu_cd =='10':
+        single_stripplot(df)
+    elif menu_cd =='11':
+        stripplot1f(df)
+    elif menu_cd =='12':
+        stripplot2f(df)
+    
+    
     else:
         print('Wrong input, try again!')
 
