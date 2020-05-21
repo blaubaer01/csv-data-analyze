@@ -15,7 +15,7 @@ from L_REG import LREG
 from table_functions import appendDFToCSV, mergecolumn, filter_setzen, sort_column, transposed_table, crosstab, contingency_tb
 from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 from msa import msa_v1, msa_v2
-from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, liniendiagramm, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot, pareto, pareto_one_column
+from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, liniendiagramm, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot, pareto, pareto_one_column, pointplot1f, pointplot2f, confidencelinechart
 from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_s, ttest_t_s, ttest_i, anova_o_w, anova_t_w
 
 #alternatively, define the source
@@ -451,7 +451,7 @@ def auswahl_balkendiagramm(df):
 ###menu categorigal data (boxplot, violinplot)
 def menu_categorie_data(df):
     clear()
-    menu_cd = input('Which Categorial Plot: \n1: Single Boxplot \n2: Boxplot by one factor \n3: Boxplot by two factors \n4: Single Violinplot \n5: Violinplot one factor \n6: Violinplot by two factors \n7: Single Swarmplot \n8: Swarmplot by one factor \n9: Swarmplot by two factors \n10: Single Stripplot \n11: Stripplot by one factor \n12: Stripplot by two factors  \n(choose a number) \n?')
+    menu_cd = input('Which Categorial Plot: \n1: Single Boxplot \n2: Boxplot by one factor \n3: Boxplot by two factors \n4: Single Violinplot \n5: Violinplot one factor \n6: Violinplot by two factors \n7: Single Swarmplot \n8: Swarmplot by one factor \n9: Swarmplot by two factors \n10: Single Stripplot \n11: Stripplot by one factor \n12: Stripplot by two factors  \n13: Pointplot by one factor \n14: Pointplot by two factors \n(choose a number) \n?')
     if menu_cd =='1':
         boxplot(df)
     elif menu_cd =='2':
@@ -476,7 +476,10 @@ def menu_categorie_data(df):
         stripplot1f(df)
     elif menu_cd =='12':
         stripplot2f(df)
-    
+    elif menu_cd =='13':
+        pointplot1f(df)
+    elif menu_cd =='14':
+        pointplot2f(df)
     
     else:
         print('Wrong input, try again!')
@@ -544,7 +547,7 @@ def menu_graphical_analyze(df):
     print('Choose graphical view:')
     gr_view_list= ['Barchart', 'Piechart', 'Histogram', 'Q-Q-Plot', 'Linechart', 'Group-Plot', 'Scatter-Plot',  
                    'Categorial Plots',  
-                   'Control-Charts', 'Pareto-Chart']
+                   'Control-Charts', 'Pareto-Chart', 'Confidence Line-Chart']
     for i in range(len(gr_view_list)):
         print(i, gr_view_list[i])
         i+=1
@@ -570,7 +573,8 @@ def menu_graphical_analyze(df):
         menu_spc_charts(df)
     elif ausw_gr_view =='9':
         menu_pareto(df)
-        #print('currently not available')
+    elif ausw_gr_view =='10':
+        confidencelinechart(df)
     else:
         print('Wrong input, please try again')
 

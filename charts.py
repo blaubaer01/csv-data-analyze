@@ -208,6 +208,71 @@ def liniendiagramm(df):
 
 
 #######################################################################
+###line-chart
+def confidencelinechart(df):
+    
+    #df = sns.load_dataset(df)
+    
+    clear()
+    kategorie=df.select_dtypes(include=['object', 'datetime', 'int'])
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number = []
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number)\n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    clear()
+    #
+    anz_col_kategorie = len(kategorie.columns)
+        
+    list_columns_kategorie = []
+    list_number = []
+    i=1
+    
+    for i in range(anz_col_kategorie):
+        list_columns_kategorie.append(kategorie.columns[i])
+        list_number.append(str(i))
+        print(i, kategorie.columns[i])
+        i+=1
+    
+    
+    while True:
+        groupby_column = input('Group by column: \n(choose number) \n?')
+        if groupby_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+      
+    
+    y = list_columns_werte[int(value_column)]
+    x = list_columns_kategorie[int(groupby_column)]
+    
+    sns.relplot(x=x, y=y, kind="line", ci="sd", data=df)
+    
+    
+    plt.show()
+
+
+
+
+#######################################################################
 ###boxplots and violinplots
 
 #######################################################################
@@ -836,6 +901,131 @@ def stripplot2f(df):
 
     
     plt.show()
+
+#######################################################################
+###stripplot with group
+def pointplot1f(df):
+    clear()
+    sns.set(style="darkgrid")
+
+    kategorie=df.select_dtypes(include=['object'])
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number =[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    clear()
+    #
+    anz_col_kategorie = len(kategorie.columns)
+        
+    list_columns_kategorie = []
+    list_number=[]
+    i=1
+    for i in range(anz_col_kategorie):
+        list_columns_kategorie.append(kategorie.columns[i])
+        list_number.append(str(i))
+        print(i, kategorie.columns[i])
+        i+=1
+    
+    while True:
+        groupby_column = input('Group by column: \n(choose number) \n?')
+        if groupby_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    y = df[list_columns_werte[int(value_column)]]
+    x = df[list_columns_kategorie[int(groupby_column)]]
+    
+    
+    # Draw a categorical scatterplot to show each observation
+    sns.pointplot(x=x, y=y, data=df)
+    #sns.boxplot(x=x, y=y, data=df, whis=np.inf)
+    plt.show()
+        
+######################################################################
+###stripplot two factors
+def pointplot2f(df):
+    clear()
+    sns.set(style="darkgrid")
+    
+    category=df.select_dtypes(exclude=['float'])
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number =[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    clear()
+    #
+    anz_col_category = len(category.columns)
+        
+    list_columns_category = []
+    list_number=[]
+    i=1
+    for i in range(anz_col_category):
+        list_columns_category.append(category.columns[i])
+        list_number.append(str(i))
+        print(i, category.columns[i])
+        i+=1
+    
+    while True:
+        groupby1_column = input('Group1 by column: \n(choose number) \n?')
+        if groupby1_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    while True:
+        groupby2_column = input('Group2 by column \n(choose number) \n?')
+        if groupby2_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    y = list_columns_werte[int(value_column)]
+    x = list_columns_category[int(groupby1_column)]
+    z = list_columns_category[int(groupby2_column)]
+    
+    sns.pointplot(x=x, y=y, hue=z, data=df)
+
+    
+    plt.show()
+
+
 
     
     
