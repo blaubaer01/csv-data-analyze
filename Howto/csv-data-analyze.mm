@@ -245,8 +245,7 @@
   <body>
     <img src="pictures/menu_statistics.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node COLOR="#111111" CREATED="1587890163919" ID="ID_1635904288" MODIFIED="1587892403698" TEXT="Beschreibende Statistik">
 <node COLOR="#111111" CREATED="1587890209265" ID="ID_1589835199" MODIFIED="1587892403700" TEXT="Beschreibende Statistik ganze Tabelle"/>
@@ -284,13 +283,13 @@
 </node>
 </node>
 <node COLOR="#111111" CREATED="1587886856441" ID="ID_39192897" MODIFIED="1587892403705" TEXT="Grafische Analysen">
-<node COLOR="#111111" CREATED="1588703909184" ID="ID_494449260" MODIFIED="1589577871327">
+<node COLOR="#111111" CREATED="1588703909184" ID="ID_494449260" MODIFIED="1590129510832">
 <richcontent TYPE="NODE"><html>
   <head>
     
   </head>
   <body>
-    <img src="pictures/graphical_menu.png" />
+    <img src="pictures/menu_graphical_charts.png" />
   </body>
 </html></richcontent>
 </node>
@@ -369,13 +368,13 @@
 </node>
 </node>
 <node COLOR="#111111" CREATED="1587890364405" ID="ID_1631021995" MODIFIED="1588705308706" TEXT="Group Plot">
-<node COLOR="#111111" CREATED="1588701464087" ID="ID_230515700" MODIFIED="1588701651063">
+<node COLOR="#111111" CREATED="1588701464087" ID="ID_230515700" MODIFIED="1590130541885">
 <richcontent TYPE="NODE"><html>
   <head>
     
   </head>
   <body>
-    <img src="pictures/group-plot.png" />
+    <img src="pictures/groupplot.png" />
   </body>
 </html></richcontent>
 </node>
@@ -419,13 +418,13 @@
 </node>
 </node>
 <node COLOR="#111111" CREATED="1587890384838" ID="ID_229243502" MODIFIED="1587892403733" TEXT="Categorial Plots">
-<node COLOR="#111111" CREATED="1588704191862" ID="ID_1953142369" MODIFIED="1588704235924">
+<node COLOR="#111111" CREATED="1588704191862" ID="ID_1953142369" MODIFIED="1590129451689">
 <richcontent TYPE="NODE"><html>
   <head>
     
   </head>
   <body>
-    <img src="pictures/menu_categorial_plots.png" />
+    <img src="pictures/menu_categorical_charts.png" />
   </body>
 </html></richcontent>
 </node>
@@ -441,7 +440,7 @@
 </html></richcontent>
 </node>
 </node>
-<node COLOR="#111111" CREATED="1587891038399" ID="ID_1695682011" MODIFIED="1588705309000" TEXT="Boxplot by group">
+<node COLOR="#111111" CREATED="1587891038399" ID="ID_1695682011" MODIFIED="1590128565889" TEXT="Boxplot by one factor">
 <node COLOR="#111111" CREATED="1588701792118" ID="ID_1930543923" MODIFIED="1588701889071">
 <richcontent TYPE="NODE"><html>
   <head>
@@ -449,6 +448,18 @@
   </head>
   <body>
     <img src="pictures/group-box-plot.png" />
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1590128566607" ID="ID_1299111695" MODIFIED="1590128578031" TEXT="Boxplot by two factors">
+<node COLOR="#111111" CREATED="1590128760271" ID="ID_1371443090" MODIFIED="1590128794231">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/boxplot2f.png" />
   </body>
 </html></richcontent>
 </node>
@@ -465,7 +476,7 @@
 </html></richcontent>
 </node>
 </node>
-<node COLOR="#111111" CREATED="1587891080362" ID="ID_145576231" MODIFIED="1588705309096" TEXT="Violinplot by Group">
+<node COLOR="#111111" CREATED="1587891080362" ID="ID_145576231" MODIFIED="1590128599286" TEXT="Violinplot by one factor">
 <node COLOR="#111111" CREATED="1588701808812" ID="ID_1184522731" MODIFIED="1588701959261">
 <richcontent TYPE="NODE"><html>
   <head>
@@ -477,7 +488,31 @@
 </html></richcontent>
 </node>
 </node>
-<node COLOR="#111111" CREATED="1587891093544" ID="ID_507973703" MODIFIED="1588705309161" TEXT="Swarm-Plot">
+<node COLOR="#111111" CREATED="1590128600102" ID="ID_761591099" MODIFIED="1590128615526" TEXT="Violinplot by two factors">
+<node COLOR="#111111" CREATED="1590128809011" ID="ID_446537176" MODIFIED="1590128826720">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/violinplot2f.png" />
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1590128624130" ID="ID_876159564" MODIFIED="1590128636073" TEXT="single swam plot">
+<node COLOR="#111111" CREATED="1590128833936" ID="ID_990748924" MODIFIED="1590128858750">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/single_swam_plot.png" />
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1587891093544" ID="ID_507973703" MODIFIED="1590128650497" TEXT="Swarm-Plot by one factor">
 <node COLOR="#111111" CREATED="1588701815210" ID="ID_1492114585" MODIFIED="1588701983480">
 <richcontent TYPE="NODE"><html>
   <head>
@@ -485,6 +520,69 @@
   </head>
   <body>
     <img src="pictures/swarm-plot.png" />
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1590128651532" ID="ID_880777647" MODIFIED="1590128667807" TEXT="Swarmplot by two factors">
+<node COLOR="#111111" CREATED="1590128883428" ID="ID_1994893327" MODIFIED="1590128912926">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/swarmplot2f.png" />
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1590128678370" ID="ID_238274668" MODIFIED="1590128689405" TEXT="single stripplot">
+<node COLOR="#111111" CREATED="1590128927250" ID="ID_762487927" MODIFIED="1590129157122">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/single_strip_plot.png" />
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1590128690521" ID="ID_1801599919" MODIFIED="1590128705264" TEXT="Stripplot by one factor">
+<node COLOR="#111111" CREATED="1590128933727" ID="ID_32455262" MODIFIED="1590128937471" TEXT="pic"/>
+</node>
+<node COLOR="#111111" CREATED="1590128706006" ID="ID_1993245872" MODIFIED="1590128720100" TEXT="Stripplot by two factors">
+<node COLOR="#111111" CREATED="1590128944554" ID="ID_774876969" MODIFIED="1590129251486">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/stripplot2f.png" />
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1590128721320" ID="ID_1559428164" MODIFIED="1590128731509" TEXT="Pointplot by one factor">
+<node COLOR="#111111" CREATED="1590128951116" ID="ID_533047160" MODIFIED="1590129292604">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/pointplot1f.png" />
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1590128732368" ID="ID_761325439" MODIFIED="1590128745326" TEXT="Pointplot by two factors">
+<node COLOR="#111111" CREATED="1590128957872" ID="ID_355507890" MODIFIED="1590129316460">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/pointplot2f.png" />
   </body>
 </html></richcontent>
 </node>
@@ -566,6 +664,18 @@
   </head>
   <body>
     <img src="pictures/pareto-chart.png" />
+  </body>
+</html></richcontent>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1590129534743" ID="ID_437791700" MODIFIED="1590129623596" TEXT="Confidence Plot">
+<node COLOR="#111111" CREATED="1590129571309" ID="ID_605821077" MODIFIED="1590129594053">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/confidence_line_plot.png" />
   </body>
 </html></richcontent>
 </node>
@@ -748,8 +858,7 @@
   <body>
     <img src="pictures/contingency_chiq-test.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 <node COLOR="#111111" CREATED="1589666119587" ID="ID_1555612579" MODIFIED="1589666173050">
 <richcontent TYPE="NODE"><html>
@@ -759,8 +868,7 @@
   <body>
     <img src="pictures/crosstabs_contigency_calc.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 </node>
@@ -773,35 +881,35 @@
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="16"/>
 </node>
-<node COLOR="#00b439" CREATED="1587891328641" ID="ID_1352780411" LINK="https://pandas.pydata.org/" MODIFIED="1588669541455" TEXT="Pandas">
+<node COLOR="#00b439" CREATED="1587891328641" ID="ID_1352780411" LINK="https://pandas.pydata.org/" MODIFIED="1590215065600" TEXT="Pandas 0.25.1">
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="16"/>
 </node>
-<node COLOR="#00b439" CREATED="1587891370232" ID="ID_1633540811" LINK="https://matplotlib.org/" MODIFIED="1588669573841" TEXT="Matplotlib">
+<node COLOR="#00b439" CREATED="1587891370232" ID="ID_1633540811" LINK="https://matplotlib.org/" MODIFIED="1590215014258" TEXT="Matplotlib 3.1.2">
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="16"/>
 </node>
-<node COLOR="#00b439" CREATED="1587891384451" ID="ID_1727612006" LINK="https://pypi.org/project/os-sys/" MODIFIED="1588669622009" TEXT="os-sys">
+<node COLOR="#00b439" CREATED="1587891384451" ID="ID_1727612006" LINK="https://pypi.org/project/os-sys/" MODIFIED="1590215258915" TEXT="os-sys 2.1.4">
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="16"/>
 </node>
-<node COLOR="#00b439" CREATED="1587891398735" ID="ID_1134157636" LINK="https://www.scipy.org/" MODIFIED="1588669661985" TEXT="scipy">
+<node COLOR="#00b439" CREATED="1587891398735" ID="ID_1134157636" LINK="https://www.scipy.org/" MODIFIED="1590215080368" TEXT="scipy 1.3.1">
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="16"/>
 </node>
-<node COLOR="#00b439" CREATED="1587891413626" ID="ID_952320638" LINK="https://numpy.org/" MODIFIED="1588669714423" TEXT="numpy">
+<node COLOR="#00b439" CREATED="1587891413626" ID="ID_952320638" LINK="https://numpy.org/" MODIFIED="1590215034659" TEXT="numpy 1.17.2">
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="16"/>
 </node>
-<node COLOR="#00b439" CREATED="1587891421172" ID="ID_1598932118" LINK="https://seaborn.pydata.org/" MODIFIED="1588669737324" TEXT="seaborn">
+<node COLOR="#00b439" CREATED="1587891421172" ID="ID_1598932118" LINK="https://seaborn.pydata.org/" MODIFIED="1590215094020" TEXT="seaborn 0.9.0">
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="16"/>
 </node>
-<node COLOR="#00b439" CREATED="1587891430094" ID="ID_1172497813" LINK="https://pypi.org/project/outlier_utils/" MODIFIED="1588669772724" TEXT="outlier_utils">
+<node COLOR="#00b439" CREATED="1587891430094" ID="ID_1172497813" LINK="https://pypi.org/project/outlier_utils/" MODIFIED="1590215049994" TEXT="outlier_utils 0.0.3">
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="16"/>
 </node>
-<node COLOR="#00b439" CREATED="1587891438127" ID="ID_187051336" LINK="https://www.statsmodels.org/stable/index.html" MODIFIED="1588669827931" TEXT="statsmodels">
+<node COLOR="#00b439" CREATED="1587891438127" ID="ID_187051336" LINK="https://www.statsmodels.org/stable/index.html" MODIFIED="1590215108795" TEXT="statsmodels 0.10.1">
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="16"/>
 </node>

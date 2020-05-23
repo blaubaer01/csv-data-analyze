@@ -786,7 +786,7 @@ def main():
         #choosesource(source)
         print('#'*80)
         print('CSV Data Analyze-Tool V0.3 (by Ricky Helfgen) \nThis is an open source project and is subject to the guidelines of GPL V3')
-        print('This tool is used for data analysis of CSV files with python3,\n and packages:os, numpy, webbrowser, pandas, scipy, matplotlib, seaborn, pyspc')
+        print('This tool is used for data analysis of CSV files with python3,\n and packages:numpy, webbrowser, pandas, scipy, matplotlib, seaborn, statsmodels, os-sys')
         print('https://github.com/blaubaer01/csv-data-analyze')
         print('Have Fun!')
         print('#'*80)
