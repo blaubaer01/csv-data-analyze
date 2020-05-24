@@ -1,234 +1,270 @@
-
-
-<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet href="treestyles.css" type="text/css"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="treestyles.css" type="text/css"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!--This file has been created with toxhtml.xsl-->
 <head>
 <meta name="Ricky Helfgen" content="">
-<meta name="date" content="2020-04-27T12:52:01+0200" >
+<meta name="date" content="2020-05-24T08:37:56+0200" >
 <meta name="copyright" content="Ricky Helfgen>
 <meta name="keywords" content="CSV, csv-data-analyze, csv-data-analyze.py, statistisch, statistsiche Analyse, statistical analyse from CSV-files, work with csv-files, csv-file">
-<meta name="description" content="Python Tool to work and analyse csv-files">
+<meta name="description" content="Ein Python Tool zum Bearbeiten und analysieren von csv-files">
 <meta name="ROBOTS" content="INDEX, FOLLOW">
-<meta http-equiv="expires" content="0">
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 <title>csv-data-analyze - Python - Tool</title>
 <link rel="stylesheet" href="csv-data-analyze.html_files//treestyles.css" type="text/css" />
-<script type="text/javascript" src="csv-data-analyze.html_files//marktree.js"></script>
+
+	</script>
 </head>
-<body>
-<div class="basetop"><a onclick="expandAll(document.getElementById('base'))" href="#">Expand</a> -
+<body><div class="basetop"><a onclick="expandAll(document.getElementById('base'))" href="#">Expand</a> -
 <a onclick="collapseAll(document.getElementById('base'))" href="#">Collapse</a></div><div class="basetext" id="base"><ul>
 	<li class="col" id="FMID_269547937FM"><div class="nodecontent" style="color:#000000;font-size:167%;">csv-data-analyze</div>
 		<ul class="subexp">
-	<li class="col" id="FMID_1326874712FM"><div class="nodecontent" style="color:#0033ff;font-size:150%;">Generell</div>
+	<li class="col" id="FMID_1326874712FM"><div class="nodecontent" style="color:#0033ff;font-size:150%;">general</div>
 		<ul class="subexp">
 	<li class="basic" id="FMID_168568835FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">Autor: Ricky Helfgen</div></li>
-	<li class="basic" id="FMID_1059242826FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">Program Language: <a href="https://www.python.org/" target="_blank">Python</a></div></li></ul></li>
-	<br>Howto:<br>-download <a href="https://github.com/blaubaer01/csv-data-analyze" target="_blank">'csv-data-analyze-master.zip'</a><br>-unzip<br>-go by cmd (Winodws) or shell(Linux) into the folder where the unpacked files are<br>
-	-run: python3 csv-data-analyze.py
-	<li class="col" id="FMID_1770675947FM"><div class="nodecontent" style="color:#0033ff;font-size:150%;">Structure</div>
+	<li class="col" id="FMID_1059242826FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">Program Language: Python</div>
 		<ul class="subexp">
-	<li class="basic" id="FMID_662341060FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">
-	read table in dataframe<br>
-	<img src="pictures/open_prog.png" width="913" height="615" alt="" />
-	
-	
-	
-	</div></li>
-	<li class="basic" id="FMID_110218904FM">
-	<div class="nodecontent" style="color:#00b439;font-size:133%;">Open File / prepare<br>
-	<img src="pictures/pre-view.png" width="754" height="221" alt="" />
-	
-	
-	</div></li>
-	
-	<li class="basic" id="FMID_1207386137FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">work with / analysze</div></li></ul></li>
-	<li class="col" id="FMID_81719473FM"><div class="nodecontent" style="color:#0033ff;font-size:150%;">Functions</div>
+	<li class="basic" id="FMID_1550020683FM"><div class="nodecontent" style="color:#990000;font-size:117%;">HOWTO:</div></li>
+	<li class="basic" id="FMID_1471234441FM"><div class="nodecontent" style="color:#990000;font-size:117%;"><a href="https://github.com/blaubaer01/csv-data-analyze">download csv-data-analyze-master.zip</a> <a href="https://github.com/blaubaer01/csv-data-analyze"><img src="csv-data-analyze-en.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
+	<li class="basic" id="FMID_304335834FM"><div class="nodecontent" style="color:#990000;font-size:117%;">unzip</div></li>
+	<li class="basic" id="FMID_946722508FM"><div class="nodecontent" style="color:#990000;font-size:117%;">go with cmd (Winodws) or shell(Linux) into the folder where the unpacked files are</div></li>
+	<li class="basic" id="FMID_1219735265FM"><div class="nodecontent" style="color:#990000;font-size:117%;">run: python3 csv-data-analyze.py </div></li></ul></li>
+	<li class="basic" id="FMID_1655666287FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="http://www.reh-webdesign.de/csv-data-analyze/howto/csv-data-analyze-de.html">German HowTo Link</a> <a href="http://www.reh-webdesign.de/csv-data-analyze/howto/csv-data-analyze-de.html"><img src="csv-data-analyze-en.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li></ul></li>
+	<li class="col" id="FMID_1770675947FM"><div class="nodecontent" style="color:#0033ff;font-size:150%;">structure</div>
 		<ul class="subexp">
-	<li class="col" id="FMID_800229018FM">
-	<div class="nodecontent" style="color:#00b439;font-size:133%;">Table Functions<br><img src="pictures/table_funktions.png" width="175" height="120" alt="" /></br>
-	</div>
+	<li class="col" id="FMID_662341060FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">read file</div>
 		<ul class="subexp">
-	<li class="basic" id="FMID_1468341555FM"><div class="nodecontent" style="color:#990000;font-size:117%;">add csv-file
-	<br><img src="pictures/append_csv-table.png" width="310" height="323" alt="" />	
-	</div></li>
-	<li class="basic" id="FMID_1627623504FM">
-	<div class="nodecontent" style="color:#990000;font-size:117%;">merge csv-file<br>
-	<img src="pictures/merge_csv_table.png" width="756" height="342" alt="" />
-	
-	</div></li>
-	<li class="basic" id="FMID_1508606405FM"><div class="nodecontent" style="color:#990000;font-size:117%;">filter table
-	<br><img src="pictures/set_filter_yes.png" width="590" height="435" alt="" /><br></br>
-	</div></li></ul></li>
-	<li class="col" id="FMID_1985004379FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">Analyse Fuctions<br>
-	<img src="pictures/funktions.png" width="249" height="88" alt="" /></br>
-	</div>
+	<li class="basic" id="FMID_1108860696FM"><div class="nodecontent" style="color:#990000;font-size:117%;"><img src="pictures/open_prog.png" /></div></li></ul></li>
+	<li class="col" id="FMID_110218904FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">edit file/prepare file</div>
 		<ul class="subexp">
-	<li class="col" id="FMID_1208604748FM"><div class="nodecontent" style="color:#990000;font-size:117%;">Pre-Analyse
-	
-	</div>
+	<li class="col" id="FMID_934336499FM"><div class="nodecontent" style="color:#990000;font-size:117%;">change datatype</div>
 		<ul class="subexp">
-	<li class="col" id="FMID_70377701FM"><div class="nodecontent" style="color:#111111;">Preview</div>
+	<li class="basic" id="FMID_684239449FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/change_data_type.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1231353562FM"><div class="nodecontent" style="color:#990000;font-size:117%;">set filters</div>
 		<ul class="subexp">
-	<li class="basic" id="FMID_336074690FM"><div class="nodecontent" style="color:#111111;">show first dataset
-	<br><img src="pictures/preview.png" width="212" height="104" alt="" />		
-	</div></li>
-	<li class="basic" id="FMID_879647245FM"><div class="nodecontent" style="color:#111111;">show always 5 dataset till end</div></li>
-	<li class="basic" id="FMID_1452544494FM"><div class="nodecontent" style="color:#111111;">show datatype
-	<br><img src="pictures/datatype.png" width="244" height="258" alt="" />	
-	</div></li>
-	<li class="basic" id="FMID_657415585FM"><div class="nodecontent" style="color:#111111;">show missing datas
-	<br><img src="pictures/missing_data.png" width="461" height="259" alt="" />	
-	</div></li>
-	<li class="basic" id="FMID_701928297FM"><div class="nodecontent" style="color:#111111;">show table into the browwser
-	<br><img src="pictures/html-view.png" width="867" height="630" alt="" />	
-	</div></li></ul></li>
-	<li class="basic" id="FMID_1669986504FM"><div class="nodecontent" style="color:#111111;">apend csv-files anhängen
-	<br><img src="pictures/append_csv-table.png" width="310" height="323" alt="" />	
-	</div></li>
-	<li class="basic" id="FMID_1039004057FM"><div class="nodecontent" style="color:#111111;">merge csv-fles
-	<br><img src="pictures/merge_csv_table.png" width="756" height="342" alt="" />	
-	</div></li>
-	<li class="basic" id="FMID_1043457972FM"><div class="nodecontent" style="color:#111111;">set filter
-	<br><img src="pictures/set_filter.png" width="379" height="326" alt="" />	
-	</div></li></ul></li>
-	<li class="col" id="FMID_1884400672FM"><div class="nodecontent" style="color:#990000;font-size:117%;">Statistical Anaysis
-	<br
-	</div>
+	<li class="basic" id="FMID_1883198968FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/set_filter.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1452992239FM"><div class="nodecontent" style="color:#990000;font-size:117%;">sort table</div>
 		<ul class="subexp">
-	<li class="col" id="FMID_1635904288FM"><div class="nodecontent" style="color:#111111;">Descriptive Statistic
-	<br><img src="pictures/menu_d_statistics.png" width="304" height="120" alt="" />	
-	</div>
+	<li class="basic" id="FMID_1665921600FM"><div class="nodecontent" style="color:#111111;">bild</div></li></ul></li>
+	<li class="basic" id="FMID_1213165805FM"><div class="nodecontent" style="color:#990000;font-size:117%;"><img src="pictures/daten_formatieren.png" /></div></li></ul></li>
+	<li class="basic" id="FMID_1207386137FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">edit table/ analyze . functions</div></li></ul></li>
+	<li class="col" id="FMID_81719473FM"><div class="nodecontent" style="color:#0033ff;font-size:150%;">functions</div>
 		<ul class="subexp">
-	<li class="basic" id="FMID_1589835199FM"><div class="nodecontent" style="color:#111111;">Descriptive Statisttic hole table
-		
-	</div></li>
-	<li class="basic" id="FMID_717387343FM"><div class="nodecontent" style="color:#111111;">Descriptive Statistic numerical datas</div></li>
-	
-	<li class="basic" id="FMID_1771227011FM"><div class="nodecontent" style="color:#111111;">Descriptive Statitics choosed Column
-	<br><img src="pictures/ds_nummerical.png" width="339" height="543" alt="" />
-	<br><img src="pictures/ds_objects.png" width="348" height="468" alt="" /></br>	
-	</div></li></ul></li>
-	<li class="col" id="FMID_39192897FM"><div class="nodecontent" style="color:#111111;">Graphical Analysis
-	<br><img src="pictures/graphicalanalysis.png" width="294" height="253" alt="" />	
-	</div>
+	<li class="col" id="FMID_800229018FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">table functions</div>
 		<ul class="subexp">
+	<li class="basic" id="FMID_1022610441FM"><div class="nodecontent" style="color:#990000;font-size:117%;"><img src="pictures/table_funktion_menu.png" /></div></li>
+	<li class="col" id="FMID_262886403FM"><div class="nodecontent" style="color:#990000;font-size:117%;">view table</div>
+		<ul class="subexp">
+	<li class="col" id="FMID_741764931FM"><div class="nodecontent" style="color:#111111;">Single View</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_199285381FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/preview.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1940018712FM"><div class="nodecontent" style="color:#111111;">show data type</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1012651539FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/show_datatype.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1911188479FM"><div class="nodecontent" style="color:#111111;">show missing datas</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1616751183FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/missing_data.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1123713893FM"><div class="nodecontent" style="color:#111111;">show table into browser</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_3655559FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/show_table_in_browser.png" /></div></li></ul></li></ul></li>
+	<li class="col" id="FMID_1468341555FM"><div class="nodecontent" style="color:#990000;font-size:117%;">add table</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1901730026FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/append_csv-table.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1627623504FM"><div class="nodecontent" style="color:#990000;font-size:117%;">merge table</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_593238000FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/merge_csv_table.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1508606405FM"><div class="nodecontent" style="color:#990000;font-size:117%;">sort table</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1282256370FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/sorting.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1444688262FM"><div class="nodecontent" style="color:#990000;font-size:117%;">transponde table</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1939004712FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/trans_table_Auto.csv.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1219146210FM"><div class="nodecontent" style="color:#990000;font-size:117%;">create crosstable</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1508495821FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/crosstable.png" /></div></li></ul></li></ul></li>
+	<li class="col" id="FMID_1985004379FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">analyze functions</div>
+		<ul class="subexp">
+	<li class="col" id="FMID_1884400672FM"><div class="nodecontent" style="color:#990000;font-size:117%;">statistical analyze</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_486637719FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/menu_statistics.png" /></div></li>
+	<li class="col" id="FMID_1635904288FM"><div class="nodecontent" style="color:#111111;">described statistic</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1589835199FM"><div class="nodecontent" style="color:#111111;">described statistics complete table</div></li>
+	<li class="basic" id="FMID_717387343FM"><div class="nodecontent" style="color:#111111;">described statistics only numerical data</div></li>
+	<li class="basic" id="FMID_1771227011FM"><div class="nodecontent" style="color:#111111;">described statistics only one column </div></li>
+	<li class="basic" id="FMID_730811124FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/ds_nummerical.png" /></div></li>
+	<li class="basic" id="FMID_343709365FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/ds_objects.png" /></div></li>
+	<li class="basic" id="FMID_1286495599FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/menu_d_statistics.png" /></div></li></ul></li>
+	<li class="col" id="FMID_39192897FM"><div class="nodecontent" style="color:#111111;">graphical analyze</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_494449260FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/menu_graphical_charts.png" /></div></li>
 	<li class="col" id="FMID_1500357248FM"><div class="nodecontent" style="color:#111111;">Bar-Chart</div>
 		<ul class="subexp">
-	<li class="basic" id="FMID_1493216273FM"><div class="nodecontent" style="color:#111111;">Count Items of the column
-	<br><img src="pictures/bar_chart1.png" width="697" height="320" alt="" />	
-	</div></li>
-	<li class="basic" id="FMID_686808325FM"><div class="nodecontent" style="color:#111111;">Count with Category
-	<br><img src="pictures/bar-chart2.png" width="641" height="586" alt="" />	
-	</div></li></ul></li>
-	<li class="basic" id="FMID_538150543FM"><div class="nodecontent" style="color:#111111;">Pie-Chart
-	<br><img src="pictures/pie-chart.png" width="848" height="522" alt="" />	
-	</div></li>
-	<li class="basic" id="FMID_1117441368FM"><div class="nodecontent" style="color:#111111;">Histogram
-	<br><img src="pictures/histogramm.png" width="637" height="581" alt="" />	
-	</div></li>
-	<li class="basic" id="FMID_1691418723FM"><div class="nodecontent" style="color:#111111;">Q-Q-Plot
-	<br><img src="pictures/q-q-plot.png" width="642" height="585" alt="" /></br></div></li>
-	<li class="basic" id="FMID_230293739FM"><div class="nodecontent" style="color:#111111;">Linechart
-	<br><img src="pictures/line-chart_time-series.png" width="641" height="579" alt="" />	
-	</div></li>
-	<li class="basic" id="FMID_1631021995FM"><div class="nodecontent" style="color:#111111;">Group Plot
-	<br><img src="pictures/group-plot.png" width="638" height="582" alt="" />	
-	</div></li>
-	<li class="col" id="FMID_1864620414FM"><div class="nodecontent" style="color:#111111;">ScatterPlot
-	<br><img src="pictures/scatter_menu.png" width="242" height="135" alt="" />	
-	</div>
+	<li class="col" id="FMID_1493216273FM"><div class="nodecontent" style="color:#111111;">according to the counts of the selected column</div>
 		<ul class="subexp">
-	<li class="basic" id="FMID_1029783037FM"><div class="nodecontent" style="color:#111111;">scatter plot only (no regresssionline)<br>
-	<img src="pictures/scatter-plot.png" width="647" height="585" alt="" />	
-	</br></div></li>
-	<li class="basic" id="FMID_1553042483FM"><div class="nodecontent" style="color:#111111;">regression plot (with regression line)
-	<br><img src="pictures/scatter-plot_w_r.png" width="639" height="583" alt="" />	
-	</div></li>
-	<li class="basic" id="FMID_647056295FM"><div class="nodecontent" style="color:#111111;">regression joint plot (with regressionline and histogram)
-	<br><img src="pictures/scatter_joint.png" width="601" height="702" alt="" />	
-	</div></li></ul></li>
-	<li class="col" id="FMID_229243502FM"><div class="nodecontent" style="color:#111111;">Categorial Plots
-	<br><img src="pictures/menu_categorial_plots.png" width="240" height="175" alt="" />	
-	</div>
+	<li class="basic" id="FMID_1882058337FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/bar_chart1.png" /></div></li></ul></li>
+	<li class="col" id="FMID_686808325FM"><div class="nodecontent" style="color:#111111;">grouped by 2 column</div>
 		<ul class="subexp">
-	<li class="basic" id="FMID_930557098FM"><div class="nodecontent" style="color:#111111;">Single Boxplot
-	<br><img src="pictures/single-box-plot.png" width="634" height="578" alt="" />	
-	</div></li>
-	<li class="basic" id="FMID_1695682011FM"><div class="nodecontent" style="color:#111111;">Boxplot by group
-	<br><img src="pictures/group-box-plot.png" width="637" height="584" alt="" />	
-	</div></li>
-	<li class="basic" id="FMID_1464119721FM"><div class="nodecontent" style="color:#111111;">Single Violin Plot
-	<br><img src="pictures/violin-plot.png" width="642" height="582" alt="" />	
-	</div></li>
-	<li class="basic" id="FMID_145576231FM"><div class="nodecontent" style="color:#111111;">Violinplot by Group
-	<br><img src="pictures/group-violin-plot.png" width="642" height="584" alt="" />	
-	</div></li>
-	<li class="basic" id="FMID_507973703FM"><div class="nodecontent" style="color:#111111;">Swarm-Plot
-	<br><img src="pictures/swarm-plot.png" width="640" height="582" alt="" />	
-	</div></li></ul></li>
-	<li class="basic" id="FMID_1105704974FM"><div class="nodecontent" style="color:#111111;">MR-Chart
-	<br><img src="pictures/MR-chart.png" width="637" height="591" alt="" />	
-	</div></li></ul></li>
-	<li class="col" id="FMID_364096504FM"><div class="nodecontent" style="color:#111111;">Statistical Tests
-	<br><img src="pictures/test-menu.png" width="323" height="167" alt="" />	
-	</div>
+	<li class="basic" id="FMID_1696839544FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/bar-chart2.png" /></div></li></ul></li></ul></li>
+	<li class="col" id="FMID_538150543FM"><div class="nodecontent" style="color:#111111;">Pie-Chart</div>
 		<ul class="subexp">
-	<li class="basic" id="FMID_114089992FM"><div class="nodecontent" style="color:#111111;">Test for normal distribution / choose column
-	<br><img src="pictures/test_normality.png" width="369" height="342" alt="" />	
-	</div></li>
-	<li class="basic" id="FMID_1156719670FM"><div class="nodecontent" style="color:#111111;">Correlation test between all numerical columns
-	<br><img src="pictures/correl.png" width="602" height="175" alt="" />	
-	</div></li>
-	<li class="basic" id="FMID_953210689FM"><div class="nodecontent" style="color:#111111;">t-Test
-	<br><img src="pictures/t-test-menu.png" width="331" height="167" alt="" />	
-	<br><img src="pictures/one-s-t-test.png" width="446" height="397" alt="" />	
-	<br><img src="pictures/two-sample-t-test.png" width="339" height="341" alt="" />	
-	</div></li>
-	<li class="basic" id="FMID_739329087FM"><div class="nodecontent" style="color:#111111;">f-Test
-	<br><img src="pictures/f-test.png" width="359" height="370" alt="" />	
-	</div></li>
-	<li class="basic" id="FMID_1980324679FM"><div class="nodecontent" style="color:#111111;">ANOVA
-	<br>
-	</br>	
-	</div></li>
-	<li class="basic" id="FMID_793692952FM"><div class="nodecontent" style="color:#111111;">Outlier Test</div></li></ul></li>
-	<li class="basic" id="FMID_178262289FM"><div class="nodecontent" style="color:#111111;">Process Capability Study
-	<br><img src="pictures/capability_analysis.png" width="784" height="612" alt="" />	
-	</div></li>
-	<li class="basic" id="FMID_1489213047FM"><div class="nodecontent" style="color:#111111;">Linear regression analyse
-	<br><img src="pictures/graphical%20reg-study.png" width="80%" height="80%" alt="" />
-	<br><img src="pictures/values_linear-r-study.png" width="770" height="535" alt="" />	
-	</br></div></li></ul></li></ul></li></ul></li>
-	<li class="col" id="FMID_1934180930FM"><div class="nodecontent" style="color:#0033ff;font-size:150%;">needed packages:</div>
+	<li class="basic" id="FMID_1007848178FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/pie-chart.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1117441368FM"><div class="nodecontent" style="color:#111111;">Histogram</div>
 		<ul class="subexp">
-	<li class="basic" id="FMID_1710139277FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">Python3
-	<br><a href="https://www.python.org/downloads/release/python-380/" target="_blank">https://www.python.org/downloads/release/python-380/</a>
-	</div></li>
-	<li class="basic" id="FMID_1352780411FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">Pandas
-	<br><a href="https://pandas.pydata.org/" target="_blank">https://pandas.pydata.org/</a></div></li>
-	<li class="basic" id="FMID_1633540811FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">Matplotlib
-	<br><a href="https://matplotlib.org/" target="_blank">https://matplotlib.org/</a></div></li>
-	<li class="basic" id="FMID_1727612006FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">os-sys
-	<br><a href="https://pypi.org/project/os-sys/" target="_blank">https://pypi.org/project/os-sys/</a>
-	</div></li>
-	<li class="basic" id="FMID_1134157636FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">scipy
-	<br><a href="https://www.scipy.org/" target="_blank">https://www.scipy.org/</a></div></li>
-	<li class="basic" id="FMID_588327323FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">pyspc
-	<br><a href="https://github.com/carlosqsilva/pyspc" target="_blank">https://github.com/carlosqsilva/pyspc</a>	
-	</div></li>
-	<li class="basic" id="FMID_952320638FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">numpy
-	<br><a href="https://numpy.org/" target="_blank">https://numpy.org/</a></div></li>
-	<li class="basic" id="FMID_1598932118FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">seaborn
-	<br><a href="https://seaborn.pydata.org/" target="_blank">https://seaborn.pydata.org/</a></div></li>
-	<li class="basic" id="FMID_1172497813FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">outlier_utils
-	<br><a href="https://pypi.org/project/outlier_utils/" target="_blank">https://pypi.org/project/outlier_utils/</a></div></li>
-	<li class="basic" id="FMID_187051336FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">statsmodels
-	<br><a href="https://www.statsmodels.org/stable/index.html" target="_blank">https://www.statsmodels.org/stable/index.html</a></div></li></ul></li>
-	<li class="col" id="FMID_247366656FM"><div class="nodecontent" style="color:#0033ff;font-size:150%;">Lizens</div>
+	<li class="basic" id="FMID_589340701FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/histogramm.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1691418723FM"><div class="nodecontent" style="color:#111111;">Q-Q-Plot</div>
 		<ul class="subexp">
-	<li class="basic" id="FMID_1605593687FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">GPL V.3
-	<br><a href="https://www.gnu.org/licenses/gpl-3.0.de.html" target="_blank">https://www.gnu.org/licenses/gpl-3.0.de.html</a></div></li></ul></li>
-	<li class="basic" id="FMID_1993184461FM"><div class="nodecontent" style="color:#0033ff;font-size:150%;">known issues</div></li></ul></li></ul></div></body></html>
+	<li class="basic" id="FMID_518352254FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/q-q-plot.png" /></div></li></ul></li>
+	<li class="col" id="FMID_230293739FM"><div class="nodecontent" style="color:#111111;">Linechart</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1068847FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/line-chart_time-series.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1631021995FM"><div class="nodecontent" style="color:#111111;">Group Plot</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_230515700FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/groupplot.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1864620414FM"><div class="nodecontent" style="color:#111111;">ScatterPlot</div>
+		<ul class="subexp">
+	<li class="col" id="FMID_1029783037FM"><div class="nodecontent" style="color:#111111;">scatter plot only (without regression line)</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1669784671FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/scatter-plot.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1553042483FM"><div class="nodecontent" style="color:#111111;">regression plot</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_988454059FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/scatter-plot_w_r.png" /></div></li></ul></li>
+	<li class="col" id="FMID_647056295FM"><div class="nodecontent" style="color:#111111;">regression joint plot</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_258677046FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/scatter_joint.png" /></div></li></ul></li></ul></li>
+	<li class="col" id="FMID_229243502FM"><div class="nodecontent" style="color:#111111;">Categorial Plots</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1953142369FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/menu_categorical_charts.png" /></div></li>
+	<li class="col" id="FMID_930557098FM"><div class="nodecontent" style="color:#111111;">Single Boxplot</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_272339829FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/single-box-plot.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1695682011FM"><div class="nodecontent" style="color:#111111;">Boxplot by one factor</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1930543923FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/group-box-plot.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1299111695FM"><div class="nodecontent" style="color:#111111;">Boxplot by two factors</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1371443090FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/boxplot2f.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1464119721FM"><div class="nodecontent" style="color:#111111;">Single Violin Plot</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1855232297FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/violin-plot.png" /></div></li></ul></li>
+	<li class="col" id="FMID_145576231FM"><div class="nodecontent" style="color:#111111;">Violinplot by one factor</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1184522731FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/group-violin-plot.png" /></div></li></ul></li>
+	<li class="col" id="FMID_761591099FM"><div class="nodecontent" style="color:#111111;">Violinplot by two factors</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_446537176FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/violinplot2f.png" /></div></li></ul></li>
+	<li class="col" id="FMID_876159564FM"><div class="nodecontent" style="color:#111111;">single swam plot</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_990748924FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/single_swam_plot.png" /></div></li></ul></li>
+	<li class="col" id="FMID_507973703FM"><div class="nodecontent" style="color:#111111;">Swarm-Plot by one factor</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1492114585FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/swarm-plot.png" /></div></li></ul></li>
+	<li class="col" id="FMID_880777647FM"><div class="nodecontent" style="color:#111111;">Swarmplot by two factors</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1994893327FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/swarmplot2f.png" /></div></li></ul></li>
+	<li class="col" id="FMID_238274668FM"><div class="nodecontent" style="color:#111111;">single stripplot</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_762487927FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/single_strip_plot.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1801599919FM"><div class="nodecontent" style="color:#111111;">Stripplot by one factor</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_32455262FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/stripplot1f.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1993245872FM"><div class="nodecontent" style="color:#111111;">Stripplot by two factors</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_774876969FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/stripplot2f.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1559428164FM"><div class="nodecontent" style="color:#111111;">Pointplot by one factor</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_533047160FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/pointplot1f.png" /></div></li></ul></li>
+	<li class="col" id="FMID_761325439FM"><div class="nodecontent" style="color:#111111;">Pointplot by two factors</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_355507890FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/pointplot2f.png" /></div></li></ul></li></ul></li>
+	<li class="col" id="FMID_1105704974FM"><div class="nodecontent" style="color:#111111;">Controlcharts</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1608155201FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/Control-Chart_menu.png" /></div></li>
+	<li class="col" id="FMID_332353915FM"><div class="nodecontent" style="color:#111111;">X-Chart</div>
+		<ul class="subexp">
+	<li class="col" id="FMID_1030735530FM"><div class="nodecontent" style="color:#111111;">with tolearnce</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1601758970FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/X-Chart.png" /></div></li></ul></li></ul></li>
+	<li class="col" id="FMID_698930676FM"><div class="nodecontent" style="color:#111111;">Xbar/s-Chart</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_459793415FM"><div class="nodecontent" style="color:#111111;">with target center</div></li>
+	<li class="col" id="FMID_104451378FM"><div class="nodecontent" style="color:#111111;">without target center</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_133762780FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/X-Bar-s_chart.png" /></div></li></ul></li></ul></li>
+	<li class="col" id="FMID_446267407FM"><div class="nodecontent" style="color:#111111;">Xbar/R-Chart</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_427978028FM"><div class="nodecontent" style="color:#111111;">with target center</div></li>
+	<li class="col" id="FMID_255407109FM"><div class="nodecontent" style="color:#111111;">without target center</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_663938877FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/X-Bar-R-Chart.png" /></div></li></ul></li></ul></li>
+	<li class="col" id="FMID_979516206FM"><div class="nodecontent" style="color:#111111;">XmR-Chart</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_409265046FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/X-mR-chart.png" /></div></li></ul></li></ul></li>
+	<li class="col" id="FMID_1053183005FM"><div class="nodecontent" style="color:#111111;">Pareto-Chart</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1530235927FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/pareto-chart.png" /></div></li></ul></li>
+	<li class="col" id="FMID_437791700FM"><div class="nodecontent" style="color:#111111;">Confidence Plot</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_605821077FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/confidence_line_plot.png" /></div></li></ul></li></ul></li>
+	<li class="col" id="FMID_364096504FM"><div class="nodecontent" style="color:#111111;">statistical tests</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_510225274FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/test-menu.png" /></div></li>
+	<li class="col" id="FMID_114089992FM"><div class="nodecontent" style="color:#111111;">normality test</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1283674453FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/test_normality.png" /></div></li>
+	<li class="basic" id="FMID_1230027381FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/normailty-test_picture.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1156719670FM"><div class="nodecontent" style="color:#111111;">correlation test all columns</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_64831661FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/correl.png" /></div></li></ul></li>
+	<li class="col" id="FMID_953210689FM"><div class="nodecontent" style="color:#111111;">t-Test</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1242517663FM"><div class="nodecontent" style="color:#111111;">one sample t-Test</div></li>
+	<li class="basic" id="FMID_506726046FM"><div class="nodecontent" style="color:#111111;">two sample t-test</div></li>
+	<li class="basic" id="FMID_1137966309FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/one-s-t-test.png" /></div></li></ul></li>
+	<li class="col" id="FMID_739329087FM"><div class="nodecontent" style="color:#111111;">f-Test</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_276242820FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/f-test.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1980324679FM"><div class="nodecontent" style="color:#111111;">ANOVA</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1563621613FM"><div class="nodecontent" style="color:#111111;">one way ANOVA</div></li>
+	<li class="basic" id="FMID_1903196460FM"><div class="nodecontent" style="color:#111111;">two way ANOVA</div></li>
+	<li class="basic" id="FMID_974478864FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/ANOVA.png" /></div></li></ul></li>
+	<li class="col" id="FMID_793692952FM"><div class="nodecontent" style="color:#111111;">Outlier test</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_557588437FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/Outlier-Test.png" /></div></li></ul></li></ul></li>
+	<li class="col" id="FMID_178262289FM"><div class="nodecontent" style="color:#111111;">Capability Analyse</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1222461214FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/capability-analysis.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1489213047FM"><div class="nodecontent" style="color:#111111;">lineare regression</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1782066414FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/regression-analysis.png" /></div></li>
+	<li class="basic" id="FMID_913514854FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/values_linear-r-study.png" /></div></li></ul></li>
+	<li class="col" id="FMID_1014655034FM"><div class="nodecontent" style="color:#111111;">MSA</div>
+		<ul class="subexp">
+	<li class="col" id="FMID_91637501FM"><div class="nodecontent" style="color:#111111;">MSA V1</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_445311540FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/MSA_V1.png" /></div></li></ul></li>
+	<li class="col" id="FMID_180574591FM"><div class="nodecontent" style="color:#111111;">MSA V2 (GageR&amp;R)</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_118190568FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/MSA-V2-Values.png" /></div></li>
+	<li class="basic" id="FMID_1267533514FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/MSA_V2.png" /></div></li></ul></li></ul></li>
+	<li class="col" id="FMID_927804203FM"><div class="nodecontent" style="color:#111111;">crosstable</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1353248404FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/contingency_chiq-test.png" /></div></li>
+	<li class="basic" id="FMID_1555612579FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/crosstabs_contigency_calc.png" /></div></li></ul></li></ul></li></ul></li></ul></li>
+	<li class="col" id="FMID_1934180930FM"><div class="nodecontent" style="color:#0033ff;font-size:150%;">needed packages</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1710139277FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://www.python.org/">Python3 </a> <a href="https://www.python.org/"><img src="csv-data-analyze-en.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
+	<li class="basic" id="FMID_1352780411FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://pandas.pydata.org/">Pandas 0.25.1</a> <a href="https://pandas.pydata.org/"><img src="csv-data-analyze-en.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
+	<li class="basic" id="FMID_1633540811FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://matplotlib.org/">Matplotlib 3.1.2</a> <a href="https://matplotlib.org/"><img src="csv-data-analyze-en.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
+	<li class="basic" id="FMID_1727612006FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://pypi.org/project/os-sys/">os-sys 2.1.4</a> <a href="https://pypi.org/project/os-sys/"><img src="csv-data-analyze-en.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
+	<li class="basic" id="FMID_1134157636FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://www.scipy.org/">scipy 1.3.1</a> <a href="https://www.scipy.org/"><img src="csv-data-analyze-en.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
+	<li class="basic" id="FMID_952320638FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://numpy.org/">numpy 1.17.2</a> <a href="https://numpy.org/"><img src="csv-data-analyze-en.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
+	<li class="basic" id="FMID_1598932118FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://seaborn.pydata.org/">seaborn 0.9.0</a> <a href="https://seaborn.pydata.org/"><img src="csv-data-analyze-en.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
+	<li class="basic" id="FMID_1172497813FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://pypi.org/project/outlier_utils/">outlier_utils 0.0.3</a> <a href="https://pypi.org/project/outlier_utils/"><img src="csv-data-analyze-en.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
+	<li class="basic" id="FMID_187051336FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://www.statsmodels.org/stable/index.html">statsmodels 0.10.1</a> <a href="https://www.statsmodels.org/stable/index.html"><img src="csv-data-analyze-en.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li></ul></li>
+	<li class="col" id="FMID_247366656FM"><div class="nodecontent" style="color:#0033ff;font-size:150%;">license</div>
+		<ul class="subexp">
+	<li class="basic" id="FMID_1605593687FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://www.gnu.org/licenses/gpl-3.0.de.html">GPL V.3</a> <a href="https://www.gnu.org/licenses/gpl-3.0.de.html"><img src="csv-data-analyze-en.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li></ul></li>
+	<li class="basic" id="FMID_1993184461FM"><div class="nodecontent" style="color:#0033ff;font-size:150%;">known bugs</div></li></ul></li></ul></div></body></html>

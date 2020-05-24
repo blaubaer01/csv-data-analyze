@@ -29,6 +29,10 @@
 <font NAME="SansSerif" SIZE="14"/>
 </node>
 </node>
+<node COLOR="#00b439" CREATED="1590301714119" ID="ID_1655666287" LINK="http://www.reh-webdesign.de/csv-data-analyze/howto/csv-data-analyze-de.html" MODIFIED="1590301761795" TEXT="German HowTo Link">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="16"/>
+</node>
 </node>
 <node COLOR="#0033ff" CREATED="1587886469591" ID="ID_1770675947" MODIFIED="1590243000086" POSITION="right" TEXT="structure">
 <edge STYLE="sharp_bezier" WIDTH="8"/>
@@ -557,8 +561,7 @@
   <body>
     <img src="pictures/stripplot1f.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node COLOR="#111111" CREATED="1590128706006" ID="ID_1993245872" MODIFIED="1590128720100" TEXT="Stripplot by two factors">

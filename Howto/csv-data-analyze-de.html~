@@ -1,21 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet href="treestyles.css" type="text/css"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="treestyles.css" type="text/css"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!--This file has been created with toxhtml.xsl-->
-<head><meta name="Ricky Helfgen" content="">
-<meta name="date" content="2020-05-22T09:01:06+0200" >
-<meta name="copyright" content="Ricky Helfgen>
-<meta name="keywords" content="CSV, csv-data-analyze, csv-data-analyze.py, statistisch, statistsiche Analyse, statistical analyse from CSV-files, work with csv-files, csv-file">
-<meta name="description" content="Ein Python Tool zum Bearbeiten und analysieren von csv-files">
-<meta name="ROBOTS" content="INDEX, FOLLOW">
+<head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-<title>csv-data-analyze - Python - Tool</title>
-<link rel="stylesheet" href="csv-data-analyze.html_files//treestyles.css" type="text/css" />
+<title>csv-data-analyze</title>
+<link rel="stylesheet" href="csv-data-analyze-de.html_files/treestyles.css" type="text/css" />
+<script type="text/javascript" src="csv-data-analyze-de.html_files/marktree.js"> 
 
-	</script>
-	</head>
-	<body>
-	<div class="basetop"><a onclick="expandAll(document.getElementById('base'))" href="#">Expand</a> -
+</script>
+</head>
+<body>
+<div class="basetop"><a onclick="expandAll(document.getElementById('base'))" href="#">Expand</a> -
 <a onclick="collapseAll(document.getElementById('base'))" href="#">Collapse</a></div><div class="basetext" id="base"><ul>
 	<li class="col" id="FMID_269547937FM"><div class="nodecontent" style="color:#000000;font-size:167%;">csv-data-analyze</div>
 		<ul class="subexp">
@@ -25,10 +22,11 @@
 	<li class="col" id="FMID_1059242826FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">Programm Sprache: Python</div>
 		<ul class="subexp">
 	<li class="basic" id="FMID_1550020683FM"><div class="nodecontent" style="color:#990000;font-size:117%;">HOWTO:</div></li>
-	<li class="basic" id="FMID_1471234441FM"><div class="nodecontent" style="color:#990000;font-size:117%;"><a href="https://github.com/blaubaer01/csv-data-analyze">download csv-data-analyze-master.zip</a> <a href="https://github.com/blaubaer01/csv-data-analyze"><img src="csv-data-analyze.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
+	<li class="basic" id="FMID_1471234441FM"><div class="nodecontent" style="color:#990000;font-size:117%;"><a href="https://github.com/blaubaer01/csv-data-analyze">download csv-data-analyze-master.zip</a> <a href="https://github.com/blaubaer01/csv-data-analyze"><img src="csv-data-analyze-de.html_files/ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
 	<li class="basic" id="FMID_304335834FM"><div class="nodecontent" style="color:#990000;font-size:117%;">unzip</div></li>
 	<li class="basic" id="FMID_946722508FM"><div class="nodecontent" style="color:#990000;font-size:117%;">go with cmd (Winodws) or shell(Linux) into the folder where the unpacked files are</div></li>
-	<li class="basic" id="FMID_1219735265FM"><div class="nodecontent" style="color:#990000;font-size:117%;">run: python3 csv-data-analyze.py </div></li></ul></li></ul></li>
+	<li class="basic" id="FMID_1219735265FM"><div class="nodecontent" style="color:#990000;font-size:117%;">run: python3 csv-data-analyze.py </div></li></ul></li>
+	<li class="basic" id="FMID_486213103FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="http://www.reh-webdesign.de/csv-data-analyze/howto/csv-data-analyze-en.html">Englische HowTo Seite</a> <a href="http://www.reh-webdesign.de/csv-data-analyze/howto/csv-data-analyze-en.html"><img src="csv-data-analyze-de.html_files/ilink.png" alt="User Link" style="border-width:0" /></a></div></li></ul></li>
 	<li class="col" id="FMID_1770675947FM"><div class="nodecontent" style="color:#0033ff;font-size:150%;">Aufbau</div>
 		<ul class="subexp">
 	<li class="col" id="FMID_662341060FM"><div class="nodecontent" style="color:#00b439;font-size:133%;">Datei einlesen</div>
@@ -166,7 +164,7 @@
 	<li class="basic" id="FMID_762487927FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/single_strip_plot.png" /></div></li></ul></li>
 	<li class="col" id="FMID_1801599919FM"><div class="nodecontent" style="color:#111111;">Stripplot by one factor</div>
 		<ul class="subexp">
-	<li class="basic" id="FMID_32455262FM"><div class="nodecontent" style="color:#111111;">pic</div></li></ul></li>
+	<li class="basic" id="FMID_32455262FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/stripplot1f.png" /></div></li></ul></li>
 	<li class="col" id="FMID_1993245872FM"><div class="nodecontent" style="color:#111111;">Stripplot by two factors</div>
 		<ul class="subexp">
 	<li class="basic" id="FMID_774876969FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/stripplot2f.png" /></div></li></ul></li>
@@ -253,16 +251,16 @@
 	<li class="basic" id="FMID_1555612579FM"><div class="nodecontent" style="color:#111111;"><img src="pictures/crosstabs_contigency_calc.png" /></div></li></ul></li></ul></li></ul></li></ul></li>
 	<li class="col" id="FMID_1934180930FM"><div class="nodecontent" style="color:#0033ff;font-size:150%;">benötigte Pakete</div>
 		<ul class="subexp">
-	<li class="basic" id="FMID_1710139277FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://www.python.org/">Python3 </a> <a href="https://www.python.org/"><img src="csv-data-analyze.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
-	<li class="basic" id="FMID_1352780411FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://pandas.pydata.org/">Pandas</a> <a href="https://pandas.pydata.org/"><img src="csv-data-analyze.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
-	<li class="basic" id="FMID_1633540811FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://matplotlib.org/">Matplotlib</a> <a href="https://matplotlib.org/"><img src="csv-data-analyze.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
-	<li class="basic" id="FMID_1727612006FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://pypi.org/project/os-sys/">os-sys</a> <a href="https://pypi.org/project/os-sys/"><img src="csv-data-analyze.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
-	<li class="basic" id="FMID_1134157636FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://www.scipy.org/">scipy</a> <a href="https://www.scipy.org/"><img src="csv-data-analyze.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
-	<li class="basic" id="FMID_952320638FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://numpy.org/">numpy</a> <a href="https://numpy.org/"><img src="csv-data-analyze.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
-	<li class="basic" id="FMID_1598932118FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://seaborn.pydata.org/">seaborn</a> <a href="https://seaborn.pydata.org/"><img src="csv-data-analyze.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
-	<li class="basic" id="FMID_1172497813FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://pypi.org/project/outlier_utils/">outlier_utils</a> <a href="https://pypi.org/project/outlier_utils/"><img src="csv-data-analyze.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
-	<li class="basic" id="FMID_187051336FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://www.statsmodels.org/stable/index.html">statsmodels</a> <a href="https://www.statsmodels.org/stable/index.html"><img src="csv-data-analyze.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li></ul></li>
+	<li class="basic" id="FMID_1710139277FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://www.python.org/">Python3 </a> <a href="https://www.python.org/"><img src="csv-data-analyze-de.html_files/ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
+	<li class="basic" id="FMID_1352780411FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://pandas.pydata.org/">Pandas 0.25.1</a> <a href="https://pandas.pydata.org/"><img src="csv-data-analyze-de.html_files/ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
+	<li class="basic" id="FMID_1633540811FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://matplotlib.org/">Matplotlib 3.1.2</a> <a href="https://matplotlib.org/"><img src="csv-data-analyze-de.html_files/ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
+	<li class="basic" id="FMID_1727612006FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://pypi.org/project/os-sys/">os-sys 2.1.4</a> <a href="https://pypi.org/project/os-sys/"><img src="csv-data-analyze-de.html_files/ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
+	<li class="basic" id="FMID_1134157636FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://www.scipy.org/">scipy 1.3.1</a> <a href="https://www.scipy.org/"><img src="csv-data-analyze-de.html_files/ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
+	<li class="basic" id="FMID_952320638FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://numpy.org/">numpy 1.17.2</a> <a href="https://numpy.org/"><img src="csv-data-analyze-de.html_files/ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
+	<li class="basic" id="FMID_1598932118FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://seaborn.pydata.org/">seaborn 0.9.0</a> <a href="https://seaborn.pydata.org/"><img src="csv-data-analyze-de.html_files/ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
+	<li class="basic" id="FMID_1172497813FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://pypi.org/project/outlier_utils/">outlier_utils 0.0.3</a> <a href="https://pypi.org/project/outlier_utils/"><img src="csv-data-analyze-de.html_files/ilink.png" alt="User Link" style="border-width:0" /></a></div></li>
+	<li class="basic" id="FMID_187051336FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://www.statsmodels.org/stable/index.html">statsmodels 0.10.1</a> <a href="https://www.statsmodels.org/stable/index.html"><img src="csv-data-analyze-de.html_files/ilink.png" alt="User Link" style="border-width:0" /></a></div></li></ul></li>
 	<li class="col" id="FMID_247366656FM"><div class="nodecontent" style="color:#0033ff;font-size:150%;">Lizenz</div>
 		<ul class="subexp">
-	<li class="basic" id="FMID_1605593687FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://www.gnu.org/licenses/gpl-3.0.de.html">GPL V.3</a> <a href="https://www.gnu.org/licenses/gpl-3.0.de.html"><img src="csv-data-analyze.html_files//ilink.png" alt="User Link" style="border-width:0" /></a></div></li></ul></li>
+	<li class="basic" id="FMID_1605593687FM"><div class="nodecontent" style="color:#00b439;font-size:133%;"><a href="https://www.gnu.org/licenses/gpl-3.0.de.html">GPL V.3</a> <a href="https://www.gnu.org/licenses/gpl-3.0.de.html"><img src="csv-data-analyze-de.html_files/ilink.png" alt="User Link" style="border-width:0" /></a></div></li></ul></li>
 	<li class="basic" id="FMID_1993184461FM"><div class="nodecontent" style="color:#0033ff;font-size:150%;">bekannte Bugs</div></li></ul></li></ul></div></body></html>
