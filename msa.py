@@ -309,7 +309,7 @@ def msa_v2(df):
     for i in range(anz_col_para):
         list_columns_para.append(para.columns[i])
         list_number.append(str(i))
-        print(i, werte.columns[i])
+        print(i, para.columns[i])
         i+=1
     
     while True:
