@@ -245,9 +245,8 @@ def file_einlesen(auswahl_datei):
             restart = input('\nSet more filters: y/n.\n?')
             if restart.lower() != 'y':
                 break
-            else:
-                return(df)
-    
+            
+    return(df)
     
     ###sort by column
     ###################################################################################
