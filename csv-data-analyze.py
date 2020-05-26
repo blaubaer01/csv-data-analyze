@@ -17,7 +17,7 @@ from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 from msa import msa_v1, msa_v2
 from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, liniendiagramm, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot, pareto, pareto_one_column, pointplot1f, pointplot2f, confidencelinechart
 from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_s, ttest_t_s, ttest_i, anova_o_w, anova_t_w
-
+from table_calc import menu_calc_column
 #alternatively, define the source
 csv_dateien=['daten.csv']
 
@@ -711,7 +711,7 @@ def preview_table(df):
 def table_functions(df):
     while True:
         clear()
-        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n?')
+        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n?')
         if menu_tf =='1':
             clear()
             preview_table(df)
@@ -728,6 +728,8 @@ def table_functions(df):
             transposed_table(df)
         elif menu_tf =='7':
             crosstab(df)
+        elif menu_tf =='8':
+            menu_calc_column(df)
         else:
             print('Wrong input, please try again!')
             #voranalyse(df)
