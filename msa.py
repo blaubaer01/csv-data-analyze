@@ -413,15 +413,15 @@ def msa_v2(df):
     dfSSo= df.groupby([operator])[y_df].describe()
     dfSSo['SSq']=(dfSSo['mean']-xbar)**2
     
-    
     SSo = dfSSo['SSq'].sum()
     #k-value
+    k = len(dfSSo)
     cSSo = dfSSo['count'][1]
     cSSo = int(cSSo)
     
     ##SSo-Output
     SSocalc = SSo*cSSo
-    MSo = SSocalc/(cSSo-1)
+    MSo = SSocalc/(k-1)
     
     print('Calculation of GRR-Parameters')
     print('#'*40)
@@ -437,12 +437,13 @@ def msa_v2(df):
     
     SSp = dfSSp['SSq'].sum()
     #n-value
+    n = len(dfSSp)
     cSSp = dfSSp['count'][1]
     cSSp = int(cSSp)
 
     ##SSp-Output
     SSpcalc = SSp*cSSp
-    MSp = SSpcalc/(cSSp-1)
+    MSp = SSpcalc/(n-1)
     
     print('#'*40)
     print('S-Sqaure Parts')    
@@ -460,13 +461,13 @@ def msa_v2(df):
     df3['pando']= (df3[part]).astype(str) +  (df3[operator]).astype(str)
     #r-value
     cr = df3['count'][1]
-    
     result = pd.merge(dfSSe, df3, how='outer', on='pando')
     
-    result['SSq']=(result['Value']-result['mean'])**2
+    #result['SSq']=(result['Value']-result['mean'])**2
+    result['SSq']=(result[y_df]-result['mean'])**2
     
     SSe = result['SSq'].sum()
-    MSe = SSe/(cSSp*cSSo*(cr-1))
+    MSe = SSe/(n*k*(cr-1))
     
     print('#'*40)
     print('S-Sqaure Equipment')
@@ -484,7 +485,7 @@ def msa_v2(df):
     
     ###S-Square Opeartor*Parts
     SSop = SST-(SSocalc+SSpcalc+SSe)
-    MSop = SSop/((cSSp-1)*(cSSo-1))
+    MSop = SSop/((k-1)*(n-1))
     
     print('#'*40)
     print('S-Sqaure Operator * Parts')
@@ -501,13 +502,13 @@ def msa_v2(df):
     
     
     ###Sigma² Part
-    sigmaqP = (MSp-MSop)/(cSSo*cr)    
+    sigmaqP = (MSp-MSop)/(k*cr)    
     if sigmaqP < 0:
         sigmaqP =0
     
     
     ###Sigma² Operator
-    sigmaqO = (MSo-MSop)/(cr*cSSp)
+    sigmaqO = (MSo-MSop)/(cr*n)
     if sigmaqO < 0:
         sigmaqO = 0
         
