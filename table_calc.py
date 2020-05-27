@@ -251,13 +251,16 @@ def diffision_column(df):
         df.to_csv(fn, sep=';', decimal=',', header =True)
     
 
+
 ######################################################################
 ###min column
 def min_column(df):
-    print('MIN of 2 column:')        
+    print('MIN of columns:')        
 
     print('#'*50)    
     
+    count_col = input('With how many columns do you would like to calculate? \n(choose number: possible 2-5) \n?')      
+          
     werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
     
     #
@@ -272,31 +275,171 @@ def min_column(df):
         print(i, werte.columns[i])
         i+=1
     
+####################################################################    
+###2 columns    
+    if count_col =='2':
+        while True:
+            value_column1= input('Column1: \n(choose number)\n?')
+            if value_column1 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
     
-    while True:
-        value_column1= input('Column1: \n(choose number)\n?')
-        if value_column1 not in list_number:
-            print('wrong input, try again!')
-        else:
-            break  
-    
-    while True:
-        value_column2= input('Column2: \n(choose number)\n?')
-        if value_column2 not in list_number:
-            print('wrong input, try again!')
-        else:
-            break  
-    
-    
-    col1 = list_columns_werte[int(value_column1)]
-    col2 = list_columns_werte[int(value_column2)]
+        while True:
+            value_column2= input('Column2: \n(choose number)\n?')
+            if value_column2 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
     
     
-    name_col = input('New column "Name": \n?')
+        col1 = list_columns_werte[int(value_column1)]
+        col2 = list_columns_werte[int(value_column2)]
     
-    df[name_col] = df[[col1,col2]].apply(np.min, axis=1)
     
-    print(df)
+        name_col = input('New column "Name": \n?')
+    
+        df[name_col] = df[[col1,col2]].apply(np.min, axis=1)
+    
+        print(df)
+    
+####################################################################
+###3 columns
+        
+    if count_col =='3':
+        while True:
+            value_column1= input('Column1: \n(choose number)\n?')
+            if value_column1 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        while True:
+            value_column2= input('Column2: \n(choose number)\n?')
+            if value_column2 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        while True:
+            value_column3= input('Column3: \n(choose number)\n?')
+            if value_column3 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+    
+        col1 = list_columns_werte[int(value_column1)]
+        col2 = list_columns_werte[int(value_column2)]
+        col3 = list_columns_werte[int(value_column3)]
+    
+        name_col = input('New column "Name": \n?')
+    
+        df[name_col] = df[[col1,col2,col3]].apply(np.min, axis=1)
+    
+        print(df)
+
+####################################################################
+###4 columns
+        
+    if count_col =='4':
+        while True:
+            value_column1= input('Column1: \n(choose number)\n?')
+            if value_column1 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        while True:
+            value_column2= input('Column2: \n(choose number)\n?')
+            if value_column2 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        while True:
+            value_column3= input('Column3: \n(choose number)\n?')
+            if value_column3 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        
+        while True:
+            value_column4= input('Column4: \n(choose number)\n?')
+            if value_column4 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        col1 = list_columns_werte[int(value_column1)]
+        col2 = list_columns_werte[int(value_column2)]
+        col3 = list_columns_werte[int(value_column3)]
+        col4 = list_columns_werte[int(value_column4)]
+        
+        name_col = input('New column "Name": \n?')
+    
+        df[name_col] = df[[col1,col2,col3,col4]].apply(np.min, axis=1)
+    
+        print(df)
+    
+####################################################################
+###5 columns
+        
+    if count_col =='5':
+        while True:
+            value_column1= input('Column1: \n(choose number)\n?')
+            if value_column1 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        while True:
+            value_column2= input('Column2: \n(choose number)\n?')
+            if value_column2 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        while True:
+            value_column3= input('Column3: \n(choose number)\n?')
+            if value_column3 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        
+        while True:
+            value_column4= input('Column4: \n(choose number)\n?')
+            if value_column4 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        while True:
+            value_column5= input('Column5: \n(choose number)\n?')
+            if value_column5 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        col1 = list_columns_werte[int(value_column1)]
+        col2 = list_columns_werte[int(value_column2)]
+        col3 = list_columns_werte[int(value_column3)]
+        col4 = list_columns_werte[int(value_column4)]
+        col5 = list_columns_werte[int(value_column5)]
+        
+        name_col = input('New column "Name": \n?')
+    
+        df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.min, axis=1)
+    
+        print(df)
+        
+    else:
+        print('Wrong Input (Choose Number between 2-5)')
+    
+    
+    
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
@@ -308,10 +451,12 @@ def min_column(df):
 ######################################################################
 ###max column
 def max_column(df):
-    print('MAX of 2 column:')        
+    print('MAX of columns:')        
 
     print('#'*50)    
     
+    count_col = input('With how many columns do you would like to calculate? \n(choose number: possible 2-5) \n?')      
+          
     werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
     
     #
@@ -326,46 +471,187 @@ def max_column(df):
         print(i, werte.columns[i])
         i+=1
     
+####################################################################    
+###2 columns    
+    if count_col =='2':
+        while True:
+            value_column1= input('Column1: \n(choose number)\n?')
+            if value_column1 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
     
-    while True:
-        value_column1= input('Column1: \n(choose number)\n?')
-        if value_column1 not in list_number:
-            print('wrong input, try again!')
-        else:
-            break  
-    
-    while True:
-        value_column2= input('Column2: \n(choose number)\n?')
-        if value_column2 not in list_number:
-            print('wrong input, try again!')
-        else:
-            break  
-    
-    
-    col1 = list_columns_werte[int(value_column1)]
-    col2 = list_columns_werte[int(value_column2)]
+        while True:
+            value_column2= input('Column2: \n(choose number)\n?')
+            if value_column2 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
     
     
-    name_col = input('New column "Name": \n?')
+        col1 = list_columns_werte[int(value_column1)]
+        col2 = list_columns_werte[int(value_column2)]
     
-    df[name_col] = df[[col1,col2]].apply(np.max, axis=1)
     
-    print(df)
+        name_col = input('New column "Name": \n?')
+    
+        df[name_col] = df[[col1,col2]].apply(np.max, axis=1)
+    
+        print(df)
+    
+####################################################################
+###3 columns
+        
+    if count_col =='3':
+        while True:
+            value_column1= input('Column1: \n(choose number)\n?')
+            if value_column1 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        while True:
+            value_column2= input('Column2: \n(choose number)\n?')
+            if value_column2 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        while True:
+            value_column3= input('Column3: \n(choose number)\n?')
+            if value_column3 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+    
+        col1 = list_columns_werte[int(value_column1)]
+        col2 = list_columns_werte[int(value_column2)]
+        col3 = list_columns_werte[int(value_column3)]
+    
+        name_col = input('New column "Name": \n?')
+    
+        df[name_col] = df[[col1,col2,col3]].apply(np.max, axis=1)
+    
+        print(df)
+
+####################################################################
+###4 columns
+        
+    if count_col =='4':
+        while True:
+            value_column1= input('Column1: \n(choose number)\n?')
+            if value_column1 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        while True:
+            value_column2= input('Column2: \n(choose number)\n?')
+            if value_column2 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        while True:
+            value_column3= input('Column3: \n(choose number)\n?')
+            if value_column3 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        
+        while True:
+            value_column4= input('Column4: \n(choose number)\n?')
+            if value_column4 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        col1 = list_columns_werte[int(value_column1)]
+        col2 = list_columns_werte[int(value_column2)]
+        col3 = list_columns_werte[int(value_column3)]
+        col4 = list_columns_werte[int(value_column4)]
+        
+        name_col = input('New column "Name": \n?')
+    
+        df[name_col] = df[[col1,col2,col3,col4]].apply(np.max, axis=1)
+    
+        print(df)
+    
+####################################################################
+###5 columns
+        
+    if count_col =='5':
+        while True:
+            value_column1= input('Column1: \n(choose number)\n?')
+            if value_column1 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        while True:
+            value_column2= input('Column2: \n(choose number)\n?')
+            if value_column2 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        while True:
+            value_column3= input('Column3: \n(choose number)\n?')
+            if value_column3 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        
+        while True:
+            value_column4= input('Column4: \n(choose number)\n?')
+            if value_column4 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        while True:
+            value_column5= input('Column5: \n(choose number)\n?')
+            if value_column5 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        col1 = list_columns_werte[int(value_column1)]
+        col2 = list_columns_werte[int(value_column2)]
+        col3 = list_columns_werte[int(value_column3)]
+        col4 = list_columns_werte[int(value_column4)]
+        col5 = list_columns_werte[int(value_column5)]
+        
+        name_col = input('New column "Name": \n?')
+    
+        df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.max, axis=1)
+    
+        print(df)
+        
+    else:
+        print('Wrong Input (Choose Number between 2-5)')
+    
+    
+    
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
         csvfilename = input('Filename (.csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)
-
 
 ######################################################################
 ###mean column
 def mean_column(df):
-    print('MEAN of 2 column:')        
+    print('Mean of columns:')        
 
     print('#'*50)    
     
+    count_col = input('With how many columns do you would like to calculate? \n(choose number: possible 2-5) \n?')      
+          
     werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
     
     #
@@ -380,31 +666,171 @@ def mean_column(df):
         print(i, werte.columns[i])
         i+=1
     
+####################################################################    
+###2 columns    
+    if count_col =='2':
+        while True:
+            value_column1= input('Column1: \n(choose number)\n?')
+            if value_column1 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
     
-    while True:
-        value_column1= input('Column1: \n(choose number)\n?')
-        if value_column1 not in list_number:
-            print('wrong input, try again!')
-        else:
-            break  
-    
-    while True:
-        value_column2= input('Column2: \n(choose number)\n?')
-        if value_column2 not in list_number:
-            print('wrong input, try again!')
-        else:
-            break  
-    
-    
-    col1 = list_columns_werte[int(value_column1)]
-    col2 = list_columns_werte[int(value_column2)]
+        while True:
+            value_column2= input('Column2: \n(choose number)\n?')
+            if value_column2 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
     
     
-    name_col = input('New column "Name": \n?')
+        col1 = list_columns_werte[int(value_column1)]
+        col2 = list_columns_werte[int(value_column2)]
     
-    df[name_col] = df[[col1,col2]].apply(np.mean, axis=1)
     
-    print(df)
+        name_col = input('New column "Name": \n?')
+    
+        df[name_col] = df[[col1,col2]].apply(np.mean, axis=1)
+    
+        print(df)
+    
+####################################################################
+###3 columns
+        
+    if count_col =='3':
+        while True:
+            value_column1= input('Column1: \n(choose number)\n?')
+            if value_column1 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        while True:
+            value_column2= input('Column2: \n(choose number)\n?')
+            if value_column2 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        while True:
+            value_column3= input('Column3: \n(choose number)\n?')
+            if value_column3 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+    
+        col1 = list_columns_werte[int(value_column1)]
+        col2 = list_columns_werte[int(value_column2)]
+        col3 = list_columns_werte[int(value_column3)]
+    
+        name_col = input('New column "Name": \n?')
+    
+        df[name_col] = df[[col1,col2,col3]].apply(np.mean, axis=1)
+    
+        print(df)
+
+####################################################################
+###4 columns
+        
+    if count_col =='4':
+        while True:
+            value_column1= input('Column1: \n(choose number)\n?')
+            if value_column1 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        while True:
+            value_column2= input('Column2: \n(choose number)\n?')
+            if value_column2 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        while True:
+            value_column3= input('Column3: \n(choose number)\n?')
+            if value_column3 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        
+        while True:
+            value_column4= input('Column4: \n(choose number)\n?')
+            if value_column4 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        col1 = list_columns_werte[int(value_column1)]
+        col2 = list_columns_werte[int(value_column2)]
+        col3 = list_columns_werte[int(value_column3)]
+        col4 = list_columns_werte[int(value_column4)]
+        
+        name_col = input('New column "Name": \n?')
+    
+        df[name_col] = df[[col1,col2,col3,col4]].apply(np.mean, axis=1)
+    
+        print(df)
+    
+####################################################################
+###5 columns
+        
+    if count_col =='5':
+        while True:
+            value_column1= input('Column1: \n(choose number)\n?')
+            if value_column1 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        while True:
+            value_column2= input('Column2: \n(choose number)\n?')
+            if value_column2 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        while True:
+            value_column3= input('Column3: \n(choose number)\n?')
+            if value_column3 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        
+        while True:
+            value_column4= input('Column4: \n(choose number)\n?')
+            if value_column4 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        while True:
+            value_column5= input('Column5: \n(choose number)\n?')
+            if value_column5 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        col1 = list_columns_werte[int(value_column1)]
+        col2 = list_columns_werte[int(value_column2)]
+        col3 = list_columns_werte[int(value_column3)]
+        col4 = list_columns_werte[int(value_column4)]
+        col5 = list_columns_werte[int(value_column5)]
+        
+        name_col = input('New column "Name": \n?')
+    
+        df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.mean, axis=1)
+    
+        print(df)
+        
+    else:
+        print('Wrong Input (Choose Number between 2-5)')
+    
+    
+    
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
@@ -412,13 +838,16 @@ def mean_column(df):
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)
 
+
 ######################################################################
 ###std column
 def std_column(df):
-    print('Deviation of 2 column:')        
+    print('Deviation of columns:')        
 
     print('#'*50)    
     
+    count_col = input('With how many columns do you would like to calculate? \n(choose number: possible 2-5) \n?')      
+          
     werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
     
     #
@@ -433,31 +862,171 @@ def std_column(df):
         print(i, werte.columns[i])
         i+=1
     
+####################################################################    
+###2 columns    
+    if count_col =='2':
+        while True:
+            value_column1= input('Column1: \n(choose number)\n?')
+            if value_column1 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
     
-    while True:
-        value_column1= input('Column1: \n(choose number)\n?')
-        if value_column1 not in list_number:
-            print('wrong input, try again!')
-        else:
-            break  
-    
-    while True:
-        value_column2= input('Column2: \n(choose number)\n?')
-        if value_column2 not in list_number:
-            print('wrong input, try again!')
-        else:
-            break  
-    
-    
-    col1 = list_columns_werte[int(value_column1)]
-    col2 = list_columns_werte[int(value_column2)]
+        while True:
+            value_column2= input('Column2: \n(choose number)\n?')
+            if value_column2 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
     
     
-    name_col = input('New column "Name": \n?')
+        col1 = list_columns_werte[int(value_column1)]
+        col2 = list_columns_werte[int(value_column2)]
     
-    df[name_col] = df[[col1,col2]].apply(np.std, axis=1)
     
-    print(df)
+        name_col = input('New column "Name": \n?')
+    
+        df[name_col] = df[[col1,col2]].apply(np.std, axis=1)
+    
+        print(df)
+    
+####################################################################
+###3 columns
+        
+    if count_col =='3':
+        while True:
+            value_column1= input('Column1: \n(choose number)\n?')
+            if value_column1 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        while True:
+            value_column2= input('Column2: \n(choose number)\n?')
+            if value_column2 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        while True:
+            value_column3= input('Column3: \n(choose number)\n?')
+            if value_column3 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+    
+        col1 = list_columns_werte[int(value_column1)]
+        col2 = list_columns_werte[int(value_column2)]
+        col3 = list_columns_werte[int(value_column3)]
+    
+        name_col = input('New column "Name": \n?')
+    
+        df[name_col] = df[[col1,col2,col3]].apply(np.std, axis=1)
+    
+        print(df)
+
+####################################################################
+###4 columns
+        
+    if count_col =='4':
+        while True:
+            value_column1= input('Column1: \n(choose number)\n?')
+            if value_column1 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        while True:
+            value_column2= input('Column2: \n(choose number)\n?')
+            if value_column2 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        while True:
+            value_column3= input('Column3: \n(choose number)\n?')
+            if value_column3 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        
+        while True:
+            value_column4= input('Column4: \n(choose number)\n?')
+            if value_column4 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        col1 = list_columns_werte[int(value_column1)]
+        col2 = list_columns_werte[int(value_column2)]
+        col3 = list_columns_werte[int(value_column3)]
+        col4 = list_columns_werte[int(value_column4)]
+        
+        name_col = input('New column "Name": \n?')
+    
+        df[name_col] = df[[col1,col2,col3,col4]].apply(np.std, axis=1)
+    
+        print(df)
+    
+####################################################################
+###5 columns
+        
+    if count_col =='5':
+        while True:
+            value_column1= input('Column1: \n(choose number)\n?')
+            if value_column1 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        while True:
+            value_column2= input('Column2: \n(choose number)\n?')
+            if value_column2 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        while True:
+            value_column3= input('Column3: \n(choose number)\n?')
+            if value_column3 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        
+        while True:
+            value_column4= input('Column4: \n(choose number)\n?')
+            if value_column4 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        while True:
+            value_column5= input('Column5: \n(choose number)\n?')
+            if value_column5 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        col1 = list_columns_werte[int(value_column1)]
+        col2 = list_columns_werte[int(value_column2)]
+        col3 = list_columns_werte[int(value_column3)]
+        col4 = list_columns_werte[int(value_column4)]
+        col5 = list_columns_werte[int(value_column5)]
+        
+        name_col = input('New column "Name": \n?')
+    
+        df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.std, axis=1)
+    
+        print(df)
+        
+    else:
+        print('Wrong Input (Choose Number between 2-5)')
+    
+    
+    
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
@@ -469,10 +1038,12 @@ def std_column(df):
 ######################################################################
 ###range column
 def range_column(df):
-    print('Range of 2 column:')        
+    print('Range of columns:')        
 
     print('#'*50)    
     
+    count_col = input('With how many columns do you would like to calculate? \n(choose number: possible 2-5) \n?')      
+          
     werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
     
     #
@@ -487,31 +1058,171 @@ def range_column(df):
         print(i, werte.columns[i])
         i+=1
     
+####################################################################    
+###2 columns    
+    if count_col =='2':
+        while True:
+            value_column1= input('Column1: \n(choose number)\n?')
+            if value_column1 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
     
-    while True:
-        value_column1= input('Column1: \n(choose number)\n?')
-        if value_column1 not in list_number:
-            print('wrong input, try again!')
-        else:
-            break  
-    
-    while True:
-        value_column2= input('Column2: \n(choose number)\n?')
-        if value_column2 not in list_number:
-            print('wrong input, try again!')
-        else:
-            break  
-    
-    
-    col1 = list_columns_werte[int(value_column1)]
-    col2 = list_columns_werte[int(value_column2)]
+        while True:
+            value_column2= input('Column2: \n(choose number)\n?')
+            if value_column2 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
     
     
-    name_col = input('New column "Name": \n?')
+        col1 = list_columns_werte[int(value_column1)]
+        col2 = list_columns_werte[int(value_column2)]
     
-    df[name_col] = df[[col1,col2]].apply(np.max, axis=1)-df[[col1,col2]].apply(np.min, axis=1)
     
-    print(df)
+        name_col = input('New column "Name": \n?')
+    
+        df[name_col] = df[[col1,col2]].apply(np.max, axis=1)-df[[col1,col2]].apply(np.min, axis=1)
+    
+        print(df)
+    
+####################################################################
+###3 columns
+        
+    if count_col =='3':
+        while True:
+            value_column1= input('Column1: \n(choose number)\n?')
+            if value_column1 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        while True:
+            value_column2= input('Column2: \n(choose number)\n?')
+            if value_column2 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        while True:
+            value_column3= input('Column3: \n(choose number)\n?')
+            if value_column3 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+    
+        col1 = list_columns_werte[int(value_column1)]
+        col2 = list_columns_werte[int(value_column2)]
+        col3 = list_columns_werte[int(value_column3)]
+    
+        name_col = input('New column "Name": \n?')
+    
+        df[name_col] = df[[col1,col2,col3]].apply(np.max, axis=1)-df[[col1,col2,col3]].apply(np.min, axis=1)
+    
+        print(df)
+
+####################################################################
+###4 columns
+        
+    if count_col =='4':
+        while True:
+            value_column1= input('Column1: \n(choose number)\n?')
+            if value_column1 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        while True:
+            value_column2= input('Column2: \n(choose number)\n?')
+            if value_column2 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        while True:
+            value_column3= input('Column3: \n(choose number)\n?')
+            if value_column3 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        
+        while True:
+            value_column4= input('Column4: \n(choose number)\n?')
+            if value_column4 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        col1 = list_columns_werte[int(value_column1)]
+        col2 = list_columns_werte[int(value_column2)]
+        col3 = list_columns_werte[int(value_column3)]
+        col4 = list_columns_werte[int(value_column4)]
+        
+        name_col = input('New column "Name": \n?')
+    
+        df[name_col] = df[[col1,col2,col3,col4]].apply(np.max, axis=1)-df[[col1,col2,col3,col4]].apply(np.min, axis=1)
+    
+        print(df)
+    
+####################################################################
+###5 columns
+        
+    if count_col =='5':
+        while True:
+            value_column1= input('Column1: \n(choose number)\n?')
+            if value_column1 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        while True:
+            value_column2= input('Column2: \n(choose number)\n?')
+            if value_column2 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        while True:
+            value_column3= input('Column3: \n(choose number)\n?')
+            if value_column3 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        
+        while True:
+            value_column4= input('Column4: \n(choose number)\n?')
+            if value_column4 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        
+        while True:
+            value_column5= input('Column5: \n(choose number)\n?')
+            if value_column5 not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+    
+        col1 = list_columns_werte[int(value_column1)]
+        col2 = list_columns_werte[int(value_column2)]
+        col3 = list_columns_werte[int(value_column3)]
+        col4 = list_columns_werte[int(value_column4)]
+        col5 = list_columns_werte[int(value_column5)]
+        
+        name_col = input('New column "Name": \n?')
+    
+        df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.max, axis=1)-df[[col1,col2,col3,col4,col5]].apply(np.min, axis=1)
+    
+        print(df)
+        
+    else:
+        print('Wrong Input (Choose Number between 2-5)')
+    
+    
+    
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
