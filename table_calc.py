@@ -7,6 +7,7 @@ Created on Tue May 26 14:53:53 2020
 """
 
 import pandas as pd
+import numpy as np
 import os
 
 #######################################################################
@@ -293,7 +294,7 @@ def min_column(df):
     
     name_col = input('New column "Name": \n?')
     
-    df[name_col] = df[col1]
+    df[name_col] = df[[col1,col2]].apply(np.min, axis=1)
     
     print(df)
     print('To work with you have to save this dataframe as file')
@@ -304,6 +305,219 @@ def min_column(df):
         df.to_csv(fn, sep=';', decimal=',', header =True)
     
 
+######################################################################
+###max column
+def max_column(df):
+    print('MAX of 2 column:')        
+
+    print('#'*50)    
+    
+    werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number = []
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    
+    while True:
+        value_column1= input('Column1: \n(choose number)\n?')
+        if value_column1 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    while True:
+        value_column2= input('Column2: \n(choose number)\n?')
+        if value_column2 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    col1 = list_columns_werte[int(value_column1)]
+    col2 = list_columns_werte[int(value_column2)]
+    
+    
+    name_col = input('New column "Name": \n?')
+    
+    df[name_col] = df[[col1,col2]].apply(np.max, axis=1)
+    
+    print(df)
+    print('To work with you have to save this dataframe as file')
+    save_yes = input('Would you like to save: \ny/n \n?')
+    if save_yes.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)
+
+
+######################################################################
+###mean column
+def mean_column(df):
+    print('MEAN of 2 column:')        
+
+    print('#'*50)    
+    
+    werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number = []
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    
+    while True:
+        value_column1= input('Column1: \n(choose number)\n?')
+        if value_column1 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    while True:
+        value_column2= input('Column2: \n(choose number)\n?')
+        if value_column2 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    col1 = list_columns_werte[int(value_column1)]
+    col2 = list_columns_werte[int(value_column2)]
+    
+    
+    name_col = input('New column "Name": \n?')
+    
+    df[name_col] = df[[col1,col2]].apply(np.mean, axis=1)
+    
+    print(df)
+    print('To work with you have to save this dataframe as file')
+    save_yes = input('Would you like to save: \ny/n \n?')
+    if save_yes.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)
+
+######################################################################
+###std column
+def std_column(df):
+    print('Deviation of 2 column:')        
+
+    print('#'*50)    
+    
+    werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number = []
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    
+    while True:
+        value_column1= input('Column1: \n(choose number)\n?')
+        if value_column1 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    while True:
+        value_column2= input('Column2: \n(choose number)\n?')
+        if value_column2 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    col1 = list_columns_werte[int(value_column1)]
+    col2 = list_columns_werte[int(value_column2)]
+    
+    
+    name_col = input('New column "Name": \n?')
+    
+    df[name_col] = df[[col1,col2]].apply(np.std, axis=1)
+    
+    print(df)
+    print('To work with you have to save this dataframe as file')
+    save_yes = input('Would you like to save: \ny/n \n?')
+    if save_yes.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)
+
+
+######################################################################
+###range column
+def range_column(df):
+    print('Range of 2 column:')        
+
+    print('#'*50)    
+    
+    werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number = []
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    
+    while True:
+        value_column1= input('Column1: \n(choose number)\n?')
+        if value_column1 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    while True:
+        value_column2= input('Column2: \n(choose number)\n?')
+        if value_column2 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    col1 = list_columns_werte[int(value_column1)]
+    col2 = list_columns_werte[int(value_column2)]
+    
+    
+    name_col = input('New column "Name": \n?')
+    
+    df[name_col] = df[[col1,col2]].apply(np.max, axis=1)-df[[col1,col2]].apply(np.min, axis=1)
+    
+    print(df)
+    print('To work with you have to save this dataframe as file')
+    save_yes = input('Would you like to save: \ny/n \n?')
+    if save_yes.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)
 
     
 #####################################################################    
@@ -328,7 +542,19 @@ def menu_calc_column(df):
     if calc =='3':
         diffision_column(df)
     if calc =='4':
-        print('not available')
-        #min_column(df)
+        #print('not available')
+        min_column(df)
+    if calc =='5':
+        #print('not available')
+        max_column(df)
+    if calc =='6':
+        #print('not available')
+        mean_column(df)
+    if calc =='7':
+        #print('not available')
+        std_column(df)
+    if calc =='8':
+        #print('not available')
+        range_column(df)
     else:
         print('Wrong input, please try again')
