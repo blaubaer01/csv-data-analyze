@@ -246,7 +246,7 @@ def file_einlesen(auswahl_datei):
             if restart.lower() != 'y':
                 break
             
-    return(df)
+    #return(df)
     
     ###sort by column
     ###################################################################################

@@ -38,8 +38,8 @@ def clear():
 
 
 
-
-
+#######################################################################
+###addition column
 def addition_column(df):
     print('Column addition:')
     print('#'*50)    
@@ -89,8 +89,9 @@ def addition_column(df):
         csvfilename = input('Filename (.csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)      
-          
-          
+ 
+#######################################################################         
+###substraction column          
 def substraction_column(df):
     print('Column substraction:')    
     
@@ -141,8 +142,9 @@ def substraction_column(df):
         csvfilename = input('Filename (.csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)
-    
-    
+
+#######################################################################    
+###multiplication column        
 def multiplication_column(df):
     print('Column multiplication:')
 
@@ -194,7 +196,8 @@ def multiplication_column(df):
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)
 
-
+#######################################################################
+### diffision column        
 def diffision_column(df):
     print('Column diffision:')        
 
@@ -247,15 +250,70 @@ def diffision_column(df):
         df.to_csv(fn, sep=';', decimal=',', header =True)
     
 
+######################################################################
+###min column
+def min_column(df):
+    print('MIN of 2 column:')        
+
+    print('#'*50)    
+    
+    werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number = []
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
     
     
+    while True:
+        value_column1= input('Column1: \n(choose number)\n?')
+        if value_column1 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
     
+    while True:
+        value_column2= input('Column2: \n(choose number)\n?')
+        if value_column2 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    col1 = list_columns_werte[int(value_column1)]
+    col2 = list_columns_werte[int(value_column2)]
+    
+    
+    name_col = input('New column "Name": \n?')
+    
+    df[name_col] = df[col1]
+    
+    print(df)
+    print('To work with you have to save this dataframe as file')
+    save_yes = input('Would you like to save: \ny/n \n?')
+    if save_yes.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)
+    
+
+
+    
+#####################################################################    
+###menu calculate with columns   
     
 def menu_calc_column(df):
     clear()
     
     print('Easy column calculation \nthis tool add columns with requested column calculations')
-    calc_liste = ['addition', 'substraction', 'multiplication', 'diffision']
+    calc_liste = ['addition', 'substraction', 'multiplication', 'diffision', 'mininmum', 'maximum', 'mean', 'deviation', 'range']
     for i in range(len(calc_liste)):
         print(i, calc_liste[i])
         i+=1
@@ -269,5 +327,8 @@ def menu_calc_column(df):
         multiplication_column(df)
     if calc =='3':
         diffision_column(df)
+    if calc =='4':
+        print('not available')
+        #min_column(df)
     else:
         print('Wrong input, please try again')
