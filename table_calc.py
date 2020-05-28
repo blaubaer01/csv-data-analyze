@@ -91,6 +91,63 @@ def addition_column(df):
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)      
  
+#######################################################################
+###addition column, value
+def addition_val(df):
+    print('Column addition with value:')
+    print('#'*50)    
+    
+    werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number = []
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    
+    while True:
+        value_column1= input('Column: \n(choose number)\n?')
+        if value_column1 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    
+    while True:
+            value_col = input('Value: \n(choose point-comma) \n?')
+    
+            if not isfloat(value_col):
+                print("target value is not a number with point-comma, please try again")
+            else:
+                break
+    
+    col1 = list_columns_werte[int(value_column1)]
+    
+    
+    name_col = input('New column "Name": \n?')
+    
+    df[name_col] = df[col1] + float(value_col)
+    
+    print(df)
+    print('To work with you have to save this dataframe as file')
+    save_yes = input('Would you like to save: \ny/n \n?')
+    if save_yes.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)      
+
+
+
+
+
 #######################################################################         
 ###substraction column          
 def substraction_column(df):
@@ -144,6 +201,64 @@ def substraction_column(df):
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)
 
+
+
+#######################################################################
+###substraction column, val
+def substraction_val(df):
+    print('Column substraction with value:')
+    print('#'*50)    
+    
+    werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number = []
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    
+    while True:
+        value_column1= input('Column: \n(choose number)\n?')
+        if value_column1 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    
+    while True:
+            value_col = input('Value: \n(choose point-comma) \n?')
+    
+            if not isfloat(value_col):
+                print("target value is not a number with point-comma, please try again")
+            else:
+                break
+    
+    col1 = list_columns_werte[int(value_column1)]
+    
+    
+    name_col = input('New column "Name": \n?')
+    
+    df[name_col] = df[col1] - float(value_col)
+    
+    print(df)
+    print('To work with you have to save this dataframe as file')
+    save_yes = input('Would you like to save: \ny/n \n?')
+    if save_yes.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)      
+
+
+
+
 #######################################################################    
 ###multiplication column        
 def multiplication_column(df):
@@ -196,6 +311,66 @@ def multiplication_column(df):
         csvfilename = input('Filename (.csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)
+
+
+#######################################################################
+###multiplicate column, value
+def multiplication_val(df):
+    print('Column multiplication with value:')
+    print('#'*50)    
+    
+    werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number = []
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    
+    while True:
+        value_column1= input('Column: \n(choose number)\n?')
+        if value_column1 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    
+    while True:
+            value_col = input('Value: \n(choose point-comma) \n?')
+    
+            if not isfloat(value_col):
+                print("target value is not a number with point-comma, please try again")
+            else:
+                break
+    
+    col1 = list_columns_werte[int(value_column1)]
+    
+    
+    name_col = input('New column "Name": \n?')
+    
+    df[name_col] = df[col1] * float(value_col)
+    
+    print(df)
+    print('To work with you have to save this dataframe as file')
+    save_yes = input('Would you like to save: \ny/n \n?')
+    if save_yes.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)      
+
+
+
+
+
+
 
 #######################################################################
 ### diffision column        
@@ -251,7 +426,212 @@ def diffision_column(df):
         df.to_csv(fn, sep=';', decimal=',', header =True)
     
 
+#######################################################################
+###diffision column, value
+def diffision_val(df):
+    print('Column diffision with value:')
+    print('#'*50)    
+    
+    werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number = []
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    
+    while True:
+        value_column1= input('Column: \n(choose number)\n?')
+        if value_column1 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    
+    while True:
+            value_col = input('Value: \n(choose point-comma) \n?')
+    
+            if not isfloat(value_col):
+                print("target value is not a number with point-comma, please try again")
+            else:
+                break
+    
+    col1 = list_columns_werte[int(value_column1)]
+    
+    
+    name_col = input('New column "Name": \n?')
+    
+    df[name_col] = df[col1] / float(value_col)
+    
+    print(df)
+    print('To work with you have to save this dataframe as file')
+    save_yes = input('Would you like to save: \ny/n \n?')
+    if save_yes.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)      
 
+
+#######################################################################
+###square column
+def square_val(df):
+    print('Square Column values:')
+    print('#'*50)    
+    
+    werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number = []
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    
+    while True:
+        value_column1= input('Column: \n(choose number)\n?')
+        if value_column1 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    
+    
+    col1 = list_columns_werte[int(value_column1)]
+    
+    
+    name_col = input('New column "Name": \n?')
+    
+    df[name_col] = df[col1] **2
+    
+    print(df)
+    print('To work with you have to save this dataframe as file')
+    save_yes = input('Would you like to save: \ny/n \n?')
+    if save_yes.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)      
+
+
+#######################################################################
+###square column
+def take_root_val(df):
+    print('Take root Column values:')
+    print('#'*50)    
+    
+    werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number = []
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    
+    while True:
+        value_column1= input('Column: \n(choose number)\n?')
+        if value_column1 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    
+    
+    col1 = list_columns_werte[int(value_column1)]
+    
+    
+    name_col = input('New column "Name": \n?')
+    
+    df[name_col] = df[[col1]].apply(np.sqrt, axis=1)
+    
+    #np.sqrt(football[['wins', 'losses']].sum(axis=1))
+    
+    print(df)
+    print('To work with you have to save this dataframe as file')
+    save_yes = input('Would you like to save: \ny/n \n?')
+    if save_yes.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)      
+
+
+#######################################################################
+###statistic cross column
+def statistic_cross_col(df):
+    print('Statistic cross column:')
+    print('#'*50)    
+    
+    werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number = []
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    
+    while True:
+        value_column1= input('Column: \n(choose number)\n?')
+        if value_column1 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    
+    
+    col1 = list_columns_werte[int(value_column1)]
+    
+    df2 = pd.DataFrame()
+    
+    df2 = df[col1].describe()
+        
+    
+    
+    #np.sqrt(football[['wins', 'losses']].sum(axis=1))
+    
+    print(df2)
+    print('To work with you have to save this dataframe as file')
+    save_yes = input('Would you like to save: \ny/n \n?')
+    if save_yes.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df2.to_csv(fn, sep=';', decimal=',', header =True)      
+
+
+
+
+
+
+######################################################################
+#statistic functions
 ######################################################################
 ###min column
 def min_column(df):
@@ -1242,7 +1622,7 @@ def menu_calc_column(df):
     for i in range(len(calc_liste)):
         print(i, calc_liste[i])
         i+=1
-    calc = input('Which Control-Chart: \n(choose a number) \n?')
+    calc = input('Which calculation: \n(choose a number) \n?')
     
     if calc =='0':
         addition_column(df)
@@ -1269,3 +1649,46 @@ def menu_calc_column(df):
         range_column(df)
     else:
         print('Wrong input, please try again')
+
+
+def menu_calc_col_val(df):
+    clear()
+    
+    print('Easy calculation column with value \nthis tool add columns with requested column calculations')
+    calc_liste = ['addition', 'substraction', 'multiplication', 'diffision', 'square', 'extract a root']
+    for i in range(len(calc_liste)):
+        print(i, calc_liste[i])
+        i+=1
+    calc = input('Which calculation: \n(choose a number) \n?')
+    
+    if calc =='0':
+        addition_val(df)
+    if calc =='1':
+        substraction_val(df)
+    if calc =='2':
+        multiplication_val(df)
+    if calc =='3':
+        diffision_val(df)
+    if calc =='4':
+        #print('not available')
+        square_val(df)
+    if calc =='5':
+        #print('not available')
+        take_root_val(df)
+    
+    else:
+        print('Wrong input, please try again')
+    
+
+
+def menu_calc(df):
+    menu_c = input('How to calculate? \n1: calculation between columns \n2: calculation within column \n3: statistic cross the column \n(choose nr.) \n?')
+    if menu_c == '1':
+        menu_calc_column(df)
+    elif menu_c == '2':
+        menu_calc_col_val(df)
+    elif menu_c == '3':
+        statistic_cross_col(df)
+    else:
+        print('Wrong input, please try again!')
+    
