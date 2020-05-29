@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import numpy as np
 #import matplotlib.pyplot as plt
 #from scipy.stats import shapiro
 #from scipy.stats import stats
@@ -18,6 +19,7 @@ from msa import msa_v1, msa_v2
 from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, liniendiagramm, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot, pareto, pareto_one_column, pointplot1f, pointplot2f, confidencelinechart
 from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_s, ttest_t_s, ttest_i, anova_o_w, anova_t_w
 from table_calc import menu_calc
+from rand_data import menu_rd
 #alternatively, define the source
 csv_dateien=['daten.csv']
 
@@ -772,49 +774,81 @@ def mit_daten_arbeiten(df):
             
             
         
-        restart = input('\nDo you want to analyze further?: y/n \n?')
+        restart = input('\nDo you want to analyze further?: y = yes / n = exit \n?')
         if restart.lower() != 'y':
             break
+
+def menu_create_random_data():
+    print('not available yet!')
+
         
 
 #######################################################################
 ### main prog
 ###############################################################################
 def main():
-    while True:
-        print("\033[1;37;40m \n")
-        clear()
-        #choosesource(source)
-        print('#'*80)
-        print('CSV Data Analyze-Tool V0.3 (by Ricky Helfgen) \nThis is an open source project and is subject to the guidelines of GPL V3')
-        print('This tool is used for data analysis of CSV files with python3,\n and packages:numpy, webbrowser, pandas, scipy, matplotlib, seaborn, statsmodels, os-sys')
-        print('https://github.com/blaubaer01/csv-data-analyze')
-        print('Have Fun!')
-        print('#'*80)
-        
-              
-        print('The following CSV-Files are in the root-folder, which you would like to evaluate?')
-        csv_daten_im_verzeichnis()    
     
-        #print(csv_dateien)
-        auswahl_datei = input('Which CSV file to import (pay attention to spelling)\n?')
-        if auswahl_datei in csv_dateien:
-            df=file_einlesen(auswahl_datei)
-        else:
-            print('File not found! Please check your Input! \npay attention to upper and lower case!')
-            #break
-            main()
-        
-        clear()
-                    
-        print('#'*70)
-        mit_daten_arbeiten(df)
-                   
-        
-        restart = input('\nDo you want to analyze another CSV file: y/n \n?')
-        if restart.lower() != 'y':
+    df = pd.DataFrame()
+    
+    print("\033[1;37;40m \n")
+    clear()
+    print('#'*80)
+    print('CSV Data Analyze-Tool V0.4 (by Ricky Helfgen) \nThis is an open source project and is subject to the guidelines of GPL V3')
+    print('This tool is used for data analysis of CSV files with python3,\n and packages:numpy, webbrowser, pandas, scipy, matplotlib, seaborn, statsmodels, os-sys')
+    print('https://github.com/blaubaer01/csv-data-analyze')
+    print('Have Fun!')
+    print('#'*80)
+    
+    
+    while True:
+        start = input('Start Menue \n1: create random data \n2: open csv-file \n3: OMG, close this scary app \n(choose number) \n?')
+        if start == '1':
+            menu_rd(df)
+            clear()
+                
+            print('#'*70)
+            mit_daten_arbeiten(df)
+                       
+            
             break
-          
+        
+        elif start == '2':
+            print('The following CSV-Files are in the root-folder, which you would like to evaluate?')
+            csv_daten_im_verzeichnis()
+                        #print(csv_dateien)
+            auswahl_datei = input('Which CSV file to import (pay attention to spelling)\n?')
+            if auswahl_datei in csv_dateien:
+                df=file_einlesen(auswahl_datei)
+            else:
+                print('File not found! Please check your Input! \npay attention to upper and lower case!')
+                #break
+            clear()
+                
+            print('#'*70)
+            mit_daten_arbeiten(df)
+            
+            break
+            
+        elif start =='3':
+            print("It's your decision, have a nice day!")
+            break
+        else:
+            print('Wrong input, try again (Choose number)')
+            
+    
+    
+# =============================================================================
+#     clear()
+#                 
+#     print('#'*70)
+#     mit_daten_arbeiten(df)
+#                
+#     while True:
+#         restart = input('\nDo you want to analyze another CSV file: y/n \n?')
+#         if restart.lower() != 'y':
+#             break
+#       
+# =============================================================================
 
 
 
