@@ -37,6 +37,38 @@
 <node COLOR="#0033ff" CREATED="1587886469591" ID="ID_1770675947" MODIFIED="1588669944447" POSITION="right" TEXT="Aufbau">
 <edge STYLE="sharp_bezier" WIDTH="8"/>
 <font NAME="SansSerif" SIZE="18"/>
+<node COLOR="#00b439" CREATED="1590872932541" ID="ID_339204944" MODIFIED="1590872974714" TEXT="Startmenue">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="16"/>
+<node COLOR="#990000" CREATED="1590872983136" ID="ID_1418195154" MODIFIED="1590873340215">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/startscreen.png" />
+  </body>
+</html>
+</richcontent>
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+</node>
+<node COLOR="#00b439" CREATED="1590873422881" ID="ID_1662019434" MODIFIED="1590873436948" TEXT="Create random data">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="16"/>
+<node COLOR="#990000" CREATED="1590873443336" ID="ID_1038366421" MODIFIED="1590873473748">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/create_data_menu.png" />
+  </body>
+</html>
+</richcontent>
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+</node>
 <node COLOR="#00b439" CREATED="1587886653152" ID="ID_662341060" MODIFIED="1588705235810" TEXT="Datei einlesen">
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="16"/>
@@ -222,7 +254,7 @@
 </html></richcontent>
 </node>
 </node>
-<node COLOR="#990000" CREATED="1589575647964" ID="ID_1219146210" MODIFIED="1589575660641" TEXT="Kreuzstabelle erstellen">
+<node COLOR="#990000" CREATED="1589575647964" ID="ID_1219146210" MODIFIED="1590873546035" TEXT="Kreuzstabelle erstellen">
 <font NAME="SansSerif" SIZE="14"/>
 <node COLOR="#111111" CREATED="1589575666234" ID="ID_1508495821" MODIFIED="1589575701583">
 <richcontent TYPE="NODE"><html>
@@ -233,6 +265,48 @@
     <img src="pictures/crosstable.png" />
   </body>
 </html></richcontent>
+</node>
+</node>
+<node COLOR="#990000" CREATED="1590873554829" ID="ID_1068746993" MODIFIED="1590873601296" TEXT="Einfache mathematische Funktionen">
+<font NAME="SansSerif" SIZE="14"/>
+<node COLOR="#111111" CREATED="1590873604789" ID="ID_1266723065" MODIFIED="1590873626622" TEXT="Tabellen miteinander verechnen">
+<node COLOR="#111111" CREATED="1590873693806" ID="ID_1024604808" MODIFIED="1590873740226">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/calc_between_columns.png" />
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1590873627588" ID="ID_1377535622" MODIFIED="1590873647426" TEXT="Tabellen mit einem Wert verrechnen">
+<node COLOR="#111111" CREATED="1590873701819" ID="ID_176516926" MODIFIED="1590873774815">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/calc_with_value.png" />
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1590873648737" ID="ID_476799544" MODIFIED="1590873684249" TEXT="Staistik zu einer gew&#xe4;hlten Spalte">
+<node COLOR="#111111" CREATED="1590873712490" ID="ID_1382204088" MODIFIED="1590873825256">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/statistic_cross_column.png" />
+  </body>
+</html>
+</richcontent>
+</node>
 </node>
 </node>
 </node>
@@ -561,8 +635,7 @@
   <body>
     <img src="pictures/stripplot1f.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node COLOR="#111111" CREATED="1590128706006" ID="ID_1993245872" MODIFIED="1590128720100" TEXT="Stripplot by two factors">

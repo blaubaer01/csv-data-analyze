@@ -53,7 +53,8 @@ def clear():
     else: 
         _ = os.system('clear') 
 
-
+##############################################################################
+###create sequence Nr
 
 def seq_numbers(df):
     
@@ -93,7 +94,8 @@ def seq_numbers(df):
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)      
  
-
+###############################################################################
+###create normal distributions data
 def nd_data(df):
     clear()
     
@@ -139,6 +141,11 @@ def nd_data(df):
         csvfilename = input('Filename (.csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)    
+
+
+###############################################################################
+###create binomial data
+
     
 def bd_data(df):
     clear()
@@ -195,7 +202,8 @@ def bd_data(df):
         df.to_csv(fn, sep=';', decimal=',', header =True)    
 
 
-
+###############################################################################
+###create poisson data
 def pd_data(df):
     clear()
     
@@ -241,7 +249,8 @@ def pd_data(df):
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)    
         
-
+##############################################################################
+###create logistic data
 def ld_data(df):
     clear()
     
@@ -288,6 +297,8 @@ def ld_data(df):
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)    
 
+##############################################################################
+###create shisquare data
 def shisq_data(df):
     clear()
     
@@ -342,6 +353,9 @@ def shisq_data(df):
         csvfilename = input('Filename (.csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)    
+
+###############################################################################
+###create pareto distribution data
 
 def pareto_data(df):
     clear()
@@ -398,6 +412,8 @@ def pareto_data(df):
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)    
 
+###############################################################################
+###create exponential distribution data
 
 def exp_data(df):
     clear()
@@ -454,8 +470,8 @@ def exp_data(df):
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)    
 
-
-
+###############################################################################
+###create uniform distribution data
 def unif_data(df):
     clear()
     
@@ -501,8 +517,8 @@ def unif_data(df):
         csvfilename = input('Filename (.csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)    
-
-
+##############################################################################
+###main menu create random data
 def menu_rd(df):
     clear()
     

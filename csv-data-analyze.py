@@ -225,30 +225,33 @@ def file_einlesen(auswahl_datei):
         clear()
         while True:
             clear()
-            anz_col = len(df.columns)
+            
+            crit = df.select_dtypes(exclude=['float','int'])
+            
+            
+            anz_col = len(crit.columns)
 
             list_columns = []
 
             i=1
             for i in range(anz_col):
     
-                list_columns.append(df.columns[i])
-                print(i, df.columns[i])
+                list_columns.append(crit.columns[i])
+                print(i, crit.columns[i])
                 i+=1      
              
             inhalte_spalte= input('For which column you want to know the possible filter criteria \nchoose number! \n?')
-            print(df.iloc[:,int(inhalte_spalte)].value_counts())
+            print(crit.iloc[:,int(inhalte_spalte)].value_counts())
 
             filter_ja = input('Set a filter: y/n \n?')
             if filter_ja.lower() =='y':
                 name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
-                df = df[df.iloc[:,int(inhalte_spalte)]==name_filter]
+                df = df[crit.iloc[:,int(inhalte_spalte)]==name_filter]
     
             restart = input('\nSet more filters: y/n.\n?')
             if restart.lower() != 'y':
                 break
             
-    #return(df)
     
     ###sort by column
     ###################################################################################
@@ -287,8 +290,6 @@ def file_einlesen(auswahl_datei):
             if restart_s.lower() != 'y':
                 return(df)
                 break
-            #else: 
-             #   return(df)
                    
     
     
@@ -736,7 +737,7 @@ def table_functions(df):
             print('Wrong input, please try again!')
             #voranalyse(df)
         
-        restart = input('\nFurther pre-analysis: "y"\n?')
+        restart = input('\nFurther table functions: "y"\n?')
         if restart.lower() != 'y':
             break
 
@@ -801,7 +802,8 @@ def main():
     
     
     while True:
-        start = input('Start Menue \n1: create random data \n2: open csv-file \n3: OMG, close this scary app \n(choose number) \n?')
+        start = input('Start Menue \n1: Create random data \n2: Open exsisting csv-file (root folder) \n3: OMG, close this scary app \n(choose number) \n?')
+        
         if start == '1':
             menu_rd(df)
             clear()
@@ -835,20 +837,6 @@ def main():
         else:
             print('Wrong input, try again (Choose number)')
             
-    
-    
-# =============================================================================
-#     clear()
-#                 
-#     print('#'*70)
-#     mit_daten_arbeiten(df)
-#                
-#     while True:
-#         restart = input('\nDo you want to analyze another CSV file: y/n \n?')
-#         if restart.lower() != 'y':
-#             break
-#       
-# =============================================================================
 
 
 

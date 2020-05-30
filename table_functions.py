@@ -205,50 +205,41 @@ def filter_setzen(df):
     clear()
     while True:
         clear()
-        anz_col = len(df.columns)
-        
+        crit = df.select_dtypes(exclude=['float','int'])
+            
+            
+        anz_col = len(crit.columns)
+
         list_columns = []
-        list_number=[]
+
         i=1
         for i in range(anz_col):
-            
-            list_columns.append(df.columns[i])
-            list_number.append(str(i))
-            print(i, df.columns[i])
-            i+=1      
-        
-        while True:
-            inhalte_spalte= input('For which column you want to know the possible filter criteria \nchoose number! \n?')
-            if inhalte_spalte not in list_number:
-                print('wrong input, try again!')
-            else:
-                break 
 
-        
-        print(df.iloc[:,int(inhalte_spalte)].value_counts())
-        
+            list_columns.append(crit.columns[i])
+            print(i, crit.columns[i])
+            i+=1      
+         
+        inhalte_spalte= input('For which column you want to know the possible filter criteria \nchoose number! \n?')
+        print(crit.iloc[:,int(inhalte_spalte)].value_counts())
+
         filter_ja = input('Set a filter: y/n \n?')
         if filter_ja.lower() =='y':
             name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
-            df = df[df.iloc[:,int(inhalte_spalte)]==name_filter]
+            df = df[crit.iloc[:,int(inhalte_spalte)]==name_filter]
+            
             
         restart = input('\nSet more filters: y/n \n?')
         if restart.lower() != 'y':
+            return(df)
             speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
             if speichern_ja.lower() =='y':
                 csvfilename = input('Filename (.csv will save automaticly) \n?')
                 fn = csvfilename + '.csv'
                 df.to_csv(fn, sep=';', decimal=',', header =True)
-                
             
-            tabelle_m_f_uebernehmen = input('The filters should be available for further analysis: y/n \n?')
-            if tabelle_m_f_uebernehmen.lower() =='y':
-            
-                return(df)
-                break
             else:
                 break
-
+    
 ###sort by column
 ###################################################################################
 def sort_column(df):
