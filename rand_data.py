@@ -152,7 +152,10 @@ def bd_data(df):
         p_df = input('p (0-1) (choose point-comma): ?')
         if not isfloat(p_df):
             print("p is not a number with point-comma, please try again")
+        elif float(p_df) > 1:
+            print('p should by between 0 and 1')
         else:
+            
             break
     
     
@@ -191,8 +194,99 @@ def bd_data(df):
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)    
 
+
+
+def pd_data(df):
+    clear()
+    
+    print('Create poisson distributions data')
+    
+        
+    
+    
+    while True:
+        p_df = input('µ (choose point-comma): ?')
+        if not isfloat(p_df):
+            print("µ is not a number with point-comma, please try again")
+        else:
+            
+            break
+    
+     
+    
+    
+    while True:
+        seq_often = input('Count of data: ?')
+        if not isinteger(seq_often):
+            print("'Count of data' is not an integer, please try again")
+        else:
+            break
+    
+    p_df = float(p_df)
+    
+    seq_often = int(seq_often)
+    
+    
+    name_df = input('Table Name: ?')
+    
+    
+    
+    df[name_df] = np.random.poisson(p_df, seq_often)
+    
+    print(df)
+    print('To work with you have to save this dataframe as file')
+    save_yes = input('Would you like to save: \ny/n \n?')
+    if save_yes.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)    
         
 
+def ld_data(df):
+    clear()
+    
+    print('Create logistic distributions data')
+    
+    while True:
+        location_df = input('location (choose point-comma): ?')
+    
+        if not isfloat(location_df):
+            print("location is not a number with point-comma, please try again")
+        else:
+            break
+    while True:
+        scale_df = input('scale (choose point-comma)?')
+    
+        if not isfloat(scale_df):
+            print("scale is not a number with point-comma, please try again")
+        else:
+            break
+    
+    while True:
+        seq_often = input('Count of data: ?')
+        if not isinteger(seq_often):
+            print("'Count of data' is not an integer, please try again")
+        else:
+            break
+    
+    location_df = float(location_df)
+    scale_df = float(scale_df)
+    seq_often = int(seq_often)
+    
+    
+    name_df = input('Table Name: ?')
+    
+    
+    
+    df[name_df] = np.random.logistic(location_df, scale_df, seq_often)
+    
+    print(df)
+    print('To work with you have to save this dataframe as file')
+    save_yes = input('Would you like to save: \ny/n \n?')
+    if save_yes.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)    
 
 
 
@@ -201,7 +295,7 @@ def menu_rd(df):
     
     
     print('Create random data with "numpy" and "pandas"')
-    rand_liste = ['sequence number', 'normal distribution data', 'binomial distributions data', 'poisson distribution data', 'logistic distribution data']
+    rand_liste = ['sequence number', 'normal distribution data', 'binomial distributions data', 'poisson distribution data', 'logistic distribution data', 'chi square distribution', 'pareto distribution', 'exponetial distribution', 'uniform distribution', 'multinomial distribution']
     for i in range(len(rand_liste)):
         print(i, rand_liste[i])
         i+=1
@@ -215,10 +309,10 @@ def menu_rd(df):
     elif rd == '2' :
         bd_data(df)
     elif rd == '3' :
-        print('not available yet!')
+        pd_data(df)
     elif rd == '4' :
-        print('not available yet')
+        ld_data(df)
     
     else:
-        print('wrong input!')
+        print('wrong input, not available yet!')
         
