@@ -288,6 +288,219 @@ def ld_data(df):
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)    
 
+def shisq_data(df):
+    clear()
+    
+    print('Create chi square distributions data')
+    
+    while True:
+        defr = input('df: ?')
+        if not isinteger(defr):
+            print("'df is not an integer, please try again")
+        else:
+            break
+    
+    
+    while True:
+        m_df = input('µ (choose point-comma): ?')
+    
+        if not isinteger(m_df):
+            print("µ is not a number with point-comma, please try again")
+        else:
+            break
+    
+    while True:
+        k_df = input('k (choose point-comma)?')
+    
+        if not isinteger(k_df):
+            print("k is not an integer, please try again")
+        else:
+            break
+    
+    while True:
+        n_df = input('Count of data: ?')
+        if not isinteger(n_df):
+            print("'Count of data' is not an integer, please try again")
+        else:
+            break
+    
+    m_df = int(m_df)
+    k_df = int(k_df)
+    n_df = int(n_df)
+    defr = int(defr)
+    
+    name_df = input('Table Name: ?')
+    
+    
+    
+    df[name_df] = np.random.chisquare(defr, size=(m_df*n_df*k_df))
+    
+    print(df)
+    print('To work with you have to save this dataframe as file')
+    save_yes = input('Would you like to save: \ny/n \n?')
+    if save_yes.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)    
+
+def pareto_data(df):
+    clear()
+    
+    print('Create pareto distributions data')
+    
+    while True:
+        a_df = input('a: ?')
+        if not isinteger(a_df):
+            print("'a' is not an integer, please try again")
+        else:
+            break
+    
+    
+    while True:
+        m_df = input('m (choose point-comma): ?')
+    
+        if not isinteger(m_df):
+            print("m is not a number with point-comma, please try again")
+        else:
+            break
+    
+    while True:
+        k_df = input('k (choose point-comma)?')
+    
+        if not isinteger(k_df):
+            print("k is not an integer, please try again")
+        else:
+            break
+    
+    while True:
+        n_df = input('Count of data: ?')
+        if not isinteger(n_df):
+            print("'Count of data' is not an integer, please try again")
+        else:
+            break
+    
+    m_df = int(m_df)
+    k_df = int(k_df)
+    n_df = int(n_df)
+    a_df = int(a_df)
+    
+    name_df = input('Table Name: ?')
+    
+    
+    
+    df[name_df] = np.random.pareto(a_df, size=(m_df*n_df*k_df))+m_df
+    
+    print(df)
+    print('To work with you have to save this dataframe as file')
+    save_yes = input('Would you like to save: \ny/n \n?')
+    if save_yes.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)    
+
+
+def exp_data(df):
+    clear()
+    
+    print('Create exponential distributions data')
+    
+    while True:
+        scale_df = input('scale: ?')
+        if not isinteger(scale_df):
+            print("'a' is not an integer, please try again")
+        else:
+            break
+    
+    
+    while True:
+        m_df = input('m (choose point-comma): ?')
+    
+        if not isinteger(m_df):
+            print("m is not a number with point-comma, please try again")
+        else:
+            break
+    
+    while True:
+        k_df = input('k (choose point-comma)?')
+    
+        if not isinteger(k_df):
+            print("k is not an integer, please try again")
+        else:
+            break
+    
+    while True:
+        n_df = input('Count of data: ?')
+        if not isinteger(n_df):
+            print("'Count of data' is not an integer, please try again")
+        else:
+            break
+    
+    m_df = int(m_df)
+    k_df = int(k_df)
+    n_df = int(n_df)
+    scale_df = int(scale_df)
+    
+    name_df = input('Table Name: ?')
+    
+    
+    
+    df[name_df] = np.random.exponential(scale_df, size=(m_df*n_df*k_df))
+    
+    print(df)
+    print('To work with you have to save this dataframe as file')
+    save_yes = input('Would you like to save: \ny/n \n?')
+    if save_yes.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)    
+
+
+
+def unif_data(df):
+    clear()
+    
+    print('Create uniform distributions data')
+    
+    while True:
+        high_df = input('high level (choose point-comma): ?')
+    
+        if not isfloat(high_df):
+            print("high level is not a number with point-comma, please try again")
+        else:
+            break
+    while True:
+        low_df = input('low level (choose point-comma)?')
+    
+        if not isfloat(low_df):
+            print("low level is not a number with point-comma, please try again")
+        else:
+            break
+    
+    while True:
+        seq_often = input('Count of data: ?')
+        if not isinteger(seq_often):
+            print("'Count of data' is not an integer, please try again")
+        else:
+            break
+    
+    high_df = float(high_df)
+    low_df = float(low_df)
+    seq_often = int(seq_often)
+    
+    
+    name_df = input('Table Name: ?')
+    
+    
+    
+    df[name_df] = np.random.uniform(high_df, low_df, seq_often)
+    
+    print(df)
+    print('To work with you have to save this dataframe as file')
+    save_yes = input('Would you like to save: \ny/n \n?')
+    if save_yes.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)    
 
 
 def menu_rd(df):
@@ -295,7 +508,7 @@ def menu_rd(df):
     
     
     print('Create random data with "numpy" and "pandas"')
-    rand_liste = ['sequence number', 'normal distribution data', 'binomial distributions data', 'poisson distribution data', 'logistic distribution data', 'chi square distribution', 'pareto distribution', 'exponetial distribution', 'uniform distribution', 'multinomial distribution']
+    rand_liste = ['sequence number', 'normal distribution data', 'binomial distributions data', 'poisson distribution data', 'logistic distribution data', 'chi square distribution', 'pareto distribution', 'exponetial distribution', 'uniform distribution']
     for i in range(len(rand_liste)):
         print(i, rand_liste[i])
         i+=1
@@ -312,7 +525,14 @@ def menu_rd(df):
         pd_data(df)
     elif rd == '4' :
         ld_data(df)
-    
+    elif rd == '5' :
+        shisq_data(df)
+    elif rd == '6' :    
+        pareto_data(df)
+    elif rd == '7' :
+        exp_data(df)
+    elif rd == '8' :
+        unif_data(df)
     else:
         print('wrong input, not available yet!')
         
