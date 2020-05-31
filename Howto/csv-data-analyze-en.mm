@@ -37,6 +37,38 @@
 <node COLOR="#0033ff" CREATED="1587886469591" ID="ID_1770675947" MODIFIED="1590243000086" POSITION="right" TEXT="structure">
 <edge STYLE="sharp_bezier" WIDTH="8"/>
 <font NAME="SansSerif" SIZE="18"/>
+<node COLOR="#00b439" CREATED="1590906847302" ID="ID_1195847277" MODIFIED="1590906859066" TEXT="Startmenue">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="16"/>
+<node COLOR="#990000" CREATED="1590906867125" ID="ID_1162517543" MODIFIED="1590906898764">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/startscreen.png" />
+  </body>
+</html>
+</richcontent>
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+</node>
+<node COLOR="#00b439" CREATED="1590907453422" ID="ID_234616444" MODIFIED="1590907468160" TEXT="create random data">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="SansSerif" SIZE="16"/>
+<node COLOR="#990000" CREATED="1590907480416" ID="ID_1196222232" MODIFIED="1590907502935">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/create_data_menu.png" />
+  </body>
+</html>
+</richcontent>
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+</node>
 <node COLOR="#00b439" CREATED="1587886653152" ID="ID_662341060" MODIFIED="1590242960554" TEXT="read file">
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="16"/>
@@ -83,7 +115,17 @@
 </node>
 <node COLOR="#990000" CREATED="1588668573899" ID="ID_1452992239" MODIFIED="1588668581791" TEXT="sort table">
 <font NAME="SansSerif" SIZE="14"/>
-<node COLOR="#111111" CREATED="1588700393845" ID="ID_1665921600" MODIFIED="1588700397380" TEXT="bild"/>
+<node COLOR="#111111" CREATED="1588700393845" ID="ID_1665921600" MODIFIED="1590907429577">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/sorting.png" />
+  </body>
+</html>
+</richcontent>
+</node>
 </node>
 <node COLOR="#990000" CREATED="1588670413585" ID="ID_1213165805" MODIFIED="1588700469579">
 <richcontent TYPE="NODE"><html>
@@ -233,6 +275,48 @@
     <img src="pictures/crosstable.png" />
   </body>
 </html></richcontent>
+</node>
+</node>
+<node COLOR="#990000" CREATED="1590906923986" ID="ID_722106508" MODIFIED="1590906949621" TEXT="simple table calculations">
+<font NAME="SansSerif" SIZE="14"/>
+<node COLOR="#111111" CREATED="1590906961367" ID="ID_736017751" MODIFIED="1590906997151" TEXT="Calculation between 2 columns">
+<node COLOR="#111111" CREATED="1590907150751" ID="ID_1793611591" MODIFIED="1590907188953">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/calc_between_columns.png" />
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1590906997917" ID="ID_1052123632" MODIFIED="1590907104352" TEXT="Calculation with a value">
+<node COLOR="#111111" CREATED="1590907158445" ID="ID_488879892" MODIFIED="1590907245597">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/calc_with_value.png" />
+  </body>
+</html>
+</richcontent>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1590906965874" ID="ID_369621742" MODIFIED="1590907129437" TEXT="Crossstatistic one column">
+<node COLOR="#111111" CREATED="1590907166146" ID="ID_1480748760" MODIFIED="1590907379612">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/statistic_cross_column.png" />
+  </body>
+</html>
+</richcontent>
+</node>
 </node>
 </node>
 </node>

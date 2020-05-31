@@ -1,16 +1,19 @@
-import pandas as pd
-import os
-import numpy as np
+#excluded needed packages
+#import numpy as np
 #import matplotlib.pyplot as plt
 #from scipy.stats import shapiro
 #from scipy.stats import stats
 #import scipy as spy
 #import statistics as stats
-import webbrowser
 #import seaborn as sns
 #import statsmodels.api as sm
 #from statsmodels.formula.api import ols
 #from outliers import smirnov_grubbs as grubbs
+
+
+import pandas as pd
+import os
+import webbrowser
 from SPC_CPA import CPA
 from L_REG import LREG
 from table_functions import appendDFToCSV, mergecolumn, filter_setzen, sort_column, transposed_table, crosstab, contingency_tb
@@ -20,6 +23,8 @@ from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, linie
 from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_s, ttest_t_s, ttest_i, anova_o_w, anova_t_w
 from table_calc import menu_calc
 from rand_data import menu_rd
+
+
 #alternatively, define the source
 csv_dateien=['daten.csv']
 

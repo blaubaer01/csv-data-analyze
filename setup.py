@@ -7,6 +7,9 @@ Created on Mon May 25 17:27:58 2020
 Thanks to https://www.youtube.com/watch?v=Q8CLcGdr90Q
 """
 
+###create executable file from csv-data-analyze 
+###dons't run till now ! Problems with the scipy package  
+
 from cx_Freeze import setup, Executable
 import sys
 
