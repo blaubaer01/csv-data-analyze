@@ -364,12 +364,18 @@ def msa_v2(df):
     
     fn = 'describe.csv'
     
+    df2 = df2.sort_values(by=operator)
+    
     df2['nr'] = range(1, len(df2) + 1)
     
     df2.to_csv(fn, sep=';', decimal=',')
     
     df3 = pd.read_csv(fn, sep=';' , decimal=',', header=0)
     print(df3)
+    
+    #df3 = df3.sort_values(by=operator)
+    #print(df3)
+    
     
     x = 'nr'
     y = 'mean'
@@ -574,7 +580,7 @@ def msa_v2(df):
         
     #df3.plot(x, y, ax=axes[0])
     plt.subplot(231)
-    sns.lineplot(x=x, y=r, estimator=None, lw=1, data=df3)
+    sns.lineplot(x=x, y=r, markers ="+", estimator=None, lw=1, data=df3)
     plt.axhline(y=Rbar, linewidth=2, color='g')
     plt.axhline(y=rlcl,linewidth=2, color='orange')
     plt.axhline(y=rucl,linewidth=2, color='orange')
@@ -591,7 +597,8 @@ def msa_v2(df):
     
     plt.subplot(234)
     
-    sns.lineplot(x=x, y=y, estimator=None, lw=1, data=df3)
+    #sns.lineplot(x=x, y=y, estimator=None, markers='o', lw=1, data=df3)
+    sns.lineplot(x=x, y=y, markers='+', lw=1, data=df3)
     plt.axhline(y=Xbar,linewidth=2, color='g')
     plt.axhline(y=xlcl,linewidth=2, color='orange')
     plt.axhline(y=xucl,linewidth=2, color='orange')
