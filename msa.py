@@ -580,7 +580,7 @@ def msa_v2(df):
         
     #df3.plot(x, y, ax=axes[0])
     plt.subplot(231)
-    sns.lineplot(x=x, y=r, markers ="+", estimator=None, lw=1, data=df3)
+    sns.lineplot(x=x, y=r, markers =True, style=operator, estimator=None, lw=1, data=df3)
     plt.axhline(y=Rbar, linewidth=2, color='g')
     plt.axhline(y=rlcl,linewidth=2, color='orange')
     plt.axhline(y=rucl,linewidth=2, color='orange')
@@ -598,7 +598,7 @@ def msa_v2(df):
     plt.subplot(234)
     
     #sns.lineplot(x=x, y=y, estimator=None, markers='o', lw=1, data=df3)
-    sns.lineplot(x=x, y=y, markers='+', lw=1, data=df3)
+    sns.lineplot(x=x, y=y, markers =True, style=operator, lw=1, data=df3)
     plt.axhline(y=Xbar,linewidth=2, color='g')
     plt.axhline(y=xlcl,linewidth=2, color='orange')
     plt.axhline(y=xucl,linewidth=2, color='orange')
@@ -607,7 +607,7 @@ def msa_v2(df):
     
     
     plt.subplot(235)
-    
+    sns.boxplot(x=part, y=y_df,data=df, palette="Set3")
     sns.stripplot(x=part, y=y_df,data=df, hue=operator, palette="Set3")
     
     
