@@ -230,7 +230,7 @@ def filter_setzen(df):
             
         restart = input('\nSet more filters: y/n \n?')
         if restart.lower() != 'y':
-            return(df)
+            
             speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
             if speichern_ja.lower() =='y':
                 csvfilename = input('Filename (.csv will save automaticly) \n?')

@@ -20,15 +20,22 @@ base = None
 if sys.platform == 'win32':
     base = 'Win32GUI'
 
-build_exe_options = {"packages": ['os', 'pandas', 'numpy', 'statsmodels', 'matplotlib', 'scipy', 'seaborn','outlier_utils'],
-                                  "excludes": ["tkinter"]}
+
+build_exe_options = {
+    "packages": ["os", "sys", "pandas", "numpy", "statsmodels", "matplotlib", "scipy", "seaborn", "outliers", "webbrowser"], 
+    "excludes": ["tkinter"],
+    "includes": ["SPC_CPA.py", "L_REG.py", "table_functions.py", "regelkarte.py", "msa.py", "charts.py", "tests.py", "table_calc.py", "rand_data.py"] # <-- Include easy_gui
+}
+
+#build_exe_options = {"packages": ['os', 'pandas', 'numpy', 'statsmodels', 'matplotlib', 'scipy', 'seaborn','outlier_utils'],
+ #                                 "excludes": ["tkinter"]}
 
 
     
 setup(version = "1.0",
       description = "Analyze CSV - File",
       name = "csv-data-analyze",
-      options = {"build_exe": {"packages": ["os"]}},
+      options = {"build_exe": build_exe_options},
       executables = [Executable(datei, base="Win32GUI")])
 
 print("Fertig!")
