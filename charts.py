@@ -311,7 +311,7 @@ def boxplot(df):
 ###boxplot with group
 def boxplot_groupby(df):
     clear()
-    kategorie=df.select_dtypes(include=['object'])
+    kategorie=df.select_dtypes(include=['object','int'])
     werte = df.select_dtypes(exclude=['object'])
     
     #
@@ -470,7 +470,7 @@ def violin(df):
 def violin_groupby(df):
     clear()
     sns.set(style="whitegrid")
-    kategorie=df.select_dtypes(include=['object'])
+    kategorie=df.select_dtypes(exclude=['float'])
     werte = df.select_dtypes(exclude=['object'])
     
     #
@@ -629,7 +629,7 @@ def swarmplot1f(df):
     clear()
     sns.set(style="whitegrid", palette="muted")
 
-    kategorie=df.select_dtypes(include=['object'])
+    kategorie=df.select_dtypes(exclude=['float'])
     werte = df.select_dtypes(exclude=['object'])
     
     #
@@ -785,7 +785,7 @@ def stripplot1f(df):
     clear()
     sns.set(style="whitegrid", palette="muted")
 
-    kategorie=df.select_dtypes(include=['object'])
+    kategorie=df.select_dtypes(exclude=['float'])
     werte = df.select_dtypes(exclude=['object'])
     
     #
@@ -908,7 +908,7 @@ def pointplot1f(df):
     clear()
     sns.set(style="darkgrid")
 
-    kategorie=df.select_dtypes(include=['object'])
+    kategorie=df.select_dtypes(exclude=['float'])
     werte = df.select_dtypes(exclude=['object'])
     
     #
@@ -1245,7 +1245,7 @@ def groupplot(df):
     
     kategorie=df.select_dtypes(exclude=['float'])
     werte = df.select_dtypes(exclude=['object'])
-    zeitraum=df.select_dtypes(include=['object', 'datetime'])
+    zeitraum=df.select_dtypes(exclude=['float'])
     
     #
     anz_col_werte = len(werte.columns)
@@ -1298,7 +1298,7 @@ def groupplot(df):
         i+=1
     
     while True:
-        datetime_column = input('Choose the Datetime-column \n(choose number) \n?')
+        datetime_column = input('Choose the X-axis-column \n(choose number) \n?')
         if datetime_column not in list_number:
             print('wrong input, try again!')
         else:
