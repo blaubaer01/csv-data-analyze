@@ -171,13 +171,13 @@ def x_bar_s(df):
         print('X-bar :',  Xbar)
         
         
-        tXbar = truncate(Xbar, 3)
-        tsbar = truncate(sbar, 3)
-        txlcl = truncate(xlcl,3)
-        txucl = truncate(xucl, 3)
-        tslcl = truncate(slcl,3)
-        tsucl = truncate(sucl, 3)
-        tcenter = truncate(center, 3)
+        tXbar = truncate(Xbar, 5)
+        tsbar = truncate(sbar, 5)
+        txlcl = truncate(xlcl,5)
+        txucl = truncate(xucl, 5)
+        tslcl = truncate(slcl,5)
+        tsucl = truncate(sucl, 5)
+        tcenter = truncate(center, 5)
         
         
         
@@ -237,12 +237,12 @@ def x_bar_s(df):
         print('X-bar :',  Xbar)
         
         
-        tXbar = truncate(Xbar, 3)
-        tsbar = truncate(sbar, 3)
-        txlcl = truncate(xlcl,3)
-        txucl = truncate(xucl, 3)
-        tslcl = truncate(slcl,3)
-        tsucl = truncate(sucl, 3)
+        tXbar = truncate(Xbar, 5)
+        tsbar = truncate(sbar, 5)
+        txlcl = truncate(xlcl,5)
+        txucl = truncate(xucl, 5)
+        tslcl = truncate(slcl,5)
+        tsucl = truncate(sucl, 5)
         
         
         
@@ -556,13 +556,13 @@ def x_bar_r(df):
         print('X-bar :',  Xbar)
         
         
-        tXbar = truncate(Xbar, 3)
-        trbar = truncate(Rbar, 3)
-        txlcl = truncate(xlcl,3)
-        txucl = truncate(xucl, 3)
-        trlcl = truncate(rlcl,3)
-        trucl = truncate(rucl, 3)
-        tcenter = truncate(center, 3)
+        tXbar = truncate(Xbar, 5)
+        trbar = truncate(Rbar, 5)
+        txlcl = truncate(xlcl,5)
+        txucl = truncate(xucl, 5)
+        trlcl = truncate(rlcl,5)
+        trucl = truncate(rucl, 5)
+        tcenter = truncate(center, 5)
         
         
         
@@ -629,12 +629,12 @@ def x_bar_r(df):
         print('X-bar :',  Xbar)
         
         
-        tXbar = truncate(Xbar, 3)
-        trbar = truncate(Rbar, 3)
-        txlcl = truncate(xlcl,3)
-        txucl = truncate(xucl, 3)
-        trlcl = truncate(rlcl,3)
-        trucl = truncate(rucl, 3)
+        tXbar = truncate(Xbar, 5)
+        trbar = truncate(Rbar, 5)
+        txlcl = truncate(xlcl,5)
+        txucl = truncate(xucl, 5)
+        trlcl = truncate(rlcl,5)
+        trucl = truncate(rucl, 5)
         
         
         
@@ -747,12 +747,12 @@ def xmr_chart(df):
     rlcl = 0
     rucl = center + 3*sd/d2
     
-    tXbar = truncate(Xbar, 3)
-    trbar = truncate(center, 3)
-    txlcl = truncate(xlcl,3)
-    txucl = truncate(xucl, 3)
-    trlcl = truncate(rlcl,3)
-    trucl = truncate(rucl, 3)
+    tXbar = truncate(Xbar, 5)
+    trbar = truncate(center, 5)
+    txlcl = truncate(xlcl,5)
+    txucl = truncate(xucl, 5)
+    trlcl = truncate(rlcl,5)
+    trucl = truncate(rucl, 5)
     
     
     

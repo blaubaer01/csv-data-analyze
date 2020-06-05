@@ -113,14 +113,14 @@ def CPA(df):
             mean_m_3s = mean_y - 3*std_y
             min_y = y.min()
             max_y = y.max()
-            cpk = truncate(cpk, 2)
-            cp = truncate(cp, 2)
-            mean_y = truncate(mean_y, 3)
-            std_y = truncate(std_y, 3)
-            mean_p_3s = truncate(mean_p_3s, 3)
-            mean_m_3s = truncate(mean_m_3s, 3)
-            min_y = truncate(min_y, 3)
-            max_y =truncate(max_y, 3)
+            cpk = truncate(cpk, 3)
+            cp = truncate(cp, 3)
+            mean_y = truncate(mean_y, 5)
+            std_y = truncate(std_y, 5)
+            mean_p_3s = truncate(mean_p_3s, 5)
+            mean_m_3s = truncate(mean_m_3s, 5)
+            min_y = truncate(min_y, 5)
+            max_y =truncate(max_y, 5)
             count_y = truncate(count_y, 0)
             
             
@@ -173,13 +173,13 @@ def CPA(df):
             cpkut = (ut-median_y)/(upper_q_y-median_y)
             cpklt = (median_y-lt)/(median_y-lower_q_y)
             cpk = min(cpkut,cpklt)
-            cpk = truncate(cpk, 2)
-            cp = truncate(cp, 2)
-            median_y = truncate(median_y, 3)
-            upper_q_y = truncate(upper_q_y, 3)
-            lower_q_y = truncate(lower_q_y, 3)
-            min_y = truncate(min_y, 3)
-            max_y =truncate(max_y, 3)
+            cpk = truncate(cpk, 3)
+            cp = truncate(cp, 3)
+            median_y = truncate(median_y, 5)
+            upper_q_y = truncate(upper_q_y, 5)
+            lower_q_y = truncate(lower_q_y, 5)
+            min_y = truncate(min_y, 5)
+            max_y =truncate(max_y, 5)
             count_y = truncate(count_y, 0)
             
             print(median_y ,upper_q_y, lower_q_y , cp, cpk)
@@ -242,13 +242,13 @@ def CPA(df):
             
             
             
-            cpk = truncate(cpk, 2)
-            mean_y = truncate(mean_y, 3)
-            std_y = truncate(std_y, 3)
-            mean_p_3s = truncate(mean_p_3s, 3)
-            mean_m_3s = truncate(mean_m_3s, 3)
-            min_y = truncate(min_y, 3)
-            max_y =truncate(max_y, 3)
+            cpk = truncate(cpk, 3)
+            mean_y = truncate(mean_y, 5)
+            std_y = truncate(std_y, 5)
+            mean_p_3s = truncate(mean_p_3s, 5)
+            mean_m_3s = truncate(mean_m_3s, 5)
+            min_y = truncate(min_y, 5)
+            max_y =truncate(max_y, 5)
             count_y = truncate(count_y, 0)
             
             
@@ -292,12 +292,12 @@ def CPA(df):
             cpkut = (ut-median_y)/(upper_q_y-median_y)
             cpk = cpkut
             
-            cpk = truncate(cpk, 2)
-            median_y = truncate(median_y, 3)
-            upper_q_y = truncate(upper_q_y, 3)
-            lower_q_y = truncate(lower_q_y, 3)
-            min_y = truncate(min_y, 3)
-            max_y =truncate(max_y, 3)
+            cpk = truncate(cpk, 3)
+            median_y = truncate(median_y, 5)
+            upper_q_y = truncate(upper_q_y, 5)
+            lower_q_y = truncate(lower_q_y, 5)
+            min_y = truncate(min_y, 5)
+            max_y =truncate(max_y, 5)
             count_y = truncate(count_y, 0)
     
             eintrag = 'Median: ' + str(median_y) + '\nQ0.998: ' + str(upper_q_y) + '\nQ0.001: ' + str(lower_q_y) + '\n' + proa + ': ' + str(cpk) + '\nUT: ' + str(ut) + '\nMIN: ' + str(min_y) + ' MAX: '+ str(max_y) + '\nn: ' + str(count_y)
@@ -361,13 +361,13 @@ def CPA(df):
             max_y = y.max()
             
             
-            cpk = truncate(cpk, 2)
-            mean_y = truncate(mean_y, 3)
-            std_y = truncate(std_y, 3)
-            mean_p_3s = truncate(mean_p_3s, 3)
-            mean_m_3s = truncate(mean_m_3s, 3)
-            min_y = truncate(min_y, 3)
-            max_y =truncate(max_y, 3)
+            cpk = truncate(cpk, 3)
+            mean_y = truncate(mean_y, 5)
+            std_y = truncate(std_y, 5)
+            mean_p_3s = truncate(mean_p_3s, 5)
+            mean_m_3s = truncate(mean_m_3s, 5)
+            min_y = truncate(min_y, 5)
+            max_y =truncate(max_y, 5)
             count_y = truncate(count_y, 0)            
             
             eintrag = 'Mean: ' + str(mean_y) + ' s:' + str(std_y) + '\n+3s: ' + str(mean_p_3s) + '\n-3s: ' + str(mean_m_3s) + '\n' + proa + ': ' + str(cpk) + '\nLT: ' + str(lt) + '\nMIN: ' + str(min_y) + ' MAX: '+ str(max_y) + '\nn: ' + str(count_y)
@@ -411,12 +411,12 @@ def CPA(df):
             cpklt = (median_y-lt)/(median_y-lower_q_y)
             cpk = cpklt
         
-            cpk = truncate(cpk, 2)
-            median_y = truncate(median_y, 3)
-            upper_q_y = truncate(upper_q_y, 3)
-            lower_q_y = truncate(lower_q_y, 3)
-            min_y = truncate(min_y, 3)
-            max_y =truncate(max_y, 3)
+            cpk = truncate(cpk, 3)
+            median_y = truncate(median_y, 5)
+            upper_q_y = truncate(upper_q_y, 5)
+            lower_q_y = truncate(lower_q_y, 5)
+            min_y = truncate(min_y, 5)
+            max_y =truncate(max_y, 5)
             count_y = truncate(count_y, 0)            
             
             eintrag = 'Median: ' + str(median_y) + '\nQ0.998: ' + str(upper_q_y) + '\nQ0.001: ' + str(lower_q_y) + '\n' + proa + ': ' + str(cpk) + '\nLT: ' + str(lt) + '\nMIN: ' + str(min_y) + ' MAX: '+ str(max_y) + '\nn: ' + str(count_y)
