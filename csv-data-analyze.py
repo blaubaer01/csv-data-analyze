@@ -16,7 +16,7 @@ import os
 import webbrowser
 from SPC_CPA import CPA
 from L_REG import LREG
-from table_functions import appendDFToCSV, mergecolumn, filter_setzen, sort_column, transposed_table, crosstab, contingency_tb
+from table_functions import appendDFToCSV, mergecolumn, filter_setzen, sort_column, transposed_table, crosstab, contingency_tb, seq_numbers_add
 from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 from msa import msa_v1, msa_v2
 from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, liniendiagramm, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot, pareto, pareto_one_column, pointplot1f, pointplot2f, confidencelinechart
@@ -719,7 +719,7 @@ def preview_table(df):
 def table_functions(df):
     while True:
         clear()
-        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n?')
+        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column\n?')
         if menu_tf =='1':
             clear()
             preview_table(df)
@@ -738,6 +738,8 @@ def table_functions(df):
             crosstab(df)
         elif menu_tf =='8':
             menu_calc(df)
+        elif menu_tf =='9':
+            seq_numbers_add(df)
         else:
             print('Wrong input, please try again!')
             #voranalyse(df)
@@ -849,6 +851,11 @@ def main():
 ###start main process
 ###############################################################################
 if __name__ == '__main__':
-    main()
+    while True:
+        main()
+        restart = input('\nDo you want to re-start the app?: y = yes / n = exit \n?')
+        if restart.lower() != 'y':
+            break
+        
     
     

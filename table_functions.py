@@ -496,5 +496,28 @@ def contingency_tb(df):
     plt.show()
     
     
+def seq_numbers_add(df):
+    
+    seq_count = len(df)
+    print(seq_count)
+    seq_count=int(seq_count)
+    seq_nr_from = input('Number from: ?')
+    seq_nr_from = int(seq_nr_from)
+    seq_int = input('Sequence interval: ?')
+    seq_int = int(seq_int)
+    name_df = input('Table Name: ?')
+    
+    
+    
+    df[name_df] = range(seq_nr_from, seq_count+seq_int)
+    
+    print(df)
+    print('To work with you have to save this dataframe as file')
+    save_yes = input('Would you like to save: \ny/n \n?')
+    if save_yes.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)      
+ 
     
     

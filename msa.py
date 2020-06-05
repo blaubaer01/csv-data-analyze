@@ -181,7 +181,7 @@ def msa_v1(df):
                 
                 
     else:
-        notol = '1'
+        #notol = '1'
         tCg = 'none'
         tCgk = 'none'
         utdiagram = tv
@@ -335,18 +335,20 @@ def msa_v2(df):
     ###Part-Column
     part = list_columns_para[int(part_column)]
     
-    while True:
-        measurement_column = input('Choose your "Measurment" Column \n(choose number \n?')
-        if measurement_column not in list_number:
-            print('wrong input, try again!')
-        else:
-            break
+# =============================================================================
+#     while True:
+#         measurement_column = input('Choose your "Measurment" Column \n(choose number \n?')
+#         if measurement_column not in list_number:
+#             print('wrong input, try again!')
+#         else:
+#             break
+# =============================================================================
     
     ###Measurements-Column
-    measurement = list_columns_para[int(measurement_column)]
+    #measurement = list_columns_para[int(measurement_column)]
     
     ###Sort Database to get the right output
-    df = df.sort_values(by=[part, operator, measurement])
+    df = df.sort_values(by=[part, operator])
     
     
     ###insert sequence number
