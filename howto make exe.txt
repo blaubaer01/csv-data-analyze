@@ -1,0 +1,10 @@
+1. after run setup.py script with 
+python setup.py build
+
+2. change file name cKDTree.cp37-win_amd64.pyd in ckdtree.pyd in folder lib/scipy/spatial
+3. copy the files mkl_core.dll, mkl_def.dll, mkl_intel_thread.dll, mk_mc.dll, mkl_mc3.dll in the build folder
+4. create folder named 'platforms' and copy inside the file qwindows.dll
+
+From Anavonda Shell all functions run.
+From cmd app brocken by scipy and statsmodel functions.
+In Moment I have no Idea why?! 
