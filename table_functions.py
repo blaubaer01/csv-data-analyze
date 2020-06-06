@@ -9,27 +9,15 @@ import pandas as pd
 import os
 import seaborn as sns; sns.set()
 import matplotlib.pyplot as plt
-import scipy as spy
+#import scipy as spy
 from scipy.stats import chi2_contingency
+from tableview import file_in_html
+from mft import clear, truncate
 
 #Thanks to https://stackoverflow.com/questions/17530542/how-to-add-pandas-data-to-an-existing-csv-file
 #and https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html
 ### define our clear function 
 #############################################################################
-def clear(): 
-  
-    # for windows 
-    if os.name == 'nt': 
-        _ = os.system('cls') 
-  
-    # for mac and linux(here, os.name is 'posix') 
-    else: 
-        _ = os.system('clear') 
-
-def truncate(n, decimals=0):
-        multiplier = 10 ** decimals
-        return int(n * multiplier) / multiplier
-    
 
 def appendDFToCSV(df, sep=","):
     
@@ -86,6 +74,7 @@ def appendDFToCSV(df, sep=","):
         df2=pd.read_csv(add_table,sep=trennzeichen)
         df = df.append(df2)
         print(df)
+        file_in_html(df)
         print('To work with you have to save this dataframe as file')
         save_yes = input('Would you like to save: \ny/n \n?')
         if save_yes.lower() =='y':
@@ -218,10 +207,9 @@ def filter_setzen(df):
             list_columns.append(crit.columns[i])
             print(i, crit.columns[i])
             i+=1      
-         
         inhalte_spalte= input('For which column you want to know the possible filter criteria \nchoose number! \n?')
         print(crit.iloc[:,int(inhalte_spalte)].value_counts())
-
+        
         filter_ja = input('Set a filter: y/n \n?')
         if filter_ja.lower() =='y':
             name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
@@ -291,6 +279,7 @@ def sort_column(df):
                     csvfilename = input('Filename (.csv will save automaticly) \n?')
                     fn = csvfilename + '.csv'
                     df.to_csv(fn, sep=';', decimal=',', header =True)
+                file_in_html(df)
                 return(df)   
                 
                 break
@@ -307,8 +296,10 @@ def transposed_table(df):
             csvfilename = input('Filename (.csv will save automaticly) \n?')
             fn = csvfilename + '.csv'
             df.to_csv(fn, sep=';', decimal=',', header =True)
+        file_in_html(df)
         return(df)
     else:
+        file_in_html(df)
         return(df)
 
 ###crosstab
@@ -503,15 +494,14 @@ def seq_numbers_add(df):
     seq_count=int(seq_count)
     seq_nr_from = input('Number from: ?')
     seq_nr_from = int(seq_nr_from)
-    seq_int = input('Sequence interval: ?')
-    seq_int = int(seq_int)
     name_df = input('Table Name: ?')
     
     
     
-    df[name_df] = range(seq_nr_from, seq_count+seq_int)
+    df[name_df] = range(seq_nr_from, seq_count+seq_nr_from)
     
     print(df)
+    file_in_html(df)
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':

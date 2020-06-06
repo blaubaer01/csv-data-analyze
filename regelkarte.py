@@ -11,8 +11,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns ; sns.set()
 from scipy.stats import shapiro
-import os
 import numpy as np
+
+from mft import isfloat, truncate
 
 #Thanks to: Michal Nowikowski <godfryd@gmail.com>
 ###got exsamples from https://github.com/mattharrison/python-spc
@@ -32,32 +33,6 @@ B5 = [0,0,     0,     0,     0,     0, 0.029, 0.113, 0.179, 0.232, 0.276, 0.313,
 B6 = [0,0, 2.606, 2.276, 2.088, 1.964, 1.874, 1.806, 1.751, 1.707, 1.669, 1.637, 1.610, 1.585, 1.563, 1.544]#, 1.470, 1.420]
 A3 = [0,0, 2.659, 1.954, 1.628, 1.427, 1.287, 1.182, 1.099, 1.032, 0.975, 0.927, 0.886, 0.850, 0.817, 0.789]#, 0.680, 0.606]
 #########################################################################################
-
-
-
-def isfloat(x):
-    try:
-        float(x)
-    except ValueError:
-        return False
-    else:
-        return True
-def truncate(n, decimals=0):
-        multiplier = 10 ** decimals
-        return int(n * multiplier) / multiplier
-    
-
-### define our clear function 
-#############################################################################
-def clear(): 
-  
-    # for windows 
-    if os.name == 'nt': 
-        _ = os.system('cls') 
-  
-    # for mac and linux(here, os.name is 'posix') 
-    else: 
-        _ = os.system('clear') 
 
 
 

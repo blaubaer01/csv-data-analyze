@@ -13,7 +13,6 @@
 
 import pandas as pd
 import os
-import webbrowser
 from SPC_CPA import CPA
 from L_REG import LREG
 from table_functions import appendDFToCSV, mergecolumn, filter_setzen, sort_column, transposed_table, crosstab, contingency_tb, seq_numbers_add
@@ -23,14 +22,13 @@ from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, linie
 from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_s, ttest_t_s, ttest_i, anova_o_w, anova_t_w
 from table_calc import menu_calc
 from rand_data import menu_rd
-
+from tableview import fehlende_daten, datentyp, file_in_html, einzeldaten_anschauen 
+from mft import clear
 
 #alternatively, define the source
 csv_dateien=['daten.csv']
 
-#############################################################################
-###main functions
-#############################################################################
+
 #read all CSV datas in the root folder
 def csv_daten_im_verzeichnis():
     
@@ -42,30 +40,6 @@ def csv_daten_im_verzeichnis():
             
     
     return(csv_dateien)
-            
-######################################################################        
-###check float
-def isfloat(x):
-    try:
-        float(x)
-    except ValueError:
-        return False
-    else:
-        return True
-
-#######################################################################
-### define our clear function 
-def clear(): 
-  
-    # for windows 
-    if os.name == 'nt': 
-        _ = os.system('cls') 
-  
-    # for mac and linux(here, os.name is 'posix') 
-    else: 
-        _ = os.system('clear') 
-
-
 
 #set read the file and set custom CSV elements
 def file_einlesen(auswahl_datei):
@@ -297,7 +271,7 @@ def file_einlesen(auswahl_datei):
                 break
                    
     
-    
+    file_in_html(df)
     return(df)
 
 
@@ -306,89 +280,6 @@ def file_einlesen(auswahl_datei):
 
 
 #############################################################################
-###pre-view functions
-##############################################################################        
-
-#######################################################################        
-#are there missing datas        
-def fehlende_daten(df):
-    clear()
-    print('Checking for missing data gave the following result:\n')
-    print(df.isnull().sum())
-
-
-######################################################################
-#wich datatype
-def datentyp(df):
-    clear()
-    print('Overview of data formats:\n')
-    print(df.dtypes)
-
-######################################################################
-###show DataFrame in browser    
-def file_in_html(df):
-    pd.set_option('colheader_justify', 'center')   # FOR TABLE <th>
-
-    html_string = '''
-    <html>
-    <head><title>HTML Pandas Dataframe with CSS</title></head>
-    <link rel="stylesheet" type="text/css" href="df_style.css"/>
-    <body>
-        {table}
-        </body>
-        </html>.
-    '''
-
-    # OUTPUT AN HTML FILE
-    with open('myhtml.html', 'w') as f:
-        f.write(html_string.format(table=df.to_html(classes='mystyle',index = False).replace('<th>','<th style = "background-color: red">')))
-    
-    url = 'myhtml.html'
-    
-    webbrowser.open_new_tab(url)
-
-
-
-#######################################################################
-# all single data
-def ind_trip_data(df):
-    y=0
-    while y < (len(df)):
-        a = y
-        for i in range(5):
-            print(df.iloc[a,:])
-            a +=1
-        y += 5
-                   
-        end_data = input('More records? \nPress "ENTER" for "Yes" or "n" for "No" \n?')
-        if (len(df)) <y+5:
-            rest = abs((len(df))-y)
-            for i in range(rest):
-                print(df.iloc[a,:])
-                a +=1
-            print('The end of the table has been reached!')
-            break
-        if end_data.lower() == 'n':
-            break
-
-#######################################################################        
-###Look at header and first data
-def first_row(df):
-    clear()
-    print('first row view')
-    print(df.iloc[0,:])
-    
-#######################################################################
-###View individual data
-def einzeldaten_anschauen(df):
-    eind = input('What do you want to see \n1: first row\n2: all cycle of 5 rows\n(choose a number) \n?' )
-    if eind=='1':
-        first_row(df)
-    elif eind =='2':
-        ind_trip_data(df)
-    else:
-        print('wrong input, please try again!')
-        #einzeldaten_anschauen(df)
 
 
 

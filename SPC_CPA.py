@@ -10,18 +10,8 @@ from scipy.stats import shapiro
 import matplotlib.pyplot as plt
 import seaborn as sns ; sns.set()
 import scipy as spy
+from mft import isfloat, truncate
 
-def isfloat(x):
-    try:
-        float(x)
-    except ValueError:
-        return False
-    else:
-        return True
-def truncate(n, decimals=0):
-        multiplier = 10 ** decimals
-        return int(n * multiplier) / multiplier
-    
 
 
 

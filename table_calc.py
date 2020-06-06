@@ -8,35 +8,9 @@ Created on Tue May 26 14:53:53 2020
 
 import pandas as pd
 import numpy as np
-import os
 
-#######################################################################
-###test input about float
-def isfloat(x):
-    try:
-        float(x)
-    except ValueError:
-        return False
-    else:
-        return True
-#######################################################################
-###set decimals
-def truncate(n, decimals=0):
-        multiplier = 10 ** decimals
-        return int(n * multiplier) / multiplier
-    
-#######################################################################
-### define our clear function 
-def clear(): 
-  
-    # for windows 
-    if os.name == 'nt': 
-        _ = os.system('cls') 
-  
-    # for mac and linux(here, os.name is 'posix') 
-    else: 
-        _ = os.system('clear') 
-
+from mft import isfloat, clear
+from tableview import file_in_html
 
 
 #######################################################################
@@ -84,6 +58,7 @@ def addition_column(df):
     df[name_col] = df[col1] + df[col2]
     
     print(df)
+    file_in_html(df)
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
@@ -137,6 +112,7 @@ def addition_val(df):
     df[name_col] = df[col1] + float(value_col)
     
     print(df)
+    file_in_html(df)
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
@@ -194,6 +170,7 @@ def substraction_column(df):
     df[name_col] = df[col1] - df[col2]
     
     print(df)
+    file_in_html(df)
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
@@ -249,6 +226,7 @@ def substraction_val(df):
     df[name_col] = df[col1] - float(value_col)
     
     print(df)
+    file_in_html(df)
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
@@ -305,6 +283,7 @@ def multiplication_column(df):
     df[name_col] = df[col1] * df[col2]
     
     print(df)
+    file_in_html(df)
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
@@ -359,6 +338,7 @@ def multiplication_val(df):
     df[name_col] = df[col1] * float(value_col)
     
     print(df)
+    file_in_html(df)
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
@@ -418,6 +398,7 @@ def diffision_column(df):
     df[name_col] = df[col1] / df[col2]
     
     print(df)
+    file_in_html(df)
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
@@ -472,6 +453,7 @@ def diffision_val(df):
     df[name_col] = df[col1] / float(value_col)
     
     print(df)
+    file_in_html(df)
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
@@ -519,6 +501,7 @@ def square_val(df):
     df[name_col] = df[col1] **2
     
     print(df)
+    file_in_html(df)
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
@@ -568,6 +551,7 @@ def take_root_val(df):
     #np.sqrt(football[['wins', 'losses']].sum(axis=1))
     
     print(df)
+    file_in_html(df)
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
@@ -618,6 +602,7 @@ def statistic_cross_col(df):
     #np.sqrt(football[['wins', 'losses']].sum(axis=1))
     
     print(df2)
+    file_in_html(df)
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
@@ -682,6 +667,7 @@ def min_column(df):
         df[name_col] = df[[col1,col2]].apply(np.min, axis=1)
     
         print(df)
+        file_in_html(df)
     
 ####################################################################
 ###3 columns
@@ -718,6 +704,7 @@ def min_column(df):
         df[name_col] = df[[col1,col2,col3]].apply(np.min, axis=1)
     
         print(df)
+        file_in_html(df)
 
 ####################################################################
 ###4 columns
@@ -762,6 +749,7 @@ def min_column(df):
         df[name_col] = df[[col1,col2,col3,col4]].apply(np.min, axis=1)
     
         print(df)
+        file_in_html(df)
     
 ####################################################################
 ###5 columns
@@ -814,6 +802,7 @@ def min_column(df):
         df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.min, axis=1)
     
         print(df)
+        file_in_html(df)
         
     else:
         print('Wrong Input (Choose Number between 2-5)')
@@ -878,6 +867,7 @@ def max_column(df):
         df[name_col] = df[[col1,col2]].apply(np.max, axis=1)
     
         print(df)
+        file_in_html(df)
     
 ####################################################################
 ###3 columns
@@ -914,6 +904,7 @@ def max_column(df):
         df[name_col] = df[[col1,col2,col3]].apply(np.max, axis=1)
     
         print(df)
+        file_in_html(df)
 
 ####################################################################
 ###4 columns
@@ -958,6 +949,7 @@ def max_column(df):
         df[name_col] = df[[col1,col2,col3,col4]].apply(np.max, axis=1)
     
         print(df)
+        file_in_html(df)
     
 ####################################################################
 ###5 columns
@@ -1010,6 +1002,7 @@ def max_column(df):
         df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.max, axis=1)
     
         print(df)
+        file_in_html(df)
         
     else:
         print('Wrong Input (Choose Number between 2-5)')
@@ -1073,6 +1066,7 @@ def mean_column(df):
         df[name_col] = df[[col1,col2]].apply(np.mean, axis=1)
     
         print(df)
+        file_in_html(df)
     
 ####################################################################
 ###3 columns
@@ -1109,6 +1103,7 @@ def mean_column(df):
         df[name_col] = df[[col1,col2,col3]].apply(np.mean, axis=1)
     
         print(df)
+        file_in_html(df)
 
 ####################################################################
 ###4 columns
@@ -1153,6 +1148,7 @@ def mean_column(df):
         df[name_col] = df[[col1,col2,col3,col4]].apply(np.mean, axis=1)
     
         print(df)
+        file_in_html(df)
     
 ####################################################################
 ###5 columns
@@ -1205,6 +1201,7 @@ def mean_column(df):
         df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.mean, axis=1)
     
         print(df)
+        file_in_html(df)
         
     else:
         print('Wrong Input (Choose Number between 2-5)')
@@ -1269,6 +1266,7 @@ def std_column(df):
         df[name_col] = df[[col1,col2]].apply(np.std, axis=1)
     
         print(df)
+        file_in_html(df)
     
 ####################################################################
 ###3 columns
@@ -1305,6 +1303,7 @@ def std_column(df):
         df[name_col] = df[[col1,col2,col3]].apply(np.std, axis=1)
     
         print(df)
+        file_in_html(df)
 
 ####################################################################
 ###4 columns
@@ -1349,6 +1348,7 @@ def std_column(df):
         df[name_col] = df[[col1,col2,col3,col4]].apply(np.std, axis=1)
     
         print(df)
+        file_in_html(df)
     
 ####################################################################
 ###5 columns
@@ -1401,6 +1401,7 @@ def std_column(df):
         df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.std, axis=1)
     
         print(df)
+        file_in_html(df)
         
     else:
         print('Wrong Input (Choose Number between 2-5)')
@@ -1465,6 +1466,7 @@ def range_column(df):
         df[name_col] = df[[col1,col2]].apply(np.max, axis=1)-df[[col1,col2]].apply(np.min, axis=1)
     
         print(df)
+        file_in_html(df)
     
 ####################################################################
 ###3 columns
@@ -1501,6 +1503,7 @@ def range_column(df):
         df[name_col] = df[[col1,col2,col3]].apply(np.max, axis=1)-df[[col1,col2,col3]].apply(np.min, axis=1)
     
         print(df)
+        file_in_html(df)
 
 ####################################################################
 ###4 columns
@@ -1545,6 +1548,7 @@ def range_column(df):
         df[name_col] = df[[col1,col2,col3,col4]].apply(np.max, axis=1)-df[[col1,col2,col3,col4]].apply(np.min, axis=1)
     
         print(df)
+        file_in_html(df)
     
 ####################################################################
 ###5 columns
@@ -1597,7 +1601,7 @@ def range_column(df):
         df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.max, axis=1)-df[[col1,col2,col3,col4,col5]].apply(np.min, axis=1)
     
         print(df)
-        
+        file_in_html(df)
     else:
         print('Wrong Input (Choose Number between 2-5)')
     

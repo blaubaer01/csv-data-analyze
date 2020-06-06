@@ -8,50 +8,11 @@ Created on Fri May 29 21:51:59 2020
 
 import pandas as pd
 import numpy as np
-import os
-
+from tableview import file_in_html
+from mft import isfloat, isinteger, clear
 
 df = pd.DataFrame()
 ####create random data
-
-#######################################################################
-###test input about float
-def isfloat(x):
-    try:
-        float(x)
-    except ValueError:
-        return False
-    else:
-        return True
-
-#######################################################################
-###test input about integer
-def isinteger(x):
-    try:
-        int(x)
-    except ValueError:
-        return False
-    else:
-        return True
-    
-    
-    
-###set decimals
-def truncate(n, decimals=0):
-        multiplier = 10 ** decimals
-        return int(n * multiplier) / multiplier
-    
-#######################################################################
-### define our clear function 
-def clear(): 
-  
-    # for windows 
-    if os.name == 'nt': 
-        _ = os.system('cls') 
-  
-    # for mac and linux(here, os.name is 'posix') 
-    else: 
-        _ = os.system('clear') 
 
 ##############################################################################
 ###create sequence Nr
@@ -87,6 +48,7 @@ def seq_numbers(df):
     df[name_df] = range(seq_nr_from, seq_often +1 + seq_nr_from)
     
     print(df)
+    file_in_html(df)
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
@@ -135,6 +97,7 @@ def nd_data(df):
     df[name_df] = np.random.normal(mean_df, std_df, seq_often)
     
     print(df)
+    file_in_html(df)
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
@@ -194,6 +157,7 @@ def bd_data(df):
     df[name_df] = np.random.binomial(n_df, p_df, seq_often)
     
     print(df)
+    file_in_html(df)
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
@@ -242,6 +206,7 @@ def pd_data(df):
     df[name_df] = np.random.poisson(p_df, seq_often)
     
     print(df)
+    file_in_html(df)
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
@@ -290,6 +255,7 @@ def ld_data(df):
     df[name_df] = np.random.logistic(location_df, scale_df, seq_often)
     
     print(df)
+    file_in_html(df)
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
@@ -347,6 +313,7 @@ def shisq_data(df):
     df[name_df] = np.random.chisquare(defr, size=(m_df*n_df*k_df))
     
     print(df)
+    file_in_html
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
@@ -405,6 +372,7 @@ def pareto_data(df):
     df[name_df] = np.random.pareto(a_df, size=(m_df*n_df*k_df))+m_df
     
     print(df)
+    file_in_html(df)
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
@@ -463,6 +431,7 @@ def exp_data(df):
     df[name_df] = np.random.exponential(scale_df, size=(m_df*n_df*k_df))
     
     print(df)
+    file_in_html(df)
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':
@@ -511,6 +480,7 @@ def unif_data(df):
     df[name_df] = np.random.uniform(high_df, low_df, seq_often)
     
     print(df)
+    file_in_html(df)
     print('To work with you have to save this dataframe as file')
     save_yes = input('Would you like to save: \ny/n \n?')
     if save_yes.lower() =='y':

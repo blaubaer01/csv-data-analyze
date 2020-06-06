@@ -1,0 +1,95 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Jun  6 17:51:24 2020
+
+@author: blaubaer (Ricky Helfgen)
+"""
+import pandas as pd
+import webbrowser
+from mft import clear
+
+
+###pre-view functions
+##############################################################################        
+
+#######################################################################        
+#are there missing datas        
+def fehlende_daten(df):
+    clear()
+    print('Checking for missing data gave the following result:\n')
+    print(df.isnull().sum())
+
+
+######################################################################
+#wich datatype
+def datentyp(df):
+    clear()
+    print('Overview of data formats:\n')
+    print(df.dtypes)
+
+######################################################################
+###show DataFrame in browser    
+def file_in_html(df):
+    pd.set_option('colheader_justify', 'center')   # FOR TABLE <th>
+
+    html_string = '''
+    <html>
+    <head><title>HTML Pandas Dataframe with CSS</title></head>
+    <link rel="stylesheet" type="text/css" href="df_style.css"/>
+    <body>
+        {table}
+        </body>
+        </html>.
+    '''
+
+    # OUTPUT AN HTML FILE
+    with open('myhtml.html', 'w') as f:
+        f.write(html_string.format(table=df.to_html(classes='mystyle',index = False).replace('<th>','<th style = "background-color: red">')))
+    
+    url = 'myhtml.html'
+    
+    webbrowser.open_new_tab(url)
+
+
+
+#######################################################################
+# all single data
+def ind_trip_data(df):
+    y=0
+    while y < (len(df)):
+        a = y
+        for i in range(5):
+            print(df.iloc[a,:])
+            a +=1
+        y += 5
+                   
+        end_data = input('More records? \nPress "ENTER" for "Yes" or "n" for "No" \n?')
+        if (len(df)) <y+5:
+            rest = abs((len(df))-y)
+            for i in range(rest):
+                print(df.iloc[a,:])
+                a +=1
+            print('The end of the table has been reached!')
+            break
+        if end_data.lower() == 'n':
+            break
+
+#######################################################################        
+###Look at header and first data
+def first_row(df):
+    clear()
+    print('first row view')
+    print(df.iloc[0,:])
+    
+#######################################################################
+###View individual data
+def einzeldaten_anschauen(df):
+    eind = input('What do you want to see \n1: first row\n2: all cycle of 5 rows\n(choose a number) \n?' )
+    if eind=='1':
+        first_row(df)
+    elif eind =='2':
+        ind_trip_data(df)
+    else:
+        print('wrong input, please try again!')
+        #einzeldaten_anschauen(df)

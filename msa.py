@@ -14,6 +14,7 @@ import scipy as spy
 from statsmodels.formula.api import ols
 import statsmodels.api as sm
 import numpy as np
+from mft import isfloat, truncate
 
 #Thanks to: Michal Nowikowski <godfryd@gmail.com>
 ###got exsamples from https://github.com/mattharrison/python-spc
@@ -38,19 +39,6 @@ A3 = [0,0, 2.659, 1.954, 1.628, 1.427, 1.287, 1.182, 1.099, 1.032, 0.975, 0.927,
 
 
 
-
-
-def isfloat(x):
-    try:
-        float(x)
-    except ValueError:
-        return False
-    else:
-        return True
-    
-def truncate(n, decimals=0):
-    multiplier = 10 ** decimals
-    return int(n * multiplier) / multiplier
 
 ###MSA-V1
 
