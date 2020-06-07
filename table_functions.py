@@ -228,6 +228,57 @@ def filter_setzen(df):
             else:
                 break
     
+
+
+def set_value_filter(df):
+    
+    clear()
+    while True:
+        clear()
+        crit = df.select_dtypes(exclude=['object'])
+            
+            
+        anz_col = len(crit.columns)
+
+        list_columns = []
+
+        i=1
+        for i in range(anz_col):
+
+            list_columns.append(crit.columns[i])
+            print(i, crit.columns[i])
+            i+=1      
+        inhalte_spalte= input('For which column you want to know the possible filter criteria \nchoose number! \n?')
+        print(crit.iloc[:,int(inhalte_spalte)].value_counts())
+        
+        filter_ja = input('Set a filter: y/n \n?')
+        if filter_ja.lower() =='y':
+            name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
+            df = df[crit.iloc[:,int(inhalte_spalte)]==name_filter]
+            
+            
+        restart = input('\nSet more filters: y/n \n?')
+        if restart.lower() != 'y':
+            
+            speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+            if speichern_ja.lower() =='y':
+                csvfilename = input('Filename (.csv will save automaticly) \n?')
+                fn = csvfilename + '.csv'
+                df.to_csv(fn, sep=';', decimal=',', header =True)
+            
+            else:
+                break
+    
+
+
+
+
+
+
+
+
+
+
 ###sort by column
 ###################################################################################
 def sort_column(df):
