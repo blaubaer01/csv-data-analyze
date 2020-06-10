@@ -205,7 +205,7 @@ def file_einlesen(auswahl_datei):
         while True:
             clear()
             
-            crit = df.select_dtypes(include=['float','int','object'])
+            crit = df.select_dtypes(exclude=['datetime'])
             
             
             anz_col = len(crit.columns)
