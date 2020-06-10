@@ -223,20 +223,28 @@ def file_einlesen(auswahl_datei):
             print(crit.iloc[:,int(inhalte_spalte)].value_counts())
             print(df[list_columns[int(inhalte_spalte)]].dtype)
             crit_col = df[list_columns[int(inhalte_spalte)]].dtype
-            #filter_in_html(df[list_columns[int(inhalte_spalte)]])
             
+            
+            #########################################################################################
+            ###create filter table (to copy filter criteria (str-c))
             df_filter = pd.DataFrame()
             df_filter = (df[list_columns[int(inhalte_spalte)]])
-            df_filter.columns=['indx', 'Filter']
+            
             
             df_filter.to_csv('df_filter.csv', sep=';', decimal=',')
-    
+                        
             df_filter = pd.read_csv('df_filter.csv', sep=';' , decimal=',', header=0)
+            
+            
             df_filter.columns=['indx', 'Filter']
             df_filter = df_filter.sort_values(by='Filter', ascending=1)
             
+            df_filter = df_filter.drop_duplicates(subset='Filter', keep='last')
+            df_filter = df_filter.drop(columns='indx')
+            
+            
+            
             filter_in_html(df_filter)
-            #file_in_html(df)
             
             filter_ja = input('Set a filter: y/n \n?')
             

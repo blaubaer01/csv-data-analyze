@@ -54,7 +54,7 @@ def file_in_html(df):
 
 
 ###show DataFrame in browser    
-def filter_in_html(df):
+def filter_in_html(df_filter):
     pd.set_option('colheader_justify', 'center')   # FOR TABLE <th>
 
     html_string = '''
@@ -70,7 +70,7 @@ def filter_in_html(df):
 
     # OUTPUT AN HTML FILE
     with open('myfilter.html', 'w') as f:
-        f.write(html_string.format(table=df.to_html(classes='mystyle',index = False).replace('<th>','<th style = "background-color: blue">')))
+        f.write(html_string.format(table=df_filter.to_html(classes='mystyle',index = False).replace('<th>','<th style = "background-color: blue">')))
     
     url = 'myfilter.html'
     
