@@ -22,7 +22,7 @@ from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, linie
 from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_s, ttest_t_s, ttest_i, anova_o_w, anova_t_w
 from table_calc import menu_calc
 from rand_data import menu_rd
-from tableview import fehlende_daten, datentyp, file_in_html, einzeldaten_anschauen 
+from tableview import fehlende_daten, datentyp, file_in_html, einzeldaten_anschauen , filter_in_html
 from mft import clear
 
 #alternatively, define the source
@@ -223,7 +223,23 @@ def file_einlesen(auswahl_datei):
             print(crit.iloc[:,int(inhalte_spalte)].value_counts())
             print(df[list_columns[int(inhalte_spalte)]].dtype)
             crit_col = df[list_columns[int(inhalte_spalte)]].dtype
+            #filter_in_html(df[list_columns[int(inhalte_spalte)]])
+            
+            df_filter = pd.DataFrame()
+            df_filter = (df[list_columns[int(inhalte_spalte)]])
+            df_filter.columns=['indx', 'Filter']
+            
+            df_filter.to_csv('df_filter.csv', sep=';', decimal=',')
+    
+            df_filter = pd.read_csv('df_filter.csv', sep=';' , decimal=',', header=0)
+            df_filter.columns=['indx', 'Filter']
+            df_filter = df_filter.sort_values(by='Filter', ascending=1)
+            
+            filter_in_html(df_filter)
+            #file_in_html(df)
+            
             filter_ja = input('Set a filter: y/n \n?')
+            
             if filter_ja.lower() =='y':
                 which_filter=input('Which kind of filter: \n1: ==\n2: >=\n3: >\n4: <= \n5: <\n?')
                 

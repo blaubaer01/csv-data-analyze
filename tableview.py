@@ -38,6 +38,7 @@ def file_in_html(df):
     <head><title>HTML Pandas Dataframe with CSS</title></head>
     <link rel="stylesheet" type="text/css" href="df_style.css"/>
     <body>
+    csv-data-analyze - data-table - Python Analyze Tool<br>
         {table}
         </body>
         </html>.
@@ -50,6 +51,32 @@ def file_in_html(df):
     url = 'myhtml.html'
     
     webbrowser.open_new_tab(url)
+
+
+###show DataFrame in browser    
+def filter_in_html(df):
+    pd.set_option('colheader_justify', 'center')   # FOR TABLE <th>
+
+    html_string = '''
+    <html>
+    <head><title>HTML Pandas Dataframe with CSS</title></head>
+    <link rel="stylesheet" type="text/css" href="df_style.css"/>
+    <body>
+    filter-table - Python Analyze Tool<br>
+        {table}
+        </body>
+        </html>.
+    '''
+
+    # OUTPUT AN HTML FILE
+    with open('myfilter.html', 'w') as f:
+        f.write(html_string.format(table=df.to_html(classes='mystyle',index = False).replace('<th>','<th style = "background-color: blue">')))
+    
+    url = 'myfilter.html'
+    
+    webbrowser.open_new_tab(url)
+
+
 
 
 

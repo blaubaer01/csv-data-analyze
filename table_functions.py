@@ -13,6 +13,7 @@ import matplotlib.pyplot as plt
 from scipy.stats import chi2_contingency
 from tableview import file_in_html
 from mft import clear, truncate
+from tableview import filter_in_html
 
 #Thanks to https://stackoverflow.com/questions/17530542/how-to-add-pandas-data-to-an-existing-csv-file
 #and https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html
