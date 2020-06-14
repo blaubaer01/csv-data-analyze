@@ -24,6 +24,7 @@ from table_calc import menu_calc
 from rand_data import menu_rd
 from tableview import fehlende_daten, datentyp, file_in_html, einzeldaten_anschauen , filter_in_html
 from mft import clear
+from date_function import convert_datetime
 
 #alternatively, define the source
 csv_dateien=['daten.csv']
@@ -671,7 +672,7 @@ def preview_table(df):
 def table_functions(df):
     while True:
         clear()
-        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column\n?')
+        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n?')
         if menu_tf =='1':
             clear()
             preview_table(df)
@@ -692,6 +693,8 @@ def table_functions(df):
             menu_calc(df)
         elif menu_tf =='9':
             seq_numbers_add(df)
+        elif menu_tf =='10':    
+            convert_datetime(df)
         else:
             print('Wrong input, please try again!')
             #voranalyse(df)
@@ -777,12 +780,15 @@ def main():
             print('The following CSV-Files are in the root-folder, which you would like to evaluate?')
             csv_daten_im_verzeichnis()
                         #print(csv_dateien)
-            auswahl_datei = input('Which CSV file to import (pay attention to spelling)\n?')
-            if auswahl_datei in csv_dateien:
-                df=file_einlesen(auswahl_datei)
-            else:
-                print('File not found! Please check your Input! \npay attention to upper and lower case!')
-                #break
+            while True:
+                
+                auswahl_datei = input('Which CSV file to import (pay attention to spelling)\n?')
+                if auswahl_datei in csv_dateien:
+                    df=file_einlesen(auswahl_datei)
+                    break
+                else:
+                    print('File not found! Please check your Input! \npay attention to upper and lower case!')
+                    #break
             clear()
                 
             print('#'*70)
