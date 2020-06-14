@@ -24,7 +24,7 @@ from table_calc import menu_calc
 from rand_data import menu_rd
 from tableview import fehlende_daten, datentyp, file_in_html, einzeldaten_anschauen , filter_in_html
 from mft import clear
-from date_function import convert_datetime
+from date_function import convert_datetime, cal_info
 
 #alternatively, define the source
 csv_dateien=['daten.csv']
@@ -672,7 +672,7 @@ def preview_table(df):
 def table_functions(df):
     while True:
         clear()
-        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n?')
+        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n11: get calendar info \n?')
         if menu_tf =='1':
             clear()
             preview_table(df)
@@ -695,6 +695,8 @@ def table_functions(df):
             seq_numbers_add(df)
         elif menu_tf =='10':    
             convert_datetime(df)
+        elif menu_tf =='11':
+            cal_info(df)
         else:
             print('Wrong input, please try again!')
             #voranalyse(df)
