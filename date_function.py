@@ -73,8 +73,9 @@ def cal_info(df):
     
     clear()
         
-    datum = df.select_dtypes(exclude=['float', 'int'])
-        
+    datum = df.select_dtypes(include=['datetime'])
+    
+    
         #
     anz_col_datum = len(datum.columns)
         
@@ -87,55 +88,69 @@ def cal_info(df):
         print(i, datum.columns[i])
         i+=1
     
-    while True:
-        datum_column= input('Which value column do you want to see: \n(choose number) \n?')
-        if datum_column not in list_number:
-            print('wrong input, try again!')
-        else:
-            break  
-        
-    date_y = list_columns_datum[int(datum_column)]
-    
-    new_name_c = input('Input new column name: \n?')
-    
-    konv = input('Which calendar information do you need: \n1: month \n2: day \n3: week \n4: year \n5: hour  \n6: minutes \n7: seconds \n?' )
-    
-    #date_format = input('Which Calendarinformation do you need: \1: Month \n2: day \n3: CW \n4: Day of the year \n5: Day of the week \n6: tz_Info \n7: Day name \n8: Month name \n?' )
-    
-    if konv =='1':
-        df[new_name_c] = df[date_y].dt.month
-        df[new_name_c] = df[new_name_c].astype('int')
-    elif konv=='2':
-        df[new_name_c] = df[date_y].dt.day
-        df[new_name_c] = df[new_name_c].astype('int')
-    elif konv=='3':
-        df[new_name_c] = df[date_y].dt.week
-        df[new_name_c] = df[new_name_c].astype('int')
-    elif konv=='4':
-        df[new_name_c] = df[date_y].dt.year
-        df[new_name_c] = df[new_name_c].astype('int')
-    elif konv=='5':
-        df[new_name_c] = df[date_y].dt.hour
-        df[new_name_c] = df[new_name_c].astype('int')
-    elif konv=='6':
-        df[new_name_c] = df[date_y].dt.minute
-        df[new_name_c] = df[new_name_c].astype('int')
-    elif konv=='7':
-        df[new_name_c] = df[date_y].dt.second
-        df[new_name_c] = df[new_name_c].astype('int')
-# =============================================================================
-#     elif konv=='8':
-#         df[new_name_c] = df[date_y].dt.weekday()
-#         df[new_name_c] = df[new_name_c].astype('str')
-#     
-# =============================================================================
-    
+    if not list_number:
+        print('no date columns fount')
     else:
-        print('Wrong input  (choose number), please try again!')
+        while True:
+            datum_column= input('Which value column do you want to see: \n(choose number) \n?')
+            if datum_column not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
     
-    speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
-    if speichern_ja.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)
+    
+    
+        date_y = list_columns_datum[int(datum_column)]
         
+        new_name_c = input('Input new column name: \n?')
+        
+        konv = input('Which calendar information do you need: \n1: month \n2: day \n3: week \n4: year \n5: hour  \n6: minutes \n7: seconds  \n8: day name \n9: month name \n10: day of the year \n11: day of the week \n?' )
+        
+        #date_format = input('Which Calendarinformation do you need: \1: Month \n2: day \n3: CW \n4: Day of the year \n5: Day of the week \n6: tz_Info \n7: Day name \n8: Day Name name \n?' )
+        
+        if konv =='1':
+            df[new_name_c] = df[date_y].dt.month
+            df[new_name_c] = df[new_name_c].astype('int')
+        elif konv=='2':
+            df[new_name_c] = df[date_y].dt.day
+            df[new_name_c] = df[new_name_c].astype('int')
+        elif konv=='3':
+            df[new_name_c] = df[date_y].dt.week
+            df[new_name_c] = df[new_name_c].astype('int')
+        elif konv=='4':
+            df[new_name_c] = df[date_y].dt.year
+            df[new_name_c] = df[new_name_c].astype('int')
+        elif konv=='5':
+            df[new_name_c] = df[date_y].dt.hour
+            df[new_name_c] = df[new_name_c].astype('int')
+        elif konv=='6':
+            df[new_name_c] = df[date_y].dt.minute
+            df[new_name_c] = df[new_name_c].astype('int')
+        elif konv=='7':
+            df[new_name_c] = df[date_y].dt.second
+            df[new_name_c] = df[new_name_c].astype('int')
+    
+        elif konv=='8':
+            df[new_name_c] = df[date_y].dt.day_name()
+            df[new_name_c] = df[new_name_c].astype('str')
+        elif konv=='9':
+            df[new_name_c] = df[date_y].dt.month_name()
+            df[new_name_c] = df[new_name_c].astype('str')
+        elif konv=='10':
+            df[new_name_c] = df[date_y].dt.dayofyear
+            df[new_name_c] = df[new_name_c].astype('int')
+        elif konv=='11':
+            df[new_name_c] = df[date_y].dt.dayofweek
+            df[new_name_c] = df[new_name_c].astype('int')
+        
+        
+        
+        else:
+            print('Wrong input  (choose number), please try again!')
+        
+        speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+        if speichern_ja.lower() =='y':
+            csvfilename = input('Filename (.csv will save automaticly) \n?')
+            fn = csvfilename + '.csv'
+            df.to_csv(fn, sep=';', decimal=',', header =True)
+            
