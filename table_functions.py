@@ -14,6 +14,7 @@ from scipy.stats import chi2_contingency
 from tableview import file_in_html
 from mft import clear, truncate
 from tableview import filter_in_html
+import numpy as np
 
 #Thanks to https://stackoverflow.com/questions/17530542/how-to-add-pandas-data-to-an-existing-csv-file
 #and https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html
@@ -583,4 +584,75 @@ def seq_numbers_add(df):
         df.to_csv(fn, sep=';', decimal=',', header =True)      
  
     
+def del_empty_rows(df):
     
+    
+    clear()
+    
+    print('clear emty rows')
+    anz_col = len(df.columns)
+        
+    list_columns = []
+    list_number = []
+    i=1
+    for i in range(anz_col):
+        list_columns.append(df.columns[i])
+        list_number.append(str(i))
+        print(i, df.columns[i])
+        i+=1
+    
+    while True:
+        nummer_spalte= input('Which column do you want to clean: \n(choose number) \n?')
+        if nummer_spalte not in list_number:
+            print('wrong input, try again!')
+        else:
+            break
+    col = list_columns[int(nummer_spalte)]
+    
+    df[col].replace(' ', np.nan, inplace=True)
+    df= df.dropna(subset=[col])
+    
+    print(df)
+    
+    
+    speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+    if speichern_ja.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)
+    
+
+def del_nan_rows(df):
+    
+    
+    clear()
+    
+    print('clear nan rows')
+    anz_col = len(df.columns)
+        
+    list_columns = []
+    list_number = []
+    i=1
+    for i in range(anz_col):
+        list_columns.append(df.columns[i])
+        list_number.append(str(i))
+        print(i, df.columns[i])
+        i+=1
+    
+    while True:
+        nummer_spalte= input('Which column do you want to clean: \n(choose number) \n?')
+        if nummer_spalte not in list_number:
+            print('wrong input, try again!')
+        else:
+            break
+    col = list_columns[int(nummer_spalte)]
+    #df[col].replace('NaN', np.nan, inplace=True)
+    df= df.dropna(subset=[col])
+    print(df)
+    
+    
+    speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+    if speichern_ja.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)

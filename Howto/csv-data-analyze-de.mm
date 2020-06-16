@@ -48,8 +48,7 @@
   <body>
     <img src="pictures/startscreen.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <font NAME="SansSerif" SIZE="14"/>
 </node>
 </node>
@@ -64,8 +63,7 @@
   <body>
     <img src="pictures/create_data_menu.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <font NAME="SansSerif" SIZE="14"/>
 </node>
 </node>
@@ -140,15 +138,16 @@
 <node COLOR="#00b439" CREATED="1587886747287" ID="ID_800229018" MODIFIED="1588704629247" TEXT="Tabellen Funktionen">
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="16"/>
-<node COLOR="#990000" CREATED="1589575513116" ID="ID_1022610441" MODIFIED="1589575565571">
+<node COLOR="#990000" CREATED="1589575513116" ID="ID_1022610441" MODIFIED="1592253566638">
 <richcontent TYPE="NODE"><html>
   <head>
     
   </head>
   <body>
-    <img src="pictures/table_funktion_menu.png" />
+    <img src="pictures/table_function_new.png" />
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <font NAME="SansSerif" SIZE="14"/>
 </node>
 <node COLOR="#990000" CREATED="1589576276143" ID="ID_262886403" MODIFIED="1589576298127" TEXT="Tabelle ansehen">
@@ -278,8 +277,7 @@
   <body>
     <img src="pictures/calc_between_columns.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node COLOR="#111111" CREATED="1590873627588" ID="ID_1377535622" MODIFIED="1590873647426" TEXT="Tabellen mit einem Wert verrechnen">
@@ -291,8 +289,7 @@
   <body>
     <img src="pictures/calc_with_value.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node COLOR="#111111" CREATED="1590873648737" ID="ID_476799544" MODIFIED="1590873684249" TEXT="Staistik zu einer gew&#xe4;hlten Spalte">
@@ -304,9 +301,39 @@
   <body>
     <img src="pictures/statistic_cross_column.png" />
   </body>
+</html></richcontent>
+</node>
+</node>
+</node>
+<node COLOR="#990000" CREATED="1592252683940" ID="ID_1148570341" MODIFIED="1592252729205" TEXT="Spalte mit fortlaufender Nummer erstellen">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#990000" CREATED="1592252732535" ID="ID_542031071" MODIFIED="1592253142916" TEXT="Datumspalten in Spalte mit ISO Datum">
+<font NAME="SansSerif" SIZE="14"/>
+<node COLOR="#111111" CREATED="1592253103429" ID="ID_1548179377" MODIFIED="1592253180019">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/convert_date_data_to_ISO.png" />
+  </body>
 </html>
 </richcontent>
 </node>
+</node>
+<node COLOR="#990000" CREATED="1592252834488" ID="ID_1895760795" MODIFIED="1592252861641" TEXT="Spalte mit Datumsinformationen erstellen">
+<font NAME="SansSerif" SIZE="14"/>
+<node COLOR="#111111" CREATED="1592253111927" ID="ID_1692847139" MODIFIED="1592253298556">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/Info_of_week_function.png" />
+  </body>
+</html>
+</richcontent>
 </node>
 </node>
 </node>
@@ -924,15 +951,16 @@
   </body>
 </html></richcontent>
 </node>
-<node COLOR="#111111" CREATED="1589194174314" ID="ID_1267533514" MODIFIED="1589194188919">
+<node COLOR="#111111" CREATED="1589194174314" ID="ID_1267533514" MODIFIED="1592253380916">
 <richcontent TYPE="NODE"><html>
   <head>
     
   </head>
   <body>
-    <img src="pictures/MSA_V2.png" />
+    <img src="pictures/msa_v2_new.png" />
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 </node>
 </node>
 </node>

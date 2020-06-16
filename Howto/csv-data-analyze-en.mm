@@ -48,8 +48,7 @@
   <body>
     <img src="pictures/startscreen.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <font NAME="SansSerif" SIZE="14"/>
 </node>
 </node>
@@ -64,8 +63,7 @@
   <body>
     <img src="pictures/create_data_menu.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <font NAME="SansSerif" SIZE="14"/>
 </node>
 </node>
@@ -123,8 +121,7 @@
   <body>
     <img src="pictures/sorting.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node COLOR="#990000" CREATED="1588670413585" ID="ID_1213165805" MODIFIED="1588700469579">
@@ -150,15 +147,16 @@
 <node COLOR="#00b439" CREATED="1587886747287" ID="ID_800229018" MODIFIED="1590247904386" TEXT="table functions">
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="SansSerif" SIZE="16"/>
-<node COLOR="#990000" CREATED="1589575513116" ID="ID_1022610441" MODIFIED="1589575565571">
+<node COLOR="#990000" CREATED="1589575513116" ID="ID_1022610441" MODIFIED="1592251919270">
 <richcontent TYPE="NODE"><html>
   <head>
     
   </head>
   <body>
-    <img src="pictures/table_funktion_menu.png" />
+    <img src="pictures/table_function_new.png" />
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <font NAME="SansSerif" SIZE="14"/>
 </node>
 <node COLOR="#990000" CREATED="1589576276143" ID="ID_262886403" MODIFIED="1590243341371" TEXT="view table">
@@ -288,8 +286,7 @@
   <body>
     <img src="pictures/calc_between_columns.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node COLOR="#111111" CREATED="1590906997917" ID="ID_1052123632" MODIFIED="1590907104352" TEXT="Calculation with a value">
@@ -301,8 +298,7 @@
   <body>
     <img src="pictures/calc_with_value.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 </node>
 </node>
 <node COLOR="#111111" CREATED="1590906965874" ID="ID_369621742" MODIFIED="1590907129437" TEXT="Crossstatistic one column">
@@ -314,9 +310,39 @@
   <body>
     <img src="pictures/statistic_cross_column.png" />
   </body>
+</html></richcontent>
+</node>
+</node>
+</node>
+<node COLOR="#990000" CREATED="1592251953588" ID="ID_1856808983" MODIFIED="1592252084001" TEXT="add sequence number column">
+<font NAME="SansSerif" SIZE="14"/>
+</node>
+<node COLOR="#990000" CREATED="1592251967758" ID="ID_1739939031" MODIFIED="1592252003572" TEXT="convert date format to ISO date format">
+<font NAME="SansSerif" SIZE="14"/>
+<node COLOR="#111111" CREATED="1592252107080" ID="ID_1066288444" MODIFIED="1592252171585">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/convert_date_data_to_ISO.png" />
+  </body>
 </html>
 </richcontent>
 </node>
+</node>
+<node COLOR="#990000" CREATED="1592252005444" ID="ID_1311503448" MODIFIED="1592252022552" TEXT="add date info column">
+<font NAME="SansSerif" SIZE="14"/>
+<node COLOR="#111111" CREATED="1592252114434" ID="ID_1221472799" MODIFIED="1592252245430">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="pictures/Info_of_week_function.png" />
+  </body>
+</html>
+</richcontent>
 </node>
 </node>
 </node>
