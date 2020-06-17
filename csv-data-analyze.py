@@ -672,7 +672,7 @@ def preview_table(df):
 def table_functions(df):
     while True:
         clear()
-        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n11: get calendar info \n12: delete nan rows \n13: delete empty rows \n14: delete nan-data rows cross the dataframe \n?')
+        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n11: get calendar info \n12: delete nan rows \n13: delete empty rows \n14: delete nan-data rows cross the dataframe \n15: delete NA rows \n16: delete 0 rows \n?')
         if menu_tf =='1':
             clear()
             preview_table(df)
