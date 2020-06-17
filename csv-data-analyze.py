@@ -15,7 +15,7 @@ import pandas as pd
 import os
 from SPC_CPA import CPA
 from L_REG import LREG
-from table_functions import appendDFToCSV, mergecolumn, filter_typ, sort_column, transposed_table, crosstab, contingency_tb, seq_numbers_add, del_nan_rows, del_empty_rows, del_nan
+from table_functions import appendDFToCSV, mergecolumn, filter_typ, sort_column, transposed_table, crosstab, contingency_tb, seq_numbers_add, del_nan_rows, del_empty_rows, del_nan, del_nan_rows, del_zero_rows
 from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 from msa import msa_v1, msa_v2
 from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, liniendiagramm, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot, pareto, pareto_one_column, pointplot1f, pointplot2f, confidencelinechart
@@ -703,7 +703,10 @@ def table_functions(df):
             del_empty_rows(df)
         elif menu_tf =='14':
             del_nan(df)
-        
+        elif menu_tf =='15':
+            del_nan_rows(df)
+        elif menu_tf =='16':
+            del_zero_rows(df)
         
         else:
             print('Wrong input, please try again!')

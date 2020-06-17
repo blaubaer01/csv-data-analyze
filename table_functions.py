@@ -671,3 +671,42 @@ def del_nan(df):
             df.to_csv(fn, sep=';', decimal=',', header =True)
     else:
         print('no data deleted')
+        
+
+
+def del_zero_rows(df):
+    
+    
+    clear()
+    
+    print('clear ZERO rows')
+    anz_col = len(df.columns)
+        
+    list_columns = []
+    list_number = []
+    i=1
+    for i in range(anz_col):
+        list_columns.append(df.columns[i])
+        list_number.append(str(i))
+        print(i, df.columns[i])
+        i+=1
+    
+    while True:
+        nummer_spalte= input('Which column do you want to clean: \n(choose number) \n?')
+        if nummer_spalte not in list_number:
+            print('wrong input, try again!')
+        else:
+            break
+    col = list_columns[int(nummer_spalte)]
+    
+    df[col].replace(0, np.nan, inplace=True)
+    df= df.dropna(subset=[col])
+    
+    print(df)
+    
+    
+    speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+    if speichern_ja.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)
