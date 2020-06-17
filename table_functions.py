@@ -656,3 +656,18 @@ def del_nan_rows(df):
         csvfilename = input('Filename (.csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)
+
+def del_nan(df):
+    clear()
+    drop_yes = input('Do you realy want to drop all "NAN" rows in the dataframe y/n \n?')
+    
+    if drop_yes.lower() =='y':
+        df = df.dropna()
+        print('nan data deleted')
+        speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+        if speichern_ja.lower() =='y':
+            csvfilename = input('Filename (.csv will save automaticly) \n?')
+            fn = csvfilename + '.csv'
+            df.to_csv(fn, sep=';', decimal=',', header =True)
+    else:
+        print('no data deleted')

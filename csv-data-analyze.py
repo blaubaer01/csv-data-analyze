@@ -15,7 +15,7 @@ import pandas as pd
 import os
 from SPC_CPA import CPA
 from L_REG import LREG
-from table_functions import appendDFToCSV, mergecolumn, filter_typ, sort_column, transposed_table, crosstab, contingency_tb, seq_numbers_add, del_nan_rows, del_empty_rows
+from table_functions import appendDFToCSV, mergecolumn, filter_typ, sort_column, transposed_table, crosstab, contingency_tb, seq_numbers_add, del_nan_rows, del_empty_rows, del_nan
 from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 from msa import msa_v1, msa_v2
 from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, liniendiagramm, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot, pareto, pareto_one_column, pointplot1f, pointplot2f, confidencelinechart
@@ -672,7 +672,7 @@ def preview_table(df):
 def table_functions(df):
     while True:
         clear()
-        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n11: get calendar info \n12: delete nan rows \n13: delete empty rows \n?')
+        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n11: get calendar info \n12: delete nan rows \n13: delete empty rows \n14: delete nan-data rows cross the dataframe \n?')
         if menu_tf =='1':
             clear()
             preview_table(df)
@@ -701,6 +701,8 @@ def table_functions(df):
             del_nan_rows(df)
         elif menu_tf =='13':
             del_empty_rows(df)
+        elif menu_tf =='14':
+            del_nan(df)
         
         
         else:
