@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 #import scipy as spy
 from scipy.stats import chi2_contingency
 from tableview import file_in_html
-from mft import clear, truncate
+from mft import clear, truncate, isfloat
 from tableview import filter_in_html
 import numpy as np
 
@@ -664,6 +664,7 @@ def del_nan(df):
     if drop_yes.lower() =='y':
         df = df.dropna()
         print('nan data deleted')
+        print(df)
         speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
         if speichern_ja.lower() =='y':
             csvfilename = input('Filename (.csv will save automaticly) \n?')
@@ -701,6 +702,178 @@ def del_zero_rows(df):
     
     df[col].replace(0, np.nan, inplace=True)
     df= df.dropna(subset=[col])
+    
+    print(df)
+    
+    
+    speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+    if speichern_ja.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)
+
+
+
+def del_NA_rows(df):
+    
+    
+    clear()
+    
+    print('clear character into column')
+    anz_col = len(df.columns)
+        
+    list_columns = []
+    list_number = []
+    i=1
+    for i in range(anz_col):
+        list_columns.append(df.columns[i])
+        list_number.append(str(i))
+        print(i, df.columns[i])
+        i+=1
+    
+    while True:
+        nummer_spalte= input('Which column do you want to clean: \n(choose number) \n?')
+        if nummer_spalte not in list_number:
+            print('wrong input, try again!')
+        else:
+            break
+    col = list_columns[int(nummer_spalte)]
+    
+    
+    
+    df[col].replace('NA', np.nan, inplace=True)
+    df= df.dropna(subset=[col])
+    
+    print(df)
+    
+    
+    speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+    if speichern_ja.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)
+
+
+
+
+
+def del_sv_rows(df):
+    
+    
+    clear()
+    
+    print('clear character into column')
+    anz_col = len(df.columns)
+        
+    list_columns = []
+    list_number = []
+    i=1
+    for i in range(anz_col):
+        list_columns.append(df.columns[i])
+        list_number.append(str(i))
+        print(i, df.columns[i])
+        i+=1
+    
+    while True:
+        nummer_spalte= input('Which column do you want to clean: \n(choose number) \n?')
+        if nummer_spalte not in list_number:
+            print('wrong input, try again!')
+        else:
+            break
+    col = list_columns[int(nummer_spalte)]
+    
+    del_what = input('Which character rows do you would like to delete: \n?')
+    
+    
+    df[col].replace(del_what, np.nan, inplace=True)
+    df= df.dropna(subset=[col])
+    
+    print(df)
+    
+    
+    speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+    if speichern_ja.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)
+
+
+def replace_character_into_col(df):
+    
+    
+    clear()
+    
+    print('Replace Character into column')
+    anz_col = len(df.columns)
+        
+    list_columns = []
+    list_number = []
+    i=1
+    for i in range(anz_col):
+        list_columns.append(df.columns[i])
+        list_number.append(str(i))
+        print(i, df.columns[i])
+        i+=1
+    
+    while True:
+        nummer_spalte= input('Into which column do you want to replace: \n(choose number) \n?')
+        if nummer_spalte not in list_number:
+            print('wrong input, try again!')
+        else:
+            break
+    col = list_columns[int(nummer_spalte)]
+    
+    rpl_what = input('Current character \n?')
+    rpl_with = input('New charakter \n?')
+    
+    df[col].replace(rpl_what, rpl_with, inplace=True)
+    
+    print(df)
+    
+    
+    speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+    if speichern_ja.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)
+
+def replace_number_into_col(df):
+    
+    
+    clear()
+    
+    print('Replace Character into column')
+    anz_col = len(df.columns)
+        
+    list_columns = []
+    list_number = []
+    i=1
+    for i in range(anz_col):
+        list_columns.append(df.columns[i])
+        list_number.append(str(i))
+        print(i, df.columns[i])
+        i+=1
+    
+    while True:
+        nummer_spalte= input('Into which column do you want to replace: \n(choose number) \n?')
+        if nummer_spalte not in list_number:
+            print('wrong input, try again!')
+        else:
+            break
+    col = list_columns[int(nummer_spalte)]
+    
+    rpl_what = input('Current value \n?')
+    
+    while True:
+            rpl_with = input('New Value: \n(choose point-comma) \n?')
+    
+            if not isfloat(rpl_with):
+                print("target value is not a number with point-comma, please try again")
+            else:
+                break
+    
+    
+    df[col].replace(float(rpl_what),float(rpl_with), inplace=True)
     
     print(df)
     
