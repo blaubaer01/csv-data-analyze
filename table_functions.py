@@ -888,7 +888,7 @@ def replace_number_into_col(df):
 def delrep_value(df):
     clear()
     
-    menu_del = input('What do you want to delete or replace: \n1: delete nan rows \n2: delete empty rows \n3: delete nan-data rows cross the dataframe \n4: delete NA rows \n5: delete 0 rows \n6: delete rows with special character \n7: replace characters into column \n8: replace value into column \n?' )
+    menu_del = input('What do you want to delete or replace: \n1: delete nan rows \n2: delete empty rows \n3: delete nan-data rows cross the dataframe \n4: delete NA rows \n5: delete 0 rows \n6: delete rows with special character \n7: replace characters into column \n8: replace value into column \n9: replace float to point comma \n?' )
     
     if menu_del =='1':
         del_nan_rows(df)
@@ -906,5 +906,41 @@ def delrep_value(df):
         replace_character_into_col(df)
     elif menu_del =='8':
         replace_number_into_col(df)
+    elif menu_del =='9':
+        replace_float_comma(df)
     else:
         print('wrong input (choose number), try again')
+
+
+def replace_float_comma(df):
+    clear()
+    
+    print('clear character into column')
+    anz_col = len(df.columns)
+        
+    list_columns = []
+    list_number = []
+    i=1
+    for i in range(anz_col):
+        list_columns.append(df.columns[i])
+        list_number.append(str(i))
+        print(i, df.columns[i])
+        i+=1
+    
+    while True:
+        nummer_spalte= input('Which column do you want to clean: \n(choose number) \n?')
+        if nummer_spalte not in list_number:
+            print('wrong input, try again!')
+        else:
+            break
+    col = list_columns[int(nummer_spalte)]
+    
+    df[col]=df[col].str.replace(',','.').astype(float)
+    
+    speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+    if speichern_ja.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)
+        
+        
