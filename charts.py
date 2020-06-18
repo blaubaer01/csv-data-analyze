@@ -9,34 +9,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import os
 import scipy as spy
-
-
-#######################################################################
-###test input about float
-def isfloat(x):
-    try:
-        float(x)
-    except ValueError:
-        return False
-    else:
-        return True
-#######################################################################
-###set decimals
-def truncate(n, decimals=0):
-        multiplier = 10 ** decimals
-        return int(n * multiplier) / multiplier
-    
-#######################################################################
-### define our clear function 
-def clear(): 
-  
-    # for windows 
-    if os.name == 'nt': 
-        _ = os.system('cls') 
-  
-    # for mac and linux(here, os.name is 'posix') 
-    else: 
-        _ = os.system('clear') 
+from mft import isfloat, clear
 
 
 
@@ -1321,6 +1294,179 @@ def groupplot(df):
     plt.xlim(df[list_columns_zeitraum[int(datetime_column)]].iloc[0], df[list_columns_zeitraum[int(datetime_column)]].iloc[-1])
 
     plt.show()
+
+
+#######################################################################
+###Group Plot (show a plot by group with Tolerance)
+def groupplot_w_T(df):
+    clear()
+    sns.set(style="ticks")
+
+    
+    kategorie=df.select_dtypes(exclude=['float'])
+    werte = df.select_dtypes(exclude=['object'])
+    zeitraum=df.select_dtypes(exclude=['float'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number =[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    clear()
+    #
+    anz_col_kategorie = len(kategorie.columns)
+        
+    list_columns_kategorie = []
+    list_number=[]
+    i=1
+    for i in range(anz_col_kategorie):
+        list_columns_kategorie.append(kategorie.columns[i])
+        list_number.append(str(i))
+        print(i, kategorie.columns[i])
+        i+=1
+    
+    while True:
+        groupby_column = input('Group by column: \n(choose number) \n?')
+        if groupby_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    anz_col_zeitraum = len(zeitraum.columns)
+        
+    list_columns_zeitraum = []
+    list_number = []
+    i=1
+    for i in range(anz_col_zeitraum):
+        list_columns_zeitraum.append(zeitraum.columns[i])
+        list_number.append(str(i))
+        print(i, zeitraum.columns[i])
+        i+=1
+    
+    while True:
+        datetime_column = input('Choose the X-axis-column \n(choose number) \n?')
+        if datetime_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    y = list_columns_werte[int(value_column)]
+    x = list_columns_kategorie[int(groupby_column)]
+    z = list_columns_zeitraum[int(datetime_column)]
+    
+    df = df.sort_values(by=z, ascending=1)
+    
+    
+    
+    
+    anz = df[x].nunique()    
+    
+    
+    one_two_sided = input('Tolerance: \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
+    
+    ###both side tolerance
+    if one_two_sided == '1':
+        
+        while True:
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
+            if ',' in tol:
+                try:
+                    ut, lt = tol.split(',')
+                    ut = float(ut)
+                    lt = float(lt)
+                    if lt > ut:
+                        print('ut<lt, wrong input!')
+                    else:                    
+                        break
+                except Exception as exception:
+                    print('Wrong input, try again!')
+            else:
+                print('wrong input, separator is missing!, please try again!')
+        
+        print(ut,lt)
+    
+    
+    
+    
+        sns.relplot(x=z, y=y, hue=x, data=df, palette=sns.color_palette("Set1", anz))
+        plt.axhline(y=ut,linewidth=2, color='r')
+        
+        plt.axhline(y=lt,linewidth=2, color='r')       
+        plt.xlim(df[list_columns_zeitraum[int(datetime_column)]].iloc[0], df[list_columns_zeitraum[int(datetime_column)]].iloc[-1])
+    
+        plt.show()
+
+    ###one side tolerance ut
+    elif one_two_sided =='2':
+        
+        
+        while True:
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
+    
+            if not isfloat(ut):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                break
+        
+        
+        ut = float(ut)
+        lt = 'none'
+        
+        sns.relplot(x=z, y=y, hue=x, data=df, palette=sns.color_palette("Set1", anz))
+        plt.axhline(y=ut,linewidth=2, color='r')
+        plt.xlim(df[list_columns_zeitraum[int(datetime_column)]].iloc[0], df[list_columns_zeitraum[int(datetime_column)]].iloc[-1])
+    
+        plt.show()
+        
+    ###one side tolerance lt
+    elif one_two_sided =='3':
+        
+        while True:
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
+    
+            if not isfloat(lt):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                break
+        
+        
+        
+        
+        ut = 'none'
+        lt = float(lt)
+        
+        sns.relplot(x=z, y=y, hue=x, data=df, palette=sns.color_palette("Set1", anz))
+        plt.axhline(y=lt,linewidth=2, color='r')
+        plt.xlim(df[list_columns_zeitraum[int(datetime_column)]].iloc[0], df[list_columns_zeitraum[int(datetime_column)]].iloc[-1])
+        
+        plt.show()
+
+def groupplot_menu(df):
+    
+    clear()
+    gp_menu = input('Which kind of Groupplot: \n1: Groupplot \n2: Groupplot with Toleranceline \n?')
+    
+    if gp_menu == '1':
+        groupplot(df)
+    elif gp_menu == '2':
+        groupplot_w_T(df)
+    else:
+        print('wrong input (choose number), try again!')
 
 
 ###Init pareto

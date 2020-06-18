@@ -15,10 +15,10 @@ import pandas as pd
 import os
 from SPC_CPA import CPA
 from L_REG import LREG
-from table_functions import appendDFToCSV, mergecolumn, filter_typ, sort_column, transposed_table, crosstab, contingency_tb, seq_numbers_add, del_nan_rows, del_empty_rows, del_nan, del_NA_rows, del_zero_rows, del_sv_rows, replace_character_into_col, replace_number_into_col
+from table_functions import appendDFToCSV, mergecolumn, filter_typ, sort_column, transposed_table, crosstab, contingency_tb, seq_numbers_add, delrep_value
 from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 from msa import msa_v1, msa_v2
-from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, liniendiagramm, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot, pareto, pareto_one_column, pointplot1f, pointplot2f, confidencelinechart
+from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, liniendiagramm, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot_menu, pareto, pareto_one_column, pointplot1f, pointplot2f, confidencelinechart
 from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_s, ttest_t_s, ttest_i, anova_o_w, anova_t_w
 from table_calc import menu_calc
 from rand_data import menu_rd
@@ -333,8 +333,14 @@ def file_einlesen(auswahl_datei):
                 break
                    
     
-    file_in_html(df)
-    return(df)
+    show_data = input('Show data into browser? y/n \n?')
+    if show_data =='y':
+        file_in_html(df)
+        return(df)
+    else:
+        print(df)
+        next = input('push button for next steps')
+        return(df)
 
 
 
@@ -524,7 +530,7 @@ def menu_graphical_analyze(df):
     elif ausw_gr_view =='4':
         liniendiagramm(df)
     elif ausw_gr_view =='5':
-        groupplot(df)
+        groupplot_menu(df)
     elif ausw_gr_view =='6':
         menu_scatter(df)    
     elif ausw_gr_view =='7':
@@ -672,7 +678,7 @@ def preview_table(df):
 def table_functions(df):
     while True:
         clear()
-        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n11: get calendar info \n12: delete nan rows \n13: delete empty rows \n14: delete nan-data rows cross the dataframe \n15: delete NA rows \n16: delete 0 rows \n17: delete rows with special character \n18: replace characters into column \n19: replace value into column\n?')
+        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n11: get calendar info \n12: delete or replace value/characters \n?')
         if menu_tf =='1':
             clear()
             preview_table(df)
@@ -698,21 +704,7 @@ def table_functions(df):
         elif menu_tf =='11':
             cal_info(df)
         elif menu_tf =='12':
-            del_nan_rows(df)
-        elif menu_tf =='13':
-            del_empty_rows(df)
-        elif menu_tf =='14':
-            del_nan(df)
-        elif menu_tf =='15':
-            del_NA_rows(df)
-        elif menu_tf =='16':
-            del_zero_rows(df)
-        elif menu_tf =='17':
-            del_sv_rows(df)
-        elif menu_tf =='18':
-            replace_character_into_col(df)
-        elif menu_tf =='19':
-            replace_number_into_col(df)
+            delrep_value(df)
         
         else:
             print('Wrong input, please try again!')
@@ -721,7 +713,6 @@ def table_functions(df):
         restart = input('\nFurther table functions: "y"\n?')
         if restart.lower() != 'y':
             break
-
 
 
 ###############################################################################

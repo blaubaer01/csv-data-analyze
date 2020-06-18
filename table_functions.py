@@ -883,3 +883,28 @@ def replace_number_into_col(df):
         csvfilename = input('Filename (.csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)
+
+
+def delrep_value(df):
+    clear()
+    
+    menu_del = input('What do you want to delete or replace: \n1: delete nan rows \n2: delete empty rows \n3: delete nan-data rows cross the dataframe \n4: delete NA rows \n5: delete 0 rows \n6: delete rows with special character \n7: replace characters into column \n8: replace value into column \n?' )
+    
+    if menu_del =='1':
+        del_nan_rows(df)
+    elif menu_del =='2':
+        del_empty_rows(df)
+    elif menu_del =='3':
+        del_nan(df)
+    elif menu_del =='4':
+        del_NA_rows(df)
+    elif menu_del =='5':
+        del_zero_rows(df)
+    elif menu_del =='6':
+        del_sv_rows(df)
+    elif menu_del =='7':
+        replace_character_into_col(df)
+    elif menu_del =='8':
+        replace_number_into_col(df)
+    else:
+        print('wrong input (choose number), try again')
