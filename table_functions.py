@@ -615,7 +615,7 @@ def del_empty_rows(df):
     print(df)
     
     
-    speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+    speichern_ja = input('Save the modified dataframe: y/n \n?')
     if speichern_ja.lower() =='y':
         csvfilename = input('Filename (.csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
@@ -665,7 +665,7 @@ def del_nan(df):
         df = df.dropna()
         print('nan data deleted')
         print(df)
-        speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+        speichern_ja = input('Save the modified dataframe: y/n \n?')
         if speichern_ja.lower() =='y':
             csvfilename = input('Filename (.csv will save automaticly) \n?')
             fn = csvfilename + '.csv'
@@ -706,7 +706,7 @@ def del_zero_rows(df):
     print(df)
     
     
-    speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+    speichern_ja = input('Save the modified dataframe: y/n \n?')
     if speichern_ja.lower() =='y':
         csvfilename = input('Filename (.csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
@@ -747,7 +747,7 @@ def del_NA_rows(df):
     print(df)
     
     
-    speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+    speichern_ja = input('Save the modified dataframe: y/n \n?')
     if speichern_ja.lower() =='y':
         csvfilename = input('Filename (.csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
@@ -791,19 +791,19 @@ def del_sv_rows(df):
     print(df)
     
     
-    speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+    speichern_ja = input('Save the modified dataframe: y/n \n?')
     if speichern_ja.lower() =='y':
         csvfilename = input('Filename (.csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)
 
 
-def replace_character_into_col(df):
+def replace_content_into_col(df):
     
     
     clear()
     
-    print('Replace Character into column')
+    print('Replace content into column')
     anz_col = len(df.columns)
         
     list_columns = []
@@ -831,7 +831,7 @@ def replace_character_into_col(df):
     print(df)
     
     
-    speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+    speichern_ja = input('Save the modified dataframe: y/n \n?')
     if speichern_ja.lower() =='y':
         csvfilename = input('Filename (.csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
@@ -842,7 +842,7 @@ def replace_number_into_col(df):
     
     clear()
     
-    print('Replace Character into column')
+    print('Replace number into column')
     anz_col = len(df.columns)
         
     list_columns = []
@@ -878,7 +878,7 @@ def replace_number_into_col(df):
     print(df)
     
     
-    speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+    speichern_ja = input('Save the modified dataframe: y/n \n?')
     if speichern_ja.lower() =='y':
         csvfilename = input('Filename (.csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
@@ -888,7 +888,7 @@ def replace_number_into_col(df):
 def delrep_value(df):
     clear()
     
-    menu_del = input('What do you want to delete or replace: \n1: delete nan rows \n2: delete empty rows \n3: delete nan-data rows cross the dataframe \n4: delete NA rows \n5: delete 0 rows \n6: delete rows with special character \n7: replace characters into column \n8: replace value into column \n9: replace float to point comma \n?' )
+    menu_del = input('What do you want to delete or replace: \n1: delete nan rows \n2: delete empty rows \n3: delete nan-data rows cross the dataframe \n4: delete NA rows \n5: delete 0 rows \n6: delete rows with special character \n7: replace content into column \n8: replace value into column \n9: replace float to point comma \n10: replace character into column  \n?' )
     
     if menu_del =='1':
         del_nan_rows(df)
@@ -903,11 +903,13 @@ def delrep_value(df):
     elif menu_del =='6':
         del_sv_rows(df)
     elif menu_del =='7':
-        replace_character_into_col(df)
+        replace_content_into_col(df)
     elif menu_del =='8':
         replace_number_into_col(df)
     elif menu_del =='9':
         replace_float_comma(df)
+    elif menu_del =='10':
+        replace_character(df)
     else:
         print('wrong input (choose number), try again')
 
@@ -915,7 +917,7 @@ def delrep_value(df):
 def replace_float_comma(df):
     clear()
     
-    print('clear character into column')
+    print('replace float comma - point comma into column')
     anz_col = len(df.columns)
         
     list_columns = []
@@ -928,7 +930,7 @@ def replace_float_comma(df):
         i+=1
     
     while True:
-        nummer_spalte= input('Which column do you want to clean: \n(choose number) \n?')
+        nummer_spalte= input('Into which column do you want to replace: \n(choose number) \n?')
         if nummer_spalte not in list_number:
             print('wrong input, try again!')
         else:
@@ -937,10 +939,46 @@ def replace_float_comma(df):
     
     df[col]=df[col].str.replace(',','.').astype(float)
     
-    speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
+    speichern_ja = input('Save the modified dataframe: y/n \n?')
     if speichern_ja.lower() =='y':
         csvfilename = input('Filename (.csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)
+
+
+
+def replace_character(df):
+    clear()
+    
+    print('replace character into column')
+    anz_col = len(df.columns)
         
+    list_columns = []
+    list_number = []
+    i=1
+    for i in range(anz_col):
+        list_columns.append(df.columns[i])
+        list_number.append(str(i))
+        print(i, df.columns[i])
+        i+=1
+    
+    while True:
+        nummer_spalte= input('Into which column do you want to replace: \n(choose number) \n?')
+        if nummer_spalte not in list_number:
+            print('wrong input, try again!')
+        else:
+            break
+    col = list_columns[int(nummer_spalte)]
+    
+    char_input = input('Current character \n?')
+    char_output = input('New character \n?')
+    
+    
+    df[col]=df[col].str.replace(char_input,char_output).astype(str)
+    
+    speichern_ja = input('Save the modified dataframe: y/n \n?')
+    if speichern_ja.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)
         
