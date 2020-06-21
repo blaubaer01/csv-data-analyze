@@ -25,8 +25,8 @@ if sys.platform == 'win32':
 build_exe_options = {
     "packages": ["os", "sys", "pandas", "numpy", "statsmodels", "matplotlib", "scipy", "seaborn", "outliers", "webbrowser"], 
     "excludes": ["tkinter"],
-    "include_files": ["SPC_CPA.py", "L_REG.py", "table_functions.py", "regelkarte.py", "msa.py", "charts.py", "tests.py", "table_calc.py", "rand_data.py", "mkl_core.dll", "mkl_def.dll", "mkl_intel_thread.dll", "mk_mc.dll", "mkl_mc3.dll", "platforms/"], # <-- Include easy_gui
-    "includes": ["SPC_CPA", "L_REG", "table_functions", "regelkarte", "msa", "charts", "tests", "table_calc", "rand_data"]
+    "include_files": ["SPC_CPA.py", "L_REG.py", "table_functions.py", "regelkarte.py", "msa.py", "charts.py", "tests.py", "table_calc.py", "rand_data.py", "mkl_core.dll", "mkl_def.dll", "mkl_intel_thread.dll", "mk_mc.dll", "mkl_mc3.dll", "platforms/", "tableview.py", "mft.py", "date_function.py", "datechange.py"], # <-- Include easy_gui
+    "includes": ["SPC_CPA", "L_REG", "table_functions", "regelkarte", "msa", "charts", "tests", "table_calc", "rand_data", "tableview", "mft", "date_function", "datechange"]
 }
 
 #build_exe_options = {"packages": ['os', 'pandas', 'numpy', 'statsmodels', 'matplotlib', 'scipy', 'seaborn','outlier_utils'],

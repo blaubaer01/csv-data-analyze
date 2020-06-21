@@ -1,0 +1,48 @@
+How to install 'csv-data-analyze'
+
+To use the programm csv-data-analyze you have to install the package:
+
+Package                            Version
+---------------------------------- -----------
+
+matplotlib                         3.1.2
+numpy                              1.17.2
+outlier-utils                      0.0.3
+pandas                             0.25.1
+scipy                              1.3.1
+seaborn                            0.9.0
+statsmodels                        0.10.1
+
+You have to start with the main-programm Python 3.x
+Download: https://www.python.org/downloads/
+
+(Linux sould be different due to the distribution)
+
+With Windows use the .exe installation.
+Ubuntu: sudo apt install python3 / or use the program shop
+
+To install the packages use by windows the cmd.
+input: pip install [package-name] 
+example: pip install matplotlib
+
+With linux it could be different.
+Into ubuntu some packages you can also install by use 'sudo apt install [package-name]
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+Anaconda Install
+-------------------------------------------------------------------------------------------------------------------------------
+
+The easy way to use the program is to install Anaconda
+https://www.anaconda.com/products/individual
+
+After installation open the anaconda-shell-prompt and install the package 'outlier-utils' by prompt 'pip install outliers-utils' or 'conda install outlier-utils'
+
+Than start the program with the prompt: 
+
+cd 'program folder name'
+
+python csv-data-analyse.py
+ 
+This should be run under MacOS too.
