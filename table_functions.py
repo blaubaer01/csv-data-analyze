@@ -289,17 +289,21 @@ def filter_typ(df):
 
         restart = input('\nSet more filters: y/n.\n?')
         
+        
         if restart.lower() != 'y':
-            
+        
             speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
             if speichern_ja.lower() =='y':
                 csvfilename = input('Filename (.csv will save automaticly) \n?')
                 fn = csvfilename + '.csv'
                 df.to_csv(fn, sep=';', decimal=',', header =True)
                 break
-    
-    
-            
+            else:
+                break
+                
+    print(df)
+    press_enter=input('press enter to continue')
+    return(df)            
 
 
 ###sort by column
