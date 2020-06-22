@@ -524,7 +524,7 @@ def msa_v2(df):
     print('sigmaqE:' , sigmaqE)
     
     ###GRR²
-    GRRq = sigmaqE+sigmaqO
+    GRRq = sigmaqE + sigmaqO + sigmaqOP
     print('GRRq: ', GRRq)
     
     ###Total-Variance

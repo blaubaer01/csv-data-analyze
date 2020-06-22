@@ -8,6 +8,7 @@ Created on Sat Jun  6 17:51:24 2020
 import pandas as pd
 import webbrowser
 from mft import clear
+from sys import platform
 
 
 ###pre-view functions
@@ -74,8 +75,16 @@ def filter_in_html(df_filter):
     
     url = 'myfilter.html'
     
-    webbrowser.open_new_tab(url)
-
+    if platform == "linux" or platform == "linux2":
+        webbrowser.open_new_tab(url)
+    elif platform == "darwin":
+        file_location = "file:///" + url
+        webbrowser.open_new_tab(file_location)
+    elif platform == "win32":
+        webbrowser.open_new_tab(url)
+    
+    
+   
 
 
 
