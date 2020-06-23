@@ -37,7 +37,7 @@ def convert_datetime(df):
     
     new_name_c = input('Input new column name: \n?')
     
-    konv = input('Which datetime format do you have as input: \n1: yyyy/mm/dd hh:mm:ss \n2: dd/mm/yyyy hh:mm:ss \n3: dd-mm-yyyy hh:mm:ss \n4: yyyy-mm-ddThh:mm:ss \n5: dd.mm.yyyy hh:mm:ss \n?' )
+    konv = input('Which datetime format do you have as input: \n1: yyyy/mm/dd hh:mm:ss \n2: dd/mm/yyyy hh:mm:ss \n3: dd-mm-yyyy hh:mm:ss \n4: yyyy-mm-ddThh:mm:ss \n5: dd.mm.yyyy hh:mm:ss \n6: dd.mm.yyyy hh:mm \n?' )
     
     #date_format = input('Which Calendarinformation do you need: \1: Month \n2: day \n3: CW \n4: Day of the year \n5: Day of the week \n6: tz_Info \n7: Day name \n8: Month name \n?' )
     
@@ -55,6 +55,9 @@ def convert_datetime(df):
         df[new_name_c] = df[new_name_c].astype('datetime64[ns]')
     elif konv=='5':
         df[new_name_c] = pd.to_datetime(df[date_y], format='%d.%m.%Y %H:%M:%S')
+        df[new_name_c] = df[new_name_c].astype('datetime64[ns]')
+    elif konv=='6':
+        df[new_name_c] = pd.to_datetime(df[date_y], format='%d.%m.%Y %H:%M')
         df[new_name_c] = df[new_name_c].astype('datetime64[ns]')
     
     else:
