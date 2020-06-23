@@ -37,12 +37,17 @@ Anaconda Install
 The easy way to use the program is to install Anaconda
 https://www.anaconda.com/products/individual
 
-After installation open the anaconda-shell-prompt and install the package 'outlier-utils' by prompt 'pip install outliers-utils' or 'conda install outlier-utils'
+After installation open the anaconda-shell-prompt and install the package 'outlier-utils' by prompt 'pip install outliers-utils'
 
-Than start the program with the prompt: 
+Start the Program
 
-cd 'program folder name'
+Change over the Environments Button in the Environments Menu.
 
-python csv-data-analyse.py
+Push the Triangle and choose 'Open Terminal'
+
+After this input command:
+>> cd 'program folder name'
+
+>> python csv-data-analyse.py
  
 This should be run under MacOS too.
