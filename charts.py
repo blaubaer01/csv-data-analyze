@@ -1377,7 +1377,13 @@ def groupplot_w_T(df):
     anz = df[x].nunique()    
     
     
-    one_two_sided = input('Tolerance: \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
+    while True:
+        one_two_sided = input('Tolerance: \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
+        nummer = [1,2,3]
+        if int(one_two_sided) in nummer:
+            break
+        else:
+            print('Wrong input, please try again')
     
     ###both side tolerance
     if one_two_sided == '1':
