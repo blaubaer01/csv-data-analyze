@@ -14,11 +14,6 @@ from scipy.stats import shapiro
 import statsmodels.api as sm
 
 
-def truncate(n, decimals=0):
-        multiplier = 10 ** decimals
-        return int(n * multiplier) / multiplier
-
-
 def LREG(df):
     
     sns.set(color_codes=True)        
@@ -82,7 +77,6 @@ def LREG(df):
     text_lreg = 'rsquared: ' + str(results.rsquared) + '\nregression coefficients: ' + str(results.params) 
     text_lres = 'Test of normality residuals' + '\np-Value: ' + str(p)
     
-    label_chart = ('Linear Regression Analysis')
     
     
     plt.figure(figsize=(6, 4))
@@ -98,22 +92,3 @@ def LREG(df):
     plt.axis('off')
     
     plt.show()
-    
-    
-    
-    #sns.residplot(x=x, y=y, data=df); 
-    #plt.show()
-    
-    
-    
-    
-
-
-
-
-
-
-
-
-
-plt.show()

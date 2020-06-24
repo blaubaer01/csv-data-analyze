@@ -6,48 +6,16 @@ Created on Mon May 18 07:53:05 2020
 @author: blaubaer (Ricky Helfgen)
 """
 from scipy.stats import shapiro
-from scipy.stats import stats
+#from scipy.stats import stats
 import scipy as spy
 from scipy.stats import median_test
 import seaborn as sns
 import matplotlib.pyplot as plt
-import os
 import statsmodels.api as sm
 from statsmodels.formula.api import ols
 from outliers import smirnov_grubbs as grubbs
-import statistics as stats
-
-
-###test input about float
-def isfloat(x):
-    try:
-        float(x)
-    except ValueError:
-        return False
-    else:
-        return True
-
-###set decimals
-def truncate(n, decimals=0):
-        multiplier = 10 ** decimals
-        return int(n * multiplier) / multiplier
-    
-
-### define our clear function 
-#############################################################################
-def clear(): 
-  
-    # for windows 
-    if os.name == 'nt': 
-        _ = os.system('cls') 
-  
-    # for mac and linux(here, os.name is 'posix') 
-    else: 
-        _ = os.system('clear') 
-
-
-
-
+#import statistics as stats
+from mft import isfloat, clear
 
 
 ###############################################################################
