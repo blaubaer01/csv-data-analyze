@@ -892,7 +892,7 @@ def replace_number_into_col(df):
 def delrep_value(df):
     clear()
     
-    menu_del = input('What do you want to delete or replace: \n1: delete nan rows \n2: delete empty rows \n3: delete nan-data rows cross the dataframe \n4: delete NA rows \n5: delete 0 rows \n6: delete rows with special character \n7: replace content into column \n8: replace value into column \n9: replace float to point comma \n10: replace character into column  \n?' )
+    menu_del = input('What do you want to delete or replace: \n1: delete nan rows \n2: delete empty rows \n3: delete nan-data rows cross the dataframe \n4: delete NA rows \n5: delete 0 rows \n6: delete rows with special character \n7: replace content into column \n8: replace value into column \n9: replace float to point comma \n10: replace character into column \n11: delete first row \n12: delete last row \n13: delete defined rows \n14: delete rows contain string \n?' )
     
     if menu_del =='1':
         del_nan_rows(df)
@@ -914,6 +914,16 @@ def delrep_value(df):
         replace_float_comma(df)
     elif menu_del =='10':
         replace_character(df)
+    elif menu_del =='11':
+        del_first_row(df)
+    elif menu_del =='12':
+        del_last_row(df)
+    elif menu_del =='13':
+        del_defined_row(df)
+    elif menu_del =='14':
+        del_contains_word(df)
+
+    
     else:
         print('wrong input (choose number), try again')
 
@@ -985,4 +995,125 @@ def replace_character(df):
         csvfilename = input('Filename (.csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)
+
+def del_last_row(df):
+    clear()
+    print(df)
+    del_l_r = input('Delete last row y/n \n?')
+    
+    
+    if del_l_r.lower() =='y':
+        df = df.drop(df.index[len(df)-1])
+        print('Last row deleted')
+        print(df)
+        speichern_ja = input('Save the modified dataframe: y/n \n?')
+        if speichern_ja.lower() =='y':
+            csvfilename = input('Filename (.csv will save automaticly) \n?')
+            fn = csvfilename + '.csv'
+            df.to_csv(fn, sep=';', decimal=',', header =True)
+    else:
+        print('no data deleted')
+        
+def del_first_row(df):
+    clear()
+    print(df)
+    del_f_r = input('Delete first row y/n \n?')
+    
+    
+    if del_f_r.lower() =='y':
+        df = df.drop(df.index[0])
+        print('First row deleted')
+        print(df)
+        speichern_ja = input('Save the modified dataframe: y/n \n?')
+        if speichern_ja.lower() =='y':
+            csvfilename = input('Filename (.csv will save automaticly) \n?')
+            fn = csvfilename + '.csv'
+            df.to_csv(fn, sep=';', decimal=',', header =True)
+    else:
+        print('no data deleted')
+
+def del_defined_row(df):
+    clear()
+    print(df)
+    del_d_r = input('Delete defined rows y/n \n?')
+    
+    
+    if del_d_r.lower() =='y':
+        
+        d_from_index = input('From which index?')
+        count_index = input('How many rows to delete?')
+        
+        
+        d_till_index = int(d_from_index) + int(count_index)
+        print(d_till_index)
+        
+        index_del_list = []
+        
+        d_from_index = int(d_from_index)
+        d_till_index = int(d_till_index)
+        
+        for i in range(d_from_index, d_till_index):
+            index_del_list.append(d_from_index)
+            d_from_index += 1
+            print(d_from_index)
+            
+            
+        print(index_del_list)
+        
+        
+        df = df.drop(df.index[index_del_list])
+        print('First row deleted')
+        print(df)
+        speichern_ja = input('Save the modified dataframe: y/n \n?')
+        if speichern_ja.lower() =='y':
+            csvfilename = input('Filename (.csv will save automaticly) \n?')
+            fn = csvfilename + '.csv'
+            df.to_csv(fn, sep=';', decimal=',', header =True)
+    else:
+        print('no data deleted')
+    
+    
+def del_contains_word(df):
+    clear()
+    del_yes = input('Delete rows contains "Word" y/n \n?')
+    print(df)
+    if del_yes.lower() =='y':
+        
+        anz_col = len(df.columns)
+        
+        list_columns = []
+        list_number = []
+        i=1
+        for i in range(anz_col):
+            list_columns.append(df.columns[i])
+            list_number.append(str(i))
+            print(i, df.columns[i])
+            i+=1
+    
+        while True:
+            nummer_spalte= input('Into which column do you want to replace: \n(choose number) \n?')
+            if nummer_spalte not in list_number:
+                print('wrong input, try again!')
+            else:
+                break
+        col = list_columns[int(nummer_spalte)]
+        
+        
+        
+        del_word = input('Keyword to delete row \n?')
+        
+        
+        df = (df[~df[col].str.contains(del_word)])
+        print(df)
+        
+        speichern_ja = input('Save the modified dataframe: y/n \n?')
+        if speichern_ja.lower() =='y':
+            csvfilename = input('Filename (.csv will save automaticly) \n?')
+            fn = csvfilename + '.csv'
+            df.to_csv(fn, sep=';', decimal=',', header =True)
+    else:
+        print('no rows deleted')
+        
+    
+    
         
