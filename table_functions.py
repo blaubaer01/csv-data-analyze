@@ -1040,8 +1040,8 @@ def del_defined_row(df):
     
     if del_d_r.lower() =='y':
         
-        d_from_index = input('From which index?')
-        count_index = input('How many rows to delete?')
+        d_from_index = input('From which index \n?')
+        count_index = input('How many rows to delete \n?')
         
         
         d_till_index = int(d_from_index) + int(count_index)
@@ -1062,7 +1062,7 @@ def del_defined_row(df):
         
         
         df = df.drop(df.index[index_del_list])
-        print('First row deleted')
+        print('Defined Rows deleted')
         print(df)
         speichern_ja = input('Save the modified dataframe: y/n \n?')
         if speichern_ja.lower() =='y':
@@ -1100,7 +1100,7 @@ def del_contains_word(df):
         
         
         
-        del_word = input('Keyword to delete row \n?')
+        del_word = input('Keyword to delete row: \n?')
         
         
         df = (df[~df[col].str.contains(del_word)])
@@ -1115,5 +1115,70 @@ def del_contains_word(df):
         print('no rows deleted')
         
     
+def melt_table(df):
+    clear()
+    
+    kategorie=df.select_dtypes(exclude=['float'])
+    
+    anz_col_kategorie = len(kategorie.columns)
+        
+    list_columns_kategorie = []
+    list_number=[]
+    i=1
+    for i in range(anz_col_kategorie):
+        list_columns_kategorie.append(kategorie.columns[i])
+        list_number.append(str(i))
+        print(i, kategorie.columns[i])
+        i+=1
+    
+    while True:
+        groupby_column = input('Group by column: \n(choose number) \n?')
+        if groupby_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    x = list_columns_kategorie[int(groupby_column)]
+    print(x)
+    
+    list_vars = []
+    while True:
+        add_vars = input('Add values colors y/n \n?')
+        if add_vars == 'y':
+            werte = df.select_dtypes(exclude=['object'])
+            anz_col_werte = len(werte.columns)
+        
+            list_columns_werte = []
+            list_number =[]
+            i=1
+            for i in range(anz_col_werte):
+                list_columns_werte.append(werte.columns[i])
+                list_number.append(str(i))
+                print(i, werte.columns[i])
+                i+=1
+            
+            while True:
+                value_column= input('Which value column do you want to see: \n(choose number) \n?')
+                if value_column not in list_number:
+                    print('wrong input, try again!')
+                else:
+                    break
+            y = list_columns_werte[int(value_column)]
+            list_vars.append(y) 
+        
+        else:
+            break
+    
+    print(list_vars)
+    df = pd.melt(df, id_vars = x, value_vars = list_vars, var_name= 'Category')
+    
+    print(df)
+    
+    speichern_ja = input('Save the modified dataframe: y/n \n?')
+    if speichern_ja.lower() =='y':
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)
+    
+        
     
         
