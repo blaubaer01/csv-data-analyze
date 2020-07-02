@@ -1117,32 +1117,43 @@ def del_contains_word(df):
     
 def melt_table(df):
     clear()
+    print('Melt Colums by Category!')
     
-    kategorie=df.select_dtypes(exclude=['float'])
-    
-    anz_col_kategorie = len(kategorie.columns)
-        
-    list_columns_kategorie = []
-    list_number=[]
-    i=1
-    for i in range(anz_col_kategorie):
-        list_columns_kategorie.append(kategorie.columns[i])
-        list_number.append(str(i))
-        print(i, kategorie.columns[i])
-        i+=1
-    
+    list_id_vars = []
     while True:
-        groupby_column = input('Group by column: \n(choose number) \n?')
-        if groupby_column not in list_number:
-            print('wrong input, try again!')
-        else:
-            break  
-    x = list_columns_kategorie[int(groupby_column)]
-    print(x)
+        add_id_vars = input('Add id column y/n \n?')
+        if add_id_vars == 'y':
+                
+            kategorie=df.select_dtypes(exclude=['float'])
+            
+            anz_col_kategorie = len(kategorie.columns)
+                
+            list_columns_kategorie = []
+            list_number=[]
+            i=1
+            for i in range(anz_col_kategorie):
+                list_columns_kategorie.append(kategorie.columns[i])
+                list_number.append(str(i))
+                print(i, kategorie.columns[i])
+                i+=1
+            
+            while True:
+                groupby_column = input('Choose id column: \n(choose number) \n?')
+                if groupby_column not in list_number:
+                    print('wrong input, try again!')
+                else:
+                    break  
+            x = list_columns_kategorie[int(groupby_column)]
+            list_id_vars.append(x)
     
+        else:
+            break
+    
+    
+    # add values
     list_vars = []
     while True:
-        add_vars = input('Add values colors y/n \n?')
+        add_vars = input('Add values column y/n \n?')
         if add_vars == 'y':
             werte = df.select_dtypes(exclude=['object'])
             anz_col_werte = len(werte.columns)
@@ -1157,7 +1168,7 @@ def melt_table(df):
                 i+=1
             
             while True:
-                value_column= input('Which value column do you want to see: \n(choose number) \n?')
+                value_column= input('Choose value column: \n(choose number) \n?')
                 if value_column not in list_number:
                     print('wrong input, try again!')
                 else:
@@ -1169,7 +1180,7 @@ def melt_table(df):
             break
     
     print(list_vars)
-    df = pd.melt(df, id_vars = x, value_vars = list_vars, var_name= 'Category')
+    df = pd.melt(df, id_vars = list_id_vars, value_vars = list_vars, var_name= 'Values')
     
     print(df)
     
