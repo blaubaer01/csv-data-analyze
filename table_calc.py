@@ -1687,192 +1687,44 @@ def menu_calc_col_val(df):
 ##statistic functions
 ###############################################################################
 
-def count__column(df):
-    
-    print('#'*50)    
-    
-    werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
-    
-    #
-    anz_col_werte = len(werte.columns)
-        
-    list_columns_werte = []
-    list_number = []
-    i=1
-    for i in range(anz_col_werte):
-        list_columns_werte.append(werte.columns[i])
-        list_number.append(str(i))
-        print(i, werte.columns[i])
-        i+=1
+def count__column(df, col1):
     
     
-    while True:
-        value_column1= input('Column1: \n(choose number)\n?')
-        if value_column1 not in list_number:
-            print('wrong input, try again!')
-        else:
-            break  
-    
-    col1 = list_columns_werte[int(value_column1)]
     count_c = df[col1].count()
     
     print('Count:', count_c)
 
 
-def sum__column(df):
+def sum__column(df, col1):
     
-    print('#'*50)    
-    
-    werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
-    
-    #
-    anz_col_werte = len(werte.columns)
-        
-    list_columns_werte = []
-    list_number = []
-    i=1
-    for i in range(anz_col_werte):
-        list_columns_werte.append(werte.columns[i])
-        list_number.append(str(i))
-        print(i, werte.columns[i])
-        i+=1
-    
-    
-    while True:
-        value_column1= input('Column1: \n(choose number)\n?')
-        if value_column1 not in list_number:
-            print('wrong input, try again!')
-        else:
-            break  
-    
-    col1 = list_columns_werte[int(value_column1)]
     sum_c = df[col1].sum()
     
     print('SUM:', sum_c)
 
 
-def mean__column(df):
-    
-    print('#'*50)    
-    
-    werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
-    
-    #
-    anz_col_werte = len(werte.columns)
-        
-    list_columns_werte = []
-    list_number = []
-    i=1
-    for i in range(anz_col_werte):
-        list_columns_werte.append(werte.columns[i])
-        list_number.append(str(i))
-        print(i, werte.columns[i])
-        i+=1
+def mean__column(df, col1):
     
     
-    while True:
-        value_column1= input('Column1: \n(choose number)\n?')
-        if value_column1 not in list_number:
-            print('wrong input, try again!')
-        else:
-            break  
-    
-    col1 = list_columns_werte[int(value_column1)]
     mean_c = df[col1].mean()
     
     print('Mean:', mean_c)
 
-def min__column(df):
+def min__column(df, col1):
     
-    print('#'*50)    
-    
-    werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
-    
-    #
-    anz_col_werte = len(werte.columns)
-        
-    list_columns_werte = []
-    list_number = []
-    i=1
-    for i in range(anz_col_werte):
-        list_columns_werte.append(werte.columns[i])
-        list_number.append(str(i))
-        print(i, werte.columns[i])
-        i+=1
-    
-    
-    while True:
-        value_column1= input('Column1: \n(choose number)\n?')
-        if value_column1 not in list_number:
-            print('wrong input, try again!')
-        else:
-            break  
-    
-    col1 = list_columns_werte[int(value_column1)]
     min_c = df[col1].min()
     
     print('MIN:', min_c)
     
     
-def max__column(df):
+def max__column(df, col1):
     
-    print('#'*50)    
-    
-    werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
-    
-    #
-    anz_col_werte = len(werte.columns)
-        
-    list_columns_werte = []
-    list_number = []
-    i=1
-    for i in range(anz_col_werte):
-        list_columns_werte.append(werte.columns[i])
-        list_number.append(str(i))
-        print(i, werte.columns[i])
-        i+=1
-    
-    
-    while True:
-        value_column1= input('Column1: \n(choose number)\n?')
-        if value_column1 not in list_number:
-            print('wrong input, try again!')
-        else:
-            break  
-    
-    col1 = list_columns_werte[int(value_column1)]
     max_c = df[col1].max()
     
     print('MAX:', max_c)
 
 
-def range__column(df):
+def range__column(df, col1):
     
-    print('#'*50)    
-    
-    werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
-    
-    #
-    anz_col_werte = len(werte.columns)
-        
-    list_columns_werte = []
-    list_number = []
-    i=1
-    for i in range(anz_col_werte):
-        list_columns_werte.append(werte.columns[i])
-        list_number.append(str(i))
-        print(i, werte.columns[i])
-        i+=1
-    
-    
-    while True:
-        value_column1= input('Column1: \n(choose number)\n?')
-        if value_column1 not in list_number:
-            print('wrong input, try again!')
-        else:
-            break  
-    
-    col1 = list_columns_werte[int(value_column1)]
     max_c = df[col1].max()
     min_c = df[col1].min()
     range_c = max_c-min_c
@@ -1880,70 +1732,36 @@ def range__column(df):
     
     print('Range:', range_c)
 
-def std__column(df):
-    
-    print('#'*50)    
-    
-    werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
-    
-    #
-    anz_col_werte = len(werte.columns)
-        
-    list_columns_werte = []
-    list_number = []
-    i=1
-    for i in range(anz_col_werte):
-        list_columns_werte.append(werte.columns[i])
-        list_number.append(str(i))
-        print(i, werte.columns[i])
-        i+=1
+def std__column(df, col1):
     
     
-    while True:
-        value_column1= input('Column1: \n(choose number)\n?')
-        if value_column1 not in list_number:
-            print('wrong input, try again!')
-        else:
-            break  
-    
-    col1 = list_columns_werte[int(value_column1)]
     std_c = df[col1].std()
     
     print('Standard Deviation:', std_c)
 
 
 
-def quantile__column(df):
+def quantile__column(df, col1):
     
-    print('#'*50)    
-    
-    werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
-    
-    #
-    anz_col_werte = len(werte.columns)
-        
-    list_columns_werte = []
-    list_number = []
-    i=1
-    for i in range(anz_col_werte):
-        list_columns_werte.append(werte.columns[i])
-        list_number.append(str(i))
-        print(i, werte.columns[i])
-        i+=1
     
     
     while True:
-        value_column1= input('Column1: \n(choose number)\n?')
-        if value_column1 not in list_number:
-            print('wrong input, try again!')
+        quantile_value = input('Percent Probability (0.x-100): \n?')
+        quantile_value = float(quantile_value)
+        
+        if not isfloat(quantile_value):
+            print("Percent Probability has to be number with point-comma, please try again")
         else:
-            break  
+            if quantile_value < 0:
+                print('Percent Probability has to be bigger "0"')
+            elif quantile_value > 100:
+                print('Percent Probability has to be less "100"')
+            else:
+                break
+        
     
-    col1 = list_columns_werte[int(value_column1)]
     
-    
-    quantile_value = input('Percent Probability (1-100): \n?')
-    q_value = float(quantile_value) / 100
+    q_value = quantile_value / 100
     
     quantile_c = df[col1].quantile(q_value)
     
@@ -1954,26 +1772,62 @@ def quantile__column(df):
 
     
 def menu_stat_column(df):
-    menu_stat = input('Statistic functions: \n1:Count column \n2:SUM column \n3:Mean column \n4: MIN column \n5: MAX column \n6: Range column \n7: STD column \n8: Quantile column \n?')
-    if menu_stat =='1':
-        count__column(df)
-    elif menu_stat =='2':
-        sum__column(df)
-    elif menu_stat =='3':
-        mean__column(df)
-    elif menu_stat =='4':
-        min__column(df)
-    elif menu_stat =='5':
-        max__column(df)
-    elif menu_stat =='6':
-        range__column(df)
-    elif menu_stat =='7':
-        std__column(df)
-    elif menu_stat == '8':
-        quantile__column(df)
-    else:
-        print('Wrong Input, please try again')
+    
+    
+    
+    print('#'*50)    
+    
+    werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number = []
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    
+    while True:
+        value_column1= input('Column1: \n(choose number)\n?')
+        if value_column1 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    col1 = list_columns_werte[int(value_column1)]
+    
+    while True:
+    
+        menu_stat = input('Statistic functions: \n1: Count column \n2: SUM column \n3: Mean column \n4: MIN column \n5: MAX column \n6: Range column \n7: STD column \n8: Quantile column \n?')
+        if menu_stat =='1':
+            count__column(df, col1)
+        elif menu_stat =='2':
+            sum__column(df, col1)
+        elif menu_stat =='3':
+            mean__column(df, col1)
+        elif menu_stat =='4':
+            min__column(df, col1)
+        elif menu_stat =='5':
+            max__column(df, col1)
+        elif menu_stat =='6':
+            range__column(df, col1)
+        elif menu_stat =='7':
+            std__column(df, col1)
+        elif menu_stat == '8':
+            quantile__column(df, col1)
+        else:
+            print('Wrong Input, please try again')
+        
+        restart = input('\nFurther column calculation: "y"\n?')
+        if restart.lower() != 'y':
+            break
 
+    
 
 def menu_calc(df):
     menu_c = input('How to calculate? \n1: calculation between column-values \n2: calculation with column-values \n3: described statistics column \n4: statistic funktions column \n(choose nr.) \n?')
