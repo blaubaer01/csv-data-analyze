@@ -563,7 +563,7 @@ def take_root_val(df):
 #######################################################################
 ###statistic cross column
 def statistic_cross_col(df):
-    print('Statistic cross column:')
+    print('Described Statistic cross the choosed column:')
     print('#'*50)    
     
     werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
@@ -599,12 +599,17 @@ def statistic_cross_col(df):
         
     
     
-    #np.sqrt(football[['wins', 'losses']].sum(axis=1))
+    
     
     print(df2)
-    file_in_html(df)
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
+    
+    df2.to_csv('described.csv', sep=';', decimal=',', header =True)  
+    
+    df3=pd.read_csv('described.csv',sep=';' ,decimal=',', header=1)
+    df3.columns=['Stat Function', 'Value']
+    file_in_html(df3)
+    
+    save_yes = input('Would you like to save this statistic table view as "CSV-File": \ny/n \n?')
     if save_yes.lower() =='y':
         csvfilename = input('Filename (.csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
@@ -1830,7 +1835,7 @@ def menu_stat_column(df):
     
 
 def menu_calc(df):
-    menu_c = input('How to calculate? \n1: calculation between column-values \n2: calculation with column-values \n3: described statistics column \n4: statistic funktions column \n(choose nr.) \n?')
+    menu_c = input('How to calculate? \n1: calculation between 2 choosed columns \n2: calculation with choosed column with input value \n3: described statistics cross choosed column \n4: statistic funktions due to choosed column \n(choose nr.) \n?')
     if menu_c == '1':
         menu_calc_column(df)
     elif menu_c == '2':
