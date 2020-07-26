@@ -69,7 +69,7 @@ def file_einlesen(auswahl_datei):
         elif format_ist == '3':
             trennzeichen = '\t'
             while True:
-                dezimalz = input('Which delimeter is used: \n1: floatcomma \n2: pointcomma \n(choose nr) \n?')
+                dezimalz = input('Which delimiter is used: \n1: floatcomma \n2: pointcomma \n(choose nr) \n?')
                 if dezimalz =='1':
                     dezimalzeichen =','
                     break

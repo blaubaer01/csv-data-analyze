@@ -1627,7 +1627,7 @@ def menu_calc_column(df):
     clear()
     
     print('Easy column calculation \nthis tool add columns with requested column calculations')
-    calc_liste = ['addition', 'substraction', 'multiplication', 'diffision', 'mininmum', 'maximum', 'mean', 'deviation', 'range']
+    calc_liste = ['addition', 'substraction', 'multiplication', 'diffusion', 'minimum', 'maximum', 'mean', 'deviation', 'range']
     for i in range(len(calc_liste)):
         print(i, calc_liste[i])
         i+=1
@@ -1664,7 +1664,7 @@ def menu_calc_col_val(df):
     clear()
     
     print('Easy calculation column with value \nthis tool add columns with requested column calculations')
-    calc_liste = ['addition', 'substraction', 'multiplication', 'diffision', 'square', 'extract a root']
+    calc_liste = ['addition', 'substraction', 'multiplication', 'diffusion', 'square', 'extract a root']
     for i in range(len(calc_liste)):
         print(i, calc_liste[i])
         i+=1
@@ -1835,7 +1835,7 @@ def menu_stat_column(df):
     
 
 def menu_calc(df):
-    menu_c = input('How to calculate? \n1: calculation between 2 choosed columns \n2: calculation with choosed column with input value \n3: described statistics cross choosed column \n4: statistic funktions due to choosed column \n(choose nr.) \n?')
+    menu_c = input('How to calculate? \n1: calculation between 2 chosen columns \n2: calculation with chosen column and input value \n3: described statistics cross chosen column \n4: statistic funktions due to chosen column \n(choose nr.) \n?')
     if menu_c == '1':
         menu_calc_column(df)
     elif menu_c == '2':
