@@ -1189,7 +1189,55 @@ def melt_table(df):
         csvfilename = input('Filename (.csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)
+
+
+def df_rename(df):
     
+    rename_yes = input('rename column: y/n\n?')
+    if rename_yes =='y':
+        while True:
+            clear()
+            anz_col = len(df.columns)
+
+            list_columns = []
+            list_number=[]
+            i=1
+            for i in range(anz_col):
+    
+                list_columns.append(df.columns[i])
+                list_number.append(str(i))
+                print(i, df.columns[i])
+                i+=1      
+             
+            while True:
+                rename_column= input('Current column name: \n?')
+                if rename_column not in list_number:
+                    print('wrong input, try again!')
+                else:
+                    break 
+    
+            
+            
+            
+            r_col = list_columns[int(rename_column)]
+            
+            print('The column name you will change call:', r_col)
+            break
+            
+        new_column_name = input('Input new column name: \n?')
         
+        df = df.rename(columns={r_col:new_column_name})
+        
+        print(df)
+
+        speichern_ja = input('Save the modified dataframe: y/n \n?')
+        if speichern_ja.lower() =='y':
+            csvfilename = input('Filename (.csv will save automaticly) \n?')
+            fn = csvfilename + '.csv'
+            df.to_csv(fn, sep=';', decimal=',', header =True)
+        
+        
+        
+    
     
         
