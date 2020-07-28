@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 #import scipy as spy
 from scipy.stats import chi2_contingency
 from tableview import file_in_html
-from mft import clear, truncate, isfloat
+from mft import clear, truncate, isfloat, save_CSV
 from tableview import filter_in_html
 import numpy as np
 
@@ -78,12 +78,8 @@ def appendDFToCSV(df, sep=","):
         print(df)
         file_in_html(df)
         print('To work with you have to save this dataframe as file')
-        save_yes = input('Would you like to save: \ny/n \n?')
-        if save_yes.lower() =='y':
-                csvfilename = input('Filename (.csv will save automaticly) \n?')
-                fn = csvfilename + '.csv'
-                df.to_csv(fn, sep=';', decimal=',', header =True)
-    
+        save_CSV(df)
+
         
 def mergecolumn(df):
     
@@ -291,15 +287,7 @@ def filter_typ(df):
         
         
         if restart.lower() != 'y':
-        
-            speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
-            if speichern_ja.lower() =='y':
-                csvfilename = input('Filename (.csv will save automaticly) \n?')
-                fn = csvfilename + '.csv'
-                df.to_csv(fn, sep=';', decimal=',', header =True)
-                break
-            else:
-                break
+            save_CSV(df)
                 
     print(df)
     press_enter=input('press enter to continue')
@@ -352,11 +340,7 @@ def sort_column(df):
             
             restart_s = input('additional sorting: y/n \n?')
             if restart_s.lower() != 'y':
-                speichern_ja = input('Save the table with the sorting (the only way to analyze with the filter set): y/n \n?')
-                if speichern_ja.lower() =='y':
-                    csvfilename = input('Filename (.csv will save automaticly) \n?')
-                    fn = csvfilename + '.csv'
-                    df.to_csv(fn, sep=';', decimal=',', header =True)
+                save_CSV(df)
                 file_in_html(df)
                 return(df)   
                 
@@ -428,19 +412,11 @@ def crosstab(df):
         if with_sum =='y':
             ctv=pd.crosstab(index=df[tab1], columns=df[tab2], margins=True)
             print(ctv)    
-            speichern_ja = input('Save the crosstable: y/n \n?')
-            if speichern_ja.lower() =='y':
-                csvfilename = input('Filename (.csv will save automaticly) \n?')
-                fn = csvfilename + '.csv'
-                ctv.to_csv(fn, sep=';', decimal=',', header =True)
+            save_CSV(df)
         else:
             ctcalc = pd.crosstab(index=df[tab1], columns=df[tab2])
             print(ctcalc)
-            speichern_ja = input('Save the crosstable: y/n \n?')
-            if speichern_ja.lower() =='y':
-                csvfilename = input('Filename (.csv will save automaticly) \n?')
-                fn = csvfilename + '.csv'
-                ctcalc.to_csv(fn, sep=';', decimal=',', header =True)
+            save_CSV(df)
     
     elif which_table =='2':
         
@@ -449,19 +425,11 @@ def crosstab(df):
         if with_sum =='y':
             ct = pd.crosstab(index=df[tab1], columns=df[tab2], margins=True).applymap(lambda r: r/len(df))
             print(ct)    
-            speichern_ja = input('Save the crosstable: y/n \n?')
-            if speichern_ja.lower() =='y':
-                csvfilename = input('Filename (.csv will save automaticly) \n?')
-                fn = csvfilename + '.csv'
-                ct.to_csv(fn, sep=';', decimal=',', header =True)
+            save_CSV(df)
         else:
             ct = pd.crosstab(index=df[tab1], columns=df[tab2], margins=False).applymap(lambda r: r/len(df))
             print(ct)
-            speichern_ja = input('Save the crosstable: y/n \n?')
-            if speichern_ja.lower() =='y':
-                csvfilename = input('Filename (.csv will save automaticly) \n?')
-                fn = csvfilename + '.csv'
-                ct.to_csv(fn, sep=';', decimal=',', header =True)
+            save_CSV(df)
 
     else:
         print('wrong input, try again!')
@@ -581,11 +549,7 @@ def seq_numbers_add(df):
     print(df)
     file_in_html(df)
     print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)      
+    save_CSV(df)
  
     
 def del_empty_rows(df):
@@ -619,12 +583,7 @@ def del_empty_rows(df):
     print(df)
     
     
-    speichern_ja = input('Save the modified dataframe: y/n \n?')
-    if speichern_ja.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)
-    
+    save_CSV(df)    
 
 def del_nan_rows(df):
     
@@ -655,11 +614,7 @@ def del_nan_rows(df):
     print(df)
     
     
-    speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
-    if speichern_ja.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)
+    save_CSV(df)
 
 def del_nan(df):
     clear()
@@ -710,11 +665,7 @@ def del_zero_rows(df):
     print(df)
     
     
-    speichern_ja = input('Save the modified dataframe: y/n \n?')
-    if speichern_ja.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)
+    save_CSV(df)
 
 
 
@@ -751,11 +702,7 @@ def del_NA_rows(df):
     print(df)
     
     
-    speichern_ja = input('Save the modified dataframe: y/n \n?')
-    if speichern_ja.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)
+    save_CSV(df)
 
 
 
@@ -795,11 +742,7 @@ def del_sv_rows(df):
     print(df)
     
     
-    speichern_ja = input('Save the modified dataframe: y/n \n?')
-    if speichern_ja.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)
+    save_CSV(df)
 
 
 def replace_content_into_col(df):
@@ -835,12 +778,8 @@ def replace_content_into_col(df):
     print(df)
     
     
-    speichern_ja = input('Save the modified dataframe: y/n \n?')
-    if speichern_ja.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)
-
+    save_CSV(df)
+    
 def replace_number_into_col(df):
     
     
@@ -882,11 +821,7 @@ def replace_number_into_col(df):
     print(df)
     
     
-    speichern_ja = input('Save the modified dataframe: y/n \n?')
-    if speichern_ja.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)
+    save_CSV(df)
 
 
 def delrep_value(df):
@@ -953,12 +888,7 @@ def replace_float_comma(df):
     
     df[col]=df[col].str.replace(',','.').astype(float)
     
-    speichern_ja = input('Save the modified dataframe: y/n \n?')
-    if speichern_ja.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)
-
+    save_CSV(df)
 
 
 def replace_character(df):
@@ -990,11 +920,7 @@ def replace_character(df):
     
     df[col]=df[col].str.replace(char_input,char_output).astype(str)
     
-    speichern_ja = input('Save the modified dataframe: y/n \n?')
-    if speichern_ja.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)
+    save_CSV(df)
 
 def del_last_row(df):
     clear()
@@ -1006,11 +932,7 @@ def del_last_row(df):
         df = df.drop(df.index[len(df)-1])
         print('Last row deleted')
         print(df)
-        speichern_ja = input('Save the modified dataframe: y/n \n?')
-        if speichern_ja.lower() =='y':
-            csvfilename = input('Filename (.csv will save automaticly) \n?')
-            fn = csvfilename + '.csv'
-            df.to_csv(fn, sep=';', decimal=',', header =True)
+        save_CSV(df)
     else:
         print('no data deleted')
         
@@ -1024,11 +946,7 @@ def del_first_row(df):
         df = df.drop(df.index[0])
         print('First row deleted')
         print(df)
-        speichern_ja = input('Save the modified dataframe: y/n \n?')
-        if speichern_ja.lower() =='y':
-            csvfilename = input('Filename (.csv will save automaticly) \n?')
-            fn = csvfilename + '.csv'
-            df.to_csv(fn, sep=';', decimal=',', header =True)
+        save_CSV(df)
     else:
         print('no data deleted')
 
@@ -1064,11 +982,7 @@ def del_defined_row(df):
         df = df.drop(df.index[index_del_list])
         print('Defined Rows deleted')
         print(df)
-        speichern_ja = input('Save the modified dataframe: y/n \n?')
-        if speichern_ja.lower() =='y':
-            csvfilename = input('Filename (.csv will save automaticly) \n?')
-            fn = csvfilename + '.csv'
-            df.to_csv(fn, sep=';', decimal=',', header =True)
+        save_CSV(df)
     else:
         print('no data deleted')
     
@@ -1106,11 +1020,7 @@ def del_contains_word(df):
         df = (df[~df[col].str.contains(del_word)])
         print(df)
         
-        speichern_ja = input('Save the modified dataframe: y/n \n?')
-        if speichern_ja.lower() =='y':
-            csvfilename = input('Filename (.csv will save automaticly) \n?')
-            fn = csvfilename + '.csv'
-            df.to_csv(fn, sep=';', decimal=',', header =True)
+        save_CSV(df)
     else:
         print('no rows deleted')
         
@@ -1184,11 +1094,7 @@ def melt_table(df):
     
     print(df)
     
-    speichern_ja = input('Save the modified dataframe: y/n \n?')
-    if speichern_ja.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)
+    save_CSV(df)
 
 
 def df_rename(df):
@@ -1230,13 +1136,10 @@ def df_rename(df):
         
         print(df)
 
-        speichern_ja = input('Save the modified dataframe: y/n \n?')
-        if speichern_ja.lower() =='y':
-            csvfilename = input('Filename (.csv will save automaticly) \n?')
-            fn = csvfilename + '.csv'
-            df.to_csv(fn, sep=';', decimal=',', header =True)
+        save_CSV(df)
         
-        
+
+           
         
     
     

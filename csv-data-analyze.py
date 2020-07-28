@@ -23,7 +23,7 @@ from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_
 from table_calc import menu_calc
 from rand_data import menu_rd
 from tableview import fehlende_daten, datentyp, file_in_html, einzeldaten_anschauen , filter_in_html
-from mft import clear
+from mft import clear, save_CSV
 from date_function import convert_datetime, cal_info
 
 #alternatively, define the source
@@ -678,7 +678,7 @@ def preview_table(df):
 def table_functions(df):
     while True:
         clear()
-        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n11: get calendar info \n12: delete or replace value/characters \n13: melt columns \n14: rename column \n?')
+        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n11: get calendar info \n12: delete or replace value/characters \n13: melt columns \n14: rename column \n15: save to CSV-file \n?')
         if menu_tf =='1':
             clear()
             preview_table(df)
@@ -709,6 +709,8 @@ def table_functions(df):
             melt_table(df)
         elif menu_tf =='14':
             df_rename(df)
+        elif menu_tf =='15':
+            save_CSV(df)
         else:
             print('Wrong input, please try again!')
             #voranalyse(df)

@@ -57,3 +57,14 @@ def isinteger(x):
     else:
         return True
     
+########################################################################
+###save dataframe to CSV-File
+def save_CSV(df):
+    speichern_ja = input('Save the modified dataframe: y/n \n?')
+    if speichern_ja.lower() =='y':
+        csvfilename = input('Input only Filename ([filename].csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        df.to_csv(fn, sep=';', decimal=',', header =True)
+        
+        
+        
