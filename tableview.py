@@ -51,8 +51,14 @@ def file_in_html(df):
     
     url = 'myhtml.html'
     
-    webbrowser.open_new_tab(url)
-
+    if platform == "linux" or platform == "linux2":
+        webbrowser.open_new_tab(url)
+    elif platform == "darwin":
+        file_location = "file:///" + url
+        webbrowser.open_new_tab(file_location)
+    elif platform == "win32":
+        webbrowser.open_new_tab(url)
+    
 
 ###show DataFrame in browser    
 def filter_in_html(df_filter):

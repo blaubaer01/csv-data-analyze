@@ -1139,7 +1139,54 @@ def df_rename(df):
         save_CSV(df)
         
 
-           
+#######################################################################
+###combine factor column
+def combine_column(df):
+    print('Combine factor columns:')
+    print('#'*50)    
+    
+    werte = df.select_dtypes(include=['object', 'datetime' , 'category'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number = []
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    
+    while True:
+        value_column1= input('Column1: \n(choose number)\n?')
+        if value_column1 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    while True:
+        value_column2= input('Column2: \n(choose number)\n?')
+        if value_column2 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    col1 = list_columns_werte[int(value_column1)]
+    col2 = list_columns_werte[int(value_column2)]
+    
+    
+    name_col = input('New column "Name": \n?')
+    
+    df[name_col] = df[col1] + "_" + df[col2]
+    
+    print(df)
+    #file_in_html(df)
+    print('To work with you have to save this dataframe as file')
+    save_CSV(df)
         
     
     
