@@ -26,6 +26,10 @@ from tableview import fehlende_daten, datentyp, file_in_html, einzeldaten_anscha
 from mft import clear, save_CSV
 from date_function import convert_datetime, cal_info
 
+import webbrowser
+
+from sys import platform
+
 #alternatively, define the source
 csv_dateien=['daten.csv']
 
@@ -784,7 +788,7 @@ def main():
     
     
     while True:
-        start = input('Start Menue \n1: Create random data \n2: Open exsisting csv-file (root folder) \n3: OMG, close this scary app \n(choose number) \n?')
+        start = input('Start Menue \n1: Create random data \n2: Open exsisting csv-file (root folder) \n3: More infos about this app (Wiki) \n4: OMG, close this scary app \n(choose number) \n?')
         
         if start == '1':
             menu_rd(df)
@@ -815,10 +819,26 @@ def main():
             mit_daten_arbeiten(df)
             
             break
-            
+        
         elif start =='3':
+            print('This function will start the Wiki -page of csv-data-analyze \nyou need internet connection to do that')
+            
+            url = 'https://github.com/blaubaer01/csv-data-analyze/wiki'
+    
+            if platform == "linux" or platform == "linux2":
+                webbrowser.open_new_tab(url)
+            elif platform == "darwin":
+                file_location = "file:///" + url
+                webbrowser.open_new_tab(file_location)
+            elif platform == "win32":
+                webbrowser.open_new_tab(url)
+                
+        
+        
+        elif start =='4':
             print("It's your decision, have a nice day!")
             break
+                
         else:
             print('Wrong input, try again (Choose number)')
             
