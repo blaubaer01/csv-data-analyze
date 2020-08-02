@@ -586,7 +586,7 @@ def ANOVA_menu(df):
 ###############################################################################
 def menu_tests(df):
     clear()
-    what_kind_of_test = input('Which Test do you would like to do: \n1: Test of normality  \n2: correlation \n3: t-test \n4: f-test \n5: ANOVA \n6: Outlier-Test \n7: Median-Test \n(choose a number) \n?')
+    what_kind_of_test = input('Which Test do you would like to do: \n1: Test for normal distribution  \n2: correlation all columns \n3: t-test \n4: f-test \n5: ANOVA \n6: Outlier-Test \n7: Median-Test \n(choose a number) \n?')
     if what_kind_of_test =='1':
         clear()
         normality_test(df)
@@ -628,7 +628,7 @@ def MSA(df):
 ###############################################################################
 def statistic(df):
     clear()
-    menu_statistic = input('What kind of statistics: \n1: simple descriptive statistics \n2: graphical view \n3: tests \n4: process capability analysis \n5: linear regression analysis \n6: MSA \n7: contingency table  \n(choose number)  \n?')
+    menu_statistic = input('What kind of statistics: \n1: simple descriptive statistics \n2: graphical view \n3: statistical significance tests \n4: process capability study \n5: linear regression analysis \n6: MSA \n7: contingency table  \n(choose number)  \n?')
     if menu_statistic =='1':
         beschreibende_stat(df)
     elif menu_statistic =='2':
