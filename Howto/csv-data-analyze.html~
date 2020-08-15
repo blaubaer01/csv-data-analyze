@@ -4,7 +4,7 @@
 <title>csv-data-analyze - Python Tool</title>
 <meta name="generator" content="Bluefish 2.2.10" >
 <meta name="author" content="Ricky Helfgen" >
-<meta name="date" content="2020-08-15T14:11:54+0200" >
+<meta name="date" content="2020-08-15T14:10:57+0200" >
 <meta name="copyright" content="Ricky Helfgen">
 <meta name="keywords" content="csv, analyze, csv-data-analyze, analysis, statistk, statistic, statistics, free, open source statistic, open source, statistic project, statistik projekt, Python, python">
 <meta name="description" content="csv-data-analyze - statistic with python">
@@ -36,7 +36,7 @@
 <td><a href="https://github.com/blaubaer01/csv-data-analyze/wiki/How-to-install-or-run" target="_blank">InStAlL</a></td>
 </tr>
 <tr>
-<td><a href="csv-data-analyze-de.html" target="_blank">ScReEnShOtS</a></td>
+<td><a href="csv-data-analyze-de.html" target="_self">ScReEnShOtS</a></td>
 </tr>
 <tr>
 <td><a href="https://github.com/blaubaer01/csv-data-analyze" target="_blank">DoWnLoAd</a></td>

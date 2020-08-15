@@ -1,0 +1,72 @@
+a {color:#ffffff;text-decoration: none; text-shadow:yellow 3px 2 px; font-size:15px ; font-weight:bold}
+a:hover {color:#A71A3E;text-decoration: none; text-shadow:black 3px 2 px; font-size:15px ; font-weight:bold}
+a:active {color:#F8FA8C;text-decoration: none; text-shadow:black 3px 2 px; font-size:15px; font-weight:bold}
+
+
+style="background: 2a5a83"
+
+
+normaltext {
+		color: #000070;
+		font-size: 15px;
+		font-family: arial, helvetica, sans-serif;
+		}
+grosstext {
+		color: #ffffff;
+		font-size: 20px;
+		font-family: arial, helvetica, sans-serif;
+		}
+kleintext {
+		color: #ffffff;
+		font-size: 8px;
+		font-family: arial, helvetica, sans-serif;
+		}
+
+grautext {
+		color: #707886;
+		font-size: 20px;
+		font-family: arial, helvetica, sans-serif;
+		}
+
+
+h1 {
+	color: #000070;
+	font-family: arial, helvetica, sans-serif;
+}
+
+h2 {
+	background-color: yellow;
+	color: #000070;
+	font-family: arial, helvetica, sans-serif;
+}
+h3 {
+	text-shadow: yes;
+	color: red;
+	font-family: arial, helvetica, sans-serif;
+}
+ntext {
+	font-size: 10px;
+	color: #ffffff;
+	font-family: arial, helvetica, sans-serif;
+}
+.Stil1 {
+	font-size: 15px;
+	font-family: "Bradley Hand ITC";
+	font-weight: bold;
+                color: #004080
+
+}
+
+.Stil2 {font-family: "Times New Roman", Times, serif;
+                color: #000070
+
+
+
+}
+.Stil4 {
+	font-size: 24px;
+	font-weight: bold;
+                color: #000070
+}
+.Stil5 {font-size: 14px; font-family: "Bradley Hand ITC"; font-weight: bold; }
+-->
