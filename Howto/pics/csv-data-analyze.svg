@@ -13,12 +13,12 @@
    id="svg2"
    sodipodi:modified="TRUE"
    viewBox="0 0 64 64"
-   inkscape:export-ydpi="90"
-   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="396.94656"
+   inkscape:export-xdpi="396.94656"
    version="1.0"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
    sodipodi:docname="csv-data-analyze.svg"
-   inkscape:export-filename="/media/disk/gfx/cliparts/released/graphics_rounded.png"
+   inkscape:export-filename="/home/blaubaer/Python-Projekte/csv-data-analyze/Howto/pics/csv-data-analyze.png"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
    sodipodi:version="0.32">
   <defs
@@ -255,7 +255,7 @@
      height="30px"
      borderopacity="1.0"
      inkscape:current-layer="layer1"
-     inkscape:cx="32"
+     inkscape:cx="3.3716475"
      inkscape:cy="32"
      inkscape:grid-points="true"
      inkscape:snap-bbox="true"
@@ -505,7 +505,7 @@
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
         <cc:license
-           rdf:resource="http://creativecommons.org/licenses/publicdomain/" />
+           rdf:resource="http://creativecommons.org/publicdomain/zero/1.0/" />
         <dc:publisher>
           <cc:Agent
              rdf:about="http://openclipart.org/">
