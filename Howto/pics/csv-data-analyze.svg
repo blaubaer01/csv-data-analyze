@@ -496,7 +496,7 @@
            height="56.616009"
            x="273.52899"
            y="197.31085" /></flowRegion><flowPara
-         id="flowPara4134">csv-data-analye</flowPara></flowRoot>  </g>
+         id="flowPara4134">csv-data-analyze</flowPara></flowRoot>  </g>
   <metadata
      id="metadata3860">
     <rdf:RDF>
@@ -512,7 +512,7 @@
             <dc:title>Openclipart</dc:title>
           </cc:Agent>
         </dc:publisher>
-        <dc:title></dc:title>
+        <dc:title />
         <dc:date>2009-03-20T19:01:11</dc:date>
         <dc:description />
         <dc:source>https://openclipart.org/detail/22671/graphics_rounded-by-jean_victor_balin</dc:source>
