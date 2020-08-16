@@ -13,7 +13,7 @@ outlier_utils: https://pypi.org/project/outlier_utils/
 
 Thanks to all this Programmers
 
-![Logo csv-data-analyze ](http://www.reh-webdesign.de/csv-data-analyze/howto/pics/csv-data-analyze.png)
+![Logo csv-data-analyze ](http://www.reh-webdesign.de/csv-data-analyze/howto/pics/csv-data-analyze2.png)
 
 ![Startmenu csv-data-analyze ](http://www.reh-webdesign.de/csv-data-analyze/howto/pics/start_bild.png)
 
