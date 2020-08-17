@@ -50,7 +50,7 @@ def csv_daten_im_verzeichnis():
 def file_einlesen(auswahl_datei):
     
     clear()
-    f = open(auswahl_datei, "r")
+    f = open(auswahl_datei, "r", errors='ignore')
     
     print('#'*80)
     print('Preview to the first 2 lines: \n')
@@ -98,7 +98,7 @@ def file_einlesen(auswahl_datei):
         
     
     #read the file
-    df=pd.read_csv(auswahl_datei,sep=trennzeichen ,decimal=dezimalzeichen, header=kopfz)
+    df=pd.read_csv(auswahl_datei,sep=trennzeichen ,decimal=dezimalzeichen, header=kopfz, engine='python')
     
     clear()
     
