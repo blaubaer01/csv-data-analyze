@@ -10,6 +10,8 @@ import matplotlib.pyplot as plt
 import os
 import scipy as spy
 from mft import isfloat, clear
+from mpl_toolkits import mplot3d
+
 
 
 
@@ -1623,5 +1625,128 @@ def pareto_one_column(df):
     pareto_plot(df2, x=x, y=y, title='Pareto Chart')
 
 
+def three_d_scatterplot(df):
+    clear()
+    
+    
+    
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number =[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    while True:
+        value_column_y= input('y-value: \n(choose number) \n?')
+        if value_column_y not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    while True:
+        value_column_x= input('x-value: \n(choose number) \n?')
+        if value_column_x not in list_number:
+            print('wrong input, try again!')
+        else:
+            break
+    
+    while True:
+        value_column_z= input('z-value: \n(choose number) \n?')
+        if value_column_z not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+        
+        
+    y = df[list_columns_werte[int(value_column_y)]]
+    
+    x = df[list_columns_werte[int(value_column_x)]]
+    
+    z = df[list_columns_werte[int(value_column_z)]]
+
+    fig = plt.figure()
+    ax = plt.axes(projection="3d")
+    
+    ax.scatter3D(x, y, z, c=z, cmap='hsv');
+    
+    plt.show()
 
     
+def trisurfaceplot(df):
+    clear()
+    
+    
+    
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number =[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    while True:
+        value_column_y= input('y-value: \n(choose number) \n?')
+        if value_column_y not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    while True:
+        value_column_x= input('x-value: \n(choose number) \n?')
+        if value_column_x not in list_number:
+            print('wrong input, try again!')
+        else:
+            break
+    
+    while True:
+        value_column_z= input('z-value: \n(choose number) \n?')
+        if value_column_z not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+        
+        
+    y = df[list_columns_werte[int(value_column_y)]]
+    
+    x = df[list_columns_werte[int(value_column_x)]]
+    
+    z = df[list_columns_werte[int(value_column_z)]]
+
+    fig = plt.figure()
+    ax = plt.axes(projection="3d")
+    
+    ax.plot_trisurf(x, y, z, linewidth=0, antialiased=False)
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_zlabel('z')
+    
+    plt.show()
+
+def threeddplot(df):
+    
+    tdplot = input('Choose 3d-Plot: \n1: 3d-scatter-plot \n2: 3d-surface-plot \n?')
+    
+    if tdplot == '1':
+        three_d_scatterplot(df)
+    elif tdplot == '2':
+        trisurfaceplot(df)
+    else:
+        print('wrong input, please try again')
+    
+    
+        
+        
+        

@@ -18,7 +18,7 @@ from L_REG import LREG
 from table_functions import appendDFToCSV, mergecolumn, filter_typ, sort_column, transposed_table, crosstab, contingency_tb, seq_numbers_add, delrep_value, melt_table, df_rename, combine_column
 from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 from msa import msa_v1, msa_v2
-from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, liniendiagramm, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot_menu, pareto, pareto_one_column, pointplot1f, pointplot2f, confidencelinechart
+from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, liniendiagramm, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot_menu, pareto, pareto_one_column, pointplot1f, pointplot2f, confidencelinechart, threeddplot
 from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_s, ttest_t_s, ttest_i, anova_o_w, anova_t_w
 from table_calc import menu_calc
 from rand_data import menu_rd
@@ -517,7 +517,7 @@ def menu_graphical_analyze(df):
     print('Choose graphical view:')
     gr_view_list= ['Barchart', 'Piechart', 'Histogram', 'Q-Q-Plot', 'Linechart', 'Group-Plot', 'Scatter-Plot',  
                    'Categorical Plots',  
-                   'Control-Charts', 'Pareto-Chart', 'Confidence Line-Chart']
+                   'Control-Charts', 'Pareto-Chart', 'Confidence Line-Chart', '3d-Plot']
     for i in range(len(gr_view_list)):
         print(i, gr_view_list[i])
         i+=1
@@ -545,6 +545,8 @@ def menu_graphical_analyze(df):
         menu_pareto(df)
     elif ausw_gr_view =='10':
         confidencelinechart(df)
+    elif ausw_gr_view =='11':
+        threeddplot(df)
     else:
         print('Wrong input, please try again')
 
