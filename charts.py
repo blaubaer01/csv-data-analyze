@@ -1745,8 +1745,3 @@ def threeddplot(df):
         trisurfaceplot(df)
     else:
         print('wrong input, please try again')
-    
-    
-        
-        
-        
