@@ -211,8 +211,8 @@ def msa_v1(df):
         print ('t-Value:',t)
         
         print ('p-Value:',p)
-        tp = truncate(t, 5)
-        tt = truncate(p, 5)
+        tp = truncate(p, 5)
+        tt = truncate(t, 5)
     
     
         alpha = 0.05

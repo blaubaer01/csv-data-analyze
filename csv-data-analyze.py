@@ -16,14 +16,15 @@ import os
 from SPC_CPA import CPA
 from L_REG import LREG
 from table_functions import appendDFToCSV, mergecolumn, filter_typ, sort_column, transposed_table, crosstab, contingency_tb, seq_numbers_add, delrep_value, melt_table, df_rename, combine_column
+from table_functions import delete_column
 from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 from msa import msa_v1, msa_v2
-from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, liniendiagramm, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot_menu, pareto, pareto_one_column, pointplot1f, pointplot2f, confidencelinechart, threeddplot, menu_hist
+from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, liniendiagramm, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot_menu, pareto, pareto_one_column, pointplot1f, pointplot2f, confidencelinechart, threeddplot
 from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_s, ttest_t_s, ttest_i, anova_o_w, anova_t_w
 from table_calc import menu_calc
 from rand_data import menu_rd
 from tableview import fehlende_daten, datentyp, file_in_html, einzeldaten_anschauen , filter_in_html
-from mft import clear, save_CSV
+from mft import clear, save_CSV_new, save_CSV
 from date_function import convert_datetime, cal_info
 
 import webbrowser
@@ -47,10 +48,10 @@ def csv_daten_im_verzeichnis():
     return(csv_dateien)
 
 #set read the file and set custom CSV elements
-def file_einlesen(auswahl_datei):
+def file_einlesen(fn):
     
     clear()
-    f = open(auswahl_datei, "r", errors='ignore')
+    f = open(fn, "r", errors='ignore')
     
     print('#'*80)
     print('Preview to the first 2 lines: \n')
@@ -98,7 +99,7 @@ def file_einlesen(auswahl_datei):
         
     
     #read the file
-    df=pd.read_csv(auswahl_datei,sep=trennzeichen ,decimal=dezimalzeichen, header=kopfz, engine='python')
+    df=pd.read_csv(fn,sep=trennzeichen ,decimal=dezimalzeichen, header=kopfz, engine='python')
     
     clear()
     
@@ -292,6 +293,8 @@ def file_einlesen(auswahl_datei):
                     if crit_col == 'int64':
                         name_filter = int(name_filter)
                     df = df[crit.iloc[:,int(inhalte_spalte)]<name_filter]
+            
+            
 
             restart = input('\nSet more filters: y/n.\n?')
             if restart.lower() != 'y':
@@ -336,6 +339,23 @@ def file_einlesen(auswahl_datei):
                 return(df)
                 break
                    
+    ####################################################################################
+    ####delete nan rows
+    drop_yes = input('Do you want to drop all "NAN" rows in the dataframe y/n \n?')
+    
+    if drop_yes.lower() =='y':
+        df = df.dropna()
+        print('nan data deleted')
+        
+    else:
+        print('no data deleted')
+    
+    ####################################################################################
+    ###save cda_file
+    print('...save current state!')
+    fn = 'cda_' + fn
+        
+    df.to_csv(fn, sep=';', decimal=',', header =True, index=False)
     
     show_data = input('Show data into browser? y/n \n?')
     if show_data =='y':
@@ -528,7 +548,7 @@ def menu_graphical_analyze(df):
     elif ausw_gr_view =='1':
         kuchendiagramm(df)
     elif ausw_gr_view =='2':
-        menu_hist(df)
+        histogram(df)
     elif ausw_gr_view =='3':
         qq_plot(df)
     elif ausw_gr_view =='4':
@@ -681,44 +701,55 @@ def preview_table(df):
 #######################################################################
 ###table function menu
 ###############################################################################
-def table_functions(df):
+def table_functions(fn, df):
     while True:
         clear()
-        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n11: get calendar info \n12: delete or replace value/characters \n13: melt columns \n14: rename column \n15: save to CSV-file \n16: combine factor columns \n?')
+        #read the file
+        print('open current file...')
+        if 'cda_' in fn:
+            df=pd.read_csv(fn,sep=';' ,decimal=',', header=0, engine='python')
+            print('current file name: ' , fn)
+        else:    
+            fn = 'cda_' + fn
+            df=pd.read_csv(fn,sep=';' ,decimal=',', header=0, engine='python')
+            print('current file name: ' , fn)
+        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n11: get calendar info \n12: delete or replace value/characters \n13: melt columns \n14: rename column \n15: save to CSV-file \n16: combine factor columns \n17: delete column \n?')
         if menu_tf =='1':
             clear()
-            preview_table(df)
+            preview_table(fn, df)
         elif menu_tf =='2':
             clear()
-            appendDFToCSV(df, sep=",")
+            appendDFToCSV(fn, df, sep=",")
         elif menu_tf =='3':
-            mergecolumn(df)
+            mergecolumn(fn, df)
         elif menu_tf =='4':
             filter_typ(df)
         elif menu_tf =='5':
-            sort_column(df)
+            sort_column(fn, df)
         elif menu_tf =='6':
-            transposed_table(df)
+            transposed_table(fn, df)
         elif menu_tf =='7':
-            crosstab(df)
+            crosstab(fn, df)
         elif menu_tf =='8':
-            menu_calc(df)
+            menu_calc(fn, df)
         elif menu_tf =='9':
-            seq_numbers_add(df)
+            seq_numbers_add(fn, df)
         elif menu_tf =='10':    
-            convert_datetime(df)
+            convert_datetime(fn, df)
         elif menu_tf =='11':
-            cal_info(df)
+            cal_info(fn, df)
         elif menu_tf =='12':
-            delrep_value(df)
+            delrep_value(fn, df)
         elif menu_tf =='13':
-            melt_table(df)
+            melt_table(fn, df)
         elif menu_tf =='14':
-            df_rename(df)
+            df_rename(fn, df)
         elif menu_tf =='15':
-            save_CSV(df)
+            save_CSV_new(df)
         elif menu_tf =='16':
-            combine_column(df)
+            combine_column(fn, df)
+        elif menu_tf =='17':
+            delete_column(fn, df)
         
         
         
@@ -728,19 +759,36 @@ def table_functions(df):
         
         restart = input('\nFurther table functions: "y"\n?')
         if restart.lower() != 'y':
+            
+            
             break
+            
+
+
+
+
 
 
 ###############################################################################
 ### work with the data's (Main menu)
 ###############################################################################
-def mit_daten_arbeiten(df):
+def mit_daten_arbeiten(fn, df):
+    
     while True:
         clear()
+        #read the file
+        print('open current file...')
+        if 'cda_' in fn:
+            df=pd.read_csv(fn,sep=';' ,decimal=',', header=0, engine='python')
+            print('current file name: ' , fn)
+        else:    
+            fn = 'cda_' + fn
+            df=pd.read_csv(fn,sep=';' ,decimal=',', header=0, engine='python')
+            print('current file name: ' , fn)
         m_d_a = input('Next Steps:\n1:Table Functions \n2:Statistics Analyze \n?')
         if m_d_a =='1':
             clear()
-            table_functions(df)
+            table_functions(fn, df)
         elif m_d_a =='2':
             clear()
             statistic(df)
@@ -765,6 +813,8 @@ def mit_daten_arbeiten(df):
         
         restart = input('\nDo you want to analyze further?: y = yes / n = exit \n?')
         if restart.lower() != 'y':
+            
+            
             break
 
 def menu_create_random_data():
@@ -798,7 +848,10 @@ def main():
             clear()
                 
             print('#'*70)
-            mit_daten_arbeiten(df)
+            
+            fn = 'new_cda_file.csv'
+            df.to_csv(fn, sep=';', decimal=',', header =True)
+            mit_daten_arbeiten(fn, df)
                        
             
             break
@@ -809,9 +862,9 @@ def main():
                         #print(csv_dateien)
             while True:
                 
-                auswahl_datei = input('Which CSV file to import (pay attention to spelling)\n?')
-                if auswahl_datei in csv_dateien:
-                    df=file_einlesen(auswahl_datei)
+                fn = input('Which CSV file to import (pay attention to spelling)\n?')
+                if fn in csv_dateien:
+                    df=file_einlesen(fn)
                     break
                 else:
                     print('File not found! Please check your Input! \npay attention to upper and lower case!')
@@ -819,7 +872,7 @@ def main():
             clear()
                 
             print('#'*70)
-            mit_daten_arbeiten(df)
+            mit_daten_arbeiten(fn, df)
             
             break
         

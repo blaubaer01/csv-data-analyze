@@ -7,7 +7,7 @@ Created on Sat Jun  6 18:06:39 2020
 """
 
 import os
-
+import pandas as pd
 
 
 
@@ -59,12 +59,22 @@ def isinteger(x):
     
 ########################################################################
 ###save dataframe to CSV-File
-def save_CSV(df):
+def save_CSV_new(df):
     speichern_ja = input('Save the modified dataframe: y/n \n?')
     if speichern_ja.lower() =='y':
         csvfilename = input('Input only Filename ([filename].csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)
         
+
+########################################################################
+###save dataframe to CSV-File
+def save_CSV(fn, df):
+    speichern_ja = input('Save the modified dataframe: y/n \n? ')
+    if speichern_ja.lower() =='y':
+        print('save file ...', fn)
+        df.to_csv(fn, sep=';', decimal=',', header =True)
         
+        
+
         

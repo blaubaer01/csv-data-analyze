@@ -12,16 +12,17 @@ import matplotlib.pyplot as plt
 #import scipy as spy
 from scipy.stats import chi2_contingency
 from tableview import file_in_html
-from mft import clear, truncate, isfloat, save_CSV
+from mft import clear, truncate, isfloat, save_CSV, save_CSV_new
 from tableview import filter_in_html
 import numpy as np
+
 
 #Thanks to https://stackoverflow.com/questions/17530542/how-to-add-pandas-data-to-an-existing-csv-file
 #and https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html
 ### define our clear function 
 #############################################################################
 
-def appendDFToCSV(df, sep=","):
+def appendDFToCSV(fn, df, sep=","):
     
     while True:
         csv_dateien= []
@@ -76,9 +77,11 @@ def appendDFToCSV(df, sep=","):
         df2=pd.read_csv(add_table,sep=trennzeichen)
         df = df.append(df2)
         print(df)
-        file_in_html(df)
-        print('To work with you have to save this dataframe as file')
-        save_CSV(df)
+        #file_in_html(df)
+        
+        save_CSV_new(df)
+        
+       
 
         
 def mergecolumn(df):
@@ -150,38 +153,21 @@ def mergecolumn(df):
         result = pd.merge(df, df2, how='outer', on=key_name)
         print(result)
         print('To work with you have to save this dataframe as file')
-        save_yes = input('Would you like to save: \ny/n \n?')
-        if save_yes.lower() =='y':
-                csvfilename = input('Filename (.csv will save automaticly) \n?')
-                fn = csvfilename + '.csv'
-                result.to_csv(fn, sep=';', decimal=',', header =True)
+        save_CSV_new(df)
     elif join_how == '2':
         result = pd.merge(df, df2, how='inner', on =key_name)
         print(result)
-        print('To work with you have to save this dataframe as file')
-        save_yes = input('Would you like to save: \ny/n \n?')
-        if save_yes.lower() =='y':
-                csvfilename = input('Filename (.csv will save automaticly) \n?')
-                fn = csvfilename + '.csv'
-                result.to_csv(fn, sep=';', decimal=',', header =True)
+        save_CSV_new(df)
     elif join_how =='3':
         result = pd.merge(df, df2, how='left', on=key_name)
         print(result)
-        print('To work with you have to save this dataframe as file')
-        save_yes = input('Would you like to save: \ny/n \n?')
-        if save_yes.lower() =='y':
-                csvfilename = input('Filename (.csv will save automaticly) \n?')
-                fn = csvfilename + '.csv'
-                result.to_csv(fn, sep=';', decimal=',', header =True)
+        save_CSV_new(df)
+        
     elif join_how =='4':
         result = pd.merge(df, df2, how='right', on=key_name)
         print(result)
         print('To work with you have to save this dataframe as file')
-        save_yes = input('Would you like to save: \ny/n \n?')
-        if save_yes.lower() =='y':
-                csvfilename = input('Filename (.csv will save automaticly) \n?')
-                fn = csvfilename + '.csv'
-                result.to_csv(fn, sep=';', decimal=',', header =True)
+        save_CSV_new(df)
     else:
         print('Wrong input, please try again')
 
@@ -287,7 +273,7 @@ def filter_typ(df):
         
         
         if restart.lower() != 'y':
-            save_CSV(df)
+            save_CSV_new(df)
                 
     print(df)
     press_enter=input('press enter to continue')
@@ -296,7 +282,7 @@ def filter_typ(df):
 
 ###sort by column
 ###################################################################################
-def sort_column(df):
+def sort_column(fn, df):
     sort_yes = input('Would you like to sort the data frame: y/n\n?')
     if sort_yes =='y':
         while True:
@@ -340,7 +326,7 @@ def sort_column(df):
             
             restart_s = input('additional sorting: y/n \n?')
             if restart_s.lower() != 'y':
-                save_CSV(df)
+                save_CSV(fn, df)
                 file_in_html(df)
                 return(df)   
                 
@@ -353,11 +339,7 @@ def transposed_table(df):
     trans_yes = input('Would you like to transpose the table: y/n\n?')
     if trans_yes =='y':
         df = df.T
-        speichern_ja = input('Save the table with the sorting (the only way to analyze with the filter set): y/n \n?')
-        if speichern_ja.lower() =='y':
-            csvfilename = input('Filename (.csv will save automaticly) \n?')
-            fn = csvfilename + '.csv'
-            df.to_csv(fn, sep=';', decimal=',', header =True)
+        save_CSV_new(df)
         file_in_html(df)
         return(df)
     else:
@@ -425,11 +407,11 @@ def crosstab(df):
         if with_sum =='y':
             ct = pd.crosstab(index=df[tab1], columns=df[tab2], margins=True).applymap(lambda r: r/len(df))
             print(ct)    
-            save_CSV(df)
+            save_CSV_new(df)
         else:
             ct = pd.crosstab(index=df[tab1], columns=df[tab2], margins=False).applymap(lambda r: r/len(df))
             print(ct)
-            save_CSV(df)
+            save_CSV_new(df)
 
     else:
         print('wrong input, try again!')
@@ -533,7 +515,7 @@ def contingency_tb(df):
     plt.show()
     
     
-def seq_numbers_add(df):
+def seq_numbers_add(fn, df):
     
     seq_count = len(df)
     print(seq_count)
@@ -549,10 +531,10 @@ def seq_numbers_add(df):
     print(df)
     file_in_html(df)
     print('To work with you have to save this dataframe as file')
-    save_CSV(df)
+    save_CSV(fn, df)
  
     
-def del_empty_rows(df):
+def del_empty_rows(fn, df):
     
     
     clear()
@@ -583,9 +565,9 @@ def del_empty_rows(df):
     print(df)
     
     
-    save_CSV(df)    
+    save_CSV(fn, df)    
 
-def del_nan_rows(df):
+def del_nan_rows(fn, df):
     
     
     clear()
@@ -614,9 +596,9 @@ def del_nan_rows(df):
     print(df)
     
     
-    save_CSV(df)
+    save_CSV(fn, df)
 
-def del_nan(df):
+def del_nan(fn, df):
     clear()
     drop_yes = input('Do you realy want to drop all "NAN" rows in the dataframe y/n \n?')
     
@@ -624,17 +606,13 @@ def del_nan(df):
         df = df.dropna()
         print('nan data deleted')
         print(df)
-        speichern_ja = input('Save the modified dataframe: y/n \n?')
-        if speichern_ja.lower() =='y':
-            csvfilename = input('Filename (.csv will save automaticly) \n?')
-            fn = csvfilename + '.csv'
-            df.to_csv(fn, sep=';', decimal=',', header =True)
+        save_CSV(fn, df)
     else:
         print('no data deleted')
         
 
 
-def del_zero_rows(df):
+def del_zero_rows(fn, df):
     
     
     clear()
@@ -665,11 +643,11 @@ def del_zero_rows(df):
     print(df)
     
     
-    save_CSV(df)
+    save_CSV(fn, df)
 
 
 
-def del_NA_rows(df):
+def del_NA_rows(fn, df):
     
     
     clear()
@@ -702,13 +680,13 @@ def del_NA_rows(df):
     print(df)
     
     
-    save_CSV(df)
+    save_CSV(fn, df)
 
 
 
 
 
-def del_sv_rows(df):
+def del_sv_rows(fn, df):
     
     
     clear()
@@ -742,10 +720,10 @@ def del_sv_rows(df):
     print(df)
     
     
-    save_CSV(df)
+    save_CSV(fn, df)
 
 
-def replace_content_into_col(df):
+def replace_content_into_col(fn, df):
     
     
     clear()
@@ -778,9 +756,9 @@ def replace_content_into_col(df):
     print(df)
     
     
-    save_CSV(df)
+    save_CSV(fn, df)
     
-def replace_number_into_col(df):
+def replace_number_into_col(fn, df):
     
     
     clear()
@@ -821,49 +799,49 @@ def replace_number_into_col(df):
     print(df)
     
     
-    save_CSV(df)
+    save_CSV(fn, df)
 
 
-def delrep_value(df):
+def delrep_value(fn, df):
     clear()
     
     menu_del = input('What do you want to delete or replace: \n1: delete nan rows \n2: delete empty rows \n3: delete nan-data rows cross the dataframe \n4: delete NA rows \n5: delete 0 rows \n6: delete rows with special character \n7: replace content into column \n8: replace value into column \n9: replace float to point comma \n10: replace character into column \n11: delete first row \n12: delete last row \n13: delete defined rows \n14: delete rows contain string \n?' )
     
     if menu_del =='1':
-        del_nan_rows(df)
+        del_nan_rows(fn, df)
     elif menu_del =='2':
-        del_empty_rows(df)
+        del_empty_rows(fn, df)
     elif menu_del =='3':
-        del_nan(df)
+        del_nan(fn, df)
     elif menu_del =='4':
-        del_NA_rows(df)
+        del_NA_rows(fn, df)
     elif menu_del =='5':
-        del_zero_rows(df)
+        del_zero_rows(fn, df)
     elif menu_del =='6':
-        del_sv_rows(df)
+        del_sv_rows(fn, df)
     elif menu_del =='7':
-        replace_content_into_col(df)
+        replace_content_into_col(fn, df)
     elif menu_del =='8':
-        replace_number_into_col(df)
+        replace_number_into_col(fn, df)
     elif menu_del =='9':
-        replace_float_comma(df)
+        replace_float_comma(fn, df)
     elif menu_del =='10':
-        replace_character(df)
+        replace_character(fn, df)
     elif menu_del =='11':
-        del_first_row(df)
+        del_first_row(fn, df)
     elif menu_del =='12':
-        del_last_row(df)
+        del_last_row(fn, df)
     elif menu_del =='13':
-        del_defined_row(df)
+        del_defined_row(fn, df)
     elif menu_del =='14':
-        del_contains_word(df)
+        del_contains_word(fn, df)
 
     
     else:
         print('wrong input (choose number), try again')
 
 
-def replace_float_comma(df):
+def replace_float_comma(fn, df):
     clear()
     
     print('replace float comma - point comma into column')
@@ -888,10 +866,10 @@ def replace_float_comma(df):
     
     df[col]=df[col].str.replace(',','.').astype(float)
     
-    save_CSV(df)
+    save_CSV(fn, df)
 
 
-def replace_character(df):
+def replace_character(fn, df):
     clear()
     
     print('replace character into column')
@@ -920,9 +898,9 @@ def replace_character(df):
     
     df[col]=df[col].str.replace(char_input,char_output).astype(str)
     
-    save_CSV(df)
+    save_CSV(fn, df)
 
-def del_last_row(df):
+def del_last_row(fn, df):
     clear()
     print(df)
     del_l_r = input('Delete last row y/n \n?')
@@ -932,11 +910,11 @@ def del_last_row(df):
         df = df.drop(df.index[len(df)-1])
         print('Last row deleted')
         print(df)
-        save_CSV(df)
+        save_CSV(fn, df)
     else:
         print('no data deleted')
         
-def del_first_row(df):
+def del_first_row(fn, df):
     clear()
     print(df)
     del_f_r = input('Delete first row y/n \n?')
@@ -946,11 +924,11 @@ def del_first_row(df):
         df = df.drop(df.index[0])
         print('First row deleted')
         print(df)
-        save_CSV(df)
+        save_CSV(fn, df)
     else:
         print('no data deleted')
 
-def del_defined_row(df):
+def del_defined_row(fn, df):
     clear()
     print(df)
     del_d_r = input('Delete defined rows y/n \n?')
@@ -982,12 +960,12 @@ def del_defined_row(df):
         df = df.drop(df.index[index_del_list])
         print('Defined Rows deleted')
         print(df)
-        save_CSV(df)
+        save_CSV(fn, df)
     else:
         print('no data deleted')
     
     
-def del_contains_word(df):
+def del_contains_word(fn, df):
     clear()
     del_yes = input('Delete rows contains "Word" y/n \n?')
     print(df)
@@ -1020,7 +998,7 @@ def del_contains_word(df):
         df = (df[~df[col].str.contains(del_word)])
         print(df)
         
-        save_CSV(df)
+        save_CSV(fn, df)
     else:
         print('no rows deleted')
         
@@ -1094,10 +1072,10 @@ def melt_table(df):
     
     print(df)
     
-    save_CSV(df)
+    save_CSV_new(df)
 
 
-def df_rename(df):
+def df_rename(fn, df):
     
     rename_yes = input('rename column: y/n\n?')
     if rename_yes =='y':
@@ -1136,12 +1114,12 @@ def df_rename(df):
         
         print(df)
 
-        save_CSV(df)
+        save_CSV(fn, df)
         
 
 #######################################################################
 ###combine factor column
-def combine_column(df):
+def combine_column(fn, df):
     print('Combine factor columns:')
     print('#'*50)    
     
@@ -1184,10 +1162,51 @@ def combine_column(df):
     df[name_col] = df[col1] + "_" + df[col2]
     
     print(df)
-    #file_in_html(df)
-    print('To work with you have to save this dataframe as file')
-    save_CSV(df)
-        
     
+    save_CSV(fn, df)
+        
+########################################################################
+###del column
+def delete_column(fn, df):
+    
+    rename_yes = input('delete column y/n\n?')
+    if rename_yes =='y':
+        while True:
+            clear()
+            anz_col = len(df.columns)
+
+            list_columns = []
+            list_number=[]
+            i=1
+            for i in range(anz_col):
+
+                list_columns.append(df.columns[i])
+                list_number.append(str(i))
+                print(i, df.columns[i])
+                i+=1      
+         
+            while True:
+                rename_column= input('Column name to delete: \n?')
+                if rename_column not in list_number:
+                    print('wrong input, try again!')
+                else:
+                    break 
+
+        
+        
+        
+            d_col = list_columns[int(rename_column)]
+        
+            print('The column name you will delete call:', d_col)
+            break
+        
+        
+        df = df.drop(d_col, axis=1)
+    
+        print(df)
+
+        save_CSV(fn, df)
+        
+        
     
         

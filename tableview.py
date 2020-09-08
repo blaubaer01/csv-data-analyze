@@ -32,32 +32,35 @@ def datentyp(df):
 ######################################################################
 ###show DataFrame in browser    
 def file_in_html(df):
-    pd.set_option('colheader_justify', 'center')   # FOR TABLE <th>
-
-    html_string = '''
-    <html>
-    <head><title>HTML Pandas Dataframe with CSS</title></head>
-    <link rel="stylesheet" type="text/css" href="df_style.css"/>
-    <body>
-    csv-data-analyze - data-table - Python Analyze Tool<br>
-        {table}
-        </body>
-        </html>.
-    '''
-
-    # OUTPUT AN HTML FILE
-    with open('myhtml.html', 'w') as f:
-        f.write(html_string.format(table=df.to_html(classes='mystyle',index = False).replace('<th>','<th style = "background-color: red">')))
     
-    url = 'myhtml.html'
+    show_in_html = input('Would you like to show in browser? y/n \n?')
+    if show_in_html.lower() != 'n':
+        pd.set_option('colheader_justify', 'center')   # FOR TABLE <th>
     
-    if platform == "linux" or platform == "linux2":
-        webbrowser.open_new_tab(url)
-    elif platform == "darwin":
-        file_location = "file:///" + url
-        webbrowser.open_new_tab(file_location)
-    elif platform == "win32":
-        webbrowser.open_new_tab(url)
+        html_string = '''
+        <html>
+        <head><title>HTML Pandas Dataframe with CSS</title></head>
+        <link rel="stylesheet" type="text/css" href="df_style.css"/>
+        <body>
+        csv-data-analyze - data-table - Python Analyze Tool<br>
+            {table}
+            </body>
+            </html>.
+        '''
+    
+        # OUTPUT AN HTML FILE
+        with open('myhtml.html', 'w') as f:
+            f.write(html_string.format(table=df.to_html(classes='mystyle',index = False).replace('<th>','<th style = "background-color: red">')))
+        
+        url = 'myhtml.html'
+        
+        if platform == "linux" or platform == "linux2":
+            webbrowser.open_new_tab(url)
+        elif platform == "darwin":
+            file_location = "file:///" + url
+            webbrowser.open_new_tab(file_location)
+        elif platform == "win32":
+            webbrowser.open_new_tab(url)
     
 
 ###show DataFrame in browser    

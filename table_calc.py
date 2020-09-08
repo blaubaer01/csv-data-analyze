@@ -11,11 +11,12 @@ import numpy as np
 
 from mft import isfloat, clear
 from tableview import file_in_html
+from mft import save_CSV_new, save_CSV
 
 
 #######################################################################
 ###addition column
-def addition_column(df):
+def addition_column(fn, df):
     print('Column addition:')
     print('#'*50)    
     
@@ -59,16 +60,11 @@ def addition_column(df):
     
     print(df)
     file_in_html(df)
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)      
+    save_CSV(fn, df)  
  
 #######################################################################
 ###addition column, value
-def addition_val(df):
+def addition_val(fn, df):
     print('Column addition with value:')
     print('#'*50)    
     
@@ -113,12 +109,7 @@ def addition_val(df):
     
     print(df)
     file_in_html(df)
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)      
+    save_CSV(fn, df) 
 
 
 
@@ -126,7 +117,7 @@ def addition_val(df):
 
 #######################################################################         
 ###substraction column          
-def substraction_column(df):
+def substraction_column(fn, df):
     print('Column substraction:')    
     
     print('#'*50)    
@@ -171,18 +162,13 @@ def substraction_column(df):
     
     print(df)
     file_in_html(df)
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)
+    save_CSV(fn, df)
 
 
 
 #######################################################################
 ###substraction column, val
-def substraction_val(df):
+def substraction_val(fn, df):
     print('Column substraction with value:')
     print('#'*50)    
     
@@ -227,19 +213,13 @@ def substraction_val(df):
     
     print(df)
     file_in_html(df)
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)      
-
+    save_CSV(fn, df)
 
 
 
 #######################################################################    
 ###multiplication column        
-def multiplication_column(df):
+def multiplication_column(fn, df):
     print('Column multiplication:')
 
     print('#'*50)    
@@ -284,17 +264,12 @@ def multiplication_column(df):
     
     print(df)
     file_in_html(df)
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)
+    save_CSV(fn, df)
 
 
 #######################################################################
 ###multiplicate column, value
-def multiplication_val(df):
+def multiplication_val(fn, df):
     print('Column multiplication with value:')
     print('#'*50)    
     
@@ -339,13 +314,8 @@ def multiplication_val(df):
     
     print(df)
     file_in_html(df)
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)      
-
+    save_CSV(fn, df)
+    
 
 
 
@@ -354,7 +324,7 @@ def multiplication_val(df):
 
 #######################################################################
 ### diffision column        
-def diffision_column(df):
+def diffision_column(fn, df):
     print('Column diffision:')        
 
     print('#'*50)    
@@ -399,17 +369,11 @@ def diffision_column(df):
     
     print(df)
     file_in_html(df)
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)
-    
+    save_CSV(fn, df)
 
 #######################################################################
 ###diffision column, value
-def diffision_val(df):
+def diffision_val(fn, df):
     print('Column diffision with value:')
     print('#'*50)    
     
@@ -454,17 +418,12 @@ def diffision_val(df):
     
     print(df)
     file_in_html(df)
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)      
+    save_CSV(fn, df)   
 
 
 #######################################################################
 ###square column
-def square_val(df):
+def square_val(fn, df):
     print('Square Column values:')
     print('#'*50)    
     
@@ -502,17 +461,12 @@ def square_val(df):
     
     print(df)
     file_in_html(df)
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)      
+    save_CSV(fn, df)      
 
 
 #######################################################################
 ###square column
-def take_root_val(df):
+def take_root_val(fn, df):
     print('Take root Column values:')
     print('#'*50)    
     
@@ -552,32 +506,27 @@ def take_root_val(df):
     
     print(df)
     file_in_html(df)
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)      
+    save_CSV(fn, df)    
 
 
 #######################################################################
 ###statistic cross column
-def statistic_cross_col(df):
+def statistic_cross_col(fn, df):
     print('Described Statistic cross the choosed column:')
     print('#'*50)    
     
-    werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
+    #werte = df.select_dtypes(include=['int', 'float'])
     
     #
-    anz_col_werte = len(werte.columns)
+    anz_col_werte = len(df.columns)
         
     list_columns_werte = []
     list_number = []
     i=1
     for i in range(anz_col_werte):
-        list_columns_werte.append(werte.columns[i])
+        list_columns_werte.append(df.columns[i])
         list_number.append(str(i))
-        print(i, werte.columns[i])
+        print(i, df.columns[i])
         i+=1
     
     
@@ -607,6 +556,7 @@ def statistic_cross_col(df):
     
     df3=pd.read_csv('described.csv',sep=';' ,decimal=',', header=1)
     df3.columns=['Stat Function', 'Value']
+    print(df3)
     file_in_html(df3)
     
     save_yes = input('Would you like to save this statistic table view as "CSV-File": \ny/n \n?')
@@ -624,7 +574,7 @@ def statistic_cross_col(df):
 #statistic functions
 ######################################################################
 ###min column
-def min_column(df):
+def min_column(fn, df):
     print('MIN of columns:')        
 
     print('#'*50)    
@@ -814,17 +764,13 @@ def min_column(df):
     
     
     
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)
+    
+    save_CSV(fn, df)
     
 
 ######################################################################
 ###max column
-def max_column(df):
+def max_column(fn, df):
     print('MAX of columns:')        
 
     print('#'*50)    
@@ -1014,16 +960,11 @@ def max_column(df):
     
     
     
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)
+    save_CSV(fn, df)
 
 ######################################################################
 ###mean column
-def mean_column(df):
+def mean_column(fn, df):
     print('Mean of columns:')        
 
     print('#'*50)    
@@ -1213,17 +1154,11 @@ def mean_column(df):
     
     
     
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)
-
+    save_CSV(fn, df)
 
 ######################################################################
 ###std column
-def std_column(df):
+def std_column(fn, df):
     print('Deviation of columns:')        
 
     print('#'*50)    
@@ -1413,17 +1348,12 @@ def std_column(df):
     
     
     
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)
+    save_CSV(fn, df)
 
 
 ######################################################################
 ###range column
-def range_column(df):
+def range_column(fn, df):
     print('Range of columns:')        
 
     print('#'*50)    
@@ -1606,24 +1536,19 @@ def range_column(df):
         df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.max, axis=1)-df[[col1,col2,col3,col4,col5]].apply(np.min, axis=1)
     
         print(df)
-        file_in_html(df)
+        #file_in_html(df)
     else:
         print('Wrong Input (Choose Number between 2-5)')
     
     
     
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)
+    save_CSV(fn, df)
 
     
 #####################################################################    
 ###menu calculate with columns   
     
-def menu_calc_column(df):
+def menu_calc_column(fn, df):
     clear()
     
     print('Easy column calculation \nthis tool add columns with requested column calculations')
@@ -1634,33 +1559,33 @@ def menu_calc_column(df):
     calc = input('Which calculation: \n(choose a number) \n?')
     
     if calc =='0':
-        addition_column(df)
+        addition_column(fn, df)
     if calc =='1':
-        substraction_column(df)
+        substraction_column(fn, df)
     if calc =='2':
-        multiplication_column(df)
+        multiplication_column(fn, df)
     if calc =='3':
-        diffision_column(df)
+        diffision_column(fn, df)
     if calc =='4':
         #print('not available')
-        min_column(df)
+        min_column(fn, df)
     if calc =='5':
         #print('not available')
-        max_column(df)
+        max_column(fn, df)
     if calc =='6':
         #print('not available')
-        mean_column(df)
+        mean_column(fn, df)
     if calc =='7':
         #print('not available')
-        std_column(df)
+        std_column(fn, df)
     if calc =='8':
         #print('not available')
-        range_column(df)
+        range_column(fn, df)
     else:
         print('Wrong input, please try again')
 
 
-def menu_calc_col_val(df):
+def menu_calc_col_val(fn, df):
     clear()
     
     print('Easy calculation column with value \nthis tool add columns with requested column calculations')
@@ -1671,19 +1596,19 @@ def menu_calc_col_val(df):
     calc = input('Which calculation: \n(choose a number) \n?')
     
     if calc =='0':
-        addition_val(df)
+        addition_val(fn, df)
     if calc =='1':
-        substraction_val(df)
+        substraction_val(fn, df)
     if calc =='2':
-        multiplication_val(df)
+        multiplication_val(fn, df)
     if calc =='3':
-        diffision_val(df)
+        diffision_val(fn, df)
     if calc =='4':
-        #print('not available')
-        square_val(df)
+        
+        square_val(fn, df)
     if calc =='5':
-        #print('not available')
-        take_root_val(df)
+        
+        take_root_val(fn, df)
     
     else:
         print('Wrong input, please try again')
@@ -1776,7 +1701,7 @@ def quantile__column(df, col1):
 
 
     
-def menu_stat_column(df):
+def menu_stat_column(fn, df):
     
     
     
@@ -1834,16 +1759,16 @@ def menu_stat_column(df):
 
     
 
-def menu_calc(df):
+def menu_calc(fn, df):
     menu_c = input('How to calculate? \n1: calculation between 2 chosen columns \n2: calculation with chosen column and input value \n3: described statistics cross chosen column \n4: statistic funktions due to chosen column \n(choose nr.) \n?')
     if menu_c == '1':
-        menu_calc_column(df)
+        menu_calc_column(fn, df)
     elif menu_c == '2':
-        menu_calc_col_val(df)
+        menu_calc_col_val(fn, df)
     elif menu_c == '3':
-        statistic_cross_col(df)
+        statistic_cross_col(fn, df)
     elif menu_c =='4':
-        menu_stat_column(df)
+        menu_stat_column(fn, df)
     else:
         print('Wrong input, please try again!')
     
