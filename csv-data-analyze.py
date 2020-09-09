@@ -357,14 +357,11 @@ def file_einlesen(fn):
         
     df.to_csv(fn, sep=';', decimal=',', header =True, index=False)
     
-    show_data = input('Show data into browser? y/n \n?')
-    if show_data =='y':
-        file_in_html(df)
-        return(df)
-    else:
-        print(df)
-        next = input('push button for next steps')
-        return(df)
+    
+    print(df)
+    file_in_html(df)
+    next = input('push button for next steps')
+    return(df)
 
 
 
@@ -857,7 +854,8 @@ def main():
             break
         
         elif start == '2':
-            print('The following CSV-Files are in the root-folder, which you would like to evaluate?')
+            clear()
+            print('The following CSV-Files are in the root-folder:')
             csv_daten_im_verzeichnis()
                         #print(csv_dateien)
             while True:
