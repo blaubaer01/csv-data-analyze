@@ -1207,6 +1207,109 @@ def delete_column(fn, df):
 
         save_CSV(fn, df)
         
+####################################################################################
+#####change datatype
+def change_datatype(df):
+    
+    
+    print('Overview of data formats:\n')
+    print(df.dtypes)
+    
+    ###change data type
+    ##################################################################################
+    datentyp_aendern = input('Would you like to change data types: y/n \n?')
+    
+    if datentyp_aendern == 'y':
+    
+        while True:
+            welcher_datentyp = input('How to change: \n1: float \n2: integer \n3: string \n4: categorie \n5: datetime \n(choose number) \n?')
+            
+            if welcher_datentyp =='1':
+                datent=df.select_dtypes(include=['int'])
+                anz_col = len(datent.columns)
         
+                list_columns = []
+
+                i=1
+                for i in range(anz_col):
+                    list_columns.append(datent.columns[i])
+                    print(i, datent.columns[i])
+                    i+=1
+            
+                nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n?')
+                
+                df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype(float)
+            elif welcher_datentyp =='2':
+                datent=df.select_dtypes(include=['float', 'object'])
+                anz_col = len(datent.columns)
+        
+                list_columns = []
+
+                i=1
+                for i in range(anz_col):
+                    list_columns.append(datent.columns[i])
+                    print(i, datent.columns[i])
+                    i+=1
+            
+                nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n?')
+                try:
+                    df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype(int)
+                except Exception as exception:
+                    print('Convert data not possible!')    
+                    
+            elif welcher_datentyp =='3':
+                anz_col = len(df.columns)
+        
+                list_columns = []
+
+                i=1
+                for i in range(anz_col):
+                    list_columns.append(df.columns[i])
+                    print(i, df.columns[i])
+                    i+=1
+            
+                nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n?')
+                df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype(str)
+            
+            elif welcher_datentyp =='4':
+                anz_col = len(df.columns)
+        
+                list_columns = []
+
+                i=1
+                for i in range(anz_col):
+                    list_columns.append(df.columns[i])
+                    print(i, df.columns[i])
+                    i+=1
+            
+                nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n?')
+                df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype('category')
+            elif welcher_datentyp =='5':
+                anz_col = len(df.columns)
+        
+                list_columns = []
+
+                i=1
+                for i in range(anz_col):
+                    list_columns.append(df.columns[i])
+                    print(i, df.columns[i])
+                    i+=1
+            
+                nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n?')
+                try:
+                    df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype('datetime64[ns]')
+                except Exception as exception:
+                    print('Convert data not possible!')
+            else:
+                print('wrong input, please try again')
+            
+            
+            clear()
+            print('Overview of data formats:\n')
+            print(df.dtypes)
+            restart = input('\nChange additional data types: "y" \n?')
+            if restart.lower() != 'y':
+                break
+                #print('next steps')
     
         

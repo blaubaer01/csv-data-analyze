@@ -16,7 +16,7 @@ import os
 from SPC_CPA import CPA
 from L_REG import LREG
 from table_functions import appendDFToCSV, mergecolumn, filter_typ, sort_column, transposed_table, crosstab, contingency_tb, seq_numbers_add, delrep_value, melt_table, df_rename, combine_column
-from table_functions import delete_column
+from table_functions import delete_column, change_datatype
 from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 from msa import msa_v1, msa_v2
 from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, liniendiagramm, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot_menu, pareto, pareto_one_column, pointplot1f, pointplot2f, confidencelinechart, threeddplot
@@ -101,107 +101,7 @@ def file_einlesen(fn):
     #read the file
     df=pd.read_csv(fn,sep=trennzeichen ,decimal=dezimalzeichen, header=kopfz, engine='python')
     
-    clear()
     
-    print('Overview of data formats:\n')
-    print(df.dtypes)
-    
-    ###change data type
-    ##################################################################################
-    datentyp_aendern = input('Would you like to change data types: y/n \n?')
-    
-    if datentyp_aendern == 'y':
-    
-        while True:
-            welcher_datentyp = input('How to change: \n1: float \n2: integer \n3: string \n4: categorie \n5: datetime \n(choose number) \n?')
-            
-            if welcher_datentyp =='1':
-                datent=df.select_dtypes(include=['int'])
-                anz_col = len(datent.columns)
-        
-                list_columns = []
-
-                i=1
-                for i in range(anz_col):
-                    list_columns.append(datent.columns[i])
-                    print(i, datent.columns[i])
-                    i+=1
-            
-                nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n?')
-                
-                df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype(float)
-            elif welcher_datentyp =='2':
-                datent=df.select_dtypes(include=['float', 'object'])
-                anz_col = len(datent.columns)
-        
-                list_columns = []
-
-                i=1
-                for i in range(anz_col):
-                    list_columns.append(datent.columns[i])
-                    print(i, datent.columns[i])
-                    i+=1
-            
-                nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n?')
-                try:
-                    df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype(int)
-                except Exception as exception:
-                    print('Convert data not possible!')    
-                    
-            elif welcher_datentyp =='3':
-                anz_col = len(df.columns)
-        
-                list_columns = []
-
-                i=1
-                for i in range(anz_col):
-                    list_columns.append(df.columns[i])
-                    print(i, df.columns[i])
-                    i+=1
-            
-                nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n?')
-                df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype(str)
-            
-            elif welcher_datentyp =='4':
-                anz_col = len(df.columns)
-        
-                list_columns = []
-
-                i=1
-                for i in range(anz_col):
-                    list_columns.append(df.columns[i])
-                    print(i, df.columns[i])
-                    i+=1
-            
-                nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n?')
-                df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype('category')
-            elif welcher_datentyp =='5':
-                anz_col = len(df.columns)
-        
-                list_columns = []
-
-                i=1
-                for i in range(anz_col):
-                    list_columns.append(df.columns[i])
-                    print(i, df.columns[i])
-                    i+=1
-            
-                nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n?')
-                try:
-                    df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype('datetime64[ns]')
-                except Exception as exception:
-                    print('Convert data not possible!')
-            else:
-                print('wrong input, please try again')
-            
-            
-            clear()
-            print('Overview of data formats:\n')
-            print(df.dtypes)
-            restart = input('\nChange additional data types: "y" \n?')
-            if restart.lower() != 'y':
-                break
-                #print('next steps')
     
     ###set filter
     ######################################################################################
@@ -647,24 +547,32 @@ def MSA(df):
 ###############################################################################
 def statistic(df):
     clear()
-    menu_statistic = input('What kind of statistics: \n1: simple descriptive statistics \n2: graphical view \n3: statistical significance tests \n4: process capability study \n5: linear regression study \n6: MSA (Measurement System Analysis) \n7: contingency table  \n(choose number)  \n?')
-    if menu_statistic =='1':
-        beschreibende_stat(df)
-    elif menu_statistic =='2':
-        menu_graphical_analyze(df)
-    elif menu_statistic =='3':
-        menu_tests(df)
-    elif menu_statistic =='4':
-        CPA(df)
-    elif menu_statistic =='5':
-        LREG(df)
-    elif menu_statistic =='6':
-        MSA(df)
-    elif menu_statistic =='7':
-        contingency_tb(df)
-    else:
-        print('wrong input, please try again!')
-        statistic(df)
+    change_datatype(df)
+    while True:
+        
+        menu_statistic = input('What kind of statistics: \n1: simple descriptive statistics \n2: graphical view \n3: statistical significance tests \n4: process capability study \n5: linear regression study \n6: MSA (Measurement System Analysis) \n7: contingency table  \n(choose number)  \n?')
+        if menu_statistic =='1':
+            beschreibende_stat(df)
+        elif menu_statistic =='2':
+            menu_graphical_analyze(df)
+        elif menu_statistic =='3':
+            menu_tests(df)
+        elif menu_statistic =='4':
+            CPA(df)
+        elif menu_statistic =='5':
+            LREG(df)
+        elif menu_statistic =='6':
+            MSA(df)
+        elif menu_statistic =='7':
+            contingency_tb(df)
+        else:
+            print('wrong input, please try again!')
+        
+        restart = input('\nFurther statistic functions: "y"\n?')
+        if restart.lower() != 'y':
+            break
+        
+        
 
         
 
@@ -710,10 +618,14 @@ def table_functions(fn, df):
             fn = 'cda_' + fn
             df=pd.read_csv(fn,sep=';' ,decimal=',', header=0, engine='python')
             print('current file name: ' , fn)
+        
+        change_datatype(df)
+        
         menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n11: get calendar info \n12: delete or replace value/characters \n13: melt columns \n14: rename column \n15: save to CSV-file \n16: combine factor columns \n17: delete column \n?')
+        
         if menu_tf =='1':
             clear()
-            preview_table(fn, df)
+            preview_table(df)
         elif menu_tf =='2':
             clear()
             appendDFToCSV(fn, df, sep=",")
@@ -732,7 +644,7 @@ def table_functions(fn, df):
         elif menu_tf =='9':
             seq_numbers_add(fn, df)
         elif menu_tf =='10':    
-            convert_datetime(fn, df)
+            convert_datetime(df)
         elif menu_tf =='11':
             cal_info(fn, df)
         elif menu_tf =='12':
