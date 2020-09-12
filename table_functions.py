@@ -273,8 +273,10 @@ def filter_typ(df):
         
         
         if restart.lower() != 'y':
-            save_CSV_new(df)
-                
+            break
+            
+    
+    save_CSV_new(df)            
     print(df)
     press_enter=input('press enter to continue')
     return(df)            
@@ -327,23 +329,23 @@ def sort_column(fn, df):
             restart_s = input('additional sorting: y/n \n?')
             if restart_s.lower() != 'y':
                 save_CSV(fn, df)
-                file_in_html(df)
+                file_in_html(fn, df)
                 return(df)   
                 
                 break
 
 ###transposed               
 ###############################################################################
-def transposed_table(df):
+def transposed_table(fn, df):
     clear()
     trans_yes = input('Would you like to transpose the table: y/n\n?')
     if trans_yes =='y':
         df = df.T
         save_CSV_new(df)
-        file_in_html(df)
+        file_in_html(fn, df)
         return(df)
     else:
-        file_in_html(df)
+        file_in_html(fn, df)
         return(df)
 
 ###crosstab
@@ -394,11 +396,11 @@ def crosstab(df):
         if with_sum =='y':
             ctv=pd.crosstab(index=df[tab1], columns=df[tab2], margins=True)
             print(ctv)    
-            save_CSV(df)
+            save_CSV_new(df)
         else:
             ctcalc = pd.crosstab(index=df[tab1], columns=df[tab2])
             print(ctcalc)
-            save_CSV(df)
+            save_CSV_new(df)
     
     elif which_table =='2':
         
@@ -529,7 +531,7 @@ def seq_numbers_add(fn, df):
     df[name_df] = range(seq_nr_from, seq_count+seq_nr_from)
     
     print(df)
-    file_in_html(df)
+    file_in_html(fn, df)
     print('To work with you have to save this dataframe as file')
     save_CSV(fn, df)
  

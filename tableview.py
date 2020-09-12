@@ -31,18 +31,21 @@ def datentyp(df):
 
 ######################################################################
 ###show DataFrame in browser    
-def file_in_html(df):
+def file_in_html(fn, df):
     
     show_in_html = input('Would you like to show in browser? y/n \n?')
-    if show_in_html.lower() != 'n':
+    if show_in_html.lower() != 'y':
+        print('no html')
+    else:
         pd.set_option('colheader_justify', 'center')   # FOR TABLE <th>
     
+        #fn = 'ja'
         html_string = '''
         <html>
         <head><title>HTML Pandas Dataframe with CSS</title></head>
         <link rel="stylesheet" type="text/css" href="df_style.css"/>
         <body>
-        csv-data-analyze - data-table - Python Analyze Tool<br>
+        csv-data-analyze - tableview - Dataframe: ''' + fn + '''<br>
             {table}
             </body>
             </html>.

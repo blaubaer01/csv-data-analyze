@@ -1,0 +1,10 @@
+;0;1;2;3;4;5;6;7;8;9;10;11;12;13;14;15;16;17;18;19
+Hersteller;BMW;Volvo;Volvo;Audi;Seat;Volkswagen;Volkswagen;Volkswagen;Audi;Volvo;Renault;Renault;Kia;Peugeot;BMW;Volkswagen;Fiat;Mazda;Mazda;Volkswagen
+Modell;520;XC60;XC90;Q3;Ibiza;Tiguan;Touran;Passat;A3;V50;Scenic;Clio;Rio;307;218;Caddy;500;6;MX-5;T6
+Kilometerstand;40000.0;42656.0;111183.0;42922.0;138000.0;13189.0;45000.0;100.0;345000.0;260000.0;2000.0;2000.0;4.0;52750.0;42346.0;156600.0;6917.0;;;26537.0
+Baujahr;2017.0;2017.0;2015.0;2016.0;2008.0;2018.0;2014.0;2018.0;2006.0;2008.0;2018.0;2018.0;;2004.0;2015.0;2007.0;2013.0;;;2017.0
+PS;190;190;224;184;69;179;140;67;170;109;140;90;84;109;150;105;69;194;132;204
+Zustand;Gebraucht;Gebraucht;Gebraucht;Gebraucht;Gebraucht;Gebraucht;Gebraucht;Gebraucht;Gebraucht;Gebraucht;Neu;Neu;Neu;Gebraucht;Gebraucht;Gebraucht;Gebraucht;Neu;Neu;Jahreswagen
+Kraftstoff;Diesel;Diesel;Diesel;Diesel;Benzin;Benzin;Benzin;Benzin;Diesel;Diesel;Benzin;Benzin;Benzin;Benzin;Diesel;Diesel;Benzin;Benzin;Benzin;Diesel
+Verbrauch;4.5;4.7;5.8;5.2;5.9;7.6;7.2;4.7;5.7;5.0;5.5;5.0;5.5;;4.5;6.9;5.1;6.8;6.3;7.6
+Preis;46900;32930;40930;30990;3200;39930;17000;10240;3550;3200;24990;14990;14250;2790;21950;2890;9450;34190;23190;60990

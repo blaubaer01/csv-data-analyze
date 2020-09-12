@@ -59,7 +59,7 @@ def addition_column(fn, df):
     df[name_col] = df[col1] + df[col2]
     
     print(df)
-    file_in_html(df)
+    file_in_html(fn, df)
     save_CSV(fn, df)  
  
 #######################################################################
@@ -108,7 +108,7 @@ def addition_val(fn, df):
     df[name_col] = df[col1] + float(value_col)
     
     print(df)
-    file_in_html(df)
+    file_in_html(fn, df)
     save_CSV(fn, df) 
 
 
@@ -161,7 +161,7 @@ def substraction_column(fn, df):
     df[name_col] = df[col1] - df[col2]
     
     print(df)
-    file_in_html(df)
+    file_in_html(fn, df)
     save_CSV(fn, df)
 
 
@@ -212,7 +212,7 @@ def substraction_val(fn, df):
     df[name_col] = df[col1] - float(value_col)
     
     print(df)
-    file_in_html(df)
+    file_in_html(fn, df)
     save_CSV(fn, df)
 
 
@@ -263,7 +263,7 @@ def multiplication_column(fn, df):
     df[name_col] = df[col1] * df[col2]
     
     print(df)
-    file_in_html(df)
+    file_in_html(fn, df)
     save_CSV(fn, df)
 
 
@@ -313,7 +313,7 @@ def multiplication_val(fn, df):
     df[name_col] = df[col1] * float(value_col)
     
     print(df)
-    file_in_html(df)
+    file_in_html(fn, df)
     save_CSV(fn, df)
     
 
@@ -368,7 +368,7 @@ def diffision_column(fn, df):
     df[name_col] = df[col1] / df[col2]
     
     print(df)
-    file_in_html(df)
+    file_in_html(fn, df)
     save_CSV(fn, df)
 
 #######################################################################
@@ -417,7 +417,7 @@ def diffision_val(fn, df):
     df[name_col] = df[col1] / float(value_col)
     
     print(df)
-    file_in_html(df)
+    file_in_html(fn, df)
     save_CSV(fn, df)   
 
 
@@ -460,7 +460,7 @@ def square_val(fn, df):
     df[name_col] = df[col1] **2
     
     print(df)
-    file_in_html(df)
+    file_in_html(fn, df)
     save_CSV(fn, df)      
 
 
@@ -505,7 +505,7 @@ def take_root_val(fn, df):
     #np.sqrt(football[['wins', 'losses']].sum(axis=1))
     
     print(df)
-    file_in_html(df)
+    file_in_html(fn, df)
     save_CSV(fn, df)    
 
 
@@ -557,7 +557,7 @@ def statistic_cross_col(fn, df):
     df3=pd.read_csv('described.csv',sep=';' ,decimal=',', header=1)
     df3.columns=['Stat Function', 'Value']
     print(df3)
-    file_in_html(df3)
+    file_in_html(fn, df3)
     
     save_yes = input('Would you like to save this statistic table view as "CSV-File": \ny/n \n?')
     if save_yes.lower() =='y':
@@ -622,7 +622,7 @@ def min_column(fn, df):
         df[name_col] = df[[col1,col2]].apply(np.min, axis=1)
     
         print(df)
-        file_in_html(df)
+        file_in_html(fn, df)
     
 ####################################################################
 ###3 columns
@@ -659,7 +659,7 @@ def min_column(fn, df):
         df[name_col] = df[[col1,col2,col3]].apply(np.min, axis=1)
     
         print(df)
-        file_in_html(df)
+        file_in_html(fn, df)
 
 ####################################################################
 ###4 columns
@@ -704,7 +704,7 @@ def min_column(fn, df):
         df[name_col] = df[[col1,col2,col3,col4]].apply(np.min, axis=1)
     
         print(df)
-        file_in_html(df)
+        file_in_html(fn, df)
     
 ####################################################################
 ###5 columns
@@ -757,7 +757,7 @@ def min_column(fn, df):
         df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.min, axis=1)
     
         print(df)
-        file_in_html(df)
+        file_in_html(fn, df)
         
     else:
         print('Wrong Input (Choose Number between 2-5)')
@@ -818,7 +818,7 @@ def max_column(fn, df):
         df[name_col] = df[[col1,col2]].apply(np.max, axis=1)
     
         print(df)
-        file_in_html(df)
+        file_in_html(fn, df)
     
 ####################################################################
 ###3 columns
@@ -855,7 +855,7 @@ def max_column(fn, df):
         df[name_col] = df[[col1,col2,col3]].apply(np.max, axis=1)
     
         print(df)
-        file_in_html(df)
+        file_in_html(fn, df)
 
 ####################################################################
 ###4 columns
@@ -900,7 +900,7 @@ def max_column(fn, df):
         df[name_col] = df[[col1,col2,col3,col4]].apply(np.max, axis=1)
     
         print(df)
-        file_in_html(df)
+        file_in_html(fn, df)
     
 ####################################################################
 ###5 columns
@@ -953,7 +953,7 @@ def max_column(fn, df):
         df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.max, axis=1)
     
         print(df)
-        file_in_html(df)
+        file_in_html(fn, df)
         
     else:
         print('Wrong Input (Choose Number between 2-5)')
@@ -1012,7 +1012,7 @@ def mean_column(fn, df):
         df[name_col] = df[[col1,col2]].apply(np.mean, axis=1)
     
         print(df)
-        file_in_html(df)
+        file_in_html(fn, df)
     
 ####################################################################
 ###3 columns
@@ -1049,7 +1049,7 @@ def mean_column(fn, df):
         df[name_col] = df[[col1,col2,col3]].apply(np.mean, axis=1)
     
         print(df)
-        file_in_html(df)
+        file_in_html(fn, df)
 
 ####################################################################
 ###4 columns
@@ -1094,7 +1094,7 @@ def mean_column(fn, df):
         df[name_col] = df[[col1,col2,col3,col4]].apply(np.mean, axis=1)
     
         print(df)
-        file_in_html(df)
+        file_in_html(fn, df)
     
 ####################################################################
 ###5 columns
@@ -1147,7 +1147,7 @@ def mean_column(fn, df):
         df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.mean, axis=1)
     
         print(df)
-        file_in_html(df)
+        file_in_html(fn, df)
         
     else:
         print('Wrong Input (Choose Number between 2-5)')
@@ -1206,7 +1206,7 @@ def std_column(fn, df):
         df[name_col] = df[[col1,col2]].apply(np.std, axis=1)
     
         print(df)
-        file_in_html(df)
+        file_in_html(fn, df)
     
 ####################################################################
 ###3 columns
@@ -1243,7 +1243,7 @@ def std_column(fn, df):
         df[name_col] = df[[col1,col2,col3]].apply(np.std, axis=1)
     
         print(df)
-        file_in_html(df)
+        file_in_html(fn, df)
 
 ####################################################################
 ###4 columns
@@ -1288,7 +1288,7 @@ def std_column(fn, df):
         df[name_col] = df[[col1,col2,col3,col4]].apply(np.std, axis=1)
     
         print(df)
-        file_in_html(df)
+        file_in_html(fn, df)
     
 ####################################################################
 ###5 columns
@@ -1341,7 +1341,7 @@ def std_column(fn, df):
         df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.std, axis=1)
     
         print(df)
-        file_in_html(df)
+        file_in_html(fn, df)
         
     else:
         print('Wrong Input (Choose Number between 2-5)')
@@ -1401,7 +1401,7 @@ def range_column(fn, df):
         df[name_col] = df[[col1,col2]].apply(np.max, axis=1)-df[[col1,col2]].apply(np.min, axis=1)
     
         print(df)
-        file_in_html(df)
+        file_in_html(fn, df)
     
 ####################################################################
 ###3 columns
@@ -1438,7 +1438,7 @@ def range_column(fn, df):
         df[name_col] = df[[col1,col2,col3]].apply(np.max, axis=1)-df[[col1,col2,col3]].apply(np.min, axis=1)
     
         print(df)
-        file_in_html(df)
+        file_in_html(fn, df)
 
 ####################################################################
 ###4 columns
@@ -1483,7 +1483,7 @@ def range_column(fn, df):
         df[name_col] = df[[col1,col2,col3,col4]].apply(np.max, axis=1)-df[[col1,col2,col3,col4]].apply(np.min, axis=1)
     
         print(df)
-        file_in_html(df)
+        file_in_html(fn, df)
     
 ####################################################################
 ###5 columns

@@ -259,7 +259,7 @@ def file_einlesen(fn):
     
     
     print(df)
-    file_in_html(df)
+    file_in_html(fn, df)
     next = input('push button for next steps')
     return(df)
 
@@ -580,7 +580,7 @@ def statistic(df):
 #######################################################################
 ###table preview menu
 ###############################################################################
-def preview_table(df):
+def preview_table(fn, df):
     while True:
         clear()
         menu_voranalyse = input('Preview Menu: \n1: Single-view \n2: Datatype \n3: Missing-Datas \n4: show Data in HTML \n?')
@@ -594,7 +594,7 @@ def preview_table(df):
             clear()
             fehlende_daten(df)
         elif menu_voranalyse =='4':
-            file_in_html(df)
+            file_in_html(fn, df)
         else:
             print('Wrong input, please try again!')
             #voranalyse(df)
@@ -625,12 +625,12 @@ def table_functions(fn, df):
         
         if menu_tf =='1':
             clear()
-            preview_table(df)
+            preview_table(fn, df)
         elif menu_tf =='2':
             clear()
             appendDFToCSV(fn, df, sep=",")
         elif menu_tf =='3':
-            mergecolumn(fn, df)
+            mergecolumn(df)
         elif menu_tf =='4':
             filter_typ(df)
         elif menu_tf =='5':
@@ -638,7 +638,7 @@ def table_functions(fn, df):
         elif menu_tf =='6':
             transposed_table(fn, df)
         elif menu_tf =='7':
-            crosstab(fn, df)
+            crosstab(df)
         elif menu_tf =='8':
             menu_calc(fn, df)
         elif menu_tf =='9':
@@ -646,7 +646,7 @@ def table_functions(fn, df):
         elif menu_tf =='10':    
             convert_datetime(df)
         elif menu_tf =='11':
-            cal_info(fn, df)
+            cal_info(df)
         elif menu_tf =='12':
             delrep_value(fn, df)
         elif menu_tf =='13':
