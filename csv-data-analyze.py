@@ -650,7 +650,7 @@ def table_functions(fn, df):
         elif menu_tf =='12':
             delrep_value(fn, df)
         elif menu_tf =='13':
-            melt_table(fn, df)
+            melt_table(df)
         elif menu_tf =='14':
             df_rename(fn, df)
         elif menu_tf =='15':

@@ -73,7 +73,7 @@ def save_CSV(fn, df):
     speichern_ja = input('Save the modified dataframe: y/n \n? ')
     if speichern_ja.lower() =='y':
         print('save file ...', fn)
-        df.to_csv(fn, sep=';', decimal=',', header =True)
+        df.to_csv(fn, sep=';', decimal=',', header =True, index=False)
         
         
 
