@@ -9,7 +9,7 @@ Created on Fri May 29 21:51:59 2020
 import pandas as pd
 import numpy as np
 from tableview import file_in_html
-from mft import isfloat, isinteger, clear
+from mft import isfloat, isinteger, clear, save_CSV_new
 
 df = pd.DataFrame()
 ####create random data
@@ -43,19 +43,13 @@ def seq_numbers(df):
     
     name_df = input('Table Name: ?')
     
-    
+    fn ='new_data.csv'
     
     df[name_df] = range(seq_nr_from, seq_often +1 + seq_nr_from)
     
     print(df)
-    file_in_html(df)
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)      
- 
+    file_in_html(fn, df)
+    save_CSV_new(df)
 ###############################################################################
 ###create normal distributions data
 def nd_data(df):
@@ -96,15 +90,11 @@ def nd_data(df):
     
     df[name_df] = np.random.normal(mean_df, std_df, seq_often)
     
+    fn ='new_data.csv'
+    
     print(df)
-    file_in_html(df)
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)    
-
+    file_in_html(fn, df)
+    save_CSV_new(df)
 
 ###############################################################################
 ###create binomial data
@@ -156,15 +146,10 @@ def bd_data(df):
     
     df[name_df] = np.random.binomial(n_df, p_df, seq_often)
     
+    fn ='new_data.csv'
     print(df)
-    file_in_html(df)
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)    
-
+    file_in_html(fn, df)
+    save_CSV_new(df)
 
 ###############################################################################
 ###create poisson data
@@ -204,16 +189,11 @@ def pd_data(df):
     
     
     df[name_df] = np.random.poisson(p_df, seq_often)
-    
+    fn ='new_data.csv'
     print(df)
-    file_in_html(df)
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)    
-        
+    file_in_html(fn, df)
+    save_CSV_new(df)
+    
 ##############################################################################
 ###create logistic data
 def ld_data(df):
@@ -253,16 +233,10 @@ def ld_data(df):
     
     
     df[name_df] = np.random.logistic(location_df, scale_df, seq_often)
-    
+    fn ='new_data.csv'
     print(df)
-    file_in_html(df)
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)    
-
+    file_in_html(fn, df)
+    save_CSV_new(df)
 ##############################################################################
 ###create shisquare data
 def shisq_data(df):
@@ -311,16 +285,10 @@ def shisq_data(df):
     
     
     df[name_df] = np.random.chisquare(defr, size=(m_df*n_df*k_df))
-    
+    fn ='new_data.csv'
     print(df)
-    file_in_html
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)    
-
+    file_in_html(fn, df)
+    save_CSV_new(df)
 ###############################################################################
 ###create pareto distribution data
 
@@ -370,16 +338,10 @@ def pareto_data(df):
     
     
     df[name_df] = np.random.pareto(a_df, size=(m_df*n_df*k_df))+m_df
-    
+    fn ='new_data.csv'
     print(df)
-    file_in_html(df)
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)    
-
+    file_in_html(fn, df)
+    save_CSV_new(df)
 ###############################################################################
 ###create exponential distribution data
 
@@ -429,16 +391,10 @@ def exp_data(df):
     
     
     df[name_df] = np.random.exponential(scale_df, size=(m_df*n_df*k_df))
-    
+    fn ='new_data.csv'
     print(df)
-    file_in_html(df)
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)    
-
+    file_in_html(fn, df)
+    save_CSV_new(df)
 ###############################################################################
 ###create uniform distribution data
 def unif_data(df):
@@ -478,15 +434,12 @@ def unif_data(df):
     
     
     df[name_df] = np.random.uniform(high_df, low_df, seq_often)
-    
+    fn ='new_data.csv'
     print(df)
-    file_in_html(df)
-    print('To work with you have to save this dataframe as file')
-    save_yes = input('Would you like to save: \ny/n \n?')
-    if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)    
+    file_in_html(fn, df)
+    save_CSV_new(df)
+    
+    
 ##############################################################################
 ###main menu create random data
 def menu_rd(df):
