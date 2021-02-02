@@ -246,7 +246,6 @@ def file_einlesen(fn):
             
             restart_s = input('additional sorting: y/n \n?')
             if restart_s.lower() != 'y':
-                return(df)
                 break
                    
     ####################################################################################
@@ -696,7 +695,7 @@ def mit_daten_arbeiten(fn, df):
     while True:
         clear()
         #read the file
-        print('open current file...')
+        print('open current file...\n')
         if 'cda_' in fn:
             df=pd.read_csv(fn,sep=';' ,decimal=',', header=0, engine='python')
             print('current file name: ' , fn)
@@ -704,7 +703,8 @@ def mit_daten_arbeiten(fn, df):
             fn = 'cda_' + fn
             df=pd.read_csv(fn,sep=';' ,decimal=',', header=0, engine='python')
             print('current file name: ' , fn)
-        m_d_a = input('Next Steps:\n1:Table Functions \n2:Statistics Analyze \n?')
+        print('\n')
+        m_d_a = input('Next Steps:\n1:Table Functions \n2:Statistics Analyze \np: preview table \nd: descriptice statistics \ng: grafical analyse \nt: statistical tests \n?')
         if m_d_a =='1':
             clear()
             table_functions(fn, df)
@@ -713,7 +713,7 @@ def mit_daten_arbeiten(fn, df):
             statistic(df)
         elif m_d_a =='p':
             clear()
-            preview_table(df)
+            preview_table(fn, df)
         elif m_d_a =='d':
             clear()
             beschreibende_stat(df)
