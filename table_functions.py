@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 #import scipy as spy
 from scipy.stats import chi2_contingency
 from tableview import file_in_html
-from mft import clear, truncate, isfloat, save_CSV, save_CSV_new
+from mft import clear, truncate, isfloat, save_CSV, save_CSV_new, isinteger
 from tableview import filter_in_html
 import numpy as np
 
@@ -529,6 +529,44 @@ def seq_numbers_add(fn, df):
     
     
     df[name_df] = range(seq_nr_from, seq_count+seq_nr_from)
+    
+    print(df)
+    file_in_html(fn, df)
+    print('To work with you have to save this dataframe as file')
+    save_CSV(fn, df)
+
+
+def nv_add(fn, df):
+    
+    seq_count = len(df)
+    print('Create normal distributions data')
+    
+    while True:
+        mean_df = input('Mean (choose point-comma): ?')
+    
+        if not isfloat(mean_df):
+            print("mean is not a number with point-comma, please try again")
+        else:
+            break
+    while True:
+        std_df = input('Deviation (choose point-comma)?')
+    
+        if not isfloat(std_df):
+            print("Deviation is not a number with point-comma, please try again")
+        else:
+            break
+    
+    
+    mean_df = float(mean_df)
+    std_df = float(std_df)
+    seq_often = int(seq_count)
+    
+    
+    name_df = input('Table Name: ?')
+    
+    
+    
+    df[name_df] = np.random.normal(mean_df, std_df, seq_often)
     
     print(df)
     file_in_html(fn, df)
