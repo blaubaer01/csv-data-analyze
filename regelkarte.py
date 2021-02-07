@@ -165,7 +165,7 @@ def x_bar_s(df):
         
         #df3.plot(x, y, ax=axes[0])
         plt.subplot(221)
-        sns.lineplot(x=x, y=y, estimator=None, lw=1, data=df3)
+        sns.lineplot(x=x, y=y, estimator=None, lw=1, marker='o',  data=df3)
         plt.axhline(y=Xbar,linewidth=2, color='g')
         plt.axhline(y=xlcl,linewidth=2, color='orange')
         plt.axhline(y=xucl,linewidth=2, color='orange')
@@ -174,7 +174,7 @@ def x_bar_s(df):
         
         #df3.plot(x, s, ax = axes[1])
         plt.subplot(222)
-        sns.lineplot(x=x, y=s, estimator=None, lw=1, data=df3)
+        sns.lineplot(x=x, y=s, estimator=None, lw=1, marker='o', data=df3)
         plt.axhline(y=sbar, linewidth=2, color='g')
         plt.axhline(y=slcl,linewidth=2, color='orange')
         plt.axhline(y=sucl,linewidth=2, color='orange')
@@ -231,14 +231,14 @@ def x_bar_s(df):
         
         #df3.plot(x, y, ax=axes[0])
         plt.subplot(221)
-        sns.lineplot(x=x, y=y, estimator=None, lw=1, data=df3)
+        sns.lineplot(x=x, y=y, estimator=None, lw=1, marker='o', data=df3)
         plt.axhline(y=Xbar,linewidth=2, color='g')
         plt.axhline(y=xlcl,linewidth=2, color='orange')
         plt.axhline(y=xucl,linewidth=2, color='orange')
         
         #df3.plot(x, s, ax = axes[1])
         plt.subplot(222)
-        sns.lineplot(x=x, y=s, estimator=None, lw=1, data=df3)
+        sns.lineplot(x=x, y=s, estimator=None, lw=1, marker='o', data=df3)
         plt.axhline(y=sbar, linewidth=2, color='g')
         plt.axhline(y=slcl,linewidth=2, color='orange')
         plt.axhline(y=sucl,linewidth=2, color='orange')
@@ -260,7 +260,7 @@ def x_bar_s(df):
 ################################################################################
 def x_chart(df):
     
-    df['nummer'] = range(1, len(df) + 1)
+    df['number'] = range(1, len(df) + 1)
     
     
     werte = df.select_dtypes(exclude=['object'])
@@ -287,7 +287,7 @@ def x_chart(df):
     print(list_columns_werte[int(value_column)])    
     y = list_columns_werte[int(value_column)]
     
-    x = 'nummer'
+    x = 'number'
     
     yt = df[list_columns_werte[int(value_column)]]
     
@@ -367,14 +367,20 @@ def x_chart(df):
         mittelwert = median
         ut3s = upper_q_y
         lt3s = lower_q_y
+        print('median:', median )
+        print('Quantil(0.99869)', upper_q_y)
+        print('Quantil(0.00135)', lower_q_y)
+        
     else:
         mittelwert = mean_y
         ut3s = plus3s
         lt3s = minus3s
-    
+        print('mean:', mean_y )
+        print('+3s:', plus3s)
+        print('-3s', minus3s)
     
     if notol =='1':
-        df.plot(x, y)
+        df.plot(x, y, style='-o')
         plt.axhline(y=mittelwert,linewidth=2, color='g')
         
         plt.axhline(y=ut3s,linewidth=1, color='orange')
@@ -387,7 +393,7 @@ def x_chart(df):
     
         if lt =='none':
               
-            df.plot(x, y)
+            df.plot(x, y, style='-o')
             plt.axhline(y=mittelwert,linewidth=2, color='g')
             
             plt.axhline(y=ut3s,linewidth=1, color='orange')
@@ -399,7 +405,7 @@ def x_chart(df):
             
         elif ut=='none':
             
-            df.plot(x, y)
+            df.plot(x, y, style='-o')
             plt.axhline(y=mittelwert,linewidth=2, color='g')
             
             plt.axhline(y=ut3s,linewidth=1, color='orange')
@@ -410,7 +416,7 @@ def x_chart(df):
         
         else:
         
-            df.plot(x, y)
+            df.plot(x, y, style='-o')
             plt.axhline(y=mittelwert,linewidth=2, color='g')
             
             plt.axhline(y=ut3s,linewidth=1, color='orange')
@@ -550,7 +556,7 @@ def x_bar_r(df):
         
         #df3.plot(x, y, ax=axes[0])
         plt.subplot(221)
-        sns.lineplot(x=x, y=y, estimator=None, lw=1, data=df3)
+        sns.lineplot(x=x, y=y, estimator=None, lw=1, marker='o', data=df3)
         plt.axhline(y=Xbar,linewidth=2, color='g')
         plt.axhline(y=xlcl,linewidth=2, color='orange')
         plt.axhline(y=xucl,linewidth=2, color='orange')
@@ -559,7 +565,7 @@ def x_bar_r(df):
         
         #df3.plot(x, s, ax = axes[1])
         plt.subplot(222)
-        sns.lineplot(x=x, y=r, estimator=None, lw=1, data=df3)
+        sns.lineplot(x=x, y=r, estimator=None, lw=1, marker='o', data=df3)
         plt.axhline(y=Rbar, linewidth=2, color='g')
         plt.axhline(y=rlcl,linewidth=2, color='orange')
         plt.axhline(y=rucl,linewidth=2, color='orange')
@@ -622,7 +628,7 @@ def x_bar_r(df):
         
         #df3.plot(x, y, ax=axes[0])
         plt.subplot(221)
-        sns.lineplot(x=x, y=y, estimator=None, lw=1, data=df3)
+        sns.lineplot(x=x, y=y, estimator=None, lw=1, marker='o', data=df3)
         plt.axhline(y=Xbar,linewidth=2, color='g')
         plt.axhline(y=xlcl,linewidth=2, color='orange')
         plt.axhline(y=xucl,linewidth=2, color='orange')
@@ -631,7 +637,7 @@ def x_bar_r(df):
         
         #df3.plot(x, s, ax = axes[1])
         plt.subplot(222)
-        sns.lineplot(x=x, y=r, estimator=None, lw=1, data=df3)
+        sns.lineplot(x=x, y=r, estimator=None, lw=1, marker='o', data=df3)
         plt.axhline(y=Rbar, linewidth=2, color='g')
         plt.axhline(y=rlcl,linewidth=2, color='orange')
         plt.axhline(y=rucl,linewidth=2, color='orange')
@@ -678,13 +684,13 @@ def xmr_chart(df):
         
     print(list_columns_werte[int(value_column)])    
     y = list_columns_werte[int(value_column)]
-    df['number'] = range(1, len(df) + 1)
+    df['sample'] = range(1, len(df) + 1)
     
     
     data = df[y]
     Xbar = df[y].mean()
     
-    x = df['number']
+    x = df['sample']
     
     sd = 0
     r = []
@@ -699,9 +705,9 @@ def xmr_chart(df):
     
     dfr = pd.DataFrame(rarray)
     dfr.columns = ['R'] 
-    dfr['number'] = range(1, len(dfr) + 1)
+    dfr['sample'] = range(1, len(dfr) + 1)
     
-    xr = dfr['number']
+    xr = dfr['sample']
     r = dfr['R']
     
     #print(dfr)
@@ -739,7 +745,7 @@ def xmr_chart(df):
     
     #df3.plot(x, y, ax=axes[0])
     plt.subplot(221)
-    sns.lineplot(x=x, y=y, estimator=None, lw=1, data=df)
+    sns.lineplot(x=x, y=y, estimator=None, lw=1, marker='o', data=df)
     plt.axhline(y=Xbar,linewidth=2, color='g')
     plt.axhline(y=xlcl,linewidth=2, color='orange')
     plt.axhline(y=xucl,linewidth=2, color='orange')
@@ -748,7 +754,7 @@ def xmr_chart(df):
     
     #df3.plot(x, s, ax = axes[1])
     plt.subplot(222)
-    sns.lineplot(x=xr, y=r, estimator=None, lw=1, data=dfr)
+    sns.lineplot(x=xr, y=r, estimator=None, lw=1, marker='o', data=dfr)
     plt.axhline(y=rbar, linewidth=2, color='g')
     plt.axhline(y=rlcl,linewidth=2, color='orange')
     plt.axhline(y=rucl,linewidth=2, color='orange')

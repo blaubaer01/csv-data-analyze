@@ -24,7 +24,7 @@ from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_
 from table_calc import menu_calc
 from rand_data import menu_rd
 from tableview import fehlende_daten, datentyp, file_in_html, einzeldaten_anschauen , filter_in_html
-from mft import clear, save_CSV_new, save_CSV
+from mft import clear, save_CSV_new
 from date_function import convert_datetime, cal_info
 
 import webbrowser

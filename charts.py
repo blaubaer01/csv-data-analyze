@@ -7,10 +7,9 @@ Created on Wed May 13 11:55:01 2020
 """
 import seaborn as sns
 import matplotlib.pyplot as plt
-import os
 import scipy as spy
 from mft import isfloat, clear
-from mpl_toolkits import mplot3d
+#from mpl_toolkits import mplot3d
 
 
 
@@ -177,7 +176,8 @@ def liniendiagramm(df):
     x = list_columns_kategorie[int(groupby_column)]
     
     
-    df.plot(x, y, grid=True)
+    #df.plot(x, y, grid=True)
+    df.plot.line(x, y, style='-o', grid=True)
     
     plt.show()
 
