@@ -753,13 +753,23 @@ def main():
     
     print("\033[1;37;40m \n")
     clear()
-    print('#'*80)
-    print('CSV Data Analyze-Tool V1.0 (squirrel) by Ricky Helfgen \nThis is an open source project and is subject to the guidelines of GPL V3')
-    print('This tool is used for data analysis of CSV files with python3,\n and packages:numpy, webbrowser, pandas, scipy, matplotlib, seaborn, statsmodels, os-sys')
-    print('Download under: https://github.com/blaubaer01/csv-data-analyze')
-    print('More Infos: http://www.reh-webdesign.de/csv-data-analyze/howto/csv-data-analyze.html')
-    print('Have Fun!')
-    print('#'*80)
+    print('#'*92)
+    print('#                                                                                          #')
+    print('#               CSV Data Analyze-Tool V2.0 (turtel) by Ricky Helfgen                       #')
+    print('#      This is an open source project and is subject to the guidelines of GPL V3           #')
+    print('#                           Analyze CSV-Data files with:                                   #')
+    print('#   python3, pandas, numpy, matplotlib, seaborn, statsmodels, os-sys, scipy, webbrownser   #')
+    print('#              Download under: https://github.com/blaubaer01/csv-data-analyze              #')
+    print('#   More Infos: http://www.reh-webdesign.de/csv-data-analyze/howto/csv-data-analyze.html   #')
+    print('#                                     Have Fun!                                            #')
+    print('#                                                                                          #')
+    print('#__________________###___####___#___#___###_____####___#####__####_____##__________________#')
+    print('#_________________#______#______#___#___#__#____#__#_____#_______#____#__#_________________#')
+    print('#_________________#______####___#___#___#___#___####_____#____####___#____#________________#')
+    print('#_________________#_________#____#_#____#__#____#__#_____#____#_______#__#_________________#')
+    print('#__________________###___####_____#_____###_____#__#_____#____####_##__##__________________#')
+    print('#                                                                                          #')
+    print('#'*92)
     
     
     while True:
@@ -815,7 +825,7 @@ def main():
         
         
         elif start =='4':
-            print("It's your decision, have a nice day!")
+            print("It's your decision ;-) , have a nice day!")
             break
                 
         else:

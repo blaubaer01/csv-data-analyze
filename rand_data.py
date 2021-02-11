@@ -49,7 +49,7 @@ def seq_numbers(df):
     
     print(df)
     file_in_html(fn, df)
-    save_CSV_new(df)
+    #save_CSV_new(df)
 ###############################################################################
 ###create normal distributions data
 def nd_data(df):
@@ -94,7 +94,7 @@ def nd_data(df):
     
     print(df)
     file_in_html(fn, df)
-    save_CSV_new(df)
+    #save_CSV_new(df)
 
 ###############################################################################
 ###create binomial data
@@ -149,7 +149,7 @@ def bd_data(df):
     fn ='new_data.csv'
     print(df)
     file_in_html(fn, df)
-    save_CSV_new(df)
+    #save_CSV_new(df)
 
 ###############################################################################
 ###create poisson data
@@ -192,7 +192,7 @@ def pd_data(df):
     fn ='new_data.csv'
     print(df)
     file_in_html(fn, df)
-    save_CSV_new(df)
+    #save_CSV_new(df)
     
 ##############################################################################
 ###create logistic data
@@ -236,7 +236,7 @@ def ld_data(df):
     fn ='new_data.csv'
     print(df)
     file_in_html(fn, df)
-    save_CSV_new(df)
+    #save_CSV_new(df)
 ##############################################################################
 ###create shisquare data
 def shisq_data(df):
@@ -288,7 +288,7 @@ def shisq_data(df):
     fn ='new_data.csv'
     print(df)
     file_in_html(fn, df)
-    save_CSV_new(df)
+    #save_CSV_new(df)
 ###############################################################################
 ###create pareto distribution data
 
@@ -341,7 +341,7 @@ def pareto_data(df):
     fn ='new_data.csv'
     print(df)
     file_in_html(fn, df)
-    save_CSV_new(df)
+    #save_CSV_new(df)
 ###############################################################################
 ###create exponential distribution data
 
@@ -394,7 +394,7 @@ def exp_data(df):
     fn ='new_data.csv'
     print(df)
     file_in_html(fn, df)
-    save_CSV_new(df)
+    #save_CSV_new(df)
 ###############################################################################
 ###create uniform distribution data
 def unif_data(df):
@@ -437,7 +437,7 @@ def unif_data(df):
     fn ='new_data.csv'
     print(df)
     file_in_html(fn, df)
-    save_CSV_new(df)
+    #save_CSV_new(df)
     
     
 ##############################################################################
@@ -445,33 +445,51 @@ def unif_data(df):
 def menu_rd(df):
     clear()
     
-    
+    print(80*'#'+'\n')
     print('Create random data with "numpy" and "pandas"')
+    print('')
+    print(80*'#' + '\n')
+          
     rand_liste = ['sequence number', 'normal distribution data', 'binomial distributions data', 'poisson distribution data', 'logistic distribution data', 'chi square distribution', 'pareto distribution', 'exponetial distribution', 'uniform distribution']
     for i in range(len(rand_liste)):
         print(i, rand_liste[i])
         i+=1
-    rd = input('Which kind of numbers do you would like to create: \n(choose a number) \n?')
+    print('')
+    
+    while True:
+    
+        rd = input('Which kind of numbers do you would like to create: \n(choose a number) \n?')
     
     
-    if rd == '0' :
-        seq_numbers(df)
-    elif rd == '1' :
-        nd_data(df)
-    elif rd == '2' :
-        bd_data(df)
-    elif rd == '3' :
-        pd_data(df)
-    elif rd == '4' :
-        ld_data(df)
-    elif rd == '5' :
-        shisq_data(df)
-    elif rd == '6' :    
-        pareto_data(df)
-    elif rd == '7' :
-        exp_data(df)
-    elif rd == '8' :
-        unif_data(df)
-    else:
-        print('wrong input, not available yet!')
+        if rd == '0' :
+            seq_numbers(df)
+            break
+        elif rd == '1' :
+            nd_data(df)
+            break
+        elif rd == '2' :
+            bd_data(df)
+            break
+        elif rd == '3' :
+            pd_data(df)
+            break
+        elif rd == '4' :
+            ld_data(df)
+            break
+        elif rd == '5' :
+            shisq_data(df)
+            break
+        elif rd == '6' :    
+            pareto_data(df)
+            break
+        elif rd == '7' :
+            exp_data(df)
+            break
+        elif rd == '8' :
+            unif_data(df)
+            break
+        else:
+            print('wrong input, not available yet!')
         
+        
+            

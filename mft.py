@@ -60,6 +60,7 @@ def isinteger(x):
 ########################################################################
 ###save dataframe to CSV-File
 def save_CSV_new(df):
+    clear()
     speichern_ja = input('Save the modified dataframe: y/n \n?')
     if speichern_ja.lower() =='y':
         csvfilename = input('Input only Filename ([filename].csv will save automaticly) \n?')
@@ -70,6 +71,7 @@ def save_CSV_new(df):
 ########################################################################
 ###save dataframe to CSV-File
 def save_CSV(fn, df):
+    clear()
     speichern_ja = input('Save the modified dataframe: y/n \n? ')
     if speichern_ja.lower() =='y':
         print('save file ...', fn)
