@@ -16,7 +16,7 @@ import os
 from SPC_CPA import CPA
 from L_REG import LREG
 from table_functions import appendDFToCSV, mergecolumn, filter_typ, sort_column, transposed_table, crosstab, contingency_tb, seq_numbers_add, delrep_value, melt_table, df_rename, combine_column
-from table_functions import delete_column, change_datatype, nv_add
+from table_functions import delete_column, change_datatype, menu_rand_data
 from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 from msa import msa_v1, msa_v2
 from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, line_diagram_menu, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot_menu, pareto, pareto_one_column, pointplot1f, pointplot2f, confidencelinechart, threeddplot
@@ -629,7 +629,7 @@ def table_functions(fn, df):
         
         change_datatype(df)
         
-        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n11: get calendar info \n12: delete or replace value/characters \n13: melt columns \n14: rename column \n15: save to CSV-file \n16: combine factor columns \n17: delete column \n18: add random normal-distribution-table \n?')
+        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n11: get calendar info \n12: delete or replace value/characters \n13: melt columns \n14: rename column \n15: save to CSV-file \n16: combine factor columns \n17: delete column \n18: add random distribution-data \n?')
         
         if menu_tf =='1':
             clear()
@@ -668,7 +668,7 @@ def table_functions(fn, df):
         elif menu_tf =='17':
             delete_column(fn, df)
         elif menu_tf == '18':
-            nv_add(fn, df)
+            menu_rand_data(fn, df)
             
         
         
@@ -762,11 +762,11 @@ def main():
     print('#   More Infos: http://www.reh-webdesign.de/csv-data-analyze/howto/csv-data-analyze.html   #')
     print('#                                     Have Fun!                                            #')
     print('#                                                                                          #')
-    print('#_|_________###_________|____###___####___#___#___###_____####___#####__####_____##________#')
-    print('#_|________#####________|___#______#______#___#___#__#____#__#_____#_______#____#__#_______#')
-    print('#_|_______#######_______|___#______####___#___#___#___#___####_____#____####___#____#______#')
-    print('#_|_____###########_____|___#_________#____#_#____#__#____#__#_____#____#_______#__#_______#')
-    print('#_|_###################_|____###___####_____#_____###_____#__#_____#____####_##__##________#')
+    print('#_|__________###____ _____|____###___####___#___#___###_____####___#####__####_____##______#')
+    print('#_|________#######________|___#______#______#___#___#__#____#__#_____#_______#____#__#_____#')
+    print('#_|_______#########_______|___#______####___#___#___#___#___####_____#____####___#____#____#')
+    print('#_|_____#############_____|___#_________#____#_#____#__#____#__#_____#____#_______#__#_____#')
+    print('#_|_#####################_|____###___####_____#_____###_____#__#_____#____####_##__##______#')
     print('#                                                                                          #')
     print('#'*92)
     

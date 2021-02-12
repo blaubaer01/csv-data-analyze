@@ -535,7 +535,11 @@ def seq_numbers_add(fn, df):
     print('To work with you have to save this dataframe as file')
     save_CSV(fn, df)
 
-
+##############################################################################
+##add random datas
+    
+    
+#nornal distrubution    
 def nv_add(fn, df):
     
     seq_count = len(df)
@@ -573,7 +577,146 @@ def nv_add(fn, df):
     print('To work with you have to save this dataframe as file')
     save_CSV(fn, df)
  
+def add_bd_data(fn, df):
+    clear()
     
+    seq_count = len(df)
+    print('Create binomial distributions data')
+    
+        
+    
+    
+    while True:
+        p_df = input('p (0-1) (choose point-comma): ?')
+        if not isfloat(p_df):
+            print("p is not a number with point-comma, please try again")
+        elif float(p_df) > 1:
+            print('p should by between 0 and 1')
+        else:
+            
+            break
+    
+    
+    while True:
+        n_df = input('n (samplesize) : ?')
+        if not isinteger(n_df):
+            print("'n' is not an integer, please try again")
+        else:
+            break
+
+            
+    p_df = float(p_df)
+    n_df = int(n_df)
+    seq_often = int(seq_count)
+    
+    
+    name_df = input('Table Name: ?')
+    
+    
+    
+    df[name_df] = np.random.binomial(n_df, p_df, seq_often)
+    
+    print(df)
+    file_in_html(fn, df)
+    print('To work with you have to save this dataframe as file')
+    save_CSV(fn, df)
+    
+
+###create poisson data
+def add_pd_data(fn, df):
+    
+    seq_count = len(df)
+    print('Create poisson distributions data')
+    
+        
+    
+    
+    while True:
+        p_df = input('µ (choose point-comma): ?')
+        if not isfloat(p_df):
+            print("µ is not a number with point-comma, please try again")
+        else:
+            
+            break
+    
+     
+    
+    
+    
+    p_df = float(p_df)
+    
+    seq_often = int(seq_count)
+    
+    
+    name_df = input('Table Name: ?')
+    
+    
+    
+    df[name_df] = np.random.poisson(p_df, seq_often)
+    print(df)
+    file_in_html(fn, df)
+    print('To work with you have to save this dataframe as file')
+    save_CSV(fn, df)
+
+###create logistic data
+def add_ld_data(fn, df):
+    
+    seq_count = len(df)
+    print('Create logistic distributions data')
+    
+    while True:
+        location_df = input('location (choose point-comma): ?')
+    
+        if not isfloat(location_df):
+            print("location is not a number with point-comma, please try again")
+        else:
+            break
+    while True:
+        scale_df = input('scale (choose point-comma)?')
+    
+        if not isfloat(scale_df):
+            print("scale is not a number with point-comma, please try again")
+        else:
+            break
+    
+    
+    location_df = float(location_df)
+    scale_df = float(scale_df)
+    seq_often = int(seq_count)
+    
+    
+    name_df = input('Table Name: ?')
+    
+    
+    
+    df[name_df] = np.random.logistic(location_df, scale_df, seq_often)
+    print(df)
+    file_in_html(fn, df)
+    print('To work with you have to save this dataframe as file')
+    save_CSV(fn, df)
+    
+    
+
+
+    
+################################################################################    
+
+def menu_rand_data(fn, df):
+    clear()
+    print('Create random data')
+    menu_rand = input('1. normal distribution \n2. binomial distribution \n3. poisson distribution \n4. logistic distribution \n(choose number \n?')
+    
+    if menu_rand == '1':
+        nv_add(fn, df)
+    elif menu_rand == '2':
+        add_bd_data(fn, df)
+    elif menu_rand == '3':
+        add_pd_data(fn, df)
+    elif menu_rand == '4':
+        add_ld_data(fn, df)
+
+###############################################################################
+
 def del_empty_rows(fn, df):
     
     

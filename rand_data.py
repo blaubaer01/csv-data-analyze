@@ -96,6 +96,10 @@ def nd_data(df):
     file_in_html(fn, df)
     #save_CSV_new(df)
 
+
+
+
+
 ###############################################################################
 ###create binomial data
 
