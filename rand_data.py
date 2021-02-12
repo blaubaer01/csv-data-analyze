@@ -120,7 +120,7 @@ def bd_data(df):
     
     
     while True:
-        n_df = input('n : ?')
+        n_df = input('n (samplesize) : ?')
         if not isinteger(n_df):
             print("'n' is not an integer, please try again")
         else:
