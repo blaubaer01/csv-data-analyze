@@ -24,7 +24,7 @@ from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_
 from table_calc import menu_calc
 from rand_data import menu_rd
 from tableview import fehlende_daten, datentyp, file_in_html, einzeldaten_anschauen , filter_in_html
-from mft import clear, save_CSV_new
+from mft import clear, save_CSV_new, isinteger
 from date_function import convert_datetime, cal_info
 
 import webbrowser
@@ -133,8 +133,20 @@ def file_einlesen(fn):
                 list_columns.append(crit.columns[i])
                 print(i, crit.columns[i])
                 i+=1      
-             
-            inhalte_spalte= input('For which column you want to know the possible filter criteria \nchoose number! \n?')
+            
+            while True:
+                inhalte_spalte= input('For which column you want to know the possible filter criteria \nchoose number! \n?')
+                
+                if not isinteger(inhalte_spalte):
+                    print("Input is not an integer, please try again")
+                else:
+                    if int(inhalte_spalte) not in range(0,i):
+                        print('wrong choise, choose number!')
+                    else:
+                        break
+            
+            
+            
             print(crit.iloc[:,int(inhalte_spalte)].value_counts())
             print(df[list_columns[int(inhalte_spalte)]].dtype)
             crit_col = df[list_columns[int(inhalte_spalte)]].dtype
