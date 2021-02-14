@@ -524,8 +524,109 @@ def boxplot(df):
     
     y = list_columns_werte[int(value_column)]
     
-    df.boxplot(column=y, widths=0.5)
-    plt.show()
+    
+    ###toleranzen
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
+    
+    notol = '0'
+    ###both side tolerance
+    if one_two_sided == '1':
+        
+        while True:
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
+            if ',' in tol:
+                try:
+                    ut, lt = tol.split(',')
+                    ut = float(ut)
+                    lt = float(lt)
+                    if lt > ut:
+                        print('ut<lt, wrong input!')
+                    else:                    
+                        break
+                except Exception as exception:
+                    print('Wrong input, try again!')
+            else:
+                print('wrong input, separator is missing!, please try again!')
+        
+        print(ut,lt)
+        
+     
+    ###one side tolerance ut
+    elif one_two_sided =='2':
+        
+        
+        while True:
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
+            ut = float(ut)
+            if not isfloat(ut):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                lt = 'none'
+                break
+                
+                
+
+    ###one side tolerance lt
+    elif one_two_sided =='3':
+        
+        while True:
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
+            lt = float(lt)
+            if not isfloat(lt):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                ut = 'none'
+                break
+            
+                
+                
+    else:
+        notol = '1'
+            
+    if notol =='1':
+        df.boxplot(column=y, widths=0.5)
+        
+        plt.show()
+        
+    else:
+        
+    
+        if lt =='none':
+              
+            df.boxplot(column=y, widths=0.5)
+            
+            plt.axhline(y=ut,linewidth=2, color='red')
+            
+            
+            plt.show()
+            
+        elif ut=='none':
+            
+            df.boxplot(column=y, widths=0.5)
+            plt.axhline(y=lt,linewidth=2, color='red')
+            plt.show()
+        
+        
+        else:
+        
+            df.boxplot(column=y, widths=0.5)
+            plt.axhline(y=ut,linewidth=2, color='red')
+            plt.axhline(y=lt,linewidth=2, color='red')
+            
+            plt.show()
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    #df.boxplot(column=y, widths=0.5)
+    #plt.show()
 
 #######################################################################
 ###boxplot with group
@@ -579,9 +680,105 @@ def boxplot_groupby(df):
     y = list_columns_werte[int(value_column)]
     x = list_columns_kategorie[int(groupby_column)]
     
-    df.boxplot(by=x, column=y)
     
-    plt.show()
+    ###toleranzen
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
+    
+    notol = '0'
+    ###both side tolerance
+    if one_two_sided == '1':
+        
+        while True:
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
+            if ',' in tol:
+                try:
+                    ut, lt = tol.split(',')
+                    ut = float(ut)
+                    lt = float(lt)
+                    if lt > ut:
+                        print('ut<lt, wrong input!')
+                    else:                    
+                        break
+                except Exception as exception:
+                    print('Wrong input, try again!')
+            else:
+                print('wrong input, separator is missing!, please try again!')
+        
+        print(ut,lt)
+        
+     
+    ###one side tolerance ut
+    elif one_two_sided =='2':
+        
+        
+        while True:
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
+            ut = float(ut)
+            if not isfloat(ut):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                lt = 'none'
+                break
+                
+                
+
+    ###one side tolerance lt
+    elif one_two_sided =='3':
+        
+        while True:
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
+            lt = float(lt)
+            if not isfloat(lt):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                ut = 'none'
+                break
+            
+                
+                
+    else:
+        notol = '1'
+            
+    if notol =='1':
+        df.boxplot(by=x, column=y)
+        
+        plt.show()
+        
+    else:
+        
+    
+        if lt =='none':
+              
+            df.boxplot(by=x, column=y)
+            
+            plt.axhline(y=ut,linewidth=2, color='red')
+            
+            
+            plt.show()
+            
+        elif ut=='none':
+            
+            df.boxplot(by=x, column=y)
+            plt.axhline(y=lt,linewidth=2, color='red')
+            plt.show()
+        
+        
+        else:
+        
+            df.boxplot(by=x, column=y)
+            plt.axhline(y=ut,linewidth=2, color='red')
+            plt.axhline(y=lt,linewidth=2, color='red')
+            
+            plt.show()
+    
+    
+    
+    
+    
+    
+    #df.boxplot(by=x, column=y)
+    
+    #plt.show()
 
 
 ######################################################################
@@ -647,8 +844,104 @@ def boxplot2f(df):
     x = list_columns_category[int(groupby1_column)]
     z = list_columns_category[int(groupby2_column)]
     
-    sns.boxplot(x=x, y=y, hue=z, data=df, palette="Set3")
-    plt.show()
+    
+    ###toleranzen
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
+    
+    notol = '0'
+    ###both side tolerance
+    if one_two_sided == '1':
+        
+        while True:
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
+            if ',' in tol:
+                try:
+                    ut, lt = tol.split(',')
+                    ut = float(ut)
+                    lt = float(lt)
+                    if lt > ut:
+                        print('ut<lt, wrong input!')
+                    else:                    
+                        break
+                except Exception as exception:
+                    print('Wrong input, try again!')
+            else:
+                print('wrong input, separator is missing!, please try again!')
+        
+        print(ut,lt)
+        
+     
+    ###one side tolerance ut
+    elif one_two_sided =='2':
+        
+        
+        while True:
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
+            ut = float(ut)
+            if not isfloat(ut):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                lt = 'none'
+                break
+                
+                
+
+    ###one side tolerance lt
+    elif one_two_sided =='3':
+        
+        while True:
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
+            lt = float(lt)
+            if not isfloat(lt):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                ut = 'none'
+                break
+            
+                
+                
+    else:
+        notol = '1'
+            
+    if notol =='1':
+        sns.boxplot(x=x, y=y, hue=z, data=df, palette="Set3")
+        
+        plt.show()
+        
+    else:
+        
+    
+        if lt =='none':
+              
+            sns.boxplot(x=x, y=y, hue=z, data=df, palette="Set3")
+            
+            plt.axhline(y=ut,linewidth=2, color='red')
+            
+            
+            plt.show()
+            
+        elif ut=='none':
+            
+            sns.boxplot(x=x, y=y, hue=z, data=df, palette="Set3")
+            plt.axhline(y=lt,linewidth=2, color='red')
+            plt.show()
+        
+        
+        else:
+        
+            sns.boxplot(x=x, y=y, hue=z, data=df, palette="Set3")
+            plt.axhline(y=ut,linewidth=2, color='red')
+            plt.axhline(y=lt,linewidth=2, color='red')
+            
+            plt.show()
+    
+    
+    
+    
+    
+    
+    #sns.boxplot(x=x, y=y, hue=z, data=df, palette="Set3")
+    #plt.show()
 
 
 
@@ -682,8 +975,100 @@ def violin(df):
     
     y = list_columns_werte[int(value_column)]
     
-    sns.violinplot(x=df[y])
-    plt.show()
+    
+    ###toleranzen
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
+    
+    notol = '0'
+    ###both side tolerance
+    if one_two_sided == '1':
+        
+        while True:
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
+            if ',' in tol:
+                try:
+                    ut, lt = tol.split(',')
+                    ut = float(ut)
+                    lt = float(lt)
+                    if lt > ut:
+                        print('ut<lt, wrong input!')
+                    else:                    
+                        break
+                except Exception as exception:
+                    print('Wrong input, try again!')
+            else:
+                print('wrong input, separator is missing!, please try again!')
+        
+        print(ut,lt)
+        
+     
+    ###one side tolerance ut
+    elif one_two_sided =='2':
+        
+        
+        while True:
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
+            ut = float(ut)
+            if not isfloat(ut):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                lt = 'none'
+                break
+                
+                
+
+    ###one side tolerance lt
+    elif one_two_sided =='3':
+        
+        while True:
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
+            lt = float(lt)
+            if not isfloat(lt):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                ut = 'none'
+                break
+            
+                
+                
+    else:
+        notol = '1'
+            
+    if notol =='1':
+        sns.violinplot(x=df[y])
+        
+        plt.show()
+        
+    else:
+        
+    
+        if lt =='none':
+              
+            sns.violinplot(x=df[y])
+            
+            plt.axvline(x=ut,linewidth=2, color='red')
+            
+            
+            plt.show()
+            
+        elif ut=='none':
+            
+            sns.violinplot(x=df[y])
+            plt.axvline(x=lt,linewidth=2, color='red')
+            plt.show()
+        
+        
+        else:
+        
+            sns.violinplot(x=df[y])
+            plt.axvline(x=ut,linewidth=2, color='red')
+            plt.axvline(x=lt,linewidth=2, color='red')
+            
+            plt.show()
+    
+    
+    #sns.violinplot(x=df[y])
+    #plt.show()
 
 #######################################################################
 ###violin plot with group
@@ -739,10 +1124,100 @@ def violin_groupby(df):
     y = list_columns_werte[int(value_column)]
     x = list_columns_kategorie[int(groupby_column)]
     
+    ###toleranzen
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
-    sns.violinplot(x=x, y=y, data=df)
+    notol = '0'
+    ###both side tolerance
+    if one_two_sided == '1':
+        
+        while True:
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
+            if ',' in tol:
+                try:
+                    ut, lt = tol.split(',')
+                    ut = float(ut)
+                    lt = float(lt)
+                    if lt > ut:
+                        print('ut<lt, wrong input!')
+                    else:                    
+                        break
+                except Exception as exception:
+                    print('Wrong input, try again!')
+            else:
+                print('wrong input, separator is missing!, please try again!')
+        
+        print(ut,lt)
+        
+     
+    ###one side tolerance ut
+    elif one_two_sided =='2':
+        
+        
+        while True:
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
+            ut = float(ut)
+            if not isfloat(ut):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                lt = 'none'
+                break
+                
+                
+
+    ###one side tolerance lt
+    elif one_two_sided =='3':
+        
+        while True:
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
+            lt = float(lt)
+            if not isfloat(lt):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                ut = 'none'
+                break
+            
+                
+                
+    else:
+        notol = '1'
+            
+    if notol =='1':
+        sns.violinplot(x=x, y=y, data=df)
+        
+        plt.show()
+        
+    else:
+        
     
-    plt.show()
+        if lt =='none':
+              
+            sns.violinplot(x=x, y=y, data=df)
+            
+            plt.axhline(y=ut,linewidth=2, color='red')
+            
+            
+            plt.show()
+            
+        elif ut=='none':
+            
+            sns.violinplot(x=x, y=y, data=df)
+            plt.axhline(y=lt,linewidth=2, color='red')
+            plt.show()
+        
+        
+        else:
+        
+            sns.violinplot(x=x, y=y, data=df)
+            plt.axhline(y=ut,linewidth=2, color='red')
+            plt.axhline(y=lt,linewidth=2, color='red')
+            
+            plt.show()
+    
+    
+    #sns.violinplot(x=x, y=y, data=df)
+    
+    #plt.show()
 
 #######################################################################
 ###violin Plot by 2 groups
@@ -805,8 +1280,103 @@ def violin2f(df):
     x = list_columns_category[int(groupby1_column)]
     z = list_columns_category[int(groupby2_column)]
     
-    sns.violinplot(x=x, y=y, hue=z, data=df, palette="Set3")
-    plt.show()
+    
+    ###toleranzen
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
+    
+    notol = '0'
+    ###both side tolerance
+    if one_two_sided == '1':
+        
+        while True:
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
+            if ',' in tol:
+                try:
+                    ut, lt = tol.split(',')
+                    ut = float(ut)
+                    lt = float(lt)
+                    if lt > ut:
+                        print('ut<lt, wrong input!')
+                    else:                    
+                        break
+                except Exception as exception:
+                    print('Wrong input, try again!')
+            else:
+                print('wrong input, separator is missing!, please try again!')
+        
+        print(ut,lt)
+        
+     
+    ###one side tolerance ut
+    elif one_two_sided =='2':
+        
+        
+        while True:
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
+            ut = float(ut)
+            if not isfloat(ut):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                lt = 'none'
+                break
+                
+                
+
+    ###one side tolerance lt
+    elif one_two_sided =='3':
+        
+        while True:
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
+            lt = float(lt)
+            if not isfloat(lt):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                ut = 'none'
+                break
+            
+                
+                
+    else:
+        notol = '1'
+            
+    if notol =='1':
+        sns.violinplot(x=x, y=y, hue=z, data=df, palette="Set3")
+        
+        plt.show()
+        
+    else:
+        
+    
+        if lt =='none':
+              
+            sns.violinplot(x=x, y=y, hue=z, data=df, palette="Set3")
+            
+            plt.axhline(y=ut,linewidth=2, color='red')
+            
+            
+            plt.show()
+            
+        elif ut=='none':
+            
+            sns.violinplot(x=x, y=y, hue=z, data=df, palette="Set3")
+            plt.axhline(y=lt,linewidth=2, color='red')
+            plt.show()
+        
+        
+        else:
+        
+            sns.violinplot(x=x, y=y, hue=z, data=df, palette="Set3")
+            plt.axhline(y=ut,linewidth=2, color='red')
+            plt.axhline(y=lt,linewidth=2, color='red')
+            
+            plt.show()
+    
+    
+    
+    
+    
+    #sns.violinplot(x=x, y=y, hue=z, data=df, palette="Set3")
+    #plt.show()
 
 ######################################################################
 ###single swarm plot
@@ -837,8 +1407,107 @@ def single_swarmplot(df):
     
     y = list_columns_werte[int(value_column)]
     
-    sns.swarmplot(x=df[y])
-    plt.show()
+    
+    ###toleranzen
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
+    
+    notol = '0'
+    ###both side tolerance
+    if one_two_sided == '1':
+        
+        while True:
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
+            if ',' in tol:
+                try:
+                    ut, lt = tol.split(',')
+                    ut = float(ut)
+                    lt = float(lt)
+                    if lt > ut:
+                        print('ut<lt, wrong input!')
+                    else:                    
+                        break
+                except Exception as exception:
+                    print('Wrong input, try again!')
+            else:
+                print('wrong input, separator is missing!, please try again!')
+        
+        print(ut,lt)
+        
+     
+    ###one side tolerance ut
+    elif one_two_sided =='2':
+        
+        
+        while True:
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
+            ut = float(ut)
+            if not isfloat(ut):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                lt = 'none'
+                break
+                
+                
+
+    ###one side tolerance lt
+    elif one_two_sided =='3':
+        
+        while True:
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
+            lt = float(lt)
+            if not isfloat(lt):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                ut = 'none'
+                break
+            
+                
+                
+    else:
+        notol = '1'
+            
+    if notol =='1':
+        sns.swarmplot(x=df[y])
+        
+        plt.show()
+        
+    else:
+        
+    
+        if lt =='none':
+              
+            sns.swarmplot(x=df[y])
+            
+            plt.axvline(x=ut,linewidth=2, color='red')
+            
+            
+            plt.show()
+            
+        elif ut=='none':
+            
+            sns.swarmplot(x=df[y])
+            plt.axvline(x=lt,linewidth=2, color='red')
+            plt.show()
+        
+        
+        else:
+        
+            sns.swarmplot(x=df[y])
+            plt.axvline(x=ut,linewidth=2, color='red')
+            plt.axvline(x=lt,linewidth=2, color='red')
+            
+            plt.show()
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    #sns.swarmplot(x=df[y])
+    #plt.show()
     
     
     
@@ -894,11 +1563,112 @@ def swarmplot1f(df):
     y = df[list_columns_werte[int(value_column)]]
     x = df[list_columns_kategorie[int(groupby_column)]]
     
+    ###toleranzen
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
+    
+    notol = '0'
+    ###both side tolerance
+    if one_two_sided == '1':
+        
+        while True:
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
+            if ',' in tol:
+                try:
+                    ut, lt = tol.split(',')
+                    ut = float(ut)
+                    lt = float(lt)
+                    if lt > ut:
+                        print('ut<lt, wrong input!')
+                    else:                    
+                        break
+                except Exception as exception:
+                    print('Wrong input, try again!')
+            else:
+                print('wrong input, separator is missing!, please try again!')
+        
+        print(ut,lt)
+        
+     
+    ###one side tolerance ut
+    elif one_two_sided =='2':
+        
+        
+        while True:
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
+            ut = float(ut)
+            if not isfloat(ut):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                lt = 'none'
+                break
+                
+                
+
+    ###one side tolerance lt
+    elif one_two_sided =='3':
+        
+        while True:
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
+            lt = float(lt)
+            if not isfloat(lt):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                ut = 'none'
+                break
+            
+                
+                
+    else:
+        notol = '1'
+            
+    if notol =='1':
+        # Draw a categorical scatterplot to show each observation
+        sns.swarmplot(x=x, y=y, data=df)
+
+        
+        plt.show()
+        
+    else:
+        
+    
+        if lt =='none':
+              
+            # Draw a categorical scatterplot to show each observation
+            sns.swarmplot(x=x, y=y, data=df)
+
+            
+            plt.axhline(y=ut,linewidth=2, color='red')
+            
+            
+            plt.show()
+            
+        elif ut=='none':
+            
+            # Draw a categorical scatterplot to show each observation
+            sns.swarmplot(x=x, y=y, data=df)
+
+            plt.axhline(y=lt,linewidth=2, color='red')
+            plt.show()
+        
+        
+        else:
+        
+            # Draw a categorical scatterplot to show each observation
+            sns.swarmplot(x=x, y=y, data=df)
+            plt.axhline(y=ut,linewidth=2, color='red')
+            plt.axhline(y=lt,linewidth=2, color='red')
+            
+            plt.show()
+    
+    
+    
+    
+    
     
     # Draw a categorical scatterplot to show each observation
-    sns.swarmplot(x=x, y=y, data=df)
+    #sns.swarmplot(x=x, y=y, data=df)
     #sns.boxplot(x=x, y=y, data=df, whis=np.inf)
-    plt.show()
+    #plt.show()
 
 ######################################################################
 ###swarmplot two factors
@@ -961,10 +1731,109 @@ def swarmplot2f(df):
     x = list_columns_category[int(groupby1_column)]
     z = list_columns_category[int(groupby2_column)]
     
-    sns.swarmplot(x=x, y=y, hue=z, data=df)
+
+    ###toleranzen
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
+    
+    notol = '0'
+    ###both side tolerance
+    if one_two_sided == '1':
+        
+        while True:
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
+            if ',' in tol:
+                try:
+                    ut, lt = tol.split(',')
+                    ut = float(ut)
+                    lt = float(lt)
+                    if lt > ut:
+                        print('ut<lt, wrong input!')
+                    else:                    
+                        break
+                except Exception as exception:
+                    print('Wrong input, try again!')
+            else:
+                print('wrong input, separator is missing!, please try again!')
+        
+        print(ut,lt)
+        
+     
+    ###one side tolerance ut
+    elif one_two_sided =='2':
+        
+        
+        while True:
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
+            ut = float(ut)
+            if not isfloat(ut):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                lt = 'none'
+                break
+                
+                
+
+    ###one side tolerance lt
+    elif one_two_sided =='3':
+        
+        while True:
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
+            lt = float(lt)
+            if not isfloat(lt):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                ut = 'none'
+                break
+            
+                
+                
+    else:
+        notol = '1'
+            
+    if notol =='1':
+        # Draw a categorical scatterplot to show each observation
+        sns.swarmplot(x=x, y=y, hue=z, data=df)
+
+        
+        plt.show()
+        
+    else:
+        
+    
+        if lt =='none':
+              
+            # Draw a categorical scatterplot to show each observation
+            sns.swarmplot(x=x, y=y, hue=z, data=df)
+
+            
+            plt.axhline(y=ut,linewidth=2, color='red')
+            
+            
+            plt.show()
+            
+        elif ut=='none':
+            
+            # Draw a categorical scatterplot to show each observation
+            sns.swarmplot(x=x, y=y, hue=z, data=df)
+
+            plt.axhline(y=lt,linewidth=2, color='red')
+            plt.show()
+        
+        
+        else:
+        
+            # Draw a categorical scatterplot to show each observation
+            sns.swarmplot(x=x, y=y, hue=z, data=df)
+            plt.axhline(y=ut,linewidth=2, color='red')
+            plt.axhline(y=lt,linewidth=2, color='red')
+            
+            plt.show()
+
+
+    #sns.swarmplot(x=x, y=y, hue=z, data=df)
 
     
-    plt.show()
+    #plt.show()
     
 
 ######################################################################
@@ -996,8 +1865,111 @@ def single_stripplot(df):
     
     y = list_columns_werte[int(value_column)]
     
-    sns.stripplot(x=df[y])
-    plt.show()
+    
+    ###toleranzen
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
+    
+    notol = '0'
+    ###both side tolerance
+    if one_two_sided == '1':
+        
+        while True:
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
+            if ',' in tol:
+                try:
+                    ut, lt = tol.split(',')
+                    ut = float(ut)
+                    lt = float(lt)
+                    if lt > ut:
+                        print('ut<lt, wrong input!')
+                    else:                    
+                        break
+                except Exception as exception:
+                    print('Wrong input, try again!')
+            else:
+                print('wrong input, separator is missing!, please try again!')
+        
+        print(ut,lt)
+        
+     
+    ###one side tolerance ut
+    elif one_two_sided =='2':
+        
+        
+        while True:
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
+            ut = float(ut)
+            if not isfloat(ut):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                lt = 'none'
+                break
+                
+                
+
+    ###one side tolerance lt
+    elif one_two_sided =='3':
+        
+        while True:
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
+            lt = float(lt)
+            if not isfloat(lt):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                ut = 'none'
+                break
+            
+                
+                
+    else:
+        notol = '1'
+            
+    if notol =='1':
+        # Draw a categorical scatterplot to show each observation
+        sns.stripplot(x=df[y])
+
+        
+        plt.show()
+        
+    else:
+        
+    
+        if lt =='none':
+              
+            # Draw a categorical scatterplot to show each observation
+            sns.stripplot(x=df[y])
+
+            
+            plt.axvline(x=ut,linewidth=2, color='red')
+            
+            
+            plt.show()
+            
+        elif ut=='none':
+            
+            # Draw a categorical scatterplot to show each observation
+            sns.stripplot(x=df[y])
+
+            plt.axvline(x=lt,linewidth=2, color='red')
+            plt.show()
+        
+        
+        else:
+        
+            # Draw a categorical scatterplot to show each observation
+            sns.stripplot(x=df[y])
+            plt.axvline(x=ut,linewidth=2, color='red')
+            plt.axvline(x=lt,linewidth=2, color='red')
+            
+            plt.show()
+    
+    
+    
+    
+    
+    
+    #sns.stripplot(x=df[y])
+    #plt.show()
     
 #######################################################################
 ###stripplot with group
@@ -1051,10 +2023,108 @@ def stripplot1f(df):
     x = df[list_columns_kategorie[int(groupby_column)]]
     
     
+    ###toleranzen
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
+    
+    notol = '0'
+    ###both side tolerance
+    if one_two_sided == '1':
+        
+        while True:
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
+            if ',' in tol:
+                try:
+                    ut, lt = tol.split(',')
+                    ut = float(ut)
+                    lt = float(lt)
+                    if lt > ut:
+                        print('ut<lt, wrong input!')
+                    else:                    
+                        break
+                except Exception as exception:
+                    print('Wrong input, try again!')
+            else:
+                print('wrong input, separator is missing!, please try again!')
+        
+        print(ut,lt)
+        
+     
+    ###one side tolerance ut
+    elif one_two_sided =='2':
+        
+        
+        while True:
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
+            ut = float(ut)
+            if not isfloat(ut):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                lt = 'none'
+                break
+                
+                
+
+    ###one side tolerance lt
+    elif one_two_sided =='3':
+        
+        while True:
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
+            lt = float(lt)
+            if not isfloat(lt):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                ut = 'none'
+                break
+            
+                
+                
+    else:
+        notol = '1'
+            
+    if notol =='1':
+        # Draw a categorical scatterplot to show each observation
+        sns.stripplot(x=x, y=y, data=df)
+
+        
+        plt.show()
+        
+    else:
+        
+    
+        if lt =='none':
+              
+            # Draw a categorical scatterplot to show each observation
+            sns.stripplot(x=x, y=y, data=df)
+
+            
+            plt.axhline(y=ut,linewidth=2, color='red')
+            
+            
+            plt.show()
+            
+        elif ut=='none':
+            
+            # Draw a categorical scatterplot to show each observation
+            sns.stripplot(x=x, y=y, data=df)
+
+            plt.axhline(y=lt,linewidth=2, color='red')
+            plt.show()
+        
+        
+        else:
+        
+            # Draw a categorical scatterplot to show each observation
+            sns.stripplot(x=x, y=y, data=df)
+            plt.axhline(y=ut,linewidth=2, color='red')
+            plt.axhline(y=lt,linewidth=2, color='red')
+            
+            plt.show()
+    
+    
     # Draw a categorical scatterplot to show each observation
-    sns.stripplot(x=x, y=y, data=df)
+    #sns.stripplot(x=x, y=y, data=df)
     #sns.boxplot(x=x, y=y, data=df, whis=np.inf)
-    plt.show()
+    #plt.show()
         
 ######################################################################
 ###stripplot two factors
@@ -1117,10 +2187,111 @@ def stripplot2f(df):
     x = list_columns_category[int(groupby1_column)]
     z = list_columns_category[int(groupby2_column)]
     
-    sns.stripplot(x=x, y=y, hue=z, data=df)
+    
+    ###toleranzen
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
+    
+    notol = '0'
+    ###both side tolerance
+    if one_two_sided == '1':
+        
+        while True:
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
+            if ',' in tol:
+                try:
+                    ut, lt = tol.split(',')
+                    ut = float(ut)
+                    lt = float(lt)
+                    if lt > ut:
+                        print('ut<lt, wrong input!')
+                    else:                    
+                        break
+                except Exception as exception:
+                    print('Wrong input, try again!')
+            else:
+                print('wrong input, separator is missing!, please try again!')
+        
+        print(ut,lt)
+        
+     
+    ###one side tolerance ut
+    elif one_two_sided =='2':
+        
+        
+        while True:
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
+            ut = float(ut)
+            if not isfloat(ut):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                lt = 'none'
+                break
+                
+                
+
+    ###one side tolerance lt
+    elif one_two_sided =='3':
+        
+        while True:
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
+            lt = float(lt)
+            if not isfloat(lt):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                ut = 'none'
+                break
+            
+                
+                
+    else:
+        notol = '1'
+            
+    if notol =='1':
+        # Draw a categorical scatterplot to show each observation
+        sns.stripplot(x=x, y=y, hue=z, data=df)
+
+        
+        plt.show()
+        
+    else:
+        
+    
+        if lt =='none':
+              
+            # Draw a categorical scatterplot to show each observation
+            sns.stripplot(x=x, y=y, hue=z, data=df)
+
+            
+            plt.axhline(y=ut,linewidth=2, color='red')
+            
+            
+            plt.show()
+            
+        elif ut=='none':
+            
+            # Draw a categorical scatterplot to show each observation
+            sns.stripplot(x=x, y=y, hue=z, data=df)
+
+            plt.axhline(y=lt,linewidth=2, color='red')
+            plt.show()
+        
+        
+        else:
+        
+            # Draw a categorical scatterplot to show each observation
+            sns.stripplot(x=x, y=y, hue=z, data=df)
+            plt.axhline(y=ut,linewidth=2, color='red')
+            plt.axhline(y=lt,linewidth=2, color='red')
+            
+            plt.show()
+    
+    
+    
+    
+    #sns.stripplot(x=x, y=y, hue=z, data=df)
 
     
-    plt.show()
+    #plt.show()
 
 #######################################################################
 ###stripplot with group
@@ -1174,10 +2345,108 @@ def pointplot1f(df):
     x = df[list_columns_kategorie[int(groupby_column)]]
     
     
+    ###toleranzen
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
+    
+    notol = '0'
+    ###both side tolerance
+    if one_two_sided == '1':
+        
+        while True:
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
+            if ',' in tol:
+                try:
+                    ut, lt = tol.split(',')
+                    ut = float(ut)
+                    lt = float(lt)
+                    if lt > ut:
+                        print('ut<lt, wrong input!')
+                    else:                    
+                        break
+                except Exception as exception:
+                    print('Wrong input, try again!')
+            else:
+                print('wrong input, separator is missing!, please try again!')
+        
+        print(ut,lt)
+        
+     
+    ###one side tolerance ut
+    elif one_two_sided =='2':
+        
+        
+        while True:
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
+            ut = float(ut)
+            if not isfloat(ut):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                lt = 'none'
+                break
+                
+                
+
+    ###one side tolerance lt
+    elif one_two_sided =='3':
+        
+        while True:
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
+            lt = float(lt)
+            if not isfloat(lt):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                ut = 'none'
+                break
+            
+                
+                
+    else:
+        notol = '1'
+            
+    if notol =='1':
+        # Draw a categorical scatterplot to show each observation
+        sns.pointplot(x=x, y=y, data=df)
+
+        
+        plt.show()
+        
+    else:
+        
+    
+        if lt =='none':
+              
+            # Draw a categorical scatterplot to show each observation
+            sns.pointplot(x=x, y=y, data=df)
+
+            
+            plt.axhline(y=ut,linewidth=2, color='red')
+            
+            
+            plt.show()
+            
+        elif ut=='none':
+            
+            # Draw a categorical scatterplot to show each observation
+            sns.pointplot(x=x, y=y, data=df)
+
+            plt.axhline(y=lt,linewidth=2, color='red')
+            plt.show()
+        
+        
+        else:
+        
+            # Draw a categorical scatterplot to show each observation
+            sns.pointplot(x=x, y=y, data=df)
+            plt.axhline(y=ut,linewidth=2, color='red')
+            plt.axhline(y=lt,linewidth=2, color='red')
+            
+            plt.show()
+    
+    
     # Draw a categorical scatterplot to show each observation
-    sns.pointplot(x=x, y=y, data=df)
+    #sns.pointplot(x=x, y=y, data=df)
     #sns.boxplot(x=x, y=y, data=df, whis=np.inf)
-    plt.show()
+    #plt.show()
         
 ######################################################################
 ###stripplot two factors
@@ -1240,10 +2509,110 @@ def pointplot2f(df):
     x = list_columns_category[int(groupby1_column)]
     z = list_columns_category[int(groupby2_column)]
     
-    sns.pointplot(x=x, y=y, hue=z, data=df)
+    
+    ###toleranzen
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
+    
+    notol = '0'
+    ###both side tolerance
+    if one_two_sided == '1':
+        
+        while True:
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
+            if ',' in tol:
+                try:
+                    ut, lt = tol.split(',')
+                    ut = float(ut)
+                    lt = float(lt)
+                    if lt > ut:
+                        print('ut<lt, wrong input!')
+                    else:                    
+                        break
+                except Exception as exception:
+                    print('Wrong input, try again!')
+            else:
+                print('wrong input, separator is missing!, please try again!')
+        
+        print(ut,lt)
+        
+     
+    ###one side tolerance ut
+    elif one_two_sided =='2':
+        
+        
+        while True:
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
+            ut = float(ut)
+            if not isfloat(ut):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                lt = 'none'
+                break
+                
+                
+
+    ###one side tolerance lt
+    elif one_two_sided =='3':
+        
+        while True:
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
+            lt = float(lt)
+            if not isfloat(lt):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                ut = 'none'
+                break
+            
+                
+                
+    else:
+        notol = '1'
+            
+    if notol =='1':
+        # Draw a categorical scatterplot to show each observation
+        sns.pointplot(x=x, y=y, hue=z, data=df)
+
+        
+        plt.show()
+        
+    else:
+        
+    
+        if lt =='none':
+              
+            # Draw a categorical scatterplot to show each observation
+            sns.pointplot(x=x, y=y, hue=z, data=df)
+
+            
+            plt.axhline(y=ut,linewidth=2, color='red')
+            
+            
+            plt.show()
+            
+        elif ut=='none':
+            
+            # Draw a categorical scatterplot to show each observation
+            sns.pointplot(x=x, y=y, hue=z, data=df)
+
+            plt.axhline(y=lt,linewidth=2, color='red')
+            plt.show()
+        
+        
+        else:
+        
+            # Draw a categorical scatterplot to show each observation
+            sns.pointplot(x=x, y=y, hue=z, data=df)
+            plt.axhline(y=ut,linewidth=2, color='red')
+            plt.axhline(y=lt,linewidth=2, color='red')
+            
+            plt.show()
+    
+    
+    
+    #sns.pointplot(x=x, y=y, hue=z, data=df)
 
     
-    plt.show()
+    #plt.show()
 
 
 
