@@ -2875,7 +2875,7 @@ def distriplot1f(df):
             
             sns.displot(df, x=y, hue=x, kind='kde', fill=True)
             
-            plt.axhline(y=ut,linewidth=2, color='red')
+            plt.axvline(x=ut,linewidth=2, color='red')
             
             
             plt.show()
@@ -2885,7 +2885,7 @@ def distriplot1f(df):
             
             sns.displot(df, x=y,  hue=x, kind='kde', fill=True)
 
-            plt.axhline(y=lt,linewidth=2, color='red')
+            plt.axvline(x=lt,linewidth=2, color='red')
             plt.show()
         
         
@@ -2893,8 +2893,8 @@ def distriplot1f(df):
         
             
             sns.displot(df, x=y, hue = x, kind='kde', fill=True)
-            plt.axhline(y=ut,linewidth=2, color='red')
-            plt.axhline(y=lt,linewidth=2, color='red')
+            plt.axvline(x=ut,linewidth=2, color='red')
+            plt.axvline(x=lt,linewidth=2, color='red')
             
             plt.show()
     
@@ -3019,7 +3019,7 @@ def histogram1f(df):
             
             sns.displot(df, x=y, hue=x, kind='hist', fill=True)
             
-            plt.axhline(y=ut,linewidth=2, color='red')
+            plt.axvline(x=ut,linewidth=2, color='red')
             
             
             plt.show()
@@ -3029,7 +3029,7 @@ def histogram1f(df):
             
             sns.displot(df, x=y,  hue=x, kind='hist', fill=True)
 
-            plt.axhline(y=lt,linewidth=2, color='red')
+            plt.axvline(x=lt,linewidth=2, color='red')
             plt.show()
         
         
@@ -3037,8 +3037,8 @@ def histogram1f(df):
         
             
             sns.displot(df, x=y, hue = x, kind='hist', fill=True)
-            plt.axhline(y=ut,linewidth=2, color='red')
-            plt.axhline(y=lt,linewidth=2, color='red')
+            plt.axvline(x=ut,linewidth=2, color='red')
+            plt.axvline(x=lt,linewidth=2, color='red')
             
             plt.show()
 
