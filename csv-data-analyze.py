@@ -330,7 +330,7 @@ def beschreibende_stat(df):
             
         
         
-        restart = input('\nFurther describtive analysis: y/n \n?')
+        restart = input('\nFurther descriptive analysis: y/n \n?')
         if restart.lower() != 'y':
             break
         
@@ -573,7 +573,7 @@ def statistic(df):
     clear()
     change_datatype(df)
     while True:
-        
+        clear()
         menu_statistic = input('What kind of statistics: \n1: simple descriptive statistics \n2: graphical view \n3: statistical significance tests \n4: process capability study \n5: linear regression study \n6: MSA (Measurement System Analysis) \n7: contingency table  \n(choose number)  \n?')
         if menu_statistic =='1':
             beschreibende_stat(df)
@@ -644,7 +644,7 @@ def table_functions(fn, df):
             print('current file name: ' , fn)
         
         change_datatype(df)
-        
+        clear()
         menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n11: get calendar info \n12: delete or replace value/characters \n13: melt columns \n14: rename column \n15: save to CSV-file \n16: combine factor columns \n17: delete column \n18: add random distribution-data \n?')
         
         if menu_tf =='1':
