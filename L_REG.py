@@ -12,12 +12,14 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.stats import shapiro
 import statsmodels.api as sm
-
+from mft import clear
 
 def LREG(df):
     
-    sns.set(color_codes=True)        
-        
+    sns.set(color_codes=True)   
+         
+    clear()
+    print('Linear regression \n')    
     werte = df.select_dtypes(exclude=['object'])
     
     #

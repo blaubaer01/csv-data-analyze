@@ -572,8 +572,10 @@ def MSA(df):
 def statistic(df):
     clear()
     change_datatype(df)
+    
     while True:
         clear()
+        print('\nStatitic Functions: \n')
         menu_statistic = input('What kind of statistics: \n1: simple descriptive statistics \n2: graphical view \n3: statistical significance tests \n4: process capability study \n5: linear regression study \n6: MSA (Measurement System Analysis) \n7: contingency table  \n(choose number)  \n?')
         if menu_statistic =='1':
             beschreibende_stat(df)

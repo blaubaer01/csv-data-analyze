@@ -10,7 +10,7 @@ from scipy.stats import shapiro
 import matplotlib.pyplot as plt
 import seaborn as sns ; sns.set()
 import scipy as spy
-from mft import isfloat, truncate
+from mft import isfloat, truncate, clear
 
 
 
@@ -20,12 +20,12 @@ def CPA(df):
     sns.set(color_codes=True)
     
     #label_chart = ('Capability Analysis')
-    
-    
+    clear()
+    print('Capability Analysis \n')
     
     werte = df.select_dtypes(exclude=['object'])
         
-        #
+        
     anz_col_werte = len(werte.columns)
         
     list_columns_werte = []
@@ -37,6 +37,7 @@ def CPA(df):
         print(i, werte.columns[i])
         i+=1
     
+    print('')
     while True:
         value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
