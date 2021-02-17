@@ -27,7 +27,7 @@ from mft import isfloat, clear
 ###test of normality
 def normality_test(df):
     #clear()
-    
+    print('Test of normal distribution \n')
     werte = df.select_dtypes(exclude=['object'])
     
     #
@@ -83,6 +83,7 @@ def normality_test(df):
 ###correlation test
 def correl(df):
     #clear()
+    print('Test of correlation \n')
     correlation_df = df.corr()
     print(correlation_df)
     
@@ -92,7 +93,7 @@ def correl(df):
 def outliert(df):
     
     sns.set(color_codes=True)
-    
+    print('Test of Outliers \n')
     
     werte = df.select_dtypes(exclude=['object'])
     
@@ -137,7 +138,7 @@ def outliert(df):
 ###f-test
 def f_test(df):
     clear()
-    
+    print('f-Test \n')
     werte = df.select_dtypes(exclude=['object'])
     
     #
@@ -194,7 +195,7 @@ def f_test(df):
 ###one single t-test
 def ttest_o_s(df, alpha=0.05, alternative='greater'):
     clear()
-    
+    print('One simple t-Test \n')
     werte = df.select_dtypes(exclude=['object'])
     
     #
@@ -248,6 +249,7 @@ def ttest_o_s(df, alpha=0.05, alternative='greater'):
 ###two sided t-test
 def ttest_t_s(df):
     #clear()
+    print('two sample t-Test \n')
     werte = df.select_dtypes(exclude=['object'])
     
     #
@@ -303,6 +305,7 @@ def ttest_t_s(df):
 ###indipendent t-test
 def ttest_i(df):
     #clear()
+    print('Indipendent t-Test \n')
     werte = df.select_dtypes(exclude=['object'])
     
     #
@@ -358,7 +361,7 @@ def ttest_i(df):
 #######################################################################
 ###median test
 def mediantest(df):
-    
+    print('Median Test \n')
     werte = df.select_dtypes(exclude=['object'])
     
     #
@@ -423,7 +426,7 @@ def mediantest(df):
 ###One way ANOVA    
 def anova_o_w (df):
     clear()
-    
+    print('One way ANOVA \n')
     kategorie=df.select_dtypes(include=['object', 'int'])
     werte = df.select_dtypes(exclude=['object'])
     
@@ -480,6 +483,7 @@ def anova_o_w (df):
 ###Two way ANOVA    
 def anova_t_w(df):
     clear()
+    print('Two way ANOVA \n')
     kategorie=df.select_dtypes(exclude=['float'])
     werte = df.select_dtypes(exclude=['object'])
     

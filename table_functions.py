@@ -425,6 +425,9 @@ def crosstab(df):
 ### contingency table    
 def contingency_tb(df):
     clear()
+    
+    print('\nContingency Table\n')
+    
     tab = df.select_dtypes(exclude=['float'])
     
     #
@@ -439,7 +442,7 @@ def contingency_tb(df):
         print(i, tab.columns[i])
         i+=1
     
-    
+    print('')
     while True:
         tab1_column= input('Which column do you want to cross: \n(choose number) \n?')
         if tab1_column not in list_number:

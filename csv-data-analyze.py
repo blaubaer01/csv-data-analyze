@@ -300,6 +300,7 @@ def file_einlesen(fn):
 def beschreibende_stat(df):
     while True:
         clear()
+        print('Descriptive Statistik')
         was_beschreibend_analysieren=input('What data do you want to analyze? \n1: all\n2: only the numerical\n3: one special column \n?')
         if was_beschreibend_analysieren =='1':
             print('Simple descriptive statistics: \n')
@@ -500,6 +501,7 @@ def menu_graphical_analyze(df):
 ###menu t-test
 def ttest_menu(df):
     clear()
+    print('t-Test \n')
     menu_ttest = input('Which kind of t-test: \n1: one sample t-Test \n2: two sample t-Test \n3: two independent samples t-Test \n(choose a number) \n?')    
     if menu_ttest =='1':
         ttest_o_s(df)
@@ -516,6 +518,7 @@ def ttest_menu(df):
 ###anova menu
 def ANOVA_menu(df):
     clear()
+    print('ANOVA \n')
     anova_m = input('Which kind of ANOVA: \n1: one way ANOVA \n2: to way ANOVA \n(choose number) \n?')
     if anova_m =='1':
         anova_o_w(df)
@@ -529,6 +532,7 @@ def ANOVA_menu(df):
 ###############################################################################
 def menu_tests(df):
     clear()
+    print('Statistical Tests \n')
     what_kind_of_test = input('Which Test do you would like to do: \n1: Test for normal distribution  \n2: correlation all columns \n3: t-test \n4: f-test \n5: ANOVA \n6: Outlier-Test \n7: Median-Test \n(choose a number) \n?')
     if what_kind_of_test =='1':
         clear()
@@ -558,6 +562,7 @@ def menu_tests(df):
 #######################################################################
 def MSA(df):
     clear()
+    print('Measurement System Analysis \n')
     menu_MSA = input('Choose MSA Version: \n1: MSA_V1 \n2: MSA_V2 \n(choose number) \n?')
     if menu_MSA =='1':
         msa_v1(df)
@@ -609,6 +614,7 @@ def statistic(df):
 def preview_table(fn, df):
     while True:
         clear()
+        print('Table preview \n')
         menu_voranalyse = input('Preview Menu: \n1: Single-view \n2: Datatype \n3: Missing-Datas \n4: show Data in HTML \n?')
         if menu_voranalyse =='1':
             clear()
@@ -647,6 +653,7 @@ def table_functions(fn, df):
         
         change_datatype(df)
         clear()
+        print('Table Functions \n')
         menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n11: get calendar info \n12: delete or replace value/characters \n13: melt columns \n14: rename column \n15: save to CSV-file \n16: combine factor columns \n17: delete column \n18: add random distribution-data \n?')
         
         if menu_tf =='1':

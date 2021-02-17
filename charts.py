@@ -24,7 +24,8 @@ from mft import isfloat, clear
 ### groupby barchart
 
 def groupby_balkendiagramm(df):
-    
+    clear()
+    print('Bar-chart with Group\n')
     anz_col = len(df.columns)
         
     list_columns = []
@@ -61,6 +62,8 @@ def groupby_balkendiagramm(df):
 #######################################################################
 ### barcharts
 def balkendiagramm(df):
+    clear()
+    print('Bar-Chart - count entries one column \n')
     anz_col = len(df.columns)
         
     list_columns = []
@@ -92,6 +95,7 @@ def balkendiagramm(df):
 ###pie charts
 def kuchendiagramm(df):
     clear()
+    print('Pie-Chart \n')
     anz_col = len(df.columns)
         
     list_columns = []
@@ -125,6 +129,7 @@ def kuchendiagramm(df):
 ###line-chart
 def liniendiagramm(df):
     clear()
+    print('Line-Chart \n')
     kategorie=df.select_dtypes(include=['object', 'datetime', 'int'])
     werte = df.select_dtypes(exclude=['object'])
     
@@ -270,6 +275,7 @@ def liniendiagramm(df):
 ###line-chart with dots
 def liniendiagramm_w_dot(df):
     clear()
+    print('Line-Chart with dot \n')
     kategorie=df.select_dtypes(include=['object', 'datetime', 'int'])
     werte = df.select_dtypes(exclude=['object'])
     
@@ -417,6 +423,7 @@ def liniendiagramm_w_dot(df):
 def line_diagram_menu(df):
     
     clear()
+    print('Line-Chart-Menue \n')
     ld_menu = input('Which kind of line diagram: \n1: line with dots \n2: line without dots \n?')
     
     if ld_menu == '1':
@@ -434,6 +441,7 @@ def confidencelinechart(df):
     #df = sns.load_dataset(df)
     
     clear()
+    print('Confidence Level Chart \n')
     kategorie=df.select_dtypes(include=['object', 'datetime', 'int'])
     werte = df.select_dtypes(exclude=['object'])
     
@@ -499,6 +507,7 @@ def confidencelinechart(df):
 ###single boxplot    
 def boxplot(df):
     clear()
+    print('Simple Boxplot \n')
     werte = df.select_dtypes(exclude=['object'])
     
     #
@@ -632,6 +641,7 @@ def boxplot(df):
 ###boxplot with group
 def boxplot_groupby(df):
     clear()
+    print('Boxplot with one Group \n')
     kategorie=df.select_dtypes(include=['object','int'])
     werte = df.select_dtypes(exclude=['object'])
     
@@ -787,6 +797,7 @@ def boxplot_groupby(df):
 def boxplot2f(df):
     
     clear()
+    print('Boxplot with two Groups \n')
     sns.set(style="whitegrid")
     
     category=df.select_dtypes(exclude=['float'])
@@ -950,6 +961,7 @@ def boxplot2f(df):
 ###single violin plot
 def violin(df):
     clear()
+    print('Simple Violin Plot \n')
     sns.set(style="whitegrid")
     werte = df.select_dtypes(exclude=['object'])
     
@@ -1074,6 +1086,7 @@ def violin(df):
 ###violin plot with group
 def violin_groupby(df):
     clear()
+    print('Violin Plot with one Group \n')
     sns.set(style="whitegrid")
     kategorie=df.select_dtypes(exclude=['float'])
     werte = df.select_dtypes(exclude=['object'])
@@ -1223,6 +1236,7 @@ def violin_groupby(df):
 ###violin Plot by 2 groups
 def violin2f(df):
     clear()
+    print('Violin Plot with two Groups \n')
     sns.set(style="whitegrid")
     
     category=df.select_dtypes(exclude=['float'])
@@ -1382,6 +1396,7 @@ def violin2f(df):
 ###single swarm plot
 def single_swarmplot(df):
     clear()
+    print('Simple Swarm Plot \n' )
     sns.set(style="whitegrid")
     werte = df.select_dtypes(exclude=['object'])
     
@@ -1516,6 +1531,7 @@ def single_swarmplot(df):
 ###swarmplot with group
 def swarmplot1f(df):
     clear()
+    print('Swarm Plot with one Group \n')
     sns.set(style="whitegrid", palette="muted")
 
     kategorie=df.select_dtypes(exclude=['float'])
@@ -1674,6 +1690,7 @@ def swarmplot1f(df):
 ###swarmplot two factors
 def swarmplot2f(df):
     clear()
+    print('Swarm Plot with two Groups \n')
     sns.set(style="whitegrid")
     
     category=df.select_dtypes(exclude=['float'])
@@ -1840,6 +1857,7 @@ def swarmplot2f(df):
 ###single stripplot
 def single_stripplot(df):
     clear()
+    print('Single Strip Plot \n')
     sns.set(style="whitegrid")
     werte = df.select_dtypes(exclude=['object'])
     
@@ -1975,6 +1993,7 @@ def single_stripplot(df):
 ###stripplot with group
 def stripplot1f(df):
     clear()
+    print('Strip Plot with one Group \n')
     sns.set(style="whitegrid", palette="muted")
 
     kategorie=df.select_dtypes(exclude=['float'])
@@ -2130,6 +2149,7 @@ def stripplot1f(df):
 ###stripplot two factors
 def stripplot2f(df):
     clear()
+    print('Strip Plot with two Groups \n')
     sns.set(style="whitegrid")
     
     category=df.select_dtypes(exclude=['float'])
@@ -2297,6 +2317,8 @@ def stripplot2f(df):
 ###stripplot with group
 def pointplot1f(df):
     clear()
+    
+    print('Point Plot by one Group \n')
     sns.set(style="darkgrid")
 
     kategorie=df.select_dtypes(exclude=['float'])
@@ -2452,6 +2474,8 @@ def pointplot1f(df):
 ###stripplot two factors
 def pointplot2f(df):
     clear()
+    
+    print('Point Plot by two Groups \n')
     sns.set(style="darkgrid")
     
     category=df.select_dtypes(exclude=['float'])
@@ -2623,6 +2647,8 @@ def pointplot2f(df):
 ###histogram
 def histogram(df):
     clear()
+    
+    print('Histogram \n')
     sns.set(color_codes=True)
 
         
@@ -2756,6 +2782,7 @@ def histogram(df):
 ###distriplot with group
 def distriplot1f(df):
     clear()
+    print('Distributions-Plot \n')
     sns.set(style="darkgrid")
     kategorie=df.select_dtypes(exclude=['float'])
     werte = df.select_dtypes(exclude=['object'])
@@ -2900,6 +2927,7 @@ def distriplot1f(df):
     
 def histogram1f(df):
     clear()
+    print('Histogram by one factor \n')
     sns.set(style="darkgrid")
     kategorie=df.select_dtypes(exclude=['float'])
     werte = df.select_dtypes(exclude=['object'])
@@ -3048,6 +3076,7 @@ def histogram1f(df):
 ###qq-plot
 def qq_plot(df):
     clear()
+    print('Q-Q-Plot \n')
     werte = df.select_dtypes(exclude=['object'])
     
     #
@@ -3082,7 +3111,8 @@ def qq_plot(df):
 #######################################################################
 ###scatterplot
 def scatter(df):
-    clear()        
+    clear()
+    print('Simple Scatter Plot \n')        
     werte = df.select_dtypes(exclude=['object'])
     
     #
@@ -3130,7 +3160,7 @@ def scatter_w_r(df):
     clear()
     sns.set(color_codes=True)        
     
-    
+    print('Scatter Plot with Regression line linear \n')
     
     werte = df.select_dtypes(exclude=['object'])
     
@@ -3179,7 +3209,7 @@ def scatter_w_r(df):
 def scatter_joint_plot(df):
     clear()
     sns.set(color_codes=True)        
-    
+    print('Scatter Join Plot \n')
     
     
     werte = df.select_dtypes(exclude=['object'])
@@ -3226,7 +3256,7 @@ def scatter_joint_plot(df):
 def groupplot(df):
     clear()
     sns.set(style="ticks")
-
+    print('Group -Plot')
     
     kategorie=df.select_dtypes(exclude=['float'])
     werte = df.select_dtypes(exclude=['object'])
@@ -3314,7 +3344,7 @@ def groupplot_w_T(df):
     clear()
     sns.set(style="ticks")
 
-    
+    print('Group Plot with Limit Line \n')
     kategorie=df.select_dtypes(exclude=['float'])
     werte = df.select_dtypes(exclude=['object'])
     zeitraum=df.select_dtypes(exclude=['float'])
@@ -3477,6 +3507,7 @@ def groupplot_w_T(df):
 def groupplot_menu(df):
     
     clear()
+    print('Group Plot Menu \n')
     gp_menu = input('Which kind of Groupplot: \n1: Groupplot \n2: Groupplot with Toleranceline \n?')
     
     if gp_menu == '1':
@@ -3492,6 +3523,8 @@ def groupplot_menu(df):
 ###Thanks to https://tylermarrs.com/posts/pareto-plot-with-matplotlib/
 #####################################################################
 def pareto_plot(df, x=None, y=None, title=None, show_pct_y=False, pct_format='{0:.0%}'):
+    
+    
     xlabel = x
     ylabel = y
     tmp = df.sort_values(y, ascending=False)
@@ -3533,7 +3566,7 @@ def pareto_plot(df, x=None, y=None, title=None, show_pct_y=False, pct_format='{0
 def pareto(df):
     
     clear()
-    
+    print('Pareto Plot \n')
     kategorie=df.select_dtypes(exclude=['float'])
     werte = df.select_dtypes(exclude=['object'])
     
@@ -3596,7 +3629,7 @@ def pareto(df):
 def pareto_one_column(df):
     
     clear()
-    
+    print('Pareto Plot \n')
     werte = df.select_dtypes(exclude=['float'])
     
     #
@@ -3639,7 +3672,7 @@ def three_d_scatterplot(df):
     clear()
     
     
-    
+    print('3D Scatter Plot \n')
     werte = df.select_dtypes(exclude=['object'])
     
     #
@@ -3693,7 +3726,7 @@ def trisurfaceplot(df):
     clear()
     
     
-    
+    print('3D Surface Plot \n')
     werte = df.select_dtypes(exclude=['object'])
     
     #
@@ -3746,7 +3779,9 @@ def trisurfaceplot(df):
     plt.show()
 
 def threeddplot(df):
+    clear()
     
+    print('3D Plot Menue \n')
     tdplot = input('Choose 3d-Plot: \n1: 3d-scatter-plot \n2: 3d-surface-plot \n?')
     
     if tdplot == '1':
