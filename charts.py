@@ -8,7 +8,8 @@ Created on Wed May 13 11:55:01 2020
 import seaborn as sns
 import matplotlib.pyplot as plt
 import scipy as spy
-from mft import isfloat, clear
+from scipy.stats import shapiro
+from mft import isfloat, clear, truncate
 #from mpl_toolkits import mplot3d
 
 
@@ -3790,3 +3791,131 @@ def threeddplot(df):
         trisurfaceplot(df)
     else:
         print('wrong input, please try again')
+
+#############################################################################
+def decriptive_statistics(df):
+    
+    #df['number'] = range(1, len(df) + 1)
+    
+    clear()
+    print('Descriptive Statistic \n')
+    werte = df.select_dtypes(include=['float', 'int'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number =[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    while True:
+        value_column_y= input('y-value: \n(choose number) \n?')
+        if value_column_y not in list_number:
+            print('wrong input, try again!')
+        else:
+            break
+    
+    df['number'] = range(1, len(df) + 1)
+    
+    y = df[list_columns_werte[int(value_column_y)]]
+    y_val = list_columns_werte[int(value_column_y)]
+    x = df['number']
+    stat, p = shapiro(y)
+            
+    ###one side tolerance ut / normal distribution
+    if p >= 0.05:
+        #normal verteilt
+        print('one side tolerance ut / normal distribution')
+        
+        mean_y = y.mean()
+        std_y = y.std()
+        count_y = len(y)
+        mean_p_3s = mean_y + 3*std_y
+        mean_m_3s = mean_y - 3*std_y
+        min_y = y.min()
+        max_y = y.max()
+        
+        t_mean_y = truncate(mean_y, 5)
+        t_std_y = truncate(std_y, 5)
+        t_mean_p_3s = truncate(mean_p_3s, 5)
+        t_mean_m_3s = truncate(mean_m_3s, 5)
+        
+        text = 'distribution should follow normal distribution'
+        
+        
+        
+        
+        eintrag = 'Mean: ' + str(t_mean_y) + '\ns: ' + str(t_std_y) + '\n \n+3s: ' + str(t_mean_p_3s) + '\n-3s: ' + str(t_mean_m_3s) + '\n \nMIN: ' + str(min_y) + '\nMAX: '+ str(max_y) + '\nn: ' + str(count_y) + '\n\n' + text
+        
+        ##graphic
+                
+        plt.figure(figsize=(6, 4))
+        plt.subplot(221) # äquivalent zu: plt.subplot(2, 2, 1)
+        sns.distplot(y);
+        plt.subplot(222)
+        sns.lineplot(x=x, y=y_val, estimator=None, lw=1, marker='o', data=df)
+        #df.plot(y_val)
+        plt.axhline(y=mean_y,linewidth=2, color='g')
+        plt.axhline(y=mean_p_3s,linewidth=2, color='orange')
+        plt.axhline(y=mean_m_3s,linewidth=2, color='orange')
+        plt.subplot(223)
+        sns.boxplot(x=y)
+        plt.subplot(224)
+        plt.text(0.1,0.5,eintrag, 
+                 ha='left', va='center',
+                 fontsize=12)
+        plt.axis('off')
+        #plt.title(label_chart, fontdict=None, loc='center', pad=None)
+        plt.show()
+        
+    else:
+        
+        median_y = y.quantile(0.5)
+                
+        upper_q_y = y.quantile(0.99869)
+                
+        lower_q_y = y.quantile(0.00135)
+        min_y = y.min()
+        max_y = y.max()
+                
+        median_y = truncate(median_y, 5)
+        upper_q_y = truncate(upper_q_y, 5)
+        lower_q_y = truncate(lower_q_y, 5)
+        min_y = truncate(min_y, 5)
+        max_y =truncate(max_y, 5)
+        count_y = len(y)
+        
+        text = 'distribution should not follow normal distribution'
+        
+        
+        
+        
+        eintrag = 'Mean: ' + str(median_y) + '\n\nQ0.998: '  + str(upper_q_y) + '\nQ0.001: ' + str(lower_q_y) + '\n \nMIN: ' + str(min_y) + '\nMAX: '+ str(max_y) + '\nn: ' + str(count_y) + '\n\n' + text
+        
+        ##graphic
+                
+        plt.figure(figsize=(6, 4))
+        plt.subplot(221) # äquivalent zu: plt.subplot(2, 2, 1)
+        sns.distplot(y);
+        plt.subplot(222)
+        sns.lineplot(x=x, y=y_val, estimator=None, lw=1, marker='o', data=df)
+        #df.plot(y_val)
+        plt.axhline(y=median_y,linewidth=2, color='g')
+        plt.axhline(y=upper_q_y,linewidth=2, color='orange')
+        plt.axhline(y=lower_q_y,linewidth=2, color='orange')
+        plt.subplot(223)
+        sns.boxplot(x=y)
+        plt.subplot(224)
+        plt.text(0.1,0.5,eintrag, 
+                 ha='left', va='center',
+                 fontsize=12)
+        plt.axis('off')
+        #plt.title(label_chart, fontdict=None, loc='center', pad=None)
+        plt.show()
+        
+        
