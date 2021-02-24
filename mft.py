@@ -8,6 +8,7 @@ Created on Sat Jun  6 18:06:39 2020
 
 import os
 import pandas as pd
+import numpy as np
 
 
 
@@ -78,5 +79,13 @@ def save_CSV(fn, df):
         df.to_csv(fn, sep=';', decimal=',', header =True, index=False)
         
         
+#########################################################################
+###calc cumsum
+#def moving_average(a, n=3) :
+#    ret = np.cumsum(a, dtype=float)
+#    ret[n:] = ret[n:] - ret[:-n]
+#    return ret[n - 1:] / n
 
+def moving_average(x, w=8):
+    return np.convolve(x, np.ones(w), 'valid') / w
         
