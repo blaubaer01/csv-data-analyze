@@ -7,7 +7,7 @@ Created on Fri Jun 12 07:23:07 2020
 """
 
 import datetime as dt
-from mft import clear
+from mft import clear, save_CSV_new
 import pandas as pd
 
 def convert_datetime(df):
@@ -34,8 +34,13 @@ def convert_datetime(df):
             break  
         
     date_y = list_columns_datum[int(datum_column)]
-    
+    clear()
+    print('change date format \n')
+        
     new_name_c = input('Input new column name: \n?')
+    
+    print('current date format: \n', df[date_y][1])
+    print('')
     
     konv = input('Which datetime format do you have as input: \n1: yyyy/mm/dd hh:mm:ss \n2: dd/mm/yyyy hh:mm:ss \n3: dd-mm-yyyy hh:mm:ss \n4: yyyy-mm-ddThh:mm:ss \n5: dd.mm.yyyy hh:mm:ss \n6: dd.mm.yyyy hh:mm \n7: dd.mm.yyyy \n?' )
     
@@ -65,20 +70,20 @@ def convert_datetime(df):
     
     else:
         print('Wrong input  (choose number), please try again!')
-
     
-    speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
-    if speichern_ja.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n?')
-        fn = csvfilename + '.csv'
-        df.to_csv(fn, sep=';', decimal=',', header =True)
-
+    print(df)
+    
+    enter_ja = input('press enter')
+    
+    save_CSV_new(df)
 
 
 def cal_info(df):
     
     clear()
-        
+    print('Get column with calendar informations \n')
+    
+    
     datum = df.select_dtypes(include=['datetime'])
     
     
@@ -154,9 +159,8 @@ def cal_info(df):
         else:
             print('Wrong input  (choose number), please try again!')
         
-        speichern_ja = input('Save the table with the filters set (the only way to analyze with the filter set): y/n \n?')
-        if speichern_ja.lower() =='y':
-            csvfilename = input('Filename (.csv will save automaticly) \n?')
-            fn = csvfilename + '.csv'
-            df.to_csv(fn, sep=';', decimal=',', header =True)
-            
+        print(df)
+    
+        enter_ja = input('press enter')
+    
+        save_CSV_new(df)    

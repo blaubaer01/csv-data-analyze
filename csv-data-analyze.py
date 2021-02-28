@@ -300,7 +300,7 @@ def file_einlesen(fn):
 def beschreibende_stat(df):
     while True:
         clear()
-        print('Descriptive Statistik')
+        print('descriptive statistic')
         was_beschreibend_analysieren=input('What data do you want to analyze? \n1: all\n2: only the numerical\n3: one special column \n4: graphical (numerical) \n?')
         if was_beschreibend_analysieren =='1':
             print('Simple descriptive statistics: \n')

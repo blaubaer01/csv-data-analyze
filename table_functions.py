@@ -749,7 +749,7 @@ def del_empty_rows(fn, df):
     df= df.dropna(subset=[col])
     
     print(df)
-    
+    input('press enter \n')
     
     save_CSV(fn, df)    
 
@@ -781,7 +781,7 @@ def del_nan_rows(fn, df):
     df= df.dropna(subset=[col])
     print(df)
     
-    
+    input('press enter \n')
     save_CSV(fn, df)
 
 def del_nan(fn, df):
@@ -792,11 +792,12 @@ def del_nan(fn, df):
         df = df.dropna()
         print('nan data deleted')
         print(df)
+        input('press enter \n')
         save_CSV(fn, df)
     else:
         print('no data deleted')
         
-
+    
 
 def del_zero_rows(fn, df):
     
@@ -828,7 +829,7 @@ def del_zero_rows(fn, df):
     
     print(df)
     
-    
+    input('press enter \n')
     save_CSV(fn, df)
 
 
@@ -865,6 +866,7 @@ def del_NA_rows(fn, df):
     
     print(df)
     
+    input('press enter \n')
     
     save_CSV(fn, df)
 
@@ -905,7 +907,7 @@ def del_sv_rows(fn, df):
     
     print(df)
     
-    
+    input('press enter \n')
     save_CSV(fn, df)
 
 
@@ -941,7 +943,7 @@ def replace_content_into_col(fn, df):
     
     print(df)
     
-    
+    input('press enter \n')
     save_CSV(fn, df)
     
 def replace_number_into_col(fn, df):
@@ -984,7 +986,7 @@ def replace_number_into_col(fn, df):
     
     print(df)
     
-    
+    input('press enter \n')
     save_CSV(fn, df)
 
 
@@ -1052,6 +1054,7 @@ def replace_float_comma(fn, df):
     
     df[col]=df[col].str.replace(',','.').astype(float)
     
+    input('press enter \n')
     save_CSV(fn, df)
 
 
@@ -1083,7 +1086,7 @@ def replace_character(fn, df):
     
     
     df[col]=df[col].str.replace(char_input,char_output).astype(str)
-    
+    input('press enter \n')
     save_CSV(fn, df)
 
 def del_last_row(fn, df):
@@ -1096,6 +1099,7 @@ def del_last_row(fn, df):
         df = df.drop(df.index[len(df)-1])
         print('Last row deleted')
         print(df)
+        input('press enter \n')
         save_CSV(fn, df)
     else:
         print('no data deleted')
@@ -1110,6 +1114,7 @@ def del_first_row(fn, df):
         df = df.drop(df.index[0])
         print('First row deleted')
         print(df)
+        input('press enter \n')
         save_CSV(fn, df)
     else:
         print('no data deleted')
@@ -1146,6 +1151,7 @@ def del_defined_row(fn, df):
         df = df.drop(df.index[index_del_list])
         print('Defined Rows deleted')
         print(df)
+        input('press enter \n')
         save_CSV(fn, df)
     else:
         print('no data deleted')
@@ -1183,7 +1189,7 @@ def del_contains_word(fn, df):
         
         df = (df[~df[col].str.contains(del_word)])
         print(df)
-        
+        input('press enter \n')
         save_CSV(fn, df)
     else:
         print('no rows deleted')
@@ -1257,7 +1263,7 @@ def melt_table(df):
     df = pd.melt(df, id_vars = list_id_vars, value_vars = list_vars, var_name= 'Values')
     
     print(df)
-    
+    input('press enter \n')
     save_CSV_new(df)
 
 
@@ -1299,7 +1305,7 @@ def df_rename(fn, df):
         df = df.rename(columns={r_col:new_column_name})
         
         print(df)
-
+        input('press enter \n')
         save_CSV(fn, df)
         
 
@@ -1348,7 +1354,7 @@ def combine_column(fn, df):
     df[name_col] = df[col1] + "_" + df[col2]
     
     print(df)
-    
+    input('press enter \n')
     save_CSV(fn, df)
         
 ########################################################################
@@ -1390,7 +1396,7 @@ def delete_column(fn, df):
         df = df.drop(d_col, axis=1)
     
         print(df)
-
+        input('press enter \n')
         save_CSV(fn, df)
         
 ####################################################################################
