@@ -61,7 +61,7 @@ def file_einlesen(fn):
     
     #define structure
     while True:
-        format_ist = input('Which separator is used by the file: \n1: Comma \n2: Semicolon \n3: Tab \n(choose number)\n?').lower()
+        format_ist = input('Which separator is used by the file: \n1: Comma \n2: Semicolon \n3: Tab \n4: Space\n(choose number)\n?').lower()
         if format_ist == '1':
             trennzeichen = ','
             dezimalzeichen = '.'
@@ -93,6 +93,20 @@ def file_einlesen(fn):
                 else:
                     print('wrong input, choose a number!')
             break
+        elif format_ist == '4':
+            trennzeichen = '\s+'
+            while True:
+                dezimalz = input('Which delimiter is used: \n1: floatcomma \n2: pointcomma \n(choose nr) \n?')
+                if dezimalz =='1':
+                    dezimalzeichen =','
+                    break
+                elif dezimalz =='2':
+                    dezimalzeichen ='.'
+                    break
+                else:
+                    print('wrong input, choose a number!')
+            break
+        
         else:
             print('Wrong input, please try again')
         #file_einlesen(auswahl_datei)
