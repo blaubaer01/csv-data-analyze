@@ -78,6 +78,7 @@ def appendDFToCSV(fn, df, sep=","):
         df = df.append(df2)
         print(df)
         #file_in_html(df)
+        input('press enter \n')
         
         save_CSV_new(df)
         
@@ -152,21 +153,28 @@ def mergecolumn(df):
     if join_how == '1':
         result = pd.merge(df, df2, how='outer', on=key_name)
         print(result)
-        print('To work with you have to save this dataframe as file')
+        
+        
+        input('press enter \n')
         save_CSV_new(df)
     elif join_how == '2':
         result = pd.merge(df, df2, how='inner', on =key_name)
         print(result)
+        print(df)
+        input('press enter \n')
         save_CSV_new(df)
     elif join_how =='3':
         result = pd.merge(df, df2, how='left', on=key_name)
         print(result)
+        print(df)
+        input('press enter \n')
         save_CSV_new(df)
         
     elif join_how =='4':
         result = pd.merge(df, df2, how='right', on=key_name)
         print(result)
-        print('To work with you have to save this dataframe as file')
+        
+        input('press enter \n')
         save_CSV_new(df)
     else:
         print('Wrong input, please try again')
@@ -278,7 +286,7 @@ def filter_typ(df):
     
     save_CSV_new(df)            
     print(df)
-    press_enter=input('press enter to continue')
+    input('press enter to continue \n')
     return(df)            
 
 
@@ -325,9 +333,10 @@ def sort_column(fn, df):
                     print('wrong input, try again')
             
             df = df.sort_values(by=s_col, ascending=a_t_f)
-            
+            print(df)
             restart_s = input('additional sorting: y/n \n?')
             if restart_s.lower() != 'y':
+                
                 save_CSV(fn, df)
                 file_in_html(fn, df)
                 return(df)   
@@ -341,6 +350,8 @@ def transposed_table(fn, df):
     trans_yes = input('Would you like to transpose the table: y/n\n?')
     if trans_yes =='y':
         df = df.T
+        print(df)
+        input('press enter \n')
         save_CSV_new(df)
         file_in_html(fn, df)
         return(df)
@@ -395,11 +406,13 @@ def crosstab(df):
         
         if with_sum =='y':
             ctv=pd.crosstab(index=df[tab1], columns=df[tab2], margins=True)
-            print(ctv)    
+            print(ctv)
+            input('press enter \n')
             save_CSV_new(df)
         else:
             ctcalc = pd.crosstab(index=df[tab1], columns=df[tab2])
             print(ctcalc)
+            input('press enter \n')
             save_CSV_new(df)
     
     elif which_table =='2':
@@ -408,11 +421,13 @@ def crosstab(df):
         
         if with_sum =='y':
             ct = pd.crosstab(index=df[tab1], columns=df[tab2], margins=True).applymap(lambda r: r/len(df))
-            print(ct)    
+            print(ct)
+            input('press enter \n')
             save_CSV_new(df)
         else:
             ct = pd.crosstab(index=df[tab1], columns=df[tab2], margins=False).applymap(lambda r: r/len(df))
             print(ct)
+            input('press enter \n')
             save_CSV_new(df)
 
     else:
