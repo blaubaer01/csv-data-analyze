@@ -363,7 +363,7 @@ def x_chart(df):
     
     stat, p = shapiro(df[y])
     
-    if p < 0.5:
+    if p < 0.05:
         mittelwert = median
         ut3s = upper_q_y
         lt3s = lower_q_y

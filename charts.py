@@ -12,8 +12,8 @@ from scipy.stats import shapiro
 from mft import isfloat, clear, truncate, moving_average, isinteger
 import pandas as pd
 #from mpl_toolkits import mplot3d
-
-
+#from mpl_toolkits.mplot3d import Axes3D # <--- This is important for 3d plotting 
+from mpl_toolkits.mplot3d import axes3d, Axes3D #<-- Note the capitalization! 
 
 
 
@@ -3877,13 +3877,16 @@ def three_d_scatterplot(df):
     
     z = df[list_columns_werte[int(value_column_z)]]
 
+    
+    
     fig = plt.figure()
-    ax = plt.axes(projection="3d")
-    
-    ax.scatter3D(x, y, z, c=z, cmap='hsv');
-    
+    ax = Axes3D(fig)
+    ax.scatter(x, y, z)
     plt.show()
-
+    
+    
+    
+    
     
 def trisurfaceplot(df):
     clear()
