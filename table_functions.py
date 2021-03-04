@@ -156,26 +156,26 @@ def mergecolumn(df):
         
         
         input('press enter \n')
-        save_CSV_new(df)
+        save_CSV_new(result)
     elif join_how == '2':
         result = pd.merge(df, df2, how='inner', on =key_name)
         print(result)
-        print(df)
+        
         input('press enter \n')
-        save_CSV_new(df)
+        save_CSV_new(result)
     elif join_how =='3':
         result = pd.merge(df, df2, how='left', on=key_name)
         print(result)
-        print(df)
+        
         input('press enter \n')
-        save_CSV_new(df)
+        save_CSV_new(result)
         
     elif join_how =='4':
         result = pd.merge(df, df2, how='right', on=key_name)
         print(result)
         
         input('press enter \n')
-        save_CSV_new(df)
+        save_CSV_new(result)
     else:
         print('Wrong input, please try again')
 
