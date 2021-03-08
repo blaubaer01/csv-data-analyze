@@ -195,7 +195,7 @@ def f_test(df):
 ###one single t-test
 def ttest_o_s(df, alpha=0.05, alternative='greater'):
     clear()
-    print('One simple t-Test \n')
+    print('One sample t-Test \n')
     werte = df.select_dtypes(exclude=['object'])
     
     #
@@ -342,7 +342,7 @@ def ttest_i(df):
         t, p = spy.stats.ttest_ind(a,b, equal_var = False)
     
     
-        print('Two sample t-Test (for the means of two independent samples of scores):')
+        print('Indipendent sample t-Test (for the means of two independent samples of scores):')
         print ('t-Value:',t)
         print ('p-Value:',p)
     

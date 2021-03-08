@@ -542,7 +542,7 @@ def ttest_menu(df):
 def ANOVA_menu(df):
     clear()
     print('ANOVA \n')
-    anova_m = input('Which kind of ANOVA: \n1: one way ANOVA \n2: to way ANOVA \n(choose number) \n?')
+    anova_m = input('Which kind of ANOVA: \n1: one way ANOVA \n2: two way ANOVA \n(choose number) \n?')
     if anova_m =='1':
         anova_o_w(df)
     elif anova_m =='2':
