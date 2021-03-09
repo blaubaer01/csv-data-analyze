@@ -802,7 +802,7 @@ def main():
     clear()
     print('#'*92)
     print('#                                                                                          #')
-    print('#               CSV Data Analyze-Tool V2.5 (turtel) by Ricky Helfgen                       #')
+    print('#               CSV Data Analyze-Tool V2.6 (turtel) by Ricky Helfgen                       #')
     print('#      This is an open source project and is subject to the guidelines of GPL V3           #')
     print('#                           Analyze CSV-Data files with:                                   #')
     print('#   python3, pandas, numpy, matplotlib, seaborn, statsmodels, os-sys, scipy, webbrownser   #')
