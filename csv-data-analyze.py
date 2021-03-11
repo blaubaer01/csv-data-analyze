@@ -19,7 +19,7 @@ from table_functions import appendDFToCSV, mergecolumn, filter_typ, sort_column,
 from table_functions import delete_column, change_datatype, menu_rand_data
 from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 from msa import msa_v1, msa_v2
-from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, line_diagram_menu, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot_menu, pareto, pareto_one_column, pointplot1f, pointplot2f, confidencelinechart, threeddplot, distriplot1f, histogram1f, decriptive_statistics
+from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, line_diagram_menu, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot_menu, pareto, pareto_one_column, pointplot1f, pointplot2f, confidencelinechart, threeddplot, distriplot1f, histogram1f, decriptive_statistics, scatter_by_o_factor
 from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_s, ttest_t_s, ttest_i, anova_o_w, anova_t_w
 from table_calc import menu_calc
 from rand_data import menu_rd
@@ -382,7 +382,7 @@ def auswahl_balkendiagramm(df):
 ###menu categorigal data (boxplot, violinplot)
 def menu_categorie_data(df):
     clear()
-    menu_cd = input('Which Categorial Plot: \n1: Single Boxplot \n2: Boxplot by one factor \n3: Boxplot by two factors \n4: Single Violinplot \n5: Violinplot one factor \n6: Violinplot by two factors \n7: Single Swarmplot \n8: Swarmplot by one factor \n9: Swarmplot by two factors \n10: Single Stripplot \n11: Stripplot by one factor \n12: Stripplot by two factors  \n13: Pointplot by one factor \n14: Pointplot by two factors \n15: Distribution-Plot by one factor \n16: Histogram-Plot by one factor \n(choose a number) \n?')
+    menu_cd = input('Which Categorial Plot: \n1: Single Boxplot \n2: Boxplot by one factor \n3: Boxplot by two factors \n4: Single Violinplot \n5: Violinplot one factor \n6: Violinplot by two factors \n7: Single Swarmplot \n8: Swarmplot by one factor \n9: Swarmplot by two factors \n10: Single Stripplot \n11: Stripplot by one factor \n12: Stripplot by two factors  \n13: Pointplot by one factor \n14: Pointplot by two factors \n15: Distribution-Plot by one factor \n16: Histogram-Plot by one factor \n17: scatter plot by one factor\n(choose a number) \n?')
     if menu_cd =='1':
         boxplot(df)
     elif menu_cd =='2':
@@ -415,6 +415,8 @@ def menu_categorie_data(df):
         distriplot1f(df)
     elif menu_cd =='16':
         histogram1f(df)
+    elif menu_cd =='17':
+        scatter_by_o_factor(df)
     
     else:
         print('Wrong input, try again!')
@@ -482,7 +484,7 @@ def menu_graphical_analyze(df):
     print('Choose graphical view:')
     gr_view_list= ['Barchart', 'Piechart', 'Histogram', 'Q-Q-Plot', 'Linechart', 'Group-Plot', 'Scatter-Plot',  
                    'Categorical Plots',  
-                   'Control-Charts', 'Pareto-Chart', 'Confidence Line-Chart', '3d-Plot']
+                   'Control-Charts', 'Pareto-Chart', 'Confidence Line-Chart', '3d-Plot', 'Logistic Regression Plot']
     for i in range(len(gr_view_list)):
         print(i, gr_view_list[i])
         i+=1
@@ -512,6 +514,7 @@ def menu_graphical_analyze(df):
         confidencelinechart(df)
     elif ausw_gr_view =='11':
         threeddplot(df)
+    
     else:
         print('Wrong input, please try again')
 
