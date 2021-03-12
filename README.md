@@ -20,3 +20,5 @@ Thanks to all this Programmers
 [More under: http://www.reh-webdesign.de/csv-data-analyze/howto/csv-data-analyze.html](http://www.reh-webdesign.de/csv-data-analyze/howto/csv-data-analyze.html)
 
 [More under: http://www.reh-webdesign.de/csv-data-analyze/howto/csv-data-analyze-en.html](http://www.reh-webdesign.de/csv-data-analyze/howto/csv-data-analyze-en.html)
+
+[Tutorial-Videos under: https://www.youtube.com/playlist?list=PLxTKii6vhQ6GF81RX7AL-gbjZgtImTrJn](https://www.youtube.com/playlist?list=PLxTKii6vhQ6GF81RX7AL-gbjZgtImTrJn)
