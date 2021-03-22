@@ -19,7 +19,7 @@ from table_functions import appendDFToCSV, mergecolumn, filter_typ, sort_column,
 from table_functions import delete_column, change_datatype, menu_rand_data
 from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 from msa import msa_v1, msa_v2
-from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, line_diagram_menu, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot_menu, pareto, pareto_one_column, pointplot1f, pointplot2f, confidencelinechart, threeddplot, distriplot1f, histogram1f, decriptive_statistics, scatter_by_o_factor
+from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, line_diagram_menu, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot_menu, pareto, pareto_one_column, pointplot1f, pointplot2f, confidencelinechart, threeddplot, distriplot1f, histogram1f, decriptive_statistics, scatter_by_o_factor, pairplot_menu
 from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_s, ttest_t_s, ttest_i, anova_o_w, anova_t_w
 from table_calc import menu_calc
 from rand_data import menu_rd
@@ -484,7 +484,7 @@ def menu_graphical_analyze(df):
     print('Choose graphical view:')
     gr_view_list= ['Barchart', 'Piechart', 'Histogram', 'Q-Q-Plot', 'Linechart', 'Group-Plot', 'Scatter-Plot',  
                    'Categorical Plots',  
-                   'Control-Charts', 'Pareto-Chart', 'Confidence Line-Chart', '3d-Plot', 'Logistic Regression Plot']
+                   'Control-Charts', 'Pareto-Chart', 'Confidence Line-Chart', '3d-Plot', 'Pairplot']
     for i in range(len(gr_view_list)):
         print(i, gr_view_list[i])
         i+=1
@@ -514,7 +514,8 @@ def menu_graphical_analyze(df):
         confidencelinechart(df)
     elif ausw_gr_view =='11':
         threeddplot(df)
-    
+    elif ausw_gr_view =='12':
+        pairplot_menu(df)
     else:
         print('Wrong input, please try again')
 
@@ -757,7 +758,7 @@ def mit_daten_arbeiten(fn, df):
             df=pd.read_csv(fn,sep=';' ,decimal=',', header=0, engine='python')
             print('current file name: ' , fn)
         print('\n')
-        m_d_a = input('Next Steps:\n1:Table Functions \n2:Statistics Analyze \np: preview table \nd: descriptice statistics \ng: grafical analyse \nt: statistical tests \n?')
+        m_d_a = input('Next Steps:\n1: Table Functions \n2: Statistics Analyze \np: preview table \nd: descriptice statistics \ng: grafical analyse \nt: statistical tests \n?')
         if m_d_a =='1':
             clear()
             table_functions(fn, df)
@@ -849,9 +850,12 @@ def main():
                 if fn in csv_dateien:
                     df=file_einlesen(fn)
                     break
+                
                 else:
                     print('File not found! Please check your Input! \npay attention to upper and lower case!')
                     #break
+                    
+                        
             clear()
                 
             print('#'*70)

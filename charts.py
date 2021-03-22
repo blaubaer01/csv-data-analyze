@@ -3475,7 +3475,6 @@ def scatter_joint_plot(df):
     plt.show()
 
 
-
 #######################################################################
 ###Group Plot (show a plot by group)
 def groupplot(df):
@@ -4148,4 +4147,150 @@ def decriptive_statistics(df):
         #plt.title(label_chart, fontdict=None, loc='center', pad=None)
         plt.show()
         
+def easy_pairplot(df):
+    clear()
+    print('easy Pair Plot \n \nAttention!! \n This plot needs cpu resources and cold take a few minutes! \n')    
         
+    g = sns.PairGrid(df)
+    g.map(sns.scatterplot)
+    
+    plt.show()
+    
+def pairplot_hist(df):
+    clear()
+    
+    print('Pair Plot with Histogram \n \nAttention!! \n This plot needs cpu resources and cold take a few minutes! \n')
+    
+    g = sns.PairGrid(df)
+    g.map_diag(sns.histplot)
+    g.map_offdiag(sns.scatterplot)
+    plt.show()
+
+def pairplot_dist(df):
+    clear()
+    print('Pair Plot with distribution \n \nAttention!! \n This plot needs cpu resources and cold take a few minutes! \n')
+
+    g = sns.PairGrid(df)
+    g.map_upper(sns.scatterplot)
+    g.map_lower(sns.kdeplot)
+    g.map_diag(sns.kdeplot, lw=3, legend=False)
+    plt.show()
+
+
+def pairplot_1c (df):
+    clear()
+    print('Pair Plot with group \n \nAttention!! \n This plot needs cpu resources and cold take a few minutes! \n')
+    
+    
+    category=df.select_dtypes(exclude=['float'])
+    
+    anz_col_category = len(category.columns)
+        
+    list_columns_category = []
+    list_number=[]
+    i=1
+    for i in range(anz_col_category):
+        list_columns_category.append(category.columns[i])
+        list_number.append(str(i))
+        print(i, category.columns[i])
+        i+=1
+    
+    while True:
+        groupby_column = input('Group by column: \n(choose number) \n?')
+        if groupby_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break
+    
+    x = list_columns_category[int(groupby_column)]
+    
+    print('easy Pair Plot \n \nAttention!! \n This plot needs cpu resources and cold take a few minutes! \n')
+    g = sns.PairGrid(df, hue=x)
+    g.map(sns.scatterplot)
+    
+    plt.show()
+    
+def pairplot_1c_hist(df):
+    clear()
+    print('Pair Plot with group and histogram \n \nAttention!! \n This plot needs cpu resources and cold take a few minutes! \n')
+    
+    category=df.select_dtypes(exclude=['float'])
+    
+    anz_col_category = len(category.columns)
+        
+    list_columns_category = []
+    list_number=[]
+    i=1
+    for i in range(anz_col_category):
+        list_columns_category.append(category.columns[i])
+        list_number.append(str(i))
+        print(i, category.columns[i])
+        i+=1
+    
+    while True:
+        groupby_column = input('Group by column: \n(choose number) \n?')
+        if groupby_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break
+    
+    x = list_columns_category[int(groupby_column)]
+    
+    
+    g = sns.PairGrid(df, hue=x)
+    g.map_diag(sns.histplot)
+    g.map_offdiag(sns.scatterplot)
+    g.add_legend()
+    
+    plt.show()
+    
+def pairplot_1c_dist(df):
+    clear()
+    print('Pair Plot with group and distribution plot \n \nAttention!! \n This plot needs cpu resources and cold take a few minutes! \n')
+    
+    
+    category=df.select_dtypes(exclude=['float'])
+    
+    anz_col_category = len(category.columns)
+        
+    list_columns_category = []
+    list_number=[]
+    i=1
+    for i in range(anz_col_category):
+        list_columns_category.append(category.columns[i])
+        list_number.append(str(i))
+        print(i, category.columns[i])
+        i+=1
+    
+    while True:
+        groupby_column = input('Group by column: \n(choose number) \n?')
+        if groupby_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break
+    
+    x = list_columns_category[int(groupby_column)]
+    
+    sns.pairplot(df, hue=x, height=2.5)
+    
+    plt.show()
+    
+def pairplot_menu(df):
+    clear()
+    print('Pair Scatter Plot Menue \n')
+    pp_menu = input('Wich kind of pair plot?: \n1: simple pair plot \n2: pairplot with histogram \n3: pairplot with distribution plot \n4: pairplot with categorie \n5: pairplot with histogram and categorie \n6: pairplot with disribution and categorie \n?')
+    if pp_menu == '1':
+        easy_pairplot(df)
+    elif pp_menu == '2':
+        pairplot_hist(df)
+    elif pp_menu == '3':
+        pairplot_dist(df)
+    elif pp_menu == '4':
+        pairplot_1c (df)
+    elif pp_menu == '5':
+        pairplot_1c_hist(df)
+    elif pp_menu == '6':
+        pairplot_1c_dist(df)
+    else:
+        print('wrong input (choose number), try again!')
+            
