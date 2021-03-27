@@ -1,15 +1,4 @@
 #excluded needed packages
-#import numpy as np
-#import matplotlib.pyplot as plt
-#from scipy.stats import shapiro
-#from scipy.stats import stats
-#import scipy as spy
-#import statistics as stats
-#import seaborn as sns
-#import statsmodels.api as sm
-#from statsmodels.formula.api import ols
-#from outliers import smirnov_grubbs as grubbs
-
 
 import pandas as pd
 import os
@@ -26,11 +15,8 @@ from rand_data import menu_rd
 from tableview import fehlende_daten, datentyp, file_in_html, einzeldaten_anschauen , filter_in_html
 from mft import clear, save_CSV_new, isinteger
 from date_function import convert_datetime, cal_info
-
 import webbrowser
 from tabulate import tabulate
-
-
 from sys import platform
 
 #alternatively, define the source
@@ -819,10 +805,11 @@ def main():
     clear()
     print('#'*92)
     print('#                                                                                          #')
-    print('#               CSV Data Analyze-Tool V2.7 (turtel) by Ricky Helfgen                       #')
+    print('#               CSV Data Analyze-Tool V3.0 (snake) by Ricky Helfgen                        #')
     print('#      This is an open source project and is subject to the guidelines of GPL V3           #')
-    print('#                           Analyze CSV-Data files with:                                   #')
-    print('#   python3, pandas, numpy, matplotlib, seaborn, statsmodels, os-sys, scipy, webbrownser   #')
+    print('#                           Analyze CSV-Data files with the packages:                      #')
+    print('#   python3, pandas, numpy, matplotlib, seaborn, statsmodels, os-sys, scipy, webbrownser,  #')
+    print('#   tabulate                                                                               #')
     print('#              Download under: https://github.com/blaubaer01/csv-data-analyze              #')
     print('#   More Infos: http://www.reh-webdesign.de/csv-data-analyze/howto/csv-data-analyze.html   #')
     print('#                                     Have Fun!                                            #')
