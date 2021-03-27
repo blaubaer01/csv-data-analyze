@@ -15,6 +15,7 @@ from tableview import file_in_html
 from mft import clear, truncate, isfloat, save_CSV, save_CSV_new, isinteger
 from tableview import filter_in_html
 import numpy as np
+from tabulate import tabulate
 
 
 #Thanks to https://stackoverflow.com/questions/17530542/how-to-add-pandas-data-to-an-existing-csv-file
@@ -22,15 +23,23 @@ import numpy as np
 ### define our clear function 
 #############################################################################
 
+
+#####################################################################################################
+### append function
+
 def appendDFToCSV(fn, df, sep=","):
     
     while True:
         csv_dateien= []
+        print('-'*50)
         for dat in os.listdir(os.getcwd()):
             if dat.endswith(".csv") or dat.endswith(".CSV"):
                 csv_dateien.append(dat)
-                print(dat)
-        
+               
+                print('|', dat)
+                print('-'*50)
+                
+                
         add_table = input('Which table would yo like to add\n(pay attention to spelling)\n?' )
         if add_table in csv_dateien:
             break
@@ -76,13 +85,27 @@ def appendDFToCSV(fn, df, sep=","):
     else:
         df2=pd.read_csv(add_table,sep=trennzeichen)
         df = df.append(df2)
-        print(df)
+        
+        
+        count_column = len(df.columns)
+        print('columns', count_column)
+        if count_column > 13:
+            print(df)
+        else:
+            print(tabulate(df, headers='keys', tablefmt='psql'))
+        
+        
+        
+        
+        
+        
         #file_in_html(df)
         input('press enter \n')
         
         save_CSV_new(df)
         
-       
+###############################################################################################################
+### merge_column
 
         
 def mergecolumn(df):
@@ -285,13 +308,21 @@ def filter_typ(df):
             
     
     save_CSV_new(df)            
-    print(df)
+    
+    count_column = len(df.columns)
+    print('columns', count_column)
+    if count_column > 13:
+        print(df)
+    else:
+        print(tabulate(df, headers='keys', tablefmt='psql'))
+    
+    
     input('press enter to continue \n')
     return(df)            
 
-
+######################################################################################
 ###sort by column
-###################################################################################
+
 def sort_column(fn, df):
     sort_yes = input('Would you like to sort the data frame: y/n\n?')
     if sort_yes =='y':
@@ -338,6 +369,14 @@ def sort_column(fn, df):
             if restart_s.lower() != 'y':
                 
                 save_CSV(fn, df)
+                
+                count_column = len(df.columns)
+                print('columns', count_column)
+                if count_column > 13:
+                    print(df)
+                else:
+                    print(tabulate(df, headers='keys', tablefmt='psql'))
+                
                 file_in_html(fn, df)
                 return(df)   
                 
@@ -353,9 +392,25 @@ def transposed_table(fn, df):
         print(df)
         input('press enter \n')
         save_CSV_new(df)
+        
+        count_column = len(df.columns)
+        print('columns', count_column)
+        if count_column > 13:
+            print(df)
+        else:
+            print(tabulate(df, headers='keys', tablefmt='psql'))
+        
         file_in_html(fn, df)
         return(df)
     else:
+        
+        count_column = len(df.columns)
+        print('columns', count_column)
+        if count_column > 13:
+            print(df)
+        else:
+            print(tabulate(df, headers='keys', tablefmt='psql'))
+        
         file_in_html(fn, df)
         return(df)
 
@@ -406,12 +461,12 @@ def crosstab(df):
         
         if with_sum =='y':
             ctv=pd.crosstab(index=df[tab1], columns=df[tab2], margins=True)
-            print(ctv)
+            print(tabulate(ctv, headers='keys', tablefmt='psql'))
             input('press enter \n')
             save_CSV_new(df)
         else:
             ctcalc = pd.crosstab(index=df[tab1], columns=df[tab2])
-            print(ctcalc)
+            print(tabulate(ctcalc, headers='keys', tablefmt='psql'))
             input('press enter \n')
             save_CSV_new(df)
     
@@ -421,12 +476,12 @@ def crosstab(df):
         
         if with_sum =='y':
             ct = pd.crosstab(index=df[tab1], columns=df[tab2], margins=True).applymap(lambda r: r/len(df))
-            print(ct)
+            print(tabulate(ct, headers='keys', tablefmt='psql'))
             input('press enter \n')
             save_CSV_new(df)
         else:
             ct = pd.crosstab(index=df[tab1], columns=df[tab2], margins=False).applymap(lambda r: r/len(df))
-            print(ct)
+            print(tabulate(ct, headers='keys', tablefmt='psql'))
             input('press enter \n')
             save_CSV_new(df)
 
@@ -488,10 +543,11 @@ def contingency_tb(df):
     
    
     
-    print(ctv)
-    print(ct)
+    print(tabulate(ctv, headers='keys', tablefmt='psql'))
+    print(tabulate(ct, headers='keys', tablefmt='psql'))
+    
     print(chi2_contingency(ctcalc))
-    #sns.heatmap(ct, annot=True, cmap='coolwarm')
+    
     
     #The random variables A and B are stochastically independent of each other
     
@@ -533,8 +589,9 @@ def contingency_tb(df):
                     fontsize=12)
     plt.axis('off')
     plt.show()
-    
-    
+
+###############################################################################    
+#### add sequal number
 def seq_numbers_add(fn, df):
     
     seq_count = len(df)
@@ -548,14 +605,21 @@ def seq_numbers_add(fn, df):
     
     df[name_df] = range(seq_nr_from, seq_count+seq_nr_from)
     
-    print(df)
+    
+    count_column = len(df.columns)
+    print('columns', count_column)
+    if count_column > 13:
+        print(df)
+    else:
+        print(tabulate(df, headers='keys', tablefmt='psql'))
+    
     file_in_html(fn, df)
     print('To work with you have to save this dataframe as file')
     save_CSV(fn, df)
 
 ##############################################################################
 ##add random datas
-    
+##############################################################################    
     
 #nornal distrubution    
 def nv_add(fn, df):
@@ -590,11 +654,22 @@ def nv_add(fn, df):
     
     df[name_df] = np.random.normal(mean_df, std_df, seq_often)
     
-    print(df)
+    
+    
+    count_column = len(df.columns)
+    print('columns', count_column)
+    if count_column > 13:
+        print(df)
+    else:
+        print(tabulate(df, headers='keys', tablefmt='psql'))
+    
+    
+    
     file_in_html(fn, df)
     print('To work with you have to save this dataframe as file')
     save_CSV(fn, df)
- 
+
+###add binomial data 
 def add_bd_data(fn, df):
     clear()
     
@@ -634,7 +709,15 @@ def add_bd_data(fn, df):
     
     df[name_df] = np.random.binomial(n_df, p_df, seq_often)
     
-    print(df)
+    
+    
+    count_column = len(df.columns)
+    print('columns', count_column)
+    if count_column > 13:
+        print(df)
+    else:
+        print(tabulate(df, headers='keys', tablefmt='psql'))
+    
     file_in_html(fn, df)
     print('To work with you have to save this dataframe as file')
     save_CSV(fn, df)
@@ -671,7 +754,15 @@ def add_pd_data(fn, df):
     
     
     df[name_df] = np.random.poisson(p_df, seq_often)
-    print(df)
+    
+    
+    count_column = len(df.columns)
+    print('columns', count_column)
+    if count_column > 13:
+        print(df)
+    else:
+        print(tabulate(df, headers='keys', tablefmt='psql'))
+    
     file_in_html(fn, df)
     print('To work with you have to save this dataframe as file')
     save_CSV(fn, df)
@@ -708,7 +799,16 @@ def add_ld_data(fn, df):
     
     
     df[name_df] = np.random.logistic(location_df, scale_df, seq_often)
-    print(df)
+    
+    
+    count_column = len(df.columns)
+    print('columns', count_column)
+    if count_column > 13:
+        print(df)
+    else:
+        print(tabulate(df, headers='keys', tablefmt='psql'))
+    
+    
     file_in_html(fn, df)
     print('To work with you have to save this dataframe as file')
     save_CSV(fn, df)
@@ -718,7 +818,7 @@ def add_ld_data(fn, df):
 
     
 ################################################################################    
-
+#### menu random data
 def menu_rand_data(fn, df):
     clear()
     print('Create random data')
@@ -734,7 +834,7 @@ def menu_rand_data(fn, df):
         add_ld_data(fn, df)
 
 ###############################################################################
-
+####delete emty rows
 def del_empty_rows(fn, df):
     
     
@@ -763,11 +863,19 @@ def del_empty_rows(fn, df):
     df[col].replace(' ', np.nan, inplace=True)
     df= df.dropna(subset=[col])
     
-    print(df)
+    
+    count_column = len(df.columns)
+    print('columns', count_column)
+    if count_column > 13:
+        print(df)
+    else:
+        print(tabulate(df, headers='keys', tablefmt='psql'))
+    
     input('press enter \n')
     
     save_CSV(fn, df)    
-
+##############################################################################
+###delete nan rows
 def del_nan_rows(fn, df):
     
     
@@ -794,11 +902,21 @@ def del_nan_rows(fn, df):
     col = list_columns[int(nummer_spalte)]
     #df[col].replace('NaN', np.nan, inplace=True)
     df= df.dropna(subset=[col])
-    print(df)
+    
+    
+    count_column = len(df.columns)
+    print('columns', count_column)
+    if count_column > 13:
+        print(df)
+    else:
+        print(tabulate(df, headers='keys', tablefmt='psql'))
+    
+    
     
     input('press enter \n')
     save_CSV(fn, df)
-
+#########################################################################################
+###delete NAN rows
 def del_nan(fn, df):
     clear()
     drop_yes = input('Do you realy want to drop all "NAN" rows in the dataframe y/n \n?')
@@ -806,13 +924,22 @@ def del_nan(fn, df):
     if drop_yes.lower() =='y':
         df = df.dropna()
         print('nan data deleted')
-        print(df)
+        
+        count_column = len(df.columns)
+        print('columns', count_column)
+        if count_column > 13:
+            print(df)
+        else:
+            print(tabulate(df, headers='keys', tablefmt='psql'))
+        
+        
         input('press enter \n')
         save_CSV(fn, df)
     else:
         print('no data deleted')
         
-    
+########################################################################################
+###delete zero rows
 
 def del_zero_rows(fn, df):
     
@@ -842,12 +969,20 @@ def del_zero_rows(fn, df):
     df[col].replace(0, np.nan, inplace=True)
     df= df.dropna(subset=[col])
     
-    print(df)
+    
+    
+    count_column = len(df.columns)
+    print('columns', count_column)
+    if count_column > 13:
+        print(df)
+    else:
+        print(tabulate(df, headers='keys', tablefmt='psql'))
     
     input('press enter \n')
     save_CSV(fn, df)
 
-
+######################################################################################
+###delete NA rows
 
 def del_NA_rows(fn, df):
     
@@ -879,7 +1014,13 @@ def del_NA_rows(fn, df):
     df[col].replace('NA', np.nan, inplace=True)
     df= df.dropna(subset=[col])
     
-    print(df)
+    
+    count_column = len(df.columns)
+    print('columns', count_column)
+    if count_column > 13:
+        print(df)
+    else:
+        print(tabulate(df, headers='keys', tablefmt='psql'))
     
     input('press enter \n')
     
@@ -887,7 +1028,8 @@ def del_NA_rows(fn, df):
 
 
 
-
+##############################################################################
+###delete special values rows
 
 def del_sv_rows(fn, df):
     
@@ -922,8 +1064,20 @@ def del_sv_rows(fn, df):
     
     print(df)
     
+    count_column = len(df.columns)
+    print('columns', count_column)
+    if count_column > 13:
+        print(df)
+    else:
+        print(tabulate(df, headers='keys', tablefmt='psql'))
+    
+    
+    
     input('press enter \n')
     save_CSV(fn, df)
+
+################################################################################
+###replace content
 
 
 def replace_content_into_col(fn, df):
@@ -956,11 +1110,19 @@ def replace_content_into_col(fn, df):
     
     df[col].replace(rpl_what, rpl_with, inplace=True)
     
-    print(df)
+    count_column = len(df.columns)
+    print('columns', count_column)
+    if count_column > 13:
+        print(df)
+    else:
+        print(tabulate(df, headers='keys', tablefmt='psql'))
     
     input('press enter \n')
     save_CSV(fn, df)
-    
+
+##############################################################################
+### replace value
+
 def replace_number_into_col(fn, df):
     
     
@@ -999,12 +1161,20 @@ def replace_number_into_col(fn, df):
     
     df[col].replace(float(rpl_what),float(rpl_with), inplace=True)
     
-    print(df)
+    
+    count_column = len(df.columns)
+    print('columns', count_column)
+    if count_column > 13:
+        print(df)
+    else:
+        print(tabulate(df, headers='keys', tablefmt='psql'))
+    
     
     input('press enter \n')
     save_CSV(fn, df)
 
-
+##############################################################################
+###delete or replace menu
 def delrep_value(fn, df):
     clear()
     
@@ -1042,7 +1212,8 @@ def delrep_value(fn, df):
     
     else:
         print('wrong input (choose number), try again')
-
+###########################################################################################
+###replave float coma to point coma
 
 def replace_float_comma(fn, df):
     clear()
@@ -1069,9 +1240,19 @@ def replace_float_comma(fn, df):
     
     df[col]=df[col].str.replace(',','.').astype(float)
     
+    count_column = len(df.columns)
+    print('columns', count_column)
+    if count_column > 13:
+        print(df)
+    else:
+        print(tabulate(df, headers='keys', tablefmt='psql'))
+    
     input('press enter \n')
     save_CSV(fn, df)
 
+
+###############################################################################################
+###replace character
 
 def replace_character(fn, df):
     clear()
@@ -1101,8 +1282,20 @@ def replace_character(fn, df):
     
     
     df[col]=df[col].str.replace(char_input,char_output).astype(str)
+    
+    count_column = len(df.columns)
+    print('columns', count_column)
+    if count_column > 13:
+        print(df)
+    else:
+        print(tabulate(df, headers='keys', tablefmt='psql'))
+    
     input('press enter \n')
     save_CSV(fn, df)
+
+#########################################################################################
+###delete the last row
+
 
 def del_last_row(fn, df):
     clear()
@@ -1113,12 +1306,24 @@ def del_last_row(fn, df):
     if del_l_r.lower() =='y':
         df = df.drop(df.index[len(df)-1])
         print('Last row deleted')
-        print(df)
+        
+        
+        count_column = len(df.columns)
+        print('columns', count_column)
+        if count_column > 13:
+            print(df)
+        else:
+            print(tabulate(df, headers='keys', tablefmt='psql'))
+        
+        
         input('press enter \n')
         save_CSV(fn, df)
     else:
         print('no data deleted')
-        
+
+################################################################################################
+###delete the first row
+
 def del_first_row(fn, df):
     clear()
     print(df)
@@ -1128,11 +1333,22 @@ def del_first_row(fn, df):
     if del_f_r.lower() =='y':
         df = df.drop(df.index[0])
         print('First row deleted')
-        print(df)
+        
+        
+        count_column = len(df.columns)
+        print('columns', count_column)
+        if count_column > 13:
+            print(df)
+        else:
+            print(tabulate(df, headers='keys', tablefmt='psql'))
+            
         input('press enter \n')
         save_CSV(fn, df)
     else:
         print('no data deleted')
+
+##################################################################################################
+###delete defined row
 
 def del_defined_row(fn, df):
     clear()
@@ -1165,12 +1381,21 @@ def del_defined_row(fn, df):
         
         df = df.drop(df.index[index_del_list])
         print('Defined Rows deleted')
-        print(df)
+        
+        count_column = len(df.columns)
+        print('columns', count_column)
+        if count_column > 13:
+            print(df)
+        else:
+            print(tabulate(df, headers='keys', tablefmt='psql'))
+        
+        
         input('press enter \n')
         save_CSV(fn, df)
     else:
         print('no data deleted')
-    
+##############################################################################
+###felete row contains special word
     
 def del_contains_word(fn, df):
     clear()
@@ -1203,12 +1428,22 @@ def del_contains_word(fn, df):
         
         
         df = (df[~df[col].str.contains(del_word)])
-        print(df)
+        
+        
+        count_column = len(df.columns)
+        print('columns', count_column)
+        if count_column > 13:
+            print(df)
+        else:
+            print(tabulate(df, headers='keys', tablefmt='psql'))
+        
         input('press enter \n')
         save_CSV(fn, df)
     else:
         print('no rows deleted')
-        
+
+###############################################################################################
+###melt function
     
 def melt_table(df):
     clear()
@@ -1216,6 +1451,9 @@ def melt_table(df):
     
     list_id_vars = []
     while True:
+        clear()
+        print('ID list: ')
+        print(list_id_vars)
         add_id_vars = input('Add id column y/n \n?')
         if add_id_vars == 'y':
                 
@@ -1248,6 +1486,11 @@ def melt_table(df):
     # add values
     list_vars = []
     while True:
+        clear()
+        print('ID list: ')
+        print(list_id_vars)
+        print('Value list:')
+        print(list_vars)
         add_vars = input('Add values column y/n \n?')
         if add_vars == 'y':
             werte = df.select_dtypes(exclude=['object'])
@@ -1277,11 +1520,21 @@ def melt_table(df):
     print(list_vars)
     df = pd.melt(df, id_vars = list_id_vars, value_vars = list_vars, var_name= 'Values')
     
-    print(df)
+    
+    count_column = len(df.columns)
+    print('columns', count_column)
+    if count_column > 13:
+        print(df)
+    else:
+        print(tabulate(df, headers='keys', tablefmt='psql'))
+    
+    
     input('press enter \n')
     save_CSV_new(df)
 
 
+############################################################################################
+### rename column
 def df_rename(fn, df):
     
     rename_yes = input('rename column: y/n\n?')
@@ -1319,7 +1572,15 @@ def df_rename(fn, df):
         
         df = df.rename(columns={r_col:new_column_name})
         
-        print(df)
+        
+        
+        count_column = len(df.columns)
+        print('columns', count_column)
+        if count_column > 13:
+            print(df)
+        else:
+            print(tabulate(df, headers='keys', tablefmt='psql'))
+        
         input('press enter \n')
         save_CSV(fn, df)
         
@@ -1368,7 +1629,14 @@ def combine_column(fn, df):
     
     df[name_col] = df[col1] + "_" + df[col2]
     
-    print(df)
+    
+    count_column = len(df.columns)
+    print('columns', count_column)
+    if count_column > 13:
+        print(df)
+    else:
+        print(tabulate(df, headers='keys', tablefmt='psql'))
+    
     input('press enter \n')
     save_CSV(fn, df)
         
@@ -1410,7 +1678,14 @@ def delete_column(fn, df):
         
         df = df.drop(d_col, axis=1)
     
-        print(df)
+        
+        count_column = len(df.columns)
+        print('columns', count_column)
+        if count_column > 13:
+            print(df)
+        else:
+            print(tabulate(df, headers='keys', tablefmt='psql'))
+        
         input('press enter \n')
         save_CSV(fn, df)
         

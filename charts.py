@@ -4056,7 +4056,7 @@ def decriptive_statistics(df):
     ###one side tolerance ut / normal distribution
     if p >= 0.05:
         #normal verteilt
-        print('one side tolerance ut / normal distribution')
+        print('normal distribution')
         
         mean_y = y.mean()
         std_y = y.std()
@@ -4078,7 +4078,7 @@ def decriptive_statistics(df):
         
         eintrag = 'Mean: ' + str(t_mean_y) + '\ns: ' + str(t_std_y) + '\n \n+3s: ' + str(t_mean_p_3s) + '\n-3s: ' + str(t_mean_m_3s) + '\n \nMIN: ' + str(min_y) + '\nMAX: '+ str(max_y) + '\nn: ' + str(count_y) + '\n\n' + text
         
-        print(eintrag +'\n')
+        print(eintrag +'\np-value:' + str(p))
         ##graphic
                 
         plt.figure(figsize=(6, 4))
@@ -4124,7 +4124,7 @@ def decriptive_statistics(df):
         
         eintrag = 'Median: ' + str(median_y) + '\n\nQ0.998: '  + str(upper_q_y) + '\nQ0.001: ' + str(lower_q_y) + '\n \nMIN: ' + str(min_y) + '\nMAX: '+ str(max_y) + '\nn: ' + str(count_y) + '\n\n' + text
         
-        print(eintrag +'\n')
+        print(eintrag +'\np-value:' + str(p))
         
         ##graphic
                 

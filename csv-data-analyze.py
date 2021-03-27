@@ -28,6 +28,8 @@ from mft import clear, save_CSV_new, isinteger
 from date_function import convert_datetime, cal_info
 
 import webbrowser
+from tabulate import tabulate
+
 
 from sys import platform
 
@@ -39,12 +41,14 @@ csv_dateien=['daten.csv']
 def csv_daten_im_verzeichnis():
     
     
+    print('-'*50)
     for dat in os.listdir(os.getcwd()):
         if dat.endswith(".csv") or dat.endswith(".CSV"):
             csv_dateien.append(dat)
-            print(dat)
             
-    
+            print('|', dat)
+            print('-'*50)
+            
     return(csv_dateien)
 
 #set read the file and set custom CSV elements
@@ -291,10 +295,18 @@ def file_einlesen(fn):
         
     df.to_csv(fn, sep=';', decimal=',', header =True, index=False)
     
+    #table = terminaltables.AsciiTable(df)
+    #print(table.table)
     
-    print(df)
+    count_column = len(df.columns)
+    print('columns', count_column)
+    if count_column > 13:
+        print(df)
+    else:
+        print(tabulate(df, headers='keys', tablefmt='psql'))
+    
     file_in_html(fn, df)
-    next = input('push button for next steps')
+    input('push button for next steps')
     return(df)
 
 
@@ -721,6 +733,7 @@ def table_functions(fn, df):
             delete_column(fn, df)
         elif menu_tf == '18':
             menu_rand_data(fn, df)
+        
             
         
         
@@ -806,7 +819,7 @@ def main():
     clear()
     print('#'*92)
     print('#                                                                                          #')
-    print('#               CSV Data Analyze-Tool V2.6 (turtel) by Ricky Helfgen                       #')
+    print('#               CSV Data Analyze-Tool V2.7 (turtel) by Ricky Helfgen                       #')
     print('#      This is an open source project and is subject to the guidelines of GPL V3           #')
     print('#                           Analyze CSV-Data files with:                                   #')
     print('#   python3, pandas, numpy, matplotlib, seaborn, statsmodels, os-sys, scipy, webbrownser   #')
