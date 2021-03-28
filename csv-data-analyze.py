@@ -13,10 +13,9 @@ from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_
 from table_calc import menu_calc
 from rand_data import menu_rd
 from tableview import fehlende_daten, datentyp, file_in_html, einzeldaten_anschauen , filter_in_html
-from mft import clear, save_CSV_new, isinteger
+from mft import clear, save_CSV_new, isinteger, print_table
 from date_function import convert_datetime, cal_info
 import webbrowser
-from tabulate import tabulate
 from sys import platform
 
 #alternatively, define the source
@@ -281,16 +280,8 @@ def file_einlesen(fn):
         
     df.to_csv(fn, sep=';', decimal=',', header =True, index=False)
     
-    #table = terminaltables.AsciiTable(df)
-    #print(table.table)
     
-    count_column = len(df.columns)
-    print('columns', count_column)
-    if count_column > 13:
-        print(df)
-    else:
-        print(tabulate(df, headers='keys', tablefmt='psql'))
-    
+    print_table(df)
     file_in_html(fn, df)
     input('push button for next steps')
     return(df)
@@ -640,7 +631,7 @@ def preview_table(fn, df):
     while True:
         clear()
         print('Table preview \n')
-        menu_voranalyse = input('Preview Menu: \n1: Single-view \n2: Datatype \n3: Missing-Datas \n4: show Data in HTML \n?')
+        menu_voranalyse = input('Preview Menu: \n1: Single-view \n2: Datatype \n3: Missing-Datas \n4: show Data in HTML \n5: show Data in Terminal \n?')
         if menu_voranalyse =='1':
             clear()
             einzeldaten_anschauen(df)
@@ -652,6 +643,9 @@ def preview_table(fn, df):
             fehlende_daten(df)
         elif menu_voranalyse =='4':
             file_in_html(fn, df)
+        elif menu_voranalyse =='5':
+            print_table(df)
+        
         else:
             print('Wrong input, please try again!')
             #voranalyse(df)
@@ -775,7 +769,8 @@ def mit_daten_arbeiten(fn, df):
             menu_graphical_analyze(df)
         elif m_d_a =='t':
             clear()
-            menu_tests(df)    
+            menu_tests(df)
+        
         else:
             print('Wrong input, please try again!')
             #mit_daten_arbeiten(df)
@@ -803,28 +798,28 @@ def main():
     
     print("\033[1;37;40m \n")
     clear()
-    print('#'*92)
+    print('\U0001f40d'*46)
     print('#                                                                                          #')
-    print('#               CSV Data Analyze-Tool V3.0 (snake) by Ricky Helfgen                        #')
+    print('#               CSV Data Analyze-Tool V3.0 (snake\U0001f40d) by Ricky Helfgen                      #')
     print('#      This is an open source project and is subject to the guidelines of GPL V3           #')
     print('#                           Analyze CSV-Data files with the packages:                      #')
     print('#   python3, pandas, numpy, matplotlib, seaborn, statsmodels, os-sys, scipy, webbrownser,  #')
     print('#   tabulate                                                                               #')
     print('#              Download under: https://github.com/blaubaer01/csv-data-analyze              #')
     print('#   More Infos: http://www.reh-webdesign.de/csv-data-analyze/howto/csv-data-analyze.html   #')
-    print('#                                     Have Fun!                                            #')
+    print('#                                    \U0001f427 Have Fun!                                          #')
     print('#                                                                                          #')
     print('#_|__________###____ _____|____###___####___#___#___###_____####___#####__####_____##______#')
     print('#_|________#######________|___#______#______#___#___#__#____#__#_____#_______#____#__#_____#')
     print('#_|_______#########_______|___#______####___#___#___#___#___####_____#____####___#____#____#')
-    print('#_|_____#############_____|___#_________#____#_#____#__#____#__#_____#____#_______#__#_____#')
+    print('#_|_____#############_____|___#_________#____#_#____#__#____#__#_____#_______#____#__#_____#')
     print('#_|_#####################_|____###___####_____#_____###_____#__#_____#____####_##__##______#')
     print('#                                                                                          #')
-    print('#'*92)
-    
+    print('\U0001f40d'*46)
+    print('')
     
     while True:
-        start = input('Start Menue \n1: Create random data \n2: Open exsisting csv-file (root folder) \n3: More infos about this app (Wiki) \n4: OMG, close this scary app \n(choose number) \n?')
+        start = input('\u2049\uFE0F \nStart Menue \n1: Create random data \n2: Open exsisting csv-file (root folder) \n3: More infos about this app (Wiki) \n4: OMG, close this scary app \n(choose number) \n?')
         
         if start == '1':
             menu_rd(df)

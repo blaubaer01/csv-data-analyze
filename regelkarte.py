@@ -15,6 +15,8 @@ import numpy as np
 
 from mft import isfloat, truncate
 
+from tabulate import tabulate
+
 #Thanks to: Michal Nowikowski <godfryd@gmail.com>
 ###got exsamples from https://github.com/mattharrison/python-spc
 
@@ -109,7 +111,14 @@ def x_bar_s(df):
     
     #df2['mean_istwert'] = df.groupby('Stichprobe')['Istwert'].describe()
     df2 = df.groupby('sample')[y].describe()
-    print(df2)
+    
+    
+    count_column = len(df2.columns)
+    print('columns', count_column)
+    if count_column > 13:
+        print(df2)
+    else:
+        print(tabulate(df2, headers='keys', tablefmt='psql'))
     
     fn = 'describe.csv'
     df2.to_csv(fn, sep=';', decimal=',')
@@ -494,7 +503,14 @@ def x_bar_r(df):
     
     #df2['mean_istwert'] = df.groupby('Stichprobe')['Istwert'].describe()
     df2 = df.groupby('sample')[y].describe()
-    print(df2)
+    
+    
+    count_column = len(df2.columns)
+    print('columns', count_column)
+    if count_column > 13:
+        print(df2)
+    else:
+        print(tabulate(df2, headers='keys', tablefmt='psql'))
     
     fn = 'describe.csv'
     df2.to_csv(fn, sep=';', decimal=',')

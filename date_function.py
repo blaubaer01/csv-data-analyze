@@ -7,8 +7,9 @@ Created on Fri Jun 12 07:23:07 2020
 """
 
 import datetime as dt
-from mft import clear, save_CSV_new
+from mft import clear, save_CSV_new, print_table
 import pandas as pd
+
 
 def convert_datetime(df):
     clear()
@@ -71,9 +72,9 @@ def convert_datetime(df):
     else:
         print('Wrong input  (choose number), please try again!')
     
-    print(df)
+    print_table(df)
     
-    enter_ja = input('press enter')
+    input('press enter')
     
     save_CSV_new(df)
 
@@ -159,8 +160,9 @@ def cal_info(df):
         else:
             print('Wrong input  (choose number), please try again!')
         
-        print(df)
+        
+        print_table(df)
     
-        enter_ja = input('press enter')
+        input('press enter')
     
         save_CSV_new(df)    

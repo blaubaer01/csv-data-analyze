@@ -9,7 +9,7 @@ Created on Sat Jun  6 18:06:39 2020
 import os
 import pandas as pd
 import numpy as np
-
+from tabulate import tabulate
 
 
 ##############################################################################
@@ -88,4 +88,15 @@ def save_CSV(fn, df):
 
 def moving_average(x, w=8):
     return np.convolve(x, np.ones(w), 'valid') / w
+
+
+
+def print_table(df):
+    
+    count_column = len(df.columns)
+    print('columns', count_column)
+    if count_column > 13:
+        print(df)
+    else:
+        print(tabulate(df, headers='keys', tablefmt='psql'))
         

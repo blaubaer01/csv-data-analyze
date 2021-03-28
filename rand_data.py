@@ -9,7 +9,10 @@ Created on Fri May 29 21:51:59 2020
 import pandas as pd
 import numpy as np
 from tableview import file_in_html
-from mft import isfloat, isinteger, clear, save_CSV_new
+from mft import isfloat, isinteger, clear, save_CSV_new, print_table
+
+from tabulate import tabulate
+
 
 df = pd.DataFrame()
 ####create random data
@@ -47,7 +50,10 @@ def seq_numbers(df):
     
     df[name_df] = range(seq_nr_from, seq_often +1 + seq_nr_from)
     
-    print(df)
+    print_table(df)    
+      
+    
+    
     file_in_html(fn, df)
     #save_CSV_new(df)
 ###############################################################################
@@ -92,7 +98,8 @@ def nd_data(df):
     
     fn ='new_data.csv'
     
-    print(df)
+    print_table(df)
+    
     file_in_html(fn, df)
     #save_CSV_new(df)
 
@@ -151,7 +158,10 @@ def bd_data(df):
     df[name_df] = np.random.binomial(n_df, p_df, seq_often)
     
     fn ='new_data.csv'
-    print(df)
+    
+    print_table(df)
+    
+    
     file_in_html(fn, df)
     #save_CSV_new(df)
 
@@ -194,7 +204,9 @@ def pd_data(df):
     
     df[name_df] = np.random.poisson(p_df, seq_often)
     fn ='new_data.csv'
-    print(df)
+
+    print_table(df) 
+
     file_in_html(fn, df)
     #save_CSV_new(df)
     
@@ -238,7 +250,10 @@ def ld_data(df):
     
     df[name_df] = np.random.logistic(location_df, scale_df, seq_often)
     fn ='new_data.csv'
-    print(df)
+    
+    print_table(df)
+    
+    
     file_in_html(fn, df)
     #save_CSV_new(df)
 ##############################################################################
@@ -290,7 +305,10 @@ def shisq_data(df):
     
     df[name_df] = np.random.chisquare(defr, size=(m_df*n_df*k_df))
     fn ='new_data.csv'
-    print(df)
+    
+    print_table(df)
+    
+    
     file_in_html(fn, df)
     #save_CSV_new(df)
 ###############################################################################
@@ -343,7 +361,9 @@ def pareto_data(df):
     
     df[name_df] = np.random.pareto(a_df, size=(m_df*n_df*k_df))+m_df
     fn ='new_data.csv'
-    print(df)
+    print_table(df)
+    
+    
     file_in_html(fn, df)
     #save_CSV_new(df)
 ###############################################################################
@@ -396,7 +416,9 @@ def exp_data(df):
     
     df[name_df] = np.random.exponential(scale_df, size=(m_df*n_df*k_df))
     fn ='new_data.csv'
-    print(df)
+    print_table(df)
+    
+    
     file_in_html(fn, df)
     #save_CSV_new(df)
 ###############################################################################
@@ -439,7 +461,10 @@ def unif_data(df):
     
     df[name_df] = np.random.uniform(high_df, low_df, seq_often)
     fn ='new_data.csv'
-    print(df)
+    
+    print_table(df)
+    
+    
     file_in_html(fn, df)
     #save_CSV_new(df)
     

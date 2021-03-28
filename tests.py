@@ -16,7 +16,7 @@ from statsmodels.formula.api import ols
 from outliers import smirnov_grubbs as grubbs
 #import statistics as stats
 from mft import isfloat, clear
-
+from tabulate import tabulate
 
 ###############################################################################
 ###Statistical Tests
@@ -85,7 +85,14 @@ def correl(df):
     #clear()
     print('Test of correlation \n')
     correlation_df = df.corr()
-    print(correlation_df)
+    
+    
+    count_column = len(correlation_df.columns)
+    print('columns', count_column)
+    if count_column > 13:
+        print(correlation_df)
+    else:
+        print(tabulate(correlation_df, headers='keys', tablefmt='psql'))
     
     
 #######################################################################    

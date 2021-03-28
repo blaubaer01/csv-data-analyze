@@ -11,6 +11,8 @@ from mft import clear
 from sys import platform
 
 
+
+
 ###pre-view functions
 ##############################################################################        
 
@@ -20,7 +22,8 @@ def fehlende_daten(df):
     clear()
     print('Checking for missing data gave the following result:\n')
     print(df.isnull().sum())
-
+    
+    
 
 ######################################################################
 #wich datatype
