@@ -42,14 +42,14 @@ def groupby_balkendiagramm(df):
         i+=1
     
     while True:
-        nummer_spalte= input('Which column do you want to see: \n(choose number) \n' + F1)
+        nummer_spalte= input('Which column do you want to see: \n(choose number) \n?')
         if nummer_spalte not in list_number:
             print('wrong input, try again!')
         else:
             break
     
     while True:
-        groupby_spalte = input('Group by column: \n(choose number) \n' + F1)
+        groupby_spalte = input('Group by column: \n(choose number) \n?')
         if groupby_spalte not in list_number:
             print('wrong input, try again!')
         else:
@@ -80,7 +80,7 @@ def balkendiagramm(df):
         i+=1
         
     while True:
-        nummer_spalte= input('Which column do you want to see: \n(choose number) \n' + F1)
+        nummer_spalte= input('Which column do you want to see: \n(choose number) \n?')
         if nummer_spalte not in list_number:
             print('wrong input, try again!')
         else:
@@ -112,7 +112,7 @@ def kuchendiagramm(df):
         i+=1
     
     while True:
-        nummer_spalte= input('Which column do you want to see: \n(choose number) \n' + F1)
+        nummer_spalte= input('Which column do you want to see: \n(choose number) \n?')
         if nummer_spalte not in list_number:
             print('wrong input, try again!')
         else:
@@ -173,7 +173,7 @@ def liniendiagramm(df):
     
     
     while True:
-        groupby_column = input('Group by column: \n(choose number) \n' + F1)
+        groupby_column = input('Group by column: \n(choose number) \n?')
         if groupby_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -186,14 +186,14 @@ def liniendiagramm(df):
     
     
     ###toleranzen
-    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     notol = '0'
     ###both side tolerance
     if one_two_sided == '1':
         
         while True:
-            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
             if ',' in tol:
                 try:
                     ut, lt = tol.split(',')
@@ -216,7 +216,7 @@ def liniendiagramm(df):
         
         
         while True:
-            ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
             ut = float(ut)
             if not isfloat(ut):
                 print("target mean value is not a number with point-comma, please try again")
@@ -230,7 +230,7 @@ def liniendiagramm(df):
     elif one_two_sided =='3':
         
         while True:
-            lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
             lt = float(lt)
             if not isfloat(lt):
                 print("target mean value is not a number with point-comma, please try again")
@@ -297,7 +297,7 @@ def liniendiagramm_w_dot(df):
     
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number)\n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number)\n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -319,7 +319,7 @@ def liniendiagramm_w_dot(df):
     
     
     while True:
-        groupby_column = input('Group by column: \n(choose number) \n' + F1)
+        groupby_column = input('Group by column: \n(choose number) \n?')
         if groupby_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -331,14 +331,14 @@ def liniendiagramm_w_dot(df):
     x = list_columns_kategorie[int(groupby_column)]
     
     ###toleranzen
-    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     notol = '0'
     ###both side tolerance
     if one_two_sided == '1':
         
         while True:
-            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
             if ',' in tol:
                 try:
                     ut, lt = tol.split(',')
@@ -361,7 +361,7 @@ def liniendiagramm_w_dot(df):
         
         
         while True:
-            ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
             ut = float(ut)
             if not isfloat(ut):
                 print("target mean value is not a number with point-comma, please try again")
@@ -375,7 +375,7 @@ def liniendiagramm_w_dot(df):
     elif one_two_sided =='3':
         
         while True:
-            lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
             lt = float(lt)
             if not isfloat(lt):
                 print("target mean value is not a number with point-comma, please try again")
@@ -464,7 +464,7 @@ def liniendiagramm_w_dot_cumsum(df):
     
     
     while True:
-        groupby_column = input('Group by column: \n(choose number) \n' + F1)
+        groupby_column = input('Group by column: \n(choose number) \n?')
         if groupby_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -485,14 +485,14 @@ def liniendiagramm_w_dot_cumsum(df):
     df2['number'] = range(1, len(df2) + 1)
     titlecumsum = 'cumsum-chart for '+ y + '; n=' + nsize
     ###toleranzen
-    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     notol = '0'
     ###both side tolerance
     if one_two_sided == '1':
         
         while True:
-            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
             if ',' in tol:
                 try:
                     ut, lt = tol.split(',')
@@ -515,7 +515,7 @@ def liniendiagramm_w_dot_cumsum(df):
         
         
         while True:
-            ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
             ut = float(ut)
             if not isfloat(ut):
                 print("target mean value is not a number with point-comma, please try again")
@@ -529,7 +529,7 @@ def liniendiagramm_w_dot_cumsum(df):
     elif one_two_sided =='3':
         
         while True:
-            lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
             lt = float(lt)
             if not isfloat(lt):
                 print("target mean value is not a number with point-comma, please try again")
@@ -586,7 +586,7 @@ def line_diagram_menu(df):
     
     clear()
     print('Line-Chart-Menue \n')
-    ld_menu = input('Which kind of line diagram: \n1: line with dots \n2: line without dots \n3: line with dot and cumsum \n' + F1)
+    ld_menu = input('Which kind of line diagram: \n1: line with dots \n2: line without dots \n3: line with dot and cumsum \n?')
     
     if ld_menu == '1':
         liniendiagramm_w_dot(df)
@@ -623,7 +623,7 @@ def confidencelinechart(df):
     
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number)\n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number)\n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -645,7 +645,7 @@ def confidencelinechart(df):
     
     
     while True:
-        groupby_column = input('Group by column: \n(choose number) \n' + F1)
+        groupby_column = input('Group by column: \n(choose number) \n?')
         if groupby_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -688,7 +688,7 @@ def boxplot(df):
     
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -699,14 +699,14 @@ def boxplot(df):
     
     
     ###toleranzen
-    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     notol = '0'
     ###both side tolerance
     if one_two_sided == '1':
         
         while True:
-            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
             if ',' in tol:
                 try:
                     ut, lt = tol.split(',')
@@ -729,7 +729,7 @@ def boxplot(df):
         
         
         while True:
-            ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
             ut = float(ut)
             if not isfloat(ut):
                 print("target mean value is not a number with point-comma, please try again")
@@ -743,7 +743,7 @@ def boxplot(df):
     elif one_two_sided =='3':
         
         while True:
-            lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
             lt = float(lt)
             if not isfloat(lt):
                 print("target mean value is not a number with point-comma, please try again")
@@ -823,7 +823,7 @@ def boxplot_groupby(df):
     
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -844,7 +844,7 @@ def boxplot_groupby(df):
         i+=1
     
     while True:
-        groupby_column = input('Group by column: \n(choose number) \n' + F1)
+        groupby_column = input('Group by column: \n(choose number) \n?')
         if groupby_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -856,14 +856,14 @@ def boxplot_groupby(df):
     
     
     ###toleranzen
-    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     notol = '0'
     ###both side tolerance
     if one_two_sided == '1':
         
         while True:
-            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
             if ',' in tol:
                 try:
                     ut, lt = tol.split(',')
@@ -886,7 +886,7 @@ def boxplot_groupby(df):
         
         
         while True:
-            ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
             ut = float(ut)
             if not isfloat(ut):
                 print("target mean value is not a number with point-comma, please try again")
@@ -900,7 +900,7 @@ def boxplot_groupby(df):
     elif one_two_sided =='3':
         
         while True:
-            lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
             lt = float(lt)
             if not isfloat(lt):
                 print("target mean value is not a number with point-comma, please try again")
@@ -980,7 +980,7 @@ def boxplot2f(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -1000,7 +1000,7 @@ def boxplot2f(df):
         i+=1
     
     while True:
-        groupby1_column = input('Group1 by column: \n(choose number) \n' + F1)
+        groupby1_column = input('Group1 by column: \n(choose number) \n?')
         if groupby1_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -1008,7 +1008,7 @@ def boxplot2f(df):
     
     
     while True:
-        groupby2_column = input('Group2 by column \n(choose number) \n' + F1)
+        groupby2_column = input('Group2 by column \n(choose number) \n?')
         if groupby2_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -1021,14 +1021,14 @@ def boxplot2f(df):
     
     
     ###toleranzen
-    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     notol = '0'
     ###both side tolerance
     if one_two_sided == '1':
         
         while True:
-            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
             if ',' in tol:
                 try:
                     ut, lt = tol.split(',')
@@ -1051,7 +1051,7 @@ def boxplot2f(df):
         
         
         while True:
-            ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
             ut = float(ut)
             if not isfloat(ut):
                 print("target mean value is not a number with point-comma, please try again")
@@ -1065,7 +1065,7 @@ def boxplot2f(df):
     elif one_two_sided =='3':
         
         while True:
-            lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
             lt = float(lt)
             if not isfloat(lt):
                 print("target mean value is not a number with point-comma, please try again")
@@ -1133,7 +1133,7 @@ def violin(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -1144,14 +1144,14 @@ def violin(df):
     
     
     ###toleranzen
-    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     notol = '0'
     ###both side tolerance
     if one_two_sided == '1':
         
         while True:
-            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
             if ',' in tol:
                 try:
                     ut, lt = tol.split(',')
@@ -1174,7 +1174,7 @@ def violin(df):
         
         
         while True:
-            ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
             ut = float(ut)
             if not isfloat(ut):
                 print("target mean value is not a number with point-comma, please try again")
@@ -1188,7 +1188,7 @@ def violin(df):
     elif one_two_sided =='3':
         
         while True:
-            lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
             lt = float(lt)
             if not isfloat(lt):
                 print("target mean value is not a number with point-comma, please try again")
@@ -1260,7 +1260,7 @@ def violin_groupby(df):
     
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -1281,7 +1281,7 @@ def violin_groupby(df):
     
     
     while True:
-        groupby_column = input('Group by column: \n(choose number) \n' + F1)
+        groupby_column = input('Group by column: \n(choose number) \n?')
         if groupby_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -1293,14 +1293,14 @@ def violin_groupby(df):
     x = list_columns_kategorie[int(groupby_column)]
     
     ###toleranzen
-    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     notol = '0'
     ###both side tolerance
     if one_two_sided == '1':
         
         while True:
-            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
             if ',' in tol:
                 try:
                     ut, lt = tol.split(',')
@@ -1323,7 +1323,7 @@ def violin_groupby(df):
         
         
         while True:
-            ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
             ut = float(ut)
             if not isfloat(ut):
                 print("target mean value is not a number with point-comma, please try again")
@@ -1337,7 +1337,7 @@ def violin_groupby(df):
     elif one_two_sided =='3':
         
         while True:
-            lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
             lt = float(lt)
             if not isfloat(lt):
                 print("target mean value is not a number with point-comma, please try again")
@@ -1410,7 +1410,7 @@ def violin2f(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -1430,7 +1430,7 @@ def violin2f(df):
         i+=1
     
     while True:
-        groupby1_column = input('Group1 by column: \n(choose number) \n' + F1)
+        groupby1_column = input('Group1 by column: \n(choose number) \n?')
         if groupby1_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -1438,7 +1438,7 @@ def violin2f(df):
     
     
     while True:
-        groupby2_column = input('Group2 by column \n(choose number) \n' + F1)
+        groupby2_column = input('Group2 by column \n(choose number) \n?')
         if groupby2_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -1451,14 +1451,14 @@ def violin2f(df):
     
     
     ###toleranzen
-    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     notol = '0'
     ###both side tolerance
     if one_two_sided == '1':
         
         while True:
-            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
             if ',' in tol:
                 try:
                     ut, lt = tol.split(',')
@@ -1481,7 +1481,7 @@ def violin2f(df):
         
         
         while True:
-            ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
             ut = float(ut)
             if not isfloat(ut):
                 print("target mean value is not a number with point-comma, please try again")
@@ -1495,7 +1495,7 @@ def violin2f(df):
     elif one_two_sided =='3':
         
         while True:
-            lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
             lt = float(lt)
             if not isfloat(lt):
                 print("target mean value is not a number with point-comma, please try again")
@@ -1568,7 +1568,7 @@ def single_swarmplot(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -1579,14 +1579,14 @@ def single_swarmplot(df):
     
     
     ###toleranzen
-    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     notol = '0'
     ###both side tolerance
     if one_two_sided == '1':
         
         while True:
-            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
             if ',' in tol:
                 try:
                     ut, lt = tol.split(',')
@@ -1609,7 +1609,7 @@ def single_swarmplot(df):
         
         
         while True:
-            ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
             ut = float(ut)
             if not isfloat(ut):
                 print("target mean value is not a number with point-comma, please try again")
@@ -1623,7 +1623,7 @@ def single_swarmplot(df):
     elif one_two_sided =='3':
         
         while True:
-            lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
             lt = float(lt)
             if not isfloat(lt):
                 print("target mean value is not a number with point-comma, please try again")
@@ -1705,7 +1705,7 @@ def swarmplot1f(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -1725,7 +1725,7 @@ def swarmplot1f(df):
         i+=1
     
     while True:
-        groupby_column = input('Group by column: \n(choose number) \n' + F1)
+        groupby_column = input('Group by column: \n(choose number) \n?')
         if groupby_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -1735,14 +1735,14 @@ def swarmplot1f(df):
     x = df[list_columns_kategorie[int(groupby_column)]]
     
     ###toleranzen
-    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     notol = '0'
     ###both side tolerance
     if one_two_sided == '1':
         
         while True:
-            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
             if ',' in tol:
                 try:
                     ut, lt = tol.split(',')
@@ -1765,7 +1765,7 @@ def swarmplot1f(df):
         
         
         while True:
-            ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
             ut = float(ut)
             if not isfloat(ut):
                 print("target mean value is not a number with point-comma, please try again")
@@ -1779,7 +1779,7 @@ def swarmplot1f(df):
     elif one_two_sided =='3':
         
         while True:
-            lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
             lt = float(lt)
             if not isfloat(lt):
                 print("target mean value is not a number with point-comma, please try again")
@@ -1864,7 +1864,7 @@ def swarmplot2f(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -1884,7 +1884,7 @@ def swarmplot2f(df):
         i+=1
     
     while True:
-        groupby1_column = input('Group1 by column: \n(choose number) \n' + F1)
+        groupby1_column = input('Group1 by column: \n(choose number) \n?')
         if groupby1_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -1892,7 +1892,7 @@ def swarmplot2f(df):
     
     
     while True:
-        groupby2_column = input('Group2 by column \n(choose number) \n' + F1)
+        groupby2_column = input('Group2 by column \n(choose number) \n?')
         if groupby2_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -1905,14 +1905,14 @@ def swarmplot2f(df):
     
 
     ###toleranzen
-    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     notol = '0'
     ###both side tolerance
     if one_two_sided == '1':
         
         while True:
-            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
             if ',' in tol:
                 try:
                     ut, lt = tol.split(',')
@@ -1935,7 +1935,7 @@ def swarmplot2f(df):
         
         
         while True:
-            ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
             ut = float(ut)
             if not isfloat(ut):
                 print("target mean value is not a number with point-comma, please try again")
@@ -1949,7 +1949,7 @@ def swarmplot2f(df):
     elif one_two_sided =='3':
         
         while True:
-            lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
             lt = float(lt)
             if not isfloat(lt):
                 print("target mean value is not a number with point-comma, please try again")
@@ -2029,7 +2029,7 @@ def single_stripplot(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -2040,14 +2040,14 @@ def single_stripplot(df):
     
     
     ###toleranzen
-    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     notol = '0'
     ###both side tolerance
     if one_two_sided == '1':
         
         while True:
-            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
             if ',' in tol:
                 try:
                     ut, lt = tol.split(',')
@@ -2070,7 +2070,7 @@ def single_stripplot(df):
         
         
         while True:
-            ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
             ut = float(ut)
             if not isfloat(ut):
                 print("target mean value is not a number with point-comma, please try again")
@@ -2084,7 +2084,7 @@ def single_stripplot(df):
     elif one_two_sided =='3':
         
         while True:
-            lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
             lt = float(lt)
             if not isfloat(lt):
                 print("target mean value is not a number with point-comma, please try again")
@@ -2167,7 +2167,7 @@ def stripplot1f(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -2187,7 +2187,7 @@ def stripplot1f(df):
         i+=1
     
     while True:
-        groupby_column = input('Group by column: \n(choose number) \n' + F1)
+        groupby_column = input('Group by column: \n(choose number) \n?')
         if groupby_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -2198,14 +2198,14 @@ def stripplot1f(df):
     
     
     ###toleranzen
-    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     notol = '0'
     ###both side tolerance
     if one_two_sided == '1':
         
         while True:
-            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
             if ',' in tol:
                 try:
                     ut, lt = tol.split(',')
@@ -2228,7 +2228,7 @@ def stripplot1f(df):
         
         
         while True:
-            ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
             ut = float(ut)
             if not isfloat(ut):
                 print("target mean value is not a number with point-comma, please try again")
@@ -2242,7 +2242,7 @@ def stripplot1f(df):
     elif one_two_sided =='3':
         
         while True:
-            lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
             lt = float(lt)
             if not isfloat(lt):
                 print("target mean value is not a number with point-comma, please try again")
@@ -2323,7 +2323,7 @@ def stripplot2f(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -2343,7 +2343,7 @@ def stripplot2f(df):
         i+=1
     
     while True:
-        groupby1_column = input('Group1 by column: \n(choose number) \n' + F1)
+        groupby1_column = input('Group1 by column: \n(choose number) \n?')
         if groupby1_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -2351,7 +2351,7 @@ def stripplot2f(df):
     
     
     while True:
-        groupby2_column = input('Group2 by column \n(choose number) \n' + F1)
+        groupby2_column = input('Group2 by column \n(choose number) \n?')
         if groupby2_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -2364,14 +2364,14 @@ def stripplot2f(df):
     
     
     ###toleranzen
-    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     notol = '0'
     ###both side tolerance
     if one_two_sided == '1':
         
         while True:
-            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
             if ',' in tol:
                 try:
                     ut, lt = tol.split(',')
@@ -2394,7 +2394,7 @@ def stripplot2f(df):
         
         
         while True:
-            ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
             ut = float(ut)
             if not isfloat(ut):
                 print("target mean value is not a number with point-comma, please try again")
@@ -2408,7 +2408,7 @@ def stripplot2f(df):
     elif one_two_sided =='3':
         
         while True:
-            lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
             lt = float(lt)
             if not isfloat(lt):
                 print("target mean value is not a number with point-comma, please try again")
@@ -2492,7 +2492,7 @@ def pointplot1f(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -2512,7 +2512,7 @@ def pointplot1f(df):
         i+=1
     
     while True:
-        groupby_column = input('Group by column: \n(choose number) \n' + F1)
+        groupby_column = input('Group by column: \n(choose number) \n?')
         if groupby_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -2523,14 +2523,14 @@ def pointplot1f(df):
     
     
     ###toleranzen
-    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     notol = '0'
     ###both side tolerance
     if one_two_sided == '1':
         
         while True:
-            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
             if ',' in tol:
                 try:
                     ut, lt = tol.split(',')
@@ -2553,7 +2553,7 @@ def pointplot1f(df):
         
         
         while True:
-            ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
             ut = float(ut)
             if not isfloat(ut):
                 print("target mean value is not a number with point-comma, please try again")
@@ -2567,7 +2567,7 @@ def pointplot1f(df):
     elif one_two_sided =='3':
         
         while True:
-            lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
             lt = float(lt)
             if not isfloat(lt):
                 print("target mean value is not a number with point-comma, please try again")
@@ -2649,7 +2649,7 @@ def pointplot2f(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -2669,7 +2669,7 @@ def pointplot2f(df):
         i+=1
     
     while True:
-        groupby1_column = input('Group1 by column: \n(choose number) \n' + F1)
+        groupby1_column = input('Group1 by column: \n(choose number) \n?')
         if groupby1_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -2677,7 +2677,7 @@ def pointplot2f(df):
     
     
     while True:
-        groupby2_column = input('Group2 by column \n(choose number) \n' + F1)
+        groupby2_column = input('Group2 by column \n(choose number) \n?')
         if groupby2_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -2690,14 +2690,14 @@ def pointplot2f(df):
     
     
     ###toleranzen
-    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     notol = '0'
     ###both side tolerance
     if one_two_sided == '1':
         
         while True:
-            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
             if ',' in tol:
                 try:
                     ut, lt = tol.split(',')
@@ -2720,7 +2720,7 @@ def pointplot2f(df):
         
         
         while True:
-            ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
             ut = float(ut)
             if not isfloat(ut):
                 print("target mean value is not a number with point-comma, please try again")
@@ -2734,7 +2734,7 @@ def pointplot2f(df):
     elif one_two_sided =='3':
         
         while True:
-            lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
             lt = float(lt)
             if not isfloat(lt):
                 print("target mean value is not a number with point-comma, please try again")
@@ -2822,7 +2822,7 @@ def histogram(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -2834,14 +2834,14 @@ def histogram(df):
     y = df[list_columns_werte[int(value_column)]]
     
     ###toleranzen
-    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     notol = '0'
     ###both side tolerance
     if one_two_sided == '1':
         
         while True:
-            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
             if ',' in tol:
                 try:
                     ut, lt = tol.split(',')
@@ -2864,7 +2864,7 @@ def histogram(df):
         
         
         while True:
-            ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
             ut = float(ut)
             if not isfloat(ut):
                 print("target mean value is not a number with point-comma, please try again")
@@ -2878,7 +2878,7 @@ def histogram(df):
     elif one_two_sided =='3':
         
         while True:
-            lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
             lt = float(lt)
             if not isfloat(lt):
                 print("target mean value is not a number with point-comma, please try again")
@@ -2955,7 +2955,7 @@ def distriplot1f(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -2975,7 +2975,7 @@ def distriplot1f(df):
         i+=1
     
     while True:
-        groupby_column = input('Group by column: \n(choose number) \n' + F1)
+        groupby_column = input('Group by column: \n(choose number) \n?')
         if groupby_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -2986,14 +2986,14 @@ def distriplot1f(df):
     
     
     ###toleranzen
-    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     notol = '0'
     ###both side tolerance
     if one_two_sided == '1':
         
         while True:
-            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
             if ',' in tol:
                 try:
                     ut, lt = tol.split(',')
@@ -3016,7 +3016,7 @@ def distriplot1f(df):
         
         
         while True:
-            ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
             ut = float(ut)
             if not isfloat(ut):
                 print("target mean value is not a number with point-comma, please try again")
@@ -3030,7 +3030,7 @@ def distriplot1f(df):
     elif one_two_sided =='3':
         
         while True:
-            lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
             lt = float(lt)
             if not isfloat(lt):
                 print("target mean value is not a number with point-comma, please try again")
@@ -3100,7 +3100,7 @@ def histogram1f(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -3120,7 +3120,7 @@ def histogram1f(df):
         i+=1
     
     while True:
-        groupby_column = input('Group by column: \n(choose number) \n' + F1)
+        groupby_column = input('Group by column: \n(choose number) \n?')
         if groupby_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -3131,14 +3131,14 @@ def histogram1f(df):
     
     
     ###toleranzen
-    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     notol = '0'
     ###both side tolerance
     if one_two_sided == '1':
         
         while True:
-            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
             if ',' in tol:
                 try:
                     ut, lt = tol.split(',')
@@ -3161,7 +3161,7 @@ def histogram1f(df):
         
         
         while True:
-            ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
             ut = float(ut)
             if not isfloat(ut):
                 print("target mean value is not a number with point-comma, please try again")
@@ -3175,7 +3175,7 @@ def histogram1f(df):
     elif one_two_sided =='3':
         
         while True:
-            lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
             lt = float(lt)
             if not isfloat(lt):
                 print("target mean value is not a number with point-comma, please try again")
@@ -3247,7 +3247,7 @@ def qq_plot(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -3283,13 +3283,13 @@ def scatter(df):
         i+=1
     
     while True:
-        value_column_y= input('y-value: \n(choose number) \n' + F1)
+        value_column_y= input('y-value: \n(choose number) \n?')
         if value_column_y not in list_number:
             print('wrong input, try again!')
         else:
             break  
     while True:
-        value_column_x= input('x-value: \n(choose number) \n' + F1)
+        value_column_x= input('x-value: \n(choose number) \n?')
         if value_column_x not in list_number:
             print('wrong input, try again!')
         else:
@@ -3332,13 +3332,13 @@ def scatter_w_r(df):
         i+=1
     
     while True:
-        value_column_y= input('y-value: \n(choose number) \n' + F1)
+        value_column_y= input('y-value: \n(choose number) \n?')
         if value_column_y not in list_number:
             print('wrong input, try again!')
         else:
             break  
     while True:
-        value_column_x= input('x-value: \n(choose number) \n' + F1)
+        value_column_x= input('x-value: \n(choose number) \n?')
         if value_column_x not in list_number:
             print('wrong input, try again!')
         else:
@@ -3379,13 +3379,13 @@ def scatter_by_o_factor(df):
         i+=1
     
     while True:
-        value_column_y = input('Column y-values: \n(choose number) \n' + F1)
+        value_column_y = input('Column y-values: \n(choose number) \n?')
         if value_column_y not in list_number:
             print('wrong input, try again!')
         else:
             break  
     while True:
-        value_column_x= input('Column x-values: \n(choose number) \n' + F1)
+        value_column_x= input('Column x-values: \n(choose number) \n?')
         if value_column_x not in list_number:
             print('wrong input, try again!')
         else:
@@ -3406,7 +3406,7 @@ def scatter_by_o_factor(df):
         i+=1
     
     while True:
-        groupby_column = input('Group by column: \n(choose number) \n' + F1)
+        groupby_column = input('Group by column: \n(choose number) \n?')
         if groupby_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -3444,13 +3444,13 @@ def scatter_joint_plot(df):
         i+=1
     
     while True:
-        value_column_y= input('y-value: \n(choose number) \n' + F1)
+        value_column_y= input('y-value: \n(choose number) \n?')
         if value_column_y not in list_number:
             print('wrong input, try again!')
         else:
             break  
     while True:
-        value_column_x= input('x-value: \n(choose number) \n' + F1)
+        value_column_x= input('x-value: \n(choose number) \n?')
         if value_column_x not in list_number:
             print('wrong input, try again!')
         else:
@@ -3491,7 +3491,7 @@ def groupplot(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -3511,7 +3511,7 @@ def groupplot(df):
         i+=1
     
     while True:
-        groupby_column = input('Group by column: \n(choose number) \n' + F1)
+        groupby_column = input('Group by column: \n(choose number) \n?')
         if groupby_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -3529,7 +3529,7 @@ def groupplot(df):
         i+=1
     
     while True:
-        datetime_column = input('Choose the X-axis-column \n(choose number) \n' + F1)
+        datetime_column = input('Choose the X-axis-column \n(choose number) \n?')
         if datetime_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -3578,7 +3578,7 @@ def groupplot_w_T(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -3598,7 +3598,7 @@ def groupplot_w_T(df):
         i+=1
     
     while True:
-        groupby_column = input('Group by column: \n(choose number) \n' + F1)
+        groupby_column = input('Group by column: \n(choose number) \n?')
         if groupby_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -3616,7 +3616,7 @@ def groupplot_w_T(df):
         i+=1
     
     while True:
-        datetime_column = input('Choose the X-axis-column \n(choose number) \n' + F1)
+        datetime_column = input('Choose the X-axis-column \n(choose number) \n?')
         if datetime_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -3636,7 +3636,7 @@ def groupplot_w_T(df):
     
     
     while True:
-        one_two_sided = input('Tolerance: \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+        one_two_sided = input('Tolerance: \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
         nummer = [1,2,3]
         if int(one_two_sided) in nummer:
             break
@@ -3647,7 +3647,7 @@ def groupplot_w_T(df):
     if one_two_sided == '1':
         
         while True:
-            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
             if ',' in tol:
                 try:
                     ut, lt = tol.split(',')
@@ -3680,7 +3680,7 @@ def groupplot_w_T(df):
         
         
         while True:
-            ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
     
             if not isfloat(ut):
                 print("target mean value is not a number with point-comma, please try again")
@@ -3701,7 +3701,7 @@ def groupplot_w_T(df):
     elif one_two_sided =='3':
         
         while True:
-            lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
     
             if not isfloat(lt):
                 print("target mean value is not a number with point-comma, please try again")
@@ -3724,7 +3724,7 @@ def groupplot_menu(df):
     
     clear()
     print('Group Plot Menu \n')
-    gp_menu = input('Which kind of Groupplot: \n1: Groupplot \n2: Groupplot with Toleranceline \n' + F1)
+    gp_menu = input('Which kind of Groupplot: \n1: Groupplot \n2: Groupplot with Toleranceline \n?')
     
     if gp_menu == '1':
         groupplot(df)
@@ -3800,7 +3800,7 @@ def pareto(df):
     
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -3821,7 +3821,7 @@ def pareto(df):
     
     
     while True:
-        groupby_column = input('Group by column: \n(choose number) \n' + F1)
+        groupby_column = input('Group by column: \n(choose number) \n?')
         if groupby_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -3862,7 +3862,7 @@ def pareto_one_column(df):
     
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -3904,20 +3904,20 @@ def three_d_scatterplot(df):
         i+=1
     
     while True:
-        value_column_y= input('y-value: \n(choose number) \n' + F1)
+        value_column_y= input('y-value: \n(choose number) \n?')
         if value_column_y not in list_number:
             print('wrong input, try again!')
         else:
             break  
     while True:
-        value_column_x= input('x-value: \n(choose number) \n' + F1)
+        value_column_x= input('x-value: \n(choose number) \n?')
         if value_column_x not in list_number:
             print('wrong input, try again!')
         else:
             break
     
     while True:
-        value_column_z= input('z-value: \n(choose number) \n' + F1)
+        value_column_z= input('z-value: \n(choose number) \n?')
         if value_column_z not in list_number:
             print('wrong input, try again!')
         else:
@@ -3961,20 +3961,20 @@ def trisurfaceplot(df):
         i+=1
     
     while True:
-        value_column_y= input('y-value: \n(choose number) \n' + F1)
+        value_column_y= input('y-value: \n(choose number) \n?')
         if value_column_y not in list_number:
             print('wrong input, try again!')
         else:
             break  
     while True:
-        value_column_x= input('x-value: \n(choose number) \n' + F1)
+        value_column_x= input('x-value: \n(choose number) \n?')
         if value_column_x not in list_number:
             print('wrong input, try again!')
         else:
             break
     
     while True:
-        value_column_z= input('z-value: \n(choose number) \n' + F1)
+        value_column_z= input('z-value: \n(choose number) \n?')
         if value_column_z not in list_number:
             print('wrong input, try again!')
         else:
@@ -4001,7 +4001,7 @@ def threeddplot(df):
     clear()
     
     print('3D Plot Menue \n')
-    tdplot = input('Choose 3d-Plot: \n1: 3d-scatter-plot \n2: 3d-surface-plot \n' + F1)
+    tdplot = input('Choose 3d-Plot: \n1: 3d-scatter-plot \n2: 3d-surface-plot \n?')
     
     if tdplot == '1':
         three_d_scatterplot(df)
@@ -4032,7 +4032,7 @@ def decriptive_statistics(df):
         i+=1
     
     while True:
-        value_column_y= input('y-value: \n(choose number) \n' + F1)
+        value_column_y= input('y-value: \n(choose number) \n?')
         if value_column_y not in list_number:
             print('wrong input, try again!')
         else:
@@ -4188,7 +4188,7 @@ def pairplot_1c (df):
         i+=1
     
     while True:
-        groupby_column = input('Group by column: \n(choose number) \n' + F1)
+        groupby_column = input('Group by column: \n(choose number) \n?')
         if groupby_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -4220,7 +4220,7 @@ def pairplot_1c_hist(df):
         i+=1
     
     while True:
-        groupby_column = input('Group by column: \n(choose number) \n' + F1)
+        groupby_column = input('Group by column: \n(choose number) \n?')
         if groupby_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -4255,7 +4255,7 @@ def pairplot_1c_dist(df):
         i+=1
     
     while True:
-        groupby_column = input('Group by column: \n(choose number) \n' + F1)
+        groupby_column = input('Group by column: \n(choose number) \n?')
         if groupby_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -4270,7 +4270,7 @@ def pairplot_1c_dist(df):
 def pairplot_menu(df):
     clear()
     print('Pair Scatter Plot Menue \n')
-    pp_menu = input('Wich kind of pair plot?: \n1: simple pair plot \n2: pairplot with histogram \n3: pairplot with distribution plot \n4: pairplot with categorie \n5: pairplot with histogram and categorie \n6: pairplot with disribution and categorie \n' + F1)
+    pp_menu = input('Wich kind of pair plot?: \n1: simple pair plot \n2: pairplot with histogram \n3: pairplot with distribution plot \n4: pairplot with categorie \n5: pairplot with histogram and categorie \n6: pairplot with disribution and categorie \n?')
     if pp_menu == '1':
         easy_pairplot(df)
     elif pp_menu == '2':

@@ -64,9 +64,9 @@ def isinteger(x):
 ###save dataframe to CSV-File
 def save_CSV_new(df):
     clear()
-    speichern_ja = input('Save the modified dataframe: y/n \n' + F2)
+    speichern_ja = input('Save the modified dataframe: y/n \n?')
     if speichern_ja.lower() =='y':
-        csvfilename = input('Input only Filename ([filename].csv will save automaticly) \n' + F2)
+        csvfilename = input('Input only Filename ([filename].csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)
         

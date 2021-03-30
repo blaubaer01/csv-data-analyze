@@ -37,7 +37,7 @@ def datentyp(df):
 ###show DataFrame in browser    
 def file_in_html(fn, df):
     
-    show_in_html = input('Would you like to show in browser? y/n \n' + F1)
+    show_in_html = input('Would you like to show in browser? y/n \n?')
     if show_in_html.lower() != 'y':
         print('no html')
     else:
@@ -116,7 +116,7 @@ def ind_trip_data(df):
             a +=1
         y += 5
                    
-        end_data = input('More records? \nPress "ENTER" for "Yes" or "n" for "No" \n' + F1)
+        end_data = input('More records? \nPress "ENTER" for "Yes" or "n" for "No" \n?')
         if (len(df)) <y+5:
             rest = abs((len(df))-y)
             for i in range(rest):
@@ -137,7 +137,7 @@ def first_row(df):
 #######################################################################
 ###View individual data
 def einzeldaten_anschauen(df):
-    eind = input('What do you want to see \n1: first row\n2: all cycle of 5 rows\n(choose a number) \n' + F1 )
+    eind = input('What do you want to see \n1: first row\n2: all cycle of 5 rows\n(choose a number) \n?' )
     if eind=='1':
         first_row(df)
     elif eind =='2':

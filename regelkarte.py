@@ -62,7 +62,7 @@ def x_bar_s(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -92,7 +92,7 @@ def x_bar_s(df):
     
     
     while True:
-        n = input('Which Sample-Size: \n(2-10)\n' + F1)
+        n = input('Which Sample-Size: \n(2-10)\n?')
         if n not in tb:
             print('wrong input, try again!')
         else:
@@ -130,11 +130,11 @@ def x_bar_s(df):
     df3 = pd.read_csv(fn, sep=';' , decimal=',', header=0)
 
     
-    target_yes = input('Would you like target center y/n \n' + F1)
+    target_yes = input('Would you like target center y/n \n?')
     
     if target_yes == 'y':
         while True:
-            center = input('Input center value: \n' + F1)
+            center = input('Input center value: \n?')
             if not isfloat(center):
                     print("target mean value is not a number with point-comma, please try again")
             else:
@@ -291,7 +291,7 @@ def x_chart(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -313,14 +313,14 @@ def x_chart(df):
     lower_q_y = yt.quantile(0.00135)
     
     ###toleranzen
-    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
     notol = '0'
     ###both side tolerance
     if one_two_sided == '1':
         
         while True:
-            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
             if ',' in tol:
                 try:
                     ut, lt = tol.split(',')
@@ -343,7 +343,7 @@ def x_chart(df):
         
         
         while True:
-            ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
             ut = float(ut)
             if not isfloat(ut):
                 print("target mean value is not a number with point-comma, please try again")
@@ -357,7 +357,7 @@ def x_chart(df):
     elif one_two_sided =='3':
         
         while True:
-            lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
             lt = float(lt)
             if not isfloat(lt):
                 print("target mean value is not a number with point-comma, please try again")
@@ -457,7 +457,7 @@ def x_bar_r(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -487,7 +487,7 @@ def x_bar_r(df):
     
     
     while True:
-        n = input('Which Sample-Size: \n(2-10)\n' + F1)
+        n = input('Which Sample-Size: \n(2-10)\n?')
         if n not in tb:
             print('wrong input, try again!')
         else:
@@ -522,11 +522,11 @@ def x_bar_r(df):
     df3 = pd.read_csv(fn, sep=';' , decimal=',', header=0)
 
     
-    target_yes = input('Would you like target center y/n \n' + F1)
+    target_yes = input('Would you like target center y/n \n?')
     
     if target_yes == 'y':
         while True:
-            center = input('Input center value: \n' + F1)
+            center = input('Input center value: \n?')
             if not isfloat(center):
                     print("target mean value is not a number with point-comma, please try again")
             else:
@@ -695,7 +695,7 @@ def xmr_chart(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:

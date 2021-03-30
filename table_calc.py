@@ -38,14 +38,14 @@ def addition_column(fn, df):
     
     
     while True:
-        value_column1= input('Column1: \n(choose number)\n' + F1)
+        value_column1= input('Column1: \n(choose number)\n?')
         if value_column1 not in list_number:
             print('wrong input, try again!')
         else:
             break  
     
     while True:
-        value_column2= input('Column2: \n(choose number)\n' + F1)
+        value_column2= input('Column2: \n(choose number)\n?')
         if value_column2 not in list_number:
             print('wrong input, try again!')
         else:
@@ -56,7 +56,7 @@ def addition_column(fn, df):
     col2 = list_columns_werte[int(value_column2)]
     
     
-    name_col = input('New column "Name": \n' + F1)
+    name_col = input('New column "Name": \n?')
     
     df[name_col] = df[col1] + df[col2]
     
@@ -86,7 +86,7 @@ def addition_val(fn, df):
     
     
     while True:
-        value_column1= input('Column: \n(choose number)\n' + F1)
+        value_column1= input('Column: \n(choose number)\n?')
         if value_column1 not in list_number:
             print('wrong input, try again!')
         else:
@@ -95,7 +95,7 @@ def addition_val(fn, df):
     
     
     while True:
-            value_col = input('Value: \n(choose point-comma) \n' + F1)
+            value_col = input('Value: \n(choose point-comma) \n?')
     
             if not isfloat(value_col):
                 print("target value is not a number with point-comma, please try again")
@@ -105,7 +105,7 @@ def addition_val(fn, df):
     col1 = list_columns_werte[int(value_column1)]
     
     
-    name_col = input('New column "Name": \n' + F1)
+    name_col = input('New column "Name": \n?')
     
     df[name_col] = df[col1] + float(value_col)
     
@@ -140,14 +140,14 @@ def substraction_column(fn, df):
     
     
     while True:
-        value_column1= input('Column1: \n(choose number)\n' + F1)
+        value_column1= input('Column1: \n(choose number)\n?')
         if value_column1 not in list_number:
             print('wrong input, try again!')
         else:
             break  
     
     while True:
-        value_column2= input('Column2: \n(choose number)\n' + F1)
+        value_column2= input('Column2: \n(choose number)\n?')
         if value_column2 not in list_number:
             print('wrong input, try again!')
         else:
@@ -158,7 +158,7 @@ def substraction_column(fn, df):
     col2 = list_columns_werte[int(value_column2)]
     
     
-    name_col = input('New column "Name": \n' + F1)
+    name_col = input('New column "Name": \n?')
     
     df[name_col] = df[col1] - df[col2]
     
@@ -190,7 +190,7 @@ def substraction_val(fn, df):
     
     
     while True:
-        value_column1= input('Column: \n(choose number)\n' + F1)
+        value_column1= input('Column: \n(choose number)\n?')
         if value_column1 not in list_number:
             print('wrong input, try again!')
         else:
@@ -199,7 +199,7 @@ def substraction_val(fn, df):
     
     
     while True:
-            value_col = input('Value: \n(choose point-comma) \n' + F1)
+            value_col = input('Value: \n(choose point-comma) \n?')
     
             if not isfloat(value_col):
                 print("target value is not a number with point-comma, please try again")
@@ -209,7 +209,7 @@ def substraction_val(fn, df):
     col1 = list_columns_werte[int(value_column1)]
     
     
-    name_col = input('New column "Name": \n' + F1)
+    name_col = input('New column "Name": \n?')
     
     df[name_col] = df[col1] - float(value_col)
     
@@ -242,14 +242,14 @@ def multiplication_column(fn, df):
     
     
     while True:
-        value_column1= input('Column1: \n(choose number)\n' + F1)
+        value_column1= input('Column1: \n(choose number)\n?')
         if value_column1 not in list_number:
             print('wrong input, try again!')
         else:
             break  
     
     while True:
-        value_column2= input('Column2: \n(choose number)\n' + F1)
+        value_column2= input('Column2: \n(choose number)\n?')
         if value_column2 not in list_number:
             print('wrong input, try again!')
         else:
@@ -260,7 +260,7 @@ def multiplication_column(fn, df):
     col2 = list_columns_werte[int(value_column2)]
     
     
-    name_col = input('New column "Name": \n' + F1)
+    name_col = input('New column "Name": \n?')
     
     df[name_col] = df[col1] * df[col2]
     
@@ -291,7 +291,7 @@ def multiplication_val(fn, df):
     
     
     while True:
-        value_column1= input('Column: \n(choose number)\n' + F1)
+        value_column1= input('Column: \n(choose number)\n?')
         if value_column1 not in list_number:
             print('wrong input, try again!')
         else:
@@ -300,7 +300,7 @@ def multiplication_val(fn, df):
     
     
     while True:
-            value_col = input('Value: \n(choose point-comma) \n' + F1)
+            value_col = input('Value: \n(choose point-comma) \n?')
     
             if not isfloat(value_col):
                 print("target value is not a number with point-comma, please try again")
@@ -310,7 +310,7 @@ def multiplication_val(fn, df):
     col1 = list_columns_werte[int(value_column1)]
     
     
-    name_col = input('New column "Name": \n' + F1)
+    name_col = input('New column "Name": \n?')
     
     df[name_col] = df[col1] * float(value_col)
     
@@ -347,14 +347,14 @@ def diffision_column(fn, df):
     
     
     while True:
-        value_column1= input('Column1: \n(choose number)\n' + F1)
+        value_column1= input('Column1: \n(choose number)\n?')
         if value_column1 not in list_number:
             print('wrong input, try again!')
         else:
             break  
     
     while True:
-        value_column2= input('Column2: \n(choose number)\n' + F1)
+        value_column2= input('Column2: \n(choose number)\n?')
         if value_column2 not in list_number:
             print('wrong input, try again!')
         else:
@@ -365,7 +365,7 @@ def diffision_column(fn, df):
     col2 = list_columns_werte[int(value_column2)]
     
     
-    name_col = input('New column "Name": \n' + F1)
+    name_col = input('New column "Name": \n?')
     
     df[name_col] = df[col1] / df[col2]
     
@@ -395,7 +395,7 @@ def diffision_val(fn, df):
     
     
     while True:
-        value_column1= input('Column: \n(choose number)\n' + F1)
+        value_column1= input('Column: \n(choose number)\n?')
         if value_column1 not in list_number:
             print('wrong input, try again!')
         else:
@@ -404,7 +404,7 @@ def diffision_val(fn, df):
     
     
     while True:
-            value_col = input('Value: \n(choose point-comma) \n' + F1)
+            value_col = input('Value: \n(choose point-comma) \n?')
     
             if not isfloat(value_col):
                 print("target value is not a number with point-comma, please try again")
@@ -414,7 +414,7 @@ def diffision_val(fn, df):
     col1 = list_columns_werte[int(value_column1)]
     
     
-    name_col = input('New column "Name": \n' + F1)
+    name_col = input('New column "Name": \n?')
     
     df[name_col] = df[col1] / float(value_col)
     
@@ -445,7 +445,7 @@ def square_val(fn, df):
     
     
     while True:
-        value_column1= input('Column: \n(choose number)\n' + F1)
+        value_column1= input('Column: \n(choose number)\n?')
         if value_column1 not in list_number:
             print('wrong input, try again!')
         else:
@@ -457,7 +457,7 @@ def square_val(fn, df):
     col1 = list_columns_werte[int(value_column1)]
     
     
-    name_col = input('New column "Name": \n' + F1)
+    name_col = input('New column "Name": \n?')
     
     df[name_col] = df[col1] **2
     
@@ -488,7 +488,7 @@ def take_root_val(fn, df):
     
     
     while True:
-        value_column1= input('Column: \n(choose number)\n' + F1)
+        value_column1= input('Column: \n(choose number)\n?')
         if value_column1 not in list_number:
             print('wrong input, try again!')
         else:
@@ -500,7 +500,7 @@ def take_root_val(fn, df):
     col1 = list_columns_werte[int(value_column1)]
     
     
-    name_col = input('New column "Name": \n' + F1)
+    name_col = input('New column "Name": \n?')
     
     df[name_col] = df[[col1]].apply(np.sqrt, axis=1)
     
@@ -533,7 +533,7 @@ def statistic_cross_col(fn, df):
     
     
     while True:
-        value_column1= input('Column: \n(choose number)\n' + F1)
+        value_column1= input('Column: \n(choose number)\n?')
         if value_column1 not in list_number:
             print('wrong input, try again!')
         else:
@@ -561,9 +561,9 @@ def statistic_cross_col(fn, df):
     print(df3)
     file_in_html(fn, df3)
     
-    save_yes = input('Would you like to save this statistic table view as "CSV-File": \ny/n \n' + F1)
+    save_yes = input('Would you like to save this statistic table view as "CSV-File": \ny/n \n?')
     if save_yes.lower() =='y':
-        csvfilename = input('Filename (.csv will save automaticly) \n' + F1)
+        csvfilename = input('Filename (.csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
         df2.to_csv(fn, sep=';', decimal=',', header =True)      
 
@@ -581,7 +581,7 @@ def min_column(fn, df):
 
     print('#'*50)    
     
-    count_col = input('With how many columns do you would like to calculate? \n(choose number: possible 2-5) \n' + F1)      
+    count_col = input('With how many columns do you would like to calculate? \n(choose number: possible 2-5) \n?')      
           
     werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
     
@@ -601,14 +601,14 @@ def min_column(fn, df):
 ###2 columns    
     if count_col =='2':
         while True:
-            value_column1= input('Column1: \n(choose number)\n' + F1)
+            value_column1= input('Column1: \n(choose number)\n?')
             if value_column1 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
     
         while True:
-            value_column2= input('Column2: \n(choose number)\n' + F1)
+            value_column2= input('Column2: \n(choose number)\n?')
             if value_column2 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -619,7 +619,7 @@ def min_column(fn, df):
         col2 = list_columns_werte[int(value_column2)]
     
     
-        name_col = input('New column "Name": \n' + F1)
+        name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2]].apply(np.min, axis=1)
     
@@ -631,21 +631,21 @@ def min_column(fn, df):
         
     if count_col =='3':
         while True:
-            value_column1= input('Column1: \n(choose number)\n' + F1)
+            value_column1= input('Column1: \n(choose number)\n?')
             if value_column1 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
     
         while True:
-            value_column2= input('Column2: \n(choose number)\n' + F1)
+            value_column2= input('Column2: \n(choose number)\n?')
             if value_column2 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
         
         while True:
-            value_column3= input('Column3: \n(choose number)\n' + F1)
+            value_column3= input('Column3: \n(choose number)\n?')
             if value_column3 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -656,7 +656,7 @@ def min_column(fn, df):
         col2 = list_columns_werte[int(value_column2)]
         col3 = list_columns_werte[int(value_column3)]
     
-        name_col = input('New column "Name": \n' + F1)
+        name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2,col3]].apply(np.min, axis=1)
     
@@ -668,21 +668,21 @@ def min_column(fn, df):
         
     if count_col =='4':
         while True:
-            value_column1= input('Column1: \n(choose number)\n' + F1)
+            value_column1= input('Column1: \n(choose number)\n?')
             if value_column1 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
     
         while True:
-            value_column2= input('Column2: \n(choose number)\n' + F1)
+            value_column2= input('Column2: \n(choose number)\n?')
             if value_column2 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
         
         while True:
-            value_column3= input('Column3: \n(choose number)\n' + F1)
+            value_column3= input('Column3: \n(choose number)\n?')
             if value_column3 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -690,7 +690,7 @@ def min_column(fn, df):
         
         
         while True:
-            value_column4= input('Column4: \n(choose number)\n' + F1)
+            value_column4= input('Column4: \n(choose number)\n?')
             if value_column4 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -701,7 +701,7 @@ def min_column(fn, df):
         col3 = list_columns_werte[int(value_column3)]
         col4 = list_columns_werte[int(value_column4)]
         
-        name_col = input('New column "Name": \n' + F1)
+        name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2,col3,col4]].apply(np.min, axis=1)
     
@@ -713,21 +713,21 @@ def min_column(fn, df):
         
     if count_col =='5':
         while True:
-            value_column1= input('Column1: \n(choose number)\n' + F1)
+            value_column1= input('Column1: \n(choose number)\n?')
             if value_column1 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
     
         while True:
-            value_column2= input('Column2: \n(choose number)\n' + F1)
+            value_column2= input('Column2: \n(choose number)\n?')
             if value_column2 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
         
         while True:
-            value_column3= input('Column3: \n(choose number)\n' + F1)
+            value_column3= input('Column3: \n(choose number)\n?')
             if value_column3 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -735,14 +735,14 @@ def min_column(fn, df):
         
         
         while True:
-            value_column4= input('Column4: \n(choose number)\n' + F1)
+            value_column4= input('Column4: \n(choose number)\n?')
             if value_column4 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
         
         while True:
-            value_column5= input('Column5: \n(choose number)\n' + F1)
+            value_column5= input('Column5: \n(choose number)\n?')
             if value_column5 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -754,7 +754,7 @@ def min_column(fn, df):
         col4 = list_columns_werte[int(value_column4)]
         col5 = list_columns_werte[int(value_column5)]
         
-        name_col = input('New column "Name": \n' + F1)
+        name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.min, axis=1)
     
@@ -777,7 +777,7 @@ def max_column(fn, df):
 
     print('#'*50)    
     
-    count_col = input('With how many columns do you would like to calculate? \n(choose number: possible 2-5) \n' + F1)      
+    count_col = input('With how many columns do you would like to calculate? \n(choose number: possible 2-5) \n?')      
           
     werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
     
@@ -797,14 +797,14 @@ def max_column(fn, df):
 ###2 columns    
     if count_col =='2':
         while True:
-            value_column1= input('Column1: \n(choose number)\n' + F1)
+            value_column1= input('Column1: \n(choose number)\n?')
             if value_column1 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
     
         while True:
-            value_column2= input('Column2: \n(choose number)\n' + F1)
+            value_column2= input('Column2: \n(choose number)\n?')
             if value_column2 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -815,7 +815,7 @@ def max_column(fn, df):
         col2 = list_columns_werte[int(value_column2)]
     
     
-        name_col = input('New column "Name": \n' + F1)
+        name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2]].apply(np.max, axis=1)
     
@@ -827,21 +827,21 @@ def max_column(fn, df):
         
     if count_col =='3':
         while True:
-            value_column1= input('Column1: \n(choose number)\n' + F1)
+            value_column1= input('Column1: \n(choose number)\n?')
             if value_column1 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
     
         while True:
-            value_column2= input('Column2: \n(choose number)\n' + F1)
+            value_column2= input('Column2: \n(choose number)\n?')
             if value_column2 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
         
         while True:
-            value_column3= input('Column3: \n(choose number)\n' + F1)
+            value_column3= input('Column3: \n(choose number)\n?')
             if value_column3 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -852,7 +852,7 @@ def max_column(fn, df):
         col2 = list_columns_werte[int(value_column2)]
         col3 = list_columns_werte[int(value_column3)]
     
-        name_col = input('New column "Name": \n' + F1)
+        name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2,col3]].apply(np.max, axis=1)
     
@@ -864,21 +864,21 @@ def max_column(fn, df):
         
     if count_col =='4':
         while True:
-            value_column1= input('Column1: \n(choose number)\n' + F1)
+            value_column1= input('Column1: \n(choose number)\n?')
             if value_column1 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
     
         while True:
-            value_column2= input('Column2: \n(choose number)\n' + F1)
+            value_column2= input('Column2: \n(choose number)\n?')
             if value_column2 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
         
         while True:
-            value_column3= input('Column3: \n(choose number)\n' + F1)
+            value_column3= input('Column3: \n(choose number)\n?')
             if value_column3 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -886,7 +886,7 @@ def max_column(fn, df):
         
         
         while True:
-            value_column4= input('Column4: \n(choose number)\n' + F1)
+            value_column4= input('Column4: \n(choose number)\n?')
             if value_column4 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -897,7 +897,7 @@ def max_column(fn, df):
         col3 = list_columns_werte[int(value_column3)]
         col4 = list_columns_werte[int(value_column4)]
         
-        name_col = input('New column "Name": \n' + F1)
+        name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2,col3,col4]].apply(np.max, axis=1)
     
@@ -909,21 +909,21 @@ def max_column(fn, df):
         
     if count_col =='5':
         while True:
-            value_column1= input('Column1: \n(choose number)\n' + F1)
+            value_column1= input('Column1: \n(choose number)\n?')
             if value_column1 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
     
         while True:
-            value_column2= input('Column2: \n(choose number)\n' + F1)
+            value_column2= input('Column2: \n(choose number)\n?')
             if value_column2 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
         
         while True:
-            value_column3= input('Column3: \n(choose number)\n' + F1)
+            value_column3= input('Column3: \n(choose number)\n?')
             if value_column3 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -931,14 +931,14 @@ def max_column(fn, df):
         
         
         while True:
-            value_column4= input('Column4: \n(choose number)\n' + F1)
+            value_column4= input('Column4: \n(choose number)\n?')
             if value_column4 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
         
         while True:
-            value_column5= input('Column5: \n(choose number)\n' + F1)
+            value_column5= input('Column5: \n(choose number)\n?')
             if value_column5 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -950,7 +950,7 @@ def max_column(fn, df):
         col4 = list_columns_werte[int(value_column4)]
         col5 = list_columns_werte[int(value_column5)]
         
-        name_col = input('New column "Name": \n' + F1)
+        name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.max, axis=1)
     
@@ -971,7 +971,7 @@ def mean_column(fn, df):
 
     print('#'*50)    
     
-    count_col = input('With how many columns do you would like to calculate? \n(choose number: possible 2-5) \n' + F1)      
+    count_col = input('With how many columns do you would like to calculate? \n(choose number: possible 2-5) \n?')      
           
     werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
     
@@ -991,14 +991,14 @@ def mean_column(fn, df):
 ###2 columns    
     if count_col =='2':
         while True:
-            value_column1= input('Column1: \n(choose number)\n' + F1)
+            value_column1= input('Column1: \n(choose number)\n?')
             if value_column1 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
     
         while True:
-            value_column2= input('Column2: \n(choose number)\n' + F1)
+            value_column2= input('Column2: \n(choose number)\n?')
             if value_column2 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -1009,7 +1009,7 @@ def mean_column(fn, df):
         col2 = list_columns_werte[int(value_column2)]
     
     
-        name_col = input('New column "Name": \n' + F1)
+        name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2]].apply(np.mean, axis=1)
     
@@ -1021,21 +1021,21 @@ def mean_column(fn, df):
         
     if count_col =='3':
         while True:
-            value_column1= input('Column1: \n(choose number)\n' + F1)
+            value_column1= input('Column1: \n(choose number)\n?')
             if value_column1 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
     
         while True:
-            value_column2= input('Column2: \n(choose number)\n' + F1)
+            value_column2= input('Column2: \n(choose number)\n?')
             if value_column2 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
         
         while True:
-            value_column3= input('Column3: \n(choose number)\n' + F1)
+            value_column3= input('Column3: \n(choose number)\n?')
             if value_column3 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -1046,7 +1046,7 @@ def mean_column(fn, df):
         col2 = list_columns_werte[int(value_column2)]
         col3 = list_columns_werte[int(value_column3)]
     
-        name_col = input('New column "Name": \n' + F1)
+        name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2,col3]].apply(np.mean, axis=1)
     
@@ -1058,21 +1058,21 @@ def mean_column(fn, df):
         
     if count_col =='4':
         while True:
-            value_column1= input('Column1: \n(choose number)\n' + F1)
+            value_column1= input('Column1: \n(choose number)\n?')
             if value_column1 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
     
         while True:
-            value_column2= input('Column2: \n(choose number)\n' + F1)
+            value_column2= input('Column2: \n(choose number)\n?')
             if value_column2 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
         
         while True:
-            value_column3= input('Column3: \n(choose number)\n' + F1)
+            value_column3= input('Column3: \n(choose number)\n?')
             if value_column3 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -1080,7 +1080,7 @@ def mean_column(fn, df):
         
         
         while True:
-            value_column4= input('Column4: \n(choose number)\n' + F1)
+            value_column4= input('Column4: \n(choose number)\n?')
             if value_column4 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -1091,7 +1091,7 @@ def mean_column(fn, df):
         col3 = list_columns_werte[int(value_column3)]
         col4 = list_columns_werte[int(value_column4)]
         
-        name_col = input('New column "Name": \n' + F1)
+        name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2,col3,col4]].apply(np.mean, axis=1)
     
@@ -1103,21 +1103,21 @@ def mean_column(fn, df):
         
     if count_col =='5':
         while True:
-            value_column1= input('Column1: \n(choose number)\n' + F1)
+            value_column1= input('Column1: \n(choose number)\n?')
             if value_column1 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
     
         while True:
-            value_column2= input('Column2: \n(choose number)\n' + F1)
+            value_column2= input('Column2: \n(choose number)\n?')
             if value_column2 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
         
         while True:
-            value_column3= input('Column3: \n(choose number)\n' + F1)
+            value_column3= input('Column3: \n(choose number)\n?')
             if value_column3 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -1125,14 +1125,14 @@ def mean_column(fn, df):
         
         
         while True:
-            value_column4= input('Column4: \n(choose number)\n' + F1)
+            value_column4= input('Column4: \n(choose number)\n?')
             if value_column4 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
         
         while True:
-            value_column5= input('Column5: \n(choose number)\n' + F1)
+            value_column5= input('Column5: \n(choose number)\n?')
             if value_column5 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -1144,7 +1144,7 @@ def mean_column(fn, df):
         col4 = list_columns_werte[int(value_column4)]
         col5 = list_columns_werte[int(value_column5)]
         
-        name_col = input('New column "Name": \n' + F1)
+        name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.mean, axis=1)
     
@@ -1165,7 +1165,7 @@ def std_column(fn, df):
 
     print('#'*50)    
     
-    count_col = input('With how many columns do you would like to calculate? \n(choose number: possible 2-5) \n' + F1)      
+    count_col = input('With how many columns do you would like to calculate? \n(choose number: possible 2-5) \n?')      
           
     werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
     
@@ -1185,14 +1185,14 @@ def std_column(fn, df):
 ###2 columns    
     if count_col =='2':
         while True:
-            value_column1= input('Column1: \n(choose number)\n' + F1)
+            value_column1= input('Column1: \n(choose number)\n?')
             if value_column1 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
     
         while True:
-            value_column2= input('Column2: \n(choose number)\n' + F1)
+            value_column2= input('Column2: \n(choose number)\n?')
             if value_column2 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -1203,7 +1203,7 @@ def std_column(fn, df):
         col2 = list_columns_werte[int(value_column2)]
     
     
-        name_col = input('New column "Name": \n' + F1)
+        name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2]].apply(np.std, axis=1)
     
@@ -1215,21 +1215,21 @@ def std_column(fn, df):
         
     if count_col =='3':
         while True:
-            value_column1= input('Column1: \n(choose number)\n' + F1)
+            value_column1= input('Column1: \n(choose number)\n?')
             if value_column1 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
     
         while True:
-            value_column2= input('Column2: \n(choose number)\n' + F1)
+            value_column2= input('Column2: \n(choose number)\n?')
             if value_column2 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
         
         while True:
-            value_column3= input('Column3: \n(choose number)\n' + F1)
+            value_column3= input('Column3: \n(choose number)\n?')
             if value_column3 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -1240,7 +1240,7 @@ def std_column(fn, df):
         col2 = list_columns_werte[int(value_column2)]
         col3 = list_columns_werte[int(value_column3)]
     
-        name_col = input('New column "Name": \n' + F1)
+        name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2,col3]].apply(np.std, axis=1)
     
@@ -1252,21 +1252,21 @@ def std_column(fn, df):
         
     if count_col =='4':
         while True:
-            value_column1= input('Column1: \n(choose number)\n' + F1)
+            value_column1= input('Column1: \n(choose number)\n?')
             if value_column1 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
     
         while True:
-            value_column2= input('Column2: \n(choose number)\n' + F1)
+            value_column2= input('Column2: \n(choose number)\n?')
             if value_column2 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
         
         while True:
-            value_column3= input('Column3: \n(choose number)\n' + F1)
+            value_column3= input('Column3: \n(choose number)\n?')
             if value_column3 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -1274,7 +1274,7 @@ def std_column(fn, df):
         
         
         while True:
-            value_column4= input('Column4: \n(choose number)\n' + F1)
+            value_column4= input('Column4: \n(choose number)\n?')
             if value_column4 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -1285,7 +1285,7 @@ def std_column(fn, df):
         col3 = list_columns_werte[int(value_column3)]
         col4 = list_columns_werte[int(value_column4)]
         
-        name_col = input('New column "Name": \n' + F1)
+        name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2,col3,col4]].apply(np.std, axis=1)
     
@@ -1297,21 +1297,21 @@ def std_column(fn, df):
         
     if count_col =='5':
         while True:
-            value_column1= input('Column1: \n(choose number)\n' + F1)
+            value_column1= input('Column1: \n(choose number)\n?')
             if value_column1 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
     
         while True:
-            value_column2= input('Column2: \n(choose number)\n' + F1)
+            value_column2= input('Column2: \n(choose number)\n?')
             if value_column2 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
         
         while True:
-            value_column3= input('Column3: \n(choose number)\n' + F1)
+            value_column3= input('Column3: \n(choose number)\n?')
             if value_column3 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -1319,14 +1319,14 @@ def std_column(fn, df):
         
         
         while True:
-            value_column4= input('Column4: \n(choose number)\n' + F1)
+            value_column4= input('Column4: \n(choose number)\n?')
             if value_column4 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
         
         while True:
-            value_column5= input('Column5: \n(choose number)\n' + F1)
+            value_column5= input('Column5: \n(choose number)\n?')
             if value_column5 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -1338,7 +1338,7 @@ def std_column(fn, df):
         col4 = list_columns_werte[int(value_column4)]
         col5 = list_columns_werte[int(value_column5)]
         
-        name_col = input('New column "Name": \n' + F1)
+        name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.std, axis=1)
     
@@ -1360,7 +1360,7 @@ def range_column(fn, df):
 
     print('#'*50)    
     
-    count_col = input('With how many columns do you would like to calculate? \n(choose number: possible 2-5) \n' + F1)      
+    count_col = input('With how many columns do you would like to calculate? \n(choose number: possible 2-5) \n?')      
           
     werte = df.select_dtypes(exclude=['object', 'datetime' , 'category'])
     
@@ -1380,14 +1380,14 @@ def range_column(fn, df):
 ###2 columns    
     if count_col =='2':
         while True:
-            value_column1= input('Column1: \n(choose number)\n' + F1)
+            value_column1= input('Column1: \n(choose number)\n?')
             if value_column1 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
     
         while True:
-            value_column2= input('Column2: \n(choose number)\n' + F1)
+            value_column2= input('Column2: \n(choose number)\n?')
             if value_column2 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -1398,7 +1398,7 @@ def range_column(fn, df):
         col2 = list_columns_werte[int(value_column2)]
     
     
-        name_col = input('New column "Name": \n' + F1)
+        name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2]].apply(np.max, axis=1)-df[[col1,col2]].apply(np.min, axis=1)
     
@@ -1410,21 +1410,21 @@ def range_column(fn, df):
         
     if count_col =='3':
         while True:
-            value_column1= input('Column1: \n(choose number)\n' + F1)
+            value_column1= input('Column1: \n(choose number)\n?')
             if value_column1 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
     
         while True:
-            value_column2= input('Column2: \n(choose number)\n' + F1)
+            value_column2= input('Column2: \n(choose number)\n?')
             if value_column2 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
         
         while True:
-            value_column3= input('Column3: \n(choose number)\n' + F1)
+            value_column3= input('Column3: \n(choose number)\n?')
             if value_column3 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -1435,7 +1435,7 @@ def range_column(fn, df):
         col2 = list_columns_werte[int(value_column2)]
         col3 = list_columns_werte[int(value_column3)]
     
-        name_col = input('New column "Name": \n' + F1)
+        name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2,col3]].apply(np.max, axis=1)-df[[col1,col2,col3]].apply(np.min, axis=1)
     
@@ -1447,21 +1447,21 @@ def range_column(fn, df):
         
     if count_col =='4':
         while True:
-            value_column1= input('Column1: \n(choose number)\n' + F1)
+            value_column1= input('Column1: \n(choose number)\n?')
             if value_column1 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
     
         while True:
-            value_column2= input('Column2: \n(choose number)\n' + F1)
+            value_column2= input('Column2: \n(choose number)\n?')
             if value_column2 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
         
         while True:
-            value_column3= input('Column3: \n(choose number)\n' + F1)
+            value_column3= input('Column3: \n(choose number)\n?')
             if value_column3 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -1469,7 +1469,7 @@ def range_column(fn, df):
         
         
         while True:
-            value_column4= input('Column4: \n(choose number)\n' + F1)
+            value_column4= input('Column4: \n(choose number)\n?')
             if value_column4 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -1480,7 +1480,7 @@ def range_column(fn, df):
         col3 = list_columns_werte[int(value_column3)]
         col4 = list_columns_werte[int(value_column4)]
         
-        name_col = input('New column "Name": \n' + F1)
+        name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2,col3,col4]].apply(np.max, axis=1)-df[[col1,col2,col3,col4]].apply(np.min, axis=1)
     
@@ -1492,21 +1492,21 @@ def range_column(fn, df):
         
     if count_col =='5':
         while True:
-            value_column1= input('Column1: \n(choose number)\n' + F1)
+            value_column1= input('Column1: \n(choose number)\n?')
             if value_column1 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
     
         while True:
-            value_column2= input('Column2: \n(choose number)\n' + F1)
+            value_column2= input('Column2: \n(choose number)\n?')
             if value_column2 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
         
         while True:
-            value_column3= input('Column3: \n(choose number)\n' + F1)
+            value_column3= input('Column3: \n(choose number)\n?')
             if value_column3 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -1514,14 +1514,14 @@ def range_column(fn, df):
         
         
         while True:
-            value_column4= input('Column4: \n(choose number)\n' + F1)
+            value_column4= input('Column4: \n(choose number)\n?')
             if value_column4 not in list_number:
                 print('wrong input, try again!')
             else:
                 break  
         
         while True:
-            value_column5= input('Column5: \n(choose number)\n' + F1)
+            value_column5= input('Column5: \n(choose number)\n?')
             if value_column5 not in list_number:
                 print('wrong input, try again!')
             else:
@@ -1533,7 +1533,7 @@ def range_column(fn, df):
         col4 = list_columns_werte[int(value_column4)]
         col5 = list_columns_werte[int(value_column5)]
         
-        name_col = input('New column "Name": \n' + F1)
+        name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.max, axis=1)-df[[col1,col2,col3,col4,col5]].apply(np.min, axis=1)
     
@@ -1558,7 +1558,7 @@ def menu_calc_column(fn, df):
     for i in range(len(calc_liste)):
         print(i, calc_liste[i])
         i+=1
-    calc = input('Which calculation: \n(choose a number) \n' + F1)
+    calc = input('Which calculation: \n(choose a number) \n?')
     
     if calc =='0':
         addition_column(fn, df)
@@ -1595,7 +1595,7 @@ def menu_calc_col_val(fn, df):
     for i in range(len(calc_liste)):
         print(i, calc_liste[i])
         i+=1
-    calc = input('Which calculation: \n(choose a number) \n' + F1)
+    calc = input('Which calculation: \n(choose a number) \n?')
     
     if calc =='0':
         addition_val(fn, df)
@@ -1678,7 +1678,7 @@ def quantile__column(df, col1):
     
     
     while True:
-        quantile_value = input('Percent Probability (0.x-100): \n' + F1)
+        quantile_value = input('Percent Probability (0.x-100): \n?')
         quantile_value = float(quantile_value)
         
         if not isfloat(quantile_value):
@@ -1725,7 +1725,7 @@ def menu_stat_column(fn, df):
     
     
     while True:
-        value_column1= input('Column1: \n(choose number)\n' + F1)
+        value_column1= input('Column1: \n(choose number)\n?')
         if value_column1 not in list_number:
             print('wrong input, try again!')
         else:
@@ -1735,7 +1735,7 @@ def menu_stat_column(fn, df):
     
     while True:
     
-        menu_stat = input('Statistic functions: \n1: Count column \n2: SUM column \n3: Mean column \n4: MIN column \n5: MAX column \n6: Range column \n7: STD column \n8: Quantile column \n' + F1)
+        menu_stat = input('Statistic functions: \n1: Count column \n2: SUM column \n3: Mean column \n4: MIN column \n5: MAX column \n6: Range column \n7: STD column \n8: Quantile column \n?')
         if menu_stat =='1':
             count__column(df, col1)
         elif menu_stat =='2':
@@ -1755,14 +1755,14 @@ def menu_stat_column(fn, df):
         else:
             print('Wrong Input, please try again')
         
-        restart = input('\nFurther column calculation: "y"\n' + F1)
+        restart = input('\nFurther column calculation: "y"\n?')
         if restart.lower() != 'y':
             break
 
     
 
 def menu_calc(fn, df):
-    menu_c = input('How to calculate? \n1: calculation between 2 chosen columns \n2: calculation with chosen column and input value \n3: described statistics cross chosen column \n4: statistic funktions due to chosen column \n(choose nr.) \n' + F1)
+    menu_c = input('How to calculate? \n1: calculation between 2 chosen columns \n2: calculation with chosen column and input value \n3: described statistics cross chosen column \n4: statistic funktions due to chosen column \n(choose nr.) \n?')
     if menu_c == '1':
         menu_calc_column(fn, df)
     elif menu_c == '2':

@@ -39,13 +39,13 @@ def LREG(df):
         i+=1
     
     while True:
-        value_column_y= input('y-value: \n(choose number) \n' + F1)
+        value_column_y= input('y-value: \n(choose number) \n?')
         if value_column_y not in list_number:
             print('wrong input, try again!')
         else:
             break  
     while True:
-        value_column_x= input('x-value: \n(choose number) \n' + F1)
+        value_column_x= input('x-value: \n(choose number) \n?')
         if value_column_x not in list_number:
             print('wrong input, try again!')
         else:

@@ -40,7 +40,7 @@ def CPA(df):
     
     print('')
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -56,7 +56,7 @@ def CPA(df):
     
     
     while True:
-        one_two_sided = input('Tolerance: \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n' + F1)
+        one_two_sided = input('Tolerance: \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
         
         
         count_y = y.count()
@@ -72,7 +72,7 @@ def CPA(df):
         if one_two_sided == '1':
             
             while True:
-                tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n' + F1)
+                tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
                 if ',' in tol:
                     try:
                         ut, lt = tol.split(',')
@@ -207,7 +207,7 @@ def CPA(df):
             
             
             while True:
-                ut = input('Upper tolerance: \n(choose point-comma) \n' + F1)
+                ut = input('Upper tolerance: \n(choose point-comma) \n?')
         
                 if not isfloat(ut):
                     print("target mean value is not a number with point-comma, please try again")
@@ -325,7 +325,7 @@ def CPA(df):
         elif one_two_sided =='3':
             
             while True:
-                lt = input('Lower tolerance: \n(choose point-comma) \n' + F1)
+                lt = input('Lower tolerance: \n(choose point-comma) \n?')
         
                 if not isfloat(lt):
                     print("target mean value is not a number with point-comma, please try again")

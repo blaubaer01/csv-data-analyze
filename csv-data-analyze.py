@@ -51,7 +51,7 @@ def file_einlesen(fn):
     
     #define structure
     while True:
-        format_ist = input('\nWhich separator is used by the file: \n1: Comma \n2: Semicolon \n3: Tab \n4: Space\n(choose number)\n\U0001f522 ?').lower()
+        format_ist = input('\nWhich separator is used by the file: \n1: Comma \n2: Semicolon \n3: Tab \n4: Space\n(choose number)\n?').lower()
         if format_ist == '1':
             trennzeichen = ','
             dezimalzeichen = '.'
@@ -60,7 +60,7 @@ def file_einlesen(fn):
             trennzeichen = ';'
             #dezimalzeichen = ','
             while True:
-                dezimalz = input('\nWhich delimiter is used: \n1: floatcomma \n2: pointcomma \n(choose nr) \n\U0001f522 ?')
+                dezimalz = input('\nWhich delimiter is used: \n1: floatcomma \n2: pointcomma \n(choose nr) \n?')
                 if dezimalz =='1':
                     dezimalzeichen =','
                     break
@@ -73,7 +73,7 @@ def file_einlesen(fn):
         elif format_ist == '3':
             trennzeichen = '\t'
             while True:
-                dezimalz = input('\nWhich delimiter is used: \n1: floatcomma \n2: pointcomma \n(choose nr) \n\U0001f522 ?')
+                dezimalz = input('\nWhich delimiter is used: \n1: floatcomma \n2: pointcomma \n(choose nr) \n?')
                 if dezimalz =='1':
                     dezimalzeichen =','
                     break
@@ -86,7 +86,7 @@ def file_einlesen(fn):
         elif format_ist == '4':
             trennzeichen = '\s+'
             while True:
-                dezimalz = input('\nWhich delimiter is used: \n1: floatcomma \n2: pointcomma \n(choose nr) \n\U0001f522 ?')
+                dezimalz = input('\nWhich delimiter is used: \n1: floatcomma \n2: pointcomma \n(choose nr) \n?')
                 if dezimalz =='1':
                     dezimalzeichen =','
                     break
@@ -102,7 +102,7 @@ def file_einlesen(fn):
         #file_einlesen(auswahl_datei)
     
     #custom header
-    kopfzeile = input('\nIs there a header: y/n \n\U0001f521 ?').lower()
+    kopfzeile = input('\nIs there a header: y/n \n?').lower()
     if kopfzeile == 'y':
         kopfz = 0
     elif kopfzeile =='n':
@@ -118,7 +118,7 @@ def file_einlesen(fn):
     
     ###set filter
     ######################################################################################
-    filter_setzen = input('Would you like to set any filter: y/n \n\U0001f521 ?')
+    filter_setzen = input('Would you like to set any filter: y/n \n?')
     if filter_setzen =='y':
         clear()
         while True:
@@ -221,14 +221,14 @@ def file_einlesen(fn):
             
             
 
-            restart = input('\nSet more filters: y/n.\n\U0001f521 ?')
+            restart = input('\nSet more filters: y/n.\n?')
             if restart.lower() != 'y':
                 break
             
     
     ###sort by column
     ###################################################################################
-    sort_yes = input('Would you like to sort the data frame: y/n\n\U0001f521 ?')
+    sort_yes = input('Would you like to sort the data frame: y/n\n?')
     if sort_yes =='y':
         while True:
             clear()
@@ -247,7 +247,7 @@ def file_einlesen(fn):
             s_col = list_columns[int(sort_column)]
             
             while True:
-                ascent_true_false = input('Ascending: \n1: true \n2: false \n\U0001f522 ?')
+                ascent_true_false = input('Ascending: \n1: true \n2: false \n?')
                 if ascent_true_false =='1':
                     a_t_f = 1
                     break
@@ -259,13 +259,13 @@ def file_einlesen(fn):
             
             df = df.sort_values(by=s_col, ascending=a_t_f)
             
-            restart_s = input('additional sorting: y/n \n\U0001f521 ?')
+            restart_s = input('additional sorting: y/n \n?')
             if restart_s.lower() != 'y':
                 break
                    
     ####################################################################################
     ####delete nan rows
-    drop_yes = input('Do you want to drop all "NAN" rows in the dataframe y/n \n\U0001f521 ?')
+    drop_yes = input('Do you want to drop all "NAN" rows in the dataframe y/n \n?')
     
     if drop_yes.lower() =='y':
         df = df.dropna()
@@ -305,7 +305,7 @@ def beschreibende_stat(df):
     while True:
         clear()
         print('\U0001f9ee  descriptive statistic \U0001f9ee')
-        was_beschreibend_analysieren=input('What data do you want to analyze? \n1: all\n2: only the numerical datas \n3: one special column \n4: graphical (numerical data) \n\U0001f522 ?')
+        was_beschreibend_analysieren=input('What data do you want to analyze? \n1: all\n2: only the numerical datas \n3: one special column \n4: graphical (numerical data) \n?')
         if was_beschreibend_analysieren =='1':
             print('Simple descriptive statistics: \n')
             print(df.describe(include="all"))
@@ -322,7 +322,7 @@ def beschreibende_stat(df):
                 list_columns.append(df.columns[i])
                 print(i, df.columns[i])
                 i+=1
-            nummer_spalte= input('Which column do you want to see: \n(choose number) \n\U0001f522 ?')
+            nummer_spalte= input('Which column do you want to see: \n(choose number) \n?')
             try:
                 print('Simple descriptive statiatics: \n')
                 print(df[list_columns[int(nummer_spalte)]].describe(include='all'))
@@ -344,7 +344,7 @@ def beschreibende_stat(df):
             
         
         
-        restart = input('\nFurther descriptive analysis: y/n \n\U0001f521 ?')
+        restart = input('\nFurther descriptive analysis: y/n \n?')
         if restart.lower() != 'y':
             break
         
@@ -358,7 +358,7 @@ def beschreibende_stat(df):
 ### menu barcharts
 def auswahl_balkendiagramm(df):
     clear()
-    ausw_bd = input('Type of bar-chart: \n1: count column entries \n2: column grouped by 2 column entries \n(choose number) \n\U0001f522 ?')
+    ausw_bd = input('Type of bar-chart: \n1: count column entries \n2: column grouped by 2 column entries \n(choose number) \n?')
     if ausw_bd =='1':
         balkendiagramm(df)
     elif ausw_bd =='2':
@@ -372,7 +372,7 @@ def auswahl_balkendiagramm(df):
 ###menu categorigal data (boxplot, violinplot)
 def menu_categorie_data(df):
     clear()
-    menu_cd = input('Which Categorial Plot: \n1: Single Boxplot \n2: Boxplot by one factor \n3: Boxplot by two factors \n4: Single Violinplot \n5: Violinplot one factor \n6: Violinplot by two factors \n7: Single Swarmplot \n8: Swarmplot by one factor \n9: Swarmplot by two factors \n10: Single Stripplot \n11: Stripplot by one factor \n12: Stripplot by two factors  \n13: Pointplot by one factor \n14: Pointplot by two factors \n15: Distribution-Plot by one factor \n16: Histogram-Plot by one factor \n17: scatter plot by one factor\n(choose a number) \n\U0001f522 ?')
+    menu_cd = input('Which Categorial Plot: \n1: Single Boxplot \n2: Boxplot by one factor \n3: Boxplot by two factors \n4: Single Violinplot \n5: Violinplot one factor \n6: Violinplot by two factors \n7: Single Swarmplot \n8: Swarmplot by one factor \n9: Swarmplot by two factors \n10: Single Stripplot \n11: Stripplot by one factor \n12: Stripplot by two factors  \n13: Pointplot by one factor \n14: Pointplot by two factors \n15: Distribution-Plot by one factor \n16: Histogram-Plot by one factor \n17: scatter plot by one factor\n(choose a number) \n?')
     if menu_cd =='1':
         boxplot(df)
     elif menu_cd =='2':
@@ -416,7 +416,7 @@ def menu_categorie_data(df):
 ### scatter plot menu        
 def menu_scatter(df):
     clear()
-    m_scatter = input('Scatter-Plot: \n1: scatter only \n2: regression plot \n3: regression_jointplot \n(choose number) \n\U0001f522 ?')
+    m_scatter = input('Scatter-Plot: \n1: scatter only \n2: regression plot \n3: regression_jointplot \n(choose number) \n?')
     if m_scatter =='1':
         scatter(df)
     elif m_scatter =='2':
@@ -432,7 +432,7 @@ def menu_scatter(df):
 ###pareto plot menu        
 def menu_pareto(df):
     clear()
-    menu_par = input('Choose Pareto: \n1: count column \n2: count values \n\U0001f522 ?')
+    menu_par = input('Choose Pareto: \n1: count column \n2: count values \n?')
     
     if menu_par == '1':
         pareto_one_column(df)
@@ -451,7 +451,7 @@ def menu_spc_charts(df):
     for i in range(len(gr_view_list)):
         print(i, gr_view_list[i])
         i+=1
-    ausw_gr_view = input('Which Control-Chart: \n(choose a number) \n\U0001f522 ?')
+    ausw_gr_view = input('Which Control-Chart: \n(choose a number) \n?')
     
     if ausw_gr_view =='0':
         x_chart(df)
@@ -478,7 +478,7 @@ def menu_graphical_analyze(df):
     for i in range(len(gr_view_list)):
         print(i, gr_view_list[i])
         i+=1
-    ausw_gr_view = input('Which graphical form of analysis \n(choose a number) \n\U0001f522 ?')
+    ausw_gr_view = input('Which graphical form of analysis \n(choose a number) \n?')
     
     if ausw_gr_view =='0':
         auswahl_balkendiagramm(df)
@@ -519,7 +519,7 @@ def menu_graphical_analyze(df):
 def ttest_menu(df):
     clear()
     print('t-Test \n')
-    menu_ttest = input('Which kind of t-test: \n1: one sample t-Test \n2: two sample t-Test \n3: two independent samples t-Test \n(choose a number) \n\U0001f522 ?')    
+    menu_ttest = input('Which kind of t-test: \n1: one sample t-Test \n2: two sample t-Test \n3: two independent samples t-Test \n(choose a number) \n?')    
     if menu_ttest =='1':
         ttest_o_s(df)
     elif menu_ttest =='2':
@@ -536,7 +536,7 @@ def ttest_menu(df):
 def ANOVA_menu(df):
     clear()
     print('ANOVA \n')
-    anova_m = input('Which kind of ANOVA: \n1: one way ANOVA \n2: two way ANOVA \n(choose number) \n\U0001f522 ?')
+    anova_m = input('Which kind of ANOVA: \n1: one way ANOVA \n2: two way ANOVA \n(choose number) \n?')
     if anova_m =='1':
         anova_o_w(df)
     elif anova_m =='2':
@@ -550,7 +550,7 @@ def ANOVA_menu(df):
 def menu_tests(df):
     clear()
     print('\U0001f9ee  Statistical Tests \U0001f9ee\n')
-    what_kind_of_test = input('Which Test do you would like to do: \n1: Test for normal distribution  \n2: correlation all columns \n3: t-test \n4: f-test \n5: ANOVA \n6: Outlier-Test \n7: Median-Test \n(choose a number) \n\U0001f522 ?')
+    what_kind_of_test = input('Which Test do you would like to do: \n1: Test for normal distribution  \n2: correlation all columns \n3: t-test \n4: f-test \n5: ANOVA \n6: Outlier-Test \n7: Median-Test \n(choose a number) \n?')
     if what_kind_of_test =='1':
         clear()
         normality_test(df)
@@ -580,7 +580,7 @@ def menu_tests(df):
 def MSA(df):
     clear()
     print('\U0001f4cf Measurement System Analysis \U0001f4cf\n')
-    menu_MSA = input('Choose MSA Version: \n1: MSA_V1 \n2: MSA_V2 \n(choose number) \n\U0001f522 ?')
+    menu_MSA = input('Choose MSA Version: \n1: MSA_V1 \n2: MSA_V2 \n(choose number) \n?')
     if menu_MSA =='1':
         msa_v1(df)
     elif menu_MSA =='2':
@@ -598,7 +598,7 @@ def statistic(df):
     while True:
         clear()
         print('\n\U0001f9ee Statitic Functions: \U0001f9ee \n')
-        menu_statistic = input('What kind of statistics: \n1: simple descriptive statistics \U0001f5d2\uFE0F \n2: graphical view \U0001f4ca \n3: statistical significance tests \U0001f4c8 \n4: process capability study \U0001f4c8 \n5: linear regression study \U0001f4c8 \n6: MSA (Measurement System Analysis) \U0001f4cf \n7: contingency table \U0001f4c8 \n(choose number)  \n\U0001f522 ?')
+        menu_statistic = input('What kind of statistics: \n1: simple descriptive statistics \U0001f5d2\uFE0F \n2: graphical view \U0001f4ca \n3: statistical significance tests \U0001f4c8 \n4: process capability study \U0001f4c8 \n5: linear regression study \U0001f4c8 \n6: MSA (Measurement System Analysis) \U0001f4cf \n7: contingency table \U0001f4c8 \n(choose number)  \n?')
         if menu_statistic =='1':
             beschreibende_stat(df)
         elif menu_statistic =='2':
@@ -616,7 +616,7 @@ def statistic(df):
         else:
             print('wrong input, please try again!')
         
-        restart = input('\nFurther statistic functions: "y"\n\U0001f521 ?')
+        restart = input('\nFurther statistic functions: "y"\n?')
         if restart.lower() != 'y':
             break
         
@@ -632,7 +632,7 @@ def preview_table(fn, df):
     while True:
         clear()
         print('Table preview \n')
-        menu_voranalyse = input('Preview Menu: \n1: Single-view \U0001f5d2\uFE0F \n2: Datatype \U0001f521 \U0001f522 \n3: Missing-Datas \U0001f62d \n4: show Data in HTML \U0001f578\uFE0F\n5: show Data in Terminal \U0001f5d2\uFE0F \n\U0001f522 ?')
+        menu_voranalyse = input('Preview Menu: \n1: Single-view \U0001f5d2\uFE0F \n2: Datatype \U0001f522 \n3: Missing-Datas \U0001f62d \n4: show Data in HTML \U0001f578\uFE0F\n5: show Data in Terminal \U0001f5d2\uFE0F \n?')
         if menu_voranalyse =='1':
             clear()
             einzeldaten_anschauen(df)
@@ -651,7 +651,7 @@ def preview_table(fn, df):
             print('Wrong input, please try again!')
             #voranalyse(df)
         
-        restart = input('\nFurther pre-analysis: "y"\n\U0001f521 ?')
+        restart = input('\nFurther pre-analysis: "y"\n?')
         if restart.lower() != 'y':
             break
 
@@ -674,7 +674,7 @@ def table_functions(fn, df):
         change_datatype(df)
         clear()
         print('\U0001f5d2\uFE0F Table Functions \U0001f5d2\uFE0F \n')
-        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n11: get calendar info \n12: delete or replace value/characters \n13: melt columns \n14: rename column \n15: save to CSV-file \n16: combine factor columns \n17: delete column \n18: add random distribution-data \n\U0001f522 ?')
+        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n11: get calendar info \n12: delete or replace value/characters \n13: melt columns \n14: rename column \n15: save to CSV-file \n16: combine factor columns \n17: delete column \n18: add random distribution-data \n?')
         
         if menu_tf =='1':
             clear()
@@ -723,7 +723,7 @@ def table_functions(fn, df):
             print('Wrong input, please try again!')
             #voranalyse(df)
         
-        restart = input('\nFurther table functions: "y"\n\U0001f521 ?')
+        restart = input('\nFurther table functions: "y"\n?')
         if restart.lower() != 'y':
             
             
@@ -779,7 +779,7 @@ def mit_daten_arbeiten(fn, df):
             
             
         
-        restart = input('\nDo you want to analyze further?: y = yes / n = exit \n\U0001f521 ?')
+        restart = input('\nDo you want to analyze further?: y = yes / n = exit \n?')
         if restart.lower() != 'y':
             
             
@@ -820,7 +820,7 @@ def main():
     print('')
     
     while True:
-        start = input('\u2049\uFE0F \nStart Menue \n1: Create random data \U0001f3b2 \n2: Open exsisting csv-file (root folder) \U0001f4c1 \n3: More infos about this app (Wiki) \u2139\uFE0F \n4: OMG, close this scary app \u26D4 \n(choose number) \n\U0001f522 ?')
+        start = input('\u2049\uFE0F \nStart Menue \n1: Create random data \U0001f3b2 \n2: Open exsisting csv-file (root folder) \U0001f4c1 \n3: More infos about this app (Wiki) \u2139\uFE0F \n4: OMG, close this scary app \u26D4 \n(choose number) \n?')
         
         if start == '1':
             menu_rd(df)
@@ -890,7 +890,7 @@ def main():
 if __name__ == '__main__':
     while True:
         main()
-        restart = input('\nDo you want to re-start the app?: y = yes / n = exit \n\U0001f521 ?')
+        restart = input('\nDo you want to re-start the app?: y = yes / n = exit \n?')
         if restart.lower() != 'y':
             break
         
