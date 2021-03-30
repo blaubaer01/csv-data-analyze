@@ -10,6 +10,8 @@ import datetime as dt
 from mft import clear, save_CSV_new, print_table
 import pandas as pd
 
+F1 = '\U0001f522 ?'
+F2 = '\U0001f521 ?' 
 
 def convert_datetime(df):
     clear()
@@ -28,7 +30,7 @@ def convert_datetime(df):
         i+=1
     
     while True:
-        datum_column= input('Which value column do you want to see: \n(choose number) \n?')
+        datum_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
         if datum_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -38,14 +40,14 @@ def convert_datetime(df):
     clear()
     print('change date format \n')
         
-    new_name_c = input('Input new column name: \n?')
+    new_name_c = input('Input new column name: \n' + F1)
     
     print('current date format: \n', df[date_y][1])
     print('')
     
-    konv = input('Which datetime format do you have as input: \n1: yyyy/mm/dd hh:mm:ss \n2: dd/mm/yyyy hh:mm:ss \n3: dd-mm-yyyy hh:mm:ss \n4: yyyy-mm-ddThh:mm:ss \n5: dd.mm.yyyy hh:mm:ss \n6: dd.mm.yyyy hh:mm \n7: dd.mm.yyyy \n?' )
+    konv = input('Which datetime format do you have as input: \n1: yyyy/mm/dd hh:mm:ss \n2: dd/mm/yyyy hh:mm:ss \n3: dd-mm-yyyy hh:mm:ss \n4: yyyy-mm-ddThh:mm:ss \n5: dd.mm.yyyy hh:mm:ss \n6: dd.mm.yyyy hh:mm \n7: dd.mm.yyyy \n' + F1 )
     
-    #date_format = input('Which Calendarinformation do you need: \1: Month \n2: day \n3: CW \n4: Day of the year \n5: Day of the week \n6: tz_Info \n7: Day name \n8: Month name \n?' )
+    #date_format = input('Which Calendarinformation do you need: \1: Month \n2: day \n3: CW \n4: Day of the year \n5: Day of the week \n6: tz_Info \n7: Day name \n8: Month name \n' + F1 )
     
     if konv =='1':
         df[new_name_c] = pd.to_datetime(df[date_y], format='%Y/%m/%d %H:%M:%S')
@@ -104,7 +106,7 @@ def cal_info(df):
         print('no date columns fount')
     else:
         while True:
-            datum_column= input('Which value column do you want to see: \n(choose number) \n?')
+            datum_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
             if datum_column not in list_number:
                 print('wrong input, try again!')
             else:
@@ -114,11 +116,11 @@ def cal_info(df):
     
         date_y = list_columns_datum[int(datum_column)]
         
-        new_name_c = input('Input new column name: \n?')
+        new_name_c = input('Input new column name: \n' + F1)
         
-        konv = input('Which calendar information do you need: \n1: month \n2: day \n3: week \n4: year \n5: hour  \n6: minutes \n7: seconds  \n8: day name \n9: month name \n10: day of the year \n11: day of the week \n?' )
+        konv = input('Which calendar information do you need: \n1: month \n2: day \n3: week \n4: year \n5: hour  \n6: minutes \n7: seconds  \n8: day name \n9: month name \n10: day of the year \n11: day of the week \n' + F1 )
         
-        #date_format = input('Which Calendarinformation do you need: \1: Month \n2: day \n3: CW \n4: Day of the year \n5: Day of the week \n6: tz_Info \n7: Day name \n8: Day Name name \n?' )
+        #date_format = input('Which Calendarinformation do you need: \1: Month \n2: day \n3: CW \n4: Day of the year \n5: Day of the week \n6: tz_Info \n7: Day name \n8: Day Name name \n' + F1 )
         
         if konv =='1':
             df[new_name_c] = df[date_y].dt.month

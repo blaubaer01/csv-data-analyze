@@ -11,6 +11,8 @@ import pandas as pd
 import numpy as np
 from tabulate import tabulate
 
+F1 = '\U0001f522 ?'
+F2 = '\U0001f521 ?' 
 
 ##############################################################################
 ###Main function tools
@@ -62,9 +64,9 @@ def isinteger(x):
 ###save dataframe to CSV-File
 def save_CSV_new(df):
     clear()
-    speichern_ja = input('Save the modified dataframe: y/n \n?')
+    speichern_ja = input('Save the modified dataframe: y/n \n' + F2)
     if speichern_ja.lower() =='y':
-        csvfilename = input('Input only Filename ([filename].csv will save automaticly) \n?')
+        csvfilename = input('Input only Filename ([filename].csv will save automaticly) \n' + F2)
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)
         

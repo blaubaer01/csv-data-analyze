@@ -17,6 +17,8 @@ from tableview import filter_in_html
 import numpy as np
 from tabulate import tabulate
 
+F1 = '\U0001f522 ?'
+F2 = '\U0001f521 ?' 
 
 #Thanks to https://stackoverflow.com/questions/17530542/how-to-add-pandas-data-to-an-existing-csv-file
 #and https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html
@@ -40,7 +42,7 @@ def appendDFToCSV(fn, df, sep=","):
                 print('-'*50)
                 
                 
-        add_table = input('Which table would yo like to add\n(pay attention to spelling)\n?' )
+        add_table = input('Which table would yo like to add\n(pay attention to spelling)\n' + F1 )
         if add_table in csv_dateien:
             break
         else:
@@ -60,7 +62,7 @@ def appendDFToCSV(fn, df, sep=","):
     
     #define structure
     while True:
-        format_ist = input('Which separator is used by the file: \n1: Comma / 2: Semicolon \n(choose number)\n?').lower()
+        format_ist = input('Which separator is used by the file: \n1: Comma / 2: Semicolon \n(choose number)\n' + F1).lower()
         if format_ist == '1':
             trennzeichen = ','
             break
@@ -108,7 +110,7 @@ def mergecolumn(df):
                 csv_dateien.append(dat)
                 print(dat)
         
-        add_table = input('Which csv-file would yo like to merge\n(pay attention to spelling)\n?' )
+        add_table = input('Which csv-file would yo like to merge\n(pay attention to spelling)\n' + F1 )
         if add_table in csv_dateien:
             break
         else:
@@ -126,7 +128,7 @@ def mergecolumn(df):
     
     #define structure
     while True:
-        format_ist = input('Which separator is used by the file: \n1: Comma / 2: Semicolon \n(choose number)\n?').lower()
+        format_ist = input('Which separator is used by the file: \n1: Comma / 2: Semicolon \n(choose number)\n' + F1).lower()
         if format_ist == '1':
             trennzeichen = ','
             break
@@ -139,7 +141,7 @@ def mergecolumn(df):
     
     df2=pd.read_csv(add_table,sep=trennzeichen)
     
-    join_how = input('How would you like to join: \n1: full outer join \n2: full inner join \n3: inner join left \n4: inner join right \n(choose number) \n?')
+    join_how = input('How would you like to join: \n1: full outer join \n2: full inner join \n3: inner join left \n4: inner join right \n(choose number) \n' + F1)
     
     key_field = df.select_dtypes(exclude=['float'])
     
@@ -156,7 +158,7 @@ def mergecolumn(df):
         i+=1
     
     while True:
-        key_column= input('Key Field: \n(choose number) \n?')
+        key_column= input('Key Field: \n(choose number) \n' + F1)
         if key_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -217,7 +219,7 @@ def filter_typ(df):
             print(i, crit.columns[i])
             i+=1      
          
-        inhalte_spalte= input('For which column you want to know the possible filter criteria \nchoose number! \n?')
+        inhalte_spalte= input('For which column you want to know the possible filter criteria \nchoose number! \n' + F1)
         print(crit.iloc[:,int(inhalte_spalte)].value_counts())
         print(df[list_columns[int(inhalte_spalte)]].dtype)
         crit_col = df[list_columns[int(inhalte_spalte)]].dtype
@@ -244,14 +246,14 @@ def filter_typ(df):
         filter_in_html(df_filter)
         
         
-        filter_ja = input('Set a filter: y/n \n?')
+        filter_ja = input('Set a filter: y/n \n' + F1)
         
         if filter_ja.lower() =='y':
             
-            which_filter=input('Which kind of filter: \n1: ==\n2: >=\n3: >\n4: <= \n5: <\n?')
+            which_filter=input('Which kind of filter: \n1: ==\n2: >=\n3: >\n4: <= \n5: <\n' + F1)
             
             if which_filter == '1':
-                name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
+                name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n' + F1)
                 if crit_col == 'float64':
                     name_filter = float(name_filter)
                 if crit_col == 'int64':
@@ -260,7 +262,7 @@ def filter_typ(df):
                 df = df[crit.iloc[:,int(inhalte_spalte)]==name_filter]
             
             elif which_filter =='2':
-                name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
+                name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n' + F1)
                 if crit_col == 'float64':
                     name_filter = float(name_filter)
                 if crit_col == 'int64':
@@ -268,7 +270,7 @@ def filter_typ(df):
                 df = df[crit.iloc[:,int(inhalte_spalte)]>=name_filter]
             
             elif which_filter =='2':
-                name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
+                name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n' + F1)
                 if crit_col == 'float64':
                     name_filter = float(name_filter)
                 if crit_col == 'int64':
@@ -276,7 +278,7 @@ def filter_typ(df):
                 df = df[crit.iloc[:,int(inhalte_spalte)]>name_filter]
             
             elif which_filter =='2':
-                name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
+                name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n' + F1)
                 if crit_col == 'float64':
                     name_filter = float(name_filter)
                 if crit_col == 'int64':
@@ -284,14 +286,14 @@ def filter_typ(df):
                 df = df[crit.iloc[:,int(inhalte_spalte)]<=name_filter]
             
             elif which_filter =='2':
-                name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
+                name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n' + F1)
                 if crit_col == 'float64':
                     name_filter = float(name_filter)
                 if crit_col == 'int64':
                     name_filter = int(name_filter)
                 df = df[crit.iloc[:,int(inhalte_spalte)]<name_filter]
 
-        restart = input('\nSet more filters: y/n.\n?')
+        restart = input('\nSet more filters: y/n.\n' + F1)
         
         
         if restart.lower() != 'y':
@@ -310,7 +312,7 @@ def filter_typ(df):
 ###sort by column
 
 def sort_column(fn, df):
-    sort_yes = input('Would you like to sort the data frame: y/n\n?')
+    sort_yes = input('Would you like to sort the data frame: y/n\n' + F1)
     if sort_yes =='y':
         while True:
             clear()
@@ -327,7 +329,7 @@ def sort_column(fn, df):
                 i+=1      
              
             while True:
-                sort_column= input('Sort to which column: \n?')
+                sort_column= input('Sort to which column: \n' + F1)
                 if sort_column not in list_number:
                     print('wrong input, try again!')
                 else:
@@ -339,7 +341,7 @@ def sort_column(fn, df):
             s_col = list_columns[int(sort_column)]
             
             while True:
-                ascent_true_false = input('Ascending: \n1: true \n2: false \n?')
+                ascent_true_false = input('Ascending: \n1: true \n2: false \n' + F1)
                 if ascent_true_false =='1':
                     a_t_f = 1
                     break
@@ -354,7 +356,7 @@ def sort_column(fn, df):
             
             print_table(df)
             
-            restart_s = input('additional sorting: y/n \n?')
+            restart_s = input('additional sorting: y/n \n' + F1)
             if restart_s.lower() != 'y':
                 
                 save_CSV(fn, df)
@@ -370,7 +372,7 @@ def sort_column(fn, df):
 ###############################################################################
 def transposed_table(fn, df):
     clear()
-    trans_yes = input('Would you like to transpose the table: y/n\n?')
+    trans_yes = input('Would you like to transpose the table: y/n\n' + F1)
     if trans_yes =='y':
         df = df.T
         print(df)
@@ -413,7 +415,7 @@ def crosstab(df):
     
     
     while True:
-        tab1_column= input('Which column do you want to cross: \n(choose number) \n?')
+        tab1_column= input('Which column do you want to cross: \n(choose number) \n' + F1)
         if tab1_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -423,7 +425,7 @@ def crosstab(df):
     
     
     while True:
-        tab2_column= input('Which column do you want to cross: \n(choose number) \n?')
+        tab2_column= input('Which column do you want to cross: \n(choose number) \n' + F1)
         if tab2_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -432,11 +434,11 @@ def crosstab(df):
         
     tab2 = list_columns_tab[int(tab2_column)]
     
-    which_table = input('1: sum -table \n2: percent -table \n(Choose number) \n?')
+    which_table = input('1: sum -table \n2: percent -table \n(Choose number) \n' + F1)
     
     if which_table =='1':
         
-        with_sum = input('Crosstab with "Total": y/n \n?')
+        with_sum = input('Crosstab with "Total": y/n \n' + F1)
         
         if with_sum =='y':
             ctv=pd.crosstab(index=df[tab1], columns=df[tab2], margins=True)
@@ -451,7 +453,7 @@ def crosstab(df):
     
     elif which_table =='2':
         
-        with_sum = input('Crosstab with "Total": y/n \n?')
+        with_sum = input('Crosstab with "Total": y/n \n' + F1)
         
         if with_sum =='y':
             ct = pd.crosstab(index=df[tab1], columns=df[tab2], margins=True).applymap(lambda r: r/len(df))
@@ -493,7 +495,7 @@ def contingency_tb(df):
     
     print('')
     while True:
-        tab1_column= input('Which column do you want to cross: \n(choose number) \n?')
+        tab1_column= input('Which column do you want to cross: \n(choose number) \n' + F1)
         if tab1_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -503,7 +505,7 @@ def contingency_tb(df):
     
     
     while True:
-        tab2_column= input('Which column do you want to cross: \n(choose number) \n?')
+        tab2_column= input('Which column do you want to cross: \n(choose number) \n' + F1)
         if tab2_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -576,9 +578,9 @@ def seq_numbers_add(fn, df):
     seq_count = len(df)
     print(seq_count)
     seq_count=int(seq_count)
-    seq_nr_from = input('Number from: ?')
+    seq_nr_from = input('Number from: ' + F1)
     seq_nr_from = int(seq_nr_from)
-    name_df = input('Table Name: ?')
+    name_df = input('Table Name: ' + F1)
     
     
     
@@ -602,14 +604,14 @@ def nv_add(fn, df):
     print('Create normal distributions data')
     
     while True:
-        mean_df = input('Mean (choose point-comma): ?')
+        mean_df = input('Mean (choose point-comma): ' + F1)
     
         if not isfloat(mean_df):
             print("mean is not a number with point-comma, please try again")
         else:
             break
     while True:
-        std_df = input('Deviation (choose point-comma)?')
+        std_df = input('Deviation (choose point-comma)' + F1)
     
         if not isfloat(std_df):
             print("Deviation is not a number with point-comma, please try again")
@@ -622,7 +624,7 @@ def nv_add(fn, df):
     seq_often = int(seq_count)
     
     
-    name_df = input('Table Name: ?')
+    name_df = input('Table Name: ' + F1)
     
     
     
@@ -648,7 +650,7 @@ def add_bd_data(fn, df):
     
     
     while True:
-        p_df = input('p (0-1) (choose point-comma): ?')
+        p_df = input('p (0-1) (choose point-comma): ' + F1)
         if not isfloat(p_df):
             print("p is not a number with point-comma, please try again")
         elif float(p_df) > 1:
@@ -659,7 +661,7 @@ def add_bd_data(fn, df):
     
     
     while True:
-        n_df = input('n (samplesize) : ?')
+        n_df = input('n (samplesize) : ' + F1)
         if not isinteger(n_df):
             print("'n' is not an integer, please try again")
         else:
@@ -671,7 +673,7 @@ def add_bd_data(fn, df):
     seq_often = int(seq_count)
     
     
-    name_df = input('Table Name: ?')
+    name_df = input('Table Name: ' + F1)
     
     
     
@@ -695,7 +697,7 @@ def add_pd_data(fn, df):
     
     
     while True:
-        p_df = input('µ (choose point-comma): ?')
+        p_df = input('µ (choose point-comma): ' + F1)
         if not isfloat(p_df):
             print("µ is not a number with point-comma, please try again")
         else:
@@ -711,7 +713,7 @@ def add_pd_data(fn, df):
     seq_often = int(seq_count)
     
     
-    name_df = input('Table Name: ?')
+    name_df = input('Table Name: ' + F1)
     
     
     
@@ -730,14 +732,14 @@ def add_ld_data(fn, df):
     print('Create logistic distributions data')
     
     while True:
-        location_df = input('location (choose point-comma): ?')
+        location_df = input('location (choose point-comma): ' + F1)
     
         if not isfloat(location_df):
             print("location is not a number with point-comma, please try again")
         else:
             break
     while True:
-        scale_df = input('scale (choose point-comma)?')
+        scale_df = input('scale (choose point-comma)' + F1)
     
         if not isfloat(scale_df):
             print("scale is not a number with point-comma, please try again")
@@ -750,7 +752,7 @@ def add_ld_data(fn, df):
     seq_often = int(seq_count)
     
     
-    name_df = input('Table Name: ?')
+    name_df = input('Table Name: ' + F1)
     
     
     
@@ -772,7 +774,7 @@ def add_ld_data(fn, df):
 def menu_rand_data(fn, df):
     clear()
     print('Create random data')
-    menu_rand = input('1. normal distribution \n2. binomial distribution \n3. poisson distribution \n4. logistic distribution \n(choose number \n?')
+    menu_rand = input('1. normal distribution \n2. binomial distribution \n3. poisson distribution \n4. logistic distribution \n(choose number \n' + F1)
     
     if menu_rand == '1':
         nv_add(fn, df)
@@ -803,7 +805,7 @@ def del_empty_rows(fn, df):
         i+=1
     
     while True:
-        nummer_spalte= input('Which column do you want to clean: \n(choose number) \n?')
+        nummer_spalte= input('Which column do you want to clean: \n(choose number) \n' + F1)
         if nummer_spalte not in list_number:
             print('wrong input, try again!')
         else:
@@ -838,7 +840,7 @@ def del_nan_rows(fn, df):
         i+=1
     
     while True:
-        nummer_spalte= input('Which column do you want to clean: \n(choose number) \n?')
+        nummer_spalte= input('Which column do you want to clean: \n(choose number) \n' + F1)
         if nummer_spalte not in list_number:
             print('wrong input, try again!')
         else:
@@ -857,7 +859,7 @@ def del_nan_rows(fn, df):
 ###delete NAN rows
 def del_nan(fn, df):
     clear()
-    drop_yes = input('Do you realy want to drop all "NAN" rows in the dataframe y/n \n?')
+    drop_yes = input('Do you realy want to drop all "NAN" rows in the dataframe y/n \n' + F1)
     
     if drop_yes.lower() =='y':
         df = df.dropna()
@@ -897,7 +899,7 @@ def del_zero_rows(fn, df):
         i+=1
     
     while True:
-        nummer_spalte= input('Which column do you want to clean: \n(choose number) \n?')
+        nummer_spalte= input('Which column do you want to clean: \n(choose number) \n' + F1)
         if nummer_spalte not in list_number:
             print('wrong input, try again!')
         else:
@@ -935,7 +937,7 @@ def del_NA_rows(fn, df):
         i+=1
     
     while True:
-        nummer_spalte= input('Which column do you want to clean: \n(choose number) \n?')
+        nummer_spalte= input('Which column do you want to clean: \n(choose number) \n' + F1)
         if nummer_spalte not in list_number:
             print('wrong input, try again!')
         else:
@@ -977,14 +979,14 @@ def del_sv_rows(fn, df):
         i+=1
     
     while True:
-        nummer_spalte= input('Which column do you want to clean: \n(choose number) \n?')
+        nummer_spalte= input('Which column do you want to clean: \n(choose number) \n' + F1)
         if nummer_spalte not in list_number:
             print('wrong input, try again!')
         else:
             break
     col = list_columns[int(nummer_spalte)]
     
-    del_what = input('Which character rows do you would like to delete: \n?')
+    del_what = input('Which character rows do you would like to delete: \n' + F1)
     
     
     df[col].replace(del_what, np.nan, inplace=True)
@@ -1020,15 +1022,15 @@ def replace_content_into_col(fn, df):
         i+=1
     
     while True:
-        nummer_spalte= input('Into which column do you want to replace: \n(choose number) \n?')
+        nummer_spalte= input('Into which column do you want to replace: \n(choose number) \n' + F1)
         if nummer_spalte not in list_number:
             print('wrong input, try again!')
         else:
             break
     col = list_columns[int(nummer_spalte)]
     
-    rpl_what = input('Current character \n?')
-    rpl_with = input('New charakter \n?')
+    rpl_what = input('Current character \n' + F1)
+    rpl_with = input('New charakter \n' + F1)
     
     df[col].replace(rpl_what, rpl_with, inplace=True)
     
@@ -1058,17 +1060,17 @@ def replace_number_into_col(fn, df):
         i+=1
     
     while True:
-        nummer_spalte= input('Into which column do you want to replace: \n(choose number) \n?')
+        nummer_spalte= input('Into which column do you want to replace: \n(choose number) \n' + F1)
         if nummer_spalte not in list_number:
             print('wrong input, try again!')
         else:
             break
     col = list_columns[int(nummer_spalte)]
     
-    rpl_what = input('Current value \n?')
+    rpl_what = input('Current value \n' + F1)
     
     while True:
-            rpl_with = input('New Value: \n(choose point-comma) \n?')
+            rpl_with = input('New Value: \n(choose point-comma) \n' + F1)
     
             if not isfloat(rpl_with):
                 print("target value is not a number with point-comma, please try again")
@@ -1089,7 +1091,7 @@ def replace_number_into_col(fn, df):
 def delrep_value(fn, df):
     clear()
     
-    menu_del = input('What do you want to delete or replace: \n1: delete nan rows \n2: delete empty rows \n3: delete nan-data rows cross the dataframe \n4: delete NA rows \n5: delete 0 rows \n6: delete rows with special character \n7: replace content into column \n8: replace value into column \n9: replace float to point comma \n10: replace character into column \n11: delete first row \n12: delete last row \n13: delete defined rows \n14: delete rows contain string \n?' )
+    menu_del = input('What do you want to delete or replace: \n1: delete nan rows \n2: delete empty rows \n3: delete nan-data rows cross the dataframe \n4: delete NA rows \n5: delete 0 rows \n6: delete rows with special character \n7: replace content into column \n8: replace value into column \n9: replace float to point comma \n10: replace character into column \n11: delete first row \n12: delete last row \n13: delete defined rows \n14: delete rows contain string \n' + F1 )
     
     if menu_del =='1':
         del_nan_rows(fn, df)
@@ -1142,7 +1144,7 @@ def replace_float_comma(fn, df):
         i+=1
     
     while True:
-        nummer_spalte= input('Into which column do you want to replace: \n(choose number) \n?')
+        nummer_spalte= input('Into which column do you want to replace: \n(choose number) \n' + F1)
         if nummer_spalte not in list_number:
             print('wrong input, try again!')
         else:
@@ -1176,15 +1178,15 @@ def replace_character(fn, df):
         i+=1
     
     while True:
-        nummer_spalte= input('Into which column do you want to replace: \n(choose number) \n?')
+        nummer_spalte= input('Into which column do you want to replace: \n(choose number) \n' + F1)
         if nummer_spalte not in list_number:
             print('wrong input, try again!')
         else:
             break
     col = list_columns[int(nummer_spalte)]
     
-    char_input = input('Current character \n?')
-    char_output = input('New character \n?')
+    char_input = input('Current character \n' + F1)
+    char_output = input('New character \n' + F1)
     
     
     df[col]=df[col].str.replace(char_input,char_output).astype(str)
@@ -1201,7 +1203,7 @@ def replace_character(fn, df):
 def del_last_row(fn, df):
     clear()
     print(df)
-    del_l_r = input('Delete last row y/n \n?')
+    del_l_r = input('Delete last row y/n \n' + F1)
     
     
     if del_l_r.lower() =='y':
@@ -1221,7 +1223,7 @@ def del_last_row(fn, df):
 def del_first_row(fn, df):
     clear()
     print(df)
-    del_f_r = input('Delete first row y/n \n?')
+    del_f_r = input('Delete first row y/n \n' + F1)
     
     
     if del_f_r.lower() =='y':
@@ -1242,13 +1244,13 @@ def del_first_row(fn, df):
 def del_defined_row(fn, df):
     clear()
     print(df)
-    del_d_r = input('Delete defined rows y/n \n?')
+    del_d_r = input('Delete defined rows y/n \n' + F1)
     
     
     if del_d_r.lower() =='y':
         
-        d_from_index = input('From which index \n?')
-        count_index = input('How many rows to delete \n?')
+        d_from_index = input('From which index \n' + F1)
+        count_index = input('How many rows to delete \n' + F1)
         
         
         d_till_index = int(d_from_index) + int(count_index)
@@ -1283,7 +1285,7 @@ def del_defined_row(fn, df):
     
 def del_contains_word(fn, df):
     clear()
-    del_yes = input('Delete rows contains "Word" y/n \n?')
+    del_yes = input('Delete rows contains "Word" y/n \n' + F1)
     print(df)
     if del_yes.lower() =='y':
         
@@ -1299,7 +1301,7 @@ def del_contains_word(fn, df):
             i+=1
     
         while True:
-            nummer_spalte= input('Into which column do you want to replace: \n(choose number) \n?')
+            nummer_spalte= input('Into which column do you want to replace: \n(choose number) \n' + F1)
             if nummer_spalte not in list_number:
                 print('wrong input, try again!')
             else:
@@ -1308,7 +1310,7 @@ def del_contains_word(fn, df):
         
         
         
-        del_word = input('Keyword to delete row: \n?')
+        del_word = input('Keyword to delete row: \n' + F1)
         
         
         df = (df[~df[col].str.contains(del_word)])
@@ -1333,7 +1335,7 @@ def melt_table(df):
         clear()
         print('ID list: ')
         print(list_id_vars)
-        add_id_vars = input('Add id column y/n \n?')
+        add_id_vars = input('Add id column y/n \n' + F1)
         if add_id_vars == 'y':
                 
             kategorie=df.select_dtypes(exclude=['float'])
@@ -1350,7 +1352,7 @@ def melt_table(df):
                 i+=1
             
             while True:
-                groupby_column = input('Choose id column: \n(choose number) \n?')
+                groupby_column = input('Choose id column: \n(choose number) \n' + F1)
                 if groupby_column not in list_number:
                     print('wrong input, try again!')
                 else:
@@ -1370,7 +1372,7 @@ def melt_table(df):
         print(list_id_vars)
         print('Value list:')
         print(list_vars)
-        add_vars = input('Add values column y/n \n?')
+        add_vars = input('Add values column y/n \n' + F1)
         if add_vars == 'y':
             werte = df.select_dtypes(exclude=['object'])
             anz_col_werte = len(werte.columns)
@@ -1385,7 +1387,7 @@ def melt_table(df):
                 i+=1
             
             while True:
-                value_column= input('Choose value column: \n(choose number) \n?')
+                value_column= input('Choose value column: \n(choose number) \n' + F1)
                 if value_column not in list_number:
                     print('wrong input, try again!')
                 else:
@@ -1410,7 +1412,7 @@ def melt_table(df):
 ### rename column
 def df_rename(fn, df):
     
-    rename_yes = input('rename column: y/n\n?')
+    rename_yes = input('rename column: y/n\n' + F1)
     if rename_yes =='y':
         while True:
             clear()
@@ -1427,7 +1429,7 @@ def df_rename(fn, df):
                 i+=1      
              
             while True:
-                rename_column= input('Current column name: \n?')
+                rename_column= input('Current column name: \n' + F1)
                 if rename_column not in list_number:
                     print('wrong input, try again!')
                 else:
@@ -1441,7 +1443,7 @@ def df_rename(fn, df):
             print('The column name you will change call:', r_col)
             break
             
-        new_column_name = input('Input new column name: \n?')
+        new_column_name = input('Input new column name: \n' + F1)
         
         df = df.rename(columns={r_col:new_column_name})
         
@@ -1474,14 +1476,14 @@ def combine_column(fn, df):
     
     
     while True:
-        value_column1= input('Column1: \n(choose number)\n?')
+        value_column1= input('Column1: \n(choose number)\n' + F1)
         if value_column1 not in list_number:
             print('wrong input, try again!')
         else:
             break  
     
     while True:
-        value_column2= input('Column2: \n(choose number)\n?')
+        value_column2= input('Column2: \n(choose number)\n' + F1)
         if value_column2 not in list_number:
             print('wrong input, try again!')
         else:
@@ -1492,7 +1494,7 @@ def combine_column(fn, df):
     col2 = list_columns_werte[int(value_column2)]
     
     
-    name_col = input('New column "Name": \n?')
+    name_col = input('New column "Name": \n' + F1)
     
     df[name_col] = df[col1] + "_" + df[col2]
     
@@ -1506,7 +1508,7 @@ def combine_column(fn, df):
 ###del column
 def delete_column(fn, df):
     
-    rename_yes = input('delete column y/n\n?')
+    rename_yes = input('delete column y/n\n' + F1)
     if rename_yes =='y':
         while True:
             clear()
@@ -1523,7 +1525,7 @@ def delete_column(fn, df):
                 i+=1      
          
             while True:
-                rename_column= input('Column name to delete: \n?')
+                rename_column= input('Column name to delete: \n' + F1)
                 if rename_column not in list_number:
                     print('wrong input, try again!')
                 else:
@@ -1556,12 +1558,12 @@ def change_datatype(df):
     
     ###change data type
     ##################################################################################
-    datentyp_aendern = input('Would you like to change data types: y/n \n?')
+    datentyp_aendern = input('Would you like to change data types: y/n \n' + F1)
     
     if datentyp_aendern == 'y':
     
         while True:
-            welcher_datentyp = input('How to change: \n1: float \n2: integer \n3: string \n4: categorie \n5: datetime \n(choose number) \n?')
+            welcher_datentyp = input('How to change: \n1: float \n2: integer \n3: string \n4: categorie \n5: datetime \n(choose number) \n' + F1)
             
             if welcher_datentyp =='1':
                 datent=df.select_dtypes(include=['int'])
@@ -1575,7 +1577,7 @@ def change_datatype(df):
                     print(i, datent.columns[i])
                     i+=1
             
-                nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n?')
+                nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n' + F1)
                 
                 df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype(float)
             elif welcher_datentyp =='2':
@@ -1590,7 +1592,7 @@ def change_datatype(df):
                     print(i, datent.columns[i])
                     i+=1
             
-                nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n?')
+                nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n' + F1)
                 try:
                     df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype(int)
                 except Exception as exception:
@@ -1607,7 +1609,7 @@ def change_datatype(df):
                     print(i, df.columns[i])
                     i+=1
             
-                nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n?')
+                nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n' + F1)
                 df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype(str)
             
             elif welcher_datentyp =='4':
@@ -1621,7 +1623,7 @@ def change_datatype(df):
                     print(i, df.columns[i])
                     i+=1
             
-                nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n?')
+                nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n' + F1)
                 df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype('category')
             elif welcher_datentyp =='5':
                 anz_col = len(df.columns)
@@ -1634,7 +1636,7 @@ def change_datatype(df):
                     print(i, df.columns[i])
                     i+=1
             
-                nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n?')
+                nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n' + F1)
                 try:
                     df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype('datetime64[ns]')
                 except Exception as exception:
@@ -1646,7 +1648,7 @@ def change_datatype(df):
             clear()
             print('Overview of data formats:\n')
             print(df.dtypes)
-            restart = input('\nChange additional data types: "y" \n?')
+            restart = input('\nChange additional data types: "y" \n' + F1)
             if restart.lower() != 'y':
                 break
                 #print('next steps')

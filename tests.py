@@ -18,6 +18,9 @@ from outliers import smirnov_grubbs as grubbs
 from mft import isfloat, clear
 from tabulate import tabulate
 
+F1 = '\U0001f522 ?'
+F2 = '\U0001f521 ?' 
+
 ###############################################################################
 ###Statistical Tests
 ###############################################################################        
@@ -43,7 +46,7 @@ def normality_test(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to verify: \n(choose number) \n?')
+        value_column= input('Which value column do you want to verify: \n(choose number) \n' + F1)
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -117,7 +120,7 @@ def outliert(df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to verify: \n(choose number) \n?')
+        value_column= input('Which value column do you want to verify: \n(choose number) \n' + F1)
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -161,14 +164,14 @@ def f_test(df):
         i+=1
     
     while True:
-        value_column_a= input('a-value: \n(choose number) \n?')
+        value_column_a= input('a-value: \n(choose number) \n' + F1)
         if value_column_a not in list_number:
             print('wrong input, try again!')
         else:
             break  
     
     while True:
-        value_column_b= input('b-value: \n(choose number) \n?')
+        value_column_b= input('b-value: \n(choose number) \n' + F1)
         if value_column_b not in list_number:
             print('wrong input, try again!')
         else:
@@ -218,14 +221,14 @@ def ttest_o_s(df, alpha=0.05, alternative='greater'):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to verify: \n(choose number) \n?')
+        value_column= input('Which value column do you want to verify: \n(choose number) \n' + F1)
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
             break  
     
     while True:
-        target_value = input('Input taget mean-value \n(choose point-comma \n?')
+        target_value = input('Input taget mean-value \n(choose point-comma \n' + F1)
     
         if not isfloat(target_value):
             print("Target mean value is not a number with point-comma, please try again")
@@ -272,14 +275,14 @@ def ttest_t_s(df):
         i+=1
     
     while True:
-        value_column_a= input('a-value: \n(choose number) \n?')
+        value_column_a= input('a-value: \n(choose number) \n' + F1)
         if value_column_a not in list_number:
             print('wrong input, try again!')
         else:
             break  
     
     while True:
-        value_column_b= input('b-value: \n(choose number) \n?')
+        value_column_b= input('b-value: \n(choose number) \n' + F1)
         if value_column_b not in list_number:
             print('wrong input, try again!')
         else:
@@ -328,14 +331,14 @@ def ttest_i(df):
         i+=1
     
     while True:
-        value_column_a= input('a-value: \n(choose number) \n?')
+        value_column_a= input('a-value: \n(choose number) \n' + F1)
         if value_column_a not in list_number:
             print('wrong input, try again!')
         else:
             break  
     
     while True:
-        value_column_b= input('b-value: \n(choose number) \n?')
+        value_column_b= input('b-value: \n(choose number) \n' + F1)
         if value_column_b not in list_number:
             print('wrong input, try again!')
         else:
@@ -384,14 +387,14 @@ def mediantest(df):
         i+=1
     
     while True:
-        value_column_a= input('a-value: \n(choose number) \n?')
+        value_column_a= input('a-value: \n(choose number) \n' + F1)
         if value_column_a not in list_number:
             print('wrong input, try again!')
         else:
             break  
     
     while True:
-        value_column_b= input('b-value: \n(choose number) \n?')
+        value_column_b= input('b-value: \n(choose number) \n' + F1)
         if value_column_b not in list_number:
             print('wrong input, try again!')
         else:
@@ -450,7 +453,7 @@ def anova_o_w (df):
         i+=1
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        value_column= input('Which value column do you want to see: \n(choose number) \n' + F1)
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -470,7 +473,7 @@ def anova_o_w (df):
         i+=1
     
     while True:
-        groupby_column = input('Group by column: \n(choose number) \n?')
+        groupby_column = input('Group by column: \n(choose number) \n' + F1)
         if groupby_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -508,7 +511,7 @@ def anova_t_w(df):
     
     
     while True:
-        value_column= input('Which value column do you want to compare: \n(choose number) \n?')
+        value_column= input('Which value column do you want to compare: \n(choose number) \n' + F1)
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -532,14 +535,14 @@ def anova_t_w(df):
     
     
     while True:
-        faktor1 = input('Factor1: \n(choose number) \n?')
+        faktor1 = input('Factor1: \n(choose number) \n' + F1)
         if faktor1 not in list_number:
             print('wrong input, try again!')
         else:
             break  
     
     while True:
-        faktor2 = input('Factor2: \n(choose number) \n?')
+        faktor2 = input('Factor2: \n(choose number) \n' + F1)
         if faktor2 not in list_number:
             print('wrong input, try again!')
         else:

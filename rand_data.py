@@ -10,9 +10,10 @@ import pandas as pd
 import numpy as np
 from tableview import file_in_html
 from mft import isfloat, isinteger, clear, save_CSV_new, print_table
-
 from tabulate import tabulate
 
+F1 = '\U0001f522 ?'
+F2 = '\U0001f521 ?' 
 
 df = pd.DataFrame()
 ####create random data
@@ -26,14 +27,14 @@ def seq_numbers(df):
     print('Create sequence number')
     
     while True:
-        seq_nr_from = input('Number from:(input integer) ?')
+        seq_nr_from = input('Number from:(input integer) ' + F1)
         if not isinteger(seq_nr_from):
             print("'Number from' is not an integer, please try again")
         else:
             break
     
     while True:
-        seq_often = input('Count of data: ?')
+        seq_often = input('Count of data: ' + F1)
         if not isinteger(seq_often):
             print("'Count of data' is not an integer, please try again")
         else:
@@ -44,7 +45,7 @@ def seq_numbers(df):
     seq_often = int(seq_often)
        
     
-    name_df = input('Table Name: ?')
+    name_df = input('Table Name: ' + F1)
     
     fn ='new_data.csv'
     
@@ -64,14 +65,14 @@ def nd_data(df):
     print('Create normal distributions data')
     
     while True:
-        mean_df = input('Mean (choose point-comma): ?')
+        mean_df = input('Mean (choose point-comma): ' + F1)
     
         if not isfloat(mean_df):
             print("mean is not a number with point-comma, please try again")
         else:
             break
     while True:
-        std_df = input('Deviation (choose point-comma)?')
+        std_df = input('Deviation (choose point-comma)' + F1)
     
         if not isfloat(std_df):
             print("Deviation is not a number with point-comma, please try again")
@@ -79,7 +80,7 @@ def nd_data(df):
             break
     
     while True:
-        seq_often = input('Count of data: ?')
+        seq_often = input('Count of data: ' + F1)
         if not isinteger(seq_often):
             print("'Count of data' is not an integer, please try again")
         else:
@@ -90,7 +91,7 @@ def nd_data(df):
     seq_often = int(seq_often)
     
     
-    name_df = input('Table Name: ?')
+    name_df = input('Table Name: ' + F1)
     
     
     
@@ -120,7 +121,7 @@ def bd_data(df):
     
     
     while True:
-        p_df = input('p (0-1) (choose point-comma): ?')
+        p_df = input('p (0-1) (choose point-comma): ' + F1)
         if not isfloat(p_df):
             print("p is not a number with point-comma, please try again")
         elif float(p_df) > 1:
@@ -131,7 +132,7 @@ def bd_data(df):
     
     
     while True:
-        n_df = input('n (samplesize) : ?')
+        n_df = input('n (samplesize) : ' + F1)
         if not isinteger(n_df):
             print("'n' is not an integer, please try again")
         else:
@@ -140,7 +141,7 @@ def bd_data(df):
     
     
     while True:
-        seq_often = input('Count of data: ?')
+        seq_often = input('Count of data: ' + F1)
         if not isinteger(seq_often):
             print("'Count of data' is not an integer, please try again")
         else:
@@ -151,7 +152,7 @@ def bd_data(df):
     seq_often = int(seq_often)
     
     
-    name_df = input('Table Name: ?')
+    name_df = input('Table Name: ' + F1)
     
     
     
@@ -176,7 +177,7 @@ def pd_data(df):
     
     
     while True:
-        p_df = input('µ (choose point-comma): ?')
+        p_df = input('µ (choose point-comma): ' + F1)
         if not isfloat(p_df):
             print("µ is not a number with point-comma, please try again")
         else:
@@ -187,7 +188,7 @@ def pd_data(df):
     
     
     while True:
-        seq_often = input('Count of data: ?')
+        seq_often = input('Count of data: ' + F1)
         if not isinteger(seq_often):
             print("'Count of data' is not an integer, please try again")
         else:
@@ -198,7 +199,7 @@ def pd_data(df):
     seq_often = int(seq_often)
     
     
-    name_df = input('Table Name: ?')
+    name_df = input('Table Name: ' + F1)
     
     
     
@@ -218,14 +219,14 @@ def ld_data(df):
     print('Create logistic distributions data')
     
     while True:
-        location_df = input('location (choose point-comma): ?')
+        location_df = input('location (choose point-comma): ' + F1)
     
         if not isfloat(location_df):
             print("location is not a number with point-comma, please try again")
         else:
             break
     while True:
-        scale_df = input('scale (choose point-comma)?')
+        scale_df = input('scale (choose point-comma)' + F1)
     
         if not isfloat(scale_df):
             print("scale is not a number with point-comma, please try again")
@@ -233,7 +234,7 @@ def ld_data(df):
             break
     
     while True:
-        seq_often = input('Count of data: ?')
+        seq_often = input('Count of data: ' + F1)
         if not isinteger(seq_often):
             print("'Count of data' is not an integer, please try again")
         else:
@@ -244,7 +245,7 @@ def ld_data(df):
     seq_often = int(seq_often)
     
     
-    name_df = input('Table Name: ?')
+    name_df = input('Table Name: ' + F1)
     
     
     
@@ -264,7 +265,7 @@ def shisq_data(df):
     print('Create chi square distributions data')
     
     while True:
-        defr = input('df: ?')
+        defr = input('df: ' + F1)
         if not isinteger(defr):
             print("'df is not an integer, please try again")
         else:
@@ -272,7 +273,7 @@ def shisq_data(df):
     
     
     while True:
-        m_df = input('µ (choose point-comma): ?')
+        m_df = input('µ (choose point-comma): ' + F1)
     
         if not isinteger(m_df):
             print("µ is not a number with point-comma, please try again")
@@ -280,7 +281,7 @@ def shisq_data(df):
             break
     
     while True:
-        k_df = input('k (choose point-comma)?')
+        k_df = input('k (choose point-comma)' + F1)
     
         if not isinteger(k_df):
             print("k is not an integer, please try again")
@@ -288,7 +289,7 @@ def shisq_data(df):
             break
     
     while True:
-        n_df = input('Count of data: ?')
+        n_df = input('Count of data: ' + F1)
         if not isinteger(n_df):
             print("'Count of data' is not an integer, please try again")
         else:
@@ -299,7 +300,7 @@ def shisq_data(df):
     n_df = int(n_df)
     defr = int(defr)
     
-    name_df = input('Table Name: ?')
+    name_df = input('Table Name: ' + F1)
     
     
     
@@ -320,7 +321,7 @@ def pareto_data(df):
     print('Create pareto distributions data')
     
     while True:
-        a_df = input('a: ?')
+        a_df = input('a: ' + F1)
         if not isinteger(a_df):
             print("'a' is not an integer, please try again")
         else:
@@ -328,7 +329,7 @@ def pareto_data(df):
     
     
     while True:
-        m_df = input('m (choose point-comma): ?')
+        m_df = input('m (choose point-comma): ' + F1)
     
         if not isinteger(m_df):
             print("m is not a number with point-comma, please try again")
@@ -336,7 +337,7 @@ def pareto_data(df):
             break
     
     while True:
-        k_df = input('k (choose point-comma)?')
+        k_df = input('k (choose point-comma)' + F1)
     
         if not isinteger(k_df):
             print("k is not an integer, please try again")
@@ -344,7 +345,7 @@ def pareto_data(df):
             break
     
     while True:
-        n_df = input('Count of data: ?')
+        n_df = input('Count of data: ' + F1)
         if not isinteger(n_df):
             print("'Count of data' is not an integer, please try again")
         else:
@@ -355,7 +356,7 @@ def pareto_data(df):
     n_df = int(n_df)
     a_df = int(a_df)
     
-    name_df = input('Table Name: ?')
+    name_df = input('Table Name: ' + F1)
     
     
     
@@ -375,7 +376,7 @@ def exp_data(df):
     print('Create exponential distributions data')
     
     while True:
-        scale_df = input('scale: ?')
+        scale_df = input('scale: ' + F1)
         if not isinteger(scale_df):
             print("'a' is not an integer, please try again")
         else:
@@ -383,7 +384,7 @@ def exp_data(df):
     
     
     while True:
-        m_df = input('m (choose point-comma): ?')
+        m_df = input('m (choose point-comma): ' + F1)
     
         if not isinteger(m_df):
             print("m is not a number with point-comma, please try again")
@@ -391,7 +392,7 @@ def exp_data(df):
             break
     
     while True:
-        k_df = input('k (choose point-comma)?')
+        k_df = input('k (choose point-comma)' + F1)
     
         if not isinteger(k_df):
             print("k is not an integer, please try again")
@@ -399,7 +400,7 @@ def exp_data(df):
             break
     
     while True:
-        n_df = input('Count of data: ?')
+        n_df = input('Count of data: ' + F1)
         if not isinteger(n_df):
             print("'Count of data' is not an integer, please try again")
         else:
@@ -410,7 +411,7 @@ def exp_data(df):
     n_df = int(n_df)
     scale_df = int(scale_df)
     
-    name_df = input('Table Name: ?')
+    name_df = input('Table Name: ' + F1)
     
     
     
@@ -429,14 +430,14 @@ def unif_data(df):
     print('Create uniform distributions data')
     
     while True:
-        high_df = input('high level (choose point-comma): ?')
+        high_df = input('high level (choose point-comma): ' + F1)
     
         if not isfloat(high_df):
             print("high level is not a number with point-comma, please try again")
         else:
             break
     while True:
-        low_df = input('low level (choose point-comma)?')
+        low_df = input('low level (choose point-comma)' + F1)
     
         if not isfloat(low_df):
             print("low level is not a number with point-comma, please try again")
@@ -444,7 +445,7 @@ def unif_data(df):
             break
     
     while True:
-        seq_often = input('Count of data: ?')
+        seq_often = input('Count of data: ' + F1)
         if not isinteger(seq_often):
             print("'Count of data' is not an integer, please try again")
         else:
@@ -455,7 +456,7 @@ def unif_data(df):
     seq_often = int(seq_often)
     
     
-    name_df = input('Table Name: ?')
+    name_df = input('Table Name: ' + F1)
     
     
     
@@ -487,7 +488,7 @@ def menu_rd(df):
     
     while True:
     
-        rd = input('Which kind of numbers do you would like to create: \n(choose a number) \n?')
+        rd = input('Which kind of numbers do you would like to create: \n(choose a number) \n' + F1)
     
     
         if rd == '0' :

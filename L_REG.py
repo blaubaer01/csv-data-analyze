@@ -14,6 +14,10 @@ from scipy.stats import shapiro
 import statsmodels.api as sm
 from mft import clear
 
+F1 = '\U0001f522 ?'
+F2 = '\U0001f521 ?' 
+
+
 def LREG(df):
     
     sns.set(color_codes=True)   
@@ -35,13 +39,13 @@ def LREG(df):
         i+=1
     
     while True:
-        value_column_y= input('y-value: \n(choose number) \n?')
+        value_column_y= input('y-value: \n(choose number) \n' + F1)
         if value_column_y not in list_number:
             print('wrong input, try again!')
         else:
             break  
     while True:
-        value_column_x= input('x-value: \n(choose number) \n?')
+        value_column_x= input('x-value: \n(choose number) \n' + F1)
         if value_column_x not in list_number:
             print('wrong input, try again!')
         else:
