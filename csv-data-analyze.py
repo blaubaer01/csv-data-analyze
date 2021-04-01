@@ -9,7 +9,7 @@ from table_functions import delete_column, change_datatype, menu_rand_data
 from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 from msa import msa_v1, msa_v2
 from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, line_diagram_menu, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot_menu, pareto, pareto_one_column, pointplot1f, pointplot2f, confidencelinechart, threeddplot, distriplot1f, histogram1f, decriptive_statistics, scatter_by_o_factor, pairplot_menu
-from charts import cond_mean_w_ob_by_1f
+from charts import cond_mean_w_ob_by_1f, cond_mean_w_ob_by_2f, bivariate_plot_w_m_elements
 from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_s, ttest_t_s, ttest_i, anova_o_w, anova_t_w
 from table_calc import menu_calc
 from rand_data import menu_rd
@@ -373,7 +373,7 @@ def auswahl_balkendiagramm(df):
 ###menu categorigal data (boxplot, violinplot)
 def menu_categorie_data(df):
     clear()
-    menu_cd = input('Which Categorial Plot: \n1: Single Boxplot \n2: Boxplot by one factor \n3: Boxplot by two factors \n4: Single Violinplot \n5: Violinplot one factor \n6: Violinplot by two factors \n7: Single Swarmplot \n8: Swarmplot by one factor \n9: Swarmplot by two factors \n10: Single Stripplot \n11: Stripplot by one factor \n12: Stripplot by two factors  \n13: Pointplot by one factor \n14: Pointplot by two factors \n15: Distribution-Plot by one factor \n16: Histogram-Plot by one factor \n17: scatter plot by one factor \n18: conditional mean plot by one factor \n(choose a number) \n?')
+    menu_cd = input('Which Categorial Plot: \n1: Single Boxplot \n2: Boxplot by one factor \n3: Boxplot by two factors \n4: Single Violinplot \n5: Violinplot one factor \n6: Violinplot by two factors \n7: Single Swarmplot \n8: Swarmplot by one factor \n9: Swarmplot by two factors \n10: Single Stripplot \n11: Stripplot by one factor \n12: Stripplot by two factors  \n13: Pointplot by one factor \n14: Pointplot by two factors \n15: Distribution-Plot by one factor \n16: Histogram-Plot by one factor \n17: scatter plot by one factor \n18: conditional mean plot by one factor \n19: conditional mean plot by two factor \n(choose a number) \n?')
     if menu_cd =='1':
         boxplot(df)
     elif menu_cd =='2':
@@ -410,6 +410,8 @@ def menu_categorie_data(df):
         scatter_by_o_factor(df)
     elif menu_cd =='18':
         cond_mean_w_ob_by_1f(df)
+    elif menu_cd =='19':
+        cond_mean_w_ob_by_2f(df)
     
     else:
         print('Wrong input, try again!')
@@ -419,13 +421,16 @@ def menu_categorie_data(df):
 ### scatter plot menu        
 def menu_scatter(df):
     clear()
-    m_scatter = input('Scatter-Plot: \n1: scatter only \n2: regression plot \n3: regression_jointplot \n(choose number) \n?')
+    m_scatter = input('Scatter-Plot: \n1: scatter only \n2: regression plot \n3: regression_jointplot \n4: bivariate plot with multiple elements \n(choose number) \n?')
     if m_scatter =='1':
         scatter(df)
     elif m_scatter =='2':
         scatter_w_r(df)
     elif m_scatter =='3':
         scatter_joint_plot(df)
+    elif m_scatter =='4':
+        bivariate_plot_w_m_elements(df)
+    
     else:
         print('Wrong input,please try again!')
 

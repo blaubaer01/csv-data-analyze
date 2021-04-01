@@ -3467,6 +3467,51 @@ def scatter_joint_plot(df):
     plt.show()
 
 
+def bivariate_plot_w_m_elements (df):
+    clear()
+    
+    print('Bivariate plot with multiple elements \n')
+    
+    sns.set_theme(style="dark")
+    
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number =[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    while True:
+        value_column_y= input('y-value: \n(choose number) \n?')
+        if value_column_y not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    while True:
+        value_column_x= input('x-value: \n(choose number) \n?')
+        if value_column_x not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    y = list_columns_werte[int(value_column_y)]
+    
+    x = list_columns_werte[int(value_column_x)]
+    
+    
+    # Draw a combo histogram and scatterplot with density contours
+    f, ax = plt.subplots(figsize=(6, 6))
+    sns.scatterplot(x=x, y=y, s=5, color=".15", data = df)
+    sns.histplot(x=x, y=y, bins=50, pthresh=.1, cmap="mako", data = df)
+    sns.kdeplot(x=x, y=y, levels=5, color="w", linewidths=1, data = df)
+    plt.show()
 #######################################################################
 ###Group Plot (show a plot by group)
 def groupplot(df):
@@ -4288,6 +4333,8 @@ def pairplot_menu(df):
         
 def cond_mean_w_ob_by_1f (df):
     clear()
+    
+    print('Conditional mean with observation by 1 factors \n')
     sns.set_theme(style="whitegrid")
     
     kategorie=df.select_dtypes(exclude=['float'])
@@ -4481,7 +4528,234 @@ def cond_mean_w_ob_by_1f (df):
             plt.axvline(x=lt,linewidth=2, color='red')
             
             plt.show()
+
+
+def cond_mean_w_ob_by_2f (df):
+    clear()
+    
+    print('Conditional mean with observation by 2 factors \n')
+    
+    sns.set_theme(style="whitegrid")
+    
+    kategorie=df.select_dtypes(exclude=['float'])
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number =[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    clear()
+    #
+    anz_col_kategorie = len(kategorie.columns)
+        
+    list_columns_kategorie = []
+    list_number=[]
+    i=1
+    for i in range(anz_col_kategorie):
+        list_columns_kategorie.append(kategorie.columns[i])
+        list_number.append(str(i))
+        print(i, kategorie.columns[i])
+        i+=1
+    
+    while True:
+        groupby_column = input('Group 1 by column: \n(choose number) \n?')
+        if groupby_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+       
+    
+    while True:
+        groupby_column2 = input('Group 2 by column: \n(choose number) \n?')
+        if groupby_column2 not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    
+    
+    y = list_columns_werte[int(value_column)]
+    x = list_columns_kategorie[int(groupby_column)]
+    z = list_columns_kategorie[int(groupby_column2)]
+    
+    ###toleranzen
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
+    
+    notol = '0'
+    ###both side tolerance
+    if one_two_sided == '1':
+        
+        while True:
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
+            if ',' in tol:
+                try:
+                    ut, lt = tol.split(',')
+                    ut = float(ut)
+                    lt = float(lt)
+                    if lt > ut:
+                        print('ut<lt, wrong input!')
+                    else:                    
+                        break
+                except Exception as exception:
+                    print('Wrong input, try again!')
+            else:
+                print('wrong input, separator is missing!, please try again!')
+        
+        print(ut,lt)
+        
+     
+    ###one side tolerance ut
+    elif one_two_sided =='2':
+        
+        
+        while True:
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
+            ut = float(ut)
+            if not isfloat(ut):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                lt = 'none'
+                break
+                
+                
+
+    ###one side tolerance lt
+    elif one_two_sided =='3':
+        
+        while True:
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
+            lt = float(lt)
+            if not isfloat(lt):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                ut = 'none'
+                break
             
+                
+                
+    else:
+        notol = '1'
+            
+    if notol =='1':
+        
+        # Initialize the figure
+        f, ax = plt.subplots()
+        sns.despine(bottom=True, left=True)
+    
+    
+        # Show each observation with a scatterplot
+        sns.stripplot(x=x, y=y, hue=z,
+              data=df, dodge=True, alpha=.25, zorder=1)   
+
+        # Show the conditional means
+        sns.pointplot(x=x, y=y,hue=z,
+              data=df, dodge=.532, join=False, palette="dark",
+              markers="d", scale=.75, ci=None)         
+    
+        
+        plt.show()
+        
+    else:
+        
+    
+        if lt =='none':
+              
+            
+            # Initialize the figure
+            f, ax = plt.subplots()
+            sns.despine(bottom=True, left=True)
+    
+    
+            # Show each observation with a scatterplot
+            sns.stripplot(x=x, y=y,hue=z, 
+                          data=df, dodge=True, alpha=.25, zorder=1)   
+
+            # Show the conditional means
+            sns.pointplot(x=x, y=y,hue=z,
+                          data=df, dodge=.532, join=False, palette="dark",
+                          markers="d", scale=.75, ci=None)         
+        
+            plt.axvline(x=ut,linewidth=2, color='red')
+            
+            
+            # Improve the legend 
+            handles, labels = ax.get_legend_handles_labels()
+            ax.legend(handles[3:], labels[3:], title=z,
+                      handletextpad=0, columnspacing=1,
+                      loc="lower right", ncol=3, frameon=True)
+            
+            plt.show()
+            
+        elif ut=='none':
+            
+            
+            # Initialize the figure
+            f, ax = plt.subplots()
+            sns.despine(bottom=True, left=True)
+    
+    
+            # Show each observation with a scatterplot
+            sns.stripplot(x=x, y=y,hue=z, 
+                          data=df, dodge=True, alpha=.25, zorder=1)   
+
+            # Show the conditional means
+            sns.pointplot(x=x, y=y,hue=z,
+                          data=df, dodge=.532, join=False, palette="dark",
+                          markers="d", scale=.75, ci=None)         
+        
+            plt.axvline(x=lt,linewidth=2, color='red')
+            
+            # Improve the legend 
+            handles, labels = ax.get_legend_handles_labels()
+            ax.legend(handles[3:], labels[3:], title=z,
+                      handletextpad=0, columnspacing=1,
+                      loc="lower right", ncol=3, frameon=True)
+            
+            plt.show()
+        
+        else:
+        
+            
+            # Initialize the figure
+            f, ax = plt.subplots()
+            sns.despine(bottom=True, left=True)
+    
+    
+            # Show each observation with a scatterplot
+            sns.stripplot(x=x, y=y, hue=z, 
+                          data=df, dodge=True, alpha=.25, zorder=1)   
+
+            # Show the conditional means
+            sns.pointplot(x=x, y=y,hue=z,
+                          data=df, dodge=.532, join=False, palette="dark",
+                          markers="d", scale=.75, ci=None)         
+        
+            plt.axvline(x=ut,linewidth=2, color='red')
+            plt.axvline(x=lt,linewidth=2, color='red')
+            
+            # Improve the legend 
+            handles, labels = ax.get_legend_handles_labels()
+            ax.legend(handles[3:], labels[3:], title=z,
+                      handletextpad=0, columnspacing=1,
+                      loc="lower right", ncol=3, frameon=True)
+            
+            plt.show()
                   
             
             
