@@ -11,6 +11,9 @@ import pandas as pd
 import numpy as np
 from tabulate import tabulate
 
+from datetime import date
+
+
 F1 = '\U0001f522 ?'
 F2 = '\U0001f521 ?' 
 
@@ -101,4 +104,43 @@ def print_table(df):
         print(df)
     else:
         print(tabulate(df, headers='keys', tablefmt='psql'))
+        
+        
+def session_doc_anlegen(fn):
+    
+    
+       
+    fn = 'session.txt'
+    
+    datum = date.today()
+    open(fn,'w').close()
+    
+    file = open(fn, "w", errors='ignore')
+    
+    
+    file.write(str(datum) + '\n')
+    
+    file.close()
+
+def session_write(log):
+    
+    fn = 'session.txt'
+    
+    f = open(fn, "a", errors='ignore')
+    
+    f.write( log + "\n" )
+    f.close()
+    
+    
+def session_save_by_name(fn):
+
+    fn = 'session.txt'
+    
+    sessionsaveyes = input('Would you like to save session-file of this session y/n \n?')    
+    
+    if sessionsaveyes == 'y':
+        sessionfilename = input('Input Session-file-name ([filename].txt will save automaticly): \n?')
+        
+        os.rename(fn, sessionfilename)
+        
         

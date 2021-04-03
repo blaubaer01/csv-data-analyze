@@ -13,7 +13,7 @@ import seaborn as sns ; sns.set()
 from scipy.stats import shapiro
 import numpy as np
 
-from mft import isfloat, truncate
+from mft import isfloat, truncate, clear
 
 from tabulate import tabulate
 
@@ -46,7 +46,8 @@ A3 = [0,0, 2.659, 1.954, 1.628, 1.427, 1.287, 1.182, 1.099, 1.032, 0.975, 0.927,
 ###X-bar-s-Chart
 ###############################################################################
 def x_bar_s(df):
-    
+    clear()
+    print('Xbar / s Chart')
     werte = df.select_dtypes(exclude=['object'])
         
         #
@@ -173,6 +174,11 @@ def x_bar_s(df):
         eintrag_x = 'Xbar/s Chart' + '\nXbar: ' + str(tXbar) + '\nucl: ' + str(txucl) + '\nlcl: ' + str(txlcl) + '\ncenter: ' + str(tcenter)
         eintrag_s = 'sbar: ' + str(tsbar) + '\nucl: ' +str(tsucl) + '\nlcl: ' + str(tslcl)
         
+        print('statistical values of the Xbar/s Chart \n')
+        print('Xbar-Chart:')
+        print(eintrag_x  + '\n')
+        print('s-Chart:')
+        print(eintrag_s)
         
         plt.figure(figsize=(6, 4))
         
@@ -239,6 +245,11 @@ def x_bar_s(df):
         eintrag_x = 'Xbar/s Chart' + '\nXbar: ' + str(tXbar) + '\nucl: ' + str(txucl) + '\nlcl: ' + str(txlcl)
         eintrag_s = 'sbar: ' + str(tsbar) + '\nucl: ' +str(tsucl) + '\nlcl: ' + str(tslcl)
         
+        print('statistical values of the Xbar/s Chart \n')
+        print('Xbar-Chart:')
+        print(eintrag_x  + '\n')
+        print('s-Chart:')
+        print(eintrag_s)
         
         plt.figure(figsize=(6, 4))
         
@@ -272,6 +283,10 @@ def x_bar_s(df):
 ###x-chart
 ################################################################################
 def x_chart(df):
+    
+    clear()
+    
+    print('x-Chart')
     
     df['number'] = range(1, len(df) + 1)
     
@@ -380,6 +395,7 @@ def x_chart(df):
         mittelwert = median
         ut3s = upper_q_y
         lt3s = lower_q_y
+        print('Chart-Parameters:')
         print('median:', median )
         print('Quantil(0.99869)', upper_q_y)
         print('Quantil(0.00135)', lower_q_y)
@@ -388,6 +404,7 @@ def x_chart(df):
         mittelwert = mean_y
         ut3s = plus3s
         lt3s = minus3s
+        print('Chart-Parameters:')
         print('mean:', mean_y )
         print('+3s:', plus3s)
         print('-3s', minus3s)
@@ -441,6 +458,9 @@ def x_chart(df):
             
 
 def x_bar_r(df):
+    
+    clear()
+    print('Xbar/R Chart')
     
     werte = df.select_dtypes(exclude=['object'])
         
@@ -535,7 +555,7 @@ def x_bar_r(df):
         
         x = 'sample'
         y = 'mean'
-        s = 'std'
+        #s = 'std'
         center=float(center)
         
         
@@ -571,6 +591,11 @@ def x_bar_r(df):
         eintrag_x = 'Xbar/R Chart' + '\nXbar: ' + str(tXbar) + '\nucl: ' + str(txucl) + '\nlcl: ' + str(txlcl) + '\ncenter: ' + str(tcenter)
         eintrag_s = 'rbar: ' + str(trbar) + '\nucl: ' +str(trucl) + '\nlcl: ' + str(trlcl)
         
+        print('statistical values of the Xbar/R Chart \n')
+        print('Xbar-Chart:')
+        print(eintrag_x  + '\n')
+        print('R-Chart:')
+        print(eintrag_s)
         
         plt.figure(figsize=(6, 4))
         
@@ -643,6 +668,11 @@ def x_bar_r(df):
         eintrag_x = 'Xbar/R Chart' + '\nXbar: ' + str(tXbar) + '\nucl: ' + str(txucl) + '\nlcl: ' + str(txlcl)
         eintrag_s = 'rbar: ' + str(trbar) + '\nucl: ' +str(trucl) + '\nlcl: ' + str(trlcl)
         
+        print('statistical values of the Xbar/R Chart \n')
+        print('Xbar-Chart:')
+        print(eintrag_x  + '\n')
+        print('R-Chart:')
+        print(eintrag_s)
         
         plt.figure(figsize=(6, 4))
         
@@ -679,6 +709,9 @@ def x_bar_r(df):
 ###################################################################################
 
 def xmr_chart(df):
+    
+    clear()
+    print('X - moving Range Chart')
     
     werte = df.select_dtypes(exclude=['object'])
         
@@ -759,6 +792,12 @@ def xmr_chart(df):
     
     eintrag_x = 'X-mR-Chart' + '\nXbar: ' + str(tXbar) + '\nucl: ' + str(txucl) + '\nlcl: ' + str(txlcl)
     eintrag_s = 'rbar: ' + str(trbar) + '\nucl: ' +str(trucl) + '\nlcl: ' + str(trlcl)
+    
+    print('statistical values of the X/moving R Chart \n')
+    print('X-Chart:')
+    print(eintrag_x  + '\n')
+    print('moving R-Chart:')
+    print(eintrag_s)
     
     
     plt.figure(figsize=(6, 4))

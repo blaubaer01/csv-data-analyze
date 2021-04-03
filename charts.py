@@ -9,7 +9,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import scipy as spy
 from scipy.stats import shapiro
-from mft import isfloat, clear, truncate, moving_average, isinteger
+from mft import isfloat, clear, truncate, moving_average, isinteger, session_write
 import pandas as pd
 #from mpl_toolkits import mplot3d
 #from mpl_toolkits.mplot3d import Axes3D # <--- This is important for 3d plotting 
@@ -54,10 +54,32 @@ def groupby_balkendiagramm(df):
             print('wrong input, try again!')
         else:
             break
-        
+    
+    y = list_columns[int(nummer_spalte)]
+    x = list_columns[int(groupby_spalte)]
+    
+    ###########################################################################
+    ###session-datei
+    
+    fname = 'Bar-chart with Group'
+    fvalue = 'Value: ' + y
+    fbygroup = 'Group by: ' + x
+    
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
+    session_write(log)
+
+
+    ###########################################################################
+    ###plot
+    
     df.groupby([list_columns[int(nummer_spalte)],list_columns[int(groupby_spalte)]]).size().unstack().plot(kind='bar',stacked=True)
     label_chart = (list_columns[int(nummer_spalte)] + ' grouped by count ' + list_columns[int(groupby_spalte)])
     plt.title(label_chart, fontdict=None, loc='center', pad=None)
+    
+    
+    
+    
     plt.show()
     
     #df.groupby('state')['name'].nunique().plot(kind='bar')
@@ -85,6 +107,20 @@ def balkendiagramm(df):
             print('wrong input, try again!')
         else:
             break    
+    
+    y = list_columns[int(nummer_spalte)]
+    
+    ###########################################################################
+    ###session-datei
+    
+    fname = 'Bar-chart with Group'
+    fvalue = 'Value: ' + y
+    #fbygroup = 'Group by: ' + x
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
+    
     
     
     ax = df[list_columns[int(nummer_spalte)]].value_counts().plot(kind='bar',

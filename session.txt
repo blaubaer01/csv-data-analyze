@@ -1,0 +1,7 @@
+2021-04-03
+open file name: production.csv
+
+Separator: ;
+Delimeter: ,
+Header: with header
+

@@ -14,7 +14,7 @@ from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_
 from table_calc import menu_calc
 from rand_data import menu_rd
 from tableview import fehlende_daten, datentyp, file_in_html, einzeldaten_anschauen , filter_in_html
-from mft import clear, save_CSV_new, isinteger, print_table
+from mft import clear, save_CSV_new, isinteger, print_table, session_doc_anlegen, session_write, session_save_by_name
 from date_function import convert_datetime, cal_info
 import webbrowser
 from sys import platform
@@ -41,7 +41,16 @@ def csv_daten_im_verzeichnis():
 def file_einlesen(fn):
     
     clear()
+    
+    session_doc_anlegen(fn)
+    
     f = open(fn, "r", errors='ignore')
+    
+    
+    
+    log = 'open file name: ' + fn + '\n'
+    session_write(log)
+    
     
     print('Preview to the first 2 lines: \n')
     print('first line:', f.readline())
@@ -114,6 +123,22 @@ def file_einlesen(fn):
     
     #read the file
     df=pd.read_csv(fn,sep=trennzeichen ,decimal=dezimalzeichen, header=kopfz, engine='python')
+    
+    ###########################################################################
+    ###session-datei
+    
+    fseparator = trennzeichen
+    fdelimeter = dezimalzeichen
+    if kopfz == 0:
+        kopf = 'with header'
+    else:
+        kopf = 'without header'
+    
+    fheader = kopf
+    
+    log = 'Separator: ' + fseparator + '\n' + 'Delimeter: ' + fdelimeter + '\nHeader: ' + fheader + '\n'
+    session_write(log)
+    
     
     
     
@@ -688,7 +713,9 @@ def table_functions(fn, df):
         change_datatype(df)
         clear()
         print('\U0001f5d2\uFE0F Table Functions \U0001f5d2\uFE0F \n')
-        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n11: get calendar info \n12: delete or replace value/characters \n13: melt columns \n14: rename column \n15: save to CSV-file \n16: combine factor columns \n17: delete column \n18: add random distribution-data \n?')
+        menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \
+                        \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n11: get calendar info \n12: delete or replace value/characters \
+                        \n13: melt columns \n14: rename column \n15: save to CSV-file \n16: combine factor columns \n17: delete column \n18: add random distribution-data \n?')
         
         if menu_tf =='1':
             clear()
@@ -904,7 +931,10 @@ def main():
 if __name__ == '__main__':
     while True:
         main()
+        fn = 'session.txt'
+        
         restart = input('\nDo you want to re-start the app?: y = yes / n = exit \n?')
+        session_save_by_name(fn)
         if restart.lower() != 'y':
             break
         

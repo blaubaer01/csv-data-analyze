@@ -1,0 +1,11 @@
+2021-04-03
+open file name: Auto.csv
+
+Separator: ;
+Delimeter: ,
+Header: with header
+
+Bar-chart with Group
+Value: Hersteller
+Group by: Modell
+
