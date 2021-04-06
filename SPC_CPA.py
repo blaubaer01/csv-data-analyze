@@ -10,7 +10,7 @@ from scipy.stats import shapiro
 import matplotlib.pyplot as plt
 import seaborn as sns ; sns.set()
 import scipy as spy
-from mft import isfloat, truncate, clear
+from mft import isfloat, truncate, clear, session_write
 
 F1 = '\U0001f522 ?'
 F2 = '\U0001f521 ?' 
@@ -49,7 +49,7 @@ def CPA(df):
     y = df[list_columns_werte[int(value_column)]]
     #ly = y.count()
     #x = np.arange(1, ly, 1)
-    
+    y_val = list_columns_werte[int(value_column)]
     print('Data-overview choosed column:')
     print(y)
     
@@ -129,7 +129,7 @@ def CPA(df):
                 
                 plt.figure(figsize=(6, 4))
                 plt.subplot(221) # äquivalent zu: plt.subplot(2, 2, 1)
-                sns.distplot(y);
+                sns.histplot(x=y)
                 plt.axvline(x=ut,linewidth=2, color='r')
                 plt.axvline(x=lt,linewidth=2, color='r')
                 plt.subplot(222)
@@ -184,7 +184,7 @@ def CPA(df):
                 
                 plt.figure(figsize=(6, 4))
                 plt.subplot(221) # äquivalent zu: plt.subplot(2, 2, 1)
-                sns.distplot(y);
+                sns.histplot(x=y)
                 plt.axvline(x=ut,linewidth=2, color='r')
                 plt.axvline(x=lt,linewidth=2, color='r')
                 plt.subplot(222)
@@ -254,7 +254,7 @@ def CPA(df):
                 
                 plt.figure(figsize=(6, 4))
                 plt.subplot(221) # äquivalent zu: plt.subplot(2, 2, 1)
-                sns.distplot(y);
+                sns.histplot(x=y)
                 plt.axvline(x=ut,linewidth=2, color='r')
                 plt.subplot(222)
                 spy.stats.probplot(y, dist="norm", plot=plt)
@@ -301,7 +301,7 @@ def CPA(df):
                 
                 plt.figure(figsize=(6, 4))
                 plt.subplot(221) # äquivalent zu: plt.subplot(2, 2, 1)
-                sns.distplot(y);
+                sns.histplot(x=y)
                 plt.axvline(x=ut,linewidth=2, color='r')
                 plt.subplot(222)
                 spy.stats.probplot(y, dist="norm", plot=plt)
@@ -372,7 +372,7 @@ def CPA(df):
                 
                 plt.figure(figsize=(6, 4))
                 plt.subplot(221) # äquivalent zu: plt.subplot(2, 2, 1)
-                sns.distplot(y);
+                sns.histplot(x=y)
                 plt.axvline(x=lt,linewidth=2, color='r')
                 plt.subplot(222)
                 spy.stats.probplot(y, dist="norm", plot=plt)
@@ -421,7 +421,7 @@ def CPA(df):
                 
                 plt.figure(figsize=(6, 4))
                 plt.subplot(221) # äquivalent zu: plt.subplot(2, 2, 1)
-                sns.distplot(y);
+                sns.histplot(x=y)
                 plt.axvline(x=lt,linewidth=2, color='r')
                 plt.subplot(222)
                 spy.stats.probplot(y, dist="norm", plot=plt)
@@ -441,3 +441,12 @@ def CPA(df):
         else:
             print('Wrong input, (choose number) please ty again')
 
+    ################################################################################
+    ###Log-file
+    fname = 'Capability Analyse'
+    fvalue = 'y-Value: ' + y_val
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + eintrag + '\np-Value (shapiro wilk test): ' + str(p)
+    session_write(log)

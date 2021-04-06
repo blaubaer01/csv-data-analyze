@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 #import scipy as spy
 from scipy.stats import chi2_contingency
 from tableview import file_in_html
-from mft import clear, truncate, isfloat, save_CSV, save_CSV_new, isinteger, print_table
+from mft import clear, truncate, isfloat, save_CSV, save_CSV_new, isinteger, print_table, session_write
 from tableview import filter_in_html
 import numpy as np
 from tabulate import tabulate
@@ -86,17 +86,37 @@ def appendDFToCSV(fn, df, sep=","):
         #raise Exception("Columns and column order of dataframe and csv file do not match!!")
     else:
         df2=pd.read_csv(add_table,sep=trennzeichen)
+        
+        
+        
         df = df.append(df2)
+        
         
         
         print_table(df)
              
-        
+    
         #file_in_html(df)
         input('press enter \n')
         
         save_CSV_new(df)
-        
+    
+    
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Append Table'
+    
+    fappend_file = 'Appended csv-file ' + add_table + '\nSeparator :' + trennzeichen
+    
+    
+    
+    log = fname + '\n' +  fappend_file + '\n'
+    session_write(log)
+
+
+
+    
 ###############################################################################################################
 ### merge_column
 
@@ -169,19 +189,21 @@ def mergecolumn(df):
     if join_how == '1':
         result = pd.merge(df, df2, how='outer', on=key_name)
         print(result)
-        
+        jo = 'outer join'
         
         input('press enter \n')
         save_CSV_new(result)
     elif join_how == '2':
         result = pd.merge(df, df2, how='inner', on =key_name)
         print(result)
+        jo = 'inner join'
         
         input('press enter \n')
         save_CSV_new(result)
     elif join_how =='3':
         result = pd.merge(df, df2, how='left', on=key_name)
         print(result)
+        jo = 'left join'
         
         input('press enter \n')
         save_CSV_new(result)
@@ -189,12 +211,23 @@ def mergecolumn(df):
     elif join_how =='4':
         result = pd.merge(df, df2, how='right', on=key_name)
         print(result)
+        jo = 'right join'
         
         input('press enter \n')
         save_CSV_new(result)
     else:
         print('Wrong input, please try again')
 
+    ################################################################################
+    ###Log-file
+    fname = 'Merge Table'
+    
+    fappend_file = 'Merged csv-file ' + add_table + '\nSeparator =' + trennzeichen
+    fmerge = 'merged by ' + jo + '; Key: ' + key_name
+    
+    
+    log = fname + '\n' +  fappend_file + '\n' + fmerge + '\n'
+    session_write(log)
 
         
 ##############################################################################
@@ -295,10 +328,32 @@ def filter_typ(df):
 
         restart = input('\nSet more filters: y/n.\n?')
         
+        ###########################################################################
+        ###session-datei
+    
+        if which_filter == '1':
+            filtertype = '=='
+        elif which_filter =='2':
+            filtertype ='>='
+        elif which_filter =='3':
+            filtertype ='>'
+        elif which_filter =='4':
+            filtertype = '<='
+        elif which_filter =='5':
+            filtertype ='<'
+            
+            
+        ###################################################################
+        ###log-file
+            
+        log = 'Filtertype: ' + filtertype + '; Filter Name: ' + name_filter + '\n'
+            
+        session_write(log)
         
         if restart.lower() != 'y':
             break
             
+        
     
     save_CSV_new(df)            
     
@@ -344,9 +399,11 @@ def sort_column(fn, df):
                 ascent_true_false = input('Ascending: \n1: true \n2: false \n?')
                 if ascent_true_false =='1':
                     a_t_f = 1
+                    asc ='Ascending = true'
                     break
                 if ascent_true_false =='2':
                     a_t_f = 0
+                    asc ='Ascending = false'
                     break
                 else:
                     print('wrong input, try again')
@@ -354,6 +411,20 @@ def sort_column(fn, df):
             df = df.sort_values(by=s_col, ascending=a_t_f)
             
             
+            ###################################################################
+            ###log-file
+            
+            log = 'Data sortet by: ' + s_col + '; ' + asc  + '\n'
+            
+            session_write(log)
+            
+            
+            
+            restart_s = input('additional sorting: y/n \n?')
+            if restart_s.lower() != 'y':
+                break
+            
+            ###################################################################
             print_table(df)
             
             restart_s = input('additional sorting: y/n \n?')
@@ -386,14 +457,27 @@ def transposed_table(fn, df):
         else:
             print(tabulate(df, headers='keys', tablefmt='psql'))
         
+               
         file_in_html(fn, df)
+        
         return(df)
     else:
         
         print_table(df)
         
         file_in_html(fn, df)
+        
+        
+        
         return(df)
+    
+    ###################################################################
+    ###log-file
+            
+    log = 'Transposed table ' + '\n'
+            
+    session_write(log)
+    
 
 ###crosstab
 ###############################################################################
@@ -469,7 +553,16 @@ def crosstab(df):
     else:
         print('wrong input, try again!')
     
+################################################################################
+###Log-file
+    fname = 'Crosstable two columns'
+    fvalue = 'Columns 1: ' + tab1
+    fbygroup = 'Column 2: ' + tab2
     
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
+    session_write(log)
+
     
     
 ###############################################################################        
@@ -527,7 +620,10 @@ def contingency_tb(df):
     print(tabulate(ctv, headers='keys', tablefmt='psql'))
     print(tabulate(ct, headers='keys', tablefmt='psql'))
     
-    print(chi2_contingency(ctcalc))
+    view1 = tabulate(ctv, headers='keys', tablefmt='psql')
+    view2 = tabulate(ct, headers='keys', tablefmt='psql')
+    
+    print('\n' + chi2_contingency(ctcalc))
     
     
     #The random variables A and B are stochastically independent of each other
@@ -571,6 +667,18 @@ def contingency_tb(df):
     plt.axis('off')
     plt.show()
 
+################################################################################
+###Log-file
+    fname = 'Contingency Table by two columns'
+    fvalue = 'Column 1 ' + tab1
+    fbygroup = 'Column 2: ' + tab2
+    
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + eintrag + '\n' + view1 + '\n' + view2 + '\n'
+    session_write(log)
+
+
+
 ###############################################################################    
 #### add sequal number
 def seq_numbers_add(fn, df):
@@ -592,7 +700,20 @@ def seq_numbers_add(fn, df):
     file_in_html(fn, df)
     print('To work with you have to save this dataframe as file')
     save_CSV(fn, df)
+    
+    ################################################################################
+###Log-file
+    fname = 'Create column with sequence Nr'
+    fvalue = 'Column name ' + name_df
+    fbygroup = 'Number from: ' + seq_nr_from + ' count rows: ' + seq_count
+    
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
+    session_write(log)
 
+
+    
+    
 ##############################################################################
 ##add random datas
 ##############################################################################    
@@ -638,7 +759,19 @@ def nv_add(fn, df):
     file_in_html(fn, df)
     print('To work with you have to save this dataframe as file')
     save_CSV(fn, df)
+    
+    ################################################################################
+###Log-file
+    fname = 'Create column with random data normal distribution'
+    fvalue = 'Column name ' + name_df
+    fbygroup = 'Mean : ' + mean_df + 'Standarddeviation: ' + std_df + ' count rows: ' + seq_count
+    
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
+    session_write(log)
 
+    
+    
 ###add binomial data 
 def add_bd_data(fn, df):
     clear()

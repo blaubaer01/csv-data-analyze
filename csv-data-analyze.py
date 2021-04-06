@@ -246,7 +246,29 @@ def file_einlesen(fn):
                     df = df[crit.iloc[:,int(inhalte_spalte)]<name_filter]
             
             
-
+            ###########################################################################
+            ###session-datei
+    
+            if which_filter == '1':
+                filtertype = '=='
+            elif which_filter =='2':
+                filtertype ='>='
+            elif which_filter =='3':
+                filtertype ='>'
+            elif which_filter =='4':
+                filtertype = '<='
+            elif which_filter =='5':
+                filtertype ='<'
+            
+            
+            ###################################################################
+            ###log-file
+            
+            log = 'Filtertype: ' + filtertype + '; Filter Name: ' + name_filter + '\n'
+            
+            session_write(log)
+            
+            
             restart = input('\nSet more filters: y/n.\n?')
             if restart.lower() != 'y':
                 break
@@ -276,18 +298,31 @@ def file_einlesen(fn):
                 ascent_true_false = input('Ascending: \n1: true \n2: false \n?')
                 if ascent_true_false =='1':
                     a_t_f = 1
+                    asc ='Ascending = true'
                     break
                 if ascent_true_false =='2':
                     a_t_f = 0
+                    asc ='Ascending = false'
                     break
                 else:
                     print('wrong input, try again')
             
             df = df.sort_values(by=s_col, ascending=a_t_f)
             
+            ###################################################################
+            ###log-file
+            
+            log = 'Data sortet by: ' + s_col + '; ' + asc  + '\n'
+            
+            session_write(log)
+            
+            
+            
             restart_s = input('additional sorting: y/n \n?')
             if restart_s.lower() != 'y':
                 break
+            
+            
                    
     ####################################################################################
     ####delete nan rows
@@ -296,6 +331,14 @@ def file_einlesen(fn):
     if drop_yes.lower() =='y':
         df = df.dropna()
         print('nan data deleted')
+        
+        ###################################################################
+        ##log-file
+            
+        log = 'Dropped NAN-Data' + '\n'
+            
+        session_write(log)
+        
         
     else:
         print('no data deleted')
@@ -307,6 +350,13 @@ def file_einlesen(fn):
         
     df.to_csv(fn, sep=';', decimal=',', header =True, index=False)
     
+    ###################################################################
+    ##log-file
+            
+    log = 'Save file as: ' + fn + '\n'
+            
+    session_write(log)
+
     
     print_table(df)
     file_in_html(fn, df)

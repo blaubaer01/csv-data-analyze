@@ -154,7 +154,21 @@ def kuchendiagramm(df):
         else:
             break    
     
-        
+    y = list_columns[int(nummer_spalte)]
+    
+    ###########################################################################
+    ###session-datei
+    
+    fname = 'Pi-chart with Group'
+    fvalue = 'Value: ' + y
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
+    
+    
+    ###########################################################################    
     # Plot
     ax = df[list_columns[int(nummer_spalte)]].value_counts().plot(kind='pie',
                                     figsize=(14,8),
@@ -311,6 +325,23 @@ def liniendiagramm(df):
             
             plt.show()
     
+    
+    ###########################################################################
+    ###session-datei
+    
+    fname = 'Line-Chart'
+    fvalue = 'Value: ' + y
+    fbygroup = 'X-Achse: ' + x
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + tol + '\n'
+    session_write(log)
+
+    
+    
 
 ###line-chart with dots
 def liniendiagramm_w_dot(df):
@@ -455,6 +486,22 @@ def liniendiagramm_w_dot(df):
             plt.axhline(y=lt,linewidth=2, color='red')
             
             plt.show()
+    
+    ###########################################################################
+    ###session-datei
+    
+    fname = 'Line-Chart with dots'
+    fvalue = 'Value: ' + y
+    fbygroup = 'X-Achse: ' + x
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + tol + '\n'
+    session_write(log)
+    
+    
     
     
 ###line-chart with dots
@@ -616,6 +663,19 @@ def liniendiagramm_w_dot_cumsum(df):
             
             plt.show()
     
+    ###########################################################################
+    ###session-datei
+    
+    fname = 'Line-Chart with dot and cumsum'
+    fvalue = 'Value: ' + y
+    fbygroup = 'X-Achse: ' + x
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + tol + '\n'
+    session_write(log)
     
     
 def line_diagram_menu(df):
@@ -697,7 +757,15 @@ def confidencelinechart(df):
     
     plt.show()
 
-
+    ###########################################################################
+    ###session-datei
+    
+    fname = 'Confidence Linechart'
+    fvalue = 'Value: ' + y
+    fbygroup = 'X-Achse: ' + x
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' 
+    session_write(log)
 
 
 #######################################################################
@@ -825,7 +893,19 @@ def boxplot(df):
             plt.show()
     
     
+    ###########################################################################
+    ###session-datei
     
+    fname = 'Boxplot'
+    fvalue = 'Value: ' + y
+    #fbygroup = 'X-Achse: ' + x
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
+    
+    log = fname + '\n' + fvalue + '\n' + tol + '\n'
+    session_write(log)
     
     
     
@@ -983,12 +1063,20 @@ def boxplot_groupby(df):
     
     
     
+    ###########################################################################
+    ###session-datei
     
+    fname = 'Boxplot by Group'
+    fvalue = 'Value: ' + y
+    fbygroup = 'Group by: ' + x
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
     
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + tol + '\n'
+    session_write(log)
     
-    #df.boxplot(by=x, column=y)
-    
-    #plt.show()
 
 
 ######################################################################
@@ -1146,6 +1234,23 @@ def boxplot2f(df):
             
             plt.show()
     
+    ###########################################################################
+    ###session-datei
+    
+    fname = 'Boxplot by 2 Factors'
+    fvalue = 'Value: ' + y
+    fbygroup = 'Factor1: ' + x + '; ' + 'Factor2: ' + z
+    
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + tol + '\n'
+    session_write(log)
+    
+    
+    
     
    
 #######################################################################    
@@ -1270,8 +1375,21 @@ def violin(df):
             plt.show()
     
     
-    #sns.violinplot(x=df[y])
-    #plt.show()
+    ###########################################################################
+    ###session-datei
+    
+    fname = 'Violinplot'
+    fvalue = 'Value: ' + y
+    #fbygroup = 'X-Achse: ' + x
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
+    
+    log = fname + '\n' + fvalue + '\n' + tol + '\n'
+    session_write(log)
+
+
 
 #######################################################################
 ###violin plot with group
@@ -1418,11 +1536,22 @@ def violin_groupby(df):
             
             plt.show()
     
+    ###########################################################################
+    ###session-datei
     
-    #sns.violinplot(x=x, y=y, data=df)
+    fname = 'Violinplot by Group'
+    fvalue = 'Value: ' + y
+    fbygroup = 'Group by: ' + x
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
     
-    #plt.show()
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + tol + '\n'
+    session_write(log)
 
+    
+    
 #######################################################################
 ###violin Plot by 2 groups
 def violin2f(df):
@@ -1577,11 +1706,23 @@ def violin2f(df):
             plt.show()
     
     
+    ###########################################################################
+    ###session-datei
+    
+    fname = 'Violinplot by 2 Factors'
+    fvalue = 'Value: ' + y
+    fbygroup = 'Factor1: ' + x + '; ' + 'Factor2: ' + z
+    
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + tol + '\n'
+    session_write(log)
     
     
     
-    #sns.violinplot(x=x, y=y, hue=z, data=df, palette="Set3")
-    #plt.show()
 
 ######################################################################
 ###single swarm plot
@@ -1707,13 +1848,22 @@ def single_swarmplot(df):
     
     
     
+    ###########################################################################
+    ###session-datei
+    
+    fname = 'Swarmplot'
+    fvalue = 'Value: ' + y
+    #fbygroup = 'X-Achse: ' + x
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
+    
+    log = fname + '\n' + fvalue + '\n' + tol + '\n'
+    session_write(log)
+
     
     
-    
-    
-    
-    #sns.swarmplot(x=df[y])
-    #plt.show()
     
     
     
@@ -1768,8 +1918,9 @@ def swarmplot1f(df):
             break  
     
     y = df[list_columns_werte[int(value_column)]]
+    y_val = list_columns_werte[int(value_column)]
     x = df[list_columns_kategorie[int(groupby_column)]]
-    
+    x_val = list_columns_kategorie[int(groupby_column)]
     ###toleranzen
     one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
     
@@ -1868,15 +2019,22 @@ def swarmplot1f(df):
             plt.show()
     
     
+    ###########################################################################
+    ###session-datei
     
+    fname = 'Swarmplot by Group'
+    fvalue = 'Value: ' + y_val
+    fbygroup = 'Group by: ' + x_val
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
     
-    
-    
-    # Draw a categorical scatterplot to show each observation
-    #sns.swarmplot(x=x, y=y, data=df)
-    #sns.boxplot(x=x, y=y, data=df, whis=np.inf)
-    #plt.show()
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + tol + '\n'
+    session_write(log)
 
+    
+    
 ######################################################################
 ###swarmplot two factors
 def swarmplot2f(df):
@@ -2038,10 +2196,20 @@ def swarmplot2f(df):
             plt.show()
 
 
-    #sns.swarmplot(x=x, y=y, hue=z, data=df)
-
+    ###########################################################################
+    ###session-datei
     
-    #plt.show()
+    fname = 'Swarmplot by 2 Factors'
+    fvalue = 'Value: ' + y
+    fbygroup = 'Factor1: ' + x + '; ' + 'Factor2: ' + z
+    
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + tol + '\n'
+    session_write(log)
     
 
 ######################################################################
@@ -2173,7 +2341,20 @@ def single_stripplot(df):
             plt.show()
     
     
+    ###########################################################################
+    ###session-datei
     
+    fname = 'Stripplot'
+    fvalue = 'Value: ' + y
+    #fbygroup = 'X-Achse: ' + x
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
+    
+    log = fname + '\n' + fvalue + '\n' + tol + '\n'
+    session_write(log)
+
     
     
     
@@ -2230,8 +2411,9 @@ def stripplot1f(df):
             break  
     
     y = df[list_columns_werte[int(value_column)]]
+    y_val = list_columns_werte[int(value_column)]
     x = df[list_columns_kategorie[int(groupby_column)]]
-    
+    x_val = list_columns_kategorie[int(groupby_column)]
     
     ###toleranzen
     one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
@@ -2331,11 +2513,20 @@ def stripplot1f(df):
             plt.show()
     
     
-    # Draw a categorical scatterplot to show each observation
-    #sns.stripplot(x=x, y=y, data=df)
-    #sns.boxplot(x=x, y=y, data=df, whis=np.inf)
-    #plt.show()
-        
+    ###########################################################################
+    ###session-datei
+    
+    fname = 'Stripplot by Group'
+    fvalue = 'Value: ' + y_val
+    fbygroup = 'Group by: ' + x_val
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + tol + '\n'
+    session_write(log)
+    
 ######################################################################
 ###stripplot two factors
 def stripplot2f(df):
@@ -2497,13 +2688,24 @@ def stripplot2f(df):
             plt.show()
     
     
+    ###########################################################################
+    ###session-datei
+    
+    fname = 'Stripplot by 2 Factors'
+    fvalue = 'Value: ' + y
+    fbygroup = 'Factor1: ' + x + '; ' + 'Factor2: ' + z
+    
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + tol + '\n'
+    session_write(log)
     
     
-    #sns.stripplot(x=x, y=y, hue=z, data=df)
-
     
-    #plt.show()
-
+    
 #######################################################################
 ###stripplot with group
 def pointplot1f(df):
@@ -2555,8 +2757,10 @@ def pointplot1f(df):
             break  
     
     y = df[list_columns_werte[int(value_column)]]
-    x = df[list_columns_kategorie[int(groupby_column)]]
     
+    y_val = list_columns_werte[int(value_column)]
+    x = df[list_columns_kategorie[int(groupby_column)]]
+    x_val = list_columns_kategorie[int(groupby_column)]
     
     ###toleranzen
     one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
@@ -2655,11 +2859,22 @@ def pointplot1f(df):
             
             plt.show()
     
+    ###########################################################################
+    ###session-datei
     
-    # Draw a categorical scatterplot to show each observation
-    #sns.pointplot(x=x, y=y, data=df)
-    #sns.boxplot(x=x, y=y, data=df, whis=np.inf)
-    #plt.show()
+    fname = 'Pointplot by Group'
+    fvalue = 'Value: ' + y_val
+    fbygroup = 'Group by: ' + x_val
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + tol + '\n'
+    session_write(log)
+    
+    
+    
         
 ######################################################################
 ###stripplot two factors
@@ -2823,11 +3038,20 @@ def pointplot2f(df):
             plt.show()
     
     
+    ###########################################################################
+    ###session-datei
     
-    #sns.pointplot(x=x, y=y, hue=z, data=df)
-
+    fname = 'Pointplot by 2 Factors'
+    fvalue = 'Value: ' + y
+    fbygroup = 'Factor1: ' + x + '; ' + 'Factor2: ' + z
     
-    #plt.show()
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + tol + '\n'
+    session_write(log)
 
 
 
@@ -2868,6 +3092,7 @@ def histogram(df):
     
     
     y = df[list_columns_werte[int(value_column)]]
+    y_val = list_columns_werte[int(value_column)]
     
     ###toleranzen
     one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
@@ -2964,10 +3189,19 @@ def histogram(df):
             plt.show()
     
     
+    ###########################################################################
+    ###session-datei
     
+    fname = 'Histogram'
+    fvalue = 'Value: ' + y_val
+    #fbygroup = 'X-Achse: ' + x
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
     
-    #sns.distplot(y);
-    #plt.show()
+    log = fname + '\n' + fvalue + '\n' + tol + '\n'
+    session_write(log)
 
 
 ###distriplot with group
@@ -3116,6 +3350,24 @@ def distriplot1f(df):
             
             plt.show()
     
+    
+    ###########################################################################
+    ###session-datei
+    
+    fname = 'Distribution Plot by one factor'
+    fvalue = 'Value: ' + y
+    fbygroup = 'Group by: ' + x
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + tol + '\n'
+    session_write(log)
+    
+    
+    
+    
 def histogram1f(df):
     clear()
     print('Histogram by one factor \n')
@@ -3260,8 +3512,19 @@ def histogram1f(df):
             plt.axvline(x=lt,linewidth=2, color='red')
             
             plt.show()
-
-
+################################################################################
+###Log-file
+    fname = 'Histogram by one factor'
+    fvalue = 'Value: ' + y
+    fbygroup = 'Group by: ' + x
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + tol + '\n'
+    session_write(log)
+    
 
 #######################################################################    
 ###qq-plot
@@ -3291,13 +3554,22 @@ def qq_plot(df):
         
     y = df[list_columns_werte[int(value_column)]]
     
-    
+    y_val = list_columns_werte[int(value_column)]
     
     
     
     spy.stats.probplot(y, dist="norm", plot=plt)
     plt.show() 
+    
+   ################################################################################
+   ###Log-file
+    fname = 'Histogram by one factor'
+    fvalue = 'Value: ' + y_val
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
 
+    
 
 #######################################################################
 ###scatterplot
@@ -3344,6 +3616,16 @@ def scatter(df):
     label_chart = ('Scatter-Plot')
     plt.title(label_chart, fontdict=None, loc='center', pad=None)
     plt.show()
+
+    ################################################################################
+    ###Log-file
+    fname = 'Scatterplot'
+    fvalue = 'y-Value: ' + y
+    fbygroup = 'x-Value: ' + x
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
+    session_write(log)
+
 
 #######################################################################
 ###scatter plot with regression line
@@ -3394,6 +3676,16 @@ def scatter_w_r(df):
     label_chart = ('Linear-Regression-Plot')
     plt.title(label_chart, fontdict=None, loc='center', pad=None)
     plt.show()
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Scatterplot'
+    fvalue = 'y-Value: ' + y
+    fbygroup = 'x-Value: ' + x
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
+    session_write(log)
+    
 ######################################################################
 def scatter_by_o_factor(df):
     clear()
@@ -3501,7 +3793,15 @@ def scatter_joint_plot(df):
     sns.jointplot(x=x, y=y, data=df, kind="reg");
 
     plt.show()
-
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Scatter-Joint-Plot'
+    fvalue = 'y-Value: ' + y
+    fbygroup = 'x-Value: ' + x
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
+    session_write(log)
 
 def bivariate_plot_w_m_elements (df):
     clear()
@@ -3548,7 +3848,15 @@ def bivariate_plot_w_m_elements (df):
     sns.histplot(x=x, y=y, bins=50, pthresh=.1, cmap="mako", data = df)
     sns.kdeplot(x=x, y=y, levels=5, color="w", linewidths=1, data = df)
     plt.show()
-
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Bivariate Plot with Elements'
+    fvalue = 'y-Value: ' + y
+    fbygroup = 'x-Value: ' + x
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
+    session_write(log)
 
 def scatterplot_w_varying_point_sizes (df):
     clear()
@@ -3590,17 +3898,29 @@ def scatterplot_w_varying_point_sizes (df):
         
         
     y = df[list_columns_werte[int(value_column_y)]]
-    
+    y_val = list_columns_werte[int(value_column_y)]
     x = df[list_columns_werte[int(value_column_x)]]
-    
+    x_val =list_columns_werte[int(value_column_x)]
     z = df[list_columns_werte[int(value_column_z)]]
-
+    z_val = list_columns_werte[int(value_column_z)]
     
     sns.relplot(x=x, y=y, size=z,
             sizes=(40, 400), alpha=.5, palette="muted",
             height=6, data=df)
     plt.show()
-
+    
+    ################################################################################
+    ###Log-file
+    fname = '3D-Scatter Plot'
+    fvalue = 'y-Value: ' + y_val
+    fbygroup = 'x-Value: ' + x_val + '\nz-Value: ' + z_val
+    
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
+    session_write(log)
+    
+    
+    
 def scatterplot_w_varying_point_sizes_with_cat (df):
     
     clear()
@@ -3678,7 +3998,17 @@ def scatterplot_w_varying_point_sizes_with_cat (df):
             height=6, data=df)
     plt.show()
     
-
+    ################################################################################
+    ###Log-file
+    fname = 'Scatter Plot with varying point sizes and category'
+    fvalue = 'y-Value: ' + y
+    fbygroup = 'x-Value: ' + x + '\nz-Value: ' + z
+    fcategory = 'Category: ' + c
+    
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + fcategory + '\n'
+    session_write(log)
+    
 
 #######################################################################
 ###Group Plot (show a plot by group)
@@ -3766,6 +4096,17 @@ def groupplot(df):
 
     plt.show()
 
+    ################################################################################
+    ###Log-file
+    fname = 'Scatter Plot with varying point sizes and category'
+    fvalue = 'y-Value: ' + y
+    fbygroup = 'x-Achse: ' + x 
+    fcategory = 'Category: ' + z
+    
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + fcategory + '\n'
+    session_write(log)
+    
 
 #######################################################################
 ###Group Plot (show a plot by group with Tolerance)
@@ -3932,7 +4273,22 @@ def groupplot_w_T(df):
         plt.xlim(df[list_columns_zeitraum[int(datetime_column)]].iloc[0], df[list_columns_zeitraum[int(datetime_column)]].iloc[-1])
         
         plt.show()
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Group Plot with Tolerance'
+    fvalue = 'y-Value: ' + y
+    fbygroup = 'x-Achse: ' + x 
+    fcategory = 'Category: ' + z
+    
+    tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
 
+    
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + fcategory + '\n' + tol + '\n'
+    session_write(log)
+    
+    
 def groupplot_menu(df):
     
     clear()
@@ -3989,7 +4345,15 @@ def pareto_plot(df, x=None, y=None, title=None, show_pct_y=False, pct_format='{0
     plt.tight_layout()
     plt.show()
 
-
+    ################################################################################
+    ###Log-file
+    fname = 'Pareto Chart count Column'
+    fvalue = 'Column count: ' + y
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
+    
 #######################################################################    
 ###pareto plot with count column
 def pareto(df):
@@ -4052,6 +4416,17 @@ def pareto(df):
     
     print(df)
     pareto_plot(df, x=x, y=y, title='Pareto Chart')
+
+    ################################################################################
+    ###Log-file
+    fname = 'Pareto Chart with value column'
+    fvalue = 'y-Value: ' + y
+    fcategory = 'Category: ' + x
+       
+    
+    log = fname + '\n' + fvalue + '\n' + fcategory + '\n'
+    session_write(log)
+    
 
 #######################################################################
 ###single pareto plot, count the entrees of column    
@@ -4138,11 +4513,11 @@ def three_d_scatterplot(df):
         
         
     y = df[list_columns_werte[int(value_column_y)]]
-    
+    y_val =list_columns_werte[int(value_column_y)]
     x = df[list_columns_werte[int(value_column_x)]]
-    
+    x_val = list_columns_werte[int(value_column_x)]
     z = df[list_columns_werte[int(value_column_z)]]
-
+    z_val = list_columns_werte[int(value_column_z)]
     
     
     fig = plt.figure()
@@ -4150,6 +4525,16 @@ def three_d_scatterplot(df):
     ax.scatter(x, y, z)
     plt.show()
     
+    ################################################################################
+    ###Log-file
+    fname = '3D Scatter Plot'
+    fvalue = 'y-Value: ' + y_val
+    fbygroup = 'x-Value: ' + x_val + '\nz-Value: ' + z_val
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
+    session_write(log)
     
     
     
@@ -4195,11 +4580,11 @@ def trisurfaceplot(df):
         
         
     y = df[list_columns_werte[int(value_column_y)]]
-    
+    y_val = list_columns_werte[int(value_column_y)]
     x = df[list_columns_werte[int(value_column_x)]]
-    
+    x_val = list_columns_werte[int(value_column_x)]
     z = df[list_columns_werte[int(value_column_z)]]
-
+    z_val = list_columns_werte[int(value_column_z)]
     fig = plt.figure()
     ax = plt.axes(projection="3d")
     
@@ -4209,7 +4594,20 @@ def trisurfaceplot(df):
     ax.set_zlabel('z')
     
     plt.show()
-
+    
+    ################################################################################
+    ###Log-file
+    fname = '3D Surface Plot'
+    fvalue = 'y-Value: ' + y_val
+    fbygroup = 'x-Value: ' + x_val + '\nz-Value: ' + z_val
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
+    session_write(log)
+    
+    
+    
 def threeddplot(df):
     clear()
     
@@ -4351,6 +4749,18 @@ def decriptive_statistics(df):
         plt.axis('off')
         #plt.title(label_chart, fontdict=None, loc='center', pad=None)
         plt.show()
+
+    ################################################################################
+    ###Log-file
+    fname = 'Graphical descriptive statistic'
+    fvalue = 'y-Value: ' + y_val
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + eintrag + '\np-Value (shapiro wilk test): ' + str(p)
+    session_write(log)
+
+
         
 def easy_pairplot(df):
     clear()
@@ -4360,6 +4770,19 @@ def easy_pairplot(df):
     g.map(sns.scatterplot)
     
     plt.show()
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Easy Pairplot'
+    fvalue = 'over all values'
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' 
+    session_write(log)
+    
+    
+    
     
 def pairplot_hist(df):
     clear()
@@ -4371,6 +4794,17 @@ def pairplot_hist(df):
     g.map_offdiag(sns.scatterplot)
     plt.show()
 
+    ################################################################################
+    ###Log-file
+    fname = 'Pairplot with Histogram'
+    fvalue = 'over all values'
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' 
+    session_write(log)
+    
+
 def pairplot_dist(df):
     clear()
     print('Pair Plot with distribution \n \nAttention!! \n This plot needs cpu resources and cold take a few minutes! \n')
@@ -4380,7 +4814,16 @@ def pairplot_dist(df):
     g.map_lower(sns.kdeplot)
     g.map_diag(sns.kdeplot, lw=3, legend=False)
     plt.show()
-
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Pairplot with Distribution-Chart'
+    fvalue = 'over all values'
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' 
+    session_write(log)
 
 def pairplot_1c (df):
     clear()
@@ -4414,6 +4857,17 @@ def pairplot_1c (df):
     g.map(sns.scatterplot)
     
     plt.show()
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Pairplot with Catogory'
+    fvalue = 'over all values'
+    fbygroup = 'Category: ' + x
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' 
+    session_write(log)
     
 def pairplot_1c_hist(df):
     clear()
@@ -4449,6 +4903,17 @@ def pairplot_1c_hist(df):
     
     plt.show()
     
+    ################################################################################
+    ###Log-file
+    fname = 'Pairplot with Catogory and Histogram'
+    fvalue = 'over all values'
+    fbygroup = 'Category: ' + x
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' 
+    session_write(log)
+    
 def pairplot_1c_dist(df):
     clear()
     print('Pair Plot with group and distribution plot \n \nAttention!! \n This plot needs cpu resources and cold take a few minutes! \n')
@@ -4480,6 +4945,18 @@ def pairplot_1c_dist(df):
     
     plt.show()
     
+    ################################################################################
+    ###Log-file
+    fname = 'Pairplot with Catogory and Distribution'
+    fvalue = 'over all values'
+    fbygroup = 'Category: ' + x
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' 
+    session_write(log)
+    
+    
 def pairplot_menu(df):
     clear()
     print('Pair Scatter Plot Menue \n')
@@ -4502,7 +4979,7 @@ def pairplot_menu(df):
 def cond_mean_w_ob_by_1f (df):
     clear()
     
-    print('Conditional mean with observation by 1 factors \n')
+    print('Conditional mean with observation by 1 factor \n')
     sns.set_theme(style="whitegrid")
     
     kategorie=df.select_dtypes(exclude=['float'])
@@ -4696,7 +5173,21 @@ def cond_mean_w_ob_by_1f (df):
             plt.axvline(x=lt,linewidth=2, color='red')
             
             plt.show()
+    
+    ################################################################################
+###Log-file
+    fname = 'Conditional mean with observation by 1 factor'
+    fvalue = 'Value: ' + y
+    fbygroup = 'Group by: ' + x
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + tol + '\n'
+    session_write(log)
 
+    
 
 def cond_mean_w_ob_by_2f (df):
     clear()
@@ -4924,6 +5415,20 @@ def cond_mean_w_ob_by_2f (df):
                       loc="lower right", ncol=3, frameon=True)
             
             plt.show()
+
+        ################################################################################
+###Log-file
+    fname = 'Conditional mean with observation by 2 factors'
+    fvalue = 'Value: ' + y
+    fbygroup = 'Group by: ' + x + ' and ' + z
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + tol + '\n'
+    session_write(log)
+
                   
             
 def stacked_hist (df):
@@ -5120,3 +5625,16 @@ def stacked_hist (df):
             
             plt.show()
     
+    
+            ################################################################################
+###Log-file
+    fname = 'Stacked Histogram'
+    fvalue = 'Value: ' + y
+    fbygroup = 'Group by: ' + x
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + tol + '\n'
+    session_write(log)

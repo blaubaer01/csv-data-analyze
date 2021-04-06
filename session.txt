@@ -1,7 +1,47 @@
-2021-04-03
-open file name: production.csv
+2021-04-06
+open file name: Auto.csv
 
 Separator: ;
 Delimeter: ,
 Header: with header
+
+Save file as: cda_Auto.csv
+
+Contingency Table by two columns
+Column 1 Hersteller
+Column 2: Zustand
+Chi²: 22.857
+p-Value: 0.19613
+H0: The variables A and B are stochastically 
+independent of each other
++--------------+-------------+---------------+-------+-------+
+| Hersteller   |   Gebraucht |   Jahreswagen |   Neu |   All |
+|--------------+-------------+---------------+-------+-------|
+| Audi         |           2 |             0 |     0 |     2 |
+| BMW          |           2 |             0 |     0 |     2 |
+| Fiat         |           1 |             0 |     0 |     1 |
+| Kia          |           0 |             0 |     1 |     1 |
+| Mazda        |           0 |             0 |     2 |     2 |
+| Peugeot      |           1 |             0 |     0 |     1 |
+| Renault      |           0 |             0 |     2 |     2 |
+| Seat         |           1 |             0 |     0 |     1 |
+| Volkswagen   |           4 |             1 |     0 |     5 |
+| Volvo        |           3 |             0 |     0 |     3 |
+| All          |          14 |             1 |     5 |    20 |
++--------------+-------------+---------------+-------+-------+
++--------------+-------------+---------------+-------+-------+
+| Hersteller   |   Gebraucht |   Jahreswagen |   Neu |   All |
+|--------------+-------------+---------------+-------+-------|
+| Audi         |        0.1  |          0    |  0    |  0.1  |
+| BMW          |        0.1  |          0    |  0    |  0.1  |
+| Fiat         |        0.05 |          0    |  0    |  0.05 |
+| Kia          |        0    |          0    |  0.05 |  0.05 |
+| Mazda        |        0    |          0    |  0.1  |  0.1  |
+| Peugeot      |        0.05 |          0    |  0    |  0.05 |
+| Renault      |        0    |          0    |  0.1  |  0.1  |
+| Seat         |        0.05 |          0    |  0    |  0.05 |
+| Volkswagen   |        0.2  |          0.05 |  0    |  0.25 |
+| Volvo        |        0.15 |          0    |  0    |  0.15 |
+| All          |        0.7  |          0.05 |  0.25 |  1    |
++--------------+-------------+---------------+-------+-------+
 
