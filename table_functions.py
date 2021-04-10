@@ -623,7 +623,8 @@ def contingency_tb(df):
     view1 = tabulate(ctv, headers='keys', tablefmt='psql')
     view2 = tabulate(ct, headers='keys', tablefmt='psql')
     
-    print('\n' + chi2_contingency(ctcalc))
+    print('\n')
+    print(chi2_contingency(ctcalc))
     
     
     #The random variables A and B are stochastically independent of each other
@@ -700,6 +701,10 @@ def seq_numbers_add(fn, df):
     file_in_html(fn, df)
     print('To work with you have to save this dataframe as file')
     save_CSV(fn, df)
+    
+    
+    
+    
     
     ################################################################################
 ###Log-file
@@ -819,6 +824,16 @@ def add_bd_data(fn, df):
     print('To work with you have to save this dataframe as file')
     save_CSV(fn, df)
     
+    ################################################################################
+###Log-file
+    fname = 'Create column with random binomial distribution'
+    fvalue = 'Column name ' + name_df
+    fbygroup = 'p : ' + p_df + 'n: ' + n_df + ' count rows: ' + seq_count
+    
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
+    session_write(log)
+
 
 ###create poisson data
 def add_pd_data(fn, df):
@@ -857,6 +872,18 @@ def add_pd_data(fn, df):
     file_in_html(fn, df)
     print('To work with you have to save this dataframe as file')
     save_CSV(fn, df)
+
+    ################################################################################
+###Log-file
+    fname = 'Create column with random data poisson distribution'
+    fvalue = 'Column name ' + name_df
+    fbygroup = 'p : ' + p_df + ' count rows: ' + seq_count
+    
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
+    session_write(log)
+
+
 
 ###create logistic data
 def add_ld_data(fn, df):
@@ -898,7 +925,16 @@ def add_ld_data(fn, df):
     print('To work with you have to save this dataframe as file')
     save_CSV(fn, df)
     
+    ################################################################################
+###Log-file
+    fname = 'Create column with random data logistic distribution'
+    fvalue = 'Column name ' + name_df
+    fbygroup = 'Location : ' + location_df + 'scale: ' + scale_df + ' count rows: ' + seq_count
     
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
+    session_write(log)
+
 
 
     
@@ -952,7 +988,18 @@ def del_empty_rows(fn, df):
     
     input('press enter \n')
     
-    save_CSV(fn, df)    
+    save_CSV(fn, df)
+
+
+    ################################################################################
+###Log-file
+    fname = 'Delete empty rows'
+    
+    
+    
+    log = fname + '\n' + 'Save file as: ' + fn
+    session_write(log)
+    
 ##############################################################################
 ###delete nan rows
 def del_nan_rows(fn, df):
@@ -988,6 +1035,17 @@ def del_nan_rows(fn, df):
     
     input('press enter \n')
     save_CSV(fn, df)
+    
+    ################################################################################
+###Log-file
+    fname = 'Delete nan rows'
+    
+    
+    
+    log = fname + '\n' + 'Save file as: ' + fn
+    session_write(log)
+    
+    
 #########################################################################################
 ###delete NAN rows
 def del_nan(fn, df):
@@ -1010,6 +1068,15 @@ def del_nan(fn, df):
         save_CSV(fn, df)
     else:
         print('no data deleted')
+        
+    ################################################################################
+###Log-file
+    fname = 'Drop all nan rows'
+    
+    
+    
+    log = fname + '\n' + 'Save file as: ' + fn
+    session_write(log)
         
 ########################################################################################
 ###delete zero rows
@@ -1048,6 +1115,15 @@ def del_zero_rows(fn, df):
     
     input('press enter \n')
     save_CSV(fn, df)
+    
+    ################################################################################
+###Log-file
+    fname = 'Delete zero rows'
+    
+    
+    
+    log = fname + '\n' + 'Save file as: ' + fn
+    session_write(log)
 
 ######################################################################################
 ###delete NA rows
@@ -1088,6 +1164,15 @@ def del_NA_rows(fn, df):
     input('press enter \n')
     
     save_CSV(fn, df)
+    
+    ################################################################################
+###Log-file
+    fname = 'Delete NA rows'
+    
+    
+    
+    log = fname + '\n' + 'Save file as: ' + fn
+    session_write(log)
 
 
 
@@ -1133,6 +1218,15 @@ def del_sv_rows(fn, df):
     input('press enter \n')
     save_CSV(fn, df)
 
+    ################################################################################
+###Log-file
+    fname = 'Clear character into column'
+    
+    
+    
+    log = fname + '\n' + 'Save file as: ' + fn
+    session_write(log)
+
 ################################################################################
 ###replace content
 
@@ -1171,6 +1265,16 @@ def replace_content_into_col(fn, df):
     
     input('press enter \n')
     save_CSV(fn, df)
+    
+    ################################################################################
+###Log-file
+    fname = 'Replace content into column'
+    
+    
+    
+    log = fname + '\n' + 'Save file as: ' + fn
+    session_write(log)
+
 
 ##############################################################################
 ### replace value
@@ -1218,6 +1322,17 @@ def replace_number_into_col(fn, df):
     
     input('press enter \n')
     save_CSV(fn, df)
+    
+    ################################################################################
+###Log-file
+    fname = 'Replace number into column'
+    
+    
+    
+    
+    log = fname + '\n' + 'Replace: ' + rpl_what + '\n' + 'with: ' + rpl_with + '\n' + 'Save file as: ' + fn
+    session_write(log)
+
 
 ##############################################################################
 ###delete or replace menu
@@ -1291,7 +1406,19 @@ def replace_float_comma(fn, df):
     input('press enter \n')
     save_CSV(fn, df)
 
+    
+    ################################################################################
+###Log-file
+    fname = 'Replace float comma - point comma into column'
+    
+    
+    
+    
+    log = fname + '\n' + 'Save file as: ' + fn
+    session_write(log)
 
+    
+    
 ###############################################################################################
 ###replace character
 
@@ -1329,6 +1456,18 @@ def replace_character(fn, df):
     input('press enter \n')
     save_CSV(fn, df)
 
+
+        ################################################################################
+###Log-file
+    fname = 'replace character into column'
+    
+    
+    
+    
+    log = fname + '\n' + 'Replace: ' + char_input + '\n' + 'with: ' + char_output + '\n' + 'Save file as: ' + fn
+    session_write(log)
+
+
 #########################################################################################
 ###delete the last row
 
@@ -1349,6 +1488,17 @@ def del_last_row(fn, df):
         save_CSV(fn, df)
     else:
         print('no data deleted')
+        
+        
+        ################################################################################
+###Log-file
+    fname = 'Delete last row'
+    
+    
+    
+    
+    log = fname + '\n' + 'Save file as: ' + fn
+    session_write(log)
 
 ################################################################################################
 ###delete the first row
@@ -1370,6 +1520,18 @@ def del_first_row(fn, df):
         save_CSV(fn, df)
     else:
         print('no data deleted')
+
+            ################################################################################
+###Log-file
+    fname = 'Delete first row'
+    
+    
+    
+    
+    log = fname + '\n' + 'Save file as: ' + fn
+    session_write(log)
+
+
 
 ##################################################################################################
 ###delete defined row
@@ -1413,6 +1575,18 @@ def del_defined_row(fn, df):
         save_CSV(fn, df)
     else:
         print('no data deleted')
+        
+        
+            ################################################################################
+###Log-file
+    fname = 'Droped defined rows'
+    
+    
+    
+    
+    log = fname + '\n' + 'Drop from: ' + d_from_index + 'Till: '+  d_till_index + '\n' + 'Save file as: ' + fn
+    session_write(log)
+
 ##############################################################################
 ###felete row contains special word
     
@@ -1455,6 +1629,19 @@ def del_contains_word(fn, df):
         save_CSV(fn, df)
     else:
         print('no rows deleted')
+
+                ################################################################################
+###Log-file
+    fname = 'Delete rows contains spezal Word'
+    
+    
+    
+    
+    log = fname + '\n' + 'Into column: ' + col + 'Deleted Keyword: ' + del_word + '\n' + 'Save file as: ' + fn
+    session_write(log)
+
+
+
 
 ###############################################################################################
 ###melt function
@@ -1539,6 +1726,16 @@ def melt_table(df):
     
     input('press enter \n')
     save_CSV_new(df)
+###############################################################################
+    ###Log-file
+    fname = 'Melt Table'
+    
+    
+    
+    
+    log = fname + '\n' 
+    session_write(log)
+
 
 
 ############################################################################################
@@ -1585,7 +1782,16 @@ def df_rename(fn, df):
         
         input('press enter \n')
         save_CSV(fn, df)
-        
+################################################################################    
+    ###Log-file
+    fname = 'Rename column'
+    
+    
+    
+    
+    log = fname + '\n' + 'Rename column: ' + r_col + 'Into column: ' + new_column_name + '\n' + 'Save file as: ' + fn
+    session_write(log)
+
 
 #######################################################################
 ###combine factor column
@@ -1636,6 +1842,18 @@ def combine_column(fn, df):
     
     input('press enter \n')
     save_CSV(fn, df)
+
+    ################################################################################    
+    ###Log-file
+    fname = 'Combine columns'
+    
+    
+    
+    
+    log = fname + '\n' + 'First Column : ' + col1 + 'Second Column: ' + col2 + '\n' + 'Save file as: ' + fn
+    session_write(log)
+    
+    
         
 ########################################################################
 ###del column
@@ -1680,7 +1898,21 @@ def delete_column(fn, df):
         
         input('press enter \n')
         save_CSV(fn, df)
+
+    ################################################################################    
+    ###Log-file
+    fname = 'Delete column'
+    
+    
+    
+    
+    log = fname + '\n' + 'Delete Column : ' + d_col + '\n' + 'Save file as: ' + fn
+    session_write(log)
         
+
+
+
+    
 ####################################################################################
 #####change datatype
 def change_datatype(df):
@@ -1699,6 +1931,7 @@ def change_datatype(df):
             welcher_datentyp = input('How to change: \n1: float \n2: integer \n3: string \n4: categorie \n5: datetime \n(choose number) \n?')
             
             if welcher_datentyp =='1':
+                dattype = 'float'
                 datent=df.select_dtypes(include=['int'])
                 anz_col = len(datent.columns)
         
@@ -1714,6 +1947,7 @@ def change_datatype(df):
                 
                 df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype(float)
             elif welcher_datentyp =='2':
+                dattype = 'integer'
                 datent=df.select_dtypes(include=['float', 'object'])
                 anz_col = len(datent.columns)
         
@@ -1732,6 +1966,7 @@ def change_datatype(df):
                     print('Convert data not possible!')    
                     
             elif welcher_datentyp =='3':
+                dattype = 'string'
                 anz_col = len(df.columns)
         
                 list_columns = []
@@ -1746,6 +1981,7 @@ def change_datatype(df):
                 df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype(str)
             
             elif welcher_datentyp =='4':
+                dattype = 'category'
                 anz_col = len(df.columns)
         
                 list_columns = []
@@ -1759,6 +1995,7 @@ def change_datatype(df):
                 nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n?')
                 df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype('category')
             elif welcher_datentyp =='5':
+                dattype = 'datetime'
                 anz_col = len(df.columns)
         
                 list_columns = []
@@ -1786,4 +2023,13 @@ def change_datatype(df):
                 break
                 #print('next steps')
     
-        
+    ################################################################################    
+    ###Log-file
+    fname = 'Change dataype'
+    
+    
+    
+    
+    log = fname + '\n' + 'Change datatype of column: ' +  list_columns[int(nummer_spalte)] + ' to datatype: ' + dattype  
+    session_write(log)
+            

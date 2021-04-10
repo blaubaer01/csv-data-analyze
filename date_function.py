@@ -7,7 +7,7 @@ Created on Fri Jun 12 07:23:07 2020
 """
 
 import datetime as dt
-from mft import clear, save_CSV_new, print_table
+from mft import clear, save_CSV_new, print_table, session_write
 import pandas as pd
 
 F1 = '\U0001f522 ?'
@@ -15,6 +15,8 @@ F2 = '\U0001f521 ?'
 
 def convert_datetime(df):
     clear()
+    
+    print('Convert Datetime')
     datum = df.select_dtypes(exclude=['float', 'int'])
         
         #
@@ -79,7 +81,17 @@ def convert_datetime(df):
     input('press enter')
     
     save_CSV_new(df)
-
+    
+    ################################################################################    
+    ###Log-file
+    fname = 'Convert DateTime'
+    
+    
+    
+    
+    log = fname + '\n' + 'Create ISO Datetime Column: ' +  new_name_c + 'from column: ' + date_y  
+    session_write(log)
+            
 
 def cal_info(df):
     
@@ -167,4 +179,14 @@ def cal_info(df):
     
         input('press enter')
     
-        save_CSV_new(df)    
+        save_CSV_new(df)
+        
+    ################################################################################    
+    ###Log-file
+    fname = 'Get Cal Info into Column'
+    
+    
+    
+    
+    log = fname + '\n' + 'Create Calendar Info  into Column: ' +  new_name_c + 'from column: ' + date_y  
+    session_write(log)

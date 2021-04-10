@@ -72,6 +72,17 @@ def save_CSV_new(df):
         csvfilename = input('Input only Filename ([filename].csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)
+    
+    ################################################################################
+    ###Log-file
+    fname = 'save new file'
+    fvalue = 'File Name: ' + fn
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' 
+    session_write(log)
+
         
 
 ########################################################################
@@ -83,7 +94,18 @@ def save_CSV(fn, df):
         print('save file ...', fn)
         df.to_csv(fn, sep=';', decimal=',', header =True, index=False)
         
-        
+    ################################################################################
+    ###Log-file
+    fname = 'save file'
+    fvalue = 'File Name: ' + fn
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' 
+    session_write(log)
+
+
+    
 #########################################################################
 ###calc cumsum
 #def moving_average(a, n=3) :

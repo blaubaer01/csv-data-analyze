@@ -13,7 +13,7 @@ import seaborn as sns ; sns.set()
 from scipy.stats import shapiro
 import numpy as np
 
-from mft import isfloat, truncate, clear
+from mft import isfloat, truncate, clear, session_write
 
 from tabulate import tabulate
 
@@ -72,7 +72,7 @@ def x_bar_s(df):
     
     print(list_columns_werte[int(value_column)])    
     y = list_columns_werte[int(value_column)]
-
+    y_val = list_columns_werte[int(value_column)]
     datenanz = df[list_columns_werte[int(value_column)]].count()
     
     
@@ -279,6 +279,17 @@ def x_bar_s(df):
         plt.axis('off')
         
         plt.show()
+
+################################################################################
+    ###Log-file
+    fname = 'Xbar / s Chart'
+    fvalue = 'y-Value: ' + y_val
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + eintrag_x + '\n' + eintrag_s + '\n' 
+    session_write(log)
+
     
 ###x-chart
 ################################################################################
@@ -400,6 +411,8 @@ def x_chart(df):
         print('Quantil(0.99869)', upper_q_y)
         print('Quantil(0.00135)', lower_q_y)
         
+        eintrag = 'Median: ' + str(median) + '\n' + 'Quantil(0.99869): ' + str(upper_q_y) + '\n' + 'Quantil(0.00135): ' + str(lower_q_y) + '\n'
+        
     else:
         mittelwert = mean_y
         ut3s = plus3s
@@ -408,7 +421,10 @@ def x_chart(df):
         print('mean:', mean_y )
         print('+3s:', plus3s)
         print('-3s', minus3s)
-    
+        
+        eintrag = 'Mean: ' + str(mean_y) + '\n' + '+3s: ' + str(plus3s) + '\n' + '-3s: ' + str(minus3s) + '\n'
+        
+        
     if notol =='1':
         df.plot(x, y, style='-o')
         plt.axhline(y=mittelwert,linewidth=2, color='g')
@@ -455,7 +471,17 @@ def x_chart(df):
             plt.axhline(y=lt,linewidth=2, color='red')
             
             plt.show()
-            
+    
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Xchart '
+    fvalue = 'y-Value: ' + y
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + eintrag 
+    session_write(log)
 
 def x_bar_r(df):
     
@@ -666,13 +692,13 @@ def x_bar_r(df):
         
         
         eintrag_x = 'Xbar/R Chart' + '\nXbar: ' + str(tXbar) + '\nucl: ' + str(txucl) + '\nlcl: ' + str(txlcl)
-        eintrag_s = 'rbar: ' + str(trbar) + '\nucl: ' +str(trucl) + '\nlcl: ' + str(trlcl)
+        eintrag_R = 'rbar: ' + str(trbar) + '\nucl: ' +str(trucl) + '\nlcl: ' + str(trlcl)
         
         print('statistical values of the Xbar/R Chart \n')
         print('Xbar-Chart:')
         print(eintrag_x  + '\n')
         print('R-Chart:')
-        print(eintrag_s)
+        print(eintrag_R)
         
         plt.figure(figsize=(6, 4))
         
@@ -698,12 +724,24 @@ def x_bar_r(df):
                          fontsize=12)
         plt.axis('off')
         plt.subplot(224)
-        plt.text(0.1,0.5,eintrag_s, 
+        plt.text(0.1,0.5,eintrag_R, 
                          ha='left', va='center',
                          fontsize=12)
         plt.axis('off')
         
         plt.show()
+
+
+    ################################################################################
+    ###Log-file
+    fname = 'Xbar / R Chart'
+    fvalue = 'y-Value: ' + y
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + eintrag_x + '\n' + eintrag_R + '\n' 
+    session_write(log)
+
 
 ###XmR-Chart
 ###################################################################################
@@ -791,13 +829,13 @@ def xmr_chart(df):
     
     
     eintrag_x = 'X-mR-Chart' + '\nXbar: ' + str(tXbar) + '\nucl: ' + str(txucl) + '\nlcl: ' + str(txlcl)
-    eintrag_s = 'rbar: ' + str(trbar) + '\nucl: ' +str(trucl) + '\nlcl: ' + str(trlcl)
+    eintrag_R = 'rbar: ' + str(trbar) + '\nucl: ' +str(trucl) + '\nlcl: ' + str(trlcl)
     
     print('statistical values of the X/moving R Chart \n')
     print('X-Chart:')
     print(eintrag_x  + '\n')
     print('moving R-Chart:')
-    print(eintrag_s)
+    print(eintrag_R)
     
     
     plt.figure(figsize=(6, 4))
@@ -824,11 +862,20 @@ def xmr_chart(df):
                      fontsize=12)
     plt.axis('off')
     plt.subplot(224)
-    plt.text(0.1,0.5,eintrag_s, 
+    plt.text(0.1,0.5,eintrag_R, 
                      ha='left', va='center',
                      fontsize=12)
     plt.axis('off')
     
     plt.show()
     
-        
+    ################################################################################
+    ###Log-file
+    fname = 'Xbar / R Chart'
+    fvalue = 'y-Value: ' + y
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + eintrag_x + '\n' + eintrag_R + '\n' 
+    session_write(log)
+    

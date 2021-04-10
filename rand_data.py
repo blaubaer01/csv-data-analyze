@@ -9,8 +9,7 @@ Created on Fri May 29 21:51:59 2020
 import pandas as pd
 import numpy as np
 from tableview import file_in_html
-from mft import isfloat, isinteger, clear, save_CSV_new, print_table
-from tabulate import tabulate
+from mft import isfloat, isinteger, clear, print_table, session_write
 
 F1 = '\U0001f522 ?'
 F2 = '\U0001f521 ?' 
@@ -56,6 +55,19 @@ def seq_numbers(df):
     
     
     file_in_html(fn, df)
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Create sequence number'
+    fvalue = 'Number from: ' + str(seq_nr_from) + 'Cout data: ' + str(seq_often) + '\nColumn Name:' + name_df
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' 
+    session_write(log)
+
+    
+    
     #save_CSV_new(df)
 ###############################################################################
 ###create normal distributions data
@@ -104,6 +116,15 @@ def nd_data(df):
     file_in_html(fn, df)
     #save_CSV_new(df)
 
+    ################################################################################
+    ###Log-file
+    fname = 'Create random normal distribution data'
+    fvalue = 'Mean: ' + str(mean_df) + ' standard diviantion: ' + str(std_df) + ' Count data: ' + str(seq_often)  + '\nColumn Name:' + name_df
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' 
+    session_write(log)
 
 
 
@@ -166,6 +187,19 @@ def bd_data(df):
     file_in_html(fn, df)
     #save_CSV_new(df)
 
+    ################################################################################
+    ###Log-file
+    fname = 'Create random binomial distribution data'
+    fvalue = 'p: ' + str(p_df) + ' n: ' + str(n_df) + ' Count data: ' + str(seq_often) + '\nColumn Name:' + name_df 
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' 
+    session_write(log)
+
+
+
+
 ###############################################################################
 ###create poisson data
 def pd_data(df):
@@ -210,6 +244,18 @@ def pd_data(df):
 
     file_in_html(fn, df)
     #save_CSV_new(df)
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Create random poisson distribution data'
+    fvalue = 'p: ' + str(p_df) + ' n: ' + ' Count data: ' + str(seq_often) + '\nColumn Name:' + name_df 
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' 
+    session_write(log)
+
+    
     
 ##############################################################################
 ###create logistic data
@@ -257,6 +303,18 @@ def ld_data(df):
     
     file_in_html(fn, df)
     #save_CSV_new(df)
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Create random logitic distribution data'
+    fvalue = 'location: ' + str(location_df) + ' scale: ' + str(scale_df) + ' Count data: ' + str(seq_often)  + '\nColumn Name:' + name_df
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' 
+    session_write(log)
+
+    
 ##############################################################################
 ###create shisquare data
 def shisq_data(df):
@@ -311,6 +369,21 @@ def shisq_data(df):
     
     
     file_in_html(fn, df)
+    
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Create chi square distributions data'
+    fvalue = 'df: ' + str(defr) + ' µ: ' + str(m_df) + ' k: ' + str(k_df) + 'Count of data: ' + str(n_df)  + '\nColumn Name:' + name_df 
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' 
+    session_write(log)
+
+    
+    
+    
     #save_CSV_new(df)
 ###############################################################################
 ###create pareto distribution data
@@ -366,6 +439,20 @@ def pareto_data(df):
     
     
     file_in_html(fn, df)
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Create pareto distributions data'
+    fvalue = 'a: ' + str(a_df) + ' m: ' + str(m_df) + ' k: ' + str(k_df) + 'Count of data: ' + str(n_df) + '\nColumn Name:' + name_df   
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' 
+    session_write(log)
+
+    
+    
+    
     #save_CSV_new(df)
 ###############################################################################
 ###create exponential distribution data
@@ -421,6 +508,18 @@ def exp_data(df):
     
     
     file_in_html(fn, df)
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Create exponential distributions data'
+    fvalue = 'scale: ' + str(scale_df) + ' m: ' + str(m_df) + ' k: ' + str(k_df) + 'Count of data: ' + str(n_df) + '\nColumn Name:' + name_df   
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' 
+    session_write(log)
+    
+    
     #save_CSV_new(df)
 ###############################################################################
 ###create uniform distribution data
@@ -468,6 +567,16 @@ def unif_data(df):
     
     file_in_html(fn, df)
     #save_CSV_new(df)
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Create uniform distributions data'
+    fvalue = 'high level: ' + str(high_df) + ' low level: ' + str(low_df) + 'Count of data: ' + str(seq_often) + '\nColumn Name:' + name_df   
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' 
+    session_write(log)
     
     
 ##############################################################################

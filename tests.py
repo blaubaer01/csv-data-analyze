@@ -15,7 +15,7 @@ import statsmodels.api as sm
 from statsmodels.formula.api import ols
 from outliers import smirnov_grubbs as grubbs
 #import statistics as stats
-from mft import isfloat, clear
+from mft import isfloat, clear, session_write, print_table
 from tabulate import tabulate
 
 F1 = '\U0001f522 ?'
@@ -81,6 +81,17 @@ def normality_test(df):
                      fontsize=12)
     plt.axis('off')
     plt.show() 
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Test of normal distribution'
+    fvalue = 'Value column: ' + y
+    
+    
+    log = fname + '\n' + fvalue + '\n' + eintrag + '\n'
+    session_write(log)
+
+
 
 #######################################################################
 ###correlation test
@@ -96,8 +107,15 @@ def correl(df):
         print(correlation_df)
     else:
         print(tabulate(correlation_df, headers='keys', tablefmt='psql'))
+        
+    ################################################################################
+    ###Log-file
+    fname = 'Test of correlation'
     
     
+    log = fname + '\n' 
+    session_write(log)
+
 #######################################################################    
 ###Grubbs outlier test
 def outliert(df):
@@ -128,6 +146,8 @@ def outliert(df):
     
     
     y = df[list_columns_werte[int(value_column)]]
+    y_val = list_columns_werte[int(value_column)]
+    
     print('Value could be outlier:',grubbs.max_test_outliers(y, alpha=0.05))
     
        
@@ -143,6 +163,17 @@ def outliert(df):
                      fontsize=12)
     plt.axis('off')
     plt.show()    
+    
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Test of Outliers'
+    fvalue = 'Value column: ' + y_val
+    
+    
+    log = fname + '\n' + fvalue + '\n' + eintrag + '\n'
+    session_write(log)
+
 
 #######################################################################
 ###f-test
@@ -179,9 +210,10 @@ def f_test(df):
     
     
     d1 = df[list_columns_werte[int(value_column_a)]]
+    d1_val = list_columns_werte[int(value_column_a)]
     
     d2 = df[list_columns_werte[int(value_column_b)]]
-    
+    d2_val = list_columns_werte[int(value_column_b)]
     
     
     f, p = spy.stats.f_oneway(d1, d2)
@@ -198,8 +230,22 @@ def f_test(df):
     alpha = 0.05
     if p > alpha:
         print('Variances should be equal (fail to reject H0)')
+        erg = 'Variances should be equal (fail to reject H0)'
     else:
         print('Variances should not be equal (reject H0)')    
+        erg = 'Variances should not be equal (reject H0)'
+    
+    eintrag = 'F-Value: ' + str(f) + ' p-Value: ' + str(p) + '\n' + erg 
+    
+    ################################################################################
+    ###Log-file
+    fname = 'f-Test'
+    fvalue = 'Column 1: ' + d1_val + ' Column 2: ' + d2_val 
+    
+    
+    log = fname + '\n' + fvalue + '\n' + eintrag
+    session_write(log)
+
 
 #######################################################################    
 ###one single t-test
@@ -237,7 +283,7 @@ def ttest_o_s(df, alpha=0.05, alternative='greater'):
     
     
     y = df[list_columns_werte[int(value_column)]]
-    
+    y_val = list_columns_werte[int(value_column)]
     try:
         t, p = spy.stats.ttest_1samp(y, float(target_value))
     
@@ -249,12 +295,28 @@ def ttest_o_s(df, alpha=0.05, alternative='greater'):
         alpha = 0.05
         if p > alpha:
             print('Means should not be different (fail to reject H0)')
+            erg = 'Means should not be different (fail to reject H0)'
+        
         else:
-            print('Means should be different (reject H0)')    
+            
+            print('Means should be different (reject H0)')
+            erg = 'Means should be different (reject H0)'
     except Exception as exception:
                 print('Wrong input (choose point-comma), please try again!')
     
-
+    
+    eintrag = 't-Value: ' + str(t) + ' p-Value: ' + str(p) + '\n' + erg 
+    
+    ################################################################################
+    ###Log-file
+    fname = 'One sample t-Test'
+    fvalue = 'Value Column: ' + y_val + ' Target-Value: ' + str(target_value)  
+    
+    
+    log = fname + '\n' + fvalue + '\n' + eintrag
+    session_write(log)
+    
+    
 #######################################################################    
 ###two sided t-test
 def ttest_t_s(df):
@@ -289,8 +351,10 @@ def ttest_t_s(df):
             break  
         
     a = df[list_columns_werte[int(value_column_a)]]
-    b = df[list_columns_werte[int(value_column_b)]]
+    a_val = list_columns_werte[int(value_column_a)]
     
+    b = df[list_columns_werte[int(value_column_b)]]
+    b_val = list_columns_werte[int(value_column_b)]
     
     
     try:
@@ -304,11 +368,25 @@ def ttest_t_s(df):
         alpha = 0.05
         if p > alpha:
             print('Means should not be different (fail to reject H0)')
+            erg = 'Means should not be different (fail to reject H0)'
         else:
-            print('Means should be different (reject H0)')    
+            print('Means should be different (reject H0)')
+            erg = 'Means should be different (reject H0)'
     except Exception as exception:
                 print('Wrong input (choose point-comma), please try again!')
                 
+    eintrag = 't-Value: ' + str(t) + ' p-Value: ' + str(p) + '\n' + erg
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Two sample t-Test'
+    fvalue = 'Value Column 1: ' + a_val + 'Value Column 2: ' + b_val 
+    
+    
+    log = fname + '\n' + fvalue + '\n' + eintrag
+    session_write(log)
+    
+    
     
     
 #######################################################################                
@@ -345,7 +423,9 @@ def ttest_i(df):
             break  
     
     a = df[list_columns_werte[int(value_column_a)]]
+    a_val = list_columns_werte[int(value_column_a)]
     b = df[list_columns_werte[int(value_column_b)]]
+    b_val = list_columns_werte[int(value_column_b)]
     
     
     try:
@@ -360,12 +440,24 @@ def ttest_i(df):
         
         if p > alpha:
             print('Means should not be different (fail to reject H0)')
+            erg = 'Means should not be different (fail to reject H0)'
         else:
-            print('Means should be different (reject H0)')    
+            print('Means should be different (reject H0)')
+            erg = 'Means should be different (reject H0)'
     except Exception as exception:
                 print('Wrong input, please try again!')
 
     
+    eintrag = 't-Value: ' + str(t) + ' p-Value: ' + str(p) + '\n' + erg
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Indipendent sample t-Test'
+    fvalue = 'Value Column 1: ' + a_val + 'Value Column 2: ' + b_val 
+    
+    
+    log = fname + '\n' + fvalue + '\n' + eintrag
+    session_write(log)
 
 
 #######################################################################
@@ -401,7 +493,9 @@ def mediantest(df):
             break  
         
     a = df[list_columns_werte[int(value_column_a)]]
+    a_val = list_columns_werte[int(value_column_a)]
     b = df[list_columns_werte[int(value_column_b)]]
+    b_val = list_columns_werte[int(value_column_b)]
     
     med1=a.median()
     med2=b.median()
@@ -426,11 +520,26 @@ def mediantest(df):
         alpha = 0.05
         if p > alpha:
             print('Medians should not be different (fail to reject H0)')
+            erg = 'Medians should not be different (fail to reject H0)'
         else:
-            print('Medians should be different (reject H0)')    
+            print('Medians should be different (reject H0)')
+            erg = 'Medians should be different (reject H0)'
     except Exception as exception:
                 print('Wrong input (choose point-comma), please try again!')
                 
+
+    eintrag = 'median column 1: ' + str(med1) + ' median column 2: ' + str(med2) + '\n' + 'Difference: ' + str(diff)
+    eintrag2 = 'Stat-Value: ' + str(stat) + '\n' + 'p-Value: ' + str(p) + '\n' + erg
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Median-Test'
+    fvalue = 'Value Column 1: ' + a_val + 'Value Column 2: ' + b_val 
+    
+    
+    log = fname + '\n' + fvalue + '\n' + eintrag + '\n' + eintrag2
+    session_write(log)
+
 
 #######################################################################    
 ###One way ANOVA    
@@ -487,7 +596,24 @@ def anova_o_w (df):
                 
     aov_table = sm.stats.anova_lm(mod, typ=2)
     print('one way ANOVA Result:' )
-    print (aov_table)
+    
+    
+    print_table(aov_table)
+    view1 = tabulate(aov_table, headers='keys', tablefmt='psql')
+    
+    
+    ################################################################################
+    ###Log-file
+    fname = 'One way ANOVA'
+    fvalue = 'Value Column: ' + y + 'Category Column: ' + x 
+    
+    
+    log = fname + '\n' + fvalue + '\n' + view1
+    session_write(log)
+
+    
+    
+    
     
 #######################################################################    
 ###Two way ANOVA    
@@ -564,5 +690,19 @@ def anova_t_w(df):
         
     aov_table = sm.stats.anova_lm(mod, typ=2)
     print('two way ANOVA Result:' )
-    print (aov_table)
-        
+    #print (aov_table)
+    
+    print_table(aov_table)
+    view1 = tabulate(aov_table, headers='keys', tablefmt='psql')
+    
+
+
+    ################################################################################
+    ###Log-file
+    fname = 'Two way ANOVA'
+    fvalue = 'Value Column: ' + y + 'Category Column1: ' + a + 'Category Column2: ' + b 
+    
+    
+    log = fname + '\n' + fvalue + '\n' + view1
+    session_write(log)
+    
