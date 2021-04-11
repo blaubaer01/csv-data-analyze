@@ -13,11 +13,13 @@ from charts import cond_mean_w_ob_by_1f, cond_mean_w_ob_by_2f, bivariate_plot_w_
 from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_s, ttest_t_s, ttest_i, anova_o_w, anova_t_w
 from table_calc import menu_calc
 from rand_data import menu_rd
-from tableview import fehlende_daten, datentyp, file_in_html, einzeldaten_anschauen , filter_in_html
+from tableview import fehlende_daten, datentyp, file_in_html, einzeldaten_anschauen , filter_in_html, session_show
 from mft import clear, save_CSV_new, isinteger, print_table, session_doc_anlegen, session_write, session_save_by_name
 from date_function import convert_datetime, cal_info
 import webbrowser
 from sys import platform
+from tabulate import tabulate
+
 
 #alternatively, define the source
 csv_dateien=['daten.csv']
@@ -138,6 +140,7 @@ def file_einlesen(fn):
     
     log = 'Separator: ' + fseparator + '\n' + 'Delimeter: ' + fdelimeter + '\nHeader: ' + fheader + '\n'
     session_write(log)
+    
     
     
     
@@ -268,6 +271,7 @@ def file_einlesen(fn):
             
             session_write(log)
             
+            session_show(fn='session.txt')
             
             restart = input('\nSet more filters: y/n.\n?')
             if restart.lower() != 'y':
@@ -357,6 +361,7 @@ def file_einlesen(fn):
             
     session_write(log)
 
+    session_show(fn='session.txt')
     
     print_table(df)
     file_in_html(fn, df)
@@ -385,9 +390,25 @@ def beschreibende_stat(df):
         if was_beschreibend_analysieren =='1':
             print('Simple descriptive statistics: \n')
             print(df.describe(include="all"))
+            
+            ################################################################################
+            ###Log-file
+            fname = 'Simple descriptive statistics'
+              
+            log = fname + '\n'
+            session_write(log)
+    
         elif was_beschreibend_analysieren =='2':
             print('Simple descriptive statistics: \n')
             print(df.describe())
+            
+            ################################################################################
+            ###Log-file
+            fname = 'Simple descriptive statistics'
+              
+            log = fname + '\n'
+            session_write(log)
+            
         elif was_beschreibend_analysieren =='3':
             anz_col = len(df.columns)
         
@@ -402,10 +423,35 @@ def beschreibende_stat(df):
             try:
                 print('Simple descriptive statiatics: \n')
                 print(df[list_columns[int(nummer_spalte)]].describe(include='all'))
+                col1 = list_columns[int(nummer_spalte)]
+    
+                df2 = pd.DataFrame()
+    
+                df2 = df[col1].describe()
+                
+                df2.to_csv('described.csv', sep=';', decimal=',', header =True)  
+    
+                df3=pd.read_csv('described.csv',sep=';' ,decimal=',', header=1)
+                df3.columns=['Stat Function', 'Value']
+                
+                print(tabulate(df3, headers='keys', tablefmt='psql'))
+                
+                view1 = tabulate(df3, headers='keys', tablefmt='psql')
+    
             except IndexError as error:
                 print('wrong input, please try again!')
             except Exception as exception:
                 print('wrong input, please try again!')
+            
+            
+            
+            
+            ################################################################################
+            ###Log-file
+            fname = 'Simple descriptive statistics one column'
+              
+            log = fname + '\n' + view1 + '\n'
+            session_write(log)
         
         elif was_beschreibend_analysieren =='4':
             decriptive_statistics(df)

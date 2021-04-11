@@ -11,7 +11,8 @@ import numpy as np
 
 from mft import isfloat, clear
 from tableview import file_in_html
-from mft import save_CSV_new, save_CSV
+from mft import save_CSV, session_write
+from tabulate import tabulate
 
 F1 = '\U0001f522 ?'
 F2 = '\U0001f521 ?' 
@@ -63,7 +64,19 @@ def addition_column(fn, df):
     print(df)
     file_in_html(fn, df)
     save_CSV(fn, df)  
- 
+    
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Addition of two columns into new Result column'
+    
+    
+    fvalue = 'Column1: ' + col1 + ' Column2: ' + col2 + ' Result Column: ' + name_col 
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
+
 #######################################################################
 ###addition column, value
 def addition_val(fn, df):
@@ -113,6 +126,16 @@ def addition_val(fn, df):
     file_in_html(fn, df)
     save_CSV(fn, df) 
 
+    ################################################################################
+    ###Log-file
+    fname = 'Addition of column entries plus an Input Value into new Result column'
+    
+    
+    fvalue = 'Column1: ' + col1 + ' Value Input: ' + value_col + ' Result Column: ' + name_col 
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
 
 
 
@@ -166,7 +189,16 @@ def substraction_column(fn, df):
     file_in_html(fn, df)
     save_CSV(fn, df)
 
-
+    ################################################################################
+    ###Log-file
+    fname = 'Column substraction'
+    
+    
+    fvalue = 'Column1: ' + col1 + ' Column2: ' + col2 + ' Result Column: ' + name_col 
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
 
 #######################################################################
 ###substraction column, val
@@ -217,6 +249,16 @@ def substraction_val(fn, df):
     file_in_html(fn, df)
     save_CSV(fn, df)
 
+    ################################################################################
+    ###Log-file
+    fname = 'Column substraction with value'
+    
+    
+    fvalue = 'Column1: ' + col1 + ' Value Input: ' + value_col + ' Result Column: ' + name_col 
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
 
 
 #######################################################################    
@@ -267,6 +309,17 @@ def multiplication_column(fn, df):
     print(df)
     file_in_html(fn, df)
     save_CSV(fn, df)
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Column multiplication'
+    
+    
+    fvalue = 'Column1: ' + col1 + ' Column2: ' + col2 + ' Result Column: ' + name_col 
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
 
 
 #######################################################################
@@ -319,6 +372,16 @@ def multiplication_val(fn, df):
     save_CSV(fn, df)
     
 
+    ################################################################################
+    ###Log-file
+    fname = 'Column multiplication with value'
+    
+    
+    fvalue = 'Column1: ' + col1 + ' Value Input: ' + value_col + ' Result Column: ' + name_col 
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
 
 
 
@@ -372,7 +435,21 @@ def diffision_column(fn, df):
     print(df)
     file_in_html(fn, df)
     save_CSV(fn, df)
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Column diffision'
+    
+    
+    fvalue = 'Column1: ' + col1 + ' Column2: ' + col2 + ' Result Column: ' + name_col 
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
 
+    
+    
+    
 #######################################################################
 ###diffision column, value
 def diffision_val(fn, df):
@@ -421,6 +498,17 @@ def diffision_val(fn, df):
     print(df)
     file_in_html(fn, df)
     save_CSV(fn, df)   
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Column diffision with value'
+    
+    
+    fvalue = 'Column1: ' + col1 + ' Value Input: ' + value_col + ' Result Column: ' + name_col 
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
 
 
 #######################################################################
@@ -464,7 +552,17 @@ def square_val(fn, df):
     print(df)
     file_in_html(fn, df)
     save_CSV(fn, df)      
-
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Square Column values'
+    
+    
+    fvalue = 'Column1: ' + col1 + ' Result Column: ' + name_col 
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
 
 #######################################################################
 ###square column
@@ -509,6 +607,17 @@ def take_root_val(fn, df):
     print(df)
     file_in_html(fn, df)
     save_CSV(fn, df)    
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Take root Column values'
+    
+    
+    fvalue = 'Column1: ' + col1 + ' Result Column: ' + name_col 
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
 
 
 #######################################################################
@@ -559,6 +668,8 @@ def statistic_cross_col(fn, df):
     df3=pd.read_csv('described.csv',sep=';' ,decimal=',', header=1)
     df3.columns=['Stat Function', 'Value']
     print(df3)
+    view1 = tabulate(df3, headers='keys', tablefmt='psql')
+    
     file_in_html(fn, df3)
     
     save_yes = input('Would you like to save this statistic table view as "CSV-File": \ny/n \n?')
@@ -567,8 +678,19 @@ def statistic_cross_col(fn, df):
         fn = csvfilename + '.csv'
         df2.to_csv(fn, sep=';', decimal=',', header =True)      
 
-
-
+    ################################################################################
+    ###Log-file
+    fname = 'Described Statistic cross the choosed column'
+    
+    
+    fvalue = 'Value Column: ' + col1  
+    
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + view1 + '\n'
+    session_write(log)
+    
 
 
 
@@ -597,6 +719,7 @@ def min_column(fn, df):
         print(i, werte.columns[i])
         i+=1
     
+    
 ####################################################################    
 ###2 columns    
     if count_col =='2':
@@ -617,7 +740,8 @@ def min_column(fn, df):
     
         col1 = list_columns_werte[int(value_column1)]
         col2 = list_columns_werte[int(value_column2)]
-    
+        
+        col = col1 + '; ' + col2
     
         name_col = input('New column "Name": \n?')
     
@@ -655,6 +779,8 @@ def min_column(fn, df):
         col1 = list_columns_werte[int(value_column1)]
         col2 = list_columns_werte[int(value_column2)]
         col3 = list_columns_werte[int(value_column3)]
+        
+        col = col1 + '; ' + col2 + '; ' + col3
     
         name_col = input('New column "Name": \n?')
     
@@ -700,6 +826,8 @@ def min_column(fn, df):
         col2 = list_columns_werte[int(value_column2)]
         col3 = list_columns_werte[int(value_column3)]
         col4 = list_columns_werte[int(value_column4)]
+        
+        col = col1 + '; ' + col2 + '; ' + col3 + '; ' + col4
         
         name_col = input('New column "Name": \n?')
     
@@ -754,6 +882,8 @@ def min_column(fn, df):
         col4 = list_columns_werte[int(value_column4)]
         col5 = list_columns_werte[int(value_column5)]
         
+        col = col1 + '; ' + col2 + '; ' + col3 + '; ' + col4 + '; ' + col5
+        
         name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.min, axis=1)
@@ -769,6 +899,18 @@ def min_column(fn, df):
     
     save_CSV(fn, df)
     
+    ################################################################################
+    ###Log-file
+    fname = 'MIN of columns'
+    
+    
+    fvalue = 'Value Columns: ' + col  
+    
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
 
 ######################################################################
 ###max column
@@ -793,6 +935,8 @@ def max_column(fn, df):
         print(i, werte.columns[i])
         i+=1
     
+    
+    
 ####################################################################    
 ###2 columns    
     if count_col =='2':
@@ -813,7 +957,8 @@ def max_column(fn, df):
     
         col1 = list_columns_werte[int(value_column1)]
         col2 = list_columns_werte[int(value_column2)]
-    
+        
+        col = col1 + '; ' + col2
     
         name_col = input('New column "Name": \n?')
     
@@ -852,6 +997,8 @@ def max_column(fn, df):
         col2 = list_columns_werte[int(value_column2)]
         col3 = list_columns_werte[int(value_column3)]
     
+        col = col1 + '; ' + col2 + '; ' + col3
+        
         name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2,col3]].apply(np.max, axis=1)
@@ -896,6 +1043,8 @@ def max_column(fn, df):
         col2 = list_columns_werte[int(value_column2)]
         col3 = list_columns_werte[int(value_column3)]
         col4 = list_columns_werte[int(value_column4)]
+        
+        col = col1 + '; ' + col2 + '; ' + col3 + '; ' + col4
         
         name_col = input('New column "Name": \n?')
     
@@ -950,6 +1099,8 @@ def max_column(fn, df):
         col4 = list_columns_werte[int(value_column4)]
         col5 = list_columns_werte[int(value_column5)]
         
+        col = col1 + '; ' + col2 + '; ' + col3 + '; ' + col4 + '; ' + col5
+        
         name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.max, axis=1)
@@ -964,6 +1115,19 @@ def max_column(fn, df):
     
     save_CSV(fn, df)
 
+    ################################################################################
+    ###Log-file
+    fname = 'MAX of columns'
+    
+    
+    fvalue = 'Value Columns: ' + col  
+    
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
+    
 ######################################################################
 ###mean column
 def mean_column(fn, df):
@@ -987,6 +1151,7 @@ def mean_column(fn, df):
         print(i, werte.columns[i])
         i+=1
     
+    
 ####################################################################    
 ###2 columns    
     if count_col =='2':
@@ -1008,6 +1173,7 @@ def mean_column(fn, df):
         col1 = list_columns_werte[int(value_column1)]
         col2 = list_columns_werte[int(value_column2)]
     
+        col = col1 + '; ' + col2
     
         name_col = input('New column "Name": \n?')
     
@@ -1045,6 +1211,8 @@ def mean_column(fn, df):
         col1 = list_columns_werte[int(value_column1)]
         col2 = list_columns_werte[int(value_column2)]
         col3 = list_columns_werte[int(value_column3)]
+    
+        col = col1 + '; ' + col2 + '; ' + col3
     
         name_col = input('New column "Name": \n?')
     
@@ -1090,6 +1258,8 @@ def mean_column(fn, df):
         col2 = list_columns_werte[int(value_column2)]
         col3 = list_columns_werte[int(value_column3)]
         col4 = list_columns_werte[int(value_column4)]
+        
+        col = col1 + '; ' + col2 + '; ' + col3 + '; ' + col4
         
         name_col = input('New column "Name": \n?')
     
@@ -1144,6 +1314,8 @@ def mean_column(fn, df):
         col4 = list_columns_werte[int(value_column4)]
         col5 = list_columns_werte[int(value_column5)]
         
+        col = col1 + '; ' + col2 + '; ' + col3 + '; ' + col4 + '; ' + col5
+        
         name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.mean, axis=1)
@@ -1157,6 +1329,21 @@ def mean_column(fn, df):
     
     
     save_CSV(fn, df)
+
+    ################################################################################
+    ###Log-file
+    fname = 'Mean of columns'
+    
+    
+    fvalue = 'Value Columns: ' + col  
+    
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
+    
+
 
 ######################################################################
 ###std column
@@ -1201,7 +1388,8 @@ def std_column(fn, df):
     
         col1 = list_columns_werte[int(value_column1)]
         col2 = list_columns_werte[int(value_column2)]
-    
+        
+        col = col1 + '; ' + col2
     
         name_col = input('New column "Name": \n?')
     
@@ -1239,6 +1427,8 @@ def std_column(fn, df):
         col1 = list_columns_werte[int(value_column1)]
         col2 = list_columns_werte[int(value_column2)]
         col3 = list_columns_werte[int(value_column3)]
+    
+        col = col1 + '; ' + col2 + '; ' + col3
     
         name_col = input('New column "Name": \n?')
     
@@ -1285,12 +1475,19 @@ def std_column(fn, df):
         col3 = list_columns_werte[int(value_column3)]
         col4 = list_columns_werte[int(value_column4)]
         
+        col = col1 + '; ' + col2 + '; ' + col3 + '; ' + col4
+        
+    
         name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2,col3,col4]].apply(np.std, axis=1)
     
         print(df)
         file_in_html(fn, df)
+    
+    
+    
+    
     
 ####################################################################
 ###5 columns
@@ -1338,6 +1535,8 @@ def std_column(fn, df):
         col4 = list_columns_werte[int(value_column4)]
         col5 = list_columns_werte[int(value_column5)]
         
+        col = col1 + '; ' + col2 + '; ' + col3 + '; ' + col4 + '; ' + col5
+        
         name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.std, axis=1)
@@ -1351,8 +1550,22 @@ def std_column(fn, df):
     
     
     save_CSV(fn, df)
+    
+    
 
-
+    ################################################################################
+    ###Log-file
+    fname = 'Standard deviation of columns'
+    
+    
+    fvalue = 'Value Columns: ' + col  
+    
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
+    
 ######################################################################
 ###range column
 def range_column(fn, df):
@@ -1397,6 +1610,7 @@ def range_column(fn, df):
         col1 = list_columns_werte[int(value_column1)]
         col2 = list_columns_werte[int(value_column2)]
     
+        col = col1 + '; ' + col2
     
         name_col = input('New column "Name": \n?')
     
@@ -1434,6 +1648,8 @@ def range_column(fn, df):
         col1 = list_columns_werte[int(value_column1)]
         col2 = list_columns_werte[int(value_column2)]
         col3 = list_columns_werte[int(value_column3)]
+    
+        col = col1 + '; ' + col2 + '; ' + col3
     
         name_col = input('New column "Name": \n?')
     
@@ -1479,6 +1695,8 @@ def range_column(fn, df):
         col2 = list_columns_werte[int(value_column2)]
         col3 = list_columns_werte[int(value_column3)]
         col4 = list_columns_werte[int(value_column4)]
+        
+        col = col1 + '; ' + col2 + '; ' + col3 + '; ' + col4
         
         name_col = input('New column "Name": \n?')
     
@@ -1533,6 +1751,8 @@ def range_column(fn, df):
         col4 = list_columns_werte[int(value_column4)]
         col5 = list_columns_werte[int(value_column5)]
         
+        col = col1 + '; ' + col2 + '; ' + col3 + '; ' + col4 + '; ' + col5
+        
         name_col = input('New column "Name": \n?')
     
         df[name_col] = df[[col1,col2,col3,col4,col5]].apply(np.max, axis=1)-df[[col1,col2,col3,col4,col5]].apply(np.min, axis=1)
@@ -1546,6 +1766,18 @@ def range_column(fn, df):
     
     save_CSV(fn, df)
 
+    ################################################################################
+    ###Log-file
+    fname = 'Range of columns'
+    
+    
+    fvalue = 'Value Columns: ' + col  
+    
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
     
 #####################################################################    
 ###menu calculate with columns   
@@ -1626,12 +1858,38 @@ def count__column(df, col1):
     
     print('Count:', count_c)
 
+    ################################################################################
+    ###Log-file
+    fname = 'Count values into column'
+    
+    
+    fvalue = 'Value Columns: ' + col1  
+    
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + 'Ergebnis: ' + count_c + '\n'
+    session_write(log)
+
 
 def sum__column(df, col1):
     
     sum_c = df[col1].sum()
     
     print('SUM:', sum_c)
+
+    ################################################################################
+    ###Log-file
+    fname = 'Sum values into column'
+    
+    
+    fvalue = 'Value Columns: ' + col1  
+    
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + 'Ergebnis: ' + sum_c + '\n'
+    session_write(log)
 
 
 def mean__column(df, col1):
@@ -1640,6 +1898,22 @@ def mean__column(df, col1):
     mean_c = df[col1].mean()
     
     print('Mean:', mean_c)
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Mean values into column'
+    
+    
+    fvalue = 'Value Columns: ' + col1  
+    
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + 'Ergebnis: ' + mean_c + '\n'
+    session_write(log)
+
+    
+    
 
 def min__column(df, col1):
     
@@ -1647,12 +1921,39 @@ def min__column(df, col1):
     
     print('MIN:', min_c)
     
+    ################################################################################
+    ###Log-file
+    fname = 'Min values into column'
+    
+    
+    fvalue = 'Value Columns: ' + col1  
+    
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + 'Ergebnis: ' + min_c + '\n'
+    session_write(log)
+
+    
     
 def max__column(df, col1):
     
     max_c = df[col1].max()
     
     print('MAX:', max_c)
+
+    ################################################################################
+    ###Log-file
+    fname = 'Max values into column'
+    
+    
+    fvalue = 'Value Columns: ' + col1  
+    
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + 'Ergebnis: ' + max_c + '\n'
+    session_write(log)
 
 
 def range__column(df, col1):
@@ -1663,6 +1964,22 @@ def range__column(df, col1):
     
     
     print('Range:', range_c)
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Range values into column'
+    
+    
+    fvalue = 'Value Columns: ' + col1  
+    
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + 'Ergebnis: ' + range_c + '\n'
+    session_write(log)
+
+    
+    
 
 def std__column(df, col1):
     
@@ -1670,6 +1987,19 @@ def std__column(df, col1):
     std_c = df[col1].std()
     
     print('Standard Deviation:', std_c)
+
+    ################################################################################
+    ###Log-file
+    fname = 'Standard Deviation values into column'
+    
+    
+    fvalue = 'Value Columns: ' + col1  
+    
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + 'Ergebnis: ' + std_c + '\n'
+    session_write(log)
 
 
 
@@ -1699,6 +2029,18 @@ def quantile__column(df, col1):
     
     print(quantile_value,'%-Quantil:', quantile_c)
 
+    ################################################################################
+    ###Log-file
+    fname = 'Quantile values into column'
+    
+    
+    fvalue = 'Value Columns: ' + col1  
+    
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + 'Ergebnis: ' + quantile_c + '\n'
+    session_write(log)
 
 
 

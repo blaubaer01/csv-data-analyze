@@ -1,0 +1,17 @@
+Unnamed: 0;int64
+Prod_MA;object
+Messmaschine;int64
+Part_SNR;int64
+Part_STL;int64
+Part_Name;object
+Prod_Maschine;int64
+AVO;int64
+Mess_Prog;int64
+Merkmal;object
+UG;float64
+OG;float64
+Einheit;object
+Spindel;int64
+Messzeitpunkt;object
+Istwert;float64
+Stichprobe;int64

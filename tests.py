@@ -54,7 +54,7 @@ def normality_test(df):
         
         
     y = df[list_columns_werte[int(value_column)]]
-    
+    y_val = list_columns_werte[int(value_column)]
     
     stat, p = shapiro(y)
     
@@ -85,7 +85,7 @@ def normality_test(df):
     ################################################################################
     ###Log-file
     fname = 'Test of normal distribution'
-    fvalue = 'Value column: ' + y
+    fvalue = 'Value column: ' + y_val
     
     
     log = fname + '\n' + fvalue + '\n' + eintrag + '\n'
@@ -112,8 +112,9 @@ def correl(df):
     ###Log-file
     fname = 'Test of correlation'
     
+    view = tabulate(correlation_df, headers='keys', tablefmt='psql')
     
-    log = fname + '\n' 
+    log = fname + '\n' + view + '\n'
     session_write(log)
 
 #######################################################################    

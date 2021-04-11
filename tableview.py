@@ -7,8 +7,9 @@ Created on Sat Jun  6 17:51:24 2020
 """
 import pandas as pd
 import webbrowser
-from mft import clear
+from mft import clear, session_write, print_table
 from sys import platform
+from tabulate import tabulate
 
 F1 = '\U0001f522 ?'
 F2 = '\U0001f521 ?' 
@@ -23,6 +24,21 @@ def fehlende_daten(df):
     clear()
     print('Checking for missing data gave the following result:\n')
     print(df.isnull().sum())
+    df2 = df.isnull().sum()
+    fn = 'missing.csv'
+    df2.to_csv(fn, sep=';', decimal=',')
+    
+    df3 = pd.read_csv(fn, sep=';' , decimal=',', header=0)
+    ################################################################################
+    ###Log-file
+    fname = 'Show missing data in dataframe'
+    
+    
+    fvalue = tabulate(df3, headers='keys', tablefmt='psql')
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
     
     
 
@@ -32,6 +48,22 @@ def datentyp(df):
     clear()
     print('Overview of data formats:\n')
     print(df.dtypes)
+    
+    df2 = df.dtypes
+    fn = 'datatype.csv'
+    df2.to_csv(fn, sep=';', decimal=',')
+    
+    df3 = pd.read_csv(fn, sep=';' , decimal=',', header=0)
+    ################################################################################
+    ###Log-file
+    fname = 'Show Datatype into dataframe'
+    
+    
+    fvalue = tabulate(df3, headers='keys', tablefmt='psql')
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
 
 ######################################################################
 ###show DataFrame in browser    
@@ -69,6 +101,19 @@ def file_in_html(fn, df):
         elif platform == "win32":
             webbrowser.open_new_tab(url)
     
+    ################################################################################
+    ###Log-file
+    fname = 'Show Dataframe into HTML-File'
+    
+    
+    fvalue = 'Filename:' + fn + '\n' + 'HTML-Filename: myhtml.html'
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
+
+    
+    
 
 ###show DataFrame in browser    
 def filter_in_html(df_filter):
@@ -100,7 +145,17 @@ def filter_in_html(df_filter):
         webbrowser.open_new_tab(url)
     
     
-   
+   ################################################################################
+    ###Log-file
+    fname = 'Show Filter from column into HTML-File'
+    
+    
+    fvalue = 'Filter:' + '\n' + 'HTML-Filename from Filters: myfilter.html'
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
+
 
 
 
@@ -126,6 +181,15 @@ def ind_trip_data(df):
             break
         if end_data.lower() == 'n':
             break
+    ################################################################################
+    ###Log-file
+    fname = 'Function show 5 Data -Rows'
+    
+    
+    
+    
+    log = fname + '\n' 
+    session_write(log)
 
 #######################################################################        
 ###Look at header and first data
@@ -133,6 +197,17 @@ def first_row(df):
     clear()
     print('first row view')
     print(df.iloc[0,:])
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Function: show first row'
+    
+    
+    
+    
+    log = fname + '\n' 
+    session_write(log)
+
     
 #######################################################################
 ###View individual data
@@ -145,3 +220,30 @@ def einzeldaten_anschauen(df):
     else:
         print('wrong input, please try again!')
         #einzeldaten_anschauen(df)
+
+
+def session_show(fn):
+    
+    fn = 'session.txt'
+    
+    
+    show_in_browser = input('Would you like to show Session-file into browser? y/n \n?')
+    if show_in_browser.lower() != 'y':
+        print('show no session windows')
+    else:
+        
+        url = fn
+        
+        if platform == "linux" or platform == "linux2":
+            webbrowser.open_new_tab(url)
+        elif platform == "darwin":
+            file_location = "file:///" + url
+            webbrowser.open_new_tab(file_location)
+        elif platform == "win32":
+            webbrowser.open_new_tab(url)
+
+
+    
+    
+    
+    

@@ -1,19 +1,45 @@
-2021-04-10
-open file name: 2ways_ANOVA.csv
+2021-04-11
+##################################################
+open file name: production.csv
 
-Separator: \s+
+##################################################
+Separator: ;
 Delimeter: ,
 Header: with header
 
-Save file as: cda_2ways_ANOVA.csv
+##################################################
+Save file as: cda_production.csv
 
-Two way ANOVA
-Value Column: WeightCategory Column1: pHCategory Column2: Calluna
-+------------------+----------+------+-----------+---------------+
-|                  |   sum_sq |   df |         F |        PR(>F) |
-|------------------+----------+------+-----------+---------------|
-| C(pH)            |  19.98   |    1 |  28.1792  |   7.06502e-05 |
-| C(Calluna)       |  10.2102 |    1 |  14.4001  |   0.00159024  |
-| C(pH):C(Calluna) |   5.3976 |    1 |   7.61261 |   0.0139703   |
-| Residual         |  11.3446 |   16 | nan       | nan           |
-+------------------+----------+------+-----------+---------------+
+##################################################
+Show Dataframe into HTML-File
+Filename:cda_production.csv
+HTML-Filename: myhtml.html
+
+##################################################
+Change dataype
+Change datatype of column: none to datatype: none
+##################################################
+Show Dataframe into HTML-File
+Filename:cda_production.csv
+HTML-Filename: myhtml.html
+
+##################################################
+save file
+File Name: cda_production.csv
+
+##################################################
+Create column with random data normal distribution
+Column name dd
+Mean : 12.0Standarddeviation: 0.1 count rows: 24
+
+##################################################
+Change dataype
+Change datatype of column: none to datatype: none
+##################################################
+save file
+File Name: cda_production.csv
+
+##################################################
+Rename column
+Rename column: Prod_MAInto column: pro2
+Save file as: cda_production.csv

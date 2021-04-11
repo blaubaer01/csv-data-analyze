@@ -72,6 +72,8 @@ def save_CSV_new(df):
         csvfilename = input('Input only Filename ([filename].csv will save automaticly) \n?')
         fn = csvfilename + '.csv'
         df.to_csv(fn, sep=';', decimal=',', header =True)
+    else:
+        fn = 'none'
     
     ################################################################################
     ###Log-file
@@ -150,7 +152,9 @@ def session_write(log):
     
     f = open(fn, "a", errors='ignore')
     
-    f.write( log + "\n" )
+    btw = ('#'*50)
+    
+    f.write( btw + '\n' + log + "\n" )
     f.close()
     
     

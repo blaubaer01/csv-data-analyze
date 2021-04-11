@@ -769,7 +769,7 @@ def nv_add(fn, df):
 ###Log-file
     fname = 'Create column with random data normal distribution'
     fvalue = 'Column name ' + name_df
-    fbygroup = 'Mean : ' + mean_df + 'Standarddeviation: ' + std_df + ' count rows: ' + seq_count
+    fbygroup = 'Mean : ' + str(mean_df) + 'Standarddeviation: ' + str(std_df) + ' count rows: ' + str(seq_count)
     
     
     log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
@@ -828,7 +828,7 @@ def add_bd_data(fn, df):
 ###Log-file
     fname = 'Create column with random binomial distribution'
     fvalue = 'Column name ' + name_df
-    fbygroup = 'p : ' + p_df + 'n: ' + n_df + ' count rows: ' + seq_count
+    fbygroup = 'p : ' + str(p_df) + 'n: ' + str(n_df) + ' count rows: ' + str(seq_count)
     
     
     log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
@@ -877,7 +877,7 @@ def add_pd_data(fn, df):
 ###Log-file
     fname = 'Create column with random data poisson distribution'
     fvalue = 'Column name ' + name_df
-    fbygroup = 'p : ' + p_df + ' count rows: ' + seq_count
+    fbygroup = 'p : ' + str(p_df) + ' count rows: ' + str(seq_count)
     
     
     log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
@@ -929,7 +929,7 @@ def add_ld_data(fn, df):
 ###Log-file
     fname = 'Create column with random data logistic distribution'
     fvalue = 'Column name ' + name_df
-    fbygroup = 'Location : ' + location_df + 'scale: ' + scale_df + ' count rows: ' + seq_count
+    fbygroup = 'Location : ' + str(location_df) + 'scale: ' + str(scale_df) + ' count rows: ' + str(seq_count)
     
     
     log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
@@ -1917,6 +1917,9 @@ def delete_column(fn, df):
 #####change datatype
 def change_datatype(df):
     
+    dattype = 'none'
+    out_datatype = 'none'
+
     
     print('Overview of data formats:\n')
     print(df.dtypes)
@@ -1942,10 +1945,15 @@ def change_datatype(df):
                     list_columns.append(datent.columns[i])
                     print(i, datent.columns[i])
                     i+=1
-            
+                
+                
+                          
                 nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n?')
                 
                 df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype(float)
+                
+                out_datatype = list_columns[int(nummer_spalte)]
+                
             elif welcher_datentyp =='2':
                 dattype = 'integer'
                 datent=df.select_dtypes(include=['float', 'object'])
@@ -1962,6 +1970,7 @@ def change_datatype(df):
                 nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n?')
                 try:
                     df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype(int)
+                    out_datatype = list_columns[int(nummer_spalte)]
                 except Exception as exception:
                     print('Convert data not possible!')    
                     
@@ -1978,6 +1987,7 @@ def change_datatype(df):
                     i+=1
             
                 nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n?')
+                out_datatype = list_columns[int(nummer_spalte)]
                 df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype(str)
             
             elif welcher_datentyp =='4':
@@ -1994,6 +2004,7 @@ def change_datatype(df):
             
                 nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n?')
                 df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype('category')
+                out_datatype = list_columns[int(nummer_spalte)]
             elif welcher_datentyp =='5':
                 dattype = 'datetime'
                 anz_col = len(df.columns)
@@ -2009,11 +2020,14 @@ def change_datatype(df):
                 nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n?')
                 try:
                     df[list_columns[int(nummer_spalte)]] = df[list_columns[int(nummer_spalte)]].astype('datetime64[ns]')
+                    out_datatype = list_columns[int(nummer_spalte)]
                 except Exception as exception:
                     print('Convert data not possible!')
             else:
                 print('wrong input, please try again')
-            
+                dattype = 'none'
+                out_datatype = 'none'
+                
             
             clear()
             print('Overview of data formats:\n')
@@ -2030,6 +2044,6 @@ def change_datatype(df):
     
     
     
-    log = fname + '\n' + 'Change datatype of column: ' +  list_columns[int(nummer_spalte)] + ' to datatype: ' + dattype  
+    log = fname + '\n' + 'Change datatype of column: ' +  out_datatype + ' to datatype: ' + dattype  
     session_write(log)
             
