@@ -1,29 +1,168 @@
 2021-04-12
 ##################################################
-open file name: biostats.csv
+open file name: timestamp2.csv
 
 ##################################################
-Separator: ,
-Delimeter: .
+Separator: ;
+Delimeter: ,
 Header: with header
 
 ##################################################
-Save file as: cda_biostats.csv
+Save file as: cda_timestamp2.csv
 
 ##################################################
 Show Dataframe into HTML-File
-Filename:cda_biostats.csv
+Filename:cda_timestamp2.csv
 HTML-Filename: myhtml.html
 
 ##################################################
 Change dataype
 Change datatype of column: none to datatype: none
 ##################################################
-Linear regression
-y-Value:  "Height (in)" x-Value:  "Weight (lbs)"
-rsquared: 0.7619625647134505
-regression coefficients: const              49.040816
- "Weight (lbs)"     0.136412
-dtype: float64
-Test of normality residuals
-p-Value: 0.7750982046127319
+Get Cal Info into Column
+Create Calendar Info  into Column: nonefrom column: none
+##################################################
+Change dataype
+Change datatype of column: none to datatype: none
+##################################################
+save new file
+File Name: none
+
+##################################################
+Convert DateTime
+Create ISO Datetime Column: newfrom column: datum1
+##################################################
+Change dataype
+Change datatype of column: none to datatype: none
+##################################################
+Get Cal Info into Column
+Create Calendar Info  into Column: nonefrom column: none
+##################################################
+Change dataype
+Change datatype of column: ISO-date to datatype: datetime
+##################################################
+save new file
+File Name: none
+
+##################################################
+Get Cal Info into Column
+Create Calendar Info  into Column: dgfrom column: ISO-date
+##################################################
+Change dataype
+Change datatype of column: none to datatype: none
+##################################################
+save file
+File Name: cda_timestamp2.csv
+
+##################################################
+Delete first row
+Save file as: cda_timestamp2.csv
+##################################################
+Change dataype
+Change datatype of column: none to datatype: none
+##################################################
+save file
+File Name: cda_timestamp2.csv
+
+##################################################
+Rename column
+Rename column: datum1Into column: fsd
+Save file as: cda_timestamp2.csv
+##################################################
+Change dataype
+Change datatype of column: none to datatype: none
+##################################################
+save new file
+File Name: sdfsf.csv
+
+##################################################
+Change dataype
+Change datatype of column: none to datatype: none
+##################################################
+save file
+File Name: cda_timestamp2.csv
+
+##################################################
+Combine columns
+First Column : datum1Second Column: ISO-date
+Save file as: cda_timestamp2.csv
+##################################################
+Change dataype
+Change datatype of column: none to datatype: none
+##################################################
+save file
+File Name: cda_timestamp2.csv
+
+##################################################
+Delete column
+Delete Column : Datum4
+Save file as: cda_timestamp2.csv
+##################################################
+Change dataype
+Change datatype of column: none to datatype: none
+##################################################
+Show Dataframe into HTML-File
+Filename:cda_timestamp2.csv
+HTML-Filename: myhtml.html
+
+##################################################
+save file
+File Name: cda_timestamp2.csv
+
+##################################################
+Create column with random data poisson distribution
+Column name ssd
+p : 1.0 count rows: 5
+
+##################################################
+Change dataype
+Change datatype of column: none to datatype: none
+##################################################
+Show Dataframe into HTML-File
+Filename:cda_timestamp2.csv
+HTML-Filename: myhtml.html
+
+##################################################
+save file
+File Name: cda_timestamp2.csv
+
+##################################################
+Create column with random data normal distribution
+Column name dasda
+Mean : 10.0Standarddeviation: 0.3 count rows: 5
+
+##################################################
+Change dataype
+Change datatype of column: none to datatype: none
+##################################################
+Change dataype
+Change datatype of column: datum1 to datatype: datetime
+##################################################
+Contingency Table by two columns
+Column 1 datum1
+Column 2: Datum 2
+Chi²: 20.0
+p-Value: 0.22022
+H0: The variables A and B are stochastically 
+independent of each other
++---------------------+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+-------+
+| datum1              |   2020/08/22 10:05:05 |   2020/08/22 10:05:06 |   2020/08/22 10:05:07 |   2020/08/22 10:05:08 |   2020/08/22 10:05:09 |   All |
+|---------------------+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+-------|
+| 2020-08-22 05:05:55 |                     1 |                     0 |                     0 |                     0 |                     0 |     1 |
+| 2020-08-22 05:05:56 |                     0 |                     1 |                     0 |                     0 |                     0 |     1 |
+| 2020-08-22 05:05:57 |                     0 |                     0 |                     1 |                     0 |                     0 |     1 |
+| 2020-08-22 05:05:58 |                     0 |                     0 |                     0 |                     1 |                     0 |     1 |
+| 2020-08-22 05:05:59 |                     0 |                     0 |                     0 |                     0 |                     1 |     1 |
+| All                 |                     1 |                     1 |                     1 |                     1 |                     1 |     5 |
++---------------------+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+-------+
++---------------------+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+-------+
+| datum1              |   2020/08/22 10:05:05 |   2020/08/22 10:05:06 |   2020/08/22 10:05:07 |   2020/08/22 10:05:08 |   2020/08/22 10:05:09 |   All |
+|---------------------+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+-------|
+| 2020-08-22 05:05:55 |                   0.2 |                   0   |                   0   |                   0   |                   0   |   0.2 |
+| 2020-08-22 05:05:56 |                   0   |                   0.2 |                   0   |                   0   |                   0   |   0.2 |
+| 2020-08-22 05:05:57 |                   0   |                   0   |                   0.2 |                   0   |                   0   |   0.2 |
+| 2020-08-22 05:05:58 |                   0   |                   0   |                   0   |                   0.2 |                   0   |   0.2 |
+| 2020-08-22 05:05:59 |                   0   |                   0   |                   0   |                   0   |                   0.2 |   0.2 |
+| All                 |                   0.2 |                   0.2 |                   0.2 |                   0.2 |                   0.2 |   1   |
++---------------------+-----------------------+-----------------------+-----------------------+-----------------------+-----------------------+-------+
+

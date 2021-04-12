@@ -316,7 +316,7 @@ def file_einlesen(fn):
             ###################################################################
             ###log-file
             
-            log = 'Data sortet by: ' + s_col + '; ' + asc  + '\n'
+            log = 'Data sortet by: ' + s_col + '; ' + 'Ascending: ' + asc
             
             session_write(log)
             

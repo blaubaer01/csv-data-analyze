@@ -50,31 +50,36 @@ def convert_datetime(df):
     konv = input('Which datetime format do you have as input: \n1: yyyy/mm/dd hh:mm:ss \n2: dd/mm/yyyy hh:mm:ss \n3: dd-mm-yyyy hh:mm:ss \n4: yyyy-mm-ddThh:mm:ss \n5: dd.mm.yyyy hh:mm:ss \n6: dd.mm.yyyy hh:mm \n7: dd.mm.yyyy \n?' )
     
     #date_format = input('Which Calendarinformation do you need: \1: Month \n2: day \n3: CW \n4: Day of the year \n5: Day of the week \n6: tz_Info \n7: Day name \n8: Month name \n?' )
+    try:
+        if konv =='1':
+            df[new_name_c] = pd.to_datetime(df[date_y], format='%Y/%m/%d %H:%M:%S')
+            df[new_name_c] = df[new_name_c].astype('datetime64[ns]')
+        elif konv=='2':
+            df[new_name_c] = pd.to_datetime(df[date_y], format='%d/%m/%Y %H:%M:%S')
+            df[new_name_c] = df[new_name_c].astype('datetime64[ns]')
+        elif konv=='3':
+            df[new_name_c] = pd.to_datetime(df[date_y], format='%d-%m-%Y %H:%M:%S')
+            df[new_name_c] = df[new_name_c].astype('datetime64[ns]')
+        elif konv=='4':
+            df[new_name_c] = pd.to_datetime(df[date_y], format='%Y/%m/%dT%H:%M:%S')
+            df[new_name_c] = df[new_name_c].astype('datetime64[ns]')
+        elif konv=='5':
+            df[new_name_c] = pd.to_datetime(df[date_y], format='%d.%m.%Y %H:%M:%S')
+            df[new_name_c] = df[new_name_c].astype('datetime64[ns]')
+        elif konv=='6':
+            df[new_name_c] = pd.to_datetime(df[date_y], format='%d.%m.%Y %H:%M')
+            df[new_name_c] = df[new_name_c].astype('datetime64[ns]')
+        elif konv=='7':
+            df[new_name_c] = pd.to_datetime(df[date_y], format='%d.%m.%Y')
+            df[new_name_c] = df[new_name_c].astype('datetime64[ns]')
     
-    if konv =='1':
-        df[new_name_c] = pd.to_datetime(df[date_y], format='%Y/%m/%d %H:%M:%S')
-        df[new_name_c] = df[new_name_c].astype('datetime64[ns]')
-    elif konv=='2':
-        df[new_name_c] = pd.to_datetime(df[date_y], format='%d/%m/%Y %H:%M:%S')
-        df[new_name_c] = df[new_name_c].astype('datetime64[ns]')
-    elif konv=='3':
-        df[new_name_c] = pd.to_datetime(df[date_y], format='%d-%m-%Y %H:%M:%S')
-        df[new_name_c] = df[new_name_c].astype('datetime64[ns]')
-    elif konv=='4':
-        df[new_name_c] = pd.to_datetime(df[date_y], format='%Y/%m/%dT%H:%M:%S')
-        df[new_name_c] = df[new_name_c].astype('datetime64[ns]')
-    elif konv=='5':
-        df[new_name_c] = pd.to_datetime(df[date_y], format='%d.%m.%Y %H:%M:%S')
-        df[new_name_c] = df[new_name_c].astype('datetime64[ns]')
-    elif konv=='6':
-        df[new_name_c] = pd.to_datetime(df[date_y], format='%d.%m.%Y %H:%M')
-        df[new_name_c] = df[new_name_c].astype('datetime64[ns]')
-    elif konv=='7':
-        df[new_name_c] = pd.to_datetime(df[date_y], format='%d.%m.%Y')
-        df[new_name_c] = df[new_name_c].astype('datetime64[ns]')
+        else:
+            print('Wrong input  (choose number), please try again!')
     
-    else:
-        print('Wrong input  (choose number), please try again!')
+    except IndexError as error:
+        print('wrong Index Input, please try again!')
+    except Exception as exception:
+        print('wrong Format Input, please try again!')
     
     print_table(df)
     
@@ -98,7 +103,8 @@ def cal_info(df):
     clear()
     print('Get column with calendar informations \n')
     
-    
+    new_name_c = 'none'
+    date_y = 'none'
     datum = df.select_dtypes(include=['datetime'])
     
     

@@ -710,7 +710,7 @@ def seq_numbers_add(fn, df):
 ###Log-file
     fname = 'Create column with sequence Nr'
     fvalue = 'Column name ' + name_df
-    fbygroup = 'Number from: ' + seq_nr_from + ' count rows: ' + seq_count
+    fbygroup = 'Number from: ' + str(seq_nr_from) + ' count rows: ' + str(seq_count)
     
     
     log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
@@ -769,7 +769,7 @@ def nv_add(fn, df):
 ###Log-file
     fname = 'Create column with random data normal distribution'
     fvalue = 'Column name ' + name_df
-    fbygroup = 'Mean : ' + str(mean_df) + 'Standarddeviation: ' + str(std_df) + ' count rows: ' + str(seq_count)
+    fbygroup = 'Mean : ' + str(mean_df) + '; Standarddeviation: ' + str(std_df) + '; count rows: ' + str(seq_count)
     
     
     log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
@@ -828,7 +828,7 @@ def add_bd_data(fn, df):
 ###Log-file
     fname = 'Create column with random binomial distribution'
     fvalue = 'Column name ' + name_df
-    fbygroup = 'p : ' + str(p_df) + 'n: ' + str(n_df) + ' count rows: ' + str(seq_count)
+    fbygroup = 'p : ' + str(p_df) + '; n: ' + str(n_df) + '; count rows: ' + str(seq_count)
     
     
     log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
@@ -877,7 +877,7 @@ def add_pd_data(fn, df):
 ###Log-file
     fname = 'Create column with random data poisson distribution'
     fvalue = 'Column name ' + name_df
-    fbygroup = 'p : ' + str(p_df) + ' count rows: ' + str(seq_count)
+    fbygroup = 'p : ' + str(p_df) + '; count rows: ' + str(seq_count)
     
     
     log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
@@ -929,7 +929,7 @@ def add_ld_data(fn, df):
 ###Log-file
     fname = 'Create column with random data logistic distribution'
     fvalue = 'Column name ' + name_df
-    fbygroup = 'Location : ' + str(location_df) + 'scale: ' + str(scale_df) + ' count rows: ' + str(seq_count)
+    fbygroup = 'Location : ' + str(location_df) + '; scale: ' + str(scale_df) + '; count rows: ' + str(seq_count)
     
     
     log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
@@ -1330,7 +1330,7 @@ def replace_number_into_col(fn, df):
     
     
     
-    log = fname + '\n' + 'Replace: ' + rpl_what + '\n' + 'with: ' + rpl_with + '\n' + 'Save file as: ' + fn
+    log = fname + '\n' + 'Replace: ' + rpl_what + ' with: ' + rpl_with + '\n' + 'Save file as: ' + fn
     session_write(log)
 
 
@@ -1464,7 +1464,7 @@ def replace_character(fn, df):
     
     
     
-    log = fname + '\n' + 'Replace: ' + char_input + '\n' + 'with: ' + char_output + '\n' + 'Save file as: ' + fn
+    log = fname + '\n' + 'Replace: ' + char_input + ' with: ' + char_output + '\n' + 'Save file as: ' + fn
     session_write(log)
 
 
@@ -1584,7 +1584,7 @@ def del_defined_row(fn, df):
     
     
     
-    log = fname + '\n' + 'Drop from: ' + d_from_index + 'Till: '+  d_till_index + '\n' + 'Save file as: ' + fn
+    log = fname + '\n' + 'Drop from: ' + str(d_from_index) + ' till: '+  str(d_till_index) + '\n' + 'Save file as: ' + fn
     session_write(log)
 
 ##############################################################################
@@ -1637,7 +1637,7 @@ def del_contains_word(fn, df):
     
     
     
-    log = fname + '\n' + 'Into column: ' + col + 'Deleted Keyword: ' + del_word + '\n' + 'Save file as: ' + fn
+    log = fname + '\n' + 'Into column: ' + col + ' deleted Keyword: ' + del_word + '\n' + 'Save file as: ' + fn
     session_write(log)
 
 
@@ -1789,7 +1789,7 @@ def df_rename(fn, df):
     
     
     
-    log = fname + '\n' + 'Rename column: ' + r_col + 'Into column: ' + new_column_name + '\n' + 'Save file as: ' + fn
+    log = fname + '\n' + 'Rename column: ' + r_col + ' into column: ' + new_column_name + '\n' + 'Save file as: ' + fn
     session_write(log)
 
 
@@ -1850,7 +1850,7 @@ def combine_column(fn, df):
     
     
     
-    log = fname + '\n' + 'First Column : ' + col1 + 'Second Column: ' + col2 + '\n' + 'Save file as: ' + fn
+    log = fname + '\n' + 'First Column : ' + col1 + '; Second Column: ' + col2 + '\n' + 'Save file as: ' + fn
     session_write(log)
     
     

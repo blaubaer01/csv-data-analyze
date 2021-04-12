@@ -1,1 +1,0 @@
-2021-04-03openfilename:production.csvSeparator:;Delimeter:,Header:withheaderBar-chartwithGroupValue:Prod_MAGroupby:Messmaschine
