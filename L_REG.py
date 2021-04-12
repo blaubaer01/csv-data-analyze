@@ -12,7 +12,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.stats import shapiro
 import statsmodels.api as sm
-from mft import clear
+from mft import clear, session_write
+from tabulate import tabulate
+import pandas as pd
 
 F1 = '\U0001f522 ?'
 F2 = '\U0001f521 ?' 
@@ -68,7 +70,15 @@ def LREG(df):
     
     results = model.fit()
 
-    print(results.summary())    
+    print(results.summary())
+    
+    
+    
+    
+    
+        
+        
+    
     
     print('coefficient of determination:', results.rsquared)
     print('adjusted coefficient of determination:', results.rsquared_adj)
@@ -98,3 +108,13 @@ def LREG(df):
     plt.axis('off')
     
     plt.show()
+    
+    ################################################################################
+    ###Log-file
+    fname = 'Linear regression'
+    fvalue = 'y-Value: ' + yg + ' x-Value: ' + xg
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + text_lreg + '\n' + text_lres 
+    session_write(log)

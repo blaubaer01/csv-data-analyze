@@ -410,6 +410,8 @@ def msa_v2(df):
     mod.summary()
         
     aov_table = sm.stats.anova_lm(mod, typ=2)
+    
+    view1 = tabulate(aov_table, headers='keys', tablefmt='psql')
     print('two way ANOVA Result:' )
     print (aov_table)
     
@@ -630,4 +632,12 @@ def msa_v2(df):
     
     plt.show()
 
-        
+    ################################################################################
+    ###Log-file
+    fname = 'MSA Procedure 2'
+    fvalue = 'y-Value: ' + y_df
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + view1 + '\n' + eintrag 
+    session_write(log)

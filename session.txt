@@ -1,38 +1,29 @@
 2021-04-12
 ##################################################
-open file name: normal_dist1.csv
+open file name: biostats.csv
 
 ##################################################
-Separator: ;
-Delimeter: ,
+Separator: ,
+Delimeter: .
 Header: with header
 
 ##################################################
-Save file as: cda_normal_dist1.csv
+Save file as: cda_biostats.csv
 
 ##################################################
 Show Dataframe into HTML-File
-Filename:cda_normal_dist1.csv
+Filename:cda_biostats.csv
 HTML-Filename: myhtml.html
 
 ##################################################
 Change dataype
 Change datatype of column: none to datatype: none
 ##################################################
-MSA Procedure 1
-y-Value: nr
-MSA_V1
-Offset: 99.5
-Cg: none Cgk: none
-one single t-Test: no t-test possible, data looks not Gaussian t: none p: none
-tol(10%): UT: none LT: none
-p-Value (shapiro wilk test): 5.391695140133379e-06
-##################################################
-MSA Procedure 1
-y-Value: normal
-MSA_V1
-Offset: 0.097767
-Cg: 0.06 Cgk: -0.26
-one single t-Test: no t-test possible, data looks not Gaussian t: none p: none
-tol(10%): UT: 10.02 LT: 9.98
-p-Value (shapiro wilk test): 0.11888186633586884
+Linear regression
+y-Value:  "Height (in)" x-Value:  "Weight (lbs)"
+rsquared: 0.7619625647134505
+regression coefficients: const              49.040816
+ "Weight (lbs)"     0.136412
+dtype: float64
+Test of normality residuals
+p-Value: 0.7750982046127319
