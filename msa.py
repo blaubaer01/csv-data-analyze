@@ -14,7 +14,8 @@ import scipy as spy
 from statsmodels.formula.api import ols
 import statsmodels.api as sm
 import numpy as np
-from mft import isfloat, truncate
+from mft import isfloat, truncate, session_write
+from tabulate import tabulate
 
 #Thanks to: Michal Nowikowski <godfryd@gmail.com>
 ###got exsamples from https://github.com/mattharrison/python-spc
@@ -70,6 +71,7 @@ def msa_v1(df):
             break  
     
     y = df[list_columns_werte[int(value_column)]]
+    y_val = list_columns_werte[int(value_column)]
     
     ###get target value
     while True:
@@ -202,7 +204,7 @@ def msa_v1(df):
     
     
     ###one sample t-test
-    if p >0.5:
+    if p >0.05:
         
         t, p = spy.stats.ttest_1samp(y, float(tv))
     
@@ -253,6 +255,16 @@ def msa_v1(df):
                      fontsize=12)
     plt.axis('off')
     plt.show() 
+    
+    ################################################################################
+    ###Log-file
+    fname = 'MSA Procedure 1'
+    fvalue = 'y-Value: ' + y_val
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' + eintrag + '\np-Value (shapiro wilk test): ' + str(p)
+    session_write(log)
     
 def msa_v2(df):
     
