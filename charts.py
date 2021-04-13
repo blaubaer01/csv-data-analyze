@@ -5125,7 +5125,7 @@ def cond_mean_w_ob_by_1f (df):
                           data=df, dodge=.532, join=False, palette="dark",
                           markers="d", scale=.75, ci=None)         
         
-            plt.axvline(x=ut,linewidth=2, color='red')
+            plt.axhline(y=ut,linewidth=2, color='red')
             
             
             plt.show()
@@ -5147,7 +5147,7 @@ def cond_mean_w_ob_by_1f (df):
                           data=df, dodge=.532, join=False, palette="dark",
                           markers="d", scale=.75, ci=None)         
         
-            plt.axvline(x=lt,linewidth=2, color='red')
+            plt.axhline(y=lt,linewidth=2, color='red')
             
             
             plt.show()
@@ -5169,8 +5169,8 @@ def cond_mean_w_ob_by_1f (df):
                           data=df, dodge=.532, join=False, palette="dark",
                           markers="d", scale=.75, ci=None)         
         
-            plt.axvline(x=ut,linewidth=2, color='red')
-            plt.axvline(x=lt,linewidth=2, color='red')
+            plt.axhline(y=ut,linewidth=2, color='red')
+            plt.axhline(y=lt,linewidth=2, color='red')
             
             plt.show()
     
@@ -5350,7 +5350,7 @@ def cond_mean_w_ob_by_2f (df):
                           data=df, dodge=.532, join=False, palette="dark",
                           markers="d", scale=.75, ci=None)         
         
-            plt.axvline(x=ut,linewidth=2, color='red')
+            plt.axhline(y=ut,linewidth=2, color='red')
             
             
             # Improve the legend 
@@ -5378,7 +5378,7 @@ def cond_mean_w_ob_by_2f (df):
                           data=df, dodge=.532, join=False, palette="dark",
                           markers="d", scale=.75, ci=None)         
         
-            plt.axvline(x=lt,linewidth=2, color='red')
+            plt.axhline(y=lt,linewidth=2, color='red')
             
             # Improve the legend 
             handles, labels = ax.get_legend_handles_labels()
@@ -5405,8 +5405,8 @@ def cond_mean_w_ob_by_2f (df):
                           data=df, dodge=.532, join=False, palette="dark",
                           markers="d", scale=.75, ci=None)         
         
-            plt.axvline(x=ut,linewidth=2, color='red')
-            plt.axvline(x=lt,linewidth=2, color='red')
+            plt.axhline(y=ut,linewidth=2, color='red')
+            plt.axhline(y=lt,linewidth=2, color='red')
             
             # Improve the legend 
             handles, labels = ax.get_legend_handles_labels()
