@@ -16,8 +16,7 @@ Filename:cda_production.csv
 HTML-Filename: myhtml.html
 
 ##################################################
-Boxplot by Group
+Boxplot
 Value: Istwert
-Group by: Prod_MA
 no tolerances set
 
