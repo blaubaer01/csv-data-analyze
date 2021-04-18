@@ -113,7 +113,7 @@ def beschreibende_stat(df):
 def first_question(df):
     clear()
     while True:
-        f_question = input('What would you like to do: \n1: descriptive statistik \n2: graphical analyse \n3: statistical tests')
+        f_question = input('What would you like to do: \n1: descriptive statistik \n2: graphical analyse \n3: statistical tests \n?')
         if f_question =='1':
             beschreibende_stat(df)
             break
@@ -178,7 +178,40 @@ def one_val_no_fact(df):
 
 def one_val_one_fact(df):
     clear()
-
+    g_val_one_fact = input('Choose graph: \n1: Boxplot \n2: Violinplot \n3: Swarmplot \n4: Stripplot \n5: Pointplot \n6: Histogram \n7: Histogram stacked \n8: Distributionsplot \n9: Conditional Mean Plot \n?')
+    if g_val_one_fact == '1':
+        boxplot_groupby(df)
+    elif g_val_one_fact == '2':
+        violin_groupby(df)
+    elif g_val_one_fact == '3':
+        swarmplot1f(df)
+    elif g_val_one_fact == '4':
+        stripplot1f(df)
+    elif g_val_one_fact == '5':
+        pointplot1f(df)
+    elif g_val_one_fact == '6':
+        histogram1f(df)
+    elif g_val_one_fact == '7':
+        stacked_hist(df)
+    elif g_val_one_fact == '8':
+        distriplot1f(df)
+    elif g_val_one_fact == '9':
+        cond_mean_w_ob_by_1f(df)
+    else:
+        print('wrong input, please try again')
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+    
+    
+    
 def one_val_two_fact(df):
     clear()
 

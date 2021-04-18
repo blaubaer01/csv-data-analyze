@@ -1,4 +1,4 @@
-2021-04-17
+2021-04-18
 ##################################################
 open file name: production.csv
 
@@ -16,7 +16,8 @@ Filename:cda_production.csv
 HTML-Filename: myhtml.html
 
 ##################################################
-Swarmplot
+Boxplot by Group
 Value: Istwert
+Group by: Prod_MA
 no tolerances set
 
