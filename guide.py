@@ -200,16 +200,6 @@ def one_val_one_fact(df):
     else:
         print('wrong input, please try again')
         
-        
-        
-        
-        
-        
-        
-        
-        
-    
-    
     
     
 def one_val_two_fact(df):

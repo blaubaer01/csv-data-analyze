@@ -890,7 +890,7 @@ def mit_daten_arbeiten(fn, df):
             df=pd.read_csv(fn,sep=';' ,decimal=',', header=0, engine='python')
             print('current file name: ' , fn)
         print('\n')
-        m_d_a = input('Next Steps:\n1: Table Functions \U0001f4d3 \n2: Statistics Analyze \U0001f4c8 \np: preview table \U0001f4d3 \nd: descriptice statistics \U0001f9ee \ng: graphical analyse \U0001f4ca \nt: statistical tests \nh: use help-guide \U0001f9ee \n?')
+        m_d_a = input('Next Steps:\n1: Table Functions \U0001f4d3 \n2: Statistics Analyze \U0001f4c8 \np: preview table \U0001f4d3 \nd: descriptice statistics \U0001f9ee \ng: graphical analyse \U0001f4ca \nt: statistical tests \nh: Assistant \U0001f9ee \n?')
         if m_d_a =='1':
             clear()
             table_functions(fn, df)
@@ -909,7 +909,7 @@ def mit_daten_arbeiten(fn, df):
         elif m_d_a =='t':
             clear()
             menu_tests(df)
-        elif m_d_a =='h':
+        elif m_d_a =='a':
             clear()
             first_question(df)
         
