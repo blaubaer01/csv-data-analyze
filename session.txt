@@ -1,4 +1,4 @@
-2021-04-18
+2021-04-19
 ##################################################
 open file name: production.csv
 
@@ -16,7 +16,9 @@ Filename:cda_production.csv
 HTML-Filename: myhtml.html
 
 ##################################################
-Boxplot
-Value: Istwert
-no tolerances set
+Xchart 
+y-Value: Istwert
+Median: 6.04
+Quantil(0.99869): 10.97277961
+Quantil(0.00135): 5.94
 

@@ -17,6 +17,7 @@ from charts import scatter_w_r, scatter_joint_plot, qq_plot, groupplot_menu, par
 from charts import threeddplot, distriplot1f, histogram1f, decriptive_statistics, scatter_by_o_factor, pairplot_menu
 from charts import cond_mean_w_ob_by_1f, cond_mean_w_ob_by_2f, bivariate_plot_w_m_elements, stacked_hist
 from charts import scatterplot_w_varying_point_sizes, scatterplot_w_varying_point_sizes_with_cat
+from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 
 
 
@@ -113,7 +114,7 @@ def beschreibende_stat(df):
 def first_question(df):
     clear()
     while True:
-        f_question = input('What would you like to do: \n1: descriptive statistik \n2: graphical analyse \n3: statistical tests \n?')
+        f_question = input('What would you like to do: \n1: descriptive statistik \n2: graphical analyse \n3: Linecharts \n4: controlcharts \n5: statistical tests \n?')
         if f_question =='1':
             beschreibende_stat(df)
             break
@@ -121,8 +122,16 @@ def first_question(df):
             graph_question(df)
             break
         elif f_question =='3':
-            menu3
+            linecharts
             break
+        elif f_question =='4':
+            menu_spc_charts(df)
+            break
+        elif f_question =='5':
+            statistical_tests
+            break
+        
+        
         else:
             print('wrong input, try again')
 
@@ -204,6 +213,51 @@ def one_val_one_fact(df):
     
 def one_val_two_fact(df):
     clear()
+    g_val_two_fact = input('Choose graph: \n1: Boxplot \n2: Violinplot \n3: Swarmplot \n4: Stripplot \n5: Pointplot \n6: conditionsl mean Plot \n?')
+    if g_val_two_fact == '1':
+        boxplot2f(df)
+    elif g_val_two_fact == '2':
+        violin2f(df)
+    elif g_val_two_fact == '3':
+        swarmplot2f(df)
+    elif g_val_two_fact == '4':
+        stripplot2f(df)
+    elif g_val_two_fact == '5':
+        pointplot2f(df)
+    elif g_val_two_fact == '6':
+        cond_mean_w_ob_by_2f(df)
+    else:
+        print('wrong input, please try again')
+    
+        
+#######################################################################
+###control-charts menu        
+def menu_spc_charts(df):
+    
+    clear()
+    print('\U0001f4c8 Choose graphical view: \U0001f4c8')
+    gr_view_list= ['X-Chart','X-bar-s-Chart', 'X-bar-R-Chart', 'XmR-Chart']
+    for i in range(len(gr_view_list)):
+        print(i, gr_view_list[i])
+        i+=1
+    ausw_gr_view = input('Which Control-Chart: \n(choose a number) \n?')
+    
+    if ausw_gr_view =='0':
+        x_chart(df)
+    if ausw_gr_view =='1':
+        x_bar_s(df)
+    if ausw_gr_view =='2':
+        x_bar_r(df)
+    if ausw_gr_view =='3':
+        xmr_chart(df)
+    
+    
+    else:
+        print('Wrong input, please try again')       
+        
+        
+        
+        
 
 def two_val_no_fact(df):
     clear()
