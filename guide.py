@@ -18,8 +18,12 @@ from charts import threeddplot, distriplot1f, histogram1f, decriptive_statistics
 from charts import cond_mean_w_ob_by_1f, cond_mean_w_ob_by_2f, bivariate_plot_w_m_elements, stacked_hist
 from charts import scatterplot_w_varying_point_sizes, scatterplot_w_varying_point_sizes_with_cat
 from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
+from charts import easy_pairplot, pairplot_hist, pairplot_dist, pairplot_1c, pairplot_1c_hist, pairplot_1c_dist
+ 
 
 
+######################################################################################################
+###descriptive Statistic
 
 def beschreibende_stat(df):
     while True:
@@ -108,7 +112,34 @@ def beschreibende_stat(df):
         restart = input('\nFurther descriptive analysis: y/n \n?')
         if restart.lower() != 'y':
             break
+
+#######################################################################
+###control-charts menu        
+def menu_spc_charts(df):
+    
+    clear()
+    print('\U0001f4c8 Choose graphical view: \U0001f4c8')
+    gr_view_list= ['X-Chart','X-bar-s-Chart', 'X-bar-R-Chart', 'XmR-Chart']
+    for i in range(len(gr_view_list)):
+        print(i, gr_view_list[i])
+        i+=1
+    ausw_gr_view = input('Which Control-Chart: \n(choose a number) \n?')
+    
+    if ausw_gr_view =='0':
+        x_chart(df)
+    if ausw_gr_view =='1':
+        x_bar_s(df)
+    if ausw_gr_view =='2':
+        x_bar_r(df)
+    if ausw_gr_view =='3':
+        xmr_chart(df)
+    
+    
+    else:
+        print('Wrong input, please try again')       
         
+        
+                
 
 
 def first_question(df):
@@ -137,7 +168,7 @@ def first_question(df):
 
 def graph_question(df):
     clear()
-    n_v_question = input('How many values: \n1: one value \n2: two values \n3: tree values \n?')
+    n_v_question = input('How many values: \n1: one value \n2: two values \n3: tree values \n4: multi values \n?')
     n_f_question = input('How many values: \n1: no factors \n2: one factor \n3: two factors \n?')
     
     if n_v_question == '1' and n_f_question == '1':
@@ -158,6 +189,13 @@ def graph_question(df):
         tree_val_one_fact(df)
     elif n_v_question == '3' and n_f_question == '3':
         tree_val_two_fact(df)
+    elif n_v_question == '4' and n_f_question == '1':
+        m_v_no_fact(df)
+    elif n_v_question == '4' and n_f_question == '2':
+        m_v_1_fact(df)
+    elif n_v_question == '4' and n_f_question == '3':
+        m_v_2_fact(df)
+    
     else:
         print('Wrong input, please try again')
 
@@ -230,53 +268,81 @@ def one_val_two_fact(df):
         print('wrong input, please try again')
     
         
-#######################################################################
-###control-charts menu        
-def menu_spc_charts(df):
-    
-    clear()
-    print('\U0001f4c8 Choose graphical view: \U0001f4c8')
-    gr_view_list= ['X-Chart','X-bar-s-Chart', 'X-bar-R-Chart', 'XmR-Chart']
-    for i in range(len(gr_view_list)):
-        print(i, gr_view_list[i])
-        i+=1
-    ausw_gr_view = input('Which Control-Chart: \n(choose a number) \n?')
-    
-    if ausw_gr_view =='0':
-        x_chart(df)
-    if ausw_gr_view =='1':
-        x_bar_s(df)
-    if ausw_gr_view =='2':
-        x_bar_r(df)
-    if ausw_gr_view =='3':
-        xmr_chart(df)
-    
-    
-    else:
-        print('Wrong input, please try again')       
-        
-        
-        
+
         
 
 def two_val_no_fact(df):
     clear()
 
+    two_v_no_f = input('Choose graph: \nRealtionship graph \n1: scatter plot \n2: scatter plot with regression line \n3: scatter plot with joinplot \n?')
+    if two_v_no_f == '1':
+        scatter(df)        
+    elif two_v_no_f == '2':
+        scatter_w_r(df)
+    elif two_v_no_f == '3':
+        scatter_joint_plot(df)
+    else:
+        print('wrong input, please try again')
+                
+    
+    
+    
 def two_val_one_fact(df):
     clear()
+    two_v_1_f = input('Choose graph: \nRealationship graph \n1: scatter plot \n?')
+    if two_v_1_f == '1':
+        scatter_by_o_factor
+    else:
+        print('wrong input, please try again')
+        
 
 def two_val_two_fact(df):
     clear()
+    print('Currently no graph with 2 values and 2 factors available!')
 
 def tree_val_no_fact(df):
     clear()
+    tree_v_n_f = input('Choose graph: \Relationship graph \n1: 3d plot \n2: pairplot \n3: pairplot with histogram \n4: pairplot with distribution plot \n?')
+    if tree_v_n_f == '1':
+        threeddplot(df)
+    elif tree_v_n_f == '2':
+        easy_pairplot(df)
+    elif tree_v_n_f == '3':
+        pairplot_hist(df)
+    elif tree_v_n_f == '4':
+        pairplot_dist(df)
+    else:
+        print('wrong input, please try again')
+
+
+
+
 
 def tree_val_one_fact(df):
     clear()
+    tree_v_1_f = input('Choose graph: \Relationship graph: \n1: pairplot \n2: pairplot with histogram \n3: pairplot with distributionplot \n?')
+    if tree_v_1_f == '1':
+        pairplot_1c(df)
+    elif tree_v_1_f == '2':
+        pairplot_1c_hist(df)
+    elif tree_v_1_f == '3':
+        pairplot_1c_dist(df)
+    else:
+        print('wrong input, please try again')
 
+
+    
+    
 def tree_val_two_fact(df):
     clear()
+    print('Currently no graph with 3 values and 2 factors available!')
 
+def m_v_no_fact(df):
+    clear()
 
+def m_v_1_fact(df):
+    clear()
 
-
+def m_v_2_fact(df):
+    clear()
+    print('Currently no graph with multible values and 2 factors available!')

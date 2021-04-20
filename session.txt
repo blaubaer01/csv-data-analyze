@@ -1,4 +1,4 @@
-2021-04-19
+2021-04-20
 ##################################################
 open file name: production.csv
 
@@ -14,11 +14,4 @@ Save file as: cda_production.csv
 Show Dataframe into HTML-File
 Filename:cda_production.csv
 HTML-Filename: myhtml.html
-
-##################################################
-Xchart 
-y-Value: Istwert
-Median: 6.04
-Quantil(0.99869): 10.97277961
-Quantil(0.00135): 5.94
 
