@@ -207,48 +207,46 @@ def file_einlesen(fn):
             
             filter_in_html(df_filter)
             
-            filter_ja = input('Set a filter: y/n \n?')
             
-            if filter_ja.lower() =='y':
-                which_filter=input('Which kind of filter: \n1: ==\n2: >=\n3: >\n4: <= \n5: <\n?')
+            which_filter=input('Which kind of filter: \n1: ==\n2: >=\n3: >\n4: <= \n5: <\n?')
+            
+            if which_filter == '1':
+                name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
+                if crit_col == 'float64':
+                    name_filter = float(name_filter)
+                if crit_col == 'int64':
+                    name_filter = int(name_filter)
                 
-                if which_filter == '1':
-                    name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
-                    if crit_col == 'float64':
-                        name_filter = float(name_filter)
-                    if crit_col == 'int64':
-                        name_filter = int(name_filter)
-                    
-                    df = df[crit.iloc[:,int(inhalte_spalte)]==name_filter]
-                elif which_filter =='2':
-                    name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
-                    if crit_col == 'float64':
-                        name_filter = float(name_filter)
-                    if crit_col == 'int64':
-                        name_filter = int(name_filter)
-                    df = df[crit.iloc[:,int(inhalte_spalte)]>=name_filter]
-                elif which_filter =='2':
-                    name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
-                    if crit_col == 'float64':
-                        name_filter = float(name_filter)
-                    if crit_col == 'int64':
-                        name_filter = int(name_filter)
-                    df = df[crit.iloc[:,int(inhalte_spalte)]>name_filter]
-                elif which_filter =='2':
-                    name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
-                    if crit_col == 'float64':
-                        name_filter = float(name_filter)
-                    if crit_col == 'int64':
-                        name_filter = int(name_filter)
-                    df = df[crit.iloc[:,int(inhalte_spalte)]<=name_filter]
-                elif which_filter =='2':
-                    name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
-                    if crit_col == 'float64':
-                        name_filter = float(name_filter)
-                    if crit_col == 'int64':
-                        name_filter = int(name_filter)
-                    df = df[crit.iloc[:,int(inhalte_spalte)]<name_filter]
-            
+                df = df[crit.iloc[:,int(inhalte_spalte)]==name_filter]
+            elif which_filter =='2':
+                name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
+                if crit_col == 'float64':
+                    name_filter = float(name_filter)
+                if crit_col == 'int64':
+                    name_filter = int(name_filter)
+                df = df[crit.iloc[:,int(inhalte_spalte)]>=name_filter]
+            elif which_filter =='3':
+                name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
+                if crit_col == 'float64':
+                    name_filter = float(name_filter)
+                if crit_col == 'int64':
+                    name_filter = int(name_filter)
+                df = df[crit.iloc[:,int(inhalte_spalte)]>name_filter]
+            elif which_filter =='4':
+                name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
+                if crit_col == 'float64':
+                    name_filter = float(name_filter)
+                if crit_col == 'int64':
+                    name_filter = int(name_filter)
+                df = df[crit.iloc[:,int(inhalte_spalte)]<=name_filter]
+            elif which_filter =='5':
+                name_filter=input('Input Name/Value of the filter criteria(Pay attention to upper and lower case): \n?')
+                if crit_col == 'float64':
+                    name_filter = float(name_filter)
+                if crit_col == 'int64':
+                    name_filter = int(name_filter)
+                df = df[crit.iloc[:,int(inhalte_spalte)]<name_filter]
+        
             
             ###########################################################################
             ###session-datei
@@ -268,11 +266,11 @@ def file_einlesen(fn):
             ###################################################################
             ###log-file
             
-            log = 'Filtertype: ' + filtertype + '; Filter Name: ' + name_filter + '\n'
+            log = 'Filtertype: ' + filtertype + '; Filter Name: ' + str(name_filter) + '\n'
             
             session_write(log)
             
-            session_show(fn='session.txt')
+            
             
             restart = input('\nSet more filters: y/n.\n?')
             if restart.lower() != 'y':

@@ -19,7 +19,7 @@ from charts import cond_mean_w_ob_by_1f, cond_mean_w_ob_by_2f, bivariate_plot_w_
 from charts import scatterplot_w_varying_point_sizes, scatterplot_w_varying_point_sizes_with_cat
 from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 from charts import easy_pairplot, pairplot_hist, pairplot_dist, pairplot_1c, pairplot_1c_hist, pairplot_1c_dist
- 
+from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_s, ttest_t_s, ttest_i, anova_o_w, anova_t_w 
 
 
 ######################################################################################################
@@ -145,7 +145,7 @@ def menu_spc_charts(df):
 def first_question(df):
     clear()
     while True:
-        f_question = input('What would you like to do: \n1: descriptive statistik \n2: graphical analyse \n3: Linecharts \n4: controlcharts \n5: statistical tests \n?')
+        f_question = input('What would you like to do: \n1: descriptive statistik \n2: graphical analyse \n3: line charts \n4: control charts \n5: statistical tests \n?')
         if f_question =='1':
             beschreibende_stat(df)
             break
@@ -153,18 +153,71 @@ def first_question(df):
             graph_question(df)
             break
         elif f_question =='3':
-            linecharts
+            line_diagram_menu(df)
             break
         elif f_question =='4':
             menu_spc_charts(df)
             break
         elif f_question =='5':
-            statistical_tests
+            statistical_tests(df)
             break
         
         
         else:
             print('wrong input, try again')
+
+
+def statistical_tests(df):
+    clear()
+    which_test = input('What would you like to know: \n1: Follow this values a normal distributions? \n2: Are there some Outliers into this values? \n3: Is there a significant difference between mean-values od two columns? \n4: Is there a relationship between columns \n5: Diffenrnces between more than 2 means (ANOVA) \n?')
+    if which_test == '1':
+        normality_test(df)
+    elif which_test == '2':
+        outliert(df)
+    elif which_test == '3':
+        ttest_menu(df)
+    elif which_test == '4':
+        correl(df)
+    elif which_test == '5':
+        ANOVA_menu(df)
+    else:
+        print('wrong input, try again')
+        
+        
+###############################################################################    
+###anova menu
+def ANOVA_menu(df):
+    clear()
+    print('ANOVA \n')
+    anova_m = input('Which kind of ANOVA: \n1: one way ANOVA \n2: two way ANOVA \n(choose number) \n?')
+    if anova_m =='1':
+        anova_o_w(df)
+    elif anova_m =='2':
+        anova_t_w(df)
+    else:
+        print('Wrong input, try again!')        
+        
+
+        
+#######################################################################
+###menu t-test
+def ttest_menu(df):
+    clear()
+    print('t-Test \n')
+    menu_ttest = input('Which kind of t-test: \n1: one sample t-Test \n2: two sample t-Test \n3: two independent samples t-Test \n4: mediantest \n(choose a number) \n?')    
+    if menu_ttest =='1':
+        ttest_o_s(df)
+    elif menu_ttest =='2':
+        ttest_t_s(df)
+    elif menu_ttest =='3':
+        ttest_i(df)
+    elif menu_ttest =='4':
+        mediantest(df)
+    else:
+        print('Wrong input, try again!')
+
+
+
 
 def graph_question(df):
     clear()
@@ -274,13 +327,15 @@ def one_val_two_fact(df):
 def two_val_no_fact(df):
     clear()
 
-    two_v_no_f = input('Choose graph: \nRealtionship graph \n1: scatter plot \n2: scatter plot with regression line \n3: scatter plot with joinplot \n?')
+    two_v_no_f = input('Choose graph: \nRealtionship graph \n1: scatter plot \n2: scatter plot with regression line \n3: scatter plot with joinplot \n4: bivariate plot with multiple elements \n?')
     if two_v_no_f == '1':
         scatter(df)        
     elif two_v_no_f == '2':
         scatter_w_r(df)
     elif two_v_no_f == '3':
         scatter_joint_plot(df)
+    elif two_v_no_f == '4':
+        bivariate_plot_w_m_elements(df)
     else:
         print('wrong input, please try again')
                 
@@ -302,7 +357,7 @@ def two_val_two_fact(df):
 
 def tree_val_no_fact(df):
     clear()
-    tree_v_n_f = input('Choose graph: \Relationship graph \n1: 3d plot \n2: pairplot \n3: pairplot with histogram \n4: pairplot with distribution plot \n?')
+    tree_v_n_f = input('Choose graph: \nRelationship graph \n1: 3d plot \n2: pairplot \n3: pairplot with histogram \n4: pairplot with distribution plot \n5: scatterplot with varying point_sizes \n?')
     if tree_v_n_f == '1':
         threeddplot(df)
     elif tree_v_n_f == '2':
@@ -311,6 +366,8 @@ def tree_val_no_fact(df):
         pairplot_hist(df)
     elif tree_v_n_f == '4':
         pairplot_dist(df)
+    elif tree_v_n_f == '5':
+        scatterplot_w_varying_point_sizes(df)
     else:
         print('wrong input, please try again')
 
@@ -320,13 +377,15 @@ def tree_val_no_fact(df):
 
 def tree_val_one_fact(df):
     clear()
-    tree_v_1_f = input('Choose graph: \Relationship graph: \n1: pairplot \n2: pairplot with histogram \n3: pairplot with distributionplot \n?')
+    tree_v_1_f = input('Choose graph: \nRelationship graph: \n1: pairplot \n2: pairplot with histogram \n3: pairplot with distributionplot \n4: scatterplot with varying point sizes with category \n?')
     if tree_v_1_f == '1':
         pairplot_1c(df)
     elif tree_v_1_f == '2':
         pairplot_1c_hist(df)
     elif tree_v_1_f == '3':
         pairplot_1c_dist(df)
+    elif tree_v_1_f == '4':
+        scatterplot_w_varying_point_sizes_with_cat(df)
     else:
         print('wrong input, please try again')
 
@@ -335,14 +394,37 @@ def tree_val_one_fact(df):
     
 def tree_val_two_fact(df):
     clear()
-    print('Currently no graph with 3 values and 2 factors available!')
+    print('Sorry, Currently no graph with 3 values and 2 factors available!')
 
 def m_v_no_fact(df):
     clear()
+    m_v_n_f = input('Choose graph: \nRelationship graph \n1: easy pairplot \n2: pairplot with histogram \n3: pairplot with distibution plot \n?')
+    if m_v_n_f == '1':
+        easy_pairplot(df)
+    elif m_v_n_f == '2':
+        pairplot_hist(df)
+    elif m_v_n_f == '3':
+        pairplot_dist(df)
+    else:
+        print('wrong input, please try again')
 
+    
+    
 def m_v_1_fact(df):
     clear()
+    m_v_1_f = input('Choose graph: \nRelationship graph: \n1: pairplot \n2: pairplot with histogram \n3: pairplot with distributionplot \n?')
+    if m_v_1_f == '1':
+        pairplot_1c(df)
+    elif m_v_1_f == '2':
+        pairplot_1c_hist(df)
+    elif m_v_1_f == '3':
+        pairplot_1c_dist(df)
+    else:
+        print('wrong input, please try again')
+
+
+
 
 def m_v_2_fact(df):
     clear()
-    print('Currently no graph with multible values and 2 factors available!')
+    print('Sorry, Currently no graph with multible values and 2 factors available!')

@@ -1,4 +1,4 @@
-2021-04-20
+2021-04-23
 ##################################################
 open file name: production.csv
 
@@ -14,4 +14,19 @@ Save file as: cda_production.csv
 Show Dataframe into HTML-File
 Filename:cda_production.csv
 HTML-Filename: myhtml.html
+
+##################################################
+Change dataype
+Change datatype of column: none to datatype: none
+##################################################
+Show Filter from column into HTML-File
+Filter:
+HTML-Filename from Filters: myfilter.html
+
+##################################################
+Filtertype: <=; Filter Name: 9.9
+
+##################################################
+save new file
+File Name: sdsdsa.csv
 
