@@ -5638,3 +5638,196 @@ def stacked_hist (df):
     
     log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + tol + '\n'
     session_write(log)
+
+
+def time_series_plot(df):
+    clear()
+    print('Time Series Plot')
+    
+    kategorie=df.select_dtypes(include=['object', 'datetime', 'int'])
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number = []
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    
+    while True:
+        value_column= input('Which value column do you want to see: \n(choose number)\n'+ F1)
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    clear()
+    #
+    anz_col_kategorie = len(kategorie.columns)
+        
+    list_columns_kategorie = []
+    list_number = []
+    i=1
+    
+    for i in range(anz_col_kategorie):
+        list_columns_kategorie.append(kategorie.columns[i])
+        list_number.append(str(i))
+        print(i, kategorie.columns[i])
+        i+=1
+    
+    
+    while True:
+        groupby_column = input('Date/Time column: \n(choose number) \n?')
+        if groupby_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+      
+    
+    y = list_columns_werte[int(value_column)]
+    x = list_columns_kategorie[int(groupby_column)]
+    
+    
+    try:
+        df[x] = df[x].astype('datetime64[ns]')
+        
+    except Exception as exception:
+        print('With the current Datatype - Convert data into DateTime Format is not possible! \nPlease use first the Convert Data Format function under the Table Functions.')
+    
+    df = df.sort_values(by=x, ascending=1)
+    
+    ###toleranzen
+    one_two_sided = input('Tolerance: \n0: no tolerance \n1: both side tolerance \n2: one side ut \n3: one side lt \n(choose number) \n?')
+    
+    notol = '0'
+    ###both side tolerance
+    if one_two_sided == '1':
+        
+        while True:
+            tol = input('upper tolerance , lower tolerance \n(choose point-comma / seperate with float-comma, example:2.2 , 1.9) \n?')
+            if ',' in tol:
+                try:
+                    ut, lt = tol.split(',')
+                    ut = float(ut)
+                    lt = float(lt)
+                    if lt > ut:
+                        print('ut<lt, wrong input!')
+                    else:                    
+                        break
+                except Exception as exception:
+                    print('Wrong input, try again!')
+            else:
+                print('wrong input, separator is missing!, please try again!')
+        
+        print(ut,lt)
+        
+     
+    ###one side tolerance ut
+    elif one_two_sided =='2':
+        
+        
+        while True:
+            ut = input('Upper tolerance: \n(choose point-comma) \n?')
+            ut = float(ut)
+            if not isfloat(ut):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                lt = 'none'
+                break
+                
+                
+
+    ###one side tolerance lt
+    elif one_two_sided =='3':
+        
+        while True:
+            lt = input('Lower tolerance: \n(choose point-comma) \n?')
+            lt = float(lt)
+            if not isfloat(lt):
+                print("target mean value is not a number with point-comma, please try again")
+            else:
+                ut = 'none'
+                break
+            
+                
+                
+    else:
+        notol = '1'
+            
+    if notol =='1':
+        
+        dots_yes = input('Graph with dots: y/n \n?')
+        if dots_yes =='y':
+            sns.lineplot(data = df, x=x, y=y, marker='o')
+        else:
+            sns.lineplot(data = df, x=x, y=y)
+        
+        
+        plt.show()
+        
+    else:
+        
+    
+        if lt =='none':
+              
+            dots_yes = input('Graph with dots: y/n \n?')
+            if dots_yes =='y':
+                
+                sns.lineplot(data = df, x=x, y=y, marker='o')
+            else:
+                sns.lineplot(data = df, x=x, y=y)
+        
+            
+            plt.axhline(y=ut,linewidth=2, color='red')
+            
+            
+            plt.show()
+            
+        elif ut=='none':
+            
+            dots_yes = input('Graph with dots: y/n \n?')
+            if dots_yes =='y':
+                sns.lineplot(data = df, x=x, y=y, marker='o')
+            else:
+                sns.lineplot(data = df, x=x, y=y)
+        
+            plt.axhline(y=lt,linewidth=2, color='red')
+            plt.show()
+        
+        
+        else:
+        
+            dots_yes = input('Graph with dots: y/n \n?')
+            if dots_yes =='y':
+                sns.lineplot(data = df, x=x, y=y, marker='o')
+            else:
+                sns.lineplot(data = df, x=x, y=y)
+        
+            plt.axhline(y=ut,linewidth=2, color='red')
+            plt.axhline(y=lt,linewidth=2, color='red')
+            
+            plt.show()
+    
+    
+    ###########################################################################
+    ###session-datei
+    
+    fname = 'Time Series Plot'
+    fvalue = 'Value: ' + y
+    fbygroup = 'Time-Axis: ' + x
+    if notol =='1':
+        tol ='no tolerances set'
+    else:
+        tol = 'Tolerance: ' + str(lt) + ';' + str(ut)
+    
+    log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + tol + '\n'
+    session_write(log)
+
+    

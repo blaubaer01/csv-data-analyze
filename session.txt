@@ -1,6 +1,6 @@
-2021-04-23
+2021-04-25
 ##################################################
-open file name: regression.csv
+open file name: production.csv
 
 ##################################################
 Separator: ;
@@ -8,10 +8,16 @@ Delimeter: ,
 Header: with header
 
 ##################################################
-Save file as: cda_regression.csv
+Save file as: cda_production.csv
 
 ##################################################
 Show Dataframe into HTML-File
-Filename:cda_regression.csv
+Filename:cda_production.csv
 HTML-Filename: myhtml.html
+
+##################################################
+Time Series Plot
+Value: Istwert
+Time-Axis: Messzeitpunkt
+Tolerance: 8.0;14.0
 
