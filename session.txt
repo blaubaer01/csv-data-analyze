@@ -19,5 +19,5 @@ HTML-Filename: myhtml.html
 Time Series Plot
 Value: Istwert
 Time-Axis: Messzeitpunkt
-Tolerance: 8.0;14.0
+no tolerances set
 

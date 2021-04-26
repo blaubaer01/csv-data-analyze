@@ -10,7 +10,7 @@ from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 from msa import msa_v1, msa_v2
 from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, line_diagram_menu, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot_menu, pareto, pareto_one_column, pointplot1f, pointplot2f, confidencelinechart, threeddplot, distriplot1f, histogram1f, decriptive_statistics, scatter_by_o_factor, pairplot_menu
 from charts import cond_mean_w_ob_by_1f, cond_mean_w_ob_by_2f, bivariate_plot_w_m_elements, stacked_hist, scatterplot_w_varying_point_sizes, scatterplot_w_varying_point_sizes_with_cat
-from charts import time_series_plot
+from charts import time_series_plot, time_s_plot_menu
 from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_s, ttest_t_s, ttest_i, anova_o_w, anova_t_w
 from table_calc import menu_calc
 from rand_data import menu_rd
@@ -642,7 +642,7 @@ def menu_graphical_analyze(df):
     elif ausw_gr_view =='12':
         pairplot_menu(df)
     elif ausw_gr_view =='13':
-        time_series_plot(df)
+        time_s_plot_menu(df)
     else:
         print('Wrong input, please try again')
 
