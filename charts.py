@@ -3620,8 +3620,8 @@ def scatter(df):
     ################################################################################
     ###Log-file
     fname = 'Scatterplot'
-    fvalue = 'y-Value: ' + y
-    fbygroup = 'x-Value: ' + x
+    fvalue = 'y-Value: ' + str(y)
+    fbygroup = 'x-Value: ' + str(x)
     
     log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
     session_write(log)
@@ -3664,9 +3664,9 @@ def scatter_w_r(df):
         
         
     y = df[list_columns_werte[int(value_column_y)]]
-    
+    y_val = list_columns_werte[int(value_column_y)]
     x = df[list_columns_werte[int(value_column_x)]]
-    
+    x_val = list_columns_werte[int(value_column_x)]
 
 
     sns.regplot(x=x, y=y, data=df);
@@ -3680,8 +3680,8 @@ def scatter_w_r(df):
     ################################################################################
     ###Log-file
     fname = 'Scatterplot'
-    fvalue = 'y-Value: ' + y
-    fbygroup = 'x-Value: ' + x
+    fvalue = 'y-Value: ' + y_val
+    fbygroup = 'x-Value: ' + x_val
     
     log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
     session_write(log)
@@ -3785,9 +3785,9 @@ def scatter_joint_plot(df):
             break  
     
     y = df[list_columns_werte[int(value_column_y)]]
-    
+    y_val = list_columns_werte[int(value_column_y)]
     x = df[list_columns_werte[int(value_column_x)]]
-    
+    x_val = list_columns_werte[int(value_column_x)]
 
 
     sns.jointplot(x=x, y=y, data=df, kind="reg");
@@ -3797,8 +3797,8 @@ def scatter_joint_plot(df):
     ################################################################################
     ###Log-file
     fname = 'Scatter-Joint-Plot'
-    fvalue = 'y-Value: ' + y
-    fbygroup = 'x-Value: ' + x
+    fvalue = 'y-Value: ' + y_val
+    fbygroup = 'x-Value: ' + x_val
     
     log = fname + '\n' + fvalue + '\n' + fbygroup + '\n'
     session_write(log)
