@@ -1,6 +1,6 @@
-2021-04-27
+2021-05-19
 ##################################################
-open file name: regression.csv
+open file name: production.csv
 
 ##################################################
 Separator: ;
@@ -8,15 +8,24 @@ Delimeter: ,
 Header: with header
 
 ##################################################
-Save file as: cda_regression.csv
+Save file as: cda_production.csv
 
 ##################################################
 Show Dataframe into HTML-File
-Filename:cda_regression.csv
+Filename:cda_production.csv
 HTML-Filename: myhtml.html
 
 ##################################################
-Scatterplot
-y-Value: value B
-x-Value: value A
+Graphical descriptive statistic
+y-Value: Istwert
+Median: 6.04
 
+Q0.998: 10.97277
+Q0.001: 5.94
+ 
+MIN: 5.94
+MAX: 11.003
+n: 24
+
+distribution should not follow normal distribution
+p-Value (shapiro wilk test): 5.225928134677815e-09

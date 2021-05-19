@@ -1932,7 +1932,7 @@ def change_datatype(df):
             
             if welcher_datentyp =='1':
                 dattype = 'float'
-                datent=df.select_dtypes(include=['int'])
+                datent=df.select_dtypes(include=['int', 'int64'])
                 anz_col = len(datent.columns)
         
                 list_columns = []

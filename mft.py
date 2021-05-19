@@ -123,8 +123,10 @@ def moving_average(x, w=8):
 def print_table(df):
     
     count_column = len(df.columns)
+    count_rows = len(df.index)
     print('columns', count_column)
-    if count_column > 13:
+    print('rows: ', count_rows)
+    if count_column > 10 or count_rows > 1000:
         print(df)
     else:
         print(tabulate(df, headers='keys', tablefmt='psql'))

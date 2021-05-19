@@ -4628,7 +4628,7 @@ def decriptive_statistics(df):
     
     clear()
     print('Descriptive Statistic \n')
-    werte = df.select_dtypes(include=['float', 'int'])
+    werte = df.select_dtypes(include=['float', 'int', 'int64'])
     
     #
     anz_col_werte = len(werte.columns)
