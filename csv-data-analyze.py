@@ -21,10 +21,15 @@ import webbrowser
 from sys import platform
 from tabulate import tabulate
 from guide import first_question
+import csv
 
 
 #alternatively, define the source
 csv_dateien=['daten.csv']
+
+
+
+
 
 
 #read all CSV datas in the root folder
@@ -47,6 +52,7 @@ def file_einlesen(fn):
     clear()
     
     session_doc_anlegen(fn)
+    
     
     f = open(fn, "r", errors='ignore')
     
