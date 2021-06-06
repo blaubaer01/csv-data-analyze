@@ -10,7 +10,7 @@ from regelkarte import x_chart, x_bar_s, x_bar_r, xmr_chart
 from msa import msa_v1, msa_v2
 from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, line_diagram_menu, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot_menu, pareto, pareto_one_column, pointplot1f, pointplot2f, confidencelinechart, threeddplot, distriplot1f, histogram1f, decriptive_statistics, scatter_by_o_factor, pairplot_menu
 from charts import cond_mean_w_ob_by_1f, cond_mean_w_ob_by_2f, bivariate_plot_w_m_elements, stacked_hist, scatterplot_w_varying_point_sizes, scatterplot_w_varying_point_sizes_with_cat
-from charts import time_series_plot, time_s_plot_menu
+from charts import time_s_plot_menu
 from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_s, ttest_t_s, ttest_i, anova_o_w, anova_t_w
 from table_calc import menu_calc
 from rand_data import menu_rd
@@ -21,7 +21,7 @@ import webbrowser
 from sys import platform
 from tabulate import tabulate
 from guide import first_question
-import csv
+
 
 
 #alternatively, define the source
@@ -947,24 +947,24 @@ def main():
     
     print("\033[1;37;40m \n")
     clear()
-    print('\U0001f994'*46)
+    print('#'*92)
     print('#                                                                                          #')
-    print('#               CSV Data Analyze-Tool V5.0 (hedgehog \U0001f994) by Ricky Helfgen                  #')
+    print('#               CSV Data Analyze-Tool V5.0 (hedgehog) by Ricky Helfgen                     #')
     print('#      This is an open source project and is subject to the guidelines of GPL V3           #')
     print('#                           Analyze CSV-Data files with the packages:                      #')
     print('#   python3, pandas, numpy, matplotlib, seaborn, statsmodels, os-sys, scipy, webbrownser,  #')
     print('#                                           tabulate                                       #')
     print('#              Download under: https://github.com/blaubaer01/csv-data-analyze              #')
     print('#   More Infos: http://www.reh-webdesign.de/csv-data-analyze/howto/csv-data-analyze.html   #')
-    print('#                                    \U0001f427 Have Fun! \U0001f427                                       #')
+    print('#                                     Have Fun!                                            #')
     print('#                                                                                          #')
-    print('#_|__________###____ _____|____###___####___#___#___###_____####___#####__####_____##______#')
+    print('#_|__________###__________|____###___####___#___#___###_____####___#####__####_____##______#')
     print('#_|________#######________|___#______#______#___#___#__#____#__#_____#____#_______#__#_____#')
     print('#_|_______#########_______|___#______####___#___#___#___#___####_____#____####___#____#____#')
     print('#_|_____#############_____|___#_________#____#_#____#__#____#__#_____#_______#____#__#_____#')
     print('#_|_#####################_|____###___####_____#_____###_____#__#_____#____####_##__##______#')
     print('#                                                                                          #')
-    print('\U0001f994'*46)
+    print('#'*92)
     print('')
     
     while True:

@@ -3153,7 +3153,7 @@ def histogram(df):
         notol = '1'
             
     if notol =='1':
-        sns.distplot(y);
+        sns.displot(y, kde=True);
 
         
         plt.show()
@@ -3163,7 +3163,7 @@ def histogram(df):
     
         if lt =='none':
               
-            sns.distplot(y);
+            sns.displot(y, kde=True);
 
             
             plt.axvline(x=ut,linewidth=2, color='red')
@@ -3173,7 +3173,7 @@ def histogram(df):
             
         elif ut=='none':
             
-            sns.distplot(y);
+            sns.displot(y, kde=True);
 
             plt.axvline(x=lt,linewidth=2, color='red')
             plt.show()
@@ -3182,7 +3182,7 @@ def histogram(df):
         else:
         
             
-            sns.distplot(y);
+            sns.displot(y, kde=True);
             plt.axvline(x=ut,linewidth=2, color='red')
             plt.axvline(x=lt,linewidth=2, color='red')
             
@@ -4686,7 +4686,7 @@ def decriptive_statistics(df):
                 
         plt.figure(figsize=(6, 4))
         plt.subplot(221) # äquivalent zu: plt.subplot(2, 2, 1)
-        sns.distplot(y);
+        sns.histplot(y, kde=True)
         plt.subplot(222)
         sns.lineplot(x=x, y=y_val, estimator=None, lw=1, marker='o', data=df)
         #df.plot(y_val)
@@ -4733,7 +4733,7 @@ def decriptive_statistics(df):
                 
         plt.figure(figsize=(6, 4))
         plt.subplot(221) # äquivalent zu: plt.subplot(2, 2, 1)
-        sns.distplot(y);
+        sns.histplot(y, kde=True)
         plt.subplot(222)
         sns.lineplot(x=x, y=y_val, estimator=None, lw=1, marker='o', data=df)
         #df.plot(y_val)
