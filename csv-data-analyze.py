@@ -21,6 +21,7 @@ import webbrowser
 from sys import platform
 from tabulate import tabulate
 from guide import first_question
+from special_control_charts import p_chart
 
 
 
@@ -588,7 +589,7 @@ def menu_spc_charts(df):
     
     clear()
     print('\U0001f4c8 Choose graphical view: \U0001f4c8')
-    gr_view_list= ['X-Chart','X-bar-s-Chart', 'X-bar-R-Chart', 'XmR-Chart']
+    gr_view_list= ['X-Chart','X-bar-s-Chart', 'X-bar-R-Chart', 'XmR-Chart', 'p-chart']
     for i in range(len(gr_view_list)):
         print(i, gr_view_list[i])
         i+=1
@@ -602,6 +603,8 @@ def menu_spc_charts(df):
         x_bar_r(df)
     if ausw_gr_view =='3':
         xmr_chart(df)
+    if ausw_gr_view =='4':
+        p_chart(df)
     
     
     else:

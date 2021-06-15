@@ -1,32 +1,17 @@
-2021-06-06
+2021-06-15
 ##################################################
-open file name: normal_dist1.csv
+open file name: scrap_rate.csv
 
 ##################################################
-Separator: ;
-Delimeter: ,
+Separator: ,
+Delimeter: .
 Header: with header
 
 ##################################################
-Save file as: cda_normal_dist1.csv
+Save file as: cda_scrap_rate.csv
 
 ##################################################
 Show Dataframe into HTML-File
-Filename:cda_normal_dist1.csv
+Filename:cda_scrap_rate.csv
 HTML-Filename: myhtml.html
 
-##################################################
-Graphical descriptive statistic
-y-Value: normal
-Mean: 10.09776
-s: 0.09912
- 
-+3s: 10.39514
--3s: 9.80038
- 
-MIN: 9.852695207852848
-MAX: 10.33306932312754
-n: 200
-
-distribution should follow normal distribution
-p-Value (shapiro wilk test): 0.11888186633586884
