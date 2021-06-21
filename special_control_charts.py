@@ -14,6 +14,7 @@ from mft import clear
 #import pandas as pd
 import statistics
 import numpy as np
+import math
 
 F1 = '\U0001f522 ?'
 F2 = '\U0001f521 ?' 
@@ -62,6 +63,8 @@ def p_chart(df):
     # Add 'p' column to data frame
     df['p'] = df[y]/df[z]
     
+    
+    
     # Plot p-chart
     xquer=df['p'].mean()
     ymax =df['p'].max()
@@ -70,8 +73,16 @@ def p_chart(df):
     #plt.figure(figsize=(15,7.5))
     plt.plot(df['p'], linestyle='-', marker='o', color='black')
     
-    plt.step(x=range(0,len(df['p'])), y=df['p'].mean()+3*(np.sqrt((df['p'].mean()*(1-df['p'].mean()))/df[z])), color='red', linestyle='dashed')
-    plt.step(x=range(0,len(df['p'])), y=df['p'].mean()-3*(np.sqrt((df['p'].mean()*(1-df['p'].mean()))/(df[z]))), color='red', linestyle='dashed')
+    
+    
+    #plt.step(x=range(0,len(df['p'])), y=df['p'].mean()+3*(np.sqrt((df['p'].mean()*(1-df['p'].mean()))/df[z])), color='red', linestyle='dashed')
+    
+    plt.step(x=range(0,len(df['p'])), y=xquer+3*(np.sqrt((xquer*(1-xquer))/df[z])), color='red', linestyle='dashed')    
+    plt.step(x=range(0,len(df['p'])), y=xquer-3*(np.sqrt((xquer*(1-xquer))/df[z])), color='red', linestyle='dashed')        
+    #plt.step(x=range(0,len(df['p'])), y=df['p'].mean()-3*(np.sqrt((df['p'].mean()*(1-df['p'].mean()))/df[z])), color='red', linestyle='dashed')
+    
+    
+    
     plt.axhline(xquer,linewidth=2, color='green')
     #plt.axhline(statistics.mean(df['p']), color='blue')
     plt.ylim(bottom=0, top=ylimmax)
@@ -79,20 +90,4 @@ def p_chart(df):
     plt.xlabel('Group')
     plt.ylabel('Fraction Defective')
     plt.show()
-        # Validate points out of control limits
-# =============================================================================
-#     i = 0
-#     control = True
-#     for group in df['p']:
-#         if group > (df['p'].mean()+3*(np.sqrt((df['p'].mean()*(1-df['p'].mean()))/df[z]))):
-#             control = False
-#             i +=1
-#         elif group < (df['p'].mean()-3*(np.sqrt((df['p'].mean()*(1-df['p'].mean()))/(df[z])))):
-#             control = False
-#             i += 1
-#     
-#     if control == True:
-#         print('All points within control limits.')
-#     else:
-#         print(i, 'points out of limit')
-# =============================================================================
+    
