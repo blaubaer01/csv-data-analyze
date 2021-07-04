@@ -107,12 +107,23 @@ def correl(df):
         print(correlation_df)
     else:
         print(tabulate(correlation_df, headers='keys', tablefmt='psql'))
-        
+    
+
+
+    speichern_ja = input('Save the correlation table: y/n \n?')
+    if speichern_ja.lower() =='y':
+        csvfilename = input('Input only Filename ([filename].csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        correlation_df.to_csv(fn, sep=';', decimal=',', header =True)
+    else:
+        fn = 'none'    
     ################################################################################
     ###Log-file
     fname = 'Test of correlation'
-    
-    view = tabulate(correlation_df, headers='keys', tablefmt='psql')
+    if count_column >13:
+        view = 'Correlation table set'
+    else:
+        view = tabulate(correlation_df, headers='keys', tablefmt='psql')
     
     log = fname + '\n' + view + '\n'
     session_write(log)

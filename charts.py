@@ -201,7 +201,7 @@ def liniendiagramm(df):
     
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number)\n'+ F1)
+        value_column= input('Which value column do you want to see: \n(choose number)\n')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -525,7 +525,7 @@ def liniendiagramm_w_dot_cumsum(df):
     
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number)\n'+ F1)
+        value_column= input('Which value column do you want to see: \n(choose number)\n')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -554,7 +554,7 @@ def liniendiagramm_w_dot_cumsum(df):
             break  
     
     while True:
-        nsize = input('Size of cumsum: \n'+ F1)
+        nsize = input('Size of cumsum: \n')
         if not isinteger(nsize):
             print('input is not an integer, please try again')
         else:
@@ -1031,7 +1031,7 @@ def boxplot_groupby(df):
             
     if notol =='1':
         df.boxplot(by=x, column=y)
-        
+        plt.xticks(rotation=45)    
         plt.show()
         
     else:
@@ -1050,6 +1050,7 @@ def boxplot_groupby(df):
             
             df.boxplot(by=x, column=y)
             plt.axhline(y=lt,linewidth=2, color='red')
+            plt.xticks(rotation=45)
             plt.show()
         
         
@@ -1058,7 +1059,7 @@ def boxplot_groupby(df):
             df.boxplot(by=x, column=y)
             plt.axhline(y=ut,linewidth=2, color='red')
             plt.axhline(y=lt,linewidth=2, color='red')
-            
+            plt.xticks(rotation=45)
             plt.show()
     
     
@@ -1204,7 +1205,7 @@ def boxplot2f(df):
             
     if notol =='1':
         sns.boxplot(x=x, y=y, hue=z, data=df, palette="Set3")
-        
+        plt.xticks(rotation=45)
         plt.show()
         
     else:
@@ -1215,7 +1216,7 @@ def boxplot2f(df):
             sns.boxplot(x=x, y=y, hue=z, data=df, palette="Set3")
             
             plt.axhline(y=ut,linewidth=2, color='red')
-            
+            plt.xticks(rotation=45)
             
             plt.show()
             
@@ -1223,6 +1224,7 @@ def boxplot2f(df):
             
             sns.boxplot(x=x, y=y, hue=z, data=df, palette="Set3")
             plt.axhline(y=lt,linewidth=2, color='red')
+            plt.xticks(rotation=45)
             plt.show()
         
         
@@ -1231,7 +1233,7 @@ def boxplot2f(df):
             sns.boxplot(x=x, y=y, hue=z, data=df, palette="Set3")
             plt.axhline(y=ut,linewidth=2, color='red')
             plt.axhline(y=lt,linewidth=2, color='red')
-            
+            plt.xticks(rotation=45)
             plt.show()
     
     ###########################################################################
@@ -1356,13 +1358,14 @@ def violin(df):
             
             plt.axvline(x=ut,linewidth=2, color='red')
             
-            
+            plt.xticks(rotation=45)
             plt.show()
             
         elif ut=='none':
             
             sns.violinplot(x=df[y])
             plt.axvline(x=lt,linewidth=2, color='red')
+            plt.xticks(rotation=45)
             plt.show()
         
         
@@ -1371,7 +1374,7 @@ def violin(df):
             sns.violinplot(x=df[y])
             plt.axvline(x=ut,linewidth=2, color='red')
             plt.axvline(x=lt,linewidth=2, color='red')
-            
+            plt.xticks(rotation=45)
             plt.show()
     
     
@@ -1506,7 +1509,7 @@ def violin_groupby(df):
             
     if notol =='1':
         sns.violinplot(x=x, y=y, data=df)
-        
+        plt.xticks(rotation=45)
         plt.show()
         
     else:
@@ -1517,14 +1520,14 @@ def violin_groupby(df):
             sns.violinplot(x=x, y=y, data=df)
             
             plt.axhline(y=ut,linewidth=2, color='red')
-            
-            
+            plt.xticks(rotation=45)
             plt.show()
             
         elif ut=='none':
             
             sns.violinplot(x=x, y=y, data=df)
             plt.axhline(y=lt,linewidth=2, color='red')
+            plt.xticks(rotation=45)
             plt.show()
         
         
@@ -1533,7 +1536,7 @@ def violin_groupby(df):
             sns.violinplot(x=x, y=y, data=df)
             plt.axhline(y=ut,linewidth=2, color='red')
             plt.axhline(y=lt,linewidth=2, color='red')
-            
+            plt.xticks(rotation=45)
             plt.show()
     
     ###########################################################################
@@ -1675,7 +1678,7 @@ def violin2f(df):
             
     if notol =='1':
         sns.violinplot(x=x, y=y, hue=z, data=df, palette="Set3")
-        
+        plt.xticks(rotation=45)
         plt.show()
         
     else:
@@ -1686,7 +1689,7 @@ def violin2f(df):
             sns.violinplot(x=x, y=y, hue=z, data=df, palette="Set3")
             
             plt.axhline(y=ut,linewidth=2, color='red')
-            
+            plt.xticks(rotation=45)
             
             plt.show()
             
@@ -1694,6 +1697,7 @@ def violin2f(df):
             
             sns.violinplot(x=x, y=y, hue=z, data=df, palette="Set3")
             plt.axhline(y=lt,linewidth=2, color='red')
+            plt.xticks(rotation=45)
             plt.show()
         
         
@@ -1702,7 +1706,7 @@ def violin2f(df):
             sns.violinplot(x=x, y=y, hue=z, data=df, palette="Set3")
             plt.axhline(y=ut,linewidth=2, color='red')
             plt.axhline(y=lt,linewidth=2, color='red')
-            
+            plt.xticks(rotation=45)
             plt.show()
     
     
@@ -1815,7 +1819,7 @@ def single_swarmplot(df):
             
     if notol =='1':
         sns.swarmplot(x=df[y])
-        
+        plt.xticks(rotation=45)
         plt.show()
         
     else:
@@ -1826,7 +1830,7 @@ def single_swarmplot(df):
             sns.swarmplot(x=df[y])
             
             plt.axvline(x=ut,linewidth=2, color='red')
-            
+            plt.xticks(rotation=45)
             
             plt.show()
             
@@ -1834,6 +1838,7 @@ def single_swarmplot(df):
             
             sns.swarmplot(x=df[y])
             plt.axvline(x=lt,linewidth=2, color='red')
+            plt.xticks(rotation=45)
             plt.show()
         
         
@@ -1842,7 +1847,7 @@ def single_swarmplot(df):
             sns.swarmplot(x=df[y])
             plt.axvline(x=ut,linewidth=2, color='red')
             plt.axvline(x=lt,linewidth=2, color='red')
-            
+            plt.xticks(rotation=45)
             plt.show()
     
     
@@ -1982,7 +1987,7 @@ def swarmplot1f(df):
     if notol =='1':
         # Draw a categorical scatterplot to show each observation
         sns.swarmplot(x=x, y=y, data=df)
-
+        plt.xticks(rotation=45)
         
         plt.show()
         
@@ -1994,9 +1999,8 @@ def swarmplot1f(df):
             # Draw a categorical scatterplot to show each observation
             sns.swarmplot(x=x, y=y, data=df)
 
-            
             plt.axhline(y=ut,linewidth=2, color='red')
-            
+            plt.xticks(rotation=45)
             
             plt.show()
             
@@ -2006,6 +2010,7 @@ def swarmplot1f(df):
             sns.swarmplot(x=x, y=y, data=df)
 
             plt.axhline(y=lt,linewidth=2, color='red')
+            plt.xticks(rotation=45)
             plt.show()
         
         
@@ -2015,7 +2020,7 @@ def swarmplot1f(df):
             sns.swarmplot(x=x, y=y, data=df)
             plt.axhline(y=ut,linewidth=2, color='red')
             plt.axhline(y=lt,linewidth=2, color='red')
-            
+            plt.xticks(rotation=45)
             plt.show()
     
     
@@ -2174,7 +2179,7 @@ def swarmplot2f(df):
             
             plt.axhline(y=ut,linewidth=2, color='red')
             
-            
+            plt.xticks(rotation=45)
             plt.show()
             
         elif ut=='none':
@@ -2183,6 +2188,7 @@ def swarmplot2f(df):
             sns.swarmplot(x=x, y=y, hue=z, data=df)
 
             plt.axhline(y=lt,linewidth=2, color='red')
+            plt.xticks(rotation=45)
             plt.show()
         
         
@@ -2192,7 +2198,7 @@ def swarmplot2f(df):
             sns.swarmplot(x=x, y=y, hue=z, data=df)
             plt.axhline(y=ut,linewidth=2, color='red')
             plt.axhline(y=lt,linewidth=2, color='red')
-            
+            plt.xticks(rotation=45)
             plt.show()
 
 
@@ -2477,7 +2483,7 @@ def stripplot1f(df):
         # Draw a categorical scatterplot to show each observation
         sns.stripplot(x=x, y=y, data=df)
 
-        
+        plt.xticks(rotation=45)
         plt.show()
         
     else:
@@ -2491,7 +2497,7 @@ def stripplot1f(df):
             
             plt.axhline(y=ut,linewidth=2, color='red')
             
-            
+            plt.xticks(rotation=45)
             plt.show()
             
         elif ut=='none':
@@ -2500,6 +2506,7 @@ def stripplot1f(df):
             sns.stripplot(x=x, y=y, data=df)
 
             plt.axhline(y=lt,linewidth=2, color='red')
+            plt.xticks(rotation=45)
             plt.show()
         
         
@@ -2509,7 +2516,7 @@ def stripplot1f(df):
             sns.stripplot(x=x, y=y, data=df)
             plt.axhline(y=ut,linewidth=2, color='red')
             plt.axhline(y=lt,linewidth=2, color='red')
-            
+            plt.xticks(rotation=45)
             plt.show()
     
     
@@ -2652,7 +2659,7 @@ def stripplot2f(df):
         # Draw a categorical scatterplot to show each observation
         sns.stripplot(x=x, y=y, hue=z, data=df)
 
-        
+        plt.xticks(rotation=45)
         plt.show()
         
     else:
@@ -2666,7 +2673,7 @@ def stripplot2f(df):
             
             plt.axhline(y=ut,linewidth=2, color='red')
             
-            
+            plt.xticks(rotation=45)
             plt.show()
             
         elif ut=='none':
@@ -2684,7 +2691,7 @@ def stripplot2f(df):
             sns.stripplot(x=x, y=y, hue=z, data=df)
             plt.axhline(y=ut,linewidth=2, color='red')
             plt.axhline(y=lt,linewidth=2, color='red')
-            
+            plt.xticks(rotation=45)
             plt.show()
     
     
@@ -2838,7 +2845,7 @@ def pointplot1f(df):
             
             plt.axhline(y=ut,linewidth=2, color='red')
             
-            
+            plt.xticks(rotation=45)
             plt.show()
             
         elif ut=='none':
@@ -2847,6 +2854,7 @@ def pointplot1f(df):
             sns.pointplot(x=x, y=y, data=df)
 
             plt.axhline(y=lt,linewidth=2, color='red')
+            plt.xticks(rotation=45)
             plt.show()
         
         
@@ -2856,7 +2864,7 @@ def pointplot1f(df):
             sns.pointplot(x=x, y=y, data=df)
             plt.axhline(y=ut,linewidth=2, color='red')
             plt.axhline(y=lt,linewidth=2, color='red')
-            
+            plt.xticks(rotation=45)
             plt.show()
     
     ###########################################################################
@@ -3002,7 +3010,7 @@ def pointplot2f(df):
         # Draw a categorical scatterplot to show each observation
         sns.pointplot(x=x, y=y, hue=z, data=df)
 
-        
+        plt.xticks(rotation=45)
         plt.show()
         
     else:
@@ -3016,7 +3024,7 @@ def pointplot2f(df):
             
             plt.axhline(y=ut,linewidth=2, color='red')
             
-            
+            plt.xticks(rotation=45)
             plt.show()
             
         elif ut=='none':
@@ -3025,6 +3033,8 @@ def pointplot2f(df):
             sns.pointplot(x=x, y=y, hue=z, data=df)
 
             plt.axhline(y=lt,linewidth=2, color='red')
+            
+            plt.xticks(rotation=45)
             plt.show()
         
         
@@ -3034,7 +3044,7 @@ def pointplot2f(df):
             sns.pointplot(x=x, y=y, hue=z, data=df)
             plt.axhline(y=ut,linewidth=2, color='red')
             plt.axhline(y=lt,linewidth=2, color='red')
-            
+            plt.xticks(rotation=45)
             plt.show()
     
     
@@ -5639,7 +5649,8 @@ def stacked_hist (df):
     log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + tol + '\n'
     session_write(log)
 
-
+###
+#time series plot
 def time_series_plot(df):
     clear()
     print('Time Series Plot')
@@ -5662,7 +5673,7 @@ def time_series_plot(df):
     
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number)\n'+ F1)
+        value_column= input('Which value column do you want to see: \n(choose number)\n')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:
@@ -5835,6 +5846,9 @@ def time_series_plot(df):
     log = fname + '\n' + fvalue + '\n' + fbygroup + '\n' + tol + '\n'
     session_write(log)
 
+###
+#time series plot by category
+
 def time_series_plot_cat(df):
     clear()
         
@@ -5858,7 +5872,7 @@ def time_series_plot_cat(df):
     
     
     while True:
-        value_column= input('Which value column do you want to see: \n(choose number)\n'+ F1)
+        value_column= input('Which value column do you want to see: \n(choose number)\n')
         if value_column not in list_number:
             print('wrong input, try again!')
         else:

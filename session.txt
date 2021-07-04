@@ -1,6 +1,6 @@
-2021-06-21
+2021-07-04
 ##################################################
-open file name: scrap_rate.csv
+open file name: biostats.csv
 
 ##################################################
 Separator: ,
@@ -8,10 +8,16 @@ Delimeter: .
 Header: with header
 
 ##################################################
-Save file as: cda_scrap_rate.csv
+Save file as: cda_biostats.csv
 
 ##################################################
 Show Dataframe into HTML-File
-Filename:cda_scrap_rate.csv
+Filename:cda_biostats.csv
 HTML-Filename: myhtml.html
+
+##################################################
+Boxplot by Group
+Value:  "Height (in)"
+Group by:      "Sex"
+no tolerances set
 
