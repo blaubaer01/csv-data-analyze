@@ -15,8 +15,10 @@ import statsmodels.api as sm
 from statsmodels.formula.api import ols
 from outliers import smirnov_grubbs as grubbs
 #import statistics as stats
-from mft import isfloat, clear, session_write, print_table
+from mft import isfloat, clear, session_write, print_table, save_CSV_new
 from tabulate import tabulate
+from scipy import stats
+import numpy as np
 
 F1 = '\U0001f522 ?'
 F2 = '\U0001f521 ?' 
@@ -187,6 +189,74 @@ def outliert(df):
     session_write(log)
 
 
+###############################################################################
+###delete outlier hole dataframe
+def del_outlier(df):
+    clear()
+    
+    print('Delete Outlier hole Dataframe!')
+    
+    df = df.select_dtypes(include=['float64', 'float'])
+    print(df)
+    z = np.abs(stats.zscore(df))
+    print(z)
+    del_yes = input('You realy want to delete hole Outliers? y/n \n?')
+    if del_yes == 'y':
+        df = df[(z < 3).all(axis=1)]
+    else:
+        print('no outliers deletet')
+    
+    print(df)
+    
+    save_CSV_new(df)
+
+
+#------------------------------------------------------------------------------
+# accept a dataframe, remove outliers, return cleaned data in a new dataframe
+# see http://www.itl.nist.gov/div898/handbook/prc/section1/prc16.htm
+#------------------------------------------------------------------------------
+def remove_outlier(df):
+    
+    werte = df.select_dtypes(include=['float', 'float64'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number =[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    while True:
+        value_column= input('Which value column do you want to verify: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    y = df[list_columns_werte[int(value_column)]]
+    y_val = list_columns_werte[int(value_column)]
+    
+    
+    
+    q1 = df[y_val].quantile(0.25)
+    q3 = df[y_val].quantile(0.75)
+    iqr = q3-q1 #Interquartile range
+    fence_low  = q1-1.5*iqr
+    fence_high = q3+1.5*iqr
+    df_out = df.loc[(df[y_val] > fence_low) & (df[y_val] < fence_high)]
+    
+    print(df_out)
+    input('press enter!')
+    save_CSV_new(df_out)
+
+
+    
 #######################################################################
 ###f-test
 def f_test(df):

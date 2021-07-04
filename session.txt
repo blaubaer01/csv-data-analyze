@@ -1,23 +1,23 @@
 2021-07-04
 ##################################################
-open file name: biostats.csv
+open file name: del_outl.csv
 
 ##################################################
-Separator: ,
-Delimeter: .
+Separator: ;
+Delimeter: ,
 Header: with header
 
 ##################################################
-Save file as: cda_biostats.csv
+Save file as: cda_del_outl.csv
 
 ##################################################
 Show Dataframe into HTML-File
-Filename:cda_biostats.csv
+Filename:cda_del_outl.csv
 HTML-Filename: myhtml.html
 
 ##################################################
-Boxplot by Group
-Value:  "Height (in)"
-Group by:      "Sex"
+Time Series Plot
+Value: Istwert
+Time-Axis: Unnamed: 0.1
 no tolerances set
 
