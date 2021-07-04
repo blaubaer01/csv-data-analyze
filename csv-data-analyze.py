@@ -11,7 +11,7 @@ from msa import msa_v1, msa_v2
 from charts import groupby_balkendiagramm, balkendiagramm, kuchendiagramm, line_diagram_menu, boxplot, boxplot_groupby, boxplot2f, violin, violin_groupby, violin2f,single_swarmplot,  swarmplot1f, swarmplot2f, single_stripplot, stripplot1f, stripplot2f, histogram, scatter, scatter_w_r, scatter_joint_plot, qq_plot, groupplot_menu, pareto, pareto_one_column, pointplot1f, pointplot2f, confidencelinechart, threeddplot, distriplot1f, histogram1f, decriptive_statistics, scatter_by_o_factor, pairplot_menu
 from charts import cond_mean_w_ob_by_1f, cond_mean_w_ob_by_2f, bivariate_plot_w_m_elements, stacked_hist, scatterplot_w_varying_point_sizes, scatterplot_w_varying_point_sizes_with_cat
 from charts import time_s_plot_menu
-from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_s, ttest_t_s, ttest_i, anova_o_w, anova_t_w, del_outlier, remove_outlier
+from tests import mediantest, normality_test, correl, outliert, f_test, ttest_o_s, ttest_t_s, ttest_i, anova_o_w, anova_t_w, del_outlier, remove_outlier, correlation_one_column
 from table_calc import menu_calc
 from rand_data import menu_rd
 from tableview import fehlende_daten, datentyp, file_in_html, einzeldaten_anschauen , filter_in_html, session_show
@@ -696,7 +696,7 @@ def ANOVA_menu(df):
 def menu_tests(df):
     clear()
     print('\U0001f9ee  Statistical Tests \U0001f9ee\n')
-    what_kind_of_test = input('Which Test do you would like to do: \n1: Test for normal distribution  \n2: correlation all columns \n3: t-test \n4: f-test \n5: ANOVA \n6: Outlier-Test \n7: Median-Test \n(choose a number) \n?')
+    what_kind_of_test = input('Which Test do you would like to do: \n1: Test for normal distribution  \n2: correlation all columns \n3: t-test \n4: f-test \n5: ANOVA \n6: Outlier-Test \n7: Median-Test \n8: Correlation to one column \n(choose a number) \n?')
     if what_kind_of_test =='1':
         clear()
         normality_test(df)
@@ -717,6 +717,8 @@ def menu_tests(df):
     elif what_kind_of_test =='7':
         clear()
         mediantest(df)
+    elif what_kind_of_test =='8':
+        correlation_one_column(df)
     else:
         print('Wrong input, try again!')
 
@@ -822,7 +824,7 @@ def table_functions(fn, df):
         print('\U0001f5d2\uFE0F Table Functions \U0001f5d2\uFE0F \n')
         menu_tf = input('Table Functions: \n1: preview \n2: append csv-file \n3: merge csv-file \n4: set filter \n5: sort by column \n6: transpose table \n7: crosstable \
                         \n8: easy table calculation \n9: add sequence number column \n10: convert datetime column \n11: get calendar info \n12: delete or replace value/characters \
-                        \n13: melt columns \n14: rename column \n15: save to CSV-file \n16: combine factor columns \n17: delete column \n18: add random distribution-data \n19: delete outlier into column\n?')
+                        \n13: melt columns \n14: rename column \n15: save to CSV-file \n16: combine factor columns \n17: delete column \n18: add random distribution-data \n19: delete outlier into column \n20: delete outlier hole dataframe\n?')
         
         if menu_tf =='1':
             clear()
@@ -864,7 +866,9 @@ def table_functions(fn, df):
             menu_rand_data(fn, df)
         elif menu_tf =='19':
             remove_outlier(df)
-        
+        elif menu_tf =='20':
+            del_outlier(df)
+
             
         
         

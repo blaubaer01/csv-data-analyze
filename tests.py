@@ -130,6 +130,122 @@ def correl(df):
     log = fname + '\n' + view + '\n'
     session_write(log)
 
+
+###############################################################################
+###correlation with only one column
+
+def correlation_one_column(df):
+    
+    clear()
+    
+    print('Test of normal distribution \n')
+    werte = df.select_dtypes(exclude=['object'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number =[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    while True:
+        value_column= input('Which value column do you want to verify: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+        
+        
+    y = df[list_columns_werte[int(value_column)]]
+    y_val = list_columns_werte[int(value_column)]
+    
+    
+    correlation_df = df.corrwith(df[y_val])
+    print(correlation_df)
+
+    
+    speichern_ja = input('Save the correlation table: y/n \n?')
+    if speichern_ja.lower() =='y':
+        csvfilename = input('Input only Filename ([filename].csv will save automaticly) \n?')
+        fn = csvfilename + '.csv'
+        correlation_df.to_csv(fn, sep=';', decimal=',', header =True)
+    else:
+        fn = 'none'    
+    
+################################################################################
+    ###Log-file
+    fname = 'Test of correlation'
+    view = 'Column Name: ' + y_val
+    log = fname + '\n' + view + '\n'
+    session_write(log)
+
+
+
+
+################################################################################
+###remove outliers
+#------------------------------------------------------------------------------
+# accept a dataframe, remove outliers, return cleaned data in a new dataframe
+# see http://www.itl.nist.gov/div898/handbook/prc/section1/prc16.htm
+#------------------------------------------------------------------------------
+def remove_outlier(df):
+    
+    werte = df.select_dtypes(include=['float', 'float64'])
+    
+    #
+    anz_col_werte = len(werte.columns)
+        
+    list_columns_werte = []
+    list_number =[]
+    i=1
+    for i in range(anz_col_werte):
+        list_columns_werte.append(werte.columns[i])
+        list_number.append(str(i))
+        print(i, werte.columns[i])
+        i+=1
+    
+    while True:
+        value_column= input('Which value column do you want to verify: \n(choose number) \n?')
+        if value_column not in list_number:
+            print('wrong input, try again!')
+        else:
+            break  
+    
+    
+    y = df[list_columns_werte[int(value_column)]]
+    y_val = list_columns_werte[int(value_column)]
+    
+    
+    
+    q1 = df[y_val].quantile(0.25)
+    q3 = df[y_val].quantile(0.75)
+    iqr = q3-q1 #Interquartile range
+    fence_low  = q1-1.5*iqr
+    fence_high = q3+1.5*iqr
+    df_out = df.loc[(df[y_val] > fence_low) & (df[y_val] < fence_high)]
+    
+    print(df_out)
+    input('press enter!')
+    save_CSV_new(df_out)
+
+################################################################################
+    ###Log-file
+    fname = 'Delete Outliers into one column'
+    fvalue = 'Value column: ' + y_val
+    
+    
+    log = fname + '\n' + fvalue + '\n'
+    session_write(log)
+
+
+
+
+
 #######################################################################    
 ###Grubbs outlier test
 def outliert(df):
@@ -178,6 +294,10 @@ def outliert(df):
     plt.axis('off')
     plt.show()    
     
+    input_del_outlier = ('Would yo like to delete the detected outliers y/n \n?')
+    if input_del_outlier =='y':
+        remove_outlier(df)
+    
     
     ################################################################################
     ###Log-file
@@ -196,64 +316,34 @@ def del_outlier(df):
     
     print('Delete Outlier hole Dataframe!')
     
-    df = df.select_dtypes(include=['float64', 'float'])
-    print(df)
-    z = np.abs(stats.zscore(df))
-    print(z)
-    del_yes = input('You realy want to delete hole Outliers? y/n \n?')
-    if del_yes == 'y':
-        df = df[(z < 3).all(axis=1)]
-    else:
-        print('no outliers deletet')
-    
-    print(df)
-    
-    save_CSV_new(df)
-
-
-#------------------------------------------------------------------------------
-# accept a dataframe, remove outliers, return cleaned data in a new dataframe
-# see http://www.itl.nist.gov/div898/handbook/prc/section1/prc16.htm
-#------------------------------------------------------------------------------
-def remove_outlier(df):
-    
     werte = df.select_dtypes(include=['float', 'float64'])
     
-    #
-    anz_col_werte = len(werte.columns)
-        
-    list_columns_werte = []
-    list_number =[]
-    i=1
-    for i in range(anz_col_werte):
-        list_columns_werte.append(werte.columns[i])
-        list_number.append(str(i))
-        print(i, werte.columns[i])
-        i+=1
-    
-    while True:
-        value_column= input('Which value column do you want to verify: \n(choose number) \n?')
-        if value_column not in list_number:
-            print('wrong input, try again!')
+    for col in werte:
+        print(col)
+        q1 = df[col].quantile(0.25)
+        print('Quantile0.25: ' , q1)
+        q3 = df[col].quantile(0.75)
+        print('Quantile0.75: ' , q3)
+        if q1 == q3:
+            print('no deviation in this column, no outlier')
         else:
-            break  
-    
-    
-    y = df[list_columns_werte[int(value_column)]]
-    y_val = list_columns_werte[int(value_column)]
-    
-    
-    
-    q1 = df[y_val].quantile(0.25)
-    q3 = df[y_val].quantile(0.75)
-    iqr = q3-q1 #Interquartile range
-    fence_low  = q1-1.5*iqr
-    fence_high = q3+1.5*iqr
-    df_out = df.loc[(df[y_val] > fence_low) & (df[y_val] < fence_high)]
-    
-    print(df_out)
+            iqr = q3-q1 #Interquartile range
+            fence_low  = q1-1.5*iqr
+            fence_high = q3+1.5*iqr
+            df = df.loc[(df[col] > fence_low) & (df[col] < fence_high)]
+            print(df)
+            
+    print(df)
     input('press enter!')
-    save_CSV_new(df_out)
+    save_CSV_new(df)
+################################################################################
+    ###Log-file
+    fname = 'Delete Outliers into the hole dataframe'
+    fvalue = 'Value column: all value columns'
+    
+    
+    log = fname + '\n' + fvalue + '\n' 
+    session_write(log)
 
 
     

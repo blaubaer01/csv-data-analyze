@@ -1,6 +1,6 @@
 2021-07-04
 ##################################################
-open file name: del_outl.csv
+open file name: production.csv
 
 ##################################################
 Separator: ;
@@ -8,16 +8,13 @@ Delimeter: ,
 Header: with header
 
 ##################################################
-Save file as: cda_del_outl.csv
+Save file as: cda_production.csv
 
 ##################################################
 Show Dataframe into HTML-File
-Filename:cda_del_outl.csv
+Filename:cda_production.csv
 HTML-Filename: myhtml.html
 
 ##################################################
-Time Series Plot
-Value: Istwert
-Time-Axis: Unnamed: 0.1
-no tolerances set
-
+Change dataype
+Change datatype of column: none to datatype: none
