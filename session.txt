@@ -1,4 +1,4 @@
-2021-07-04
+2021-07-06
 ##################################################
 open file name: production.csv
 
@@ -16,5 +16,10 @@ Filename:cda_production.csv
 HTML-Filename: myhtml.html
 
 ##################################################
-Change dataype
-Change datatype of column: none to datatype: none
+save new file
+File Name: sadasd.csv
+
+##################################################
+Test of correlation
+Column Name: Istwert
+
