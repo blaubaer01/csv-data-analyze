@@ -871,6 +871,7 @@ def table_functions(fn, df):
             remove_outlier(df)
         elif menu_tf =='20':
             del_outlier(df)
+        
 
             
         

@@ -252,14 +252,55 @@ def correlation_one_column_whole_df(df):
                 cor = df_w_o[col].corr(df_w_o[y_val])
                 df2=df2.append({'resp_Column' : col , 'Correlation' : cor, 'Correl_with' : y_val, 'Count datas' : countdf} , ignore_index=True)
                 print(df2)
-        save_CSV_new(df2)
-                
+                input('press enter')
+        
+        
+        
+        speichern_ja = input('Save the Correlation Table: y/n \n?')
+        if speichern_ja.lower() =='y':
+            csvfilename = input('Input only Filename ([filename].csv will save automaticly) \n?')
+            fn = csvfilename + '.csv'
+            df2.to_csv(fn, sep=';', decimal=',', header =True)
+        else:
+            fn = 'none'
+    
+        ################################################################################
+        ###Log-file
+        fname = 'save new file'
+        fvalue = 'File Name: ' + fn
+    
+    
+    
+        log = fname + '\n' + fvalue + '\n' 
+        session_write(log)
+        
+
+
+        
     else:
     
     
         correlation_df = df.corrwith(df[y_val])
         print(correlation_df)
-        save_CSV_new(correlation_df)
+        input('press enter')
+        
+        speichern_ja = input('Save the Correlation Table: y/n \n?')
+        if speichern_ja.lower() =='y':
+            csvfilename = input('Input only Filename ([filename].csv will save automaticly) \n?')
+            fn = csvfilename + '.csv'
+            correlation_df.to_csv(fn, sep=';', decimal=',', header =True)
+        else:
+            fn = 'none'
+    
+        ################################################################################
+        ###Log-file
+        fname = 'save new file'
+        fvalue = 'File Name: ' + fn
+    
+    
+    
+        log = fname + '\n' + fvalue + '\n' 
+        session_write(log)
 
      
     

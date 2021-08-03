@@ -295,7 +295,7 @@ def liniendiagramm(df):
             
     if notol =='1':
         df.plot(x, y)
-        
+        plt.xticks(rotation=45)
         plt.show()
         
     else:
@@ -306,7 +306,7 @@ def liniendiagramm(df):
             df.plot(x, y)
             
             plt.axhline(y=ut,linewidth=2, color='red')
-            
+            plt.xticks(rotation=45)
             
             plt.show()
             
@@ -314,6 +314,7 @@ def liniendiagramm(df):
             
             df.plot(x, y)
             plt.axhline(y=lt,linewidth=2, color='red')
+            plt.xticks(rotation=45)
             plt.show()
         
         
@@ -322,7 +323,7 @@ def liniendiagramm(df):
             df.plot(x, y)
             plt.axhline(y=ut,linewidth=2, color='red')
             plt.axhline(y=lt,linewidth=2, color='red')
-            
+            plt.xticks(rotation=45)
             plt.show()
     
     
@@ -457,7 +458,7 @@ def liniendiagramm_w_dot(df):
             
     if notol =='1':
         df.plot(x, y, style='-o')
-        
+        plt.xticks(rotation=45)
         plt.show()
         
     else:
@@ -469,13 +470,14 @@ def liniendiagramm_w_dot(df):
             
             plt.axhline(y=ut,linewidth=2, color='red')
             
-            
+            plt.xticks(rotation=45)
             plt.show()
             
         elif ut=='none':
             
             df.plot(x, y, style='-o')
             plt.axhline(y=lt,linewidth=2, color='red')
+            plt.xticks(rotation=45)
             plt.show()
         
         
@@ -484,7 +486,7 @@ def liniendiagramm_w_dot(df):
             df.plot(x, y, style='-o')
             plt.axhline(y=ut,linewidth=2, color='red')
             plt.axhline(y=lt,linewidth=2, color='red')
-            
+            plt.xticks(rotation=45)
             plt.show()
     
     ###########################################################################
@@ -628,6 +630,7 @@ def liniendiagramm_w_dot_cumsum(df):
     if notol =='1':
         df.plot(x, y, style='-o')
         df2.plot('number','cumsum',  title=titlecumsum )
+        plt.xticks(rotation=45)
         plt.show()
         
     else:
@@ -640,6 +643,7 @@ def liniendiagramm_w_dot_cumsum(df):
             plt.axhline(y=ut,linewidth=2, color='red')
             df2.plot('number','cumsum',  title=titlecumsum )
             plt.axhline(y=ut,linewidth=2, color='red')
+            plt.xticks(rotation=45)
             plt.show()
             
         elif ut=='none':
@@ -648,6 +652,7 @@ def liniendiagramm_w_dot_cumsum(df):
             plt.axhline(y=lt,linewidth=2, color='red')
             df2.plot('number','cumsum',  title=titlecumsum )
             plt.axhline(y=ut,linewidth=2, color='red')
+            plt.xticks(rotation=45)
             plt.show()
         
         
@@ -660,7 +665,7 @@ def liniendiagramm_w_dot_cumsum(df):
             plt.axhline(y=ut,linewidth=2, color='red')
             plt.axhline(y=lt,linewidth=2, color='red')
                         
-            
+            plt.xticks(rotation=45)
             plt.show()
     
     ###########################################################################

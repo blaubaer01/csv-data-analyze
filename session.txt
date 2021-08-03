@@ -1,6 +1,6 @@
-2021-07-06
+2021-08-03
 ##################################################
-open file name: production.csv
+open file name: correltest2.csv
 
 ##################################################
 Separator: ;
@@ -8,18 +8,10 @@ Delimeter: ,
 Header: with header
 
 ##################################################
-Save file as: cda_production.csv
+Save file as: cda_correltest2.csv
 
 ##################################################
 Show Dataframe into HTML-File
-Filename:cda_production.csv
+Filename:cda_correltest2.csv
 HTML-Filename: myhtml.html
-
-##################################################
-save new file
-File Name: sadasd.csv
-
-##################################################
-Test of correlation
-Column Name: Istwert
 

@@ -2043,4 +2043,4 @@ def change_datatype(df):
     
     log = fname + '\n' + 'Change datatype of column: ' +  out_datatype + ' to datatype: ' + dattype  
     session_write(log)
-            
+
