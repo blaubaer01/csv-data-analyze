@@ -199,119 +199,125 @@ def correlation_one_column_whole_df(df):
     
     print('Delete Outlier whole Dataframe!')
     
-    werte = df.select_dtypes(include=['float', 'float64'])
+    werte = df.select_dtypes(include=['float', 'float64', 'int', 'int64' ])
+    
+    
     
     #
     anz_col_werte = len(werte.columns)
-        
-    list_columns_werte = []
-    list_number =[]
-    i=1
-    for i in range(anz_col_werte):
-        list_columns_werte.append(werte.columns[i])
-        list_number.append(str(i))
-        print(i, werte.columns[i])
-        i+=1
     
-    while True:
-        value_column= input('Which value column do you want to choose: \n(choose number) \n?')
-        if value_column not in list_number:
-            print('wrong input, try again!')
-        else:
-            break  
-    y_val = list_columns_werte[int(value_column)]
+    if anz_col_werte < 1:
+        print('No value tables intothe Dataframe!')
     
-    
-    rem_outl_yes = input('remove first outliers (quick and dirty method) y/n \n?')
-    
-    if rem_outl_yes == 'y':
-        
-        col_x = df.select_dtypes(include=['float', 'float64'])
-        
-        for col in col_x:
-            print(col)
-            q1 = df[col].quantile(0.25)
-            print('Quantile0.25: ' , q1)
-            q3 = df[col].quantile(0.75)
-            print('Quantile0.75: ' , q3)
-            if q1 == q3:
-                print('no deviation in this column, no outlier')
-            else:
-                iqr = q3-q1 #Interquartile range
-                fence_low  = q1-1.5*iqr
-                fence_high = q3+1.5*iqr
-                df_w_o = df.loc[(df[col] > fence_low) & (df[col] < fence_high)]
-                print(df_w_o)
-                countdf = len(df_w_o)
-                print(countdf)
-                #if countdf == 0:
-                #    print('upsi, no data rest!')
-                #if countdf < 10:
-                #    input('only 10 data rest!')
-                #input('press enter!')
-                cor = df_w_o[col].corr(df_w_o[y_val])
-                df2=df2.append({'resp_Column' : col , 'Correlation' : cor, 'Correl_with' : y_val, 'Count datas' : countdf} , ignore_index=True)
-                print(df2)
-                input('press enter')
-        
-        
-        
-        speichern_ja = input('Save the Correlation Table: y/n \n?')
-        if speichern_ja.lower() =='y':
-            csvfilename = input('Input only Filename ([filename].csv will save automaticly) \n?')
-            fn = csvfilename + '.csv'
-            df2.to_csv(fn, sep=';', decimal=',', header =True)
-        else:
-            fn = 'none'
-    
-        ################################################################################
-        ###Log-file
-        fname = 'save new file'
-        fvalue = 'File Name: ' + fn
-    
-    
-    
-        log = fname + '\n' + fvalue + '\n' 
-        session_write(log)
-        
-
-
-        
     else:
-    
-    
-        correlation_df = df.corrwith(df[y_val])
-        print(correlation_df)
-        input('press enter')
+        list_columns_werte = []
+        list_number =[]
+        i=1
+        for i in range(anz_col_werte):
+            list_columns_werte.append(werte.columns[i])
+            list_number.append(str(i))
+            print(i, werte.columns[i])
+            i+=1
         
-        speichern_ja = input('Save the Correlation Table: y/n \n?')
-        if speichern_ja.lower() =='y':
-            csvfilename = input('Input only Filename ([filename].csv will save automaticly) \n?')
-            fn = csvfilename + '.csv'
-            correlation_df.to_csv(fn, sep=';', decimal=',', header =True)
+        while True:
+            value_column= input('Which value column do you want to choose: \n(choose number) \n?')
+            if value_column not in list_number:
+                print('wrong input, try again!')
+            else:
+                break  
+        y_val = list_columns_werte[int(value_column)]
+        
+        
+        rem_outl_yes = input('remove first outliers (quick and dirty method) y/n \n?')
+        
+        if rem_outl_yes == 'y':
+            
+            col_x = df.select_dtypes(include=['float', 'float64'])
+            
+            for col in col_x:
+                print(col)
+                q1 = df[col].quantile(0.25)
+                print('Quantile0.25: ' , q1)
+                q3 = df[col].quantile(0.75)
+                print('Quantile0.75: ' , q3)
+                if q1 == q3:
+                    print('no deviation in this column, no outlier')
+                else:
+                    iqr = q3-q1 #Interquartile range
+                    fence_low  = q1-1.5*iqr
+                    fence_high = q3+1.5*iqr
+                    df_w_o = df.loc[(df[col] > fence_low) & (df[col] < fence_high)]
+                    print(df_w_o)
+                    countdf = len(df_w_o)
+                    print(countdf)
+                    #if countdf == 0:
+                    #    print('upsi, no data rest!')
+                    #if countdf < 10:
+                    #    input('only 10 data rest!')
+                    #input('press enter!')
+                    cor = df_w_o[col].corr(df_w_o[y_val])
+                    df2=df2.append({'resp_Column' : col , 'Correlation' : cor, 'Correl_with' : y_val, 'Count datas' : countdf} , ignore_index=True)
+                    print(df2)
+                    input('press enter')
+            
+            
+            
+            speichern_ja = input('Save the Correlation Table: y/n \n?')
+            if speichern_ja.lower() =='y':
+                csvfilename = input('Input only Filename ([filename].csv will save automaticly) \n?')
+                fn = csvfilename + '.csv'
+                df2.to_csv(fn, sep=';', decimal=',', header =True)
+            else:
+                fn = 'none'
+        
+            ################################################################################
+            ###Log-file
+            fname = 'save new file'
+            fvalue = 'File Name: ' + fn
+        
+        
+        
+            log = fname + '\n' + fvalue + '\n' 
+            session_write(log)
+            
+    
+    
+            
         else:
-            fn = 'none'
+        
+        
+            correlation_df = df.corrwith(df[y_val])
+            print(correlation_df)
+            input('press enter')
+            
+            speichern_ja = input('Save the Correlation Table: y/n \n?')
+            if speichern_ja.lower() =='y':
+                csvfilename = input('Input only Filename ([filename].csv will save automaticly) \n?')
+                fn = csvfilename + '.csv'
+                correlation_df.to_csv(fn, sep=';', decimal=',', header =True)
+            else:
+                fn = 'none'
+        
+            ################################################################################
+            ###Log-file
+            fname = 'save new file'
+            fvalue = 'File Name: ' + fn
+        
+        
+        
+            log = fname + '\n' + fvalue + '\n' 
+            session_write(log)
     
-        ################################################################################
+         
+        
+          
+        
+    ################################################################################
         ###Log-file
-        fname = 'save new file'
-        fvalue = 'File Name: ' + fn
-    
-    
-    
-        log = fname + '\n' + fvalue + '\n' 
+        fname = 'Test of correlation'
+        view = 'Column Name: ' + y_val
+        log = fname + '\n' + view + '\n'
         session_write(log)
-
-     
-    
-      
-    
-################################################################################
-    ###Log-file
-    fname = 'Test of correlation'
-    view = 'Column Name: ' + y_val
-    log = fname + '\n' + view + '\n'
-    session_write(log)
 
 
 

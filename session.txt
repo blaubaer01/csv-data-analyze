@@ -1,17 +1,25 @@
-2021-08-03
+2021-08-04
 ##################################################
-open file name: correltest2.csv
+open file name: alcohol.csv
 
 ##################################################
-Separator: ;
-Delimeter: ,
+Separator: ,
+Delimeter: .
 Header: with header
 
 ##################################################
-Save file as: cda_correltest2.csv
+Save file as: cda_alcohol.csv
 
 ##################################################
 Show Dataframe into HTML-File
-Filename:cda_correltest2.csv
+Filename:cda_alcohol.csv
 HTML-Filename: myhtml.html
+
+##################################################
+save new file
+File Name: none
+
+##################################################
+Test of correlation
+Column Name: MAGNTUDE
 
