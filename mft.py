@@ -10,8 +10,9 @@ import os
 import pandas as pd
 import numpy as np
 from tabulate import tabulate
-
 from datetime import date
+
+
 
 
 F1 = '\U0001f522 ?'
@@ -170,5 +171,38 @@ def session_save_by_name(fn):
         sessionfilename = input('Input Session-file-name ([filename].txt will save automaticly): \n?')
         
         os.rename(fn, sessionfilename)
+
+def create_df(df):
+    
+    name_df = input('Table Name: ?')
+    
+    fn ='cda_new_data.csv'
+    
+    df[name_df] = ''
+    
+    #df[name_df] = df[name_df].astype(float)
+    
+    while True:
         
+        val = input('input value \n?')
         
+        if val == 'n':
+            break
+        else:
+            df=df.append({name_df : val} , ignore_index=True)
+            #df[name_df] = df[name_df].astype(float)
+            print(df)
+    
+    
+            print_table(df)    
+        input('press enter')
+    
+      
+    
+    
+    #file_in_html(fn, df)
+    
+    save_CSV(fn, df)
+    #df=pd.read_csv(fn,sep=';' ,decimal=',', header=0, engine='python')
+    #print (df)
+    

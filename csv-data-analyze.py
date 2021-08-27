@@ -16,6 +16,7 @@ from table_calc import menu_calc
 from rand_data import menu_rd
 from tableview import fehlende_daten, datentyp, file_in_html, einzeldaten_anschauen , filter_in_html, session_show
 from mft import clear, save_CSV_new, isinteger, print_table, session_doc_anlegen, session_write, session_save_by_name
+#from mft import create_df
 from date_function import convert_datetime, cal_info
 import webbrowser
 from sys import platform
@@ -381,7 +382,58 @@ def file_einlesen(fn):
 
 
 #############################################################################
+def create_df(df):
+    
+    name_df = input('Table Name: \n?')
+    
+    fn ='new_cda_file.csv'
+    
+    df[name_df] = ''
+    
+    #df[name_df] = df[name_df].astype(float)
+    
+    while True:
+        
+        val = input('Input value \n (If you wold like to stop input type "n") \n?')
+        
+        if val == 'n':
+            break
+        else:
+            df=df.append({name_df : val} , ignore_index=True)
+            #df[name_df] = df[name_df].astype(float)
+            print(df)
+    
+    
+            print_table(df)    
+        #input('press enter')
+    
+      
+    
+    
+    #file_in_html(fn, df)
+    
+    clear()
+    speichern_ja = input('Save the modified dataframe: y/n \n? ')
+    if speichern_ja.lower() =='y':
+        print('save file ...', fn)
+        df.to_csv(fn, sep=';', decimal=',', header =True, index=False)
+        
+    ################################################################################
+    ###Log-file
+    fname = 'create data column'
+    fvalue = 'File Name: ' + fn
+    
+    
+    
+    log = fname + '\n' + fvalue + '\n' 
+    session_write(log)
 
+    df=pd.read_csv(fn,sep=';' ,decimal=',', header=0, engine='python')
+    
+    
+    mit_daten_arbeiten(fn,df)
+    
+    
 
 
 ###############################################################################        
@@ -981,7 +1033,7 @@ def main():
     print('')
     
     while True:
-        start = input('\u2049\uFE0F \nStart Menue \n1: Create random data \U0001f3b2 \n2: Open exsisting csv-file (root folder) \U0001f4c1 \n3: More infos about this app (Wiki) \u2139\uFE0F \n4: OMG, close this scary app \u26D4 \n(choose number) \n?')
+        start = input('\u2049\uFE0F \nStart Menue \n1: Create random data \U0001f3b2 \n2: Create data-column \n3: Open exsisting csv-file (root folder) \U0001f4c1 \n4: More infos about this app (Wiki) \u2139\uFE0F \n5: OMG, close this scary app \u26D4 \n(choose number) \n?')
         
         if start == '1':
             menu_rd(df)
@@ -996,7 +1048,22 @@ def main():
             
             break
         
-        elif start == '2':
+        if start == '2':
+            create_df(df)
+            clear()
+                
+            print('#'*70)
+            
+            fn = 'new_cda_file.csv'
+            df.to_csv(fn, sep=';', decimal=',', header =True)
+            mit_daten_arbeiten(fn, df)
+                       
+            
+            break
+        
+        
+        
+        elif start == '3':
             clear()
             print('The following CSV-Files are in the root-folder:')
             csv_daten_im_verzeichnis()
@@ -1020,7 +1087,7 @@ def main():
             
             break
         
-        elif start =='3':
+        elif start =='4':
             print('This function will start the Wiki -page of csv-data-analyze \nyou need internet connection to do that')
             
             url = 'https://github.com/blaubaer01/csv-data-analyze/wiki'
@@ -1035,7 +1102,7 @@ def main():
                 
         
         
-        elif start =='4':
+        elif start =='5':
             print("It's your decision ;-) , have a nice day!")
             break
                 
