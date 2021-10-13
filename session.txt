@@ -1,6 +1,6 @@
-2021-08-27
+2021-10-13
 ##################################################
-open file name: cda_new_data.csv
+open file name: MSA-V1.csv
 
 ##################################################
 Separator: ;
@@ -8,207 +8,34 @@ Delimeter: ,
 Header: with header
 
 ##################################################
-Save file as: cda_cda_new_data.csv
+Save file as: cda_MSA-V1.csv
 
 ##################################################
 Show Dataframe into HTML-File
-Filename:cda_cda_new_data.csv
+Filename:cda_MSA-V1.csv
 HTML-Filename: myhtml.html
 
 ##################################################
 Change dataype
 Change datatype of column: none to datatype: none
 ##################################################
-Graphical descriptive statistic
-y-Value: asas
-Mean: 12.46666
-s: 0.64291
- 
-+3s: 14.39539
--3s: 10.53793
- 
-MIN: 12.0
-MAX: 13.2
-n: 3
-
-distribution should follow normal distribution
-p-Value (shapiro wilk test): 0.29827386140823364
-##################################################
-save file
-File Name: cda_new_data.csv
-
-##################################################
-Change dataype
-Change datatype of column: sadad to datatype: float
-##################################################
-save file
-File Name: cda_new_data.csv
-
-##################################################
-Change dataype
-Change datatype of column: dada to datatype: float
-##################################################
-save file
-File Name: cda_new_data.csv
-
-##################################################
-Change dataype
-Change datatype of column: sadad to datatype: float
-##################################################
-save file
-File Name: cda_new_data.csv
-
+MSA Procedure 1
+y-Value: Y
+MSA_V1
+Offset: 0.000236
+Cg: none Cgk: none
+one single t-Test: Means should not be different (fail to reject H0) t: 0.87418 p: 0.38628
+tol(10%): UT: none LT: none
+p-Value (shapiro wilk test): 0.3862842074799645
 ##################################################
 Change dataype
 Change datatype of column: none to datatype: none
 ##################################################
-save file
-File Name: cda_new_data.csv
-
-##################################################
-Change dataype
-Change datatype of column: none to datatype: none
-##################################################
-save file
-File Name: cda_new_data.csv
-
-##################################################
-Change dataype
-Change datatype of column: none to datatype: none
-##################################################
-save file
-File Name: cda_new_data.csv
-
-##################################################
-save file
-File Name: cda_new_data.csv
-
-##################################################
-save file
-File Name: new_cda_file.csv
-
-##################################################
-Change dataype
-Change datatype of column: none to datatype: none
-##################################################
-save file
-File Name: new_cda_file.csv
-
-##################################################
-Change dataype
-Change datatype of column: none to datatype: none
-##################################################
-save file
-File Name: new_cda_file.csv
-
-##################################################
-save file
-File Name: new_cda_file.csv
-
-##################################################
-save file
-File Name: new_cda_file.csv
-
-##################################################
-Change dataype
-Change datatype of column: none to datatype: none
-##################################################
-Function: show first row
-
-##################################################
-Change dataype
-Change datatype of column: none to datatype: none
-##################################################
-Graphical descriptive statistic
-y-Value: cyscyc
-Mean: 12.0
-s: 0.0
- 
-+3s: 12.0
--3s: 12.0
- 
-MIN: 12
-MAX: 12
-n: 3
-
-distribution should follow normal distribution
-p-Value (shapiro wilk test): 1.0
-##################################################
-save file
-File Name: new_cda_file.csv
-
-##################################################
-Change dataype
-Change datatype of column: none to datatype: none
-##################################################
-Graphical descriptive statistic
-y-Value: adsfdas
-Mean: 962.24
-s: 974.472
- 
-+3s: 3885.65601
--3s: -1961.17601
- 
-MIN: 12.0
-MAX: 2321.0
-n: 5
-
-distribution should follow normal distribution
-p-Value (shapiro wilk test): 0.3138412833213806
-##################################################
-save file
-File Name: new_cda_file.csv
-
-##################################################
-Change dataype
-Change datatype of column: none to datatype: none
-##################################################
-Graphical descriptive statistic
-y-Value: sdas
-Mean: 13.1
-s: 1.26964
- 
-+3s: 16.90893
--3s: 9.29106
- 
-MIN: 12.0
-MAX: 15.0
-n: 6
-
-distribution should follow normal distribution
-p-Value (shapiro wilk test): 0.19355995953083038
-##################################################
-create data column
-File Name: new_cda_file.csv
-
-##################################################
-Change dataype
-Change datatype of column: none to datatype: none
-##################################################
-Graphical descriptive statistic
-y-Value: safasf
-Median: 11.0
-
-Q0.998: 12.99214
-Q0.001: 1.0
- 
-MIN: 1.0
-MAX: 13.0
-n: 7
-
-distribution should not follow normal distribution
-p-Value (shapiro wilk test): 0.00776904309168458
-##################################################
-create data column
-File Name: new_cda_file.csv
-
-##################################################
-create data column
-File Name: new_cda_file.csv
-
-##################################################
-Change dataype
-Change datatype of column: none to datatype: none
-##################################################
-Simple descriptive statistics
-
+MSA Procedure 1
+y-Value: Y
+MSA_V1
+Offset: 0.000236
+Cg: 6.97 Cgk: 6.93
+one single t-Test: Means should not be different (fail to reject H0) t: 0.87418 p: 0.38628
+tol(10%): UT: 10.239 LT: 10.16
+p-Value (shapiro wilk test): 0.3862842074799645

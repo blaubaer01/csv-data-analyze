@@ -243,7 +243,7 @@ def msa_v1(df):
     
     plt.figure(figsize=(6,2))
     plt.subplot(211)
-    sns.lineplot(x=nr, y=y, estimator=None, lw=1, data=df)
+    sns.lineplot(x=nr, y=y, estimator=None, lw=1, marker='o', data=df)
     plt.axhline(y=mean_y,linewidth=2, color='g')
     plt.axhline(y=utdiagram,linewidth=2, color='orange')
     plt.axhline(y=ltdiagram,linewidth=2, color='orange')
