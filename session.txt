@@ -1,6 +1,6 @@
-2021-10-13
+2021-10-16
 ##################################################
-open file name: MSA-V1.csv
+open file name: pareto.csv
 
 ##################################################
 Separator: ;
@@ -8,34 +8,23 @@ Delimeter: ,
 Header: with header
 
 ##################################################
-Save file as: cda_MSA-V1.csv
+Save file as: cda_pareto.csv
 
 ##################################################
 Show Dataframe into HTML-File
-Filename:cda_MSA-V1.csv
+Filename:cda_pareto.csv
 HTML-Filename: myhtml.html
 
 ##################################################
-Change dataype
-Change datatype of column: none to datatype: none
+Pareto Chart count Column
+Column count: [24 17  7  4]
+
 ##################################################
-MSA Procedure 1
-y-Value: Y
-MSA_V1
-Offset: 0.000236
-Cg: none Cgk: none
-one single t-Test: Means should not be different (fail to reject H0) t: 0.87418 p: 0.38628
-tol(10%): UT: none LT: none
-p-Value (shapiro wilk test): 0.3862842074799645
+Pareto Chart with value column
+y-Value: Anzahl
+Category: BauteilNR
+
 ##################################################
-Change dataype
-Change datatype of column: none to datatype: none
-##################################################
-MSA Procedure 1
-y-Value: Y
-MSA_V1
-Offset: 0.000236
-Cg: 6.97 Cgk: 6.93
-one single t-Test: Means should not be different (fail to reject H0) t: 0.87418 p: 0.38628
-tol(10%): UT: 10.239 LT: 10.16
-p-Value (shapiro wilk test): 0.3862842074799645
+Pareto Chart count Column
+Column count: [7 4 3 2]
+

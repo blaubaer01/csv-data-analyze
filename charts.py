@@ -4363,7 +4363,7 @@ def pareto_plot(df, x=None, y=None, title=None, show_pct_y=False, pct_format='{0
     ################################################################################
     ###Log-file
     fname = 'Pareto Chart count Column'
-    fvalue = 'Column count: ' + y
+    fvalue = 'Column count: ' + str(y)
     
     
     log = fname + '\n' + fvalue + '\n'
@@ -4435,8 +4435,8 @@ def pareto(df):
     ################################################################################
     ###Log-file
     fname = 'Pareto Chart with value column'
-    fvalue = 'y-Value: ' + y
-    fcategory = 'Category: ' + x
+    fvalue = 'y-Value: ' + str(y)
+    fcategory = 'Category: ' + str(x)
        
     
     log = fname + '\n' + fvalue + '\n' + fcategory + '\n'
