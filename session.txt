@@ -1,30 +1,23 @@
-2021-10-16
+2021-10-19
 ##################################################
-open file name: pareto.csv
+open file name: 2ways_ANOVA.csv
 
 ##################################################
-Separator: ;
-Delimeter: ,
+Separator: \s+
+Delimeter: .
 Header: with header
 
 ##################################################
-Save file as: cda_pareto.csv
+Save file as: cda_2ways_ANOVA.csv
 
 ##################################################
 Show Dataframe into HTML-File
-Filename:cda_pareto.csv
+Filename:cda_2ways_ANOVA.csv
 HTML-Filename: myhtml.html
 
 ##################################################
-Pareto Chart count Column
-Column count: [24 17  7  4]
-
-##################################################
-Pareto Chart with value column
-y-Value: Anzahl
-Category: BauteilNR
-
-##################################################
-Pareto Chart count Column
-Column count: [7 4 3 2]
+Boxplot by Group with Observations
+Value: Weight
+Group by: Calluna
+no tolerances set
 
