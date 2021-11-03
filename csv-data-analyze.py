@@ -382,57 +382,362 @@ def file_einlesen(fn):
 
 
 #############################################################################
+#def create_df(df):
+#    
+#    name_df = input('Input Value Column Name: \n?')
+#    
+#    fn ='new_cda_file.csv'
+#    
+#    df[name_df] = ''
+#    
+#    #df[name_df] = df[name_df].astype(float)
+#    
+#    while True:
+#        
+#        val = input('Input value: \n (If you would like to stop input type "n") \n?')
+#        
+#        if val == 'n':
+#            break
+#        else:
+#            df=df.append({name_df : val} , ignore_index=True)
+#            #df[name_df] = df[name_df].astype(float)
+#            print(df)
+#    
+#    
+#            print_table(df)    
+#        #input('press enter')
+#    
+#      
+#    
+#    
+#    #file_in_html(fn, df)
+#    
+#    clear()
+#    speichern_ja = input('Save the modified dataframe: y/n \n? ')
+#    if speichern_ja.lower() =='y':
+#        print('save file ...', fn)
+#        df.to_csv(fn, sep=';', decimal=',', header =True, index=False)
+#        
+#    ################################################################################
+#    ###Log-file
+#    fname = 'create data column'
+#    fvalue = 'File Name: ' + fn
+#    
+#    
+#    
+#    log = fname + '\n' + fvalue + '\n' 
+#    session_write(log)
+#
+#    df=pd.read_csv(fn,sep=';' ,decimal=',', header=0, engine='python')
+#    
+#    
+#    mit_daten_arbeiten(fn,df)
+    
+
+#############################################################################
 def create_df(df):
     
-    name_df = input('Table Name: \n?')
     
-    fn ='new_cda_file.csv'
+    howmanycolumn = input('How many columns do you need (max. 5 columns) \n?')
     
-    df[name_df] = ''
+    if int(howmanycolumn) < 6:
     
-    #df[name_df] = df[name_df].astype(float)
-    
-    while True:
+        fn ='new_cda_file.csv'
+        #one column
+        if howmanycolumn == '1':
         
-        val = input('Input value \n (If you wold like to stop input type "n") \n?')
-        
-        if val == 'n':
-            break
-        else:
-            df=df.append({name_df : val} , ignore_index=True)
+            name_df = input('Input Value Column Name: \n?')
+            
+            
+            
+            df[name_df] = ''
+            
             #df[name_df] = df[name_df].astype(float)
-            print(df)
-    
-    
-            print_table(df)    
-        #input('press enter')
-    
-      
-    
-    
-    #file_in_html(fn, df)
-    
-    clear()
-    speichern_ja = input('Save the modified dataframe: y/n \n? ')
-    if speichern_ja.lower() =='y':
-        print('save file ...', fn)
-        df.to_csv(fn, sep=';', decimal=',', header =True, index=False)
-        
-    ################################################################################
-    ###Log-file
-    fname = 'create data column'
-    fvalue = 'File Name: ' + fn
-    
-    
-    
-    log = fname + '\n' + fvalue + '\n' 
-    session_write(log)
+            
+            while True:
+                
+                val = input('Input value: \n (If you would like to stop input type "n") \n?')
+                
+                if val == 'n':
+                    break
+                else:
+                    df=df.append({name_df : val} , ignore_index=True)
+            
+            
+                    print_table(df)    
+            
+            clear()
+            speichern_ja = input('Save the modified dataframe: y/n \n? ')
+            if speichern_ja.lower() =='y':
+                print('save file ...', fn)
+                df.to_csv(fn, sep=';', decimal=',', header =True, index=False)
 
-    df=pd.read_csv(fn,sep=';' ,decimal=',', header=0, engine='python')
+            ################################################################################
+            ###Log-file
+            fname = 'create data column'
+            fvalue = 'File Name: ' + fn
     
     
-    mit_daten_arbeiten(fn,df)
     
+            log = fname + '\n' + fvalue + '\n' 
+            session_write(log)
+
+            df=pd.read_csv(fn,sep=';' ,decimal=',', header=0, engine='python')
+    
+    
+            mit_daten_arbeiten(fn,df)
+
+
+
+            
+        
+
+        #two columns
+        if howmanycolumn == '2':
+        
+            anz=0    
+            while anz != 1:
+                name_df_2 = input('Input Column Names: \n(two names, split by comma) \n?')
+                anz = str(name_df_2).count(',')
+                print(anz)
+                print('please try again \nnot enough commas found, needed 1 found: ', anz)
+            else:
+                name_df1, name_df2 = name_df_2.split(',')
+            
+            fn ='new_cda_file.csv'
+            
+            df[name_df1] = ''
+            df[name_df2] = ''
+            
+            
+            while True:
+                anz=0
+                while anz != 1:
+                    vals = input('Input 2 values: \n (split by comma) \n (If you would like to stop input type "n,n") \n?')
+                                   
+                    anz = str(vals).count(',')
+                    print('please try again \not enought commas found, needed 1 fount: ', anz)    
+                else:
+                    if vals == 'n,n':
+                        break
+                    else:
+                        val1, val2 = vals.split(',')
+                    
+                        df=df.append({name_df1 : val1, name_df2 :val2} , ignore_index=True)
+                            
+                
+                        print_table(df)    
+            
+            clear()
+            speichern_ja = input('Save the modified dataframe: y/n \n? ')
+            if speichern_ja.lower() =='y':
+                print('save file ...', fn)
+                df.to_csv(fn, sep=';', decimal=',', header =True, index=False)
+            
+            
+            ################################################################################
+            ###Log-file
+            fname = 'create data column'
+            fvalue = 'File Name: ' + fn
+    
+    
+    
+            log = fname + '\n' + fvalue + '\n' 
+            session_write(log)
+
+            df=pd.read_csv(fn,sep=';' ,decimal=',', header=0, engine='python')
+    
+    
+            mit_daten_arbeiten(fn,df)
+        
+        #tree columns
+        if howmanycolumn == '3':
+        
+            anz=0    
+            while anz != 2:
+                name_df_3 = input('Input Column Names: \n(tree names, split by comma) \n?')
+                anz = str(name_df_3).count(',')
+                print(anz)
+                print('please try again \nnot enough commas found, needed 2 found: ', anz)
+            else:
+                name_df1, name_df2, name_df3 = name_df_3.split(',')
+            
+            fn ='new_cda_file.csv'
+            
+            df[name_df1] = ''
+            df[name_df2] = ''
+            df[name_df3] = ''
+            
+            while True:
+                anz=0
+                while anz != 2:
+                    vals = input('Input 3 values: \n (split by comma) \n (If you would like to stop input type "n,n") \n?')
+                                   
+                    anz = str(vals).count(',')
+                    print('please try again \not enought commas found, needed 2 fount: ', anz)    
+                else:
+                    if vals == 'n,n,n':
+                        break
+                    else:
+                        val1, val2, val3 = vals.split(',')
+                    
+                        df=df.append({name_df1 : val1, name_df2 :val2, name_df3 :val3} , ignore_index=True)
+                            
+                
+                        print_table(df)    
+            
+            clear()
+            speichern_ja = input('Save the modified dataframe: y/n \n? ')
+            if speichern_ja.lower() =='y':
+                print('save file ...', fn)
+                df.to_csv(fn, sep=';', decimal=',', header =True, index=False)
+            
+            
+            ################################################################################
+            ###Log-file
+            fname = 'create data column'
+            fvalue = 'File Name: ' + fn
+    
+    
+    
+            log = fname + '\n' + fvalue + '\n' 
+            session_write(log)
+
+            df=pd.read_csv(fn,sep=';' ,decimal=',', header=0, engine='python')
+    
+    
+            mit_daten_arbeiten(fn,df)
+
+        
+        #tree columns
+        if howmanycolumn == '4':
+        
+            anz=0    
+            while anz != 3:
+                name_df_4 = input('Input Column Names: \n(four names, split by comma) \n?')
+                anz = str(name_df_4).count(',')
+                print(anz)
+                print('please try again \nnot enough commas found, needed 3 found: ', anz)
+            else:
+                name_df1, name_df2, name_df3, name_df4 = name_df_4.split(',')
+            
+            fn ='new_cda_file.csv'
+            
+            df[name_df1] = ''
+            df[name_df2] = ''
+            df[name_df3] = ''
+            df[name_df4] = ''
+            
+            while True:
+                anz=0
+                while anz != 3:
+                    vals = input('Input 4 values: \n (split by comma) \n (If you would like to stop input type "n,n,n,n") \n?')
+                                   
+                    anz = str(vals).count(',')
+                    print('please try again \not enought commas found, needed 3 fount: ', anz)    
+                else:
+                    if vals == 'n,n,n,n':
+                        break
+                    else:
+                        val1, val2, val3, val4 = vals.split(',')
+                    
+                        df=df.append({name_df1 : val1, name_df2 :val2, name_df3 :val3, name_df4 :val4} , ignore_index=True)
+                            
+                
+                        print_table(df)    
+            
+            clear()
+            speichern_ja = input('Save the modified dataframe: y/n \n? ')
+            if speichern_ja.lower() =='y':
+                print('save file ...', fn)
+                df.to_csv(fn, sep=';', decimal=',', header =True, index=False)
+            
+            
+            ################################################################################
+            ###Log-file
+            fname = 'create data column'
+            fvalue = 'File Name: ' + fn
+    
+    
+    
+            log = fname + '\n' + fvalue + '\n' 
+            session_write(log)
+
+            df=pd.read_csv(fn,sep=';' ,decimal=',', header=0, engine='python')
+    
+    
+            mit_daten_arbeiten(fn,df)
+        
+        #five columns
+        if howmanycolumn == '5':
+        
+            anz=0    
+            while anz != 4:
+                name_df_5 = input('Input Column Names: \n(five names, split by comma) \n?')
+                anz = str(name_df_5).count(',')
+                print(anz)
+                print('please try again \nnot enough commas found, needed 4 found: ', anz)
+            else:
+                name_df1, name_df2, name_df3, name_df4, name_df5 = name_df_5.split(',')
+            
+            fn ='new_cda_file.csv'
+            
+            df[name_df1] = ''
+            df[name_df2] = ''
+            df[name_df3] = ''
+            df[name_df4] = ''
+            df[name_df5] = ''
+            
+            while True:
+                anz=0
+                while anz != 4:
+                    vals = input('Input 5 values: \n (split by comma) \n (If you would like to stop input type "n,n,n,n,n") \n?')
+                                   
+                    anz = str(vals).count(',')
+                    print('please try again \not enought commas found, needed 4 fount: ', anz)    
+                else:
+                    if vals == 'n,n,n,n,n':
+                        break
+                    else:
+                        val1, val2, val3, val4, val5 = vals.split(',')
+                    
+                        df=df.append({name_df1 : val1, name_df2 :val2, name_df3 :val3, name_df4 :val4, name_df5 : val5} , ignore_index=True)
+                            
+                
+                        print_table(df)    
+            
+            clear()
+            speichern_ja = input('Save the modified dataframe: y/n \n? ')
+            if speichern_ja.lower() =='y':
+                print('save file ...', fn)
+                df.to_csv(fn, sep=';', decimal=',', header =True, index=False)
+            
+            
+            ################################################################################
+            ###Log-file
+            fname = 'create data column'
+            fvalue = 'File Name: ' + fn
+    
+    
+    
+            log = fname + '\n' + fvalue + '\n' 
+            session_write(log)
+
+            df=pd.read_csv(fn,sep=';' ,decimal=',', header=0, engine='python')
+    
+    
+            mit_daten_arbeiten(fn,df)
+        
+        
+        
+    
+        else:
+            print('max 5 columns, please try again')
+    
+    
+
+
+
     
 
 
