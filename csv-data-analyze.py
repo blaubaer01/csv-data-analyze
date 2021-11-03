@@ -571,7 +571,7 @@ def create_df(df):
             while True:
                 anz=0
                 while anz != 2:
-                    vals = input('Input 3 values: \n (split by comma) \n (If you would like to stop input type "n,n") \n?')
+                    vals = input('Input 3 values: \n (split by comma) \n (If you would like to stop input type "n,n,n") \n?')
                                    
                     anz = str(vals).count(',')
                     print('please try again \not enought commas found, needed 2 fount: ', anz)    

@@ -21,3 +21,7 @@ Value: Weight
 Group by: Calluna
 no tolerances set
 
+##################################################
+create data column
+File Name: new_cda_file.csv
+
