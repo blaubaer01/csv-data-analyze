@@ -1,27 +1,36 @@
-2021-10-19
+2022-02-27
 ##################################################
-open file name: 2ways_ANOVA.csv
+open file name: production.csv
 
 ##################################################
-Separator: \s+
-Delimeter: .
+Separator: ;
+Delimeter: ,
 Header: with header
 
 ##################################################
-Save file as: cda_2ways_ANOVA.csv
+Save file as: cda_production.csv
 
 ##################################################
 Show Dataframe into HTML-File
-Filename:cda_2ways_ANOVA.csv
+Filename:cda_production.csv
 HTML-Filename: myhtml.html
 
 ##################################################
-Boxplot by Group with Observations
-Value: Weight
-Group by: Calluna
+Change dataype
+Change datatype of column: none to datatype: none
+##################################################
+Time Series Plot
+Value: Istwert2
+Time-Axis: Messzeitpunkt
 no tolerances set
 
 ##################################################
-create data column
-File Name: new_cda_file.csv
+Show Dataframe into HTML-File
+Filename:new_data.csv
+HTML-Filename: myhtml.html
+
+##################################################
+Create sequence number
+Number from: 1Cout data: 200
+Column Name:ssa
 

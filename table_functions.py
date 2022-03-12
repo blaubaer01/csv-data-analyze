@@ -1980,7 +1980,8 @@ def change_datatype(df):
                 i=1
                 for i in range(anz_col):
                     list_columns.append(df.columns[i])
-                    print(i, df.columns[i])
+                    print(i, 
+                          df.columns[i])
                     i+=1
             
                 nummer_spalte= input('Which column do you want to change data type: \n(choose number) \n?')

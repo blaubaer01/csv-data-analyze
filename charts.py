@@ -15,8 +15,6 @@ import pandas as pd
 #from mpl_toolkits.mplot3d import Axes3D # <--- This is important for 3d plotting 
 from mpl_toolkits.mplot3d import axes3d, Axes3D #<-- Note the capitalization! 
 
-F1 = '\U0001f522 ?'
-F2 = '\U0001f521 ?' 
 
     
 ##################################################################################
